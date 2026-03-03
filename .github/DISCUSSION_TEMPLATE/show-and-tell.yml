@@ -1,0 +1,35 @@
+title: ""
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share a project, workflow, or automation you built using Stagehand!
+  - type: textarea
+    id: description
+    attributes:
+      label: What did you build?
+      description: Describe your project and how you used Stagehand.
+      placeholder: I built an automation that...
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link (optional)
+      description: Link to your project, repo, or demo.
+      placeholder: https://...
+    validations:
+      required: false
+  - type: textarea
+    id: code
+    attributes:
+      label: Code snippet (optional)
+      description: Share a relevant code snippet.
+      placeholder: |
+        ```typescript
+        import { Stagehand } from "@browserbasehq/stagehand";
+        // Your code here
+        ```
+    validations:
+      required: false

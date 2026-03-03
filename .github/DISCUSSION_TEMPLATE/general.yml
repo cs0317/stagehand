@@ -1,0 +1,15 @@
+title: ""
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this category for general conversations about Stagehand that don't fit other categories.
+  - type: textarea
+    id: content
+    attributes:
+      label: What's on your mind?
+      description: Share your thoughts, ideas, or start a conversation.
+      placeholder: Write your message here...
+    validations:
+      required: true
