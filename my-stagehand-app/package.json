@@ -1,0 +1,22 @@
+{
+  "name": "my-stagehand-app",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsx index.ts",
+    "test-stagehand": "npx tsx test-stagehand-oauth-lib.ts",
+    "dev": "npx ts-node index.ts"
+  },
+  "dependencies": {
+    "@browserbasehq/stagehand": "file:../packages/core",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "azure-identity": "^0.0.1-security",
+    "openai": "^6.22.0",
+    "ts-node": "^10.9.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.0.0"
+  }
+}

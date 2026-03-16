@@ -1,0 +1,692 @@
+[
+  {
+    "timestamp": 1383,
+    "type": "goto",
+    "url": "https://www.google.com/maps",
+    "description": "Navigate to https://www.google.com/maps"
+  },
+  {
+    "timestamp": 4968,
+    "type": "wait",
+    "ms": 3000,
+    "description": "Wait for Google Maps to fully render"
+  },
+  {
+    "timestamp": 14709,
+    "type": "extract",
+    "instruction": "Analyze the current Google Maps interface",
+    "description": "Interface discovery analysis",
+    "results": {
+      "availableOptions": [
+        "Search",
+        "Directions",
+        "Set location",
+        "Delete",
+        "More from recent history",
+        "Restaurants",
+        "Hotels",
+        "Things to do",
+        "Museums",
+        "Transit",
+        "Pharmacies",
+        "ATMs",
+        "Menu",
+        "Saved",
+        "Recents",
+        "4 places Redmond & Bellevue",
+        "10 places Anchorage",
+        "Get app",
+        "Google apps",
+        "Show Your Location",
+        "Zoom in",
+        "Zoom out",
+        "Browse Street View images",
+        "Show imagery",
+        "Layers",
+        "United States",
+        "Terms",
+        "Privacy",
+        "Send Product Feedback",
+        "2000 ft"
+      ],
+      "directionsRelated": [
+        "Directions"
+      ],
+      "searchFeatures": [
+        "Search Google Maps",
+        "Search"
+      ],
+      "otherControls": [
+        "Add your business",
+        "Learn more",
+        "Dismiss",
+        "Heavy traffic in this area",
+        "Slower than usual",
+        "Redmond weather",
+        "Reply to reviews, manage your business info, post offers and more!",
+        "Imagery ©2026 , Map data ©2026 Google"
+      ]
+    }
+  },
+  {
+    "timestamp": 17573,
+    "type": "extract",
+    "instruction": "Plan strategy for getting directions",
+    "description": "Dynamic strategy planning based on interface discovery",
+    "results": {
+      "recommendedApproach": "Use the 'Directions' button to initiate the process of getting driving directions.",
+      "firstAction": "Click the 'Directions' button.",
+      "expectedWorkflow": [
+        "Click the 'Directions' button.",
+        "Enter 'Bellevue Square, Bellevue, WA' as the starting point.",
+        "Enter 'Redmond Town Center, Redmond, WA' as the destination.",
+        "Confirm the route and review the suggested directions."
+      ],
+      "alternativesIfFailed": [
+        "Use the 'Search' button to locate 'Bellevue Square, Bellevue, WA' and 'Redmond Town Center, Redmond, WA' individually, then look for a 'Get Directions' option.",
+        "Manually pan the map to locate both places and use the context menu to find directions between them.",
+        "Search for driving directions using another mapping tool or application."
+      ]
+    }
+  },
+  {
+    "timestamp": 18451,
+    "type": "act",
+    "instruction": "Click the 'Directions' button.",
+    "description": "Execute first planned action",
+    "selector": "xpath=/html[1]/body[1]/div[1]/div[2]/div[9]/div[3]/div[1]/div[1]/div[1]/div[1]/div[2]/button[1]",
+    "method": "click",
+    "arguments": [],
+    "observedDescription": "button: Directions",
+    "aria": {
+      "tagName": "button",
+      "type": null,
+      "role": null,
+      "implicitRole": "button",
+      "ariaLabel": "Directions",
+      "placeholder": null,
+      "title": null,
+      "tooltip": null,
+      "textContent": "",
+      "name": null,
+      "id": null,
+      "className": "hArJGc vF7Cdb",
+      "bestLabel": "Directions",
+      "matchCount": 1,
+      "nearestAncestorId": null,
+      "ariaAncestors": [
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": "search",
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": "Google Maps",
+          "role": null,
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": 18574,
+    "type": "wait",
+    "ms": 2000,
+    "description": "Wait after: Execute first planned action"
+  },
+  {
+    "timestamp": 22714,
+    "type": "extract",
+    "instruction": "Check interface state after first action",
+    "description": "Verify that UI changed as expected after first action",
+    "results": {
+      "newInterface": "Directions interface with travel mode options, starting point and destination inputs, and recently viewed places.",
+      "availableInputs": [
+        "Choose starting point, or click on the map...",
+        "Choose destination...",
+        "Search",
+        "Reverse starting point and destination"
+      ],
+      "nextApproach": "Set the starting point and destination, select a travel mode, and review the suggested routes."
+    }
+  },
+  {
+    "timestamp": 23872,
+    "type": "act",
+    "instruction": "click on the starting point input field",
+    "description": "Click starting location field first",
+    "selector": "xpath=/html[1]/body[1]/div[1]/div[2]/div[9]/div[3]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/input[1]",
+    "method": "click",
+    "arguments": [],
+    "observedDescription": "textbox: Choose starting point, or click on the map...",
+    "aria": {
+      "tagName": "input",
+      "type": null,
+      "role": null,
+      "implicitRole": "textbox",
+      "ariaLabel": "Choose starting point, or click on the map...",
+      "placeholder": "Choose starting point, or click on the map...",
+      "title": null,
+      "tooltip": "Choose starting point, or click on the map...",
+      "textContent": "",
+      "name": null,
+      "id": null,
+      "className": "ZBTq6e",
+      "bestLabel": "Choose starting point, or click on the map...",
+      "matchCount": 1,
+      "nearestAncestorId": "sb_ifc50",
+      "ariaAncestors": [
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": "combobox",
+          "id": "sb_ifc50",
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": null,
+          "id": "directions-searchbox-0",
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": "listitem",
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": "list",
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": "Google Maps",
+          "role": null,
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": 23918,
+    "type": "wait",
+    "ms": 500,
+    "description": "Wait after: Click starting location field first"
+  },
+  {
+    "timestamp": 25457,
+    "type": "act",
+    "instruction": "Enter 'Bellevue Square, Bellevue, WA' in the starting location field",
+    "description": "Enter starting location: Bellevue Square, Bellevue, WA",
+    "selector": "xpath=/html[1]/body[1]/div[1]/div[2]/div[9]/div[3]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/input[1]",
+    "method": "fill",
+    "arguments": [
+      "Bellevue Square, Bellevue, WA"
+    ],
+    "observedDescription": "Textbox for entering the starting location",
+    "aria": {
+      "tagName": "input",
+      "type": null,
+      "role": null,
+      "implicitRole": "textbox",
+      "ariaLabel": "Choose starting point, or click on the map...",
+      "placeholder": "Choose starting point, or click on the map...",
+      "title": null,
+      "tooltip": "Choose starting point, or click on the map...",
+      "textContent": "",
+      "name": null,
+      "id": null,
+      "className": "ZBTq6e",
+      "bestLabel": "Choose starting point, or click on the map...",
+      "matchCount": 1,
+      "nearestAncestorId": "sb_ifc50",
+      "ariaAncestors": [
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": "combobox",
+          "id": "sb_ifc50",
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": null,
+          "id": "directions-searchbox-0",
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": "listitem",
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": "list",
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": "Google Maps",
+          "role": null,
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": 25499,
+    "type": "wait",
+    "ms": 1000,
+    "description": "Wait after: Enter starting location: Bellevue Square, Bellevue, WA"
+  },
+  {
+    "timestamp": 27509,
+    "type": "act",
+    "instruction": "click on the destination input field",
+    "description": "Click destination field first",
+    "selector": "xpath=/html[1]/body[1]/div[1]/div[2]/div[9]/div[3]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[1]/input[1]",
+    "method": "click",
+    "arguments": [],
+    "observedDescription": "textbox for choosing the destination, labeled 'Choose destination, or click on the map...'",
+    "aria": {
+      "tagName": "input",
+      "type": null,
+      "role": null,
+      "implicitRole": "textbox",
+      "ariaLabel": "Choose destination, or click on the map...",
+      "placeholder": "Choose destination, or click on the map...",
+      "title": null,
+      "tooltip": "Choose destination, or click on the map...",
+      "textContent": "",
+      "name": null,
+      "id": null,
+      "className": "ZBTq6e",
+      "bestLabel": "Choose destination, or click on the map...",
+      "matchCount": 1,
+      "nearestAncestorId": "sb_ifc51",
+      "ariaAncestors": [
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": "combobox",
+          "id": "sb_ifc51",
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": null,
+          "id": "directions-searchbox-1",
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": "listitem",
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": "list",
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": "Google Maps",
+          "role": null,
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": 27537,
+    "type": "wait",
+    "ms": 500,
+    "description": "Wait after: Click destination field first"
+  },
+  {
+    "timestamp": 29094,
+    "type": "act",
+    "instruction": "Enter 'Redmond Town Center, Redmond, WA' in the destination field",
+    "description": "Enter destination: Redmond Town Center, Redmond, WA",
+    "selector": "xpath=/html[1]/body[1]/div[1]/div[2]/div[9]/div[3]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[1]/input[1]",
+    "method": "fill",
+    "arguments": [
+      "Redmond Town Center, Redmond, WA"
+    ],
+    "observedDescription": "textbox for entering the destination field",
+    "aria": {
+      "tagName": "input",
+      "type": null,
+      "role": null,
+      "implicitRole": "textbox",
+      "ariaLabel": "Choose destination, or click on the map...",
+      "placeholder": "Choose destination, or click on the map...",
+      "title": null,
+      "tooltip": "Choose destination, or click on the map...",
+      "textContent": "",
+      "name": null,
+      "id": null,
+      "className": "ZBTq6e",
+      "bestLabel": "Choose destination, or click on the map...",
+      "matchCount": 1,
+      "nearestAncestorId": "sb_ifc51",
+      "ariaAncestors": [
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": "combobox",
+          "id": "sb_ifc51",
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": null,
+          "id": "directions-searchbox-1",
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": "listitem",
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": "list",
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": "Google Maps",
+          "role": null,
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": 29129,
+    "type": "wait",
+    "ms": 1000,
+    "description": "Wait after: Enter destination: Redmond Town Center, Redmond, WA"
+  },
+  {
+    "timestamp": 31042,
+    "type": "act",
+    "instruction": "Press Enter to search for directions",
+    "description": "Search for directions using Enter key",
+    "selector": "xpath=/html[1]/body[1]/div[1]/div[2]/div[9]/div[3]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/button[1]",
+    "method": "press",
+    "arguments": [
+      "Enter"
+    ],
+    "observedDescription": "Search button to initiate the search for directions",
+    "aria": {
+      "tagName": "button",
+      "type": null,
+      "role": null,
+      "implicitRole": "button",
+      "ariaLabel": "Search",
+      "placeholder": null,
+      "title": null,
+      "tooltip": "Search",
+      "textContent": "",
+      "name": null,
+      "id": null,
+      "className": "mL3xi",
+      "bestLabel": "Search",
+      "matchCount": 3,
+      "nearestAncestorId": "directions-searchbox-0",
+      "ariaAncestors": [
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": null,
+          "id": "directions-searchbox-0",
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": "listitem",
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": null,
+          "role": "list",
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        },
+        {
+          "tagName": "div",
+          "ariaLabel": "Google Maps",
+          "role": null,
+          "id": null,
+          "placeholder": null,
+          "title": null,
+          "tooltip": null
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": 31067,
+    "type": "wait",
+    "ms": 5000,
+    "description": "Wait after: Search for directions using Enter key"
+  },
+  {
+    "timestamp": 38294,
+    "type": "extract",
+    "instruction": "Verify that directions are displayed",
+    "description": "Check if route search was successful",
+    "results": {
+      "directionsVisible": true,
+      "routeInfo": "Driving 18 min 7.9 miles via WA-520 E Fastest route, despite the usual traffic\nDriving 18 min 9.9 miles via 92nd Ave NE and WA-520 E\nDriving 22 min 8.8 miles via WA-520 E and 148th Ave NE Some traffic, as usual",
+      "needsAction": ""
+    }
+  },
+  {
+    "timestamp": 39661,
+    "type": "extract",
+    "instruction": "Extract complete driving directions information",
+    "description": "Final extraction of route details",
+    "results": {
+      "distance": "7.9 miles",
+      "duration": "18 min",
+      "route": "WA-520 E",
+      "via": "Fastest route, despite the usual traffic",
+      "success": true
+    }
+  },
+  {
+    "timestamp": 43688,
+    "type": "observe",
+    "instruction": "locate the travel time or duration element that shows how long the trip will take",
+    "description": "Find the element displaying travel time/duration",
+    "actions": [
+      {
+        "description": "StaticText element showing the travel time for Driving mode: 18 min",
+        "method": "scrollTo",
+        "arguments": [],
+        "selector": "xpath=/html[1]/body[1]/div[1]/div[2]/div[9]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/button[1]/div[2]"
+      },
+      {
+        "description": "StaticText element showing the travel time for Transit mode: 34 min",
+        "method": "scrollTo",
+        "arguments": [],
+        "selector": "xpath=/html[1]/body[1]/div[1]/div[2]/div[9]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/button[1]/div[2]"
+      },
+      {
+        "description": "StaticText element showing the travel time for Walking mode: 2h 36m",
+        "method": "scrollTo",
+        "arguments": [],
+        "selector": "xpath=/html[1]/body[1]/div[1]/div[2]/div[9]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[4]/button[1]/div[2]"
+      },
+      {
+        "description": "StaticText element showing the travel time for Cycling mode: 49 min",
+        "method": "scrollTo",
+        "arguments": [],
+        "selector": "xpath=/html[1]/body[1]/div[1]/div[2]/div[9]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[5]/button[1]/div[2]"
+      },
+      {
+        "description": "StaticText element showing the travel time for the fastest driving route: 18 min",
+        "method": "scrollTo",
+        "arguments": [],
+        "selector": "xpath=/html[1]/body[1]/div[1]/div[2]/div[9]/div[8]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/div[1]/div[1]/div[1]/div[1]"
+      },
+      {
+        "description": "StaticText element showing the travel time for an alternative driving route: 18 min",
+        "method": "scrollTo",
+        "arguments": [],
+        "selector": "xpath=/html[1]/body[1]/div[1]/div[2]/div[9]/div[8]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[5]/div[2]/div[1]/div[1]/div[1]/div[1]"
+      },
+      {
+        "description": "StaticText element showing the travel time for another driving route: 22 min",
+        "method": "scrollTo",
+        "arguments": [],
+        "selector": "xpath=/html[1]/body[1]/div[1]/div[2]/div[9]/div[8]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[5]/div[3]/div[1]/div[1]/div[1]/div[1]"
+      }
+    ],
+    "ariaScope": {
+      "targetText": "18 min",
+      "targetTag": "div",
+      "ancestor": {
+        "tagName": "div",
+        "ariaLabel": "Google Maps",
+        "role": null,
+        "id": null,
+        "stepsFromTarget": 12
+      },
+      "textMatchCount": 4,
+      "regexMatchCount": 7,
+      "xpathTail": "div[9]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/button[1]/div[2]"
+    }
+  },
+  {
+    "timestamp": 46061,
+    "type": "observe",
+    "instruction": "locate the distance element that shows the total driving distance",
+    "description": "Find the element displaying total distance",
+    "actions": [
+      {
+        "description": "StaticText element displaying the total driving distance of 7.9 miles for the fastest route.",
+        "method": "scrollTo",
+        "arguments": [],
+        "selector": "xpath=/html[1]/body[1]/div[1]/div[2]/div[9]/div[8]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]"
+      }
+    ],
+    "ariaScope": {
+      "targetText": "7.9 miles",
+      "targetTag": "div",
+      "ancestor": {
+        "tagName": "div",
+        "ariaLabel": "Directions",
+        "role": "main",
+        "id": null,
+        "stepsFromTarget": 7
+      },
+      "textMatchCount": 1,
+      "regexMatchCount": 3,
+      "xpathTail": "div[5]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]"
+    }
+  },
+  {
+    "timestamp": 48422,
+    "type": "extract",
+    "instruction": "Extract travel time and distance values from their elements",
+    "description": "Get the actual values and element location info for travel time and distance",
+    "results": {
+      "travelTime": "18 min",
+      "distance": "7.9 miles",
+      "travelTimeElementInfo": "[4-3188] StaticText: 18 min",
+      "distanceElementInfo": "[4-3189] StaticText: 7.9 miles"
+    }
+  },
+  {
+    "timestamp": 48423,
+    "type": "screenshot",
+    "name": "directions_result",
+    "description": "Take screenshot: directions_result"
+  }
+]

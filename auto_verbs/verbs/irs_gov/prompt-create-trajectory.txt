@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.irs.gov
+
+* Concrete task
+- Navigate to "Where's My Refund?" tool.
+- compile a list of popular IRS forms (up to 10 forms), each with the form and its URL.
+- print the results.
