@@ -1,19 +1,18 @@
-# Searches WebMD for health conditions or symptoms and returns up to max_results articles.
+# Search for symptoms and extract conditions.
 
 @dataclass(frozen=True)
-class WebmdSearchRequest:
-    search_term: str
+class WebMDSearchRequest:
+    symptom: str
     max_results: int
 
 @dataclass(frozen=True)
-class WebmdArticle:
-    title: str
+class WebMDCondition:
+    condition: str
     url: str
-    summary: str
 
 @dataclass(frozen=True)
-class WebmdSearchResult:
-    search_term: str
-    articles: list[WebmdArticle]
+class WebMDSearchResult:
+    symptom: str
+    conditions: list[WebMDCondition]
 
-def search_webmd_conditions(playwright, request: WebmdSearchRequest) -> WebmdSearchResult
+def search_webmd_conditions(page: Page, request: WebMDSearchRequest) -> WebMDSearchResult

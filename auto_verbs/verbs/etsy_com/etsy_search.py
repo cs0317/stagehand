@@ -10,15 +10,20 @@ from datetime import date, timedelta
 import re
 import os
 import traceback
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
 import shutil
 
 from dataclasses import dataclass
+import subprocess
+import tempfile
+import json
+import time
+from urllib.request import urlopen
 
 
 URL = "https://www.etsy.com/search?q=handmade%20ceramic%20mug&order=highest_reviews"
@@ -63,7 +68,7 @@ class EtsySearchResult:
 # Searches Etsy for handmade/vintage listings matching a query, returning
 # up to max_results items with title, price, and seller name.
 def search_etsy_listings(
-    playwright,
+    page: Page,
     request: EtsySearchRequest,
 ) -> EtsySearchResult:
     search_query = request.search_query
@@ -75,14 +80,6 @@ def search_etsy_listings(
     print(f'  Query: "{search_query}"')
     print(f"  Sort: Top Customer Reviews")
     print(f"  Max raw_results: {max_results}\n")
-
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("etsy_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
     raw_results = []
 
     try:
@@ -174,14 +171,6 @@ def search_etsy_listings(
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
-        try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-
     return EtsySearchResult(
         search_query=search_query,
         listings=[EtsyListing(title=r["title"], price=r["price"], seller=r["seller"]) for r in raw_results],
@@ -189,8 +178,46 @@ def search_etsy_listings(
 def test_search_etsy_listings() -> None:
     from playwright.sync_api import sync_playwright
     request = EtsySearchRequest(search_query="handmade ceramic mug", max_results=5)
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
+        try:
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
+        except Exception:
+            pass
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
     with sync_playwright() as playwright:
-        result = search_etsy_listings(playwright, request)
+        browser = playwright.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_etsy_listings(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
     assert result.search_query == request.search_query
     assert len(result.listings) <= request.max_results
     print(f"\nTotal listings found: {len(result.listings)}")

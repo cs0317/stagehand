@@ -21,4 +21,4 @@ class HertzSearchResult:
     dropoff_date: date
     cars: list[HertzCar]
 
-def search_hertz_cars(playwright, request: HertzSearchRequest) -> HertzSearchResult
+def search_hertz_cars(page: Page, request: HertzSearchRequest) -> HertzSearchResult

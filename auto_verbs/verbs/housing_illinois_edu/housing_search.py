@@ -20,7 +20,7 @@ import os
 import sys
 from dataclasses import dataclass
 from typing import List, Tuple
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 
 @dataclass(frozen=True)
@@ -55,23 +55,7 @@ class HousingSearchResult:
 # Opens the "New Resident Rates" accordion, finds all halls whose table
 # contains a column matching the requested room_type and a row matching
 # the requested meal_plan, then returns only those within (price_min, price_max).
-def search_housing_cost(playwright: Playwright, request: HousingSearchRequest) -> HousingSearchResult:
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
+def search_housing_cost(page: Page, request: HousingSearchRequest) -> HousingSearchResult:
     halls = []
 
     try:
@@ -219,11 +203,6 @@ def search_housing_cost(playwright: Playwright, request: HousingSearchRequest) -
         import traceback
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        try:
-            context.close()
-        except Exception:
-            pass
 
     return HousingSearchResult(
         halls=halls,
@@ -234,7 +213,7 @@ def search_housing_cost(playwright: Playwright, request: HousingSearchRequest) -
     )
 
 
-def test_search_housing_cost():
+def test_search_housing_cost() -> None:
     """Test: search for Single rooms with 'Room & 12 Classic Meals + 15 Dining Dollars',
     price range ($15,000 – $17,000)."""
     request = HousingSearchRequest(
@@ -243,18 +222,35 @@ def test_search_housing_cost():
         price_min=15000,
         price_max=17000,
     )
-    with sync_playwright() as pw:
-        result = search_housing_cost(pw, request)
-
-    print(f"\n{'='*60}")
-    print(f"  Results: {len(result.halls)} halls")
-    print(f"  Meal plan: {result.meal_plan}")
-    print(f"  Room type: {result.room_type}")
-    print(f"  Price range: ${result.price_min:,} – ${result.price_max:,}")
-    print(f"{'='*60}")
-    for i, h in enumerate(result.halls, 1):
-        print(f"  {i}. {h.hall_name} — ${h.price:,}")
-    return result
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_housing_cost(page, request)
+            print(f"\n{'='*60}")
+            print(f"  Results: {len(result.halls)} halls")
+            print(f"  Meal plan: {result.meal_plan}")
+            print(f"  Room type: {result.room_type}")
+            print(f"  Price range: ${result.price_min:,} – ${result.price_max:,}")
+            print(f"{'='*60}")
+            for i, h in enumerate(result.halls, 1):
+                print(f"  {i}. {h.hall_name} — ${h.price:,}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":

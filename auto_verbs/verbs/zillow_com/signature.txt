@@ -1,20 +1,24 @@
-# Searches Zillow for homes for sale in a location and returns up to max_results listings.
+# Homes for Sale search with configurable location, price range, and bedroom count.
 
 @dataclass(frozen=True)
 class ZillowSearchRequest:
     location: str
+    min_price: int
+    max_price: int
+    min_beds: int
     max_results: int
 
 @dataclass(frozen=True)
-class ZillowHome:
+class ZillowListing:
     address: str
     price: str
     beds: str
+    baths: str
     sqft: str
 
 @dataclass(frozen=True)
 class ZillowSearchResult:
     location: str
-    homes: list[ZillowHome]
+    listings: list[ZillowListing]
 
-def search_zillow_homes(playwright, request: ZillowSearchRequest) -> ZillowSearchResult
+def search_zillow_homes(page: Page, request: ZillowSearchRequest) -> ZillowSearchResult

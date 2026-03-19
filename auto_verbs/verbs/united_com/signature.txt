@@ -1,26 +1,24 @@
-# Searches United Airlines for round-trip flights and returns up to max_results options.
+# Round trip San Francisco → New York (Newark).
 
 @dataclass(frozen=True)
-class UnitedSearchRequest:
-    origin: str
-    destination: str
+class UnitedFlightSearchRequest:
+    origin_city: str
+    destination_city: str
     departure_date: date
     return_date: date
     max_results: int
 
 @dataclass(frozen=True)
 class UnitedFlight:
-    departure_time: str
-    arrival_time: str
-    price: str
-    duration: str
+    itinerary: str
+    economy_price: str
 
 @dataclass(frozen=True)
-class UnitedSearchResult:
-    origin: str
-    destination: str
+class UnitedFlightSearchResult:
+    origin_city: str
+    destination_city: str
     departure_date: date
     return_date: date
     flights: list[UnitedFlight]
 
-def search_united_flights(playwright, request: UnitedSearchRequest) -> UnitedSearchResult
+def search_united_flights(page: Page, request: UnitedFlightSearchRequest) -> UnitedFlightSearchResult

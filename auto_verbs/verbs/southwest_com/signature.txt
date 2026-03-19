@@ -1,7 +1,7 @@
-# Searches Southwest Airlines for round-trip flights and returns up to max_results options.
+# Round trip Denver to Los Angeles.
 
 @dataclass(frozen=True)
-class SouthwestSearchRequest:
+class SouthwestFlightSearchRequest:
     origin: str
     destination: str
     departure_date: date
@@ -10,17 +10,16 @@ class SouthwestSearchRequest:
 
 @dataclass(frozen=True)
 class SouthwestFlight:
-    departure_time: str
-    arrival_time: str
-    price: str
-    stops: str
+    flight_number: str
+    itinerary: str
+    wanna_get_away_price: str
 
 @dataclass(frozen=True)
-class SouthwestSearchResult:
+class SouthwestFlightSearchResult:
     origin: str
     destination: str
     departure_date: date
     return_date: date
     flights: list[SouthwestFlight]
 
-def search_southwest_flights(playwright, request: SouthwestSearchRequest) -> SouthwestSearchResult
+def search_southwest_flights(page: Page, request: SouthwestFlightSearchRequest) -> SouthwestFlightSearchResult

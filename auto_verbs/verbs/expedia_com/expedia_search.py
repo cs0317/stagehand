@@ -16,17 +16,15 @@ from dataclasses import dataclass
 import re
 import os
 import sys
-import threading
 import traceback
 from datetime import date, timedelta
 from urllib.parse import quote_plus
 from urllib.request import urlopen, Request
 
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from dateutil.relativedelta import relativedelta
-
 
 
 # ── Destination resolver ─────────────────────────────────────────────────
@@ -137,7 +135,7 @@ class ExpediaSearchResult:
 # Searches Expedia for hotels at a destination over given dates,
 # returning up to max_results hotels with name, per-night price, and rating.
 def search_expedia_hotels(
-    playwright,
+    page: Page,
     request: ExpediaSearchRequest,
 ) -> ExpediaSearchResult:
     destination = request.destination
@@ -169,35 +167,6 @@ def search_expedia_hotels(
     print(f"   URL: {url}\n")
 
     raw_results = []
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
-
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout — closing browser...")
-        try:
-            context.close()
-        except Exception:
-            pass
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
-
     try:
         print("STEP 2: Navigate to search results…")
         page.goto(url, wait_until="domcontentloaded", timeout=30000)
@@ -377,13 +346,6 @@ def search_expedia_hotels(
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
-        try:
-            context.close()
-        except Exception:
-            pass
-
     return ExpediaSearchResult(
         destination=destination,
         checkin_date=request.checkin_date,
@@ -401,8 +363,27 @@ def test_search_expedia_hotels() -> None:
         checkout_date=checkin + timedelta(days=2),
         max_results=5,
     )
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
     with sync_playwright() as playwright:
-        result = search_expedia_hotels(playwright, request)
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_expedia_hotels(page, request)
+        finally:
+            context.close()
     assert result.destination == request.destination
     assert len(result.hotels) <= request.max_results
     print(f"\nTotal hotels found: {len(result.hotels)}")

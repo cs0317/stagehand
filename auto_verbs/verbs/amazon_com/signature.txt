@@ -16,4 +16,4 @@ class AmazonSearchResult:
     query: str
     products: list[AmazonProduct]
 
-def search_amazon_products(playwright, request: AmazonSearchRequest) -> AmazonSearchResult
+def search_amazon_products(page: Page, request: AmazonSearchRequest) -> AmazonSearchResult

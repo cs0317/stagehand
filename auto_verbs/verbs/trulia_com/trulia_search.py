@@ -3,8 +3,8 @@ Trulia rental search automation using Playwright
 Searches for rental properties with configurable location and bedroom requirements.
 Pure Playwright – no AI.
 """
-import re, os, sys, traceback, shutil, tempfile, threading
-from playwright.sync_api import Playwright, sync_playwright
+import re, os, sys, traceback
+from playwright.sync_api import Page, sync_playwright
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
@@ -34,38 +34,9 @@ class TruliaSearchResult:
     listings: list
 
 
-def search_trulia_homes(playwright, request: TruliaSearchRequest) -> TruliaSearchResult:
-    # Use real Chrome profile to avoid bot detection (same as open_browser.py)
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
+def search_trulia_homes(page: Page, request: TruliaSearchRequest) -> TruliaSearchResult:
     listings = []
 
-    # Watchdog: force-close after 90 seconds so the script never hangs VS Code
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout reached — closing browser...")
-        try:
-            context.close()
-        except Exception:
-            pass
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
     try:
         print("STEP 1: Navigate to Trulia homepage...")
         page.goto("https://www.trulia.com/", wait_until="domcontentloaded", timeout=30000)
@@ -687,12 +658,6 @@ def search_trulia_homes(playwright, request: TruliaSearchRequest) -> TruliaSearc
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
-        try:
-            context.close()
-        except Exception:
-            pass
     return TruliaSearchResult(
         location=request.location,
         listings=[TruliaListing(address=l['address'], rent=l['rent'],
@@ -700,14 +665,32 @@ def search_trulia_homes(playwright, request: TruliaSearchRequest) -> TruliaSearc
     )
 
 
-def test_trulia_homes():
-    from playwright.sync_api import sync_playwright
+def test_trulia_homes() -> None:
     request = TruliaSearchRequest(location="San Jose, CA", min_beds=2, max_results=5)
-    with sync_playwright() as pl:
-        result = search_trulia_homes(pl, request)
-    print(f"\nTotal listings: {len(result.listings)}")
-    for i, l in enumerate(result.listings, 1):
-        print(f"  {i}. {l.address}  {l.rent}")
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_trulia_homes(page, request)
+            print(f"\nTotal listings: {len(result.listings)}")
+            for i, l in enumerate(result.listings, 1):
+                print(f"  {i}. {l.address}  {l.rent}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":

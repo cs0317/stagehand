@@ -21,4 +21,4 @@ class AmtrakSearchResult:
     departure_date: date
     trains: list[AmtrakTrain]
 
-def search_amtrak_trains(playwright, request: AmtrakSearchRequest) -> AmtrakSearchResult
+def search_amtrak_trains(page: Page, request: AmtrakSearchRequest) -> AmtrakSearchResult

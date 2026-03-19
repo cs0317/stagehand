@@ -22,4 +22,4 @@ class AlaskaFlightSearchResult:
     return_date: date
     flights: list[AlaskaFlight]
 
-def search_alaska_flights(playwright: Playwright, request: AlaskaFlightSearchRequest) -> AlaskaFlightSearchResult
+def search_alaska_flights(page: Page, request: AlaskaFlightSearchRequest) -> AlaskaFlightSearchResult

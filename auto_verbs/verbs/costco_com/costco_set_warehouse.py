@@ -9,7 +9,7 @@ Note: This script was generated using AI-driven discovery patterns
 
 import re
 import os
-from playwright.sync_api import Playwright, sync_playwright, expect
+from playwright.sync_api import Page, sync_playwright, expect
 
 import sys as _sys
 import os as _os
@@ -18,19 +18,11 @@ from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_f
 import shutil
 
 
-def run(playwright: Playwright) -> bool:
+def run(page: Page) -> bool:
     """
     Set the preferred Costco warehouse to 'Redmond, WA'.
     Returns True if the warehouse was successfully set, False otherwise.
     """
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("costco_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-
     # Extract the city keyword from the location for matching (e.g. "Redmond" from "Redmond, WA")
     location = "Redmond, WA"
     city = location.split(",")[0].strip()
@@ -118,18 +110,21 @@ def run(playwright: Playwright) -> bool:
     except Exception as e:
         print(f"Error setting preferred warehouse: {e}")
         success = False
-    finally:
-        try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-
     return success
 
 
 if __name__ == "__main__":
+    port = get_free_port()
+    profile_dir = get_temp_profile_dir("costco_com")
+    chrome_proc = launch_chrome(profile_dir, port)
+    ws_url = wait_for_cdp_ws(port)
     with sync_playwright() as playwright:
-        result = run(playwright)
-        print(f"\nWarehouse set successfully: {result}")
+        browser = playwright.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = run(page)
+            print(f"\nWarehouse set successfully: {result}")
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)

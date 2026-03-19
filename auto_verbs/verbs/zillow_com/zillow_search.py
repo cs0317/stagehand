@@ -2,7 +2,8 @@
 Zillow – Homes for Sale search with configurable location, price range, and bedroom count.
 Pure Playwright – no AI.
 """   
-import re, os, sys, traceback, threading, json, urllib.parse
+import re, os, sys, traceback, json, urllib.parse
+from playwright.sync_api import Page, sync_playwright
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
@@ -36,36 +37,9 @@ class ZillowSearchResult:
 
 
 
-def search_zillow_homes(playwright, request: ZillowSearchRequest) -> ZillowSearchResult:
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
+def search_zillow_homes(page: Page, request: ZillowSearchRequest) -> ZillowSearchResult:
     listings = []
 
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout — closing browser...")
-        try:
-            context.close()
-        except Exception:
-            pass
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
     try:
         print("STEP 1: Navigate to Zillow search...")
         # Build URL from request fields — no hardcoded values
@@ -238,20 +212,13 @@ def search_zillow_homes(playwright, request: ZillowSearchRequest) -> ZillowSearc
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
-        try:
-            context.close()
-        except Exception:
-            pass
     return ZillowSearchResult(
         location=request.location,
         listings=[ZillowListing(address=l['address'], price=l['price'], beds=l['beds'], baths=l['baths'], sqft=l['sqft']) for l in listings],
     )
 
 
-def test_zillow_homes():
-    from playwright.sync_api import sync_playwright
+def test_zillow_homes() -> None:
     request = ZillowSearchRequest(
         location="Bellevue, WA",
         min_price=500000,
@@ -259,12 +226,31 @@ def test_zillow_homes():
         min_beds=3,
         max_results=5,
     )
-    with sync_playwright() as pl:
-        result = search_zillow_homes(pl, request)
-    print(f"\nLocation: {result.location}")
-    print(f"Total listings: {len(result.listings)}")
-    for i, l in enumerate(result.listings, 1):
-        print(f"  {i}. {l.address}  {l.price}  {l.beds}bd/{l.baths}ba  {l.sqft} sqft")
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_zillow_homes(page, request)
+            print(f"\nLocation: {result.location}")
+            print(f"Total listings: {len(result.listings)}")
+            for i, l in enumerate(result.listings, 1):
+                print(f"  {i}. {l.address}  {l.price}  {l.beds}bd/{l.baths}ba  {l.sqft} sqft")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":

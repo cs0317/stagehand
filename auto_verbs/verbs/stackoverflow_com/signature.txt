@@ -1,20 +1,20 @@
-# Searches Stack Overflow for questions and returns up to max_results results with answers.
+# Search and extract top answers.
 
 @dataclass(frozen=True)
-class StackOverflowRequest:
+class StackOverflowSearchRequest:
     query: str
     max_results: int
 
 @dataclass(frozen=True)
-class StackOverflowQuestion:
-    title: str
+class StackOverflowAnswer:
+    votes: str
+    author: str
     url: str
-    score: str
-    answer_count: str
+    summary: str
 
 @dataclass(frozen=True)
-class StackOverflowResult:
+class StackOverflowSearchResult:
     query: str
-    questions: list[StackOverflowQuestion]
+    answers: list[StackOverflowAnswer]
 
-def search_stackoverflow(playwright, request: StackOverflowRequest) -> StackOverflowResult
+def search_stackoverflow(request: StackOverflowSearchRequest) -> StackOverflowSearchResult

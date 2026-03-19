@@ -13,4 +13,4 @@ class FidelityQuote:
     week52_low: str
     week52_high: str
 
-def get_fidelity_quote(playwright, request: FidelityQuoteRequest) -> FidelityQuote
+def get_fidelity_quote(page: Page, request: FidelityQuoteRequest) -> FidelityQuote

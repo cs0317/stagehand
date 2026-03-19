@@ -14,9 +14,9 @@ to automate via normal Playwright typing).
 
 import re
 from dataclasses import dataclass
-import os, sys, threading
+import os, sys
 from datetime import date, timedelta
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
@@ -49,7 +49,7 @@ class CtripSearchResult:
 # Searches Ctrip for train tickets between two stations on a given date,
 # returning up to max_results options with train number, times, and price.
 def search_ctrip_trains(
-    playwright,
+    page: Page,
     request: CtripSearchRequest,
 ) -> CtripSearchResult:
     from_station = request.from_station
@@ -61,35 +61,6 @@ def search_ctrip_trains(
 
     print(f"  From: {from_station}  To: {to_station}")
     print(f"  Departure: {departure_str}  (One-way, 1 adult)\n")
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
-    raw_results = []
-
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout — closing browser...")
-        try:
-            context.close()
-        except Exception:
-            pass
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
 
     try:
         # ── Navigate directly to search raw_results ──────────────────────────
@@ -218,12 +189,6 @@ def search_ctrip_trains(
 
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
-        try:
-            context.close()
-        except Exception:
-            pass
 
     return CtripSearchResult(
         from_station=request.from_station,
@@ -239,7 +204,6 @@ def search_ctrip_trains(
     )
 def test_search_ctrip_trains() -> None:
     from dateutil.relativedelta import relativedelta
-    from playwright.sync_api import sync_playwright
     today = date.today()
     request = CtripSearchRequest(
         from_station="上海",
@@ -247,11 +211,30 @@ def test_search_ctrip_trains() -> None:
         departure_date=today + relativedelta(months=2),
         max_results=5,
     )
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
     with sync_playwright() as playwright:
-        result = search_ctrip_trains(playwright, request)
-    assert result.from_station == request.from_station
-    assert len(result.trains) <= request.max_results
-    print(f"\nTotal trains found: {len(result.trains)}")
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_ctrip_trains(page, request)
+            assert result.from_station == request.from_station
+            assert len(result.trains) <= request.max_results
+            print(f"\nTotal trains found: {len(result.trains)}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":

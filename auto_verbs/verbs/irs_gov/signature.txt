@@ -13,4 +13,4 @@ class IrsForm:
 class IrsFormsResult:
     forms: list[IrsForm]
 
-def get_irs_popular_forms(playwright, request: IrsFormsRequest) -> IrsFormsResult
+def get_irs_popular_forms(page: Page, request: IrsFormsRequest) -> IrsFormsResult

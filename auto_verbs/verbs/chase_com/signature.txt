@@ -16,4 +16,4 @@ class ChaseSearchResult:
     search_term: str
     branches: list[ChaseBranch]
 
-def search_chase_branches(playwright, request: ChaseSearchRequest) -> ChaseSearchResult
+def search_chase_branches(page: Page, request: ChaseSearchRequest) -> ChaseSearchResult

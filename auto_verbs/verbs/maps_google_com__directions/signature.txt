@@ -15,4 +15,4 @@ class MapsDirectionsResult:
     distance: str
     steps: tuple
 
-def get_maps_directions(playwright, request: MapsDirectionsRequest) -> MapsDirectionsResult
+def get_maps_directions(page: Page, request: MapsDirectionsRequest) -> MapsDirectionsResult

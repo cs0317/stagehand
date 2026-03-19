@@ -4,8 +4,8 @@ Generated: 2026-02-28T22:13:37.740Z
 Pure Playwright – no AI. Uses CDP to avoid automation detection.
 """
 from datetime import date, timedelta
-import re, os, sys, traceback, threading
-from playwright.sync_api import Playwright, sync_playwright
+import re, os, sys, traceback
+from playwright.sync_api import Page, sync_playwright
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
@@ -29,40 +29,11 @@ class FidelityQuote:
 # Fetches a stock quote from Fidelity for the given ticker symbol,
 # returning price, day change, and 52-week range.
 def get_fidelity_quote(
-    playwright,
+    page: Page,
     request: FidelityQuoteRequest,
 ) -> FidelityQuote:
     SYMBOL = request.symbol
     result = {}
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
-    result = {}
-
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout — closing browser...")
-        try:
-            context.close()
-        except Exception:
-            pass
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
     try:
         print("STEP 1: Navigate to Fidelity quote page...")
         page.goto(f"https://eresearch.fidelity.com/eresearch/evaluate/snapshot.jhtml?symbols={SYMBOL}",
@@ -127,12 +98,7 @@ def get_fidelity_quote(
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
-        try:
-            context.close()
-        except Exception:
-            pass
+
     return FidelityQuote(
         symbol=request.symbol,
         price=result.get("price",""),
@@ -141,14 +107,32 @@ def get_fidelity_quote(
         week52_high=result.get("week52_high",""),
     )
 def test_get_fidelity_quote() -> None:
-    from playwright.sync_api import sync_playwright
     request = FidelityQuoteRequest(symbol="MSFT")
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
     with sync_playwright() as playwright:
-        result = get_fidelity_quote(playwright, request)
-    assert result.symbol == request.symbol
-    print(f"\nSymbol: {result.symbol}")
-    print(f"  Price: {result.price}  Change: {result.day_change}")
-    print(f"  52w Low: {result.week52_low}  52w High: {result.week52_high}")
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = get_fidelity_quote(page, request)
+            assert result.symbol == request.symbol
+            print(f"\nSymbol: {result.symbol}")
+            print(f"  Price: {result.price}  Change: {result.day_change}")
+            print(f"  52w Low: {result.week52_low}  52w High: {result.week52_high}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":

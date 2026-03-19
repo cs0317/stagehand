@@ -17,4 +17,4 @@ class CourseraSearchResult:
     search_term: str
     courses: list[CourseraCourse]
 
-def search_coursera_courses(playwright, request: CourseraSearchRequest) -> CourseraSearchResult
+def search_coursera_courses(page: Page, request: CourseraSearchRequest) -> CourseraSearchResult

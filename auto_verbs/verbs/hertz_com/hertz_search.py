@@ -9,7 +9,7 @@ Uses a clean temp profile to avoid corporate-discount injection.
 import json, re, os, traceback, sys, shutil, subprocess, tempfile, time
 from datetime import date, timedelta
 from urllib.request import urlopen
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from cdp_utils import find_chrome_executable, get_free_port
@@ -187,7 +187,7 @@ class HertzSearchResult:
     cars: list[HertzCar]
 
 
-def search_hertz_cars(playwright, request: HertzSearchRequest) -> HertzSearchResult:
+def search_hertz_cars(page: Page, request: HertzSearchRequest) -> HertzSearchResult:
     pickup  = request.pickup_date
     dropoff = request.dropoff_date
     pu_iso  = pickup.strftime("%Y-%m-%d")
@@ -198,47 +198,7 @@ def search_hertz_cars(playwright, request: HertzSearchRequest) -> HertzSearchRes
     pu_aria_pad = f"{pickup.strftime('%b')} {pickup.day:02d} {pickup.year}"
     do_aria     = f"{dropoff.strftime('%b')} {dropoff.day} {dropoff.year}"
     do_aria_pad = f"{dropoff.strftime('%b')} {dropoff.day:02d} {dropoff.year}"
-
-    port = get_free_port()
-    profile_dir = tempfile.mkdtemp(prefix="hertz_chrome_")
-    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
-
-    chrome_proc = subprocess.Popen(
-        [
-            chrome,
-            f"--remote-debugging-port={port}",
-            f"--user-data-dir={profile_dir}",
-            "--remote-allow-origins=*",
-            "--no-first-run",
-            "--no-default-browser-check",
-            "--disable-blink-features=AutomationControlled",
-            "--window-size=1280,987",
-            "about:blank",
-        ],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    )
-
     try:
-        # Wait for CDP
-        ws_url = None
-        deadline = time.time() + 15
-        while time.time() < deadline:
-            try:
-                resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
-                ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
-                if ws_url:
-                    break
-            except Exception:
-                pass
-            time.sleep(0.4)
-        if not ws_url:
-            raise TimeoutError("Chrome CDP not ready")
-
-        browser = playwright.chromium.connect_over_cdp(ws_url)
-        context = browser.contexts[0]
-        page = context.pages[0] if context.pages else context.new_page()
-
         # ── STEP 1: Load reservation search page ──
         print(f"STEP 1: Navigate to Hertz reservation page…")
         page.goto("https://www.hertz.com/rentacar/reservation/",
@@ -352,9 +312,6 @@ def search_hertz_cars(playwright, request: HertzSearchRequest) -> HertzSearchRes
                                  "total_price": "N/A"})
                 if len(raw_cars) >= 5:
                     break
-
-        browser.close()
-
         # ── display ──
         print()
         print("=" * 60)
@@ -380,13 +337,6 @@ def search_hertz_cars(playwright, request: HertzSearchRequest) -> HertzSearchRes
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-
-
-
-
 def test_hertz_cars():
     from playwright.sync_api import sync_playwright
     pickup  = date.today() + timedelta(days=60)
@@ -397,8 +347,46 @@ def test_hertz_cars():
         dropoff_date=dropoff,
         max_results=5,
     )
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
+        try:
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
+        except Exception:
+            pass
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
     with sync_playwright() as pl:
-        result = search_hertz_cars(pl, request)
+        browser = pl.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_hertz_cars(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
     print(f'\nTotal cars: {len(result.cars)}')
     for i, c in enumerate(result.cars, 1):
         print(f'  {i}. {c.car_name}  {c.daily_price}')

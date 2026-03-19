@@ -9,14 +9,11 @@ import os
 from dataclasses import dataclass
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-import threading
-
-
 @dataclass(frozen=True)
 class AlaskaFlightSearchRequest:
     origin: str
@@ -92,12 +89,10 @@ def select_first_visible_option(page, timeout_ms=5000):
     return False
 
 
-
-
 # Searches Alaska Airlines for round-trip flights between origin and destination
 # on the given dates, returning up to max_results economy-class flight options.
 def search_alaska_flights(
-    playwright: Playwright,
+    page: Page,
     request: AlaskaFlightSearchRequest,
 ) -> AlaskaFlightSearchResult:
     origin = request.origin
@@ -108,37 +103,7 @@ def search_alaska_flights(
 
     print(f"  {origin} -> {destination}")
     print(f"  Dep: {departure_date}  Ret: {return_date}\n")
-
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
     raw_results = []
-
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout — closing browser...")
-        try:
-            context.close()
-        except Exception:
-            pass
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
-
     try:
         # ── Navigate ──────────────────────────────────────────────────────
         print("Loading Alaska Airlines...")
@@ -570,9 +535,6 @@ def search_alaska_flights(
         import traceback
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
-
     flights = [
         AlaskaFlight(itinerary=r["itinerary"], economy_price=r["price"])
         for r in raw_results
@@ -598,17 +560,33 @@ def test_search_alaska_flights() -> None:
         return_date=return_d,
         max_results=5,
     )
-
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
     with sync_playwright() as playwright:
-        result = search_alaska_flights(playwright, request)
-        assert result.origin == request.origin
-        assert result.destination == request.destination
-        assert result.departure_date == request.departure_date
-        assert result.return_date == request.return_date
-        assert len(result.flights) <= request.max_results
-        print(f"\nTotal flights found: {len(result.flights)}")
-        os._exit(0)
-
-
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_alaska_flights(page, request)
+            assert result.origin == request.origin
+            assert result.destination == request.destination
+            assert result.departure_date == request.departure_date
+            assert result.return_date == request.return_date
+            assert len(result.flights) <= request.max_results
+            print(f"\nTotal flights found: {len(result.flights)}")
+            os._exit(0)
+        finally:
+            context.close()
 if __name__ == "__main__":
     test_search_alaska_flights()

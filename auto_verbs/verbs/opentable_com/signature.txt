@@ -21,4 +21,4 @@ class OpentableSearchResult:
     party_size: int
     restaurants: list[OpentableRestaurant]
 
-def search_opentable_restaurants(playwright, request: OpentableSearchRequest) -> OpentableSearchResult
+def search_opentable_restaurants(page: Page, request: OpentableSearchRequest) -> OpentableSearchResult

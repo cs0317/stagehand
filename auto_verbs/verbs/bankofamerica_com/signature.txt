@@ -16,4 +16,4 @@ class BoaLocatorResult:
     location: str
     locations: list[BoaLocation]
 
-def locate_boa_branches(playwright, request: BoaLocatorRequest) -> BoaLocatorResult
+def locate_boa_branches(page: Page, request: BoaLocatorRequest) -> BoaLocatorResult

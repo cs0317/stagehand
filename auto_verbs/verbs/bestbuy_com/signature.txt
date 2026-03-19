@@ -16,4 +16,4 @@ class BestBuySearchResult:
     search_term: str
     products: list[BestBuyProduct]
 
-def search_bestbuy_products(playwright, request: BestBuySearchRequest) -> BestBuySearchResult
+def search_bestbuy_products(page: Page, request: BestBuySearchRequest) -> BestBuySearchResult

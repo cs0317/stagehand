@@ -17,4 +17,4 @@ class RedfinSearchResult:
     location: str
     homes: list[RedfinHome]
 
-def search_redfin_homes(playwright, request: RedfinSearchRequest) -> RedfinSearchResult
+def search_redfin_homes(page: Page, request: RedfinSearchRequest) -> RedfinSearchResult

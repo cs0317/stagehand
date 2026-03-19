@@ -1,21 +1,20 @@
-# Searches Uber for available ride options between a pickup and dropoff and returns up to max_results.
+# Searches Uber for available ride options between a pickup and dropoff location, returning up to max_results estimates.
 
 @dataclass(frozen=True)
-class UberSearchRequest:
+class UberRideSearchRequest:
     pickup: str
     dropoff: str
     max_results: int
 
 @dataclass(frozen=True)
-class UberRide:
+class UberRideEstimate:
     ride_type: str
-    price_estimate: str
-    wait_time: str
+    price_range: str
 
 @dataclass(frozen=True)
-class UberSearchResult:
+class UberRideSearchResult:
     pickup: str
     dropoff: str
-    rides: list[UberRide]
+    estimates: list[UberRideEstimate]
 
-def search_uber_rides(playwright, request: UberSearchRequest) -> UberSearchResult
+def search_uber_rides(page: Page, request: UberRideSearchRequest) -> UberRideSearchResult

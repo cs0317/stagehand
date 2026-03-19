@@ -13,4 +13,4 @@ class CreateListResult:
 
 # Create a new saved list on Google Maps and add the specified places to it.
 # Requires the user to be logged into Google in the Chrome profile.
-def create_saved_list(playwright: Playwright, request: CreateListRequest) -> CreateListResult:
+def create_saved_list(page: Page, request: CreateListRequest) -> CreateListResult:

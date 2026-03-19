@@ -3,8 +3,8 @@ Ticketmaster – Concerts in Los Angeles
 Generated: 2026-03-10T23:50:27.317Z
 Pure Playwright – no AI.
 """
-import re, os, traceback, sys, threading
-from playwright.sync_api import Playwright, sync_playwright
+import re, os, traceback, sys
+from playwright.sync_api import Page, sync_playwright
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
@@ -31,32 +31,8 @@ class TicketmasterSearchResult:
     events: list
 
 
-def search_ticketmaster_events(playwright, request: TicketmasterSearchRequest) -> TicketmasterSearchResult:
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
+def search_ticketmaster_events(page: Page, request: TicketmasterSearchRequest) -> TicketmasterSearchResult:
     events = []
-
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout — force exit")
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
     try:
         print("STEP 1: Navigate to Ticketmaster concert search...")
         loc_encoded = request.location.replace(" ", "+")
@@ -156,8 +132,7 @@ def search_ticketmaster_events(playwright, request: TicketmasterSearchRequest) -
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
+
     return TicketmasterSearchResult(
         location=request.location,
         events=[TicketmasterEvent(
@@ -168,14 +143,31 @@ def search_ticketmaster_events(playwright, request: TicketmasterSearchRequest) -
 
 
 def test_ticketmaster_events():
-    from playwright.sync_api import sync_playwright
     request = TicketmasterSearchRequest(location="Los Angeles", max_results=5)
-    with sync_playwright() as pl:
-        result = search_ticketmaster_events(pl, request)
-        print(f"\nTotal events: {len(result.events)}")
-        for i, e in enumerate(result.events, 1):
-            print(f"  {i}. {e.name}  {e.venue}  {e.datetime}")
-        os._exit(0)
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_ticketmaster_events(page, request)
+            print(f"\nTotal events: {len(result.events)}")
+            for i, e in enumerate(result.events, 1):
+                print(f"  {i}. {e.name}  {e.venue}  {e.datetime}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":

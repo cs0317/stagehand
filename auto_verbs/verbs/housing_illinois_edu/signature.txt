@@ -32,4 +32,4 @@ class HousingSearchResult:
     price_min: int
     price_max: int
 
-def search_housing_cost(playwright: Playwright, request: HousingSearchRequest) -> HousingSearchResult
+def search_housing_cost(page: Page, request: HousingSearchRequest) -> HousingSearchResult

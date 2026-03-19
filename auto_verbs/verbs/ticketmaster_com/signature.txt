@@ -19,4 +19,4 @@ class TicketmasterSearchResult:
     location: str
     events: list[TicketmasterEvent]
 
-def search_ticketmaster_events(playwright, request: TicketmasterSearchRequest) -> TicketmasterSearchResult
+def search_ticketmaster_events(page: Page, request: TicketmasterSearchRequest) -> TicketmasterSearchResult

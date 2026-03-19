@@ -8,9 +8,8 @@ Pure Playwright – no AI. Uses .s-item CSS class selectors discovered via explo
 from datetime import date, timedelta
 import re
 import os
-import threading
 import traceback
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
@@ -62,7 +61,7 @@ class EbaySearchResult:
 # Searches eBay for listings matching a query and returns up to max_results
 # results with title, price, and shipping cost.
 def search_ebay_listings(
-    playwright,
+    page: Page,
     request: EbaySearchRequest,
 ) -> EbaySearchResult:
     search_query = request.search_query
@@ -74,37 +73,7 @@ def search_ebay_listings(
     print(f'  Query: "{search_query}"')
     print(f"  Filter: Buy It Now | Sort: Price + Shipping lowest")
     print(f"  Max raw_results: {max_results}\n")
-
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
     raw_results = []
-
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout — closing browser...")
-        try:
-            context.close()
-        except Exception:
-            pass
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
-
     try:
         print("STEP 1: Navigate to eBay search raw_results...")
         page.goto(URL, wait_until="domcontentloaded", timeout=30000)
@@ -240,13 +209,6 @@ def search_ebay_listings(
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
-        try:
-            context.close()
-        except Exception:
-            pass
-
     return EbaySearchResult(
         search_query=search_query,
         listings=[EbayListing(title=r["title"], price=r["price"], shipping=r["shipping"]) for r in raw_results],
@@ -254,8 +216,27 @@ def search_ebay_listings(
 def test_search_ebay_listings() -> None:
     from playwright.sync_api import sync_playwright
     request = EbaySearchRequest(search_query="mechanical keyboard", max_results=5)
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
     with sync_playwright() as playwright:
-        result = search_ebay_listings(playwright, request)
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_ebay_listings(page, request)
+        finally:
+            context.close()
     assert result.search_query == request.search_query
     assert len(result.listings) <= request.max_results
     print(f"\nTotal listings found: {len(result.listings)}")

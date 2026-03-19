@@ -16,13 +16,18 @@ from dataclasses import dataclass
 import os
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
 import shutil
+import subprocess
+import tempfile
+import json
+import time
+from urllib.request import urlopen
 
 
 @dataclass(frozen=True)
@@ -54,7 +59,7 @@ class GoogleFlightSearchResult:
 # on specified dates, returning up to max_results options with flight number,
 # itinerary, and economy price.
 def search_google_flights(
-    playwright,
+    page: Page,
     request: GoogleFlightSearchRequest,
 ) -> GoogleFlightSearchResult:
     origin = request.origin
@@ -70,14 +75,6 @@ def search_google_flights(
 
     print(f"  {origin} → {destination}")
     print(f"  Departure: {dep_display}  Return: {ret_display}\n")
-
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("flights_google_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
     raw_results = []
 
     try:
@@ -625,14 +622,6 @@ def search_google_flights(
 
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-
     return GoogleFlightSearchResult(
         origin=origin,
         destination=destination,
@@ -656,8 +645,46 @@ def test_search_google_flights() -> None:
         return_date=departure + timedelta(days=4),
         max_results=5,
     )
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
+        try:
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
+        except Exception:
+            pass
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
     with sync_playwright() as playwright:
-        result = search_google_flights(playwright, request)
+        browser = playwright.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_google_flights(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
     assert result.origin == request.origin
     assert len(result.flights) <= request.max_results
     print(f"\nTotal flights found: {len(result.flights)}")

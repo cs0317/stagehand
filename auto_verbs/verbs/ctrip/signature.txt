@@ -23,4 +23,4 @@ class CtripSearchResult:
     departure_date: date
     trains: list[CtripTrain]
 
-def search_ctrip_trains(playwright, request: CtripSearchRequest) -> CtripSearchResult
+def search_ctrip_trains(page: Page, request: CtripSearchRequest) -> CtripSearchResult

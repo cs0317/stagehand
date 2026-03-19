@@ -15,4 +15,4 @@ class CostcoSearchResult:
     search_query: str
     products: list[CostcoProduct]
 
-def search_costco_products(playwright, request: CostcoSearchRequest) -> CostcoSearchResult
+def search_costco_products(page: Page, request: CostcoSearchRequest) -> CostcoSearchResult

@@ -21,4 +21,4 @@ class ExpediaSearchResult:
     checkout_date: date
     hotels: list[ExpediaHotel]
 
-def search_expedia_hotels(playwright, request: ExpediaSearchRequest) -> ExpediaSearchResult
+def search_expedia_hotels(page: Page, request: ExpediaSearchRequest) -> ExpediaSearchResult

@@ -14,12 +14,11 @@ import os
 from dataclasses import dataclass
 import traceback
 from urllib.parse import quote
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import sync_playwright, Page
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-import threading
 
 @dataclass(frozen=True)
 class BestBuySearchRequest:
@@ -40,7 +39,7 @@ class BestBuySearchResult:
 
 # Searches Best Buy for products matching a search term, sorted by customer rating, returning up to max_results.
 def search_bestbuy_products(
-    playwright,
+    page: Page,
     request: BestBuySearchRequest,
 ) -> BestBuySearchResult:
     search_term = request.search_term
@@ -53,35 +52,7 @@ def search_bestbuy_products(
     print(f"  Sort by: Customer Rating")
     print(f"  Extract up to {max_results} products\n")
 
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
     raw_results = []
-
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout — closing browser...")
-        try:
-            context.close()
-        except Exception:
-            pass
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
 
     try:
         # ── Navigate directly to sorted search raw_results ────────────────────
@@ -175,24 +146,37 @@ def search_bestbuy_products(
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
-        try:
-            context.close()
-        except Exception:
-            pass
+
     return BestBuySearchResult(
         search_term=search_term,
         products=[BestBuyProduct(name=r["name"], price=r["price"], rating=r["rating"]) for r in raw_results],
     )
 def test_search_bestbuy_products() -> None:
-    from playwright.sync_api import sync_playwright
     request = BestBuySearchRequest(search_term="4K monitor", max_results=5)
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
     with sync_playwright() as playwright:
-        result = search_bestbuy_products(playwright, request)
-    assert result.search_term == request.search_term
-    assert len(result.products) <= request.max_results
-    print(f"\nTotal products found: {len(result.products)}")
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_bestbuy_products(page, request)
+            assert result.search_term == request.search_term
+            assert len(result.products) <= request.max_results
+            print(f"\nTotal products found: {len(result.products)}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":

@@ -16,12 +16,11 @@ from dataclasses import dataclass
 import re
 import time
 import traceback
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-import threading
 
 @dataclass(frozen=True)
 class CourseraSearchRequest:
@@ -43,7 +42,7 @@ class CourseraSearchResult:
 
 # Searches Coursera for free courses matching a search term and returns up to max_results results.
 def search_coursera_courses(
-    playwright,
+    page: Page,
     request: CourseraSearchRequest,
 ) -> CourseraSearchResult:
     search_term = request.search_term
@@ -55,36 +54,6 @@ def search_coursera_courses(
     print(f"  Search: \"{search_term}\"")
     print(f"  Filter: Free")
     print(f"  Extract up to {max_results} raw_results\n")
-
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
-    raw_results = []
-
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout — closing browser...")
-        try:
-            context.close()
-        except Exception:
-            pass
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
 
     try:
         # ── Navigate to search raw_results directly ──────────────────────
@@ -200,24 +169,37 @@ def search_coursera_courses(
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
-        try:
-            context.close()
-        except Exception:
-            pass
+
     return CourseraSearchResult(
         search_term=search_term,
         courses=[CourseraCourse(title=r["title"], provider=r["provider"], rating=r["rating"], enrollment=r["enrollment"]) for r in raw_results],
     )
 def test_search_coursera_courses() -> None:
-    from playwright.sync_api import sync_playwright
     request = CourseraSearchRequest(search_term="machine learning", max_results=5)
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
     with sync_playwright() as playwright:
-        result = search_coursera_courses(playwright, request)
-    assert result.search_term == request.search_term
-    assert len(result.courses) <= request.max_results
-    print(f"\nTotal courses found: {len(result.courses)}")
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_coursera_courses(page, request)
+            assert result.search_term == request.search_term
+            assert len(result.courses) <= request.max_results
+            print(f"\nTotal courses found: {len(result.courses)}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":

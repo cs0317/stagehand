@@ -21,4 +21,4 @@ dataclass AirbnbSearchResult:
   nights: int
   listings: list[AirbnbListing]
 
-def search_airbnb_listings(playwright: Playwright, request: AirbnbSearchRequest) -> AirbnbSearchResult
+def search_airbnb_listings(page: Page, request: AirbnbSearchRequest) -> AirbnbSearchResult

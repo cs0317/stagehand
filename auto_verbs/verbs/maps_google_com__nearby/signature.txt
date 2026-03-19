@@ -23,4 +23,4 @@ class NearbySearchResult:
 
 # Search Google Maps for nearby businesses, click into each result card,
 # and extract name, address, review score, phone, and website URL.
-def search_nearby(playwright: Playwright, request: NearbySearchRequest) -> NearbySearchResult:
+def search_nearby(page: Page, request: NearbySearchRequest) -> NearbySearchResult:

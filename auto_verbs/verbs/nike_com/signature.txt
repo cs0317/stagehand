@@ -16,4 +16,4 @@ class NikeSearchResult:
     search_query: str
     products: list[NikeProduct]
 
-def search_nike_products(playwright, request: NikeSearchRequest) -> NikeSearchResult
+def search_nike_products(page: Page, request: NikeSearchRequest) -> NikeSearchResult

@@ -11,16 +11,17 @@ IMPORTANT: Close ALL Chrome windows before running!
 import os
 import re
 import traceback
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys, os as _os, shutil
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), '..'))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
 from dataclasses import dataclass, field
-
-
-
-
+import subprocess
+import tempfile
+import json
+import time
+from urllib.request import urlopen
 
 
 @dataclass(frozen=True)
@@ -44,19 +45,11 @@ class WeatherForecastResult:
     forecast: list
 
 
-def get_weather_forecast(playwright, request: WeatherForecastRequest) -> WeatherForecastResult:
+def get_weather_forecast(page: Page, request: WeatherForecastRequest) -> WeatherForecastResult:
     print("=" * 59)
     print("  Weather.com – Weather Forecast")
     print("=" * 59)
     print(f'  Location: "{request.location}"\n')
-    
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("weather_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
     result = {"current": {"temperature": "N/A", "conditions": "N/A"}, "forecast": []}
 
     try:
@@ -357,14 +350,6 @@ def get_weather_forecast(playwright, request: WeatherForecastRequest) -> Weather
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
-        try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-
     current = result.get('current', {})
     return WeatherForecastResult(
         location=request.location,
@@ -374,13 +359,50 @@ def get_weather_forecast(playwright, request: WeatherForecastRequest) -> Weather
     )
 
 
-
 def test_weather_forecast(location: str):
     from playwright.sync_api import sync_playwright
     request = WeatherForecastRequest(location=location)
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
+        try:
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
+        except Exception:
+            pass
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
     with sync_playwright() as pl:
-        result = get_weather_forecast(pl, request)
+        browser = pl.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = get_weather_forecast(page, request)
     
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
     # ── Print results ─────────────────────────────────────────────
     print(f"\n{'=' * 59}")
     print("  Final Results")

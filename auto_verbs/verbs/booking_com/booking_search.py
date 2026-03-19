@@ -15,12 +15,11 @@ from dataclasses import dataclass
 import os
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import sync_playwright, Page
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-import threading
 
 
 @dataclass(frozen=True)
@@ -49,7 +48,7 @@ class BookingSearchResult:
 # Searches Booking.com for hotels at a destination over the given dates,
 # returning up to max_results hotels with name and per-night price.
 def search_booking_hotels(
-    playwright,
+    page: Page,
     request: BookingSearchRequest,
 ) -> BookingSearchResult:
     destination = request.destination
@@ -65,36 +64,8 @@ def search_booking_hotels(
     print(f"  Destination: {destination}")
     print(f"  Check-in: {checkin_display}  Check-out: {checkout_display}  (2 nights)\n")
 
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
     raw_results = []
     seen_names = set()
-
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout — closing browser...")
-        try:
-            context.close()
-        except Exception:
-            pass
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
 
     try:
         # ── Navigate ──────────────────────────────────────────────────────
@@ -380,12 +351,6 @@ def search_booking_hotels(
 
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
-        try:
-            context.close()
-        except Exception:
-            pass
 
     return BookingSearchResult(
         destination=destination,
@@ -396,7 +361,6 @@ def search_booking_hotels(
 def test_search_booking_hotels() -> None:
     from dateutil.relativedelta import relativedelta
     from datetime import timedelta
-    from playwright.sync_api import sync_playwright
     today = date.today()
     checkin = today + relativedelta(months=2)
     request = BookingSearchRequest(
@@ -405,11 +369,30 @@ def test_search_booking_hotels() -> None:
         checkout_date=checkin + timedelta(days=2),
         max_results=5,
     )
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
     with sync_playwright() as playwright:
-        result = search_booking_hotels(playwright, request)
-    assert result.destination == request.destination
-    assert len(result.hotels) <= request.max_results
-    print(f"\nTotal hotels found: {len(result.hotels)}")
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_booking_hotels(page, request)
+            assert result.destination == request.destination
+            assert len(result.hotels) <= request.max_results
+            print(f"\nTotal hotels found: {len(result.hotels)}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":

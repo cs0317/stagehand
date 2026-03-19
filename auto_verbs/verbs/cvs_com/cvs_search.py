@@ -14,12 +14,11 @@ import os
 import re
 import time
 import traceback
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-import threading
 
 from dataclasses import dataclass
 
@@ -44,7 +43,7 @@ class CvsSearchResult:
 
 # Searches for CVS store locations near a ZIP code and returns up to max_results results.
 def search_cvs_stores(
-    playwright,
+    page: Page,
     request: CvsSearchRequest,
 ) -> CvsSearchResult:
     zip_code = request.zip_code
@@ -55,36 +54,6 @@ def search_cvs_stores(
     print("=" * 59)
     print(f"  Zip Code: \"{zip_code}\"")
     print(f"  Extract up to {max_results} stores\n")
-
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
-    raw_results = []
-
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout — closing browser...")
-        try:
-            context.close()
-        except Exception:
-            pass
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
 
     try:
         # ── Navigate to store locator landing page ──────────────────
@@ -239,12 +208,7 @@ def search_cvs_stores(
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
-        try:
-            context.close()
-        except Exception:
-            pass
+
     return CvsSearchResult(
         zip_code=zip_code,
         stores=[CvsStore(
@@ -256,13 +220,31 @@ def search_cvs_stores(
         ) for r in raw_results],
     )
 def test_search_cvs_stores() -> None:
-    from playwright.sync_api import sync_playwright
     request = CvsSearchRequest(zip_code="10001", max_results=5)
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
     with sync_playwright() as playwright:
-        result = search_cvs_stores(playwright, request)
-    assert result.zip_code == request.zip_code
-    assert len(result.stores) <= request.max_results
-    print(f"\nTotal stores found: {len(result.stores)}")
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_cvs_stores(page, request)
+            assert result.zip_code == request.zip_code
+            assert len(result.stores) <= request.max_results
+            print(f"\nTotal stores found: {len(result.stores)}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":

@@ -16,4 +16,4 @@ class TargetSearchResult:
     search_query: str
     products: list[TargetProduct]
 
-def search_target_products(playwright, request: TargetSearchRequest) -> TargetSearchResult
+def search_target_products(page: Page, request: TargetSearchRequest) -> TargetSearchResult

@@ -13,4 +13,4 @@ class GlassdoorReview:
     pros: tuple
     cons: tuple
 
-def get_glassdoor_review(playwright, request: GlassdoorSearchRequest) -> GlassdoorReview
+def get_glassdoor_review(page: Page, request: GlassdoorSearchRequest) -> GlassdoorReview

@@ -17,4 +17,4 @@ class EbaySearchResult:
     search_query: str
     listings: list[EbayListing]
 
-def search_ebay_listings(playwright, request: EbaySearchRequest) -> EbaySearchResult
+def search_ebay_listings(page: Page, request: EbaySearchRequest) -> EbaySearchResult

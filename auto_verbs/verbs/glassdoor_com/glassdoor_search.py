@@ -4,12 +4,16 @@ Pure Playwright – no AI.
 """
 from datetime import date, timedelta
 import re, os, sys, traceback, shutil, tempfile
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
 
 from dataclasses import dataclass
+import subprocess
+import json
+import time
+from urllib.request import urlopen
 
 
 @dataclass(frozen=True)
@@ -29,17 +33,10 @@ class GlassdoorReview:
 # Fetches Glassdoor company reviews for a company, returning overall rating,
 # CEO approval, and top pros/cons from employee reviews.
 def get_glassdoor_review(
-    playwright,
+    page: Page,
     request: GlassdoorSearchRequest,
 ) -> GlassdoorReview:
     result = {"overall_rating": "", "ceo_approval": "", "pros": [], "cons": []}
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("glassdoor_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
     result = {"overall_rating": "", "ceo_approval": "", "pros": [], "cons": []}
     try:
         print("STEP 1: Navigate to Glassdoor Microsoft reviews...")
@@ -237,13 +234,6 @@ def get_glassdoor_review(
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
     return GlassdoorReview(
         company_name=request.company_name,
         overall_rating=result.get("overall_rating",""),
@@ -254,8 +244,46 @@ def get_glassdoor_review(
 def test_get_glassdoor_review() -> None:
     from playwright.sync_api import sync_playwright
     request = GlassdoorSearchRequest(company_name="Microsoft")
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
+        try:
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
+        except Exception:
+            pass
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
     with sync_playwright() as playwright:
-        result = get_glassdoor_review(playwright, request)
+        browser = playwright.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = get_glassdoor_review(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
     assert result.company_name == request.company_name
     print(f"\nCompany: {result.company_name}")
     print(f"  Rating: {result.overall_rating}  CEO: {result.ceo_approval}")

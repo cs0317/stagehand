@@ -12,4 +12,4 @@ class KhanAcademyCourseResult:
     description: str
     units: tuple
 
-def get_khanacademy_course(playwright, request: KhanAcademyCourseRequest) -> KhanAcademyCourseResult
+def get_khanacademy_course(page: Page, request: KhanAcademyCourseRequest) -> KhanAcademyCourseResult

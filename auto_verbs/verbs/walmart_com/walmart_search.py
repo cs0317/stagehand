@@ -10,13 +10,15 @@ import json
 import re
 import os
 import time
-from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
+from playwright.sync_api import Page, sync_playwright, TimeoutError as PWTimeout
 
 import sys as _sys, os as _os, shutil, time
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), '..'))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
 from dataclasses import dataclass
-
+import subprocess
+import tempfile
+from urllib.request import urlopen
 
 
 QUERY = "wireless earbuds"
@@ -191,7 +193,6 @@ def extract_products(page, max_products=5):
     return products
 
 
-
 @dataclass(frozen=True)
 class WalmartSearchRequest:
     search_query: str = "wireless earbuds"
@@ -211,15 +212,8 @@ class WalmartSearchResult:
     products: list
 
 
-def search_walmart_products(playwright, request: WalmartSearchRequest) -> WalmartSearchResult:
+def search_walmart_products(page: Page, request: WalmartSearchRequest) -> WalmartSearchResult:
     url = f"https://www.walmart.com/search?q={request.search_query.replace(' ', '+')}&sort=best_seller"
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("walmart_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
     products = []
     try:
         print(f"Loading: {url}")
@@ -248,16 +242,9 @@ def search_walmart_products(playwright, request: WalmartSearchRequest) -> Walmar
 
         if not products:
             print("  No products extracted from page text.")
-
-        browser.close()
-
     except Exception as e:
         print(f"Error: {e}")
         import traceback; traceback.print_exc()
-    finally:
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-
     return WalmartSearchResult(
         search_query=request.search_query,
         products=[WalmartProduct(name=p['name'], price=p['price'], rating=p['rating']) for p in products],
@@ -266,8 +253,46 @@ def search_walmart_products(playwright, request: WalmartSearchRequest) -> Walmar
 def test_walmart_products():
     from playwright.sync_api import sync_playwright
     request = WalmartSearchRequest(search_query="wireless earbuds", max_results=5)
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
+        try:
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
+        except Exception:
+            pass
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
     with sync_playwright() as pl:
-        result = search_walmart_products(pl, request)
+        browser = pl.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_walmart_products(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
     print(f"\nTotal products: {len(result.products)}")
     for i, p in enumerate(result.products, 1):
         print(f"  {i}. {p.name}  {p.price}")

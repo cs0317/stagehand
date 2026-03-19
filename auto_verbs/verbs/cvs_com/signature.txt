@@ -18,4 +18,4 @@ class CvsSearchResult:
     zip_code: str
     stores: list[CvsStore]
 
-def search_cvs_stores(playwright, request: CvsSearchRequest) -> CvsSearchResult
+def search_cvs_stores(page: Page, request: CvsSearchRequest) -> CvsSearchResult

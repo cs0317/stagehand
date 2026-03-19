@@ -13,12 +13,11 @@ import urllib.parse
 from datetime import date, timedelta
 from dataclasses import dataclass
 from dateutil.relativedelta import relativedelta
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import sync_playwright, Page
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-import threading
 
 
 MONTH_NAMES = [
@@ -56,7 +55,7 @@ class AirbnbSearchResult:
 # Automates Airbnb search for a destination and guest count over a provided date range,
 # then returns up to max_results listings with title, price per night, and rating.
 def search_airbnb_listings(
-    playwright: Playwright,
+    page: Page,
     request: AirbnbSearchRequest,
 ) -> AirbnbSearchResult:
     destination = request.destination
@@ -75,34 +74,6 @@ def search_airbnb_listings(
     print(f"  Check-in: {checkin_display}  Check-out: {checkout_display}  ({nights} nights, {num_guests} guests)\n")
 
     results: list[AirbnbListing] = []
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
-
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout — closing browser...")
-        try:
-            context.close()
-        except Exception:
-            pass
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
 
     try:
 
@@ -385,8 +356,6 @@ def search_airbnb_listings(
 
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
 
     return AirbnbSearchResult(
         destination=destination,
@@ -411,16 +380,34 @@ def test_search_airbnb_listings() -> None:
         max_results=5,
     )
 
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
     with sync_playwright() as playwright:
-        result = search_airbnb_listings(playwright, request)
-        assert result.destination == request.destination
-        assert result.num_guests == request.num_guests
-        assert result.checkin_date == request.checkin_date
-        assert result.checkout_date == request.checkout_date
-        assert result.nights == (request.checkout_date - request.checkin_date).days
-        assert len(result.listings) <= request.max_results
-        print(f"\nTotal listings found: {len(result.listings)}")
-        os._exit(0)
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_airbnb_listings(page, request)
+            assert result.destination == request.destination
+            assert result.num_guests == request.num_guests
+            assert result.checkin_date == request.checkin_date
+            assert result.checkout_date == request.checkout_date
+            assert result.nights == (request.checkout_date - request.checkin_date).days
+            assert len(result.listings) <= request.max_results
+            print(f"\nTotal listings found: {len(result.listings)}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":

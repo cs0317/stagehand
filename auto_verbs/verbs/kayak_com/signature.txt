@@ -23,4 +23,4 @@ class KayakFlightSearchResult:
     return_date: date
     flights: list[KayakFlight]
 
-def search_kayak_flights(playwright, request: KayakFlightSearchRequest) -> KayakFlightSearchResult
+def search_kayak_flights(page: Page, request: KayakFlightSearchRequest) -> KayakFlightSearchResult

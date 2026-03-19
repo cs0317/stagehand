@@ -12,12 +12,19 @@ IMPORTANT: Close ALL Chrome windows before running!
 
 import re
 import os
-from playwright.sync_api import Playwright, sync_playwright, expect
+import tempfile
+import shutil
+from playwright.sync_api import Page, sync_playwright, expect
 
 from dataclasses import dataclass
+import subprocess
+import json
+import time
+from urllib.request import urlopen
 
-
-
+import sys as _sys
+_sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+from cdp_utils import find_chrome_executable, get_free_port
 
 
 def extract_listings(page, max_listings=5):
@@ -123,7 +130,6 @@ def extract_listings(page, max_listings=5):
     return listings
 
 
-
 @dataclass(frozen=True)
 class RedfinSearchRequest:
     location: str
@@ -146,17 +152,7 @@ class RedfinSearchResult:
 
 # Searches Redfin for homes for sale in a location and returns up to max_results listings.
 
-def search_redfin_homes(playwright, request: RedfinSearchRequest) -> RedfinSearchResult:
-    import shutil, tempfile, sys, os as _os
-    sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), '..'))
-    from cdp_utils import get_free_port, launch_chrome, wait_for_cdp_ws
-    port = get_free_port()
-    profile_dir = tempfile.mkdtemp(prefix="redfin_")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
+def search_redfin_homes(page: Page, request: RedfinSearchRequest) -> RedfinSearchResult:
     raw = []
     try:
         query = request.location.replace(" ", "%20").replace(",", "%2C")
@@ -168,12 +164,8 @@ def search_redfin_homes(playwright, request: RedfinSearchRequest) -> RedfinSearc
             page.evaluate("window.scrollBy(0, 600)")
             page.wait_for_timeout(800)
         raw = extract_listings(page, request.max_results)
-        browser.close()
     except Exception as e:
         print(f"Error: {e}")
-    finally:
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
     return RedfinSearchResult(
         location=request.location,
         homes=[RedfinHome(
@@ -191,10 +183,46 @@ def test_search_redfin_homes() -> None:
         location="Seattle, WA",
         max_results=5,
     )
-
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
+        try:
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
+        except Exception:
+            pass
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
     with sync_playwright() as pw:
-        result = search_redfin_homes(pw, request)
-
+        browser = pw.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_redfin_homes(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
     assert isinstance(result, RedfinSearchResult)
     assert len(result.homes) <= request.max_results
     print(f'\nFound {len(result.homes)} homes')

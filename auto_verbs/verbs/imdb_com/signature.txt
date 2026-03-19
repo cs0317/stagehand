@@ -16,4 +16,4 @@ class ImdbSearchResult:
     query: str
     titles: list[ImdbTitle]
 
-def search_imdb_titles(playwright, request: ImdbSearchRequest) -> ImdbSearchResult
+def search_imdb_titles(page: Page, request: ImdbSearchRequest) -> ImdbSearchResult

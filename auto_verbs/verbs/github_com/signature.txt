@@ -19,4 +19,4 @@ class GithubSearchResult:
     search_term: str
     repos: list[GithubRepo]
 
-def search_github_repos(playwright, request: GithubSearchRequest) -> GithubSearchResult
+def search_github_repos(page: Page, request: GithubSearchRequest) -> GithubSearchResult

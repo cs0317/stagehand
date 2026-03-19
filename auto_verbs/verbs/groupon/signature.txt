@@ -18,4 +18,4 @@ class GrouponSearchResult:
     keyword: str
     deals: list[GrouponDeal]
 
-def search_groupon_deals(playwright, request: GrouponSearchRequest) -> GrouponSearchResult
+def search_groupon_deals(page: Page, request: GrouponSearchRequest) -> GrouponSearchResult

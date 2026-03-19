@@ -19,4 +19,4 @@ class GrubhubSearchResult:
     query: str
     restaurants: list[GrubhubRestaurant]
 
-def search_grubhub_restaurants(playwright, request: GrubhubSearchRequest) -> GrubhubSearchResult
+def search_grubhub_restaurants(page: Page, request: GrubhubSearchRequest) -> GrubhubSearchResult

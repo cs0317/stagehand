@@ -21,4 +21,4 @@ class BookingSearchResult:
     checkout_date: date
     hotels: list[BookingHotel]
 
-def search_booking_hotels(playwright, request: BookingSearchRequest) -> BookingSearchResult
+def search_booking_hotels(page: Page, request: BookingSearchRequest) -> BookingSearchResult

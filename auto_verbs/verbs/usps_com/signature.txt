@@ -1,14 +1,15 @@
-# Looks up USPS ZIP code information for a given address and returns location details.
+# Package Tracking.
 
 @dataclass(frozen=True)
-class UspsZipRequest:
-    address: str
+class UspsTrackingRequest:
+    tracking_number: str
 
 @dataclass(frozen=True)
-class UspsZipResult:
-    address: str
-    zip_code: str
-    city: str
-    state: str
+class UspsTrackingResult:
+    tracking_number: str
+    status: str
+    last_update: str
+    expected_delivery: str
+    location: str
 
-def lookup_usps_zip(playwright, request: UspsZipRequest) -> UspsZipResult
+def lookup_usps_tracking(page: Page, request: UspsTrackingRequest) -> UspsTrackingResult

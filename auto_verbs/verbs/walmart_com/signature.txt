@@ -16,4 +16,4 @@ class WalmartSearchResult:
     search_query: str
     products: list[WalmartProduct]
 
-def search_walmart_products(playwright, request: WalmartSearchRequest) -> WalmartSearchResult
+def search_walmart_products(page: Page, request: WalmartSearchRequest) -> WalmartSearchResult

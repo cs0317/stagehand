@@ -13,4 +13,4 @@ class BbcHeadline:
 class BbcNewsResult:
     headlines: list[BbcHeadline]
 
-def extract_bbc_headlines(playwright, request: BbcNewsRequest) -> BbcNewsResult
+def extract_bbc_headlines(page: Page, request: BbcNewsRequest) -> BbcNewsResult

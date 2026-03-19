@@ -19,4 +19,4 @@ class IndeedSearchResult:
     location: str
     jobs: list[IndeedJob]
 
-def search_indeed_jobs(playwright, request: IndeedSearchRequest) -> IndeedSearchResult
+def search_indeed_jobs(page: Page, request: IndeedSearchRequest) -> IndeedSearchResult

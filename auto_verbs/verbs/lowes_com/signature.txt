@@ -16,4 +16,4 @@ class LowesSearchResult:
     search_query: str
     products: list[LowesProduct]
 
-def search_lowes_products(playwright, request: LowesSearchRequest) -> LowesSearchResult
+def search_lowes_products(page: Page, request: LowesSearchRequest) -> LowesSearchResult

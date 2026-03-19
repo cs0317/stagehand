@@ -18,4 +18,4 @@ class WeatherForecastResult:
     current_condition: str
     forecast: list[WeatherDay]
 
-def get_weather_forecast(playwright, request: WeatherForecastRequest) -> WeatherForecastResult
+def get_weather_forecast(page: Page, request: WeatherForecastRequest) -> WeatherForecastResult

@@ -17,4 +17,4 @@ class EtsySearchResult:
     search_query: str
     listings: list[EtsyListing]
 
-def search_etsy_listings(playwright, request: EtsySearchRequest) -> EtsySearchResult
+def search_etsy_listings(page: Page, request: EtsySearchRequest) -> EtsySearchResult

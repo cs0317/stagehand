@@ -14,12 +14,11 @@ import os
 import re
 import time
 import traceback
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import sync_playwright, Page
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-import threading
 
 from dataclasses import dataclass
 
@@ -42,7 +41,7 @@ class ChaseSearchResult:
 
 # Searches for Chase Bank branches and ATMs near a location, returning up to max_results results.
 def search_chase_branches(
-    playwright,
+    page: Page,
     request: ChaseSearchRequest,
 ) -> ChaseSearchResult:
     search_term = request.search_term
@@ -54,35 +53,7 @@ def search_chase_branches(
     print(f"  Search: \"{search_term}\"")
     print(f"  Extract up to {max_results} raw_results\n")
 
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
     raw_results = []
-
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout — closing browser...")
-        try:
-            context.close()
-        except Exception:
-            pass
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
 
     try:
         # ── Navigate to Chase locator ─────────────────────────────────────
@@ -208,24 +179,37 @@ def search_chase_branches(
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
-        try:
-            context.close()
-        except Exception:
-            pass
+
     return ChaseSearchResult(
         search_term=search_term,
         branches=[ChaseBranch(name=r["name"], address=r["address"], hours=r["hours"]) for r in raw_results],
     )
 def test_search_chase_branches() -> None:
-    from playwright.sync_api import sync_playwright
     request = ChaseSearchRequest(search_term="Seattle, WA 98101", max_results=5)
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
     with sync_playwright() as playwright:
-        result = search_chase_branches(playwright, request)
-    assert result.search_term == request.search_term
-    assert len(result.branches) <= request.max_results
-    print(f"\nTotal branches found: {len(result.branches)}")
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_chase_branches(page, request)
+            assert result.search_term == request.search_term
+            assert len(result.branches) <= request.max_results
+            print(f"\nTotal branches found: {len(result.branches)}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":

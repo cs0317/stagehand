@@ -24,13 +24,11 @@ import os
 import traceback
 from datetime import date
 from dateutil.relativedelta import relativedelta
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-import threading
-
 MONTHS = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December",
@@ -61,7 +59,6 @@ class AmtrakSearchResult:
     destination: str
     departure_date: "date"
     trains: list["AmtrakTrain"]
-
 
 
 def dismiss_popups(page):
@@ -443,7 +440,7 @@ def extract_trains(page, from_code, to_code, max_results=5):
 # Searches Amtrak for one-way train tickets from origin to destination
 # on the given departure date, returning up to max_results train options.
 def search_amtrak_trains(
-    playwright,
+    page: Page,
     request: AmtrakSearchRequest,
 ) -> AmtrakSearchResult:
     origin = request.origin
@@ -463,35 +460,6 @@ def search_amtrak_trains(
     print("=" * 59)
     print(f"  {origin} -> {destination}")
     print(f"  Departure: {dep_display}  (1 adult, one-way)\n")
-
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
-
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout — closing browser...")
-        try:
-            context.close()
-        except Exception:
-            pass
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
     try:
         print("Loading Amtrak...")
         page.goto("https://www.amtrak.com")
@@ -523,8 +491,6 @@ def search_amtrak_trains(
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
     return AmtrakSearchResult(
         origin=origin,
         destination=destination,
@@ -552,14 +518,31 @@ def test_search_amtrak_trains() -> None:
         departure_date=today + relativedelta(months=2),
         max_results=5,
     )
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
     with sync_playwright() as playwright:
-        result = search_amtrak_trains(playwright, request)
-        assert result.origin == request.origin
-        assert result.destination == request.destination
-        assert len(result.trains) <= request.max_results
-        print(f"\nTotal trains found: {len(result.trains)}")
-        os._exit(0)
-
-
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_amtrak_trains(page, request)
+            assert result.origin == request.origin
+            assert result.destination == request.destination
+            assert len(result.trains) <= request.max_results
+            print(f"\nTotal trains found: {len(result.trains)}")
+            os._exit(0)
+        finally:
+            context.close()
 if __name__ == "__main__":
     test_search_amtrak_trains()

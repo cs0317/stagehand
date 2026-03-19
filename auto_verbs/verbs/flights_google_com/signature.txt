@@ -24,4 +24,4 @@ class GoogleFlightSearchResult:
     return_date: date
     flights: list[GoogleFlight]
 
-def search_google_flights(playwright, request: GoogleFlightSearchRequest) -> GoogleFlightSearchResult
+def search_google_flights(page: Page, request: GoogleFlightSearchRequest) -> GoogleFlightSearchResult

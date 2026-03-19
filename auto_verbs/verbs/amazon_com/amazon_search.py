@@ -2,8 +2,8 @@
 Amazon – Product Search
 Pure Playwright – no AI.
 """
-import re, os, sys, shutil, traceback, threading
-from playwright.sync_api import sync_playwright
+import re, os, sys, shutil, traceback
+from playwright.sync_api import sync_playwright, Page
 
 import sys as _sys
 import os as _os
@@ -31,37 +31,8 @@ class AmazonSearchResult:
     products: list
 
 
-def search_amazon_products(playwright, request: AmazonSearchRequest) -> AmazonSearchResult:
-    # Use real Chrome profile (same as open_browser.py) to avoid bot detection
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
+def search_amazon_products(page: Page, request: AmazonSearchRequest) -> AmazonSearchResult:
     products = []
-
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout — closing browser...")
-        try:
-            context.close()
-        except Exception:
-            pass
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
 
     try:
         query_encoded = request.query.replace(" ", "+")
@@ -140,12 +111,6 @@ def search_amazon_products(playwright, request: AmazonSearchRequest) -> AmazonSe
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
-        try:
-            context.close()
-        except Exception:
-            pass
 
     return AmazonSearchResult(
         query=request.query,
@@ -153,14 +118,32 @@ def search_amazon_products(playwright, request: AmazonSearchRequest) -> AmazonSe
     )
 
 
-def test_amazon_products():
-    from playwright.sync_api import sync_playwright
+def test_amazon_products() -> None:
     request = AmazonSearchRequest(query="travel adapter worldwide", max_results=5)
-    with sync_playwright() as pl:
-        result = search_amazon_products(pl, request)
-    print(f"\nTotal products: {len(result.products)}")
-    for i, p in enumerate(result.products, 1):
-        print(f"  {i}. {p.name}  {p.price}")
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_amazon_products(page, request)
+            print(f"\nTotal products: {len(result.products)}")
+            for i, p in enumerate(result.products, 1):
+                print(f"  {i}. {p.name}  {p.price}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":

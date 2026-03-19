@@ -6,7 +6,7 @@ Pure Playwright – no AI. Requires Google login in Chrome profile.
 import os
 from dataclasses import dataclass
 from typing import List
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 
 @dataclass(frozen=True)
@@ -27,23 +27,7 @@ class CreateListResult:
 # then searches for each place using the built-in "Add a place" input and
 # selects the first suggestion from the dropdown.
 # Requires the user to be logged into Google in the Chrome profile.
-def create_saved_list(playwright: Playwright, request: CreateListRequest) -> CreateListResult:
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
+def create_saved_list(page: Page, request: CreateListRequest) -> CreateListResult:
     places_added = []
 
     try:
@@ -140,11 +124,6 @@ def create_saved_list(playwright: Playwright, request: CreateListRequest) -> Cre
         import traceback
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        try:
-            context.close()
-        except Exception:
-            pass
 
     success = len(places_added) == len(request.places)
     return CreateListResult(
@@ -154,22 +133,39 @@ def create_saved_list(playwright: Playwright, request: CreateListRequest) -> Cre
     )
 
 
-def test_create_list():
+def test_create_list() -> None:
     request = CreateListRequest(
         list_name="urbana champaign dealerships",
         places=["Napleton's Auto Park of Urbana","Sam Leman Chevrolet of Champaign","Champaign Urbana Auto Park"],
     )
-    with sync_playwright() as pw:
-        result = create_saved_list(pw, request)
-
-    print(f"\n{'='*60}")
-    print(f"  List: {result.list_name}")
-    print(f"  Places added: {len(result.places_added)}/{len(request.places)}")
-    print(f"  Success: {result.success}")
-    print(f"{'='*60}")
-    for p in result.places_added:
-        print(f"  ✅ {p}")
-    return result
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = create_saved_list(page, request)
+            print(f"\n{'='*60}")
+            print(f"  List: {result.list_name}")
+            print(f"  Places added: {len(result.places_added)}/{len(request.places)}")
+            print(f"  Success: {result.success}")
+            print(f"{'='*60}")
+            for p in result.places_added:
+                print(f"  ✅ {p}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":

@@ -15,12 +15,11 @@ from datetime import date, timedelta
 import os
 import re
 import traceback
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-import threading
 
 from dataclasses import dataclass
 
@@ -49,7 +48,7 @@ class GithubSearchResult:
 # Searches GitHub for repositories matching a search term, returning up to
 # max_results repos with owner, name, stars, language, and description.
 def search_github_repos(
-    playwright,
+    page: Page,
     request: GithubSearchRequest,
 ) -> GithubSearchResult:
     search_term = request.search_term
@@ -61,36 +60,6 @@ def search_github_repos(
     print(f'  Search: "{search_term}"')
     print(f"  Sort by: Most stars")
     print(f"  Extract up to {max_results} repos\n")
-
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
-    raw_results = []
-
-    def _watchdog():
-        print("\n⏱️  WATCHDOG: 90s timeout — closing browser...")
-        try:
-            context.close()
-        except Exception:
-            pass
-        os._exit(1)
-
-    timer = threading.Timer(90, _watchdog)
-    timer.daemon = True
-    timer.start()
 
     try:
         # ── Navigate directly to search raw_results sorted by stars ────────
@@ -177,12 +146,7 @@ def search_github_repos(
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
-        timer.cancel()
-        try:
-            context.close()
-        except Exception:
-            pass
+
     return GithubSearchResult(
         search_term=search_term,
         repos=[GithubRepo(
@@ -194,13 +158,31 @@ def search_github_repos(
         ) for r in raw_results],
     )
 def test_search_github_repos() -> None:
-    from playwright.sync_api import sync_playwright
     request = GithubSearchRequest(search_term="browser automation", max_results=5)
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
     with sync_playwright() as playwright:
-        result = search_github_repos(playwright, request)
-    assert result.search_term == request.search_term
-    assert len(result.repos) <= request.max_results
-    print(f"\nTotal repos found: {len(result.repos)}")
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_github_repos(page, request)
+            assert result.search_term == request.search_term
+            assert len(result.repos) <= request.max_results
+            print(f"\nTotal repos found: {len(result.repos)}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":

@@ -1,17 +1,19 @@
-# Extracts top headlines from the New York Times homepage and returns up to max_results articles.
+# Search "artificial intelligence" → sort Newest → extract top 5 articles.
 
 @dataclass(frozen=True)
-class NytimesRequest:
+class NYTimesSearchRequest:
+    query: str
     max_results: int
 
 @dataclass(frozen=True)
-class NytimesArticle:
-    title: str
-    section: str
-    url: str
+class NYTimesArticle:
+    headline: str
+    author: str
+    date: str
 
 @dataclass(frozen=True)
-class NytimesResult:
-    articles: list[NytimesArticle]
+class NYTimesSearchResult:
+    query: str
+    articles: list[NYTimesArticle]
 
-def extract_nytimes_headlines(playwright, request: NytimesRequest) -> NytimesResult
+def search_nytimes_articles(page: Page, request: NYTimesSearchRequest) -> NYTimesSearchResult

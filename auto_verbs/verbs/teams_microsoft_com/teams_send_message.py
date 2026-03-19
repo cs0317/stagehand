@@ -9,7 +9,7 @@ Note: This script was generated using AI-driven discovery patterns
 
 import re
 import os
-from playwright.sync_api import Playwright, sync_playwright, expect
+from playwright.sync_api import Page, sync_playwright, expect
 
 import sys as _sys
 import os as _os
@@ -32,28 +32,11 @@ class TeamsMessageResult:
 
 
 
-def send_teams_message(playwright, request: TeamsMessageRequest) -> TeamsMessageResult:
+def send_teams_message(page: Page, request: TeamsMessageRequest) -> TeamsMessageResult:
     """
     Send a message to a recipient in Microsoft Teams.
     Returns True if the message was successfully sent, False otherwise.
     """
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
-    )
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport=None,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
-
     success = False
 
     try:
@@ -132,21 +115,34 @@ def send_teams_message(playwright, request: TeamsMessageRequest) -> TeamsMessage
     except Exception as e:
         print(f"Error sending Teams message: {e}")
         success = False
-    finally:
-        try:
-            context.close()
-        except Exception:
-            pass
 
     return TeamsMessageResult(recipient=request.recipient, message=request.message, success=success)
 
 
-def test_send_teams_message():
-    from playwright.sync_api import sync_playwright
+def test_send_teams_message() -> None:
     request = TeamsMessageRequest(recipient="johndoe@contoso.com", message="Hello John")
-    with sync_playwright() as pl:
-        result = send_teams_message(pl, request)
-    print(f"\nMessage sent: {result.success}")
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = send_teams_message(page, request)
+            print(f"\nMessage sent: {result.success}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":

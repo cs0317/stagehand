@@ -19,4 +19,4 @@ class UberEatsSearchResult:
     cuisine: str
     restaurants: list[UberEatsRestaurant]
 
-def search_ubereats_restaurants(playwright, request: UberEatsSearchRequest) -> UberEatsSearchResult
+def search_ubereats_restaurants(page: Page, request: UberEatsSearchRequest) -> UberEatsSearchResult
