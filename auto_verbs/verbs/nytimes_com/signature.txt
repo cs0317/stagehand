@@ -1,9 +1,7 @@
-# Search "artificial intelligence" → sort Newest → extract top 5 articles.
-
 @dataclass(frozen=True)
 class NYTimesSearchRequest:
-    query: str
-    max_results: int
+    query: str = "artificial intelligence"
+    max_results: int = 5
 
 @dataclass(frozen=True)
 class NYTimesArticle:
@@ -14,6 +12,6 @@ class NYTimesArticle:
 @dataclass(frozen=True)
 class NYTimesSearchResult:
     query: str
-    articles: list[NYTimesArticle]
+    articles: list
 
 def search_nytimes_articles(page: Page, request: NYTimesSearchRequest) -> NYTimesSearchResult

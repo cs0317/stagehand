@@ -1,9 +1,7 @@
-# Search for symptoms and extract conditions.
-
 @dataclass(frozen=True)
 class WebMDSearchRequest:
-    symptom: str
-    max_results: int
+    symptom: str = "headache"
+    max_results: int = 5
 
 @dataclass(frozen=True)
 class WebMDCondition:
@@ -13,6 +11,6 @@ class WebMDCondition:
 @dataclass(frozen=True)
 class WebMDSearchResult:
     symptom: str
-    conditions: list[WebMDCondition]
+    conditions: list
 
 def search_webmd_conditions(page: Page, request: WebMDSearchRequest) -> WebMDSearchResult

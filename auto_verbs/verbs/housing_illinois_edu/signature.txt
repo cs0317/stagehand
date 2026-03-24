@@ -6,11 +6,7 @@
 @dataclass(frozen=True)
 class HousingSearchRequest:
     """Parameters for the housing cost search."""
-    meal_plan: str          # Full meal-plan row label. One of:
-                            #   "Room & 12 Classic Meals + 15 Dining Dollars"
-                            #   "Room & 10 Classic Meals + 45 Dining Dollars"
-                            #   "Room & All Dining Dollars (275)"
-                            #   "Room & All Classic Meals"
+    meal_plan: str          # Full meal-plan row label, e.g. "Room & 12 Classic Meals + 15 Dining Dollars"
     room_type: str          # Column header to match, e.g. "Single", "Double", "Triple"
     price_min: int          # Lower bound of price filter (exclusive)
     price_max: int          # Upper bound of price filter (exclusive)

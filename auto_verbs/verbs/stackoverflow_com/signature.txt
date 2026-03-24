@@ -1,9 +1,7 @@
-# Search and extract top answers.
-
 @dataclass(frozen=True)
 class StackOverflowSearchRequest:
-    query: str
-    max_results: int
+    query: str = "how to parse JSON in Python"
+    max_results: int = 5
 
 @dataclass(frozen=True)
 class StackOverflowAnswer:
@@ -15,6 +13,6 @@ class StackOverflowAnswer:
 @dataclass(frozen=True)
 class StackOverflowSearchResult:
     query: str
-    answers: list[StackOverflowAnswer]
+    answers: list
 
-def search_stackoverflow(request: StackOverflowSearchRequest) -> StackOverflowSearchResult
+def search_stackoverflow_api(query: str, max_results: int = 5) -> list

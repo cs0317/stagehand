@@ -1,9 +1,7 @@
-# Searches Walmart for products matching a query and returns up to max_results listings.
-
 @dataclass(frozen=True)
 class WalmartSearchRequest:
-    search_query: str
-    max_results: int
+    search_query: str = "wireless earbuds"
+    max_results: int = 5
 
 @dataclass(frozen=True)
 class WalmartProduct:
@@ -14,6 +12,6 @@ class WalmartProduct:
 @dataclass(frozen=True)
 class WalmartSearchResult:
     search_query: str
-    products: list[WalmartProduct]
+    products: list
 
 def search_walmart_products(page: Page, request: WalmartSearchRequest) -> WalmartSearchResult

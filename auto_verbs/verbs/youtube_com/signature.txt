@@ -1,9 +1,7 @@
-# Searches YouTube for videos matching a query and returns the top max_results results.
-
 @dataclass(frozen=True)
 class YouTubeSearchRequest:
-    search_query: str
-    max_results: int
+    search_query: str = "anchorage museums"
+    max_results: int = 5
 
 @dataclass(frozen=True)
 class YouTubeVideo:
@@ -14,6 +12,6 @@ class YouTubeVideo:
 @dataclass(frozen=True)
 class YouTubeSearchResult:
     search_query: str
-    videos: list[YouTubeVideo]
+    videos: list
 
 def search_youtube_videos(page: Page, request: YouTubeSearchRequest) -> YouTubeSearchResult

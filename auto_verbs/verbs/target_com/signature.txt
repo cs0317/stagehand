@@ -1,9 +1,7 @@
-# Searches Target for products matching a query and returns up to max_results listings.
-
 @dataclass(frozen=True)
 class TargetSearchRequest:
-    search_query: str
-    max_results: int
+    search_query: str = "coffee maker"
+    max_results: int = 5
 
 @dataclass(frozen=True)
 class TargetProduct:
@@ -14,6 +12,6 @@ class TargetProduct:
 @dataclass(frozen=True)
 class TargetSearchResult:
     search_query: str
-    products: list[TargetProduct]
+    products: list
 
 def search_target_products(page: Page, request: TargetSearchRequest) -> TargetSearchResult

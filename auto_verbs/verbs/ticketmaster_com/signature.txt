@@ -1,22 +1,18 @@
-# Searches Ticketmaster for events matching a query and returns up to max_results listings.
-
 @dataclass(frozen=True)
 class TicketmasterSearchRequest:
-    search_query: str
-    location: str
-    max_results: int
+    location: str = "Los Angeles"
+    max_results: int = 5
 
 @dataclass(frozen=True)
 class TicketmasterEvent:
     name: str
-    date: str
     venue: str
+    datetime: str
     price: str
 
 @dataclass(frozen=True)
 class TicketmasterSearchResult:
-    search_query: str
     location: str
-    events: list[TicketmasterEvent]
+    events: list
 
 def search_ticketmaster_events(page: Page, request: TicketmasterSearchRequest) -> TicketmasterSearchResult

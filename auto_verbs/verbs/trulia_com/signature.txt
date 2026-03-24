@@ -1,10 +1,8 @@
-# Searches Trulia for rental properties in a location and returns up to max_results listings.
-
 @dataclass(frozen=True)
 class TruliaSearchRequest:
     location: str
-    min_beds: int
-    max_results: int
+    min_beds: int = 0
+    max_results: int = 5
 
 @dataclass(frozen=True)
 class TruliaListing:
@@ -16,6 +14,6 @@ class TruliaListing:
 @dataclass(frozen=True)
 class TruliaSearchResult:
     location: str
-    listings: list[TruliaListing]
+    listings: list
 
 def search_trulia_homes(page: Page, request: TruliaSearchRequest) -> TruliaSearchResult

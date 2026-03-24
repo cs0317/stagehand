@@ -1,9 +1,7 @@
-# Search for "jazz playlist".
-
 @dataclass(frozen=True)
 class SpotifySearchRequest:
-    query: str
-    max_results: int
+    query: str = "jazz playlist"
+    max_results: int = 5
 
 @dataclass(frozen=True)
 class SpotifyPlaylist:
@@ -13,6 +11,6 @@ class SpotifyPlaylist:
 @dataclass(frozen=True)
 class SpotifySearchResult:
     query: str
-    playlists: list[SpotifyPlaylist]
+    playlists: list
 
 def search_spotify_playlists(page: Page, request: SpotifySearchRequest) -> SpotifySearchResult

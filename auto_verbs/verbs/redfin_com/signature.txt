@@ -1,5 +1,3 @@
-# Searches Redfin for homes for sale in a location and returns up to max_results listings.
-
 @dataclass(frozen=True)
 class RedfinSearchRequest:
     location: str

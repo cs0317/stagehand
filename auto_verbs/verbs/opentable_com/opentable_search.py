@@ -10,7 +10,7 @@ from playwright.sync_api import Page, sync_playwright
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, launch_chrome, wait_for_cdp_ws, find_chrome_executable
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
 
 from dataclasses import dataclass
 from dateutil.relativedelta import relativedelta
@@ -47,8 +47,9 @@ def search_opentable_restaurants(page: Page, request: OpentableSearchRequest) ->
         dt = date.today() + timedelta(days=60)
         d_str = dt.strftime("%Y-%m-%d")
 
-        print(f"STEP 1: Navigate to OpenTable (Seattle, {d_str}, party 2, 7PM)...")
-        url = f"https://www.opentable.com/s?dateTime={d_str}T19%3A00%3A00&covers=2&metroId=4&regionIds=232&term=Seattle"
+        print(f"STEP 1: Navigate to OpenTable ({request.location}, {d_str}, party {request.covers}, 7PM)...")
+        from urllib.parse import quote_plus
+        url = f"https://www.opentable.com/s?dateTime={d_str}T19%3A00%3A00&covers={request.covers}&term={quote_plus(request.location)}"
         page.goto(url, wait_until="domcontentloaded", timeout=30000)
         page.wait_for_timeout(8000)
 
@@ -195,38 +196,11 @@ def search_opentable_restaurants(page: Page, request: OpentableSearchRequest) ->
 
 def test_opentable_restaurants():
     from playwright.sync_api import sync_playwright
-    request = OpentableSearchRequest(location="Seattle", covers=2, max_results=5)
+    request = OpentableSearchRequest(location="Urbana, IL", covers=2, max_results=5)
     port = get_free_port()
-    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
-    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
-    chrome_proc = subprocess.Popen(
-        [
-            chrome,
-            f"--remote-debugging-port={port}",
-            f"--user-data-dir={profile_dir}",
-            "--remote-allow-origins=*",
-            "--no-first-run",
-            "--no-default-browser-check",
-            "--disable-blink-features=AutomationControlled",
-            "--window-size=1280,987",
-            "about:blank",
-        ],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    )
-    ws_url = None
-    deadline = time.time() + 15
-    while time.time() < deadline:
-        try:
-            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
-            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
-            if ws_url:
-                break
-        except Exception:
-            pass
-        time.sleep(0.4)
-    if not ws_url:
-        raise TimeoutError("Chrome CDP not ready")
+    profile_dir = get_temp_profile_dir("opentable")
+    chrome_proc = launch_chrome(profile_dir, port)
+    ws_url = wait_for_cdp_ws(port)
     with sync_playwright() as pl:
         browser = pl.chromium.connect_over_cdp(ws_url)
         context = browser.contexts[0]
@@ -234,11 +208,12 @@ def test_opentable_restaurants():
         try:
             result = search_opentable_restaurants(page, request)
         finally:
+            browser.close()
             chrome_proc.terminate()
             shutil.rmtree(profile_dir, ignore_errors=True)
     print(f"\nTotal restaurants: {len(result.restaurants)}")
     for i, r in enumerate(result.restaurants, 1):
-        print(f"  {i}. {r.name}  {r.cuisine}  {r.rating}")
+        print(f"  {i}. {r.name}  |  {r.cuisine}  |  {r.rating}")
 
 
 if __name__ == "__main__":

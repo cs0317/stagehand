@@ -1,22 +1,20 @@
-# Searches UberEats for restaurants in a location and returns up to max_results options.
-
 @dataclass(frozen=True)
 class UberEatsSearchRequest:
-    address: str
-    cuisine: str
-    max_results: int
+    address: str = "Seattle, WA 98101"
+    query: str = "sushi"
+    max_results: int = 5
 
 @dataclass(frozen=True)
 class UberEatsRestaurant:
     name: str
     rating: str
     delivery_fee: str
-    delivery_time: str
+    est_time: str
 
 @dataclass(frozen=True)
 class UberEatsSearchResult:
     address: str
-    cuisine: str
-    restaurants: list[UberEatsRestaurant]
+    query: str
+    restaurants: list
 
 def search_ubereats_restaurants(page: Page, request: UberEatsSearchRequest) -> UberEatsSearchResult

@@ -1,18 +1,19 @@
+# Search Google Maps for nearby businesses, click into each result card,
+# and extract name, address, review score, phone, and website URL.
+
 @dataclass(frozen=True)
 class NearbySearchRequest:
-    query: str          # search term, e.g. "dealerships"
-    location: str       # location context, e.g. "urbana champaign"
-    max_results: int = 5  # maximum number of businesses to return
-
+    query: str
+    location: str
+    max_results: int = 5
 
 @dataclass(frozen=True)
 class BusinessDetail:
-    name: str       # business name
-    address: str    # street address
-    rating: str     # star rating, e.g. "4.5"
-    phone: str      # phone number
-    website: str    # website URL
-
+    name: str
+    address: str
+    rating: str
+    phone: str
+    website: str
 
 @dataclass(frozen=True)
 class NearbySearchResult:
@@ -20,7 +21,4 @@ class NearbySearchResult:
     location: str
     businesses: List[BusinessDetail]
 
-
-# Search Google Maps for nearby businesses, click into each result card,
-# and extract name, address, review score, phone, and website URL.
-def search_nearby(page: Page, request: NearbySearchRequest) -> NearbySearchResult:
+def search_nearby(page: Page, request: NearbySearchRequest) -> NearbySearchResult

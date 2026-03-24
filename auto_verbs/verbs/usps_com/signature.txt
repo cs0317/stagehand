@@ -1,5 +1,3 @@
-# Package Tracking.
-
 @dataclass(frozen=True)
 class UspsTrackingRequest:
     tracking_number: str

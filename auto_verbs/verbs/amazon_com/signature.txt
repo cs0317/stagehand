@@ -1,9 +1,7 @@
-# Searches Amazon for products matching a query, sorted by customer review rank, and returns up to max_results results.
-
 @dataclass(frozen=True)
 class AmazonSearchRequest:
-    query: str
-    max_results: int
+    query: str = "travel adapter worldwide"
+    max_results: int = 5
 
 @dataclass(frozen=True)
 class AmazonProduct:
@@ -14,6 +12,6 @@ class AmazonProduct:
 @dataclass(frozen=True)
 class AmazonSearchResult:
     query: str
-    products: list[AmazonProduct]
+    products: list
 
 def search_amazon_products(page: Page, request: AmazonSearchRequest) -> AmazonSearchResult

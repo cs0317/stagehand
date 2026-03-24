@@ -1,5 +1,3 @@
-# Sends a Microsoft Teams message to a recipient and returns success status.
-
 @dataclass(frozen=True)
 class TeamsMessageRequest:
     recipient: str

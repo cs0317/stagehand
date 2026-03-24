@@ -1,10 +1,8 @@
-# Searches Uber for available ride options between a pickup and dropoff location, returning up to max_results estimates.
-
 @dataclass(frozen=True)
 class UberRideSearchRequest:
-    pickup: str
-    dropoff: str
-    max_results: int
+    pickup: str = "Seattle-Tacoma International Airport"
+    dropoff: str = "Downtown Seattle"
+    max_results: int = 5
 
 @dataclass(frozen=True)
 class UberRideEstimate:
@@ -15,6 +13,6 @@ class UberRideEstimate:
 class UberRideSearchResult:
     pickup: str
     dropoff: str
-    estimates: list[UberRideEstimate]
+    estimates: list
 
 def search_uber_rides(page: Page, request: UberRideSearchRequest) -> UberRideSearchResult

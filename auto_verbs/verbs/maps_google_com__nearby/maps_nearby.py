@@ -49,11 +49,19 @@ def search_nearby(page: Page, request: NearbySearchRequest) -> NearbySearchResul
         encoded = search_text.replace(" ", "+")
         page.goto(f"https://www.google.com/maps/search/{encoded}/", wait_until="domcontentloaded", timeout=30000)
 
-        # Wait for the results feed to appear (instead of fixed sleep)
+        # Wait for either the results feed OR a direct place page (address button)
+        # Use whichever appears first to avoid long timeouts for single-business queries.
+        feed_locator = page.locator("[role='feed']")
+        place_locator = page.locator("button[data-item-id='address']")
+        has_feed = False
         try:
-            page.locator("[role='feed']").first.wait_for(state="attached", timeout=8000)
+            page.wait_for_selector(
+                "[role='feed'], button[data-item-id='address']",
+                timeout=8000,
+            )
+            has_feed = feed_locator.first.is_visible(timeout=200)
         except Exception:
-            page.wait_for_timeout(2000)
+            pass
         print(f"  Loaded: {page.url}")
 
         # Quick consent popup check (200ms timeout each – fast fail)
@@ -67,14 +75,15 @@ def search_nearby(page: Page, request: NearbySearchRequest) -> NearbySearchResul
             except Exception:
                 pass
 
-        # Scroll the feed to load more cards
-        try:
-            feed = page.locator("[role='feed']").first
-            for _ in range(3):
-                feed.evaluate("el => el.scrollTop = el.scrollHeight")
-                page.wait_for_timeout(1000)
-        except Exception:
-            pass
+        # Scroll the feed to load more cards (only if a feed is present)
+        if has_feed:
+            try:
+                feed = feed_locator.first
+                for _ in range(3):
+                    feed.evaluate("el => el.scrollTop = el.scrollHeight")
+                    page.wait_for_timeout(1000)
+            except Exception:
+                pass
 
         # Click each card in the sidebar list, extract, then click the next card directly
         # Skip sponsored cards entirely
@@ -109,6 +118,83 @@ def search_nearby(page: Page, request: NearbySearchRequest) -> NearbySearchResul
                 seen_hrefs.add(base_href)
                 unique_indices.append(idx)
         print(f"  Found {len(unique_indices)} result cards (excluding sponsored)")
+
+        # Fallback: if Google Maps jumped directly to a place page (no sidebar cards)
+        if not unique_indices:
+            print("  No result cards found — trying direct place-page extraction...")
+            try:
+                page.locator("button[data-item-id='address']").first.wait_for(state='attached', timeout=4000)
+            except Exception:
+                page.wait_for_timeout(1500)
+
+            detail = page.evaluate(r"""() => {
+                const result = {name: 'N/A', address: 'N/A', rating: 'N/A', phone: 'N/A', website: 'N/A'};
+
+                const headings = document.querySelectorAll('h1');
+                for (const h of headings) {
+                    const t = h.innerText.trim();
+                    if (t && t !== 'Results' && t.length > 1
+                        && !/^sponsored/i.test(t)) {
+                        result.name = t;
+                        break;
+                    }
+                }
+                if (result.name === 'N/A') {
+                    const h2s = document.querySelectorAll('h2');
+                    for (const h of h2s) {
+                        const t = h.innerText.trim();
+                        if (t && t !== 'Results' && !/^sponsored/i.test(t) && t.length > 1) {
+                            result.name = t;
+                            break;
+                        }
+                    }
+                }
+
+                const stars = document.querySelectorAll("[role='img'][aria-label*='star']");
+                for (const s of stars) {
+                    const label = s.getAttribute('aria-label') || '';
+                    const m = label.match(/([\d.]+)/);
+                    if (m) { result.rating = m[1]; break; }
+                }
+
+                const addrEl = document.querySelector("button[data-item-id='address']");
+                if (addrEl) {
+                    const lines = addrEl.innerText.split('\\n').map(l => l.trim()).filter(Boolean);
+                    if (lines.length) result.address = lines[lines.length - 1];
+                }
+
+                const phoneEl = document.querySelector("button[data-item-id*='phone']");
+                if (phoneEl) {
+                    const t = phoneEl.innerText.trim();
+                    const m = t.match(/[\(\d][\d\s\-\(\)\+]{6,}/);
+                    if (m) result.phone = m[0].trim();
+                }
+
+                const siteEl = document.querySelector("a[data-item-id='authority']");
+                if (siteEl) {
+                    const href = siteEl.getAttribute('href') || '';
+                    if (href && !href.includes('google.com')) result.website = href;
+                    else { const t = siteEl.innerText.trim(); if (t && t.includes('.')) result.website = t; }
+                }
+
+                return result;
+            }""")
+
+            if detail['name'] != 'N/A':
+                print(f"    Name:    {detail['name']}")
+                print(f"    Address: {detail['address']}")
+                print(f"    Rating:  {detail['rating']}")
+                print(f"    Phone:   {detail['phone']}")
+                print(f"    Website: {detail['website']}")
+                businesses.append(BusinessDetail(
+                    name=detail["name"],
+                    address=detail["address"],
+                    rating=detail["rating"],
+                    phone=detail["phone"],
+                    website=detail["website"],
+                ))
+            else:
+                print("  Could not extract business details from the page.")
 
         for count, card_idx in enumerate(unique_indices[:request.max_results + 5]):
             # Re-query cards (indices stay the same, but DOM refs may go stale)
@@ -248,5 +334,43 @@ def test_search_nearby() -> None:
             context.close()
 
 
+def test_papa_dels() -> None:
+    """Test: specific single-business query that may skip the sidebar feed."""
+    request = NearbySearchRequest(
+        query="papa del's pizza",
+        location="champaign il",
+        max_results=1,
+    )
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_nearby(page, request)
+            print(f"\n{'='*60}")
+            print(f"  Results: {len(result.businesses)} businesses")
+            print(f"  Query: {result.query} near {result.location}")
+            print(f"{'='*60}")
+            for i, b in enumerate(result.businesses, 1):
+                print(f"  {i}. {b.name}")
+                print(f"     {b.address} | Rating: {b.rating} | {b.phone} | {b.website}")
+        finally:
+            context.close()
+
+
 if __name__ == "__main__":
-    test_search_nearby()
+    #test_search_nearby()
+    test_papa_dels()

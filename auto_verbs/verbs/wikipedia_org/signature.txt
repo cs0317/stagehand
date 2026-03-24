@@ -1,8 +1,6 @@
-# Searches Wikipedia for an article and extracts its summary paragraph and key infobox facts.
-
 @dataclass(frozen=True)
 class WikipediaSearchRequest:
-    search_term: str
+    search_term: str = "Space Needle"
 
 @dataclass(frozen=True)
 class WikipediaInfoboxFacts:

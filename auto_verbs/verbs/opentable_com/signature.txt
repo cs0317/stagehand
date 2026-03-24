@@ -1,24 +1,19 @@
-# Searches OpenTable for available restaurants at a location and date and returns up to max_results.
-
 @dataclass(frozen=True)
 class OpentableSearchRequest:
-    location: str
-    date: date
-    party_size: int
-    max_results: int
+    location: str = "Seattle"
+    covers: int = 2
+    max_results: int = 5
 
 @dataclass(frozen=True)
 class OpentableRestaurant:
     name: str
     cuisine: str
     rating: str
-    available_times: list[str]
+    available_times: str
 
 @dataclass(frozen=True)
 class OpentableSearchResult:
     location: str
-    date: date
-    party_size: int
-    restaurants: list[OpentableRestaurant]
+    restaurants: list
 
 def search_opentable_restaurants(page: Page, request: OpentableSearchRequest) -> OpentableSearchResult

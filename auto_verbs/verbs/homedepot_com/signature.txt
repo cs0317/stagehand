@@ -1,9 +1,7 @@
-# Searches Home Depot for products matching a query, returning up to max_results results with name, price, and rating.
-
 @dataclass(frozen=True)
 class HomedepotSearchRequest:
     search_query: str
-    max_results: int
+    max_results: int = 5
 
 @dataclass(frozen=True)
 class HomedepotProduct:
@@ -14,6 +12,6 @@ class HomedepotProduct:
 @dataclass(frozen=True)
 class HomedepotSearchResult:
     search_query: str
-    products: list[HomedepotProduct]
+    products: list
 
 def search_homedepot_products(page: Page, request: HomedepotSearchRequest) -> HomedepotSearchResult
