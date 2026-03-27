@@ -12,6 +12,7 @@ import re, json, os, shutil, traceback
 import sys as _sys, os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
 from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
+from playwright_debugger import checkpoint
 from playwright.sync_api import Page, sync_playwright
 from dataclasses import dataclass
 import subprocess
@@ -61,6 +62,7 @@ def search_uber_rides(page: Page, request: UberRideSearchRequest) -> UberRideSea
 
     try:
         print("Loading Uber price estimate page...")
+        checkpoint("Navigate to Uber price estimate page")
         page.goto("https://www.uber.com/us/en/price-estimate/")
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(5000)
@@ -92,45 +94,56 @@ def search_uber_rides(page: Page, request: UberRideSearchRequest) -> UberRideSea
             try:
                 btn = page.locator(selector).first
                 if btn.is_visible(timeout=1500):
+                    checkpoint("Dismiss popup/cookie banner")
                     btn.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
                 pass
 
         # ── STEP 1: Enter pickup location ─────────────────────────────────
-        print(f'STEP 1: Pickup = "{pickup}"...')
+        print(f'STEP 1: Pickup = "{request.pickup}"...')
         pickup_input = page.locator('input[aria-label="Pickup location"]').first
         pickup_input.wait_for(state="visible", timeout=5000)
+        checkpoint("Click pickup input field")
         pickup_input.click()
         page.wait_for_timeout(500)
+        checkpoint("Select all text in pickup input")
         page.keyboard.press("Control+a")
+        checkpoint("Clear pickup input")
         page.keyboard.press("Backspace")
         page.wait_for_timeout(200)
-        pickup_input.type(pickup, delay=50)
+        checkpoint("Type pickup location")
+        pickup_input.type(request.pickup, delay=50)
         page.wait_for_timeout(3000)
 
         # Select first autocomplete suggestion from pickup dropdown
         pickup_dd = page.locator('[aria-label="pickup location dropdown"] li[role="option"]').first
         pickup_dd.wait_for(state="visible", timeout=5000)
+        checkpoint("Select pickup autocomplete suggestion")
         pickup_dd.click()
         print("  Selected pickup suggestion")
         page.wait_for_timeout(2000)
 
         # ── STEP 2: Enter dropoff location ────────────────────────────────
-        print(f'STEP 2: Dropoff = "{dropoff}"...')
+        print(f'STEP 2: Dropoff = "{request.dropoff}"...')
         dropoff_input = page.locator('input[aria-label="Dropoff location"]').first
         dropoff_input.wait_for(state="visible", timeout=5000)
+        checkpoint("Click dropoff input field")
         dropoff_input.click()
         page.wait_for_timeout(500)
+        checkpoint("Select all text in dropoff input")
         page.keyboard.press("Control+a")
+        checkpoint("Clear dropoff input")
         page.keyboard.press("Backspace")
         page.wait_for_timeout(200)
-        dropoff_input.type(dropoff, delay=50)
+        checkpoint("Type dropoff location")
+        dropoff_input.type(request.dropoff, delay=50)
         page.wait_for_timeout(3000)
 
         # Select autocomplete suggestion from destination dropdown
         dropoff_dd = page.locator('[aria-label="destination location dropdown"] li[role="option"]').first
         dropoff_dd.wait_for(state="visible", timeout=5000)
+        checkpoint("Select dropoff autocomplete suggestion")
         dropoff_dd.click()
         print("  Selected dropoff suggestion")
         page.wait_for_timeout(2000)
@@ -139,6 +152,7 @@ def search_uber_rides(page: Page, request: UberRideSearchRequest) -> UberRideSea
         print("STEP 3: Get price estimate...")
         see_prices = page.locator('a[aria-label="See prices"]').first
         see_prices.wait_for(state="visible", timeout=5000)
+        checkpoint("Click See prices button")
         see_prices.click()
         print("  Clicked 'See prices'")
         page.wait_for_timeout(8000)
@@ -226,50 +240,32 @@ def test_uber_rides():
         dropoff="Downtown Seattle",
         max_results=5,
     )
-    port = get_free_port()
-    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
-    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
-    chrome_proc = subprocess.Popen(
-        [
-            chrome,
-            f"--remote-debugging-port={port}",
-            f"--user-data-dir={profile_dir}",
-            "--remote-allow-origins=*",
-            "--no-first-run",
-            "--no-default-browser-check",
-            "--disable-blink-features=AutomationControlled",
-            "--window-size=1280,987",
-            "about:blank",
-        ],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default",
     )
-    ws_url = None
-    deadline = time.time() + 15
-    while time.time() < deadline:
-        try:
-            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
-            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
-            if ws_url:
-                break
-        except Exception:
-            pass
-        time.sleep(0.4)
-    if not ws_url:
-        raise TimeoutError("Chrome CDP not ready")
-    with sync_playwright() as pl:
-        browser = pl.chromium.connect_over_cdp(ws_url)
-        context = browser.contexts[0]
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
         page = context.pages[0] if context.pages else context.new_page()
         try:
             result = search_uber_rides(page, request)
         finally:
-            chrome_proc.terminate()
-            shutil.rmtree(profile_dir, ignore_errors=True)
+            context.close()
     print(f"\nTotal estimates: {len(result.estimates)}")
     for i, e in enumerate(result.estimates, 1):
         print(f"  {i}. {e.ride_type}  {e.price_range}")
 
 
 if __name__ == "__main__":
-    test_uber_rides()
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_uber_rides)

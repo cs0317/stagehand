@@ -3,10 +3,13 @@ Google Maps – Create Saved List
 Pure Playwright – no AI. Requires Google login in Chrome profile.
 """
 
-import os
+import os, sys
 from dataclasses import dataclass
 from typing import List
 from playwright.sync_api import Page, sync_playwright
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+from playwright_debugger import checkpoint
 
 
 @dataclass(frozen=True)
@@ -32,6 +35,7 @@ def create_saved_list(page: Page, request: CreateListRequest) -> CreateListResul
 
     try:
         print(f"Loading Google Maps ...")
+        checkpoint("Navigate to Google Maps")
         page.goto("https://www.google.com/maps", wait_until="domcontentloaded", timeout=30000)
         page.wait_for_timeout(2000)
         print(f"  Loaded: {page.url}")
@@ -41,6 +45,7 @@ def create_saved_list(page: Page, request: CreateListRequest) -> CreateListResul
             try:
                 btn = page.locator(sel).first
                 if btn.is_visible(timeout=200):
+                    checkpoint(f"Click consent button: {sel}")
                     btn.evaluate("el => el.click()")
                     page.wait_for_timeout(300)
             except Exception:
@@ -50,6 +55,7 @@ def create_saved_list(page: Page, request: CreateListRequest) -> CreateListResul
         print("\nSTEP 1: Click Saved ...")
         saved_btn = page.locator("button:has-text('Saved')").first
         saved_btn.wait_for(state="visible", timeout=10000)
+        checkpoint("Click Saved button")
         saved_btn.evaluate("el => el.click()")
         page.wait_for_timeout(2000)
         print("  Clicked Saved")
@@ -58,6 +64,7 @@ def create_saved_list(page: Page, request: CreateListRequest) -> CreateListResul
         print(f"\nSTEP 2: Create list '{request.list_name}' ...")
         new_list_btn = page.locator("button:has-text('New list')").first
         new_list_btn.wait_for(state="visible", timeout=10000)
+        checkpoint("Click New list button")
         new_list_btn.evaluate("el => el.click()")
         page.wait_for_timeout(3000)
 
@@ -65,6 +72,7 @@ def create_saved_list(page: Page, request: CreateListRequest) -> CreateListResul
         try:
             dialog = page.locator("[role='dialog']")
             if dialog.is_visible(timeout=500):
+                checkpoint("Press Escape to dismiss dialog")
                 page.keyboard.press("Escape")
                 page.wait_for_timeout(500)
         except Exception:
@@ -73,11 +81,15 @@ def create_saved_list(page: Page, request: CreateListRequest) -> CreateListResul
         # Rename the list: clear the inline name input and type the new name
         name_input = page.locator("input.Tpthec.fontTitleLarge").first
         name_input.wait_for(state="visible", timeout=5000)
+        checkpoint("Click name input")
         name_input.click()
+        checkpoint("Clear name input")
         name_input.fill("")
+        checkpoint(f"Fill list name: {request.list_name}")
         name_input.fill(request.list_name)
         page.wait_for_timeout(500)
         # Click away to confirm the name
+        checkpoint("Click away to confirm list name")
         page.locator("h2.HUaNde").first.click()
         page.wait_for_timeout(500)
         print(f"  Renamed list to '{request.list_name}'")
@@ -91,22 +103,27 @@ def create_saved_list(page: Page, request: CreateListRequest) -> CreateListResul
             try:
                 if not add_place_input.is_visible(timeout=1000):
                     add_btn = page.locator("button[aria-label='Add a place']").first
+                    checkpoint("Click Add a place button")
                     add_btn.evaluate("el => el.click()")
                     page.wait_for_timeout(1000)
             except Exception:
                 add_btn = page.locator("button[aria-label='Add a place']").first
+                checkpoint("Click Add a place button (fallback)")
                 add_btn.evaluate("el => el.click()")
                 page.wait_for_timeout(1000)
 
             # Type the place name in the search input
             add_place_input = page.locator("input[aria-label='Search for a place to add']").first
+            checkpoint("Click place search input")
             add_place_input.click()
+            checkpoint(f"Fill place name: {place_name}")
             add_place_input.fill(place_name)
             page.wait_for_timeout(2000)
 
             # Select the first suggestion from the dropdown grid
             suggestion = page.locator("[role='grid'][aria-label='Suggestions'] [role='row'][data-suggestion-index='0']").first
             suggestion.wait_for(state="visible", timeout=5000)
+            checkpoint(f"Click suggestion for '{place_name}'")
             suggestion.evaluate("el => el.click()")
             page.wait_for_timeout(1500)
 
@@ -116,6 +133,7 @@ def create_saved_list(page: Page, request: CreateListRequest) -> CreateListResul
         # Click "Done" to finish
         done_btn = page.locator("button:has-text('Done')").first
         if done_btn.is_visible(timeout=2000):
+            checkpoint("Click Done button")
             done_btn.evaluate("el => el.click()")
             page.wait_for_timeout(1000)
         print("\n  Clicked Done")
@@ -169,4 +187,5 @@ def test_create_list() -> None:
 
 
 if __name__ == "__main__":
-    test_create_list()
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_create_list)
