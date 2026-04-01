@@ -2,29 +2,55 @@
 Lowe's – Search "refrigerator" → extract top 5 products with name, price, rating.
 Pure Playwright – no AI.
 """
+from datetime import date, timedelta
 import re, os, sys, traceback, shutil, tempfile
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
+from playwright_debugger import checkpoint
 
-MAX_RESULTS = 5
+from dataclasses import dataclass
+import subprocess
+import json
+import time
+from urllib.request import urlopen
 
 
-def run(playwright: Playwright) -> list:
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("lowes_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-    products = []
+@dataclass(frozen=True)
+class LowesSearchRequest:
+    search_query: str
+    max_results: int
+
+
+@dataclass(frozen=True)
+class LowesProduct:
+    name: str
+    price: str
+    rating: str
+
+
+@dataclass(frozen=True)
+class LowesSearchResult:
+    search_query: str
+    products: list[LowesProduct]
+
+
+# Searches Lowe's for products matching a query and returns up to max_results listings with name, price, and rating.
+def search_lowes_products(
+    page: Page,
+    request: LowesSearchRequest,
+) -> LowesSearchResult:
+    search_query = request.search_query
+    max_results = request.max_results
+    raw_results = []
+    raw_results = []
     try:
         # Navigate to main page first (avoid direct search URL block)
         print("STEP 1: Navigate to Lowe's homepage...")
+        checkpoint("Navigate to Lowe's homepage")
         page.goto("https://www.lowes.com", wait_until="domcontentloaded", timeout=30000)
-        page.wait_for_timeout(6000)
+        page.wait_for_timeout(2000)
 
         # Dismiss popups
         for sel in ["button:has-text('Accept')", "button:has-text('Close')",
@@ -33,6 +59,7 @@ def run(playwright: Playwright) -> list:
             try:
                 loc = page.locator(sel).first
                 if loc.is_visible(timeout=800):
+                    checkpoint("Dismiss popup")
                     loc.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
@@ -44,7 +71,7 @@ def run(playwright: Playwright) -> list:
             if "Access Denied" in body_check:
                 print("   ⚠ Homepage blocked. Lowe's bot detection is active.")
                 print("❌ ERROR: Cannot access Lowe's due to bot detection.")
-                return products
+                return raw_results
         except Exception:
             pass
 
@@ -63,15 +90,19 @@ def run(playwright: Playwright) -> list:
                 continue
 
         if search_box:
+            checkpoint("Click search box")
             search_box.evaluate("el => el.click()")
             page.wait_for_timeout(500)
+            checkpoint("Fill search query")
             search_box.fill("refrigerator")
             page.wait_for_timeout(500)
+            checkpoint("Press Enter to search")
             search_box.press("Enter")
             page.wait_for_load_state("domcontentloaded")
             page.wait_for_timeout(8000)
         else:
             print("   Could not find search box, trying direct category URL...")
+            checkpoint("Navigate to category URL fallback")
             page.goto("https://www.lowes.com/pl/Refrigerators/4294857981",
                        wait_until="domcontentloaded", timeout=30000)
             page.wait_for_timeout(8000)
@@ -79,6 +110,7 @@ def run(playwright: Playwright) -> list:
         # Scroll to load results
         for _ in range(4):
             try:
+                checkpoint("Scroll to load results")
                 page.evaluate("window.scrollBy(0, 800)")
                 page.wait_for_timeout(800)
             except Exception:
@@ -93,12 +125,13 @@ def run(playwright: Playwright) -> list:
                 print("   ⚠ Page returned 'Access Denied' — Lowe's bot detection triggered.")
                 print("   Retrying after wait...")
                 page.wait_for_timeout(5000)
+                checkpoint("Reload page after bot detection")
                 page.reload(wait_until="domcontentloaded")
                 page.wait_for_timeout(8000)
         except Exception:
             pass
 
-        print("STEP 3: Extract products...")
+        print("STEP 3: Extract raw_results...")
 
         # Strategy 1: product cards
         seen = set()
@@ -117,7 +150,7 @@ def run(playwright: Playwright) -> list:
                 break
 
         for card in cards:
-            if len(products) >= MAX_RESULTS:
+            if len(raw_results) >= request.max_results:
                 break
             try:
                 text = card.inner_text(timeout=2000).strip()
@@ -166,7 +199,7 @@ def run(playwright: Playwright) -> list:
 
                 if name and name.lower() not in seen:
                     seen.add(name.lower())
-                    products.append({
+                    raw_results.append({
                         "name": name,
                         "price": price or "N/A",
                         "rating": rating or "N/A",
@@ -175,12 +208,12 @@ def run(playwright: Playwright) -> list:
                 continue
 
         # Strategy 2: body text fallback
-        if not products:
+        if not raw_results:
             print("   Strategy 1 found 0 — trying body text...")
             body = page.inner_text("body")
             lines = [l.strip() for l in body.splitlines() if l.strip()]
             for i, ln in enumerate(lines):
-                if len(products) >= MAX_RESULTS:
+                if len(raw_results) >= request.max_results:
                     break
                 # Look for price on a line
                 pm = re.search(r'\$[\d,]+\.?\d*', ln)
@@ -192,34 +225,78 @@ def run(playwright: Playwright) -> list:
                             key = name.lower()
                             if key not in seen:
                                 seen.add(key)
-                                products.append({
+                                raw_results.append({
                                     "name": name,
                                     "price": pm.group(0),
                                     "rating": "N/A",
                                 })
                             break
 
-        if not products:
-            print("❌ ERROR: Extraction failed — no products found from the page.")
+        if not raw_results:
+            print("❌ ERROR: Extraction failed — no raw_results found from the page.")
 
-        print(f"\nDONE – Top {len(products)} Lowe's Refrigerators:")
-        for i, p in enumerate(products, 1):
+        print(f"\nDONE – Top {len(raw_results)} Lowe's Refrigerators:")
+        for i, p in enumerate(raw_results, 1):
             print(f"  {i}. {p['name']}")
             print(f"     Price: {p['price']}  |  Rating: {p['rating']}")
 
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
+    return LowesSearchResult(
+        search_query=search_query,
+        products=[LowesProduct(name=r["name"], price=r["price"], rating=r["rating"]) for r in raw_results],
+    )
+
+
+def test_lowes_products() -> None:
+    from playwright.sync_api import sync_playwright
+    request = LowesSearchRequest(search_query="refrigerator", max_results=5)
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
         try:
-            browser.close()
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
         except Exception:
             pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-    return products
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_lowes_products(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
+    assert result.search_query == request.search_query
+    assert len(result.products) <= request.max_results
+    print(f"\nTotal products found: {len(result.products)}")
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        run(playwright)
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_lowes_products)

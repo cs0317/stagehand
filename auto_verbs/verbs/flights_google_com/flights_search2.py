@@ -12,52 +12,76 @@ Step 6: Uses JS extraction to find flight number, itinerary, and price.
 """
 
 import re
+from dataclasses import dataclass
 import os
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from playwright_debugger import checkpoint, run_with_debugger
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
 import shutil
+import subprocess
+import tempfile
+import json
+import time
+from urllib.request import urlopen
 
 
-def compute_dates():
-    today = date.today()
-    departure = today + relativedelta(months=2)
-    ret = departure + timedelta(days=4)
-    return departure, ret
+@dataclass(frozen=True)
+class GoogleFlightSearchRequest:
+    origin: str
+    destination: str
+    departure_date: date
+    return_date: date
+    max_results: int
 
 
-def run(
-    playwright: Playwright,
-    origin: str = "Seattle",
-    destination: str = "Chicago",
-    max_results: int = 5,
-) -> list:
-    departure, return_date = compute_dates()
+@dataclass(frozen=True)
+class GoogleFlight:
+    flight_number: str
+    itinerary: str
+    price: str
+
+
+@dataclass(frozen=True)
+class GoogleFlightSearchResult:
+    origin: str
+    destination: str
+    departure_date: date
+    return_date: date
+    flights: list[GoogleFlight]
+
+
+# Searches Google Flights for round-trip flights between origin and destination
+# on specified dates, returning up to max_results options with flight number,
+# itinerary, and economy price.
+def search_google_flights(
+    page: Page,
+    request: GoogleFlightSearchRequest,
+) -> GoogleFlightSearchResult:
+    origin = request.origin
+    destination = request.destination
+    departure = request.departure_date
+    return_date = request.return_date
+    max_results = request.max_results
     dep_str = departure.strftime("%Y-%m-%d")
     ret_str = return_date.strftime("%Y-%m-%d")
     dep_display = departure.strftime("%m/%d/%Y")
     ret_display = return_date.strftime("%m/%d/%Y")
+    raw_results = []
 
     print(f"  {origin} → {destination}")
     print(f"  Departure: {dep_display}  Return: {ret_display}\n")
-
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("flights_google_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-    results = []
+    raw_results = []
 
     try:
         # ── Navigate ──────────────────────────────────────────────────────
         print("Loading Google Flights...")
+        checkpoint("Navigate to Google Flights")
         page.goto("https://www.google.com/travel/flights")
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(3000)
@@ -73,6 +97,7 @@ def run(
             try:
                 btn = page.locator(selector).first
                 if btn.is_visible(timeout=1500):
+                    checkpoint("Dismiss cookie/consent banner")
                     btn.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
@@ -99,8 +124,10 @@ def run(
                     'button:has-text("One way"), '
                     'button:has-text("Multi-city")'
                 ).first
+                checkpoint("Click trip type dropdown")
                 trip_btn.evaluate("el => el.click()")
                 page.wait_for_timeout(500)
+                checkpoint("Select Round Trip option")
                 page.locator('li:has-text("Round trip"), [data-value="1"]').first.evaluate("el => el.click()")
                 page.wait_for_timeout(500)
                 print("  Selected Round Trip")
@@ -114,19 +141,24 @@ def run(
                 'div[aria-label*="Where from" i], '
                 'input[aria-label*="Where from" i]'
             ).first
+            checkpoint("Click origin input field")
             origin_el.evaluate("el => el.click()")
             page.wait_for_timeout(500)
+            checkpoint("Select all text in origin field")
             page.keyboard.press("Control+a")
             page.wait_for_timeout(200)
+            checkpoint(f'Type origin "{origin}"')
             page.keyboard.type(origin, delay=50)
             print(f'  Typed "{origin}"')
             page.wait_for_timeout(1500)
             try:
                 suggestion = page.locator('ul[role="listbox"] li').first
                 suggestion.wait_for(state="visible", timeout=5000)
+                checkpoint("Click origin suggestion from dropdown")
                 suggestion.evaluate("el => el.click()")
                 print("  Selected origin suggestion")
             except Exception:
+                checkpoint("Press Enter to confirm origin")
                 page.keyboard.press("Enter")
                 print("  Pressed Enter (no dropdown)")
             page.wait_for_timeout(1000)
@@ -148,6 +180,7 @@ def run(
             if dest_focused:
                 print("  Destination auto-focused after origin")
             else:
+                checkpoint("Click destination input via JS")
                 clicked = page.evaluate('''() => {
                     const inputs = document.querySelectorAll('input[role="combobox"]');
                     for (const inp of inputs) {
@@ -167,22 +200,27 @@ def run(
                 if clicked:
                     print("  Clicked destination input via JS")
                 else:
+                    checkpoint("Force-click destination input")
                     page.locator(
                         'input[aria-label*="Where to" i]'
                     ).first.evaluate("el => el.click()")
                     print("  Force-clicked destination input")
             page.wait_for_timeout(500)
+            checkpoint("Select all text in destination field")
             page.keyboard.press("Control+a")
             page.wait_for_timeout(200)
+            checkpoint(f'Type destination "{destination}"')
             page.keyboard.type(destination, delay=50)
             print(f'  Typed "{destination}"')
             page.wait_for_timeout(1500)
             try:
                 suggestion = page.locator('ul[role="listbox"] li').first
                 suggestion.wait_for(state="visible", timeout=5000)
+                checkpoint("Click destination suggestion from dropdown")
                 suggestion.evaluate("el => el.click()")
                 print("  Selected destination suggestion")
             except Exception:
+                checkpoint("Press Enter to confirm destination")
                 page.keyboard.press("Enter")
                 print("  Pressed Enter (no dropdown)")
             page.wait_for_timeout(1000)
@@ -199,6 +237,7 @@ def run(
             try:
                 el = page.locator(sel).first
                 if el.is_visible(timeout=2000):
+                    checkpoint("Open departure date calendar")
                     el.evaluate("el => el.click()")
                     date_opened = True
                     print("  Opened calendar via departure field")
@@ -218,6 +257,7 @@ def run(
                 }''') or ''
                 if dep_month_label in cal_text:
                     break
+                checkpoint("Click next month in calendar")
                 went = page.evaluate('''() => {
                     const d = document.querySelector('[role="dialog"]');
                     if (!d) return false;
@@ -236,6 +276,7 @@ def run(
 
             dep_day = departure.day
             dep_month_name = departure.strftime("%B")
+            checkpoint(f"Select departure day {dep_day}")
             dep_clicked = page.evaluate(f'''() => {{
                 const candidates = [];
                 const btns = document.querySelectorAll('[role="button"]');
@@ -277,6 +318,7 @@ def run(
                     }''') or ''
                     if ret_month_label in cal_text:
                         break
+                    checkpoint("Click next month for return date")
                     page.evaluate('''() => {
                         const btns = document.querySelectorAll('button');
                         for (const b of btns) {
@@ -288,6 +330,7 @@ def run(
 
             ret_day = return_date.day
             ret_month_name = return_date.strftime("%B")
+            checkpoint(f"Select return day {ret_day}")
             ret_clicked = page.evaluate(f'''() => {{
                 const candidates = [];
                 const btns = document.querySelectorAll('[role="button"]');
@@ -321,6 +364,7 @@ def run(
                 print(f"  WARNING: Could not click return day {ret_day} ({ret_clicked})")
             page.wait_for_timeout(500)
 
+        checkpoint("Click Done button on calendar")
         done_result = page.evaluate('''() => {
             const btns = document.querySelectorAll('button');
             for (const b of btns) {
@@ -337,6 +381,7 @@ def run(
 
         # ── STEP 5: Search ────────────────────────────────────────────────
         print("STEP 5: Searching for flights...")
+        checkpoint("Click Search button")
         search_result = page.evaluate('''() => {
             const btns = document.querySelectorAll('button');
             for (const b of btns) {
@@ -361,6 +406,7 @@ def run(
             print("  Results loaded (price found)")
         except Exception:
             print("  Timeout waiting for price — continuing anyway")
+        checkpoint("Scroll down to see flight results")
         page.evaluate("window.scrollBy(0, 500)")
         page.wait_for_timeout(2000)
         print(f"  URL: {page.url}")
@@ -381,7 +427,7 @@ def run(
         # 6a: Extract basic info (airline, itinerary, price) from summary cards
         print("  Extracting basic flight info from result cards...")
         basic_flights = page.evaluate(r'''() => {
-            const results = [];
+            const raw_results = [];
             const items = document.querySelectorAll('li');
             for (const item of items) {
                 const text = item.innerText || '';
@@ -407,14 +453,14 @@ def run(
                 if (durMatch && !itinerary.includes(durMatch[0])) {
                     itinerary += ' | ' + durMatch[0];
                 }
-                results.push({
+                raw_results.push({
                     airline: airline,
                     itinerary: itinerary || lines.slice(0, 3).join(' | '),
                     price: priceMatch[0],
                 });
-                if (results.length >= 10) break;
+                if (raw_results.length >= 10) break;
             }
-            return results;
+            return raw_results;
         }''')
         print(f"  Found {len(basic_flights)} flight cards")
 
@@ -487,9 +533,11 @@ def run(
                     xpath = toggle_info['xpath']
                     print(f"    Clicking toggle: xpath={xpath}")
                     try:
+                        checkpoint(f"Expand flight card {i+1}")
                         page.locator(f"xpath={xpath}").evaluate("el => el.click()")
                     except Exception as click_err:
                         print(f"    locator.click failed: {click_err}, trying JS click...")
+                        checkpoint(f"Expand flight card {i+1} via JS fallback")
                         page.evaluate(r'''(xp) => {
                             const r = document.evaluate(xp, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
                             if (r.singleNodeValue) r.singleNodeValue.click();
@@ -507,8 +555,10 @@ def run(
                 if delta <= 0 and toggle_info and toggle_info.get('hasToggle'):
                     print("    Didn't expand, clicking toggle again...")
                     try:
+                        checkpoint(f"Retry expanding flight card {i+1}")
                         page.locator(f"xpath={toggle_info['xpath']}").evaluate("el => el.click()")
                     except Exception:
+                        checkpoint(f"Retry expanding flight card {i+1} via JS fallback")
                         page.evaluate(r'''(xp) => {
                             const r = document.evaluate(xp, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
                             if (r.singleNodeValue) r.singleNodeValue.click();
@@ -560,7 +610,7 @@ def run(
 
                 print(f"    Flight number: {flight_num}")
 
-                results.append({
+                raw_results.append({
                     'flightNumber': flight_num,
                     'itinerary': f"{basic['airline']} · {basic['itinerary']}",
                     'price': basic['price'],
@@ -569,47 +619,107 @@ def run(
                 # Collapse the card (click same toggle again)
                 if toggle_info and toggle_info.get('hasToggle'):
                     try:
+                        checkpoint(f"Collapse flight card {i+1}")
                         page.locator(f"xpath={toggle_info['xpath']}").evaluate("el => el.click()")
                         page.wait_for_timeout(1500)
                     except Exception:
+                        checkpoint("Press Escape to close expanded card")
                         page.keyboard.press("Escape")
                         page.wait_for_timeout(1000)
                 else:
+                    checkpoint("Press Escape to close expanded card")
                     page.keyboard.press("Escape")
                     page.wait_for_timeout(1000)
 
             except Exception as card_err:
                 print(f"    Failed to expand card {i+1}: {card_err}")
-                results.append({
+                raw_results.append({
                     'flightNumber': 'N/A',
                     'itinerary': f"{basic['airline']} · {basic['itinerary']}",
                     'price': basic['price'],
                 })
 
-        # ── Print results ─────────────────────────────────────────────────
-        print(f"\nFound {len(results)} flights ({origin} → {destination}):")
+        # ── Print raw_results ─────────────────────────────────────────────────
+        print(f"\nFound {len(raw_results)} flights ({origin} → {destination}):")
         print(f"  Departure: {dep_display}  Return: {ret_display}\n")
-        for i, flight in enumerate(results, 1):
+        for i, flight in enumerate(raw_results, 1):
             print(f"  {i}. Flight: {flight['flightNumber']}")
             print(f"     {flight['itinerary']}")
             print(f"     Price: {flight['price']} (Economy)")
 
     except Exception as e:
         import traceback
+
+
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
+    return GoogleFlightSearchResult(
+        origin=origin,
+        destination=destination,
+        departure_date=request.departure_date,
+        return_date=request.return_date,
+        flights=[GoogleFlight(
+            flight_number=f["flightNumber"],
+            itinerary=f["itinerary"],
+            price=f["price"],
+        ) for f in raw_results],
+    )
+def test_search_google_flights() -> None:
+    from dateutil.relativedelta import relativedelta
+    from playwright.sync_api import sync_playwright
+    today = date.today()
+    departure = today + relativedelta(months=2)
+    request = GoogleFlightSearchRequest(
+        origin="Seattle",
+        destination="Chicago",
+        departure_date=departure,
+        return_date=departure + timedelta(days=4),
+        max_results=5,
+    )
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
         try:
-            browser.close()
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
         except Exception:
             pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-
-    return results
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_google_flights(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
+    assert result.origin == request.origin
+    assert len(result.flights) <= request.max_results
+    print(f"\nTotal flights found: {len(result.flights)}")
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        items = run(playwright)
-        print(f"\nTotal flights found: {len(items)}")
+    run_with_debugger(test_search_google_flights)

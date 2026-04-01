@@ -13,38 +13,52 @@ Uses Playwright's native locator API with the user's Chrome profile.
 import re
 import os
 import traceback
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import sync_playwright, Page
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
-import shutil
+from playwright_debugger import checkpoint
+
+from dataclasses import dataclass
+
+@dataclass(frozen=True)
+class BoaLocatorRequest:
+    location: str
+    max_results: int
+
+@dataclass(frozen=True)
+class BoaLocation:
+    name: str
+    address: str
+    distance: str
+
+@dataclass(frozen=True)
+class BoaLocatorResult:
+    location: str
+    locations: list[BoaLocation]
 
 
-def run(
-    playwright: Playwright,
-    location: str = "Redmond, WA 98052",
-    max_results: int = 5,
-) -> list:
+# Locates Bank of America branches and ATMs near a location, returning up to max_results results.
+def locate_boa_branches(
+    page: Page,
+    request: BoaLocatorRequest,
+) -> BoaLocatorResult:
+    location = request.location
+    max_results = request.max_results
+    raw_results = []
     print("=" * 59)
     print("  Bank of America – Branch & ATM Locator")
     print("=" * 59)
     print(f"  Location: {location}")
-    print(f"  Max results: {max_results}\n")
+    print(f"  Max raw_results: {max_results}\n")
 
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("bankofamerica_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-    results = []
+    raw_results = []
 
     try:
         # ── Navigate ──────────────────────────────────────────────────────
         print("Loading Bank of America Locator...")
+        checkpoint("Navigate to Bank of America Locator")
         page.goto("https://www.bankofamerica.com/locator/")
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(5000)
@@ -62,6 +76,7 @@ def run(
             try:
                 btn = page.locator(selector).first
                 if btn.is_visible(timeout=1500):
+                    checkpoint(f"Dismiss popup: {selector}")
                     btn.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
@@ -82,6 +97,7 @@ def run(
             # Fallback: find any visible text input inside the search form
             search_input = page.locator("form input[type='text']:visible").first
             search_input.wait_for(state="visible", timeout=5000)
+        checkpoint(f"Click and type location: {location}")
         search_input.evaluate("el => el.click()")
         page.keyboard.press("Control+a")
         page.keyboard.press("Backspace")
@@ -103,6 +119,7 @@ def run(
             try:
                 btn = page.locator(sel).first
                 if btn.is_visible(timeout=2000):
+                    checkpoint("Click Search button")
                     btn.evaluate("el => el.click()")
                     submitted = True
                     print("  Clicked Search button")
@@ -110,14 +127,15 @@ def run(
             except Exception:
                 pass
         if not submitted:
+            checkpoint("Press Enter to submit")
             page.keyboard.press("Enter")
             print("  Pressed Enter")
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(5000)
         print(f"  URL: {page.url}")
 
-        # ── STEP 3: Extract results ───────────────────────────────────────
-        print(f"STEP 3: Extract up to {max_results} results...")
+        # ── STEP 3: Extract raw_results ───────────────────────────────────────
+        print(f"STEP 3: Extract up to {max_results} raw_results...")
 
         # Wait for result cards to load
         page.wait_for_timeout(3000)
@@ -134,7 +152,7 @@ def run(
 
         seen_names = set()
         for i in range(count):
-            if len(results) >= max_results:
+            if len(raw_results) >= max_results:
                 break
             card = cards.nth(i)
             try:
@@ -179,7 +197,7 @@ def run(
                     continue
                 seen_names.add(name_key)
 
-                results.append({
+                raw_results.append({
                     "name": name,
                     "address": address,
                     "distance": distance,
@@ -188,12 +206,12 @@ def run(
                 continue
 
         # Fallback: regex-based extraction from full page text
-        if not results:
+        if not raw_results:
             print("  Card extraction failed, trying text fallback...")
             body_text = page.evaluate("document.body.innerText") or ""
             lines = [l.strip() for l in body_text.split("\n") if l.strip()]
             for i, line in enumerate(lines):
-                if len(results) >= max_results:
+                if len(raw_results) >= max_results:
                     break
                 dm = re.search(r"([\d.]+)\s*mi", line, re.IGNORECASE)
                 if dm and len(line) < 20:
@@ -206,15 +224,15 @@ def run(
                             address = candidate
                         elif len(candidate) > 3 and name == "N/A" and candidate not in ("Make my favorite",):
                             name = candidate
-                    results.append({
+                    raw_results.append({
                         "name": name,
                         "address": address,
                         "distance": dm.group(0),
                     })
 
-        # ── Print results ─────────────────────────────────────────────────
-        print(f"\nFound {len(results)} locations near '{location}':\n")
-        for i, loc in enumerate(results, 1):
+        # ── Print raw_results ─────────────────────────────────────────────────
+        print(f"\nFound {len(raw_results)} locations near '{location}':\n")
+        for i, loc in enumerate(raw_results, 1):
             print(f"  {i}. {loc['name']}")
             print(f"     Address:  {loc['address']}")
             print(f"     Distance: {loc['distance']}")
@@ -222,17 +240,39 @@ def run(
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
+
+    return BoaLocatorResult(
+        location=location,
+        locations=[BoaLocation(name=r["name"], address=r["address"], distance=r["distance"]) for r in raw_results],
+    )
+def test_locate_boa_branches() -> None:
+    request = BoaLocatorRequest(location="Redmond, WA 98052", max_results=5)
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
         try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-    return results
+            result = locate_boa_branches(page, request)
+            assert result.location == request.location
+            assert len(result.locations) <= request.max_results
+            print(f"\nTotal locations found: {len(result.locations)}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        items = run(playwright)
-        print(f"\nTotal locations: {len(items)}")
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_locate_boa_branches)

@@ -5,31 +5,69 @@ Pure Playwright – no AI.
 """
 import re, os, traceback
 from datetime import date, timedelta
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
+from playwright_debugger import checkpoint
 import shutil
 
-def run(playwright: Playwright) -> list:
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("kayak_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
+from dataclasses import dataclass
+from dateutil.relativedelta import relativedelta
+import subprocess
+import tempfile
+import json
+import time
+from urllib.request import urlopen
+
+
+@dataclass(frozen=True)
+class KayakFlightSearchRequest:
+    origin: str
+    destination: str
+    departure_date: date
+    return_date: date
+    max_results: int
+
+
+@dataclass(frozen=True)
+class KayakFlight:
+    airline: str
+    itinerary: str
+    price: str
+
+
+@dataclass(frozen=True)
+class KayakFlightSearchResult:
+    origin: str
+    destination: str
+    departure_date: date
+    return_date: date
+    flights: list[KayakFlight]
+
+
+# Searches Kayak for round-trip flights between origin and destination on given
+# dates, returning up to max_results options sorted by price.
+def search_kayak_flights(
+    page: Page,
+    request: KayakFlightSearchRequest,
+) -> KayakFlightSearchResult:
+    depart = request.departure_date
+    ret    = request.return_date
+    max_results = request.max_results
+    raw_results = []
     flights = []
     try:
-        depart = date.today() + timedelta(days=60)
-        ret = depart + timedelta(days=4)
+        depart = request.departure_date
+        ret = request.return_date
         d_str = depart.strftime("%Y-%m-%d")
         r_str = ret.strftime("%Y-%m-%d")
 
-        print(f"STEP 1: Navigate to Kayak (BOS→MIA, {d_str} to {r_str})...")
-        url = f"https://www.kayak.com/flights/BOS-MIA/{d_str}/{r_str}?sort=price_a"
+        print(f"STEP 1: Navigate to Kayak ({request.origin}→{request.destination}, {d_str} to {r_str})...")
+        url = f"https://www.kayak.com/flights/{request.origin}-{request.destination}/{d_str}/{r_str}?sort=price_a"
+        checkpoint("Navigate to Kayak flight search results")
         page.goto(url, wait_until="domcontentloaded", timeout=30000)
         page.wait_for_timeout(10000)
 
@@ -37,6 +75,7 @@ def run(playwright: Playwright) -> list:
             try:
                 loc = page.locator(sel).first
                 if loc.is_visible(timeout=800):
+                    checkpoint("Dismiss popup or overlay")
                     loc.evaluate("el => el.click()")
             except Exception:
                 pass
@@ -110,15 +149,72 @@ def run(playwright: Playwright) -> list:
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
+    return KayakFlightSearchResult(
+        origin=request.origin,
+        destination=request.destination,
+        departure_date=request.departure_date,
+        return_date=request.return_date,
+        flights=[KayakFlight(airline=f.get('airline','N/A'), itinerary=f.get('itinerary','N/A'), price=f.get('price','N/A')) for f in flights],
+    )
+
+
+def test_search_kayak_flights() -> None:
+    from dateutil.relativedelta import relativedelta
+    from playwright.sync_api import sync_playwright
+    today = date.today()
+    departure = today + relativedelta(months=2)
+    request = KayakFlightSearchRequest(
+        origin="BOS",
+        destination="MIA",
+        departure_date=departure,
+        return_date=departure + timedelta(days=7),
+        max_results=5,
+    )
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
         try:
-            browser.close()
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
         except Exception:
             pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-    return flights
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_kayak_flights(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
+    assert result.origin == request.origin
+    assert len(result.flights) <= request.max_results
+    print(f"\nTotal flights found: {len(result.flights)}")
+
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        run(playwright)
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_search_kayak_flights)

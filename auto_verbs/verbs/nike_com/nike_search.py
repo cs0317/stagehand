@@ -4,28 +4,49 @@ Sort: Price Low-High | Generated: 2026-02-28T06:46:07.994Z
 Pure Playwright – no AI.
 """
 import re, os, traceback
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
+from playwright_debugger import checkpoint
 import shutil
 
-QUERY = "running shoes men"
-MAX_RESULTS = 5
+from dataclasses import dataclass
+import subprocess
+import tempfile
+import json
+import time
+from urllib.request import urlopen
 
-def run(playwright: Playwright) -> list:
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("nike_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
+
+# QUERY = "running shoes men"
+
+@dataclass(frozen=True)
+class NikeSearchRequest:
+    query: str = "running shoes men"
+    max_results: int = 5
+
+
+@dataclass(frozen=True)
+class NikeProduct:
+    name: str
+    price: str
+    colors: str
+
+
+@dataclass(frozen=True)
+class NikeSearchResult:
+    query: str
+    products: list
+
+
+def search_nike_products(page: Page, request: NikeSearchRequest) -> NikeSearchResult:
     results = []
     try:
         print("STEP 1: Navigate to Nike search...")
+        checkpoint("Navigate to Nike search results for running shoes men")
         page.goto("https://www.nike.com/w?q=running+shoes+men&sort=price", wait_until="domcontentloaded", timeout=30000)
         page.wait_for_timeout(5000)
 
@@ -34,6 +55,7 @@ def run(playwright: Playwright) -> list:
             try:
                 loc = page.locator(sel).first
                 if loc.is_visible(timeout=800):
+                    checkpoint(f"Click cookie/popup dismiss button: {sel}")
                     loc.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
@@ -41,6 +63,7 @@ def run(playwright: Playwright) -> list:
 
         # Scroll to load products
         for _ in range(3):
+            checkpoint("Scroll down to load more products")
             page.evaluate("window.scrollBy(0, 500)")
             page.wait_for_timeout(1000)
 
@@ -49,7 +72,7 @@ def run(playwright: Playwright) -> list:
         print(f"   Found {len(cards)} product cards")
 
         for card in cards:
-            if len(results) >= MAX_RESULTS:
+            if len(results) >= request.max_results:
                 break
             try:
                 name = ""
@@ -89,15 +112,60 @@ def run(playwright: Playwright) -> list:
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
+    return NikeSearchResult(
+        query=request.query,
+        products=[NikeProduct(name=r['name'], price=r['price'], colors=r['colors']) for r in results],
+    )
+
+
+def test_nike_products():
+    from playwright.sync_api import sync_playwright
+    request = NikeSearchRequest(query="running shoes men", max_results=5)
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
         try:
-            browser.close()
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
         except Exception:
             pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-    return results
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
+    with sync_playwright() as pl:
+        browser = pl.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_nike_products(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
+    print(f"\nTotal products: {len(result.products)}")
+    for i, p in enumerate(result.products, 1):
+        print(f"  {i}. {p.name}  {p.price}")
+
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        run(playwright)
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_nike_products)

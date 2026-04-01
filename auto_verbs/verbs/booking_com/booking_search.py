@@ -11,52 +11,67 @@ Uses Playwright's native locator API with the user's Chrome profile.
 """
 
 import re
+from dataclasses import dataclass
 import os
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import sync_playwright, Page
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
-import shutil
+from playwright_debugger import checkpoint
 
 
-def compute_dates():
-    today = date.today()
-    checkin = today + relativedelta(months=2)
-    checkout = checkin + timedelta(days=2)
-    return checkin, checkout
+@dataclass(frozen=True)
+class BookingSearchRequest:
+    destination: str
+    checkin_date: date
+    checkout_date: date
+    max_results: int
 
 
-def run(
-    playwright: Playwright,
-    destination: str = "Chicago",
-    max_results: int = 5,
-) -> list:
-    checkin, checkout = compute_dates()
+@dataclass(frozen=True)
+class BookingHotel:
+    name: str
+    price_per_night: str
+    total_price: str
+
+
+@dataclass(frozen=True)
+class BookingSearchResult:
+    destination: str
+    checkin_date: date
+    checkout_date: date
+    hotels: list[BookingHotel]
+
+
+# Searches Booking.com for hotels at a destination over the given dates,
+# returning up to max_results hotels with name and per-night price.
+def search_booking_hotels(
+    page: Page,
+    request: BookingSearchRequest,
+) -> BookingSearchResult:
+    destination = request.destination
+    max_results = request.max_results
+    checkin = request.checkin_date
+    checkout = request.checkout_date
     checkin_str = checkin.strftime("%Y-%m-%d")
     checkout_str = checkout.strftime("%Y-%m-%d")
     checkin_display = checkin.strftime("%m/%d/%Y")
     checkout_display = checkout.strftime("%m/%d/%Y")
+    raw_results = []
 
     print(f"  Destination: {destination}")
     print(f"  Check-in: {checkin_display}  Check-out: {checkout_display}  (2 nights)\n")
 
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("booking_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-    results = []
+    raw_results = []
     seen_names = set()
 
     try:
         # ── Navigate ──────────────────────────────────────────────────────
         print("Loading Booking.com...")
+        checkpoint("Navigate to https://www.booking.com")
         page.goto("https://www.booking.com")
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(3000)
@@ -73,6 +88,7 @@ def run(
             try:
                 btn = page.locator(selector).first
                 if btn.is_visible(timeout=1500):
+                    checkpoint(f"Dismiss popup: {selector}")
                     btn.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
@@ -87,8 +103,10 @@ def run(
             'input[name="ss"], '
             'input[placeholder*="Where are you going"]'
         ).first
+        checkpoint("Click destination search input")
         search_input.evaluate("el => el.click()")
         page.wait_for_timeout(500)
+        checkpoint(f"Type destination: {destination}")
         search_input.fill("")
         search_input.type(destination, delay=50)
         print(f'  Typed "{destination}"')
@@ -102,9 +120,11 @@ def run(
                 '[class*="autocomplete"] li'
             ).first
             suggestion.wait_for(state="visible", timeout=5000)
+            checkpoint("Click first autocomplete suggestion")
             suggestion.evaluate("el => el.click()")
             print("  Selected first suggestion")
         except Exception:
+            checkpoint("Press Enter (no autocomplete suggestion)")
             page.keyboard.press("Enter")
             print("  No autocomplete suggestion, pressed Enter")
         page.wait_for_timeout(1000)
@@ -117,6 +137,7 @@ def run(
         checkin_cell = page.locator(f'[data-date="{checkin_str}"]').first
         try:
             checkin_cell.wait_for(state="visible", timeout=5000)
+            checkpoint(f"Click check-in date: {checkin_str}")
             checkin_cell.evaluate("el => el.click()")
             print(f"  Clicked check-in date: {checkin_str}")
         except Exception:
@@ -127,6 +148,7 @@ def run(
                 '[data-testid="searchbox-dates-container"], '
                 'button[data-testid="date-display-field-start"]'
             ).first
+            checkpoint("Click date field to open calendar")
             date_field.evaluate("el => el.click()")
             page.wait_for_timeout(1000)
 
@@ -147,6 +169,7 @@ def run(
                 if visible_dates and target_ym < visible_dates[0][:7]:
                     # Target is before visible months → go backward
                     try:
+                        checkpoint("Navigate calendar: Previous month")
                         page.locator('button[aria-label="Previous month"]').first.evaluate("el => el.click()")
                         page.wait_for_timeout(500)
                     except Exception:
@@ -154,12 +177,14 @@ def run(
                 else:
                     # Target is after visible months → go forward
                     try:
+                        checkpoint("Navigate calendar: Next month")
                         page.locator('button[aria-label="Next month"]').last.evaluate("el => el.click()")
                         page.wait_for_timeout(500)
                     except Exception:
                         break
 
             checkin_cell = page.locator(f'[data-date="{checkin_str}"]').first
+            checkpoint(f"Click check-in date: {checkin_str}")
             checkin_cell.evaluate("el => el.click()")
             print(f"  Clicked check-in date: {checkin_str}")
         page.wait_for_timeout(500)
@@ -168,6 +193,7 @@ def run(
         checkout_cell = page.locator(f'[data-date="{checkout_str}"]').first
         try:
             checkout_cell.wait_for(state="visible", timeout=3000)
+            checkpoint(f"Click check-out date: {checkout_str}")
             checkout_cell.evaluate("el => el.click()")
             print(f"  Clicked check-out date: {checkout_str}")
         except Exception:
@@ -176,6 +202,7 @@ def run(
                 try:
                     checkout_cell = page.locator(f'[data-date="{checkout_str}"]').first
                     if checkout_cell.is_visible(timeout=1000):
+                        checkpoint(f"Click check-out date: {checkout_str}")
                         checkout_cell.evaluate("el => el.click()")
                         print(f"  Clicked check-out date: {checkout_str}")
                         break
@@ -188,12 +215,14 @@ def run(
                 )
                 if visible_dates and target_ym < visible_dates[0][:7]:
                     try:
+                        checkpoint("Navigate calendar: Previous month")
                         page.locator('button[aria-label="Previous month"]').first.evaluate("el => el.click()")
                         page.wait_for_timeout(500)
                     except Exception:
                         break
                 else:
                     try:
+                        checkpoint("Navigate calendar: Next month")
                         page.locator('button[aria-label="Next month"]').last.evaluate("el => el.click()")
                         page.wait_for_timeout(500)
                     except Exception:
@@ -207,10 +236,11 @@ def run(
             '[data-testid="searchbox-search-button"], '
             'button:has-text("Search")'
         ).first
+        checkpoint("Click Search button")
         search_btn.evaluate("el => el.click()")
         print("  Clicked Search button")
 
-        # Wait for results
+        # Wait for raw_results
         try:
             page.wait_for_url("**/searchresults**", timeout=15000)
             print(f"  Navigated to: {page.url}")
@@ -233,7 +263,7 @@ def run(
         print(f"  Found {count} hotel cards")
 
         for i in range(count):
-            if len(results) >= max_results:
+            if len(raw_results) >= max_results:
                 break
             card = hotel_cards.nth(i)
             try:
@@ -290,7 +320,7 @@ def run(
                     per_night_val = raw // 2
                     per_night = f"${per_night_val:,}"
 
-                results.append({
+                raw_results.append({
                     "name": name,
                     "total_price": price,
                     "per_night_price": per_night,
@@ -299,13 +329,13 @@ def run(
                 continue
 
         # Fallback: regex on page text
-        if not results:
+        if not raw_results:
             print("  Card extraction failed, trying text fallback...")
             body_text = page.evaluate("document.body.innerText") or ""
             # Look for patterns like hotel name followed by price
             lines = body_text.split("\n")
             for i, line in enumerate(lines):
-                if len(results) >= max_results:
+                if len(raw_results) >= max_results:
                     break
                 pm = re.search(r"\$[\d,]+", line)
                 if pm and len(line.strip()) < 200:
@@ -319,35 +349,69 @@ def run(
                         total = pm.group(0)
                         raw = int(total.replace("$", "").replace(",", ""))
                         per_night = f"${raw // 2:,}"
-                        results.append({
+                        raw_results.append({
                             "name": name,
                             "total_price": total,
                             "per_night_price": per_night,
                         })
 
-        # ── Print results ─────────────────────────────────────────────────
-        print(f"\nFound {len(results)} hotels in '{destination}':")
+        # ── Print raw_results ─────────────────────────────────────────────────
+        print(f"\nFound {len(raw_results)} hotels in '{destination}':")
         print(f"  Check-in: {checkin_display}  Check-out: {checkout_display}  (2 nights)\n")
-        for i, hotel in enumerate(results, 1):
+        for i, hotel in enumerate(raw_results, 1):
             print(f"  {i}. {hotel['name']}")
             print(f"     Per-night Price: {hotel['per_night_price']}  (Total: {hotel['total_price']})")
 
     except Exception as e:
         import traceback
+
+
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
 
-    return results
+    return BookingSearchResult(
+        destination=destination,
+        checkin_date=request.checkin_date,
+        checkout_date=request.checkout_date,
+        hotels=[BookingHotel(name=r["name"], price_per_night=r["per_night_price"], total_price=r.get("total_price","")) for r in raw_results],
+    )
+def test_search_booking_hotels() -> None:
+    from dateutil.relativedelta import relativedelta
+    from datetime import timedelta
+    today = date.today()
+    checkin = today + relativedelta(months=2)
+    request = BookingSearchRequest(
+        destination="Chicago",
+        checkin_date=checkin,
+        checkout_date=checkin + timedelta(days=2),
+        max_results=5,
+    )
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_booking_hotels(page, request)
+            assert result.destination == request.destination
+            assert len(result.hotels) <= request.max_results
+            print(f"\nTotal hotels found: {len(result.hotels)}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        items = run(playwright)
-        print(f"\nTotal hotels found: {len(items)}")
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_search_booking_hotels)

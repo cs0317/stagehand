@@ -19,30 +19,49 @@ DOM structure:
 """
 
 import re
+from dataclasses import dataclass
 import os
 import traceback
 from datetime import date
 from dateutil.relativedelta import relativedelta
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
-import shutil
-
+from playwright_debugger import checkpoint
 MONTHS = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December",
 ]
 
 
-def compute_date():
-    today = date.today()
-    return today + relativedelta(months=2)
+@dataclass(frozen=True)
+class AmtrakSearchRequest:
+    origin: str
+    destination: str
+    departure_date: "date"
+    max_results: int
 
 
-# -- Step 0: Dismiss popups + remove OneTrust overlay -------------------------
+@dataclass(frozen=True)
+class AmtrakTrain:
+    train_number: str
+    train_name: str
+    departure: str
+    arrival: str
+    duration: str
+    price: str
+
+
+@dataclass(frozen=True)
+class AmtrakSearchResult:
+    origin: str
+    destination: str
+    departure_date: "date"
+    trains: list["AmtrakTrain"]
+
+
 def dismiss_popups(page):
     """Dismiss cookie popups and remove OneTrust overlay that blocks clicks."""
     page.wait_for_timeout(2000)
@@ -124,6 +143,7 @@ def enter_station(page, field_type, station_name, keyword):
     print(f"STEP {step}: {label} = \"{station_name}\"...")
 
     # Focus and click field by known ID
+    checkpoint(f"Click {label} field")
     page.evaluate(f"""((id) => {{
         const inp = document.getElementById(id);
         if (inp) {{ inp.focus(); inp.click(); inp.select(); }}
@@ -131,6 +151,7 @@ def enter_station(page, field_type, station_name, keyword):
     page.wait_for_timeout(500)
 
     # Clear and type
+    checkpoint(f"Type station: {station_name}")
     page.keyboard.press("Control+a")
     page.wait_for_timeout(100)
     page.keyboard.press("Backspace")
@@ -160,6 +181,7 @@ def enter_station(page, field_type, station_name, keyword):
     print(f'   Found: "{option["text"]}"')
 
     # Trusted coordinate click (deterministic)
+    checkpoint(f"Click autocomplete option: {option['text']}")
     page.mouse.click(option["x"], option["y"])
     page.wait_for_timeout(1000)
 
@@ -191,6 +213,7 @@ def set_date(page, dep):
         return r.width > 20 ? { x: r.x + r.width/2, y: r.y + r.height/2 } : null;
     })()""")
     if df:
+        checkpoint("Click date field")
         page.mouse.click(df["x"], df["y"])
         print("   Clicked date field")
     page.wait_for_timeout(2000)
@@ -417,35 +440,34 @@ def extract_trains(page, from_code, to_code, max_results=5):
 
 
 # -- Main ---------------------------------------------------------------------
-def run(
-    playwright,
-    origin: str = "Seattle, WA",
-    destination: str = "Portland, OR",
-    max_results: int = 5,
-) -> list:
-    dep = compute_date()
+
+
+# Searches Amtrak for one-way train tickets from origin to destination
+# on the given departure date, returning up to max_results train options.
+def search_amtrak_trains(
+    page: Page,
+    request: AmtrakSearchRequest,
+) -> AmtrakSearchResult:
+    origin = request.origin
+    destination = request.destination
+    dep = request.departure_date
+    max_results = request.max_results
     dep_display = dep.strftime("%m/%d/%Y")
     dep_iso = dep.strftime("%Y-%m-%d")
     from_code = "SEA"
     to_code = "PDX"
+
+    raw_trains = []
+
 
     print("=" * 59)
     print("  Amtrak - Train Ticket Search (One-Way)  v9")
     print("=" * 59)
     print(f"  {origin} -> {destination}")
     print(f"  Departure: {dep_display}  (1 adult, one-way)\n")
-
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("amtrak_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-    results = []
-
     try:
         print("Loading Amtrak...")
+        checkpoint("Navigate to https://www.amtrak.com")
         page.goto("https://www.amtrak.com")
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(1000)
@@ -475,17 +497,59 @@ def run(
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
-        try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-    return results
+    return AmtrakSearchResult(
+        origin=origin,
+        destination=destination,
+        departure_date=dep,
+        trains=[
+            AmtrakTrain(
+                train_number=t["trainNumber"],
+                train_name=t["trainName"],
+                departure=t["departure"],
+                arrival=t["arrival"],
+                duration=t["duration"],
+                price=t["price"],
+            )
+            for t in results
+        ],
+    )
 
 
-if __name__ == "__main__":
+def test_search_amtrak_trains() -> None:
+    from dateutil.relativedelta import relativedelta
+    today = date.today()
+    request = AmtrakSearchRequest(
+        origin="Seattle, WA",
+        destination="Portland, OR",
+        departure_date=today + relativedelta(months=2),
+        max_results=5,
+    )
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
     with sync_playwright() as playwright:
-        items = run(playwright)
-        print(f"\nTotal trains found: {len(items)}")
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_amtrak_trains(page, request)
+            assert result.origin == request.origin
+            assert result.destination == request.destination
+            assert len(result.trains) <= request.max_results
+            print(f"\nTotal trains found: {len(result.trains)}")
+            os._exit(0)
+        finally:
+            context.close()
+if __name__ == "__main__":
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_search_amtrak_trains)

@@ -1,32 +1,68 @@
 """
-Zillow – Homes for Sale in Bellevue, WA ($500K–$1M, 3+ beds)
+Zillow – Homes for Sale search with configurable location, price range, and bedroom count.
 Pure Playwright – no AI.
-"""
-import re, os, sys, traceback, shutil, tempfile
-from playwright.sync_api import Playwright, sync_playwright
+"""   
+import re, os, sys, traceback, json, urllib.parse
+from playwright.sync_api import Page, sync_playwright
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from playwright_debugger import checkpoint
 
-MAX_RESULTS = 5
+from dataclasses import dataclass
 
 
-def run(playwright: Playwright) -> list:
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("zillow_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
+@dataclass(frozen=True)
+class ZillowSearchRequest:
+    location: str = "Bellevue, WA"
+    min_price: int = 500000
+    max_price: int = 1000000
+    min_beds: int = 3
+    max_results: int = 5
+
+
+@dataclass(frozen=True)
+class ZillowListing:
+    address: str
+    price: str
+    beds: str
+    baths: str
+    sqft: str
+
+
+@dataclass(frozen=True)
+class ZillowSearchResult:
+    location: str
+    listings: list
+
+
+
+
+
+def search_zillow_homes(page: Page, request: ZillowSearchRequest) -> ZillowSearchResult:
     listings = []
+
     try:
         print("STEP 1: Navigate to Zillow search...")
-        # Use search query URL with price/beds filters
-        page.goto(
-            "https://www.zillow.com/bellevue-wa/?searchQueryState=%7B%22pagination%22%3A%7B%7D%2C%22isMapVisible%22%3Atrue%2C%22filterState%22%3A%7B%22price%22%3A%7B%22min%22%3A500000%2C%22max%22%3A1000000%7D%2C%22beds%22%3A%7B%22min%22%3A3%7D%2C%22sort%22%3A%7B%22value%22%3A%22globalrelevanceex%22%7D%7D%7D",
-            wait_until="domcontentloaded", timeout=30000,
-        )
+        # Build URL from request fields — no hardcoded values
+        # Convert "Bellevue, WA" → "bellevue-wa" for the URL path slug
+        loc_slug = re.sub(r'[,\s]+', '-', request.location.strip()).lower()
+        loc_slug = re.sub(r'-+', '-', loc_slug).strip('-')
+
+        # searchQueryState is a JSON filter object Zillow uses
+        query_state = {
+            "pagination": {},
+            "isMapVisible": True,
+            "filterState": {
+                "price": {"min": request.min_price, "max": request.max_price},
+                "beds": {"min": request.min_beds},
+                "sort": {"value": "globalrelevanceex"},
+            },
+        }
+        encoded_qs = urllib.parse.quote(json.dumps(query_state, separators=(',', ':')))
+        search_url = f"https://www.zillow.com/{loc_slug}/?searchQueryState={encoded_qs}"
+        print(f"   URL: {search_url[:120]}...")
+        checkpoint("Navigate to Zillow search results page")
+        page.goto(search_url, wait_until="domcontentloaded", timeout=30000)
         page.wait_for_timeout(6000)
 
         # Dismiss popups
@@ -36,6 +72,7 @@ def run(playwright: Playwright) -> list:
             try:
                 loc = page.locator(sel).first
                 if loc.is_visible(timeout=800):
+                    checkpoint(f"Dismiss popup: {sel}")
                     loc.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
@@ -43,6 +80,7 @@ def run(playwright: Playwright) -> list:
 
         # Scroll to load listings
         for _ in range(5):
+            checkpoint("Scroll down to load more listings")
             page.evaluate("window.scrollBy(0, 700)")
             page.wait_for_timeout(800)
 
@@ -59,7 +97,7 @@ def run(playwright: Playwright) -> list:
             "ul[class*='photo-cards'] li",
         ]
         for sel in card_sels:
-            if len(listings) >= MAX_RESULTS:
+            if len(listings) >= request.max_results:
                 break
             try:
                 cards = page.locator(sel).all()
@@ -67,7 +105,7 @@ def run(playwright: Playwright) -> list:
                     continue
                 print(f"   Selector '{sel}' → {len(cards)} elements")
                 for card in cards:
-                    if len(listings) >= MAX_RESULTS:
+                    if len(listings) >= request.max_results:
                         break
                     try:
                         text = card.inner_text(timeout=2000).strip()
@@ -98,7 +136,7 @@ def run(playwright: Playwright) -> list:
                                 sqft_m = re.search(r"([\d,]+)\s*(?:sqft|sq\s*ft)", ln, re.IGNORECASE)
                                 if sqft_m:
                                     sqft = sqft_m.group(1)
-                            elif re.search(r"(Bellevue|WA|,\s*WA)", ln, re.IGNORECASE) and not address:
+                            elif re.search(re.escape(request.location.split(',')[0]), ln, re.IGNORECASE) and not address:
                                 address = ln
                             elif not address and len(ln) > 10 and len(ln) < 100:
                                 # Could be address — skip known non-address patterns
@@ -128,7 +166,7 @@ def run(playwright: Playwright) -> list:
             body = page.inner_text("body")
             lines = [l.strip() for l in body.splitlines() if l.strip()]
             i = 0
-            while i < len(lines) and len(listings) < MAX_RESULTS:
+            while i < len(lines) and len(listings) < request.max_results:
                 ln = lines[i]
                 if re.search(r"\$[\d,]+", ln):
                     price = ln
@@ -138,7 +176,7 @@ def run(playwright: Playwright) -> list:
                     baths = "N/A"
                     sqft = "N/A"
                     for cl in context_lines:
-                        if re.search(r"(Bellevue|WA|,\s*WA)", cl, re.IGNORECASE) and not address:
+                        if re.search(re.escape(request.location.split(',')[0]), cl, re.IGNORECASE) and not address:
                             address = cl
                         beds_m = re.search(r"(\d+)\s*(?:bd|bed|br)", cl, re.IGNORECASE)
                         baths_m = re.search(r"(\d+)\s*(?:ba|bath)", cl, re.IGNORECASE)
@@ -178,16 +216,47 @@ def run(playwright: Playwright) -> list:
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
+    return ZillowSearchResult(
+        location=request.location,
+        listings=[ZillowListing(address=l['address'], price=l['price'], beds=l['beds'], baths=l['baths'], sqft=l['sqft']) for l in listings],
+    )
+
+
+def test_zillow_homes() -> None:
+    request = ZillowSearchRequest(
+        location="Bellevue, WA",
+        min_price=500000,
+        max_price=1000000,
+        min_beds=3,
+        max_results=5,
+    )
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
         try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-    return listings
+            result = search_zillow_homes(page, request)
+            print(f"\nLocation: {result.location}")
+            print(f"Total listings: {len(result.listings)}")
+            for i, l in enumerate(result.listings, 1):
+                print(f"  {i}. {l.address}  {l.price}  {l.beds}bd/{l.baths}ba  {l.sqft} sqft")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        run(playwright)
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_zillow_homes)

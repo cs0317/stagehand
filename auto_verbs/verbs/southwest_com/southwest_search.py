@@ -10,23 +10,58 @@ Mirrors the working JS approach:
 """
 import re, os, sys, time, traceback, shutil, tempfile
 from datetime import date, timedelta
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
+from playwright_debugger import checkpoint
+
+from dataclasses import dataclass
+from dateutil.relativedelta import relativedelta
+import subprocess
+import json
+from urllib.request import urlopen
+
+
+@dataclass(frozen=True)
+class SouthwestFlightSearchRequest:
+    origin: str
+    destination: str
+    departure_date: object  # datetime.date
+    return_date: object     # datetime.date
+    max_results: int = 5
+
+
+@dataclass(frozen=True)
+class SouthwestFlight:
+    flight_number: str
+    itinerary: str
+    wanna_get_away_price: str
+
+
+@dataclass(frozen=True)
+class SouthwestFlightSearchResult:
+    origin: str
+    destination: str
+    departure_date: object
+    return_date: object
+    flights: list
 
 
 def select_airport(page, input_selector: str, code: str) -> str:
     """Type airport code into combobox and select from autocomplete dropdown."""
     inp = page.locator(input_selector).first
+    checkpoint(f"click airport input {input_selector}")
     inp.evaluate("el => el.click()")
     page.wait_for_timeout(300)
 
     # Clear existing value and type the 3-letter code char-by-char
+    checkpoint(f"clear airport input {input_selector}")
     inp.fill("")
     page.wait_for_timeout(200)
+    checkpoint(f"type airport code '{code}' into {input_selector}")
     for ch in code:
         inp.type(ch, delay=80)
     page.wait_for_timeout(2500)  # wait for autocomplete dropdown
@@ -40,6 +75,7 @@ def select_airport(page, input_selector: str, code: str) -> str:
             if "area airports" in text.lower():
                 continue  # skip area grouping header
             if option.is_visible(timeout=1500):
+                checkpoint(f"click airport option for {code}")
                 option.evaluate("el => el.click()")
                 page.wait_for_timeout(500)
                 val = inp.input_value()
@@ -52,6 +88,7 @@ def select_airport(page, input_selector: str, code: str) -> str:
     try:
         first_opt = page.locator(f'[role="option"]:has-text("{code}")').first
         if first_opt.is_visible(timeout=1500):
+            checkpoint(f"click first airport option for {code}")
             first_opt.evaluate("el => el.click()")
             page.wait_for_timeout(500)
             val = inp.input_value()
@@ -61,8 +98,10 @@ def select_airport(page, input_selector: str, code: str) -> str:
         pass
 
     # Last fallback: Arrow down + Enter
+    checkpoint(f"press ArrowDown for airport {code}")
     page.keyboard.press("ArrowDown")
     page.wait_for_timeout(200)
+    checkpoint(f"press Enter for airport {code}")
     page.keyboard.press("Enter")
     page.wait_for_timeout(500)
     val = inp.input_value()
@@ -73,20 +112,24 @@ def select_airport(page, input_selector: str, code: str) -> str:
 def fill_date_field(page, input_selector: str, mm_dd: str):
     """Fill a masked date field (placeholder __/__) by typing digits only."""
     inp = page.locator(input_selector).first
+    checkpoint(f"click date field {input_selector}")
     inp.evaluate("el => el.click()")
     page.wait_for_timeout(300)
 
     # Select all existing text so we overwrite it
+    checkpoint(f"select all in date field {input_selector}")
     page.keyboard.press("Control+a")
     page.wait_for_timeout(200)
 
     # Type ONLY the digits — the mask inserts the slash automatically
     digits = mm_dd.replace("/", "")
+    checkpoint(f"type date digits '{digits}' into {input_selector}")
     for ch in digits:
         inp.type(ch, delay=80)
     page.wait_for_timeout(300)
 
     # Blur to commit
+    checkpoint(f"press Tab to commit date {input_selector}")
     page.keyboard.press("Tab")
     page.wait_for_timeout(300)
 
@@ -95,24 +138,18 @@ def fill_date_field(page, input_selector: str, mm_dd: str):
     return val
 
 
-def run(playwright: Playwright) -> list:
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("southwest_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
+def search_southwest_flights(page: Page, request: SouthwestFlightSearchRequest) -> SouthwestFlightSearchResult:
     flights: list[dict] = []
 
     try:
-        depart = date.today() + timedelta(days=60)
-        ret = depart + timedelta(days=5)
+        depart = request.departure_date
+        ret = request.return_date
         dep_mmdd = depart.strftime("%m/%d")  # e.g. "04/28"
         ret_mmdd = ret.strftime("%m/%d")     # e.g. "05/03"
 
         # ── STEP 1: Navigate ─────────────────────────────────────────
         print("STEP 1: Navigate to Southwest booking page...")
+        checkpoint("navigate to Southwest booking page")
         page.goto(
             "https://www.southwest.com/air/booking/",
             wait_until="domcontentloaded", timeout=30000,
@@ -128,6 +165,7 @@ def run(playwright: Playwright) -> list:
             try:
                 loc = page.locator(sel).first
                 if loc.is_visible(timeout=800):
+                    checkpoint(f"dismiss popup: {sel}")
                     loc.evaluate("el => el.click()")
             except Exception:
                 pass
@@ -136,13 +174,13 @@ def run(playwright: Playwright) -> list:
         print("STEP 2: Fill flight search form...")
 
         # Origin airport
-        print(f"  Setting origin: DEN")
-        select_airport(page, "#originationAirportCode", "DEN")
+        print(f"  Setting origin: {request.origin}")
+        select_airport(page, "#originationAirportCode", request.origin)
         page.wait_for_timeout(1000)
 
         # Destination airport
-        print(f"  Setting destination: LAX")
-        select_airport(page, "#destinationAirportCode", "LAX")
+        print(f"  Setting destination: {request.destination}")
+        select_airport(page, "#destinationAirportCode", request.destination)
         page.wait_for_timeout(1000)
 
         # Departure date (MM/DD)
@@ -169,6 +207,7 @@ def run(playwright: Playwright) -> list:
 
         # ── STEP 3: Submit ────────────────────────────────────────────
         print("STEP 3: Click Search...")
+        checkpoint("click Search button")
         page.locator("#flightBookingSubmit").first.evaluate("el => el.click()")
 
         # Wait for results page (URL contains select-depart or select-)
@@ -178,6 +217,7 @@ def run(playwright: Playwright) -> list:
         except Exception:
             print(f"  ⚠ URL didn't match pattern. Current: {page.url[:120]}")
             # Try JS click as fallback
+            checkpoint("retry click Search button via JS")
             page.evaluate("document.querySelector('#flightBookingSubmit')?.click()")
             page.wait_for_timeout(15000)
             print(f"  Current URL after retry: {page.url[:120]}")
@@ -238,7 +278,7 @@ def run(playwright: Playwright) -> list:
             lines = [l.strip() for l in body.split("\n") if l.strip()]
 
             i = 0
-            while i < len(lines) and len(flights) < 5:
+            while i < len(lines) and len(flights) < request.max_results:
                 line = lines[i]
                 # Look for flight number pattern "# NNNN"
                 fnum_match = re.search(r"#\s*(\d{2,5})", line)
@@ -266,23 +306,83 @@ def run(playwright: Playwright) -> list:
                 i += 1
 
         # ── Results ───────────────────────────────────────────────────
-        print(f"\nDONE – {len(flights)} Southwest Flights (DEN → LAX):")
+        print(f"\nDONE – {len(flights)} Southwest Flights ({request.origin} → {request.destination}):")
         for i, f in enumerate(flights, 1):
             print(f"  {i}. {f['itinerary']} | Wanna Get Away: {f['wanna_get_away_price']}")
 
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
+    return SouthwestFlightSearchResult(
+        origin=request.origin,
+        destination=request.destination,
+        departure_date=request.departure_date,
+        return_date=request.return_date,
+        flights=[SouthwestFlight(
+            flight_number=f.get('flight_number','N/A'),
+            itinerary=f.get('itinerary','N/A'),
+            wanna_get_away_price=f.get('wanna_get_away_price','N/A'),
+        ) for f in flights],
+    )
+
+
+def test_southwest_flights():
+    from playwright.sync_api import sync_playwright
+    from dateutil.relativedelta import relativedelta
+    today = date.today()
+    departure = today + relativedelta(months=2)
+    request = SouthwestFlightSearchRequest(
+        origin="DEN",
+        destination="LAX",
+        departure_date=departure,
+        return_date=departure + timedelta(days=5),
+        max_results=5,
+    )
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
         try:
-            browser.close()
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
         except Exception:
             pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-    return flights
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
+    with sync_playwright() as pl:
+        browser = pl.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_southwest_flights(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
+    print(f"\nTotal flights: {len(result.flights)}")
+    for i, f in enumerate(result.flights, 1):
+        print(f"  {i}. {f.itinerary}  {f.wanna_get_away_price}")
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        run(playwright)
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_southwest_flights)

@@ -1,0 +1,3 @@
+Copy some files from auto_verbs\verbs to D:\repos\MSR-Web-Verbs\py_verbs. Here is the instruction.
+* For each subfolder foo in auto_verbs\verbs, create a subfolder foo in D:\repos\MSR-Web-Verbs\py_verbs.
+* Copy the py file and the signature.txt file in the former folder into the latter folder.

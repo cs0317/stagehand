@@ -9,43 +9,66 @@ Note: This script was generated using AI-driven discovery patterns
 
 import re
 import os
-from playwright.sync_api import Playwright, sync_playwright, expect
+from playwright.sync_api import Page, sync_playwright, expect
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
+from playwright_debugger import checkpoint
 import shutil
 
+from dataclasses import dataclass
+import subprocess
+import tempfile
+import json
+import time
+from urllib.request import urlopen
 
-def run(playwright: Playwright, search_query: str = "anchorage museums", max_results: int = 5) -> list:
+
+@dataclass(frozen=True)
+class YouTubeSearchRequest:
+    search_query: str = "anchorage museums"
+    max_results: int = 5
+
+
+@dataclass(frozen=True)
+class YouTubeVideo:
+    url: str
+    title: str
+    duration: str
+
+
+@dataclass(frozen=True)
+class YouTubeSearchResult:
+    search_query: str
+    videos: list
+
+
+def search_youtube_videos(page: Page, request: YouTubeSearchRequest) -> YouTubeSearchResult:
     """
-    Search YouTube for the given query and return up to max_results video results,
+    Search YouTube for the given query and return up to request.max_results video results,
     each with url, title, and duration.
     """
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("youtube_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-
     results = []
 
     try:
         # Navigate to YouTube
+        checkpoint("Navigate to YouTube homepage")
         page.goto("https://www.youtube.com")
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(3000)
 
         # Find and fill the search box
         search_input = page.get_by_role("combobox", name=re.compile(r"Search", re.IGNORECASE)).first
+        checkpoint("Click search input")
         search_input.evaluate("el => el.click()")
-        search_input.fill(search_query)
+        checkpoint("Fill search query")
+        search_input.fill(request.search_query)
         page.wait_for_timeout(500)
 
         # Submit the search
+        checkpoint("Press Enter to submit search")
         search_input.press("Enter")
 
         # Wait for search results to load
@@ -62,7 +85,7 @@ def run(playwright: Playwright, search_query: str = "anchorage museums", max_res
             video_renderers = page.locator("#contents ytd-video-renderer, #contents ytd-rich-item-renderer")
             count = video_renderers.count()
 
-        for i in range(min(count, max_results)):
+        for i in range(min(count, request.max_results)):
             renderer = video_renderers.nth(i)
             try:
                 # Get the video URL and title from the title link
@@ -103,7 +126,7 @@ def run(playwright: Playwright, search_query: str = "anchorage museums", max_res
                             href = "https://www.youtube.com" + href
                         label = link.inner_text(timeout=500).strip() or "N/A"
                         results.append({"url": href, "title": label, "duration": "N/A"})
-                        if len(results) >= max_results:
+                        if len(results) >= request.max_results:
                             break
                 except Exception:
                     continue
@@ -112,7 +135,7 @@ def run(playwright: Playwright, search_query: str = "anchorage museums", max_res
             print("Warning: Could not find any video results.")
 
         # Print results
-        print(f"\nFound {len(results)} video results for '{search_query}':\n")
+        print(f"\nFound {len(results)} video results for '{request.search_query}':\n")
         for i, item in enumerate(results, 1):
             print(f"  {i}. {item['title']}")
             print(f"     URL: {item['url']}")
@@ -120,18 +143,62 @@ def run(playwright: Playwright, search_query: str = "anchorage museums", max_res
 
     except Exception as e:
         print(f"Error searching YouTube: {e}")
-    finally:
+    return YouTubeSearchResult(
+        search_query=request.search_query,
+        videos=[YouTubeVideo(url=r['url'], title=r['title'], duration=r['duration']) for r in results],
+    )
+
+
+def test_youtube_videos():
+    from playwright.sync_api import sync_playwright
+    request = YouTubeSearchRequest(search_query="anchorage museums", max_results=5)
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
         try:
-            browser.close()
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
         except Exception:
             pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-
-    return results
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
+    with sync_playwright() as pl:
+        browser = pl.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_youtube_videos(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
+    print(f"\nSearch: {result.search_query}")
+    print(f"Total videos: {len(result.videos)}")
+    for i, v in enumerate(result.videos, 1):
+        print(f"  {i}. {v.title}  ({v.duration})")
+        print(f"     {v.url}")
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        items = run(playwright)
-        print(f"\nTotal videos found: {len(items)}")
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_youtube_videos)

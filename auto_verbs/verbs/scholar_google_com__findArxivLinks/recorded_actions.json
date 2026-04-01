@@ -1,0 +1,39 @@
+[
+  {
+    "timestamp": 993,
+    "type": "goto",
+    "url": "https://scholar.google.com/",
+    "description": "Navigate to https://scholar.google.com/"
+  },
+  {
+    "timestamp": 1526,
+    "type": "wait",
+    "ms": 2000,
+    "description": "Initial page load"
+  },
+  {
+    "timestamp": 4098,
+    "type": "act",
+    "instruction": "Type 'Structural Temporal Logic for mechanized program verification Ioannidis' into search",
+    "description": "Fill search: Structural Temporal Logic for mechanized program verification Ioannidis",
+    "method": "type"
+  },
+  {
+    "timestamp": 4619,
+    "type": "click",
+    "selector": "button#gs_hdr_tsb",
+    "description": "Click Search button"
+  },
+  {
+    "timestamp": 13819,
+    "type": "extract",
+    "instruction": "Extract arxiv links from 'All versions' page",
+    "description": "Found 1 arxiv links",
+    "results": [
+      {
+        "href": "https://arxiv.org/abs/2410.14906",
+        "text": "Structural Temporal Logic for Mechanized Program Verification"
+      }
+    ]
+  }
+]

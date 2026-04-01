@@ -11,24 +11,54 @@ import os
 import sys
 import traceback
 import shutil
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
+from playwright_debugger import checkpoint
+
+from dataclasses import dataclass
+import subprocess
+import tempfile
+import json
+import time
+from urllib.request import urlopen
 
 
-def run(playwright: Playwright, keyword: str = "synthetic oil change", max_results: int = 5) -> list:
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("groupon")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-    deals = []
+@dataclass(frozen=True)
+class GrouponSearchRequest:
+    keyword: str
+    max_results: int
+
+
+@dataclass(frozen=True)
+class GrouponDeal:
+    name: str
+    deal_price: str
+    discount_percentage: str
+    url: str
+
+
+@dataclass(frozen=True)
+class GrouponSearchResult:
+    keyword: str
+    deals: list[GrouponDeal]
+
+
+# Searches Groupon for deals matching a keyword and returns up to max_results deals
+# with name, deal price, and discount percentage.
+def search_groupon_deals(
+    page: Page,
+    request: GrouponSearchRequest,
+) -> GrouponSearchResult:
+    keyword = request.keyword
+    max_results = request.max_results
+    raw_deals = []
+    raw_deals = []
 
     try:
         print(f"STEP 1: Open Groupon and search for '{keyword}'...")
+        checkpoint("Navigate to Groupon")
         page.goto("https://www.groupon.com/", wait_until="domcontentloaded", timeout=45000)
         page.wait_for_timeout(4000)
 
@@ -42,6 +72,7 @@ def run(playwright: Playwright, keyword: str = "synthetic oil change", max_resul
             try:
                 btn = page.locator(sel).first
                 if btn.is_visible(timeout=800):
+                    checkpoint(f"Dismiss popup: {sel}")
                     btn.evaluate("el => el.click()")
                     page.wait_for_timeout(400)
             except Exception:
@@ -49,9 +80,12 @@ def run(playwright: Playwright, keyword: str = "synthetic oil change", max_resul
 
         search = page.locator("input[name='query'], input[type='search'], input[placeholder*='Search']").first
         search.wait_for(state="visible", timeout=10000)
+        checkpoint("Click search input")
         search.click()
+        checkpoint(f"Type search keyword: {keyword}")
         page.keyboard.press("Control+a")
         page.keyboard.type(keyword, delay=35)
+        checkpoint("Press Enter to search")
         page.keyboard.press("Enter")
         page.wait_for_timeout(7000)
 
@@ -59,13 +93,13 @@ def run(playwright: Playwright, keyword: str = "synthetic oil change", max_resul
             page.evaluate("window.scrollBy(0, 700)")
             page.wait_for_timeout(700)
 
-        print("STEP 2: Extract top deals...")
+        print("STEP 2: Extract top raw_deals...")
 
-        anchors = page.locator("a[href*='/deals/']")
+        anchors = page.locator("a[href*='/raw_deals/']")
         count = anchors.count()
         seen = set()
         for i in range(count):
-            if len(deals) >= max_results:
+            if len(raw_deals) >= max_results:
                 break
             a = anchors.nth(i)
             href = a.get_attribute("href") or ""
@@ -108,32 +142,73 @@ def run(playwright: Playwright, keyword: str = "synthetic oil change", max_resul
             m_price = re.search(r"\$\d[\d,]*(?:\.\d{2})?", block_text)
             m_discount = re.search(r"(\d{1,3})\s*%\s*(?:off)?", block_text, re.IGNORECASE)
 
-            deals.append({
+            raw_deals.append({
                 "name": name[:180],
                 "deal_price": m_price.group(0) if m_price else "N/A",
                 "discount_percentage": f"{m_discount.group(1)}%" if m_discount else "N/A",
                 "url": href,
             })
 
-        print(f"\nDONE – Top {len(deals)} Deals:")
-        for i, d in enumerate(deals, 1):
+        print(f"\nDONE – Top {len(raw_deals)} Deals:")
+        for i, d in enumerate(raw_deals, 1):
             print(f"  {i}. {d.get('name', 'N/A')}")
             print(f"     Price: {d.get('deal_price', 'N/A')} | Discount: {d.get('discount_percentage', 'N/A')}")
 
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
+    return GrouponSearchResult(
+        keyword=keyword,
+        deals=[GrouponDeal(name=d["name"], deal_price=d["deal_price"], discount_percentage=d.get("discount_percentage","N/A"), url=d.get("url","")) for d in raw_deals],
+    )
+def test_search_groupon_deals() -> None:
+    from playwright.sync_api import sync_playwright
+    request = GrouponSearchRequest(keyword="synthetic oil change", max_results=5)
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
         try:
-            browser.close()
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
         except Exception:
             pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-
-    return deals
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_groupon_deals(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
+    assert result.keyword == request.keyword
+    assert len(result.deals) <= request.max_results
+    print(f"\nTotal deals found: {len(result.deals)}")
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        run(playwright)
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_search_groupon_deals)

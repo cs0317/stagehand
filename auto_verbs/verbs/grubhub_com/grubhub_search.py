@@ -4,34 +4,63 @@ Pure Playwright CDP – no AI, no hardcoded results.
 Navigates Grubhub, sets delivery address, searches for Thai food,
 and extracts top 5 restaurants from the live page.
 """
+from datetime import date, timedelta
 import re
 import os
 import traceback
 import sys
 import shutil
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
+from playwright_debugger import checkpoint
 
-ADDRESS = "Chicago, IL 60601"
-QUERY = "Thai food"
-MAX_RESULTS = 5
+from dataclasses import dataclass
+import subprocess
+import tempfile
+import json
+import time
+from urllib.request import urlopen
 
 
-def run(playwright: Playwright) -> list:
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("grubhub_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-    restaurants = []
+@dataclass(frozen=True)
+class GrubhubSearchRequest:
+    address: str
+    query: str
+    max_results: int
+
+
+@dataclass(frozen=True)
+class GrubhubRestaurant:
+    name: str
+    rating: str
+    est_time: str
+
+
+@dataclass(frozen=True)
+class GrubhubSearchResult:
+    address: str
+    query: str
+    restaurants: list[GrubhubRestaurant]
+
+
+# Searches Grubhub for restaurants matching a query near a delivery address,
+# returning up to max_results results with name, rating, and delivery time.
+def search_grubhub_restaurants(
+    page: Page,
+    request: GrubhubSearchRequest,
+) -> GrubhubSearchResult:
+    ADDRESS = request.address
+    QUERY = request.query
+    MAX_RESULTS = request.max_results
+    raw_results = []
+    raw_results = []
 
     try:
         # ── STEP 1: Navigate to Grubhub ──────────────────────────────
         print("STEP 1: Navigate to Grubhub...")
+        checkpoint("Navigate to Grubhub")
         page.goto("https://www.grubhub.com/", wait_until="domcontentloaded", timeout=30000)
         page.wait_for_timeout(5000)
         print(f"  Loaded: {page.url}")
@@ -40,8 +69,10 @@ def run(playwright: Playwright) -> list:
         print(f'STEP 2: Setting delivery address = "{ADDRESS}"...')
         addr_input = page.locator('[data-testid="address-input"]')
         if addr_input.is_visible(timeout=5000):
+            checkpoint("Click address input")
             addr_input.click(timeout=3000)
             page.wait_for_timeout(300)
+            checkpoint(f"Fill address: {ADDRESS}")
             addr_input.fill(ADDRESS, timeout=3000)
             page.wait_for_timeout(2000)
             print("  Address typed")
@@ -51,11 +82,13 @@ def run(playwright: Playwright) -> list:
         # Click "See what's nearby" to submit
         submit_btn = page.locator('[data-testid="start-order-search-btn"]')
         if submit_btn.is_visible(timeout=3000):
+            checkpoint("Click 'See what's nearby' button")
             submit_btn.click(timeout=5000)
             page.wait_for_timeout(6000)
             print(f"  Navigated to: {page.url}")
         else:
             print("  WARNING: submit button not found, navigating directly")
+            checkpoint("Navigate to Grubhub lets-eat fallback")
             page.goto(
                 "https://www.grubhub.com/lets-eat",
                 wait_until="domcontentloaded",
@@ -67,10 +100,13 @@ def run(playwright: Playwright) -> list:
         print(f'STEP 3: Searching for "{QUERY}"...')
         search_input = page.locator('[data-testid="search-autocomplete-input"]')
         if search_input.is_visible(timeout=5000):
+            checkpoint("Click search input")
             search_input.click(timeout=3000)
             page.wait_for_timeout(300)
+            checkpoint(f"Fill search: {QUERY}")
             search_input.fill(QUERY, timeout=3000)
             page.wait_for_timeout(1000)
+            checkpoint("Press Enter to search")
             page.keyboard.press("Enter")
             page.wait_for_timeout(6000)
             print(f"  Search results: {page.url}")
@@ -82,6 +118,7 @@ def run(playwright: Playwright) -> list:
                 "&searchTerm=Thai+food&queryText=Thai+food"
             )
             print(f"  Search input not found, falling back to URL")
+            checkpoint("Navigate to Grubhub search URL fallback")
             page.goto(search_url, wait_until="domcontentloaded", timeout=30000)
             page.wait_for_timeout(6000)
 
@@ -95,7 +132,7 @@ def run(playwright: Playwright) -> list:
         # ── STEP 4: Extract restaurant data from DOM ──────────────────
         print("STEP 4: Extracting restaurant data...")
 
-        restaurants = page.evaluate(
+        raw_results = page.evaluate(
             """(maxResults) => {
             const results = [];
             const cards = document.querySelectorAll('[data-testid="restaurant-card"]');
@@ -134,12 +171,12 @@ def run(playwright: Playwright) -> list:
             MAX_RESULTS,
         )
 
-        print(f"  Extracted {len(restaurants)} restaurants")
+        print(f"  Extracted {len(raw_results)} raw_results")
 
         # ── Fallback: broader extraction if primary failed ────────────
-        if not restaurants:
+        if not raw_results:
             print("  Trying fallback extraction with a[href*='/restaurant/']...")
-            restaurants = page.evaluate(
+            raw_results = page.evaluate(
                 """(maxResults) => {
                 const results = [];
                 const seen = new Set();
@@ -168,26 +205,73 @@ def run(playwright: Playwright) -> list:
             }""",
                 MAX_RESULTS,
             )
-            print(f"  Fallback extracted {len(restaurants)} restaurants")
+            print(f"  Fallback extracted {len(raw_results)} raw_results")
 
         # ── Print results ─────────────────────────────────────────────
-        print(f"\nDONE – Top {len(restaurants)} Thai Restaurants:")
-        for i, r in enumerate(restaurants, 1):
+        print(f"\nDONE – Top {len(raw_results)} Thai Restaurants:")
+        for i, r in enumerate(raw_results, 1):
             print(f"  {i}. {r.get('name', 'N/A')} | rating {r.get('rating', 'N/A')} | {r.get('est_time', 'N/A')}")
 
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
+    return GrubhubSearchResult(
+        address=request.address,
+        query=request.query,
+        restaurants=[GrubhubRestaurant(
+            name=r.get("name",""),
+            rating=r.get("rating",""),
+            est_time=r.get("est_time",""),
+        ) for r in raw_results],
+    )
+def test_search_grubhub_restaurants() -> None:
+    from playwright.sync_api import sync_playwright
+    request = GrubhubSearchRequest(address="Chicago, IL 60601", query="Thai food", max_results=5)
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
         try:
-            browser.close()
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
         except Exception:
             pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-    return restaurants
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_grubhub_restaurants(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
+    assert result.address == request.address
+    assert len(result.restaurants) <= request.max_results
+    print(f"\nTotal restaurants found: {len(result.restaurants)}")
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        run(playwright)
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_search_grubhub_restaurants)

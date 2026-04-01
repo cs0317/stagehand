@@ -5,30 +5,53 @@ Pure Playwright – no AI.
 """
 import re, os, traceback, shutil, tempfile
 from datetime import date, timedelta
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, launch_chrome, wait_for_cdp_ws
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
+from playwright_debugger import checkpoint
 
-MAX_RESULTS = 5
+from dataclasses import dataclass
+from dateutil.relativedelta import relativedelta
+import subprocess
+import json
+import time
+from urllib.request import urlopen
 
-def run(playwright: Playwright) -> list:
-    port = get_free_port()
-    profile_dir = tempfile.mkdtemp(prefix="opentable_")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
+
+@dataclass(frozen=True)
+class OpentableSearchRequest:
+    location: str = "Seattle"
+    covers: int = 2
+    max_results: int = 5
+
+
+@dataclass(frozen=True)
+class OpentableRestaurant:
+    name: str
+    cuisine: str
+    rating: str
+    available_times: str
+
+
+@dataclass(frozen=True)
+class OpentableSearchResult:
+    location: str
+    restaurants: list
+
+
+def search_opentable_restaurants(page: Page, request: OpentableSearchRequest) -> OpentableSearchResult:
     restaurants = []
     try:
         dt = date.today() + timedelta(days=60)
         d_str = dt.strftime("%Y-%m-%d")
 
-        print(f"STEP 1: Navigate to OpenTable (Seattle, {d_str}, party 2, 7PM)...")
-        url = f"https://www.opentable.com/s?dateTime={d_str}T19%3A00%3A00&covers=2&metroId=4&regionIds=232&term=Seattle"
+        print(f"STEP 1: Navigate to OpenTable ({request.location}, {d_str}, party {request.covers}, 7PM)...")
+        from urllib.parse import quote_plus
+        url = f"https://www.opentable.com/s?dateTime={d_str}T19%3A00%3A00&covers={request.covers}&term={quote_plus(request.location)}"
+        checkpoint(f"Navigate to OpenTable search for {request.location}")
         page.goto(url, wait_until="domcontentloaded", timeout=30000)
         page.wait_for_timeout(8000)
 
@@ -37,11 +60,13 @@ def run(playwright: Playwright) -> list:
             try:
                 loc = page.locator(sel).first
                 if loc.is_visible(timeout=800):
+                    checkpoint(f"Dismiss popup: {sel}")
                     loc.evaluate("el => el.click()")
             except Exception:
                 pass
 
         for _ in range(5):
+            checkpoint("Scroll down to load more restaurants")
             page.evaluate("window.scrollBy(0, 500)")
             page.wait_for_timeout(600)
 
@@ -52,7 +77,7 @@ def run(playwright: Playwright) -> list:
         print(f"   Found {len(cards)} restaurant cards")
 
         for card in cards:
-            if len(restaurants) >= MAX_RESULTS:
+            if len(restaurants) >= request.max_results:
                 break
             try:
                 txt = card.inner_text(timeout=3000)
@@ -117,7 +142,7 @@ def run(playwright: Playwright) -> list:
             lines = [l.strip() for l in body.splitlines() if l.strip()]
             rating_labels = {"Exceptional", "Awesome", "Good", "Great"}
             i = 0
-            while i < len(lines) - 3 and len(restaurants) < MAX_RESULTS:
+            while i < len(lines) - 3 and len(restaurants) < request.max_results:
                 ln = lines[i]
                 # A restaurant name is followed by an optional "Promoted",
                 # then a rating label
@@ -164,15 +189,37 @@ def run(playwright: Playwright) -> list:
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
+    return OpentableSearchResult(
+        location=request.location,
+        restaurants=[OpentableRestaurant(
+            name=r['name'], cuisine=r['cuisine'],
+            rating=r['rating'], available_times=r['available_times']
+        ) for r in restaurants],
+    )
+
+
+def test_opentable_restaurants():
+    from playwright.sync_api import sync_playwright
+    request = OpentableSearchRequest(location="Urbana, IL", covers=2, max_results=5)
+    port = get_free_port()
+    profile_dir = get_temp_profile_dir("opentable")
+    chrome_proc = launch_chrome(profile_dir, port)
+    ws_url = wait_for_cdp_ws(port)
+    with sync_playwright() as pl:
+        browser = pl.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
         try:
+            result = search_opentable_restaurants(page, request)
+        finally:
             browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-    return restaurants
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
+    print(f"\nTotal restaurants: {len(result.restaurants)}")
+    for i, r in enumerate(result.restaurants, 1):
+        print(f"  {i}. {r.name}  |  {r.cuisine}  |  {r.rating}")
+
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        run(playwright)
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_opentable_restaurants)

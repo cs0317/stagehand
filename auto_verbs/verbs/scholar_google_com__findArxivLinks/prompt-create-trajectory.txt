@@ -1,0 +1,10 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://scholar.google.com/
+
+* Concrete task
+- Search for the paper "Structural Temporal Logic for mechanized program verification" by Ioannidis.
+- find the link(s) of the paper on Arxiv
+- return the link(s)
+

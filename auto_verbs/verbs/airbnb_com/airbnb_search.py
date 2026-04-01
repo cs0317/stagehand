@@ -11,14 +11,14 @@ import re
 import os
 import urllib.parse
 from datetime import date, timedelta
+from dataclasses import dataclass
 from dateutil.relativedelta import relativedelta
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import sync_playwright, Page
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
-import shutil
+from playwright_debugger import checkpoint
 
 
 MONTH_NAMES = [
@@ -27,21 +27,45 @@ MONTH_NAMES = [
 ]
 
 
-def compute_dates(nights: int = 3):
-    today = date.today()
-    checkin = today + relativedelta(months=2)
-    checkout = checkin + timedelta(days=nights)
-    return checkin, checkout
+@dataclass(frozen=True)
+class AirbnbSearchRequest:
+    destination: str
+    num_guests: int
+    checkin_date: date
+    checkout_date: date
+    max_results: int
 
 
-def run(
-    playwright: Playwright,
-    destination: str = "Lake Tahoe",
-    num_guests: int = 2,
-    nights: int = 3,
-    max_results: int = 5,
-) -> list:
-    checkin, checkout = compute_dates(nights)
+@dataclass(frozen=True)
+class AirbnbListing:
+    title: str
+    price_per_night: str
+    rating: str
+
+
+@dataclass(frozen=True)
+class AirbnbSearchResult:
+    destination: str
+    checkin_date: date
+    checkout_date: date
+    num_guests: int
+    nights: int
+    listings: list[AirbnbListing]
+
+
+# Automates Airbnb search for a destination and guest count over a provided date range,
+# then returns up to max_results listings with title, price per night, and rating.
+def search_airbnb_listings(
+    page: Page,
+    request: AirbnbSearchRequest,
+) -> AirbnbSearchResult:
+    destination = request.destination
+    num_guests = request.num_guests
+    checkin = request.checkin_date
+    checkout = request.checkout_date
+    nights = (checkout - checkin).days
+    max_results = request.max_results
+
     checkin_str = checkin.strftime("%Y-%m-%d")
     checkout_str = checkout.strftime("%Y-%m-%d")
     checkin_display = checkin.strftime("%m/%d/%Y")
@@ -50,18 +74,13 @@ def run(
     print(f"  Destination: {destination}")
     print(f"  Check-in: {checkin_display}  Check-out: {checkout_display}  ({nights} nights, {num_guests} guests)\n")
 
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("airbnb_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-    results = []
+    results: list[AirbnbListing] = []
 
     try:
+
         # ── Navigate ──────────────────────────────────────────────────
         print("Loading Airbnb...")
+        checkpoint("Navigate to https://www.airbnb.com")
         page.goto("https://www.airbnb.com")
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(4000)
@@ -77,6 +96,7 @@ def run(
             try:
                 btn = page.locator(selector).first
                 if btn.is_visible(timeout=1500):
+                    checkpoint(f"Dismiss popup: {selector}")
                     btn.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
@@ -90,6 +110,7 @@ def run(
         ).first
         try:
             search_input.wait_for(state="visible", timeout=5000)
+            checkpoint("Click search input")
             search_input.evaluate("el => el.click()")
         except Exception:
             page.locator(
@@ -100,9 +121,11 @@ def run(
             search_input = page.locator(
                 'input[name="query"], input[placeholder*="Search"]'
             ).first
+            checkpoint("Click search input (retry)")
             search_input.evaluate("el => el.click()")
         page.wait_for_timeout(500)
 
+        checkpoint(f"Type destination: {destination}")
         page.keyboard.press("Control+a")
         page.keyboard.type(destination, delay=50)
         print(f'  Typed "{destination}"')
@@ -116,9 +139,11 @@ def run(
                 '[role="option"]'
             ).first
             suggestion.wait_for(state="visible", timeout=5000)
+            checkpoint("Click first autocomplete suggestion")
             suggestion.evaluate("el => el.click()")
             print("  Selected first suggestion")
         except Exception:
+            checkpoint("Press Enter (no suggestion)")
             page.keyboard.press("Enter")
             print("  No suggestion, pressed Enter")
         page.wait_for_timeout(1500)
@@ -140,6 +165,7 @@ def run(
             try:
                 el = page.locator(sel).first
                 if el.is_visible(timeout=2000):
+                    checkpoint(f"Open guest picker: {sel}")
                     el.evaluate("el => el.click()")
                     guest_opened = True
                     break
@@ -165,6 +191,7 @@ def run(
                     '[data-testid="stepper-adults-increase-button"], '
                     'button[aria-label*="increase" i][aria-label*="adult" i]'
                 ).first
+                checkpoint("Click adults increase button")
                 inc.evaluate("el => el.click()")
                 page.wait_for_timeout(300)
             except Exception:
@@ -184,12 +211,14 @@ def run(
             try:
                 btn = page.locator(sel).first
                 if btn.is_visible(timeout=2000):
+                    checkpoint("Click Search button")
                     btn.evaluate("el => el.click()")
                     search_clicked = True
                     break
             except Exception:
                 pass
         if not search_clicked:
+            checkpoint("Press Enter to search")
             page.keyboard.press("Enter")
             print("  Pressed Enter to search")
         else:
@@ -219,6 +248,7 @@ def run(
             )
 
         print(f"  New URL: {new_url}")
+        checkpoint("Navigate to URL with date/guest params")
         page.goto(new_url)
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(6000)
@@ -299,7 +329,11 @@ def run(
         )
 
         results = [
-            {"title": l["title"], "price": l["price"], "rating": l["rating"]}
+            AirbnbListing(
+                title=l["title"],
+                price_per_night=l["price"],
+                rating=l["rating"],
+            )
             for l in js_listings
         ]
 
@@ -313,11 +347,11 @@ def run(
                 pm = re.search(r"\$(\d[\d,]*)", line)
                 if pm and 10 < len(line.strip()) < 200:
                     results.append(
-                        {
-                            "title": line.strip()[:100],
-                            "price": "$" + pm.group(1),
-                            "rating": "N/A",
-                        }
+                        AirbnbListing(
+                            title=line.strip()[:100],
+                            price_per_night="$" + pm.group(1),
+                            rating="N/A",
+                        )
                     )
 
         # ── Print results ─────────────────────────────────────────────
@@ -327,26 +361,68 @@ def run(
             f"  ({nights} nights, {num_guests} guests)\n"
         )
         for i, listing in enumerate(results, 1):
-            print(f"  {i}. {listing['title']}")
-            print(f"     Price: {listing['price']}/night  Rating: {listing['rating']}")
+            print(f"  {i}. {listing.title}")
+            print(f"     Price: {listing.price_per_night}/night  Rating: {listing.rating}")
 
     except Exception as e:
         import traceback
 
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
 
-    return results
+    return AirbnbSearchResult(
+        destination=destination,
+        checkin_date=checkin,
+        checkout_date=checkout,
+        num_guests=num_guests,
+        nights=nights,
+        listings=results,
+    )
+
+
+def test_search_airbnb_listings() -> None:
+    today = date.today()
+    checkin = today + relativedelta(months=2)
+    checkout = checkin + timedelta(days=3)
+
+    request = AirbnbSearchRequest(
+        destination="Lake Tahoe",
+        num_guests=2,
+        checkin_date=checkin,
+        checkout_date=checkout,
+        max_results=5,
+    )
+
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_airbnb_listings(page, request)
+            assert result.destination == request.destination
+            assert result.num_guests == request.num_guests
+            assert result.checkin_date == request.checkin_date
+            assert result.checkout_date == request.checkout_date
+            assert result.nights == (request.checkout_date - request.checkin_date).days
+            assert len(result.listings) <= request.max_results
+            print(f"\nTotal listings found: {len(result.listings)}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        items = run(playwright)
-        print(f"\nTotal listings found: {len(items)}")
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_search_airbnb_listings)

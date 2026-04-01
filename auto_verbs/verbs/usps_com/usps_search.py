@@ -3,27 +3,40 @@ USPS – Package Tracking
 Pure Playwright – no AI.
 """
 import re, os, sys, traceback, shutil, tempfile
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import sync_playwright, Page
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
+from playwright_debugger import checkpoint
 
-TRACKING_NUMBER = "9400111899223456789012"
+from dataclasses import dataclass
+import subprocess
+import json
+import time
+from urllib.request import urlopen
 
 
-def run(playwright: Playwright) -> dict:
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("usps_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
+@dataclass(frozen=True)
+class UspsTrackingRequest:
+    tracking_number: str
+
+
+@dataclass(frozen=True)
+class UspsTrackingResult:
+    tracking_number: str
+    status: str
+    last_update: str
+    expected_delivery: str
+    location: str
+
+
+def lookup_usps_tracking(page: Page, request: UspsTrackingRequest) -> UspsTrackingResult:
     result = {"status": "", "last_update": "", "expected_delivery": "", "location": ""}
     try:
         print("STEP 1: Navigate to USPS tracking page...")
+        checkpoint("Navigate to USPS tracking page")
         page.goto(
-            f"https://tools.usps.com/go/TrackConfirmAction?tLabels={TRACKING_NUMBER}",
+            f"https://tools.usps.com/go/TrackConfirmAction?tLabels={request.tracking_number}",
             wait_until="domcontentloaded", timeout=30000,
         )
         page.wait_for_timeout(6000)
@@ -34,6 +47,7 @@ def run(playwright: Playwright) -> dict:
             try:
                 loc = page.locator(sel).first
                 if loc.is_visible(timeout=800):
+                    checkpoint(f"Click popup dismiss button: {sel}")
                     loc.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
@@ -135,7 +149,7 @@ def run(playwright: Playwright) -> dict:
         if not has_data:
             print("❌ ERROR: Could not extract tracking info.")
 
-        print(f"\nDONE – Tracking Result for {TRACKING_NUMBER}:")
+        print(f"\nDONE – Tracking Result for {request.tracking_number}:")
         print(f"  Status:            {result['status'] or 'N/A'}")
         print(f"  Last Update:       {result['last_update'] or 'N/A'}")
         print(f"  Expected Delivery: {result['expected_delivery'] or 'N/A'}")
@@ -144,16 +158,63 @@ def run(playwright: Playwright) -> dict:
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
+    return UspsTrackingResult(
+        tracking_number=request.tracking_number,
+        status=result.get('status','N/A'),
+        last_update=result.get('last_update','N/A'),
+        expected_delivery=result.get('expected_delivery','N/A'),
+        location=result.get('location','N/A'),
+    )
+
+
+def test_usps_tracking():
+    from playwright.sync_api import sync_playwright
+    request = UspsTrackingRequest(tracking_number="9400111899223456789012")
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
         try:
-            browser.close()
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
         except Exception:
             pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-    return result
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
+    with sync_playwright() as pl:
+        browser = pl.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = lookup_usps_tracking(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
+    print(f"\nStatus: {result.status}")
+    print(f"Expected: {result.expected_delivery}")
+    print(f"Location: {result.location}")
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        run(playwright)
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_usps_tracking)

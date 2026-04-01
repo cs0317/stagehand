@@ -13,48 +13,69 @@ Uses Playwright's native locator API with the user's Chrome profile.
 import os
 import re
 import traceback
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
+from playwright_debugger import checkpoint
 import shutil
 
+from dataclasses import dataclass
+import subprocess
+import tempfile
+import json
+import time
+from urllib.request import urlopen
 
-def run(
-    playwright: Playwright,
-    search_term: str = "Space Needle",
-) -> dict:
+
+@dataclass(frozen=True)
+class WikipediaSearchRequest:
+    search_term: str = "Space Needle"
+
+
+@dataclass(frozen=True)
+class WikipediaInfoboxFacts:
+    location: str
+    height: str
+    opened: str
+
+
+@dataclass(frozen=True)
+class WikipediaArticleResult:
+    search_term: str
+    summary: str
+    infobox: WikipediaInfoboxFacts
+
+
+def search_wikipedia_article(page: Page, request: WikipediaSearchRequest) -> WikipediaArticleResult:
     print("=" * 59)
     print("  Wikipedia – Article Search & Extract")
     print("=" * 59)
-    print(f'  Search: "{search_term}"\n')
-
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("wikipedia_org")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
+    print(f'  Search: "{request.search_term}"\n')
     result = {}
 
     try:
         # ── Navigate to Wikipedia ─────────────────────────────────────
         print(f"Loading: https://en.wikipedia.org")
+        checkpoint("Navigate to Wikipedia homepage")
         page.goto("https://en.wikipedia.org", timeout=30000)
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(2000)
 
         # ── Search for the article ────────────────────────────────────
-        print(f'Searching for "{search_term}"...')
+        print(f'Searching for "{request.search_term}"...')
         search_input = page.locator("#searchInput, input[name='search']").first
+        checkpoint("Click search input")
         search_input.evaluate("el => el.click()")
         page.wait_for_timeout(300)
+        checkpoint("Select all text in search input")
         search_input.press("Control+a")
-        search_input.fill(search_term)
+        checkpoint("Fill search term into search input")
+        search_input.fill(request.search_term)
         page.wait_for_timeout(500)
+        checkpoint("Press Enter to submit search")
         search_input.press("Enter")
         page.wait_for_timeout(3000)
         print(f"  Loaded: {page.url}\n")
@@ -113,17 +134,66 @@ def run(
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
+    ib = result.get("infobox", {})
+    return WikipediaArticleResult(
+        search_term=request.search_term,
+        summary=result.get("summary", ""),
+        infobox=WikipediaInfoboxFacts(
+            location=ib.get("location", "N/A"),
+            height=ib.get("height", "N/A"),
+            opened=ib.get("opened", "N/A"),
+        ),
+    )
+
+
+def test_wikipedia_article():
+    from playwright.sync_api import sync_playwright
+    request = WikipediaSearchRequest(search_term="Space Needle")
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
         try:
-            browser.close()
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
         except Exception:
             pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-    return result
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
+    with sync_playwright() as pl:
+        browser = pl.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_wikipedia_article(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
+    print(f"\nSearch term: {result.search_term}")
+    print(f"Summary: {result.summary[:200]}...")
+    print(f"Infobox: location={result.infobox.location}, height={result.infobox.height}, opened={result.infobox.opened}")
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        data = run(playwright)
-        print(f"Done — extracted {len(data)} fields")
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_wikipedia_article)

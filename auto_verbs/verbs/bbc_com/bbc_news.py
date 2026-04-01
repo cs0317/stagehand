@@ -11,36 +11,47 @@ Uses Playwright's native locator API with the user's Chrome profile.
 
 import os
 import traceback
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import sync_playwright, Page
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
-import shutil
+from playwright_debugger import checkpoint
+
+from dataclasses import dataclass
+
+@dataclass(frozen=True)
+class BbcNewsRequest:
+    max_results: int
+
+@dataclass(frozen=True)
+class BbcHeadline:
+    headline: str
+    url: str
+
+@dataclass(frozen=True)
+class BbcNewsResult:
+    headlines: list[BbcHeadline]
 
 
-def run(
-    playwright: Playwright,
-    max_results: int = 5,
-) -> list:
+# Extracts the top headline stories from the BBC News homepage, returning up to max_results items.
+def extract_bbc_headlines(
+    page: Page,
+    request: BbcNewsRequest,
+) -> BbcNewsResult:
+    max_results = request.max_results
+    raw_results = []
     print("=" * 59)
     print("  BBC News – Top Headlines Extraction")
     print("=" * 59)
     print(f"  Extract up to {max_results} headline stories\n")
 
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("bbc_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-    results = []
+    raw_results = []
 
     try:
         # ── Navigate to BBC News ──────────────────────────────────────────
         print("Loading BBC News...")
+        checkpoint("Navigate to https://www.bbc.com/news")
         page.goto("https://www.bbc.com/news")
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(5000)
@@ -59,6 +70,7 @@ def run(
             try:
                 btn = page.locator(selector).first
                 if btn.is_visible(timeout=1500):
+                    checkpoint(f"Dismiss popup: {selector}")
                     btn.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
@@ -75,7 +87,7 @@ def run(
 
         seen = set()
         for i in range(count):
-            if len(results) >= max_results:
+            if len(raw_results) >= max_results:
                 break
             h_el = headlines_els.nth(i)
             try:
@@ -100,16 +112,16 @@ def run(
                     }"""
                 ) or "N/A"
 
-                results.append({
+                raw_results.append({
                     "headline": headline,
                     "url": url,
                 })
             except Exception:
                 continue
 
-        # ── Print results ─────────────────────────────────────────────────
-        print(f"\nFound {len(results)} headline stories:\n")
-        for i, story in enumerate(results, 1):
+        # ── Print raw_results ─────────────────────────────────────────────────
+        print(f"\nFound {len(raw_results)} headline stories:\n")
+        for i, story in enumerate(raw_results, 1):
             print(f"  {i}. {story['headline']}")
             print(f"     URL: {story['url']}")
             print()
@@ -117,17 +129,37 @@ def run(
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
+
+    return BbcNewsResult(
+        headlines=[BbcHeadline(headline=r["headline"], url=r["url"]) for r in raw_results],
+    )
+def test_extract_bbc_headlines() -> None:
+    request = BbcNewsRequest(max_results=5)
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
         try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-    return results
+            result = extract_bbc_headlines(page, request)
+            assert len(result.headlines) <= request.max_results
+            print(f"\nTotal headlines found: {len(result.headlines)}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        items = run(playwright)
-        print(f"Total stories: {len(items)}")
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_extract_bbc_headlines)

@@ -8,11 +8,17 @@ Uses Playwright persistent context with real Chrome Default profile.
 IMPORTANT: Close ALL Chrome windows before running!
 """
 
-import re
-import json
-import os
-import traceback
-from playwright.sync_api import Playwright, sync_playwright, TimeoutError as PwTimeout
+import re, json, os, shutil, traceback
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
+from playwright_debugger import checkpoint
+from playwright.sync_api import Page, sync_playwright
+from dataclasses import dataclass
+import subprocess
+import tempfile
+import time
+from urllib.request import urlopen
 
 
 def get_chrome_default_profile() -> str:
@@ -26,41 +32,41 @@ def get_chrome_default_profile() -> str:
     raise FileNotFoundError("Could not find Chrome Default profile")
 
 
-def run(
-    playwright,
-    pickup: str = "Seattle-Tacoma International Airport",
-    dropoff: str = "Downtown Seattle",
-    max_results: int = 10,
-) -> list:
+@dataclass(frozen=True)
+class UberRideSearchRequest:
+    pickup: str = "Seattle-Tacoma International Airport"
+    dropoff: str = "Downtown Seattle"
+    max_results: int = 5
+
+
+@dataclass(frozen=True)
+class UberRideEstimate:
+    ride_type: str
+    price_range: str
+
+
+@dataclass(frozen=True)
+class UberRideSearchResult:
+    pickup: str
+    dropoff: str
+    estimates: list
+
+
+def search_uber_rides(page: Page, request: UberRideSearchRequest) -> UberRideSearchResult:
     print("=" * 59)
     print("  Uber - Ride Price Estimate")
     print("=" * 59)
-    print(f"  Pickup:  {pickup}")
-    print(f"  Dropoff: {dropoff}\n")
-
-    # Use REAL Chrome Default profile (Chrome must be closed first!)
-    user_data_dir = get_chrome_default_profile()
-    print(f"  Using Chrome profile: {user_data_dir}")
-    print("  NOTE: Close ALL Chrome windows before running!\n")
-    
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport={"width": 1920, "height": 1080},
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-            "--start-maximized",
-            "--window-size=1920,1080",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
+    print(f"  Pickup:  {request.pickup}")
+    print(f"  Dropoff: {request.dropoff}\n")
     results = []
 
+    original_viewport = page.viewport_size
     try:
+        # Ensure a wide viewport so Uber renders the desktop layout
+        page.set_viewport_size({"width": 1280, "height": 900})
+
         print("Loading Uber price estimate page...")
+        checkpoint("Navigate to Uber price estimate page")
         page.goto("https://www.uber.com/us/en/price-estimate/")
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(5000)
@@ -92,45 +98,56 @@ def run(
             try:
                 btn = page.locator(selector).first
                 if btn.is_visible(timeout=1500):
+                    checkpoint("Dismiss popup/cookie banner")
                     btn.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
                 pass
 
         # ── STEP 1: Enter pickup location ─────────────────────────────────
-        print(f'STEP 1: Pickup = "{pickup}"...')
+        print(f'STEP 1: Pickup = "{request.pickup}"...')
         pickup_input = page.locator('input[aria-label="Pickup location"]').first
         pickup_input.wait_for(state="visible", timeout=5000)
+        checkpoint("Click pickup input field")
         pickup_input.click()
         page.wait_for_timeout(500)
+        checkpoint("Select all text in pickup input")
         page.keyboard.press("Control+a")
+        checkpoint("Clear pickup input")
         page.keyboard.press("Backspace")
         page.wait_for_timeout(200)
-        pickup_input.type(pickup, delay=50)
+        checkpoint("Type pickup location")
+        pickup_input.type(request.pickup, delay=50)
         page.wait_for_timeout(3000)
 
         # Select first autocomplete suggestion from pickup dropdown
         pickup_dd = page.locator('[aria-label="pickup location dropdown"] li[role="option"]').first
         pickup_dd.wait_for(state="visible", timeout=5000)
+        checkpoint("Select pickup autocomplete suggestion")
         pickup_dd.click()
         print("  Selected pickup suggestion")
         page.wait_for_timeout(2000)
 
         # ── STEP 2: Enter dropoff location ────────────────────────────────
-        print(f'STEP 2: Dropoff = "{dropoff}"...')
+        print(f'STEP 2: Dropoff = "{request.dropoff}"...')
         dropoff_input = page.locator('input[aria-label="Dropoff location"]').first
         dropoff_input.wait_for(state="visible", timeout=5000)
+        checkpoint("Click dropoff input field")
         dropoff_input.click()
         page.wait_for_timeout(500)
+        checkpoint("Select all text in dropoff input")
         page.keyboard.press("Control+a")
+        checkpoint("Clear dropoff input")
         page.keyboard.press("Backspace")
         page.wait_for_timeout(200)
-        dropoff_input.type(dropoff, delay=50)
+        checkpoint("Type dropoff location")
+        dropoff_input.type(request.dropoff, delay=50)
         page.wait_for_timeout(3000)
 
         # Select autocomplete suggestion from destination dropdown
         dropoff_dd = page.locator('[aria-label="destination location dropdown"] li[role="option"]').first
         dropoff_dd.wait_for(state="visible", timeout=5000)
+        checkpoint("Select dropoff autocomplete suggestion")
         dropoff_dd.click()
         print("  Selected dropoff suggestion")
         page.wait_for_timeout(2000)
@@ -139,6 +156,7 @@ def run(
         print("STEP 3: Get price estimate...")
         see_prices = page.locator('a[aria-label="See prices"]').first
         see_prices.wait_for(state="visible", timeout=5000)
+        checkpoint("Click See prices button")
         see_prices.click()
         print("  Clicked 'See prices'")
         page.wait_for_timeout(8000)
@@ -213,14 +231,48 @@ def run(
         print(f"\nError: {e}")
         traceback.print_exc()
     finally:
+        if original_viewport:
+            page.set_viewport_size(original_viewport)
+    return UberRideSearchResult(
+        pickup=request.pickup,
+        dropoff=request.dropoff,
+        estimates=[UberRideEstimate(ride_type=r['rideType'], price_range=r['priceRange']) for r in results],
+    )
+
+
+def test_uber_rides():
+    from playwright.sync_api import sync_playwright
+    request = UberRideSearchRequest(
+        pickup="Seattle-Tacoma International Airport",
+        dropoff="Downtown Seattle",
+        max_results=5,
+    )
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default",
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
         try:
+            result = search_uber_rides(page, request)
+        finally:
             context.close()
-        except Exception:
-            pass
-    return results
+    print(f"\nTotal estimates: {len(result.estimates)}")
+    for i, e in enumerate(result.estimates, 1):
+        print(f"  {i}. {e.ride_type}  {e.price_range}")
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        items = run(playwright)
-        print(f"\nTotal estimates: {len(items)}")
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_uber_rides)

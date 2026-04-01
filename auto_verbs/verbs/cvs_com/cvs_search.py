@@ -14,39 +14,53 @@ import os
 import re
 import time
 import traceback
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
-import shutil
+from playwright_debugger import checkpoint
+
+from dataclasses import dataclass
+
+@dataclass(frozen=True)
+class CvsSearchRequest:
+    zip_code: str
+    max_results: int
+
+@dataclass(frozen=True)
+class CvsStore:
+    address: str
+    phone: str
+    hours: str
+    has_pharmacy: str
+    has_minuteclinic: str
+
+@dataclass(frozen=True)
+class CvsSearchResult:
+    zip_code: str
+    stores: list[CvsStore]
 
 
-def run(
-    playwright: Playwright,
-    zip_code: str = "10001",
-    max_results: int = 5,
-) -> list:
+# Searches for CVS store locations near a ZIP code and returns up to max_results results.
+def search_cvs_stores(
+    page: Page,
+    request: CvsSearchRequest,
+) -> CvsSearchResult:
+    zip_code = request.zip_code
+    max_results = request.max_results
+    raw_results = []
     print("=" * 59)
     print("  CVS – Store Locator")
     print("=" * 59)
     print(f"  Zip Code: \"{zip_code}\"")
     print(f"  Extract up to {max_results} stores\n")
 
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("cvs_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-    results = []
-
     try:
         # ── Navigate to store locator landing page ──────────────────
         landing_url = "https://www.cvs.com/store-locator/landing"
         print(f"Loading: {landing_url}")
+        checkpoint("Navigate to CVS store locator landing page")
         page.goto(landing_url, timeout=45000)
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(5000)
@@ -63,6 +77,7 @@ def run(
             try:
                 btn = page.locator(sel).first
                 if btn.is_visible(timeout=1500):
+                    checkpoint("Click dismiss popup/cookie banner")
                     btn.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
@@ -71,23 +86,29 @@ def run(
         # ── Search by zip code ────────────────────────────────────────
         print(f"Searching for stores near {zip_code}...")
         search_input = page.locator("cvs-combobox input, input[aria-label*='Search']").first
+        checkpoint("Click search input field")
         search_input.evaluate("el => el.click()")
         page.wait_for_timeout(500)
+        checkpoint("Select all text in search input")
         search_input.press("Control+a")
+        checkpoint(f"Fill zip code '{zip_code}' into search input")
         search_input.fill(zip_code)
         page.wait_for_timeout(1000)
+        checkpoint("Press Enter to search")
         search_input.press("Enter")
         page.wait_for_timeout(8000)
         print(f"  Results loaded: {page.url}\n")
 
         # ── Scroll to load content ────────────────────────────────────
         for _ in range(3):
+            checkpoint("Scroll down 500px to load content")
             page.evaluate("window.scrollBy(0, 500)")
             page.wait_for_timeout(500)
+        checkpoint("Scroll back to top of page")
         page.evaluate("window.scrollTo(0, 0)")
         page.wait_for_timeout(1000)
 
-        # ── Extract results ───────────────────────────────────────────
+        # ── Extract raw_results ───────────────────────────────────────────
         print(f"Extracting up to {max_results} stores...\n")
 
         # CVS uses web components (shadow DOM) for store cards, so
@@ -117,7 +138,7 @@ def run(
         }""") or ""
         lines = [l.strip() for l in body_text.split("\n") if l.strip()]
 
-        # ── Extract results using CVS page structure ────────────────
+        # ── Extract raw_results using CVS page structure ────────────────
         # CVS store listings follow a consistent pattern:
         #   [number] -> address -> CITY, ST, ZIP -> ... phone -> hours -> services
         # Find store blocks by looking for lines that are just a single number (1-9)
@@ -130,7 +151,7 @@ def run(
                     store_starts.append(k)
 
         for si, start_idx in enumerate(store_starts):
-            if len(results) >= max_results:
+            if len(raw_results) >= max_results:
                 break
             # Determine end of this store block
             end_idx = store_starts[si + 1] - 2 if si + 1 < len(store_starts) else min(start_idx + 25, len(lines))
@@ -181,11 +202,11 @@ def run(
                     store["has_minuteclinic"] = "Yes"
 
             if store["address"] != "N/A":
-                results.append(store)
+                raw_results.append(store)
 
-        # ── Print results ─────────────────────────────────────────────
-        print(f"\nFound {len(results)} stores:\n")
-        for i, s in enumerate(results, 1):
+        # ── Print raw_results ─────────────────────────────────────────────
+        print(f"\nFound {len(raw_results)} stores:\n")
+        for i, s in enumerate(raw_results, 1):
             print(f"  {i}. {s['address']}")
             print(f"     Phone:        {s['phone']}")
             print(f"     Hours:        {s['hours']}")
@@ -196,17 +217,45 @@ def run(
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
+
+    return CvsSearchResult(
+        zip_code=zip_code,
+        stores=[CvsStore(
+            address=r.get("address",""),
+            phone=r.get("phone",""),
+            hours=r.get("hours",""),
+            has_pharmacy=r.get("has_pharmacy",""),
+            has_minuteclinic=r.get("has_minuteclinic",""),
+        ) for r in raw_results],
+    )
+def test_search_cvs_stores() -> None:
+    request = CvsSearchRequest(zip_code="10001", max_results=5)
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
         try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-    return results
+            result = search_cvs_stores(page, request)
+            assert result.zip_code == request.zip_code
+            assert len(result.stores) <= request.max_results
+            print(f"\nTotal stores found: {len(result.stores)}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        items = run(playwright)
-        print(f"Total results: {len(items)}")
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_search_cvs_stores)

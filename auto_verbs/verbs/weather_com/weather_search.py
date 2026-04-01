@@ -11,52 +11,59 @@ IMPORTANT: Close ALL Chrome windows before running!
 import os
 import re
 import traceback
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
+
+import sys as _sys, os as _os, shutil
+_sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), '..'))
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
+from playwright_debugger import checkpoint
+from dataclasses import dataclass, field
+import subprocess
+import tempfile
+import json
+import time
+from urllib.request import urlopen
 
 
-def get_chrome_default_profile() -> str:
-    """Get the Chrome Default profile path."""
-    user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
-        "AppData", "Local", "Google", "Chrome", "User Data", "Default",
-    )
-    if os.path.isdir(user_data_dir):
-        return user_data_dir
-    raise FileNotFoundError("Could not find Chrome Default profile")
+@dataclass(frozen=True)
+class WeatherForecastRequest:
+    location: str
 
 
-def run(
-    playwright: Playwright,
-    location: str = "Seattle, WA",
-) -> dict:
+@dataclass(frozen=True)
+class WeatherDay:
+    day: str
+    high: str
+    low: str
+    conditions: str
+
+
+@dataclass(frozen=True)
+class WeatherForecastResult:
+    location: str
+    current_temp: str
+    current_conditions: str
+    forecast: list
+
+
+def get_weather_forecast(page: Page, request: WeatherForecastRequest) -> WeatherForecastResult:
     print("=" * 59)
     print("  Weather.com – Weather Forecast")
     print("=" * 59)
-    print(f'  Location: "{location}"\n')
-    
-    user_data_dir = get_chrome_default_profile()
-    print(f"Using Chrome profile: {user_data_dir}")
-    print("NOTE: Close ALL Chrome windows before running!\n")
-    
-    context = playwright.chromium.launch_persistent_context(
-        user_data_dir,
-        channel="chrome",
-        headless=False,
-        viewport={"width": 1280, "height": 900},
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-infobars",
-            "--disable-extensions",
-        ],
-    )
-    page = context.pages[0] if context.pages else context.new_page()
+    print(f'  Location: "{request.location}"\n')
     result = {"current": {"temperature": "N/A", "conditions": "N/A"}, "forecast": []}
 
     try:
         # ── Navigate to weather.com ───────────────────────────────────
         print(f"Loading: https://weather.com")
+        checkpoint("Navigate to weather.com")
         page.goto("https://weather.com", wait_until="domcontentloaded", timeout=30000)
-        page.wait_for_timeout(3000)
+        # Wait for the full header search box to appear (not just the minimal homepage widget)
+        try:
+            page.wait_for_selector("header input[type='text']", timeout=10000)
+            print("Full header search box detected")
+        except Exception:
+            page.wait_for_timeout(2000)
 
         # ── Dismiss popups ────────────────────────────────────────────
         for sel in [
@@ -71,107 +78,234 @@ def run(
             try:
                 btn = page.locator(sel).first
                 if btn.is_visible(timeout=1500):
+                    checkpoint(f"Dismiss popup: {sel}")
                     btn.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
                 pass
 
-        # ── Search for location ───────────────────────────────────────
-        print(f'Searching for "{location}"...')
-        search_input = page.locator(
-            "input[aria-label='Search for a location'], "
-            "#LocationSearch_input, "
-            "input[id*='LocationSearch'], "
-            "input[placeholder*='Search City']"
-        ).first
-        search_input.evaluate("el => el.click()")
-        page.wait_for_timeout(500)
-        search_input.press("Control+a")
-        search_input.fill(location)
+        # ── Search for the location ────────────────────────────────────────
+        print(f'Searching for "{request.location}"...')
+
+        # Set up network interception to capture the autocomplete API response
+        # This gives us the location URL directly without needing to click suggestions
+        location_url = None
+
+        def handle_response(response):
+            nonlocal location_url
+            if location_url:
+                return
+            url = response.url
+            # weather.com uses https://api.weather.com/v3/location/search
+            if "v3/location" not in url and "v1/location" not in url:
+                return
+            try:
+                data = response.json()
+                # v3/location/search returns {"location": {"placeId": [...], ...}}
+                loc = data.get("location", {})
+                place_ids = loc.get("placeId") or []
+                if place_ids:
+                    location_url = f"https://weather.com/weather/today/l/{place_ids[0]}"
+                    print(f"  Captured location URL from API: {location_url}")
+            except Exception:
+                pass
+
+        page.on("response", handle_response)
+
+        # Wait for page to fully load
         page.wait_for_timeout(2000)
 
-        # Click the first suggestion
-        try:
-            suggestion = page.locator(
-                "[data-testid='searchItem'], "
-                "button[id*='LocationSearch_listItem']"
-            ).first
-            suggestion.wait_for(state="visible", timeout=5000)
-            suggestion.evaluate("el => el.click()")
-        except Exception:
-            search_input.press("Enter")
-        page.wait_for_timeout(5000)
-        print(f"  Loaded: {page.url}\n")
+        # Debug: Check all input elements on the page
+        all_inputs = page.locator("input").all()
+        print(f"DEBUG: Found {len(all_inputs)} input elements on page")
+        for i, inp in enumerate(all_inputs[:5]):
+            try:
+                placeholder = inp.get_attribute("placeholder") or ""
+                input_type = inp.get_attribute("type") or ""
+                input_id = inp.get_attribute("id") or ""
+                print(f"  Input {i+1}: type='{input_type}' placeholder='{placeholder}' id='{input_id}'")
+            except Exception:
+                pass
 
-        # ── Extract current conditions ────────────────────────────────
-        print("Extracting current conditions...")
-        # Wait for page to fully render
-        page.wait_for_timeout(2000)
-        
-        # Try multiple selector approaches
-        temp_selectors = [
-            "[data-testid='CurrentConditionsContainer'] [data-testid='TemperatureValue']",
-            "span[data-testid='TemperatureValue']",
-            "[class*='CurrentConditions--tempValue']",
-            ".CurrentConditions--tempValue--MHmYY",
+        # Prefer the full header search box which has proper BUTTON suggestions
+        search_input = None
+        search_selectors = [
+            "header input[type='text']",  # Best: has proper clickable BUTTON suggestions
+            "input[aria-label='Search for a location']",
+            "input[id*='LocationSearch']",
+            "#LocationSearch_input",
+            "input[aria-label*='Search']",
+            "input[type='search']",
+            "[role='searchbox']",
+            "input[placeholder*='City']",
+            "input[placeholder*='location']",
+            "input[placeholder*='City, State']",
+            "input[id*='search']",
+            "input[placeholder*='Search']"  # Last resort: simpler widget whose suggestions don't navigate
         ]
+
+        for selector in search_selectors:
+            try:
+                test_input = page.locator(selector).first
+                if test_input.is_visible(timeout=2000):
+                    search_input = test_input
+                    print(f"Found search input with selector: {selector}")
+                    break
+            except Exception:
+                continue
+
+        if not search_input:
+            print("Could not find search input with any selector. Trying first visible text input...")
+            try:
+                fallback_input = page.locator("input[type='text']").first
+                if fallback_input.is_visible(timeout=2000):
+                    search_input = fallback_input
+                    print("Using first visible text input as fallback")
+            except Exception:
+                pass
+
+        if not search_input:
+            print("Could not find any suitable search input!")
+            return WeatherForecastResult(
+                location=request.location,
+                current_temp="N/A",
+                current_conditions="N/A",
+                forecast=[]
+            )
+        
+        # Improved search interaction
+        try:
+            # Focus and clear the input
+            checkpoint("Click search input")
+            search_input.click()
+            page.wait_for_timeout(1000)
+            checkpoint("Clear search input")
+            search_input.clear()
+
+            # Type the location slowly to trigger autocomplete API calls
+            print("Typing location...")
+            checkpoint(f"Type location: {request.location}")
+            search_input.type(request.location, delay=100)
+            print("Waiting for suggestions / API response...")
+            page.wait_for_timeout(2000)
+
+            # Navigate using the URL captured from the API interception
+            if not location_url:
+                print(f"ERROR: Could not capture location URL from API for '{request.location}'")
+                return WeatherForecastResult(
+                    location=request.location,
+                    current_temp="N/A",
+                    current_conditions="N/A",
+                    forecast=[]
+                )
+
+            print(f"Using captured location URL: {location_url}")
+            checkpoint("Navigate to captured location URL")
+            page.goto(location_url, timeout=15000)
+            page.wait_for_load_state("domcontentloaded", timeout=10000)
+            print(f"Navigation completed to: {page.url}")
+                
+        except Exception as e:
+            print(f"Search interaction failed: {e}")
+            import traceback
+            traceback.print_exc()
+            
+        print(f"  Current URL: {page.url}")
+        print(f"  Page title: {page.title()}")
+        print()
+
+        # ── Extract current conditions (improved selectors) ────────────────────────────────
+        print("Extracting current conditions...")
+        page.wait_for_timeout(2000)  # Allow page to fully load
+        
+        # Try modern weather.com selectors first
+        temp_selectors = [
+            "[data-testid='TemperatureValue']",
+            "span[data-testid='TemperatureValue']", 
+            "[class*='CurrentConditions--tempValue']",
+            "[class*='temp']",
+            "div[class*='temperature'] span",
+            ".today-temperature",
+            ".current-temperature"
+        ]
+        
         for sel in temp_selectors:
             try:
                 el = page.locator(sel).first
-                if el.is_visible(timeout=1000):
-                    result["current"]["temperature"] = el.inner_text(timeout=2000).strip()
-                    break
+                if el.is_visible(timeout=2000):
+                    temp_text = el.inner_text(timeout=2000).strip()
+                    if temp_text and ('°' in temp_text or temp_text.isdigit()):
+                        result["current"]["temperature"] = temp_text
+                        print(f"Found temperature '{temp_text}' with selector: {sel}")
+                        break
             except Exception:
                 continue
         
+        # Try weather condition selectors
         cond_selectors = [
-            "[data-testid='CurrentConditionsContainer'] [data-testid='wxPhrase']",
+            "[data-testid='wxPhrase']",
             "div[data-testid='wxPhrase']",
             "[class*='CurrentConditions--phraseValue']",
+            "[class*='conditions']",
+            ".current-conditions",
+            ".weather-phrase"
         ]
+        
         for sel in cond_selectors:
             try:
                 el = page.locator(sel).first
-                if el.is_visible(timeout=1000):
-                    result["current"]["conditions"] = el.inner_text(timeout=2000).strip()
-                    break
+                if el.is_visible(timeout=2000):
+                    cond_text = el.inner_text(timeout=2000).strip()
+                    if cond_text and len(cond_text) > 2:
+                        result["current"]["conditions"] = cond_text
+                        print(f"Found conditions '{cond_text}' with selector: {sel}")
+                        break
             except Exception:
                 continue
         
-        # Fallback: parse page text for temperature pattern
-        if result["current"]["temperature"] == "N/A":
-            body_text = page.evaluate("document.body.innerText") or ""
-            # Look for standalone temperature like "60°" at start of line
-            temp_match = re.search(r'^(\d{1,3}°)$', body_text, re.MULTILINE)
-            if temp_match:
-                result["current"]["temperature"] = temp_match.group(1)
-        
-        # Fallback: look for conditions near temperature in page text
-        if result["current"]["conditions"] == "N/A":
-            if "body_text" not in dir():
+        # Enhanced fallback with page text parsing
+        if result["current"]["temperature"] == "N/A" or result["current"]["conditions"] == "N/A":
+            try:
                 body_text = page.evaluate("document.body.innerText") or ""
-            lines = [l.strip() for l in body_text.split("\n") if l.strip()]
-            weather_words = ["sunny", "cloudy", "rain", "snow", "clear", "partly cloudy",
-                            "mostly cloudy", "overcast", "fog", "showers", "fair", "windy"]
-            for line in lines[:50]:  # Check first 50 lines
-                if any(w in line.lower() for w in weather_words) and len(line) < 40:
-                    result["current"]["conditions"] = line
-                    break
+                lines = [l.strip() for l in body_text.split("\n") if l.strip()]
+                
+                # Look for temperature pattern
+                if result["current"]["temperature"] == "N/A":
+                    for line in lines[:20]:  # Check first 20 lines
+                        temp_match = re.search(r'(\d{1,3}°[CF]?)', line)
+                        if temp_match:
+                            result["current"]["temperature"] = temp_match.group(1)
+                            print(f"Found temperature in text: {temp_match.group(1)}")
+                            break
+                
+                # Look for weather conditions
+                if result["current"]["conditions"] == "N/A":
+                    weather_words = ["sunny", "cloudy", "rain", "snow", "clear", "partly", "mostly", 
+                                   "overcast", "fog", "showers", "fair", "windy", "thunderstorm"]
+                    for line in lines[:30]:  # Check first 30 lines
+                        if any(w in line.lower() for w in weather_words) and len(line) < 50:
+                            result["current"]["conditions"] = line
+                            print(f"Found conditions in text: {line}")
+                            break
+            except Exception as e:
+                print(f"Text parsing fallback failed: {e}")
 
         # ── Navigate to 5-day forecast ────────────────────────────────
         print("Navigating to 5-day forecast...")
         try:
             link = page.locator("a[href*='5day'], a:has-text('5 Day')").first
             if link.is_visible(timeout=3000):
+                checkpoint("Click 5-day forecast link")
                 link.evaluate("el => el.click()")
-                page.wait_for_timeout(4000)
+                page.wait_for_timeout(2000)
         except Exception:
             # Try appending /weather/5day to URL
             current_url = page.url
             if "/weather/" in current_url and "/5day" not in current_url:
                 five_day_url = current_url.split("/weather/")[0] + "/weather/5day/" + current_url.split("/weather/")[1].split("/")[1] if "/weather/" in current_url else current_url
+                checkpoint("Navigate to 5-day forecast page")
                 page.goto(five_day_url, timeout=15000)
-                page.wait_for_timeout(3000)
+                page.wait_for_timeout(2000)
 
         # ── Extract 5-day forecast ────────────────────────────────────
         print("Extracting 5-day forecast...")
@@ -220,30 +354,77 @@ def run(
                             day["conditions"] = cand
                 result["forecast"].append(day)
 
-        # ── Print results ─────────────────────────────────────────────
-        print(f"\n{'=' * 59}")
-        print("  Results")
-        print(f"{'=' * 59}")
-        print(f"\n  Current Conditions:")
-        print(f"     Temperature: {result['current'].get('temperature', 'N/A')}")
-        print(f"     Conditions:  {result['current'].get('conditions', 'N/A')}")
-        print(f"\n  5-Day Forecast:")
-        for i, d in enumerate(result["forecast"], 1):
-            print(f"     {i}. {d['day']}: High {d['high']}, Low {d['low']} — {d['conditions']}")
-        print()
+        print("Weather data extraction completed.")
 
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
+    current = result.get('current', {})
+    return WeatherForecastResult(
+        location=request.location,
+        current_temp=current.get('temperature', 'N/A'),
+        current_conditions=current.get('conditions', 'N/A'),
+        forecast=[WeatherDay(day=d['day'], high=d['high'], low=d['low'], conditions=d['conditions']) for d in result.get('forecast', [])],
+    )
+
+
+def test_weather_forecast(location: str):
+    from playwright.sync_api import sync_playwright
+    request = WeatherForecastRequest(location=location)
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
         try:
-            context.close()
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
         except Exception:
             pass
-    return result
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
+    with sync_playwright() as pl:
+        browser = pl.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = get_weather_forecast(page, request)
+    
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
+    # ── Print results ─────────────────────────────────────────────
+    print(f"\n{'=' * 59}")
+    print("  Final Results")
+    print(f"{'=' * 59}")
+    print(f"\n  Current Conditions:")
+    print(f"     Temperature: {result.current_temp}")
+    print(f"     Conditions:  {result.current_conditions}")
+    print(f"\n  5-Day Forecast:")
+    for i, d in enumerate(result.forecast, 1):
+        print(f"     {i}. {d.day}: High {d.high}, Low {d.low} — {d.conditions}")
+    print()
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        data = run(playwright)
-        print(f"Done — current temp: {data['current'].get('temperature', 'N/A')}, {len(data['forecast'])} forecast days")
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_weather_forecast, "Seattle, WA")

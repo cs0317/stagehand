@@ -1,27 +1,42 @@
 """
-Auto-generated Playwright script (Python)
-Alaska Airlines – Round Trip Flight Search
-From: Seattle → To: Chicago
-Departure: 04/26/2026  Return: 04/30/2026
-
-Generated on: 2026-02-26T20:40:46.528Z
-Recorded 12 browser interactions
-
-Uses Playwright's native locator API with built-in shadow DOM piercing
-(no coordinate math or page.evaluate hacks required).
+Playwright script (Python) — Alaska Airlines Round-Trip Flight Search
+Searches for round-trip flights between an origin and destination,
+returning up to max_results economy-class options.
 """
 
 import re
 import os
+from dataclasses import dataclass
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
-import shutil
+from playwright_debugger import checkpoint
+@dataclass(frozen=True)
+class AlaskaFlightSearchRequest:
+    origin: str
+    destination: str
+    departure_date: date
+    return_date: date
+    max_results: int
+
+
+@dataclass(frozen=True)
+class AlaskaFlight:
+    itinerary: str
+    economy_price: str
+
+
+@dataclass(frozen=True)
+class AlaskaFlightSearchResult:
+    origin: str
+    destination: str
+    departure_date: date
+    return_date: date
+    flights: list[AlaskaFlight]
 
 # Deep shadow DOM traversal helper (evaluated in browser)
 DEEP_QUERY_JS = """
@@ -75,39 +90,25 @@ def select_first_visible_option(page, timeout_ms=5000):
     return False
 
 
-def compute_dates():
-    today = date.today()
-    departure = today + relativedelta(months=2)
-    ret = departure + timedelta(days=4)
-    return departure.strftime("%m/%d/%Y"), ret.strftime("%m/%d/%Y")
+# Searches Alaska Airlines for round-trip flights between origin and destination
+# on the given dates, returning up to max_results economy-class flight options.
+def search_alaska_flights(
+    page: Page,
+    request: AlaskaFlightSearchRequest,
+) -> AlaskaFlightSearchResult:
+    origin = request.origin
+    destination = request.destination
+    departure_date = request.departure_date.strftime("%m/%d/%Y")
+    return_date = request.return_date.strftime("%m/%d/%Y")
+    max_results = request.max_results
 
-
-def run(
-    playwright: Playwright,
-    origin: str = "Seattle",
-    destination: str = "Chicago",
-    departure_date: str = None,
-    return_date: str = None,
-    max_results: int = 5,
-) -> list:
-    if departure_date is None or return_date is None:
-        departure_date, return_date = compute_dates()
-
-    print(f"  Seattle -> Chicago")
+    print(f"  {origin} -> {destination}")
     print(f"  Dep: {departure_date}  Ret: {return_date}\n")
-
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("alaskaair_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-    results = []
-
+    raw_results = []
     try:
         # ── Navigate ──────────────────────────────────────────────────────
         print("Loading Alaska Airlines...")
+        checkpoint("Navigate to https://www.alaskaair.com")
         page.goto("https://www.alaskaair.com")
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(5000)
@@ -118,6 +119,7 @@ def run(
             try:
                 btn = page.get_by_role("button", name=re.compile(label, re.IGNORECASE))
                 if btn.first.is_visible(timeout=1000):
+                    checkpoint(f"Dismiss popup: {label}")
                     btn.first.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
                     break
@@ -137,6 +139,7 @@ def run(
             ).first
             rt_radio = booking.get_by_text("Round trip", exact=False).first
             if rt_radio.is_visible(timeout=2000):
+                checkpoint("Click Round Trip radio")
                 rt_radio.evaluate("el => el.click()")
                 print("  Selected Round Trip (booking widget text)")
             else:
@@ -164,11 +167,13 @@ def run(
             }})()
         """)
         if coords:
+            checkpoint(f"Click From combobox at ({int(coords['x'])}, {int(coords['y'])})")
             page.mouse.click(coords['x'], coords['y'])
             print(f"  Clicked From combobox at ({int(coords['x'])}, {int(coords['y'])})")
         else:
             print("  ERROR: From combobox not found!")
         page.wait_for_timeout(500)
+        checkpoint(f"Type origin: {origin}")
         page.keyboard.press("Control+a")
         page.keyboard.press("Backspace")
         page.keyboard.type(origin, delay=50)
@@ -176,9 +181,10 @@ def run(
         page.wait_for_timeout(2000)
 
         # Select first visible suggestion (deep shadow DOM query)
+        checkpoint("Select first origin suggestion")
         if not select_first_visible_option(page):
+            checkpoint("Press Enter (no visible option)")
             page.keyboard.press("Enter")
-            print("  No visible option found, pressed Enter")
         page.wait_for_timeout(1500)
 
         # ── Fill Destination ──────────────────────────────────────────────
@@ -199,11 +205,12 @@ def run(
             }})()
         """)
         if coords:
+            checkpoint(f"Click To combobox at ({int(coords['x'])}, {int(coords['y'])})")
             page.mouse.click(coords['x'], coords['y'])
-            print(f"  Clicked To combobox at ({int(coords['x'])}, {int(coords['y'])})")
         else:
             print("  ERROR: To combobox not found!")
         page.wait_for_timeout(500)
+        checkpoint(f"Type destination: {destination}")
         page.keyboard.press("Control+a")
         page.keyboard.press("Backspace")
         page.keyboard.type(destination, delay=50)
@@ -211,9 +218,10 @@ def run(
         page.wait_for_timeout(2000)
 
         # Select first visible suggestion
+        checkpoint("Select first destination suggestion")
         if not select_first_visible_option(page):
+            checkpoint("Press Enter (no visible option)")
             page.keyboard.press("Enter")
-            print("  No visible option found, pressed Enter")
         page.wait_for_timeout(1500)
 
         # ── Fill Dates ────────────────────────────────────────────────────
@@ -254,18 +262,20 @@ def run(
 
         if date_inputs:
             # Click departure date input by coordinates
+            checkpoint(f"Click departure date input")
             page.mouse.click(date_inputs[0]['x'], date_inputs[0]['y'])
             print(f"  Clicked departure date at ({int(date_inputs[0]['x'])}, {int(date_inputs[0]['y'])})")
             page.wait_for_timeout(800)
+            checkpoint(f"Type departure date: {departure_date}")
             page.keyboard.press("Control+a")
             page.keyboard.press("Backspace")
             page.keyboard.type(departure_date, delay=30)
-            print(f"  Typed departure: {departure_date}")
             page.wait_for_timeout(1000)
 
             # Tab to return date, then type
             page.keyboard.press("Tab")
             page.wait_for_timeout(800)
+            checkpoint(f"Type return date: {return_date}")
             page.keyboard.press("Control+a")
             page.keyboard.press("Backspace")
             page.keyboard.type(return_date, delay=30)
@@ -384,6 +394,7 @@ def run(
             """)
             cx = fresh['x'] if fresh else coords['x']
             cy = fresh['y'] if fresh else coords['y']
+            checkpoint(f"Click Search flights button")
             page.mouse.click(cx, cy)
             print(f"  Clicked at ({int(cx)}, {int(cy)})")
         else:
@@ -428,8 +439,8 @@ def run(
                 print(f"  URL after retry: {page.url}")
 
         if "search/results" in page.url:
-            page.wait_for_load_state("networkidle")
-            page.wait_for_timeout(5000)
+            page.wait_for_load_state("domcontentloaded")
+            page.wait_for_timeout(4000)
 
         # ── Extract flights ───────────────────────────────────────────────
         print(f"STEP 7: Extract up to {max_results} flights...")
@@ -457,12 +468,21 @@ def run(
         print(f"  Locator found {count} flight rows")
 
         for i in range(count):
-            if len(results) >= max_results:
+            if len(raw_results) >= max_results:
                 break
             row = flight_rows.nth(i)
             try:
                 row_text = row.inner_text(timeout=3000)
-                lines = [l.strip() for l in row_text.split("\n") if l.strip()]
+                _noise = re.compile(
+                    r"low fare alert|fare alert|best value|only \d+ left|sold out"
+                    r"|earn miles|select|view deal|expand",
+                    re.IGNORECASE,
+                )
+                lines = [
+                    l.strip()
+                    for l in row_text.split("\n")
+                    if l.strip() and not _noise.search(l)
+                ]
                 itinerary = " | ".join(lines[:3]) if len(lines) >= 3 else " | ".join(lines)
                 price = "N/A"
                 for line in lines:
@@ -473,16 +493,16 @@ def run(
                 # Skip duplicate/expansion rows that have no price
                 if price == "N/A":
                     continue
-                results.append({"itinerary": itinerary, "price": price})
+                raw_results.append({"itinerary": itinerary, "price": price})
             except Exception:
                 continue
 
         # Fallback: regex on body text — flight number pattern
-        if not results and dollar_matches:
+        if not raw_results and dollar_matches:
             print("  Using regex fallback (flight number pattern)...")
             lines = body_text.split("\n")
             i = 0
-            while i < len(lines) and len(results) < max_results:
+            while i < len(lines) and len(raw_results) < max_results:
                 line = lines[i].strip()
                 if re.match(r"AS\s+\d{1,4}$", line):
                     itin_lines = [line]
@@ -500,26 +520,26 @@ def run(
                         itin_lines.append(l)
                         j += 1
                     if price != "N/A":
-                        results.append({
+                        raw_results.append({
                             "itinerary": " | ".join(itin_lines[:5]),
                             "price": price,
                         })
                 i += 1
 
         # Fallback 2: simple dollar-context regex
-        if not results and dollar_matches:
+        if not raw_results and dollar_matches:
             print("  Using dollar-context fallback...")
             for m in re.finditer(r"(.{0,100})(\$\d[\d,]*)", body_text, re.DOTALL):
                 ctx = m.group(1).strip().split("\n")
                 price = m.group(2)
                 itin = " ".join(ctx[-3:]) if len(ctx) >= 3 else " ".join(ctx)
-                results.append({"itinerary": itin.strip(), "price": price})
-                if len(results) >= max_results:
+                raw_results.append({"itinerary": itin.strip(), "price": price})
+                if len(raw_results) >= max_results:
                     break
 
-        print(f"\nFound {len(results)} flights from '{origin}' to '{destination}':")
+        print(f"\nFound {len(raw_results)} flights from '{origin}' to '{destination}':")        
         print(f"  Departure: {departure_date}  Return: {return_date}\n")
-        for i, item in enumerate(results, 1):
+        for i, item in enumerate(raw_results, 1):
             print(f"  {i}. Itinerary: {item['itinerary']}")
             print(f"     Economy Price: {item['price']}")
 
@@ -527,18 +547,59 @@ def run(
         import traceback
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
+    flights = [
+        AlaskaFlight(itinerary=r["itinerary"], economy_price=r["price"])
+        for r in raw_results
+    ]
+    return AlaskaFlightSearchResult(
+        origin=origin,
+        destination=destination,
+        departure_date=request.departure_date,
+        return_date=request.return_date,
+        flights=flights,
+    )
 
-    return results
 
+def test_search_alaska_flights() -> None:
+    today = date.today()
+    departure = today + relativedelta(months=2)
+    return_d = departure + timedelta(days=4)
 
-if __name__ == "__main__":
+    request = AlaskaFlightSearchRequest(
+        origin="Seattle",
+        destination="Chicago",
+        departure_date=departure,
+        return_date=return_d,
+        max_results=5,
+    )
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
     with sync_playwright() as playwright:
-        items = run(playwright)
-        print(f"\nTotal flights found: {len(items)}")
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_alaska_flights(page, request)
+            assert result.origin == request.origin
+            assert result.destination == request.destination
+            assert result.departure_date == request.departure_date
+            assert result.return_date == request.return_date
+            assert len(result.flights) <= request.max_results
+            print(f"\nTotal flights found: {len(result.flights)}")
+            os._exit(0)
+        finally:
+            context.close()
+if __name__ == "__main__":
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_search_alaska_flights)

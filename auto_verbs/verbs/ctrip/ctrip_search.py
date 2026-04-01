@@ -13,42 +13,58 @@ to automate via normal Playwright typing).
 """
 
 import re
-import os, sys, shutil
+from dataclasses import dataclass
+import os, sys
 from datetime import date, timedelta
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from playwright_debugger import checkpoint
 
 
-def compute_departure():
-    today = date.today()
-    departure = today + timedelta(days=4)
-    return departure
+@dataclass(frozen=True)
+class CtripSearchRequest:
+    from_station: str
+    to_station: str
+    departure_date: date
+    max_results: int
 
 
-def run(
-    playwright: Playwright,
-    from_station: str = "上海",
-    to_station: str = "福州",
-    max_results: int = 5,
-) -> list:
-    departure = compute_departure()
+@dataclass(frozen=True)
+class CtripTrain:
+    train_number: str
+    departure_time: str
+    arrival_time: str
+    duration: str
+    price: str
+
+
+@dataclass(frozen=True)
+class CtripSearchResult:
+    from_station: str
+    to_station: str
+    departure_date: date
+    trains: list[CtripTrain]
+
+
+# Searches Ctrip for train tickets between two stations on a given date,
+# returning up to max_results options with train number, times, and price.
+def search_ctrip_trains(
+    page: Page,
+    request: CtripSearchRequest,
+) -> CtripSearchResult:
+    from_station = request.from_station
+    to_station = request.to_station
+    departure = request.departure_date
+    max_results = request.max_results
+    raw_results = []
     departure_str = departure.strftime("%Y-%m-%d")
 
     print(f"  From: {from_station}  To: {to_station}")
     print(f"  Departure: {departure_str}  (One-way, 1 adult)\n")
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("ctrip")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-    results = []
 
     try:
-        # ── Navigate directly to search results ──────────────────────────
+        # ── Navigate directly to search raw_results ──────────────────────────
         from urllib.parse import quote
         search_url = (
             f"https://trains.ctrip.com/webapp/train/list"
@@ -58,7 +74,8 @@ def run(
             f"&dDate={departure_str}"
             f"&rDate=&trainsNo=&from=trains_mainpage"
         )
-        print(f"Loading search results: {search_url}")
+        print(f"Loading search raw_results: {search_url}")
+        checkpoint("Navigate to Ctrip train search results")
         page.goto(search_url)
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(8000)
@@ -76,12 +93,13 @@ def run(
             try:
                 btn = page.locator(selector).first
                 if btn.is_visible(timeout=1500):
+                    checkpoint("Click dismiss popup button")
                     btn.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
                 pass
 
-        # ── Extract train results ─────────────────────────────────────────
+        # ── Extract train raw_results ─────────────────────────────────────────
         print(f"Extracting up to {max_results} trains...")
 
         # Try extracting from train list items
@@ -132,7 +150,7 @@ def run(
                         if plain_m:
                             val = plain_m.group(1)
                             price = "¥" + val
-                results.append({
+                raw_results.append({
                     "train_number": train_no,
                     "departure_time": dep_time,
                     "arrival_time": arr_time,
@@ -143,18 +161,18 @@ def run(
                 continue
 
         # Fallback: parse entire page text
-        if not results:
+        if not raw_results:
             print("  Item extraction failed, trying page text fallback...")
             body_text = page.evaluate("document.body.innerText") or ""
             lines = body_text.split("\n")
             for line in lines:
-                if len(results) >= max_results:
+                if len(raw_results) >= max_results:
                     break
                 tn_m = re.search(r"([GDKZT]\d+)", line)
                 times = re.findall(r"\d{2}:\d{2}", line)
                 price_m = re.search(r"[¥￥](\d+\.?\d*)", line)
                 if tn_m and len(times) >= 2 and price_m:
-                    results.append({
+                    raw_results.append({
                         "train_number": tn_m.group(1),
                         "departure_time": times[0],
                         "arrival_time": times[1],
@@ -162,28 +180,66 @@ def run(
                         "price": "¥" + price_m.group(1),
                     })
 
-        # ── Print results ─────────────────────────────────────────────────
-        print(f"\nFound {len(results)} trains from '{from_station}' to '{to_station}':")
+        # ── Print raw_results ─────────────────────────────────────────────────
+        print(f"\nFound {len(raw_results)} trains from '{from_station}' to '{to_station}':")
         print(f"  Departure: {departure_str}  (One-way, 1 adult)\n")
-        for i, train in enumerate(results, 1):
+        for i, train in enumerate(raw_results, 1):
             print(f"  {i}. {train['train_number']}  Dep: {train['departure_time']}  Arr: {train['arrival_time']}  Duration: {train['duration']}  Price: {train['price']}")
 
     except Exception as e:
         import traceback
+
+
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
 
-    return results
+    return CtripSearchResult(
+        from_station=request.from_station,
+        to_station=request.to_station,
+        departure_date=request.departure_date,
+        trains=[CtripTrain(
+            train_number=t["train_number"],
+            departure_time=t["departure_time"],
+            arrival_time=t["arrival_time"],
+            duration=t["duration"],
+            price=t["price"],
+        ) for t in raw_results],
+    )
+def test_search_ctrip_trains() -> None:
+    from dateutil.relativedelta import relativedelta
+    today = date.today()
+    request = CtripSearchRequest(
+        from_station="上海",
+        to_station="福州",
+        departure_date=today + relativedelta(months=2),
+        max_results=5,
+    )
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_ctrip_trains(page, request)
+            assert result.from_station == request.from_station
+            assert len(result.trains) <= request.max_results
+            print(f"\nTotal trains found: {len(result.trains)}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        items = run(playwright)
-        print(f"\nTotal trains found: {len(items)}")
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_search_ctrip_trains)

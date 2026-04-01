@@ -6,19 +6,27 @@ Generated: 2026-02-28T06:32:38.178Z
 Pure Playwright – no AI. Uses Etsy listing card selectors.
 """
 
+from datetime import date, timedelta
 import re
 import os
 import traceback
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 import sys as _sys
 import os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from playwright_debugger import checkpoint
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
 import shutil
 
-QUERY = "handmade ceramic mug"
-MAX_RESULTS = 5
+from dataclasses import dataclass
+import subprocess
+import tempfile
+import json
+import time
+from urllib.request import urlopen
+
+
 URL = "https://www.etsy.com/search?q=handmade%20ceramic%20mug&order=highest_reviews"
 
 
@@ -33,58 +41,91 @@ def dismiss_popups(page):
         try:
             loc = page.locator(sel).first
             if loc.is_visible(timeout=800):
+                checkpoint(f"Dismiss popup: {sel}")
                 loc.evaluate("el => el.click()")
                 page.wait_for_timeout(300)
         except Exception:
             pass
 
 
-def run(
-    playwright: Playwright,
-    search_query: str = QUERY,
-    max_results: int = MAX_RESULTS,
-) -> list:
+@dataclass(frozen=True)
+class EtsySearchRequest:
+    search_query: str
+    max_results: int
+
+
+@dataclass(frozen=True)
+class EtsyListing:
+    title: str
+    price: str
+    seller: str
+
+
+@dataclass(frozen=True)
+class EtsySearchResult:
+    search_query: str
+    listings: list[EtsyListing]
+
+
+# Searches Etsy for handmade/vintage listings matching a query, returning
+# up to max_results items with title, price, and seller name.
+def search_etsy_listings(
+    page: Page,
+    request: EtsySearchRequest,
+) -> EtsySearchResult:
+    search_query = request.search_query
+    max_results = request.max_results
+    raw_results = []
     print("=" * 60)
     print("  Etsy – Handmade Ceramic Mug Search")
     print("=" * 60)
     print(f'  Query: "{search_query}"')
     print(f"  Sort: Top Customer Reviews")
-    print(f"  Max results: {max_results}\n")
-
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("etsy_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-    results = []
+    print(f"  Max raw_results: {max_results}\n")
+    raw_results = []
 
     try:
         # Visit homepage first so DataDome sets session cookies
         print("STEP 1a: Visit Etsy homepage (establish session)...")
+        checkpoint("Navigate to https://www.etsy.com/")
         page.goto("https://www.etsy.com/", wait_until="domcontentloaded", timeout=30000)
         page.wait_for_timeout(3000)
         dismiss_popups(page)
         print(f"   Homepage loaded: {page.title()}")
 
-        print("STEP 1b: Navigate to Etsy search results...")
+        print("STEP 1b: Navigate to Etsy search raw_results...")
+        checkpoint(f"Navigate to {URL}")
         page.goto(URL, wait_until="domcontentloaded", timeout=30000)
         page.wait_for_timeout(3000)
         dismiss_popups(page)
         print(f"   Loaded: {page.url}\n")
 
         print("STEP 2: Extract listings...")
-        card_loc = page.locator("[data-search-results] .v2-listing-card")
+        
+        # Use the selector that works with current Etsy structure
+        card_loc = page.locator(".listing-link")
         total = card_loc.count()
+        
+        # Fallback to other selectors if needed
         if total == 0:
-            card_loc = page.locator(".search-listing-card")
-            total = card_loc.count()
+            fallback_selectors = [
+                "[data-search-raw_results] .v2-listing-card",
+                ".search-listing-card",
+                "[data-test-id='listing'] article"
+            ]
+            for selector in fallback_selectors:
+                test_loc = page.locator(selector)
+                count = test_loc.count()
+                if count > 0:
+                    card_loc = test_loc
+                    total = count
+                    break
+        
         print(f"   Found {total} listing cards (need {max_results})")
 
         seen_titles = set()
         idx = 0
-        while len(results) < max_results and idx < total:
+        while len(raw_results) < max_results and idx < total:
             card = card_loc.nth(idx)
             idx += 1
             try:
@@ -118,14 +159,14 @@ def run(
                 except Exception:
                     pass
 
-                results.append({"title": title, "price": price, "seller": seller})
+                raw_results.append({"title": title, "price": price, "seller": seller})
             except Exception:
                 continue
 
         print(f"\n" + "=" * 60)
-        print(f"  DONE – {len(results)} results")
+        print(f"  DONE – {len(raw_results)} raw_results")
         print("=" * 60)
-        for i, r in enumerate(results, 1):
+        for i, r in enumerate(raw_results, 1):
             print(f"  {i}. {r['title']}")
             print(f"     Price:  {r['price']}")
             print(f"     Seller: {r['seller']}")
@@ -134,18 +175,58 @@ def run(
     except Exception as e:
         print(f"\nError: {e}")
         traceback.print_exc()
-    finally:
+    return EtsySearchResult(
+        search_query=search_query,
+        listings=[EtsyListing(title=r["title"], price=r["price"], seller=r["seller"]) for r in raw_results],
+    )
+def test_search_etsy_listings() -> None:
+    from playwright.sync_api import sync_playwright
+    request = EtsySearchRequest(search_query="handmade ceramic mug", max_results=5)
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
         try:
-            browser.close()
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
         except Exception:
             pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-
-    return results
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_etsy_listings(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
+    assert result.search_query == request.search_query
+    assert len(result.listings) <= request.max_results
+    print(f"\nTotal listings found: {len(result.listings)}")
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        items = run(playwright)
-        print(f"Total results: {len(items)}")
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_search_etsy_listings)

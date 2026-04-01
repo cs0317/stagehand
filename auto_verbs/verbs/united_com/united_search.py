@@ -5,26 +5,51 @@ Uses search boxes to enter cities (no hardcoded airport codes).
 """
 import re, os, sys, traceback, shutil
 from datetime import date, timedelta
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws, find_chrome_executable
+from playwright_debugger import checkpoint
 
-MAX_RESULTS = 5
+from dataclasses import dataclass
+from dateutil.relativedelta import relativedelta
+import subprocess
+import tempfile
+import json
+import time
+from urllib.request import urlopen
+
 
 # Search parameters - use city names, not airport codes
 ORIGIN_CITY = "San Francisco, CA"
 DESTINATION_CITY = "Newark, NJ"
 
 
-def run(playwright: Playwright) -> list:
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("united_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
+@dataclass(frozen=True)
+class UnitedFlightSearchRequest:
+    origin_city: str
+    destination_city: str
+    departure_date: object  # datetime.date
+    return_date: object     # datetime.date
+    max_results: int = 5
+
+
+@dataclass(frozen=True)
+class UnitedFlight:
+    itinerary: str
+    economy_price: str
+
+
+@dataclass(frozen=True)
+class UnitedFlightSearchResult:
+    origin_city: str
+    destination_city: str
+    departure_date: object
+    return_date: object
+    flights: list
+
+
+def search_united_flights(page: Page, request: UnitedFlightSearchRequest) -> UnitedFlightSearchResult:
     flights = []
     try:
         depart = date.today() + timedelta(days=60)
@@ -36,6 +61,7 @@ def run(playwright: Playwright) -> list:
 
         print(f"STEP 1: Navigate to United ({ORIGIN_CITY} → {DESTINATION_CITY}, {d_iso} to {r_iso})...")
         # Visit homepage first to establish session
+        checkpoint("Navigate to United homepage")
         page.goto("https://www.united.com/", wait_until="domcontentloaded", timeout=30000)
         page.wait_for_timeout(4000)
 
@@ -45,6 +71,7 @@ def run(playwright: Playwright) -> list:
             try:
                 loc = page.locator(sel).first
                 if loc.is_visible(timeout=1500):
+                    checkpoint("Dismiss cookie banner")
                     loc.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
@@ -68,16 +95,20 @@ def run(playwright: Playwright) -> list:
             try:
                 origin_input = page.locator(sel).first
                 if origin_input.is_visible(timeout=2000):
+                    checkpoint("Click origin input field")
                     origin_input.click()
                     page.wait_for_timeout(500)
+                    checkpoint("Fill origin city")
                     origin_input.fill(ORIGIN_CITY)
                     page.wait_for_timeout(1500)
                     # Click first autocomplete suggestion
                     try:
                         sug = page.locator("li[role='option'], [class*='autocomplete'] li, [class*='suggestion']").first
                         if sug.is_visible(timeout=2000):
+                            checkpoint("Click origin autocomplete suggestion")
                             sug.click()
                     except Exception:
+                        checkpoint("Press Enter to confirm origin")
                         origin_input.press("Enter")
                     page.wait_for_timeout(500)
                     origin_filled = True
@@ -103,16 +134,20 @@ def run(playwright: Playwright) -> list:
             try:
                 dest_input = page.locator(sel).first
                 if dest_input.is_visible(timeout=2000):
+                    checkpoint("Click destination input field")
                     dest_input.click()
                     page.wait_for_timeout(500)
+                    checkpoint("Fill destination city")
                     dest_input.fill(DESTINATION_CITY)
                     page.wait_for_timeout(1500)
                     # Click first autocomplete suggestion
                     try:
                         sug = page.locator("li[role='option'], [class*='autocomplete'] li, [class*='suggestion']").first
                         if sug.is_visible(timeout=2000):
+                            checkpoint("Click destination autocomplete suggestion")
                             sug.click()
                     except Exception:
+                        checkpoint("Press Enter to confirm destination")
                         dest_input.press("Enter")
                     page.wait_for_timeout(500)
                     dest_filled = True
@@ -136,11 +171,14 @@ def run(playwright: Playwright) -> list:
                     try:
                         date_input = page.locator(sel).first
                         if date_input.is_visible(timeout=2000):
+                            checkpoint("Click departure date input")
                             date_input.click()
                             page.wait_for_timeout(1000)
                             # Type the date in MM/DD/YYYY format
+                            checkpoint("Fill departure date")
                             date_input.fill(depart.strftime("%m/%d/%Y"))
                             page.wait_for_timeout(500)
+                            checkpoint("Press Tab to move to return date")
                             date_input.press("Tab")  # Move to next field
                             page.wait_for_timeout(500)
                             break
@@ -159,8 +197,10 @@ def run(playwright: Playwright) -> list:
                     try:
                         ret_input = page.locator(sel).first
                         if ret_input.is_visible(timeout=2000):
+                            checkpoint("Click return date input")
                             ret_input.click()
                             page.wait_for_timeout(500)
+                            checkpoint("Fill return date")
                             ret_input.fill(ret.strftime("%m/%d/%Y"))
                             page.wait_for_timeout(500)
                             break
@@ -183,6 +223,7 @@ def run(playwright: Playwright) -> list:
                     try:
                         close_btn = page.locator(sel).first
                         if close_btn.is_visible(timeout=1000):
+                            checkpoint("Click date picker close button")
                             close_btn.click()
                             page.wait_for_timeout(500)
                             break
@@ -190,6 +231,7 @@ def run(playwright: Playwright) -> list:
                         continue
                 else:
                     # Press Escape to close any open dialog
+                    checkpoint("Press Escape to close date picker")
                     page.keyboard.press("Escape")
                     page.wait_for_timeout(500)
             except Exception:
@@ -202,12 +244,14 @@ def run(playwright: Playwright) -> list:
                 # Look for the "Find flights" button specifically
                 search_btn = page.locator("button[aria-label='Find flights'], button:has-text('Find flights')").first
                 if search_btn.is_visible(timeout=3000):
+                    checkpoint("Click Find flights button")
                     search_btn.click(timeout=5000)
                     page.wait_for_timeout(10000)
                 else:
                     # Fallback to generic search
                     search_btn = page.locator("button:has-text('Search')").first
                     if search_btn.is_visible(timeout=2000):
+                        checkpoint("Click Search button")
                         search_btn.click()
                         page.wait_for_timeout(10000)
             except Exception:
@@ -218,6 +262,7 @@ def run(playwright: Playwright) -> list:
                 f"https://www.united.com/en/us/fsr/choose-flights?"
                 f"f=SFO&t=EWR&d={d_iso}&r={r_iso}&cb=0&px=1&taxng=1&newHP=True&clm=7&st=bestmatches&tqp=R"
             )
+            checkpoint("Navigate to United search results via direct URL")
             page.goto(url, wait_until="domcontentloaded", timeout=30000)
         
         page.wait_for_timeout(5000)
@@ -239,6 +284,7 @@ def run(playwright: Playwright) -> list:
             try:
                 loc = page.locator(sel).first
                 if loc.is_visible(timeout=800):
+                    checkpoint("Dismiss popup")
                     loc.evaluate("el => el.click()")
                     page.wait_for_timeout(400)
             except Exception:
@@ -271,14 +317,14 @@ def run(playwright: Playwright) -> list:
             "li[class*='flight']",
         ]
         for sel in card_sels:
-            if len(flights) >= MAX_RESULTS:
+            if len(flights) >= request.max_results:
                 break
             try:
                 cards = page.locator(sel).all()
                 if not cards:
                     continue
                 for card in cards:
-                    if len(flights) >= MAX_RESULTS:
+                    if len(flights) >= request.max_results:
                         break
                     try:
                         text = card.inner_text(timeout=2000).strip()
@@ -329,7 +375,7 @@ def run(playwright: Playwright) -> list:
             lines = [l.strip() for l in body.splitlines() if l.strip()]
 
             i = 0
-            while i < len(lines) and len(flights) < MAX_RESULTS:
+            while i < len(lines) and len(flights) < request.max_results:
                 ln = lines[i]
                 # Flight block marker: "NONSTOP" or "1 stop" etc.
                 if re.match(r"^(NONSTOP|\d+\s*STOP)", ln, re.IGNORECASE):
@@ -382,7 +428,7 @@ def run(playwright: Playwright) -> list:
             body = page.inner_text("body")
             lines = [l.strip() for l in body.splitlines() if l.strip()]
             for i, ln in enumerate(lines):
-                if len(flights) >= MAX_RESULTS:
+                if len(flights) >= request.max_results:
                     break
                 m = re.search(r"\$[\d,]+", ln)
                 if m and re.search(r"economy|cabin|class|from\s*\$", ln, re.IGNORECASE):
@@ -412,23 +458,79 @@ def run(playwright: Playwright) -> list:
             else:
                 print("❌ ERROR: Extraction failed — no flights found.")
 
-        print(f"\nDONE – {len(flights)} United Flights ({ORIGIN_CITY} → {DESTINATION_CITY}):")
+        print(f"\nDONE – {len(flights)} United Flights ({request.origin_city} → {request.destination_city}):")
         for i, f in enumerate(flights, 1):
             print(f"  {i}. {f['itinerary']} | Economy: {f['economy_price']}")
 
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
+    return UnitedFlightSearchResult(
+        origin_city=request.origin_city,
+        destination_city=request.destination_city,
+        departure_date=request.departure_date,
+        return_date=request.return_date,
+        flights=[UnitedFlight(itinerary=f['itinerary'], economy_price=f['economy_price']) for f in flights],
+    )
+
+
+def test_united_flights():
+    from playwright.sync_api import sync_playwright
+    from dateutil.relativedelta import relativedelta
+    today = date.today()
+    departure = today + relativedelta(months=2)
+    request = UnitedFlightSearchRequest(
+        origin_city="San Francisco, CA",
+        destination_city="Newark, NJ",
+        departure_date=departure,
+        return_date=departure + timedelta(days=3),
+        max_results=5,
+    )
+    port = get_free_port()
+    profile_dir = tempfile.mkdtemp(prefix="chrome_cdp_")
+    chrome = os.environ.get("CHROME_PATH") or find_chrome_executable()
+    chrome_proc = subprocess.Popen(
+        [
+            chrome,
+            f"--remote-debugging-port={port}",
+            f"--user-data-dir={profile_dir}",
+            "--remote-allow-origins=*",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1280,987",
+            "about:blank",
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    ws_url = None
+    deadline = time.time() + 15
+    while time.time() < deadline:
         try:
-            browser.close()
+            resp = urlopen(f"http://127.0.0.1:{port}/json/version", timeout=2)
+            ws_url = json.loads(resp.read()).get("webSocketDebuggerUrl", "")
+            if ws_url:
+                break
         except Exception:
             pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-    return flights
+        time.sleep(0.4)
+    if not ws_url:
+        raise TimeoutError("Chrome CDP not ready")
+    with sync_playwright() as pl:
+        browser = pl.chromium.connect_over_cdp(ws_url)
+        context = browser.contexts[0]
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_united_flights(page, request)
+        finally:
+            chrome_proc.terminate()
+            shutil.rmtree(profile_dir, ignore_errors=True)
+    print(f"\nTotal flights: {len(result.flights)}")
+    for i, f in enumerate(result.flights, 1):
+        print(f"  {i}. {f.itinerary}  {f.economy_price}")
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        run(playwright)
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_united_flights)
