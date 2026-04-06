@@ -96,13 +96,18 @@ def search_united_flights(page: Page, request: UnitedFlightSearchRequest) -> Uni
                     checkpoint("Click origin input field")
                     origin_input.click()
                     page.wait_for_timeout(500)
-                    checkpoint("Fill origin city")
-                    origin_input.fill(ORIGIN_CITY)
-                    page.wait_for_timeout(1500)
+                    # Clear any existing text and type with delay to trigger autocomplete
+                    origin_input.press("Control+a")
+                    page.wait_for_timeout(200)
+                    checkpoint("Type origin city")
+                    origin_input.fill("")
+                    page.wait_for_timeout(300)
+                    origin_input.type(ORIGIN_CITY, delay=80)
+                    page.wait_for_timeout(2000)
                     # Click first autocomplete suggestion
                     try:
-                        sug = page.locator("li[role='option'], [class*='autocomplete'] li, [class*='suggestion']").first
-                        if sug.is_visible(timeout=2000):
+                        sug = page.locator("li[role='option']:visible").first
+                        if sug.is_visible(timeout=3000):
                             checkpoint("Click origin autocomplete suggestion")
                             sug.click()
                     except Exception:
@@ -117,7 +122,7 @@ def search_united_flights(page: Page, request: UnitedFlightSearchRequest) -> Uni
         if not origin_filled:
             pass  # Will fallback to direct URL
         else:
-            page.wait_for_timeout(1000)  # Wait for UI to update after origin selection
+            page.wait_for_timeout(2000)  # Wait for UI to update after origin selection
         
         # Click and fill destination field
         dest_filled = False
@@ -135,18 +140,36 @@ def search_united_flights(page: Page, request: UnitedFlightSearchRequest) -> Uni
                     checkpoint("Click destination input field")
                     dest_input.click()
                     page.wait_for_timeout(500)
-                    checkpoint("Fill destination city")
-                    dest_input.fill(DESTINATION_CITY)
-                    page.wait_for_timeout(1500)
-                    # Click first autocomplete suggestion
+                    # Clear any existing text first
+                    dest_input.press("Control+a")
+                    page.wait_for_timeout(200)
+                    checkpoint("Type destination city")
+                    dest_input.fill("")
+                    page.wait_for_timeout(300)
+                    dest_input.type(DESTINATION_CITY, delay=80)
+                    page.wait_for_timeout(2000)
+                    # Click first autocomplete suggestion – scope to visible suggestion list
                     try:
-                        sug = page.locator("li[role='option'], [class*='autocomplete'] li, [class*='suggestion']").first
-                        if sug.is_visible(timeout=2000):
+                        sug = page.locator("li[role='option']:visible").first
+                        if sug.is_visible(timeout=3000):
                             checkpoint("Click destination autocomplete suggestion")
                             sug.click()
+                            page.wait_for_timeout(500)
+                        else:
+                            raise Exception("No visible suggestion")
                     except Exception:
-                        checkpoint("Press Enter to confirm destination")
-                        dest_input.press("Enter")
+                        # Try alternative suggestion selectors
+                        try:
+                            sug = page.locator("[class*='autocomplete'] li:visible, [class*='suggestion']:visible, [role='listbox'] li").first
+                            if sug.is_visible(timeout=2000):
+                                checkpoint("Click destination autocomplete suggestion (alt)")
+                                sug.click()
+                                page.wait_for_timeout(500)
+                            else:
+                                raise Exception("No suggestion")
+                        except Exception:
+                            checkpoint("Press Enter to confirm destination")
+                            dest_input.press("Enter")
                     page.wait_for_timeout(500)
                     dest_filled = True
                     break

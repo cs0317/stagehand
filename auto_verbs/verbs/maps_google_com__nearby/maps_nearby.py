@@ -379,5 +379,5 @@ def test_papa_dels() -> None:
 
 if __name__ == "__main__":
     from playwright_debugger import run_with_debugger
-    #run_with_debugger(test_search_nearby)
-    run_with_debugger(test_papa_dels)
+    run_with_debugger(test_search_nearby)
+    #run_with_debugger(test_papa_dels)
