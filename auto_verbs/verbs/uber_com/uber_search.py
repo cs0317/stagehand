@@ -23,8 +23,9 @@ from urllib.request import urlopen
 
 def get_chrome_default_profile() -> str:
     """Get the Chrome Default profile path (not User Data, but Default subfolder)."""
+    profile = os.environ.get("USERPROFILE") or os.path.expanduser("~")
     user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
+        profile,
         "AppData", "Local", "Google", "Chrome", "User Data", "Default",
     )
     if os.path.isdir(user_data_dir):
@@ -49,9 +50,7 @@ class UberRideEstimate:
 class UberRideSearchResult:
     pickup: str
     dropoff: str
-    estimates: list
-
-
+    estimates: list[UberRideEstimate]
 def search_uber_rides(page: Page, request: UberRideSearchRequest) -> UberRideSearchResult:
     print("=" * 59)
     print("  Uber - Ride Price Estimate")
@@ -80,9 +79,13 @@ def search_uber_rides(page: Page, request: UberRideSearchRequest) -> UberRideSea
                 page.wait_for_url("**/price-estimate/**", timeout=120000)
                 print("  Login successful!")
                 page.wait_for_timeout(3000)
-            except PwTimeout:
+            except TimeoutError:
                 print("  Timeout waiting for login. Please run again after logging in.")
-                return results
+                return UberRideSearchResult(
+                    pickup=request.pickup,
+                    dropoff=request.dropoff,
+                    estimates=[],
+                )
         
         print(f"  Loaded: {page.url}\n")
 
@@ -247,8 +250,9 @@ def test_uber_rides():
         dropoff="Downtown Seattle",
         max_results=5,
     )
+    profile = os.environ.get("USERPROFILE") or os.path.expanduser("~")
     user_data_dir = os.path.join(
-        os.environ["USERPROFILE"],
+        profile,
         "AppData", "Local", "Google", "Chrome", "User Data", "Default",
     )
     with sync_playwright() as playwright:
