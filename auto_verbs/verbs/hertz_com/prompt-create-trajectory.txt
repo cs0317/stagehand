@@ -1,10 +1,12 @@
 Please read auto_verbs\verbs\SystemPrompt1.txt
 
 * The target website
-https://www.hertz.com
+https://huggingface.co/
 
 * Concrete task
-- Search for a car rental at "Los Angeles International Airport (LAX)".
-- Pick-up date is 2 months from today. Drop-off date is 5 days later.
-- compose a list of available cars (up to 5). Each has the car name/class and daily price.
+- Search for a local coding model with less than 9B parameters
+- Click on each model to get its parameters described in Safetensor section, confirm it is under 9B (9 Billion)
+- The model should have a Safetensor section.
+- compose a list of available models (up to 5).
+- Each has the model name/parameters.
 - print the list.
