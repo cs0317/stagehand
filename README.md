@@ -57,8 +57,8 @@ https://www.hertz.com
 ```
 
 An AI agent (powered by Stagehand + an LLM) reads this prompt, opens a real browser, explores the website, discovers working selectors, and generates:
-- **`{site}_search.js`** — a Stagehand JS script that records the exploration
-- **`{site}_search.py`** — a pure-Playwright Python script that replays the task
+- **`{site}_blah.js`** — a Stagehand JS script that records the exploration
+- **`{site}_blah.py`** — a pure-Playwright Python script that replays the task
 - **`recorded_actions.json`** — a log of every browser interaction
 
 ### Step 2: Generalize into a Verb (`prompt-create-verb.txt`)
