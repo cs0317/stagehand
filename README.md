@@ -1,164 +1,129 @@
-<div id="toc" align="center" style="margin-bottom: 0;">
-  <ul style="list-style: none; margin: 0; padding: 0;">
-    <a href="https://stagehand.dev">
-      <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="media/dark_logo.png" />
-        <img alt="Stagehand" src="media/light_logo.png" width="200" style="margin-right: 30px;" />
-      </picture>
-    </a>
-  </ul>
-</div>
-<p align="center">
-  <strong>The AI Browser Automation Framework</strong><br>
-  <a href="https://docs.stagehand.dev">Read the Docs</a>
-</p>
+# Auto-Generated Browser Automation Verbs
 
-<p align="center">
-  <a href="https://github.com/browserbase/stagehand/tree/main?tab=MIT-1-ov-file#MIT-1-ov-file">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="media/dark_license.svg" />
-      <img alt="MIT License" src="media/light_license.svg" />
-    </picture>
-  </a>
-  <a href="https://stagehand.dev/discord">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="media/dark_discord.svg" />
-      <img alt="Discord Community" src="media/light_discord.svg" />
-    </picture>
-  </a>
-</p>
+This is a fork of [Browserbase Stagehand](https://github.com/browserbase/stagehand) that demonstrates **automated generation of browser automation verbs** — reusable, typed Python functions that automate common tasks on real websites.
 
-<p align="center">
-	<a href="https://trendshift.io/repositories/12122" target="_blank"><img src="https://trendshift.io/api/badge/repositories/12122" alt="browserbase%2Fstagehand | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
-</p>
+The key insight: given only a **natural-language task description** and a **target website**, an AI agent can explore the site, discover reliable selectors, and produce a production-quality Playwright script — all without a human writing a single line of automation code.
 
-<p align="center">
-  <a href="https://deepwiki.com/browserbase/stagehand">
-    <img alt="Ask DeepWiki" src="https://deepwiki.com/badge.svg" />
-  </a>
-</p>
+## What's a Verb?
 
-<p align="center">
-If you're looking for the Python implementation, you can find it 
-<a href="https://github.com/browserbase/stagehand-python"> here</a>
-</p>
+A **verb** is a typed Python function that automates a specific task on a specific website. For example:
 
-<div align="center" style="display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 0;">
-  <b>Vibe code</b>
-  <span style="font-size: 1.05em;"> Stagehand with </span>
-  <a href="https://director.ai" style="display: flex; align-items: center;">
-    <span>Director</span>
-  </a>
-  <span> </span>
-  <picture>
-    <img alt="Director" src="media/director_icon.svg" width="25" />
-  </picture>
-</div>
+- `search_amazon_products(page, request)` — search Amazon and return product listings
+- `search_booking_hotels(page, request)` — search Booking.com for hotels with dates and guests
+- `search_hertz_cars(page, request)` — find rental cars on Hertz for given dates
+- `search_huggingface_models(page, request)` — find ML models on HuggingFace matching criteria
 
-## What is Stagehand?
+Every verb has:
+- **Typed request/response dataclasses** — no generic dicts, each parameter and return field is explicit
+- **A built-in test** — the file runs standalone as a test, or can be imported as a module
+- **Pure Playwright** — the final verb uses zero AI calls at runtime; all selectors were discovered during generation
 
-Stagehand is a browser automation framework used to control web browsers with natural language and code. By combining the power of AI with the precision of code, Stagehand makes web automation flexible, maintainable, and actually reliable.
+## The Verb Library — 55 Sites and Counting
 
-## Why Stagehand?
+All generated verbs live under [`auto_verbs/verbs/`](auto_verbs/verbs/). Each website has its own folder:
 
-Most existing browser automation tools either require you to write low-level code in a framework like Selenium, Playwright, or Puppeteer, or use high-level agents that can be unpredictable in production. By letting developers choose what to write in code vs. natural language (and bridging the gap between the two) Stagehand is the natural choice for browser automations in production.
+| Site | Verb | What it does |
+|------|------|-------------|
+| `amazon_com` | `search_amazon_products` | Search products, extract name/price/rating |
+| `airbnb_com` | `search_airbnb_listings` | Search vacation rentals by destination/dates/guests |
+| `booking_com` | `search_booking_hotels` | Search hotels with check-in/out dates |
+| `expedia_com` | `search_expedia_flights` | Search flights between cities |
+| `hertz_com` | `search_hertz_cars` | Search rental cars at an airport |
+| `huggingface_com` | `search_huggingface_models` | Find ML models by criteria |
+| `zillow_com` | `search_zillow_listings` | Search real estate listings |
+| `uber_com` | `search_uber_rides` | Get ride estimates between locations |
+| ... | ... | *55 sites total* |
 
-1. **Choose when to write code vs. natural language**: use AI when you want to navigate unfamiliar pages, and use code when you know exactly what you want to do.
+## How a Verb Gets Generated
 
-2. **Go from AI-driven to repeatable workflows**: Stagehand lets you preview AI actions before running them, and also helps you easily cache repeatable actions to save time and tokens.
+Each verb is generated through a **two-step pipeline**, driven entirely by prompt files in the case folder.
 
-3. **Write once, run forever**: Stagehand's auto-caching combined with self-healing remembers previous actions, runs without LLM inference, and knows when to involve AI whenever the website changes and your automation breaks. 
+### Step 1: Create the Trajectory (`prompt-create-trajectory.txt`)
 
-## Getting Started
+This is the starting point. Each case folder contains a `prompt-create-trajectory.txt` that describes:
+1. The target website URL
+2. A concrete task with specific example values
 
-Start with Stagehand with one line of code, or check out our [Quickstart Guide](https://docs.stagehand.dev/v3/first-steps/quickstart) for more information:
+For example, `hertz_com/prompt-create-trajectory.txt`:
+```
+* The target website
+https://www.hertz.com
 
-```bash
-npx create-browser-app
+* Concrete task
+- Search for a car rental at "Los Angeles International Airport (LAX)".
+- Pick-up date is 2 months from today. Drop-off date is 5 days later.
+- compose a list of available cars (up to 5). Each has the car name/class and daily price.
+- print the list.
 ```
 
-## Example
+An AI agent (powered by Stagehand + an LLM) reads this prompt, opens a real browser, explores the website, discovers working selectors, and generates:
+- **`{site}_search.js`** — a Stagehand JS script that records the exploration
+- **`{site}_search.py`** — a pure-Playwright Python script that replays the task
+- **`recorded_actions.json`** — a log of every browser interaction
 
-Here's how to build a sample browser automation with Stagehand:
+### Step 2: Generalize into a Verb (`prompt-create-verb.txt`)
 
-```typescript
-// Stagehand's CDP engine provides an optimized, low level interface to the browser built for automation
-const page = stagehand.context.pages()[0];
-await page.goto("https://github.com/browserbase");
+The second prompt (`prompt-create-verb.txt`) instructs the AI to refactor the concrete script into a **reusable, typed function**:
+- Identify parameters (destination, dates, max results, etc.)
+- Create `@dataclass(frozen=True)` types for request and response
+- Move date calculations out of the function and into the test
+- Generate a `signature.txt` with the public API
 
-// Use act() to execute individual actions
-await stagehand.act("click on the stagehand repo");
+### What You End Up With
 
-// Use agent() for multi-step tasks
-const agent = stagehand.agent();
-await agent.execute("Get to the latest PR");
+A typical case folder contains:
 
-// Use extract() to get structured data from the page
-const { author, title } = await stagehand.extract(
-  "extract the author and title of the PR",
-  z.object({
-    author: z.string().describe("The username of the PR author"),
-    title: z.string().describe("The title of the PR"),
-  }),
-);
+```
+auto_verbs/verbs/hertz_com/
+├── prompt-create-trajectory.txt   # Step 1 input: concrete task description
+├── prompt-create-verb.txt         # Step 2 input: generalization instructions
+├── hertz_search.js                # Generated: Stagehand trajectory explorer
+├── hertz_search.py                # Generated: typed Python verb + test
+├── signature.txt                  # Generated: function signature + type defs
+└── recorded_actions.json          # Generated: browser action log
 ```
 
-## Documentation
+## How to Generate a New Verb
 
-Visit [docs.stagehand.dev](https://docs.stagehand.dev) to view the full documentation.
+To add a verb for a new website:
 
+1. **Create a case folder** under `auto_verbs/verbs/` named after the site (e.g. `newsite_com/`)
 
-### Build and Run from Source
+2. **Write `prompt-create-trajectory.txt`** with:
+   ```
+   Please read auto_verbs\verbs\SystemPrompt1.txt
 
-```bash
-git clone https://github.com/browserbase/stagehand.git
-cd stagehand
-pnpm install
-pnpm run build
-pnpm run example # run the blank script at ./examples/example.ts
-```
+   * The target website
+   https://www.newsite.com
 
-Stagehand is best when you have an API key for an LLM provider and Browserbase credentials. To add these to your project, run:
+   * Concrete task
+   - Navigate to the search page
+   - Search for "example query"
+   - Extract up to 5 results with name and price
+   - Print the list
+   ```
 
-```bash
-cp .env.example .env
-nano .env # Edit the .env file to add API keys
-```
+3. **Copy `prompt-create-verb.txt`** from any existing case folder (it's the same across all sites)
 
-### Installing from a branch
+4. **Run Step 1** — give `prompt-create-trajectory.txt` to an AI agent (e.g. GitHub Copilot) along with `SystemPrompt1.txt`. The agent will open a browser, explore the site, and generate the `.js` and `.py` files.
 
-You can install and build Stagehand directly from a github branch using [gitpkg](https://github.com/EqualMa/gitpkg)
+5. **Run Step 2** — give `prompt-create-verb.txt` to the same agent. It will refactor the Python script into a typed verb with dataclasses and a test. It will also produce `signature.txt`.
 
-In your project's `package.json` set:
-```json
-"@browserbasehq/stagehand": "https://gitpkg.now.sh/browserbase/stagehand/packages/core?<branchName>",
-```
+6. **Test** — run the generated Python file directly:
+   ```bash
+   python auto_verbs/verbs/newsite_com/newsite_blah.py
+   ```
 
+## Reliability Strategy
 
-## Contributing
+The generated verbs follow strict selector practices (defined in `SystemPrompt1.txt`):
 
-> [!NOTE]
-> We highly value contributions to Stagehand! For questions or support, please join our [Discord community](https://stagehand.dev/discord).
+- Prefer `data-testid`, `id`, `role`, `aria-label` as primary anchors
+- Use semantic HTML elements (`button`, `a`, `li`) as structural landmarks
+- Navigate relative to anchors rather than relying on absolute XPaths
+- **Never** use CSS class names with hashes (e.g. `.sc-f8b674f0-4`) — they change on every build
 
-At a high level, we're focused on improving reliability, extensibility, speed, and cost in that order of priority. If you're interested in contributing, **bug fixes and small improvements are the best way to get started**. For more involved features, we strongly recommend reaching out to [Miguel Gonzalez](https://x.com/miguel_gonzf) or [Paul Klein](https://x.com/pk_iv) in our [Discord community](https://stagehand.dev/discord) before starting to ensure that your contribution aligns with our goals.
+## Upstream
 
-<!-- For more information, please see our [Contributing Guide](https://docs.stagehand.dev/examples/contributing). -->
+This is a fork of [browserbase/stagehand](https://github.com/browserbase/stagehand). The `auto_verbs/` folder is the addition; the core Stagehand framework lives under `packages/`.
 
-## Acknowledgements
-
-We'd like to thank the following people for their major contributions to Stagehand:
-- [Paul Klein](https://github.com/pkiv)
-- [Sean McGuire](https://github.com/seanmcguire12)
-- [Miguel Gonzalez](https://github.com/miguelg719)
-- [Sameel Arif](https://github.com/sameelarif)
-- [Thomas Katwan](https://github.com/tkattkat)
-- [Filip Michalsky](https://github.com/filip-michalsky)
-- [Anirudh Kamath](https://github.com/kamath)
-- [Jeremy Press](https://x.com/jeremypress)
-- [Navid Pour](https://github.com/navidpour)
-
-## License
-
-Licensed under the MIT License.
-
-Copyright 2025 Browserbase, Inc.
