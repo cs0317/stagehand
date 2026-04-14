@@ -1,10 +1,10 @@
 Please read auto_verbs\verbs\SystemPrompt1.txt
 
 * The target website
-https://www.hertz.com
+https://huggingface.co
 
 * Concrete task
-- Search for a car rental at "Los Angeles International Airport (LAX)".
-- Pick-up date is 2 months from today. Drop-off date is 5 days later.
-- compose a list of available cars (up to 5). Each has the car name/class and daily price.
-- print the list.
+- Search for "code" models on HuggingFace.
+- Visit each candidate model page; keep only those that have a Safetensors section and parameters under 9B.
+- Compose a list of up to 5 qualifying models. Each has the model name and parameter count (e.g. "7B").
+- Print the list.
