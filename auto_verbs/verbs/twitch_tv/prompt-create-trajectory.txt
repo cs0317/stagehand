@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.twitch.tv
+
+* Concrete task
+- Search for "Minecraft" streams.
+- Compose a list of the top 5 live streams. Each has the streamer name, viewer count, and stream title.
+- Print the list.

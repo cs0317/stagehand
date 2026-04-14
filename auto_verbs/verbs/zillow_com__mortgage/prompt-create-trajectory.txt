@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.zillow.com
+
+* Concrete task
+- Navigate to the mortgage calculator.
+- Enter a home price of 500000 with a 20% down payment.
+- Extract the estimated monthly payment, principal and interest, property tax, and insurance amounts.
+- Print the results.

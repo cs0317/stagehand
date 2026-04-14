@@ -1,0 +1,10 @@
+Allrecipes – Recipe Search
+
+Search for recipes matching a given query on allrecipes.com.
+Compose a list of up to N recipes from the search results.
+Each recipe has its name, rating, and total cook time.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "chicken parmesan")
+  max_results   – maximum number of recipes to return (e.g. 5)

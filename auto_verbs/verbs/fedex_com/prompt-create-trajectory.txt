@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.fedex.com
+
+* Concrete task
+- Navigate to the package tracking page.
+- Enter tracking number "123456789012" in the tracking input field.
+- Extract the tracking status, last location, and estimated delivery date.
+- Print the results.

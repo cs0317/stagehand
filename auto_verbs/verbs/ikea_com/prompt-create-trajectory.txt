@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.ikea.com
+
+* Concrete task
+- Search for "bookshelf".
+- Compose a list of the top 5 products. Each has its name, price, and dimensions.
+- Print the list.

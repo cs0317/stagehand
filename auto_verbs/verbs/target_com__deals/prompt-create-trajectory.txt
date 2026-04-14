@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.target.com
+
+* Concrete task
+- Navigate to the weekly deals or "Top Deals" page.
+- Compose a list of 5 deals. Each has the product name, original price, and sale price.
+- Print the list.

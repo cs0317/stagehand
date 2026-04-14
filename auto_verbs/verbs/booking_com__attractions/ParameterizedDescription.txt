@@ -1,0 +1,9 @@
+Booking.com – Attractions Search
+
+Navigate to the "Attractions" section on Booking.com.
+Search for attractions in {city} (default: "Paris").
+Extract up to {max_results} (default: 5) attractions, each with:
+  - name
+  - rating
+  - price
+Print the list.

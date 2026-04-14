@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.healthgrades.com
+
+* Concrete task
+- Search for "dentist" near "Chicago, IL".
+- Compose a list of the top 5 dentists. Each has the doctor name, rating, and specialty.
+- Print the list.

@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.indeed.com
+
+* Concrete task
+- Navigate to the salary search page.
+- Search for "data scientist" salaries in "New York, NY".
+- Extract the average salary, salary range, and top paying companies.
+- Print the results.

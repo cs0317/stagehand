@@ -1,0 +1,11 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.google.com/travel/flights
+
+* Concrete task
+- Enter departure city "Chicago".
+- Set travel dates to next month (round-trip, 5 days).
+- Use the "Explore" map view to find cheap destinations.
+- Compose a list of 5 cheap destinations. Each has its city name and round-trip price.
+- Print the list.

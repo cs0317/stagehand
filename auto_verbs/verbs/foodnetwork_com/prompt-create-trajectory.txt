@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.foodnetwork.com
+
+* Concrete task
+- Search for "pasta" recipes.
+- Compose a list of the top 5 recipes. Each has its name, rating, and total time.
+- Print the list.

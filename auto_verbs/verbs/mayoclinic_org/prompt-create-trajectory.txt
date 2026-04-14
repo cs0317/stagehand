@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.mayoclinic.org
+
+* Concrete task
+- Search for "diabetes".
+- Navigate to the condition overview page.
+- Extract the overview, symptoms, and causes sections.
+- Print the results.

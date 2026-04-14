@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://medium.com
+
+* Concrete task
+- Search for "machine learning" articles.
+- Compose a list of the top 5 articles. Each has its title, author, and read time.
+- Print the list.

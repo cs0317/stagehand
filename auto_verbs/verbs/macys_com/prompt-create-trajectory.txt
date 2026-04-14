@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.macys.com
+
+* Concrete task
+- Search for "women's handbags".
+- Compose a list of the top 5 results. Each has its name, brand, and price.
+- Print the list.

@@ -1,0 +1,11 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.imdb.com
+
+* Concrete task
+- Search for "Breaking Bad".
+- Navigate to the TV show page.
+- Extract the show rating and number of seasons.
+- Compose a list of the top 5 rated episodes. Each has its episode title, season/episode number, and rating.
+- Print the list.

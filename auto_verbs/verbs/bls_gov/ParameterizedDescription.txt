@@ -1,0 +1,8 @@
+BLS – Occupational Outlook Handbook Lookup
+
+Search the Bureau of Labor Statistics Occupational Outlook Handbook for a given occupation.
+Extract the median pay, job outlook, and entry-level education.
+Print the results.
+
+Parameters:
+  occupation    – occupation to search for (e.g. "software developer")

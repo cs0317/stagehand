@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.cnn.com
+
+* Concrete task
+- Navigate to the "Tech" section.
+- Compose a list of the top 5 headlines. Each has its title and link.
+- Print the list.

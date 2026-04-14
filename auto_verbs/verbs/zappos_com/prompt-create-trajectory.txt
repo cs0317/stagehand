@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.zappos.com
+
+* Concrete task
+- Search for "running shoes".
+- Sort by "Customer Rating".
+- Compose a list of the top 5 results. Each has its name, brand, and price.
+- Print the list.

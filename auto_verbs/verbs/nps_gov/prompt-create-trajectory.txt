@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.nps.gov
+
+* Concrete task
+- Search for "Yellowstone".
+- Navigate to the park page.
+- Extract the park description, operating hours, entrance fees, and location.
+- Print the results.

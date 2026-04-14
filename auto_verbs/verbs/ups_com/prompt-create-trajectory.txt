@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.ups.com
+
+* Concrete task
+- Navigate to the package tracking page.
+- Enter tracking number "1Z999AA10123456784" in the tracking input field.
+- Extract the tracking status, last location, and estimated delivery date.
+- Print the results.

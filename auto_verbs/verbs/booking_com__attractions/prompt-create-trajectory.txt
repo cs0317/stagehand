@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.booking.com
+
+* Concrete task
+- Navigate to the "Attractions" section.
+- Search for attractions in "Paris".
+- Compose a list of the top 5 attractions. Each has its name, rating, and price.
+- Print the list.

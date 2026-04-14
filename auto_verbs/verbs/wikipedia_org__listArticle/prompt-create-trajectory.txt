@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://en.wikipedia.org
+
+* Concrete task
+- Search for "List of programming languages".
+- Extract the first 10 programming languages from the list. Each has its name, year created, and paradigm.
+- Print the list.

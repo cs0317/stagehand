@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.allrecipes.com
+
+* Concrete task
+- Search for "chicken parmesan" recipes.
+- Compose a list of the top 5 recipes. Each has its name, rating, and total cook time.
+- Print the list.

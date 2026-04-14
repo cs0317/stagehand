@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.rei.com
+
+* Concrete task
+- Search for "hiking backpack".
+- Compose a list of the top 5 results. Each has its name, price, and rating.
+- Print the list.

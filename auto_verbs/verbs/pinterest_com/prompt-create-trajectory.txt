@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.pinterest.com
+
+* Concrete task
+- Search for "minimalist home office" pins.
+- Compose a list of the top 5 pins. Each has its title and link.
+- Print the list.

@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.walmart.com
+
+* Concrete task
+- Navigate to the store finder.
+- Search for stores near "Austin, TX".
+- Compose a list of up to 3 stores. Each has its address, hours, and phone number.
+- Print the list.

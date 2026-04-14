@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.bls.gov
+
+* Concrete task
+- Search for "software developer" in the Occupational Outlook Handbook.
+- Extract the median pay, job outlook, and entry-level education.
+- Print the results.

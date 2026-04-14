@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.tripadvisor.com
+
+* Concrete task
+- Search for hotels in "San Diego".
+- Sort by "Traveler Ranked".
+- Compose a list of the top 5 hotels. Each has its name, price per night, and traveler rating.
+- Print the list.

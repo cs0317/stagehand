@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://github.com
+
+* Concrete task
+- Navigate to the "facebook/react" repository.
+- Go to the Issues tab.
+- Compose a list of the top 5 open issues. Each has its title, labels, and creation date.
+- Print the list.

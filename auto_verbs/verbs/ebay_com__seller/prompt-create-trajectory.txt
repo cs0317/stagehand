@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.ebay.com
+
+* Concrete task
+- Search for "vintage watch".
+- Click on the first result.
+- Extract the seller name, seller feedback score, and positive feedback percentage.
+- Print the results.

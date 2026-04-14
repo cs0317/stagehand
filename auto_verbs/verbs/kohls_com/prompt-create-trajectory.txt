@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.kohls.com
+
+* Concrete task
+- Search for "kitchen appliances".
+- Compose a list of the top 5 products. Each has its name, price, and rating.
+- Print the list.

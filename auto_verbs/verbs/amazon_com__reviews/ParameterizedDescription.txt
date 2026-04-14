@@ -1,0 +1,12 @@
+Amazon – Product Reviews
+
+Search for a product on amazon.com by query.
+Click on the first search result to navigate to the product page.
+Navigate to the customer reviews section.
+Compose a list of up to N reviews.
+Each review has its star rating, title, and review text.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "wireless earbuds")
+  max_results   – maximum number of reviews to return (e.g. 5)

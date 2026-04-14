@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://stackoverflow.com
+
+* Concrete task
+- Navigate to the Tags page.
+- Compose a list of the top 10 most popular tags. Each has its name, question count, and description.
+- Print the list.

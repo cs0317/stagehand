@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.reuters.com
+
+* Concrete task
+- Search for "artificial intelligence".
+- Compose a list of the top 5 articles. Each has its title, date, and summary.
+- Print the list.

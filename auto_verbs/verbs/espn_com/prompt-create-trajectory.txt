@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.espn.com
+
+* Concrete task
+- Navigate to the NBA standings page.
+- Compose a list of the top 5 teams in the current standings. Each has its team name, wins, and losses.
+- Print the list.

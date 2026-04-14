@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://sfbay.craigslist.org
+
+* Concrete task
+- Search for "bicycle" in the "For Sale" section.
+- Compose a list of the top 5 listings. Each has its title, price, and location.
+- Print the list.

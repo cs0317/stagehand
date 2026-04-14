@@ -1,0 +1,11 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.amazon.com
+
+* Concrete task
+- Search for "wireless earbuds".
+- Click on the first result.
+- Navigate to the customer reviews section.
+- Compose a list of the top 5 reviews. Each has its star rating, title, and review text.
+- Print the list.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.npr.org
+
+* Concrete task
+- Navigate to the "Podcasts" section.
+- Compose a list of 5 featured podcasts. Each has its name and description.
+- Print the list.

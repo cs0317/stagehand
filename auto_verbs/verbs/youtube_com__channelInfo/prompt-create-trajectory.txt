@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.youtube.com
+
+* Concrete task
+- Search for the channel "Veritasium".
+- Navigate to the channel page.
+- Extract the subscriber count, total video count, and channel description.
+- Print the results.

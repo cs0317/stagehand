@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.edx.org
+
+* Concrete task
+- Search for "data science" courses.
+- Compose a list of the top 5 courses. Each has its title, institution, and duration.
+- Print the list.

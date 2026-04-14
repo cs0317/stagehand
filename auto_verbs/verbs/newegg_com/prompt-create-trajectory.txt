@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.newegg.com
+
+* Concrete task
+- Search for "mechanical keyboard".
+- Sort by "Best Sellers".
+- Compose a list of the top 5 results. Each has its name, price, and rating.
+- Print the list.

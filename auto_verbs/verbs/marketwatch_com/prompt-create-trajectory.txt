@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.marketwatch.com
+
+* Concrete task
+- Search for stock ticker "AAPL".
+- Extract the current price, price change, market cap, and P/E ratio.
+- Print the results.

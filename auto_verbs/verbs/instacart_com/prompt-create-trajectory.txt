@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.instacart.com
+
+* Concrete task
+- Search for "organic milk".
+- Compose a list of up to 5 products. Each has its name, price, and store.
+- Print the list.

@@ -1,0 +1,19 @@
+You are a programmer to write a python function to use playwright to accomplish a task specified by a user. When doing this, you need to define the function signature that generalize the user's specific task into a parameterized task, then write test-code the test the function using the concrete argument values according to the task. **Do not hardcode the concrete argument values in the function.**
+
+The workflow is the following. The generated files should be saved in the case folder under auto_verbs\verbs.
+* Rewrite the user task in such a way that it is clear which data are arguments. Save this file as ParameterizedDescription.txt. 
+* Consult auto_verbs\verbs-batch1\booking_com\booking_search.js to understand how to generate a similar js program for the task
+* The purpose of the js program is to generate a python program, which executes the concrete task using playwright. Make sure that the browser is opened using the user's profile. As explained earlier, the program contains a piece of test-code calling the function.
+* Do not take any screenshot.
+* Important: for reliability, please extract Aria-Scope for XPath. Please read extractAriaScopeForXPath(page, fullXPath) in auto_verbs\stagehand-utils.js to understand the strategy. However, this stratgy should only be applied when *you* explore the HTML page, but do not include it as code in the final python code. The python code should benefit from the *results* of this strategy. More suggestions about reliability:
+** Use data-testid, id, role, aria-label as primary anchors — they're intentional and stable
+** Use semantic HTML elements (button, time, li, a) as structural landmarks
+** Navigate relative to anchors (nextElementSibling, closest, querySelector) rather than counting on absolute CSS class names or XPaths
+** Avoid [class*=...] and hash class names (.sc-f8b674f0-4 etc.) — they change on every build
+* You should add appropriate wait period after every action, but it shouldn't be longer than 2000 milliseconds.
+* Before you finish, please test-run the python file to confirm that it works.
+
+Important suggestions:
+* If you have succeeded in certain steps, please generate a new version of the js file, which concretizes these steps using playwright functions so that you don't need to use AI to explore them again. 
+* When entering a string into an input box, please always press ctrl-a first so that the existing content will be completely replaced by the new string.
+* If you conclude that the website uses heavy bot-detection, please stop working on it becasue the website is not willing to be operated by agents.

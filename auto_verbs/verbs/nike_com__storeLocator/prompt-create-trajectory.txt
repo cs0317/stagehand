@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.nike.com
+
+* Concrete task
+- Navigate to the store locator.
+- Search for Nike stores near "Los Angeles, CA".
+- Compose a list of up to 3 stores. Each has its name, address, and hours.
+- Print the list.

@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.sephora.com
+
+* Concrete task
+- Search for "moisturizer".
+- Sort by "Top Rated".
+- Compose a list of the top 5 products. Each has its name, brand, price, and rating.
+- Print the list.

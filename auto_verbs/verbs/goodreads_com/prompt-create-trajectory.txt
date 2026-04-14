@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.goodreads.com
+
+* Concrete task
+- Search for author "Isaac Asimov".
+- Navigate to his books page.
+- Compose a list of his top 5 rated books. Each has its title, average rating, and number of ratings.
+- Print the list.
