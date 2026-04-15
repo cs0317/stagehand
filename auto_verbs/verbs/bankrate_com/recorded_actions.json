@@ -1,0 +1,43 @@
+[
+  {
+    "timestamp": 1349,
+    "type": "goto",
+    "url": "https://www.bankrate.com/banking/savings/best-high-yield-interests-savings-accounts/",
+    "description": "Navigate to https://www.bankrate.com/banking/savings/best-high-yield-interests-savings-accounts/"
+  },
+  {
+    "timestamp": 16967,
+    "type": "extract",
+    "instruction": "Extract savings account offers",
+    "description": "Extract up to 5 savings accounts",
+    "results": {
+      "accounts": [
+        {
+          "bankName": "Capital One",
+          "apy": "3.20%",
+          "minDeposit": "$0"
+        },
+        {
+          "bankName": "Vio Bank",
+          "apy": "4.03%",
+          "minDeposit": "$0"
+        },
+        {
+          "bankName": "CIT Bank",
+          "apy": "4.10%",
+          "minDeposit": "$5,000"
+        },
+        {
+          "bankName": "Cash App",
+          "apy": "3.25%",
+          "minDeposit": "$0"
+        },
+        {
+          "bankName": "Bread Savings",
+          "apy": "4.00%",
+          "minDeposit": "$1"
+        }
+      ]
+    }
+  }
+]

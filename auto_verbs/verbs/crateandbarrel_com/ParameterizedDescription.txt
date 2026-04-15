@@ -1,0 +1,10 @@
+Verb: crateandbarrel_search
+Parameters:
+  - query: str (default "dining table") – product search term
+  - max_results: int (default 5) – how many products to return
+
+Steps:
+  1. Navigate to https://www.crateandbarrel.com/search?query=dining+table
+  2. Wait for results to load
+  3. Extract up to max_results products: name, price, dimensions, rating
+  4. Print the list

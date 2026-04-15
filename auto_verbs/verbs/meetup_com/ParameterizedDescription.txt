@@ -1,0 +1,4 @@
+Verb: meetup_search
+Website: https://www.meetup.com
+Task: Search for "hiking" groups near "Denver, CO". Extract up to 5 meetup groups with group name, member count, and next event date. Print the list.
+Parameters: query (hiking), location (Denver, CO), maxResults (5)

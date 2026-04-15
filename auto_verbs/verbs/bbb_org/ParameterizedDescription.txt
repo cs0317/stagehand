@@ -1,0 +1,11 @@
+Verb: bbb_search
+Parameters:
+  - query: str (default "Comcast") – business name to search
+  - max_results: int (default 1) – how many business profiles to return (usually 1 for specific search)
+
+Steps:
+  1. Navigate to https://www.bbb.org
+  2. Search for the business
+  3. Click the first matching result to go to the business profile
+  4. Extract BBB rating, accreditation status, customer review rating, and number of complaints
+  5. Print the results

@@ -1,0 +1,14 @@
+Task: Search Eventbrite Events
+
+Search for {query} events in {location} on Eventbrite.
+Extract up to {max_results} events with:
+  - event name
+  - date
+  - venue
+  - price
+Print the list.
+
+Parameters:
+  - query: str (default: "tech meetup") — search query
+  - location: str (default: "San Francisco, CA") — location to search
+  - max_results: int (default: 5) — maximum number of events to extract

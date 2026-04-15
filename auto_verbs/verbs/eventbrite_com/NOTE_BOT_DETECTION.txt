@@ -1,0 +1,4 @@
+eventbrite.com blocks automated browsers with CAPTCHA ("Human Verification").
+Both Stagehand (headless Chromium) and CDP Chrome show "Let's confirm you are human"
+with a "Begin" button for security check.
+This site is not suitable for agent-based automation per SystemPrompt1.txt guidelines.

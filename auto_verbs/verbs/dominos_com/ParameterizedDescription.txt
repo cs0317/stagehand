@@ -1,0 +1,11 @@
+Task: Search Domino's Pizza Menu
+
+Navigate to the Domino's menu page at https://www.dominos.com/pages/order/menu.
+Extract up to {max_results} pizza options with:
+  - pizza name
+  - size options
+  - starting price
+Print the list.
+
+Parameters:
+  - max_results: int (default: 5) — maximum number of pizza options to extract

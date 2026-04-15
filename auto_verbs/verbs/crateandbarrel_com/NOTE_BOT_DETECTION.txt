@@ -1,0 +1,4 @@
+crateandbarrel.com blocks automated browsers via Akamai bot detection.
+CDP Chrome receives "Access Denied - You don't have permission to access" response.
+JS Stagehand extraction also returned 0 products despite page appearing to load.
+This site is not suitable for agent-based automation per SystemPrompt1.txt guidelines.

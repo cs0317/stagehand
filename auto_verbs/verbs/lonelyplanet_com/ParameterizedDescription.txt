@@ -1,0 +1,4 @@
+Verb: lonelyplanet_destination
+Website: https://www.lonelyplanet.com
+Task: Search for the destination guide for "Tokyo". Extract the destination overview, best time to visit, and up to 5 top attractions with names and descriptions. Print the results.
+Parameters: destination (Tokyo), maxAttractions (5)

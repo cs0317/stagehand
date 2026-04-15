@@ -1,0 +1,4 @@
+Verb: nerdwallet_cards
+Website: https://www.nerdwallet.com
+Task: Navigate to the credit cards comparison page. Search for "cash back" credit cards. Extract up to 5 cards with card name, annual fee, rewards rate, and sign-up bonus. Print the list.
+Parameters: query (cash back), maxResults (5)

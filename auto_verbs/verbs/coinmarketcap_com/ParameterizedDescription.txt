@@ -1,0 +1,8 @@
+Verb: coinmarketcap_search
+Parameters:
+  - query: str (default "Bitcoin") – cryptocurrency name to look up
+
+Steps:
+  1. Navigate to https://coinmarketcap.com/currencies/bitcoin/ or search
+  2. Extract current price, 24h change %, market cap, 24h trading volume
+  3. Print the results

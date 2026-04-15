@@ -1,0 +1,4 @@
+Verb: nfl_schedule
+Website: https://www.nfl.com
+Task: Navigate to the schedule page for the "Seattle Seahawks". Extract up to 5 upcoming or recent games with opponent, date, time, and score (if played). Print the list.
+Parameters: team (seattle-seahawks), maxGames (5)

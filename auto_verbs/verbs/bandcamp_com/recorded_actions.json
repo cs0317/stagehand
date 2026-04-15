@@ -1,0 +1,48 @@
+[
+  {
+    "timestamp": 1336,
+    "type": "goto",
+    "url": "https://bandcamp.com/search?q=jazz&item_type=a",
+    "description": "Navigate to https://bandcamp.com/search?q=jazz&item_type=a"
+  },
+  {
+    "timestamp": 15609,
+    "type": "extract",
+    "instruction": "Extract album search results",
+    "description": "Extract up to 5 albums",
+    "results": {
+      "albums": [
+        {
+          "title": "Oncle Jazz",
+          "artist": "Men I Trust",
+          "price": "N/A",
+          "tags": "Québec, indie, Alternative, Montreal, Canada, indie pop, shoegaze"
+        },
+        {
+          "title": "Jazz Sabbath",
+          "artist": "Jazz Sabbath",
+          "price": "N/A",
+          "tags": "jazzy, Jazz, black sabbath, jazz metal, United Kingdom, jazz rock"
+        },
+        {
+          "title": "Music For Ukraine",
+          "artist": "We Jazz Records",
+          "price": "N/A",
+          "tags": "free ukraine, Ukraine, compilation, benefit, we jazz, we jazz records, Helsinki, Finland"
+        },
+        {
+          "title": "SOURCE",
+          "artist": "Nubya Garcia",
+          "price": "N/A",
+          "tags": "England, Hip Hop, London, Jazz, nu-jazz, HipHop, United Kingdom, Electronic"
+        },
+        {
+          "title": "jazz",
+          "artist": "Louie Zong",
+          "price": "N/A",
+          "tags": "jazz, California, Los Angeles, United States, piano, instrumental, Funk"
+        }
+      ]
+    }
+  }
+]

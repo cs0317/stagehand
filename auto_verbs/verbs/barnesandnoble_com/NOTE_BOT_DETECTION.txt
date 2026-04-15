@@ -1,0 +1,11 @@
+Barnes & Noble (barnesandnoble.com) uses Akamai bot detection.
+
+The Stagehand JS script works (using bundled Chromium), but the CDP-based Python 
+script is blocked with "Access Denied" from Akamai/EdgeSuite:
+  "You don't have permission to access http://www.barnesandnoble.com/s/Brandon+Sanderson on this server."
+
+Per SystemPrompt1.txt: this site uses heavy bot-detection and is not suitable 
+for agent-based automation.
+
+The JS script (barnesandnoble_search.js) successfully extracts books, but the 
+Python CDP approach cannot be used.

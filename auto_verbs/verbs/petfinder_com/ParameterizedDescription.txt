@@ -1,0 +1,12 @@
+Website: petfinder.com
+Task: Search for adoptable dogs near a ZIP code and extract pet listings
+Parameters:
+  - animalType: "dogs" (type of animal to search for)
+  - location: "90210" (ZIP code to search near)
+  - maxResults: 5 (number of pets to extract)
+Data to extract per pet:
+  - name
+  - breed
+  - age
+  - gender
+  - shelter name

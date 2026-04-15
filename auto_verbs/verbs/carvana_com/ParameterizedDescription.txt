@@ -1,0 +1,10 @@
+Verb: carvana_search
+Parameters:
+  - query: str (default "Honda Civic") – car search term
+  - max_results: int (default 5) – how many cars to return
+
+Steps:
+  1. Navigate to https://www.carvana.com and search for cars
+  2. Wait for search results to load
+  3. Extract up to max_results cars: year, trim, price, mileage, monthly payment
+  4. Print the list

@@ -1,0 +1,48 @@
+[
+  {
+    "timestamp": 1373,
+    "type": "goto",
+    "url": "https://www.avvo.com/search/lawyer_search?q=immigration&loc=Los%20Angeles%2C%20CA",
+    "description": "Navigate to https://www.avvo.com/search/lawyer_search?q=immigration&loc=Los%20Angeles%2C%20CA"
+  },
+  {
+    "timestamp": 13910,
+    "type": "extract",
+    "instruction": "Extract lawyer search results",
+    "description": "Extract up to 5 lawyers",
+    "results": {
+      "lawyers": [
+        {
+          "name": "Jose Roberto Gallegos",
+          "rating": "5.0",
+          "yearsExperience": "5",
+          "numReviews": "20"
+        },
+        {
+          "name": "Yi Kang Shyr",
+          "rating": "5.0",
+          "yearsExperience": "9",
+          "numReviews": "69"
+        },
+        {
+          "name": "H. Glenn Fogle",
+          "rating": "4.8",
+          "yearsExperience": "34",
+          "numReviews": "145"
+        },
+        {
+          "name": "Daniel Moaddel",
+          "rating": "4.9",
+          "yearsExperience": "16",
+          "numReviews": "97"
+        },
+        {
+          "name": "Layla Khamoushian",
+          "rating": "5.0",
+          "yearsExperience": "20",
+          "numReviews": "138"
+        }
+      ]
+    }
+  }
+]

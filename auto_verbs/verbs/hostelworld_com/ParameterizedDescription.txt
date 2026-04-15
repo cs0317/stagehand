@@ -1,0 +1,14 @@
+Task: Search Hostelworld
+
+Search for hostels in {city} for {guests} guests on Hostelworld.
+Extract up to {max_results} hostels with:
+  - hostel name
+  - price per night
+  - rating
+  - distance from city center
+Print the list.
+
+Parameters:
+  - city: str (default: "Barcelona") — city to search
+  - guests: int (default: 2) — number of guests
+  - max_results: int (default: 5) — maximum hostels to extract

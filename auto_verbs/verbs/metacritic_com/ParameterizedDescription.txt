@@ -1,0 +1,4 @@
+Verb: metacritic_game
+Website: https://www.metacritic.com
+Task: Search for the game "Elden Ring". Extract the Metascore, user score, platform, and critic review summary. Print the results.
+Parameters: game (Elden Ring)

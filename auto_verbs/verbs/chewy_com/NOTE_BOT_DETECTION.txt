@@ -1,0 +1,10 @@
+Chewy.com uses heavy bot detection that blocks CDP Chrome connections.
+
+The page returns essentially empty content (1140 bytes HTML, no text content)
+when accessed via CDP-connected Chrome browser.
+
+Per SystemPrompt1.txt: this site uses heavy bot-detection and is not suitable 
+for agent-based automation via CDP.
+
+The Stagehand JS explorer works (using bundled Chromium), but the Python CDP 
+approach cannot be used.

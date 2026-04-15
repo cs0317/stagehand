@@ -1,0 +1,10 @@
+Verb: codecademy_search
+Parameters:
+  - query: str (default "Python") – course search term
+  - max_results: int (default 5) – how many courses to return
+
+Steps:
+  1. Navigate to https://www.codecademy.com/search?query=Python
+  2. Wait for search results to load
+  3. Extract up to max_results courses: title, skill level, estimated duration
+  4. Print the list

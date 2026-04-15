@@ -1,0 +1,11 @@
+Verb: barnesandnoble_search
+Parameters:
+  - query: str (default "Brandon Sanderson") – search term (author/title)
+  - max_results: int (default 5) – how many books to return
+
+Steps:
+  1. Navigate to https://www.barnesandnoble.com
+  2. Type the query into the search box and submit
+  3. Wait for results to load
+  4. Extract up to max_results books: title, format, price, rating
+  5. Print the list

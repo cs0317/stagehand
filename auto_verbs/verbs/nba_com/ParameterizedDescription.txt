@@ -1,0 +1,4 @@
+Verb: nba_standings
+Website: https://www.nba.com
+Task: Navigate to the standings page. Extract the top 5 teams in the Eastern Conference with team name, wins, losses, and win percentage. Print the list.
+Parameters: conference (Eastern), maxTeams (5)

@@ -1,0 +1,12 @@
+Bankrate.com – Best Savings Rates
+
+Parameters:
+  - max_results (int): Maximum number of savings account offers to return (e.g. 5)
+
+Steps:
+  1. Navigate to https://www.bankrate.com/banking/savings/best-high-yield-interests-savings-accounts/
+  2. Extract up to {max_results} top savings account offers, each with:
+     - bank name
+     - APY (Annual Percentage Yield)
+     - minimum deposit
+  3. Return/print the list of offers

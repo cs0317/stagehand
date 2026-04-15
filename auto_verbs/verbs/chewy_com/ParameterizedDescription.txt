@@ -1,0 +1,10 @@
+Verb: chewy_search
+Parameters:
+  - query: str (default "dog food grain free") – product search term
+  - max_results: int (default 5) – how many products to return
+
+Steps:
+  1. Navigate to https://www.chewy.com and search for products
+  2. Wait for search results to load
+  3. Extract up to max_results products: name, price, rating, brand
+  4. Print the list

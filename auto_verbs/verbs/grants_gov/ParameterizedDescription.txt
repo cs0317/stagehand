@@ -1,0 +1,13 @@
+Task: Search Grants.gov
+
+Search for grants related to {query} on Grants.gov.
+Extract up to {max_results} grants with:
+  - title
+  - agency
+  - funding amount
+  - close date
+Print the list.
+
+Parameters:
+  - query: str (default: "STEM education") — search query
+  - max_results: int (default: 5) — maximum number of grants to extract

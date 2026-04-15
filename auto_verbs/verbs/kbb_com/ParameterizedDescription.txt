@@ -1,0 +1,4 @@
+Verb: kbb_car_value
+Website: https://www.kbb.com
+Task: Navigate to the car value/pricing tool. Look up the value of a 2020 Toyota Camry SE. Extract the fair purchase price range and trade-in value range. Print the results.
+Parameters: year (2020), make (Toyota), model (Camry), trim (SE)

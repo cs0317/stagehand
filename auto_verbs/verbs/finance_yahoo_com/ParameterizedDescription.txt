@@ -1,0 +1,12 @@
+Task: Get Stock Quote from Yahoo Finance
+
+Search for stock symbol {symbol} on Yahoo Finance.
+Extract:
+  - current price
+  - day change (amount and percentage)
+  - volume
+  - market cap
+Print the results.
+
+Parameters:
+  - symbol: str (default: "AAPL") — stock ticker symbol

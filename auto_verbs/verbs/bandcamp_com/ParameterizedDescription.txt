@@ -1,0 +1,15 @@
+Bandcamp.com – Album Search
+
+Parameters:
+  - query (str): The search query for albums (e.g. "jazz")
+  - max_results (int): Maximum number of albums to return (e.g. 5)
+
+Steps:
+  1. Navigate to https://bandcamp.com
+  2. Search for albums matching {query}
+  3. Extract up to {max_results} albums, each with:
+     - album title
+     - artist
+     - price
+     - genre tags
+  4. Return/print the list of albums
