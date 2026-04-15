@@ -1,0 +1,19 @@
+stubhub_search(query: str, max_results: int = 5) -> list[dict]
+
+@dataclass
+StubHubEvent:
+    name: str       # Event name, e.g. "NBA Preseason: Thunder vs Pelicans"
+    venue: str      # Venue name, e.g. "Madison Square Garden"
+    date: str       # Date and time, e.g. "Oct 6 Tue 7:00 PM" or "TBA"
+    location: str   # City, state, country, e.g. "New York, NY, US"
+    price: str      # Lowest ticket price, e.g. "$25" or "N/A"
+
+Input:
+    query       – search keyword, e.g. "NBA"
+    max_results – maximum number of events to return (default 5)
+
+Output:
+    List of StubHubEvent dicts with keys: name, venue, date, location, price
+
+URL pattern: https://www.stubhub.com/secure/search?q={query}
+Price lookup: navigates to each event's detail page to find lowest listed price
