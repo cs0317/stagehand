@@ -1,0 +1,10 @@
+Nordstrom – Product Search
+
+Search for products matching a given query on nordstrom.com.
+Compose a list of up to N results.
+Each product has its name, brand, and price.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "men's dress shoes")
+  max_results   – maximum number of products to return (e.g. 5)

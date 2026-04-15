@@ -1,0 +1,10 @@
+Gap.com – Product Search
+
+Search for products matching a given query on gap.com.
+Compose a list of up to N products from the search results.
+Each product has its name, price, and available sizes.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "men's jeans")
+  max_results   – maximum number of products to return (e.g. 5)

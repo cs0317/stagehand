@@ -1,39 +1,62 @@
 """
-Amazon.com – Product Reviews
-Search for a product, click the first result, extract customer reviews.
+Playwright script (Python) — Amazon.com Product Reviews
+Search for a product, click the first result, extract customer reviews
+with star rating, title, and review text.
 
-Uses Playwright via CDP connection with the user's Chrome profile.
+Uses the user's Chrome profile for persistent login state.
 """
 
 import re
-import os, sys, shutil
-from playwright.sync_api import Playwright, sync_playwright
+import os
+from dataclasses import dataclass
+from playwright.sync_api import sync_playwright, Page
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+import sys as _sys
+import os as _os
+_sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
+from playwright_debugger import checkpoint
 
 
-def run(
-    playwright: Playwright,
-    query: str = "wireless earbuds",
-    max_results: int = 5,
-) -> list:
+@dataclass(frozen=True)
+class AmazonReviewsRequest:
+    query: str
+    max_results: int
+
+
+@dataclass(frozen=True)
+class AmazonReview:
+    star_rating: str
+    title: str
+    review_text: str
+
+
+@dataclass(frozen=True)
+class AmazonReviewsResult:
+    query: str
+    product_name: str
+    reviews: list[AmazonReview]
+
+
+# Searches Amazon for a product query, clicks the first result, scrolls to the
+# reviews section, and extracts up to max_results reviews with star rating, title,
+# and review text.
+def search_amazon_reviews(
+    page: Page,
+    request: AmazonReviewsRequest,
+) -> AmazonReviewsResult:
+    query = request.query
+    max_results = request.max_results
+
     print(f"  Query: {query}")
     print(f"  Max reviews: {max_results}\n")
 
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("amazon_com_reviews")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-    results = []
+    results: list[AmazonReview] = []
     product_name = "N/A"
 
     try:
         # ── Navigate ──────────────────────────────────────────────────────
         print("Loading Amazon.com...")
+        checkpoint("Navigate to https://www.amazon.com")
         page.goto("https://www.amazon.com")
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(2000)
@@ -47,6 +70,7 @@ def run(
             try:
                 btn = page.locator(selector).first
                 if btn.is_visible(timeout=1500):
+                    checkpoint(f"Dismiss popup: {selector}")
                     btn.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
@@ -55,11 +79,14 @@ def run(
         # ── STEP 1: Search ────────────────────────────────────────────────
         print(f'STEP 1: Search for "{query}"...')
         search_input = page.locator('#twotabsearchtextbox').first
+        checkpoint("Click search input")
         search_input.evaluate("el => el.click()")
         page.wait_for_timeout(500)
         page.keyboard.press("Control+a")
+        checkpoint(f"Type query: {query}")
         search_input.type(query, delay=50)
         page.wait_for_timeout(1000)
+        checkpoint("Press Enter to search")
         page.keyboard.press("Enter")
         print(f'  Typed "{query}" and pressed Enter')
         page.wait_for_load_state("domcontentloaded")
@@ -73,8 +100,8 @@ def run(
         first_result.wait_for(state="visible", timeout=10000)
         product_name = first_result.inner_text(timeout=5000).strip()
         href = first_result.get_attribute("href")
-        # Navigate directly to avoid new-tab / click interception issues
         product_url = f"https://www.amazon.com{href}"
+        checkpoint(f"Navigate to product: {product_name}")
         page.goto(product_url)
         print(f'  Navigated to: "{product_name}"')
         page.wait_for_load_state("domcontentloaded")
@@ -82,8 +109,7 @@ def run(
 
         # ── STEP 3: Scroll to reviews on product page ─────────────────
         print("STEP 3: Scroll to customer reviews section...")
-        # Extract reviews directly from the product page (navigating to
-        # the dedicated reviews page may require sign-in).
+        checkpoint("Scroll to reviews section")
         page.evaluate("""() => {
             const el = document.getElementById('reviewsMedley')
                     || document.getElementById('customer_review_section')
@@ -129,7 +155,6 @@ def run(
                         '[data-hook="review-title"]'
                     ).first
                     title = title_el.inner_text(timeout=2000).strip()
-                    # Remove rating prefix if present
                     title = re.sub(r'^\d+\.\d+ out of \d+ stars\s*', '', title).strip()
                 except Exception:
                     pass
@@ -138,7 +163,6 @@ def run(
                 try:
                     text_el = card.locator('[data-hook="review-body"] span').first
                     review_text = text_el.inner_text(timeout=2000).strip()
-                    # Truncate long reviews
                     if len(review_text) > 300:
                         review_text = review_text[:300] + "..."
                 except Exception:
@@ -147,11 +171,11 @@ def run(
                 if title == "N/A" and review_text == "N/A":
                     continue
 
-                results.append({
-                    "star_rating": star_rating,
-                    "title": title,
-                    "review_text": review_text,
-                })
+                results.append(AmazonReview(
+                    star_rating=star_rating,
+                    title=title,
+                    review_text=review_text,
+                ))
                 print(f"  {len(results)}. [{star_rating} stars] {title}")
 
             except Exception as e:
@@ -161,25 +185,53 @@ def run(
         # ── Print results ─────────────────────────────────────────────────
         print(f"\nFound {len(results)} reviews for '{query}' — Product: {product_name}")
         for i, r in enumerate(results, 1):
-            print(f"  {i}. [{r['star_rating']} stars] {r['title']}")
-            print(f"     {r['review_text'][:120]}...")
+            print(f"  {i}. [{r.star_rating} stars] {r.title}")
+            print(f"     {r.review_text[:120]}...")
 
     except Exception as e:
         import traceback
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
 
-    return results
+    return AmazonReviewsResult(
+        query=query,
+        product_name=product_name,
+        reviews=results,
+    )
+
+
+def test_search_amazon_reviews() -> None:
+    request = AmazonReviewsRequest(
+        query="wireless earbuds",
+        max_results=5,
+    )
+
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_amazon_reviews(page, request)
+            assert result.query == request.query
+            assert len(result.reviews) <= request.max_results
+            print(f"\nTotal reviews found: {len(result.reviews)}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        items = run(playwright)
-        print(f"\nTotal reviews found: {len(items)}")
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_search_amazon_reviews)

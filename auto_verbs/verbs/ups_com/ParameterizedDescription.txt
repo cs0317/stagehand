@@ -1,0 +1,8 @@
+UPS – Package Tracking
+
+Track a package on ups.com using a tracking number.
+Extract the tracking status, last known location, and estimated delivery date.
+Print the results.
+
+Parameters:
+  tracking_number – UPS tracking number (e.g. "1Z999AA10123456784")

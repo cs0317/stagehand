@@ -1,0 +1,10 @@
+Instacart – Product Search
+
+Search for products on instacart.com.
+Compose a list of up to N products from the search results.
+Each product has its name, price, and store.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "organic milk")
+  max_results   – maximum number of products to return (e.g. 5)

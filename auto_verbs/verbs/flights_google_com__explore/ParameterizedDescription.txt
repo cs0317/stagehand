@@ -1,0 +1,12 @@
+Google Flights – Explore Cheap Destinations
+
+Search for flights from a departure city on Google Flights.
+Set travel dates (round-trip, N days).
+Use the "Explore" map view to find cheap destinations.
+Compose a list of up to N cheap destinations with city name and round-trip price.
+Print the list.
+
+Parameters:
+  departure_city – city to depart from (e.g. "Chicago")
+  trip_days      – number of days for the trip (e.g. 5)
+  max_results    – maximum number of destinations to return (e.g. 5)

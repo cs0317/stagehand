@@ -1,0 +1,5 @@
+Wikipedia – List Article Extraction
+
+Search for a list article (e.g. "List of programming languages") on en.wikipedia.org.
+Extract the first N entries from the list.
+Each entry has its name, year created, and paradigm.

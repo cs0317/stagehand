@@ -1,0 +1,10 @@
+Pinterest – Pin Search
+
+Search for pins matching a given query on pinterest.com.
+Compose a list of up to N results.
+Each pin has its title and link.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "minimalist home office")
+  max_results   – maximum number of pins to return (e.g. 5)

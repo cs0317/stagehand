@@ -1,0 +1,10 @@
+Stack Overflow – Tags Listing
+
+Navigate to the tags page on stackoverflow.com.
+Compose a list of up to N tags.
+Each tag has its name, question count, and description.
+Print the list.
+
+Parameters:
+  section       – section to navigate to (e.g. "Tags")
+  max_results   – maximum number of tags to return (e.g. 10)

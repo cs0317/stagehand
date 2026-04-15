@@ -1,0 +1,5 @@
+Wayfair – Product Search
+
+Search for products matching a given query on wayfair.com and sort by Best Sellers.
+Compose a list of up to N results.
+Each product has its name, price, and customer rating.

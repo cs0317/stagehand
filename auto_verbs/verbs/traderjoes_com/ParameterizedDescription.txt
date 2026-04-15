@@ -1,0 +1,10 @@
+Trader Joe's – Store Locator
+
+Search for Trader Joe's stores near a given location on traderjoes.com.
+Compose a list of up to N stores.
+Each store has its address and hours.
+Print the list.
+
+Parameters:
+  location      – city/area to search (e.g. "Portland, OR")
+  max_results   – maximum number of stores to return (e.g. 3)

@@ -1,0 +1,10 @@
+Medium – Article Search
+
+Search for articles matching a given query on medium.com.
+Compose a list of up to N results.
+Each article has its title, author, and read time.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "machine learning")
+  max_results   – maximum number of articles to return (e.g. 5)

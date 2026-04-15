@@ -1,38 +1,58 @@
 """
-Allrecipes.com – Recipe Search
-Search for recipes matching a query, extract name, rating, and cook time.
+Playwright script (Python) — Allrecipes.com Recipe Search
+Search for recipes matching a query, extract name, rating, and total cook time.
 
-Uses Playwright via CDP connection with the user's Chrome profile.
+Uses the user's Chrome profile for persistent login state.
 """
 
 import re
-import os, sys, shutil
-from playwright.sync_api import Playwright, sync_playwright
+import os
+from dataclasses import dataclass
+from playwright.sync_api import sync_playwright, Page
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+import sys as _sys
+import os as _os
+_sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
+from playwright_debugger import checkpoint
 
 
-def run(
-    playwright: Playwright,
-    query: str = "chicken parmesan",
-    max_results: int = 5,
-) -> list:
+@dataclass(frozen=True)
+class AllrecipesSearchRequest:
+    query: str
+    max_results: int
+
+
+@dataclass(frozen=True)
+class AllrecipesRecipe:
+    name: str
+    rating: str
+    cook_time: str
+
+
+@dataclass(frozen=True)
+class AllrecipesSearchResult:
+    query: str
+    recipes: list[AllrecipesRecipe]
+
+
+# Searches Allrecipes.com for recipes matching a query, then extracts
+# up to max_results recipes with name, rating, and total cook time.
+def search_allrecipes(
+    page: Page,
+    request: AllrecipesSearchRequest,
+) -> AllrecipesSearchResult:
+    query = request.query
+    max_results = request.max_results
+
     print(f"  Query: {query}")
     print(f"  Max results: {max_results}\n")
 
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("allrecipes_com")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-    results = []
+    results: list[AllrecipesRecipe] = []
 
     try:
         # ── Navigate ──────────────────────────────────────────────────────
         print("Loading Allrecipes.com...")
+        checkpoint("Navigate to https://www.allrecipes.com")
         page.goto("https://www.allrecipes.com")
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(2000)
@@ -47,6 +67,7 @@ def run(
             try:
                 btn = page.locator(selector).first
                 if btn.is_visible(timeout=1500):
+                    checkpoint(f"Dismiss popup: {selector}")
                     btn.evaluate("el => el.click()")
                     page.wait_for_timeout(500)
             except Exception:
@@ -60,11 +81,14 @@ def run(
             'input[aria-label*="search" i], '
             'input[placeholder*="search" i]'
         ).first
+        checkpoint("Click search input")
         search_input.evaluate("el => el.click()")
         page.wait_for_timeout(500)
         page.keyboard.press("Control+a")
+        checkpoint(f"Type query: {query}")
         search_input.type(query, delay=50)
         page.wait_for_timeout(1000)
+        checkpoint("Press Enter to search")
         page.keyboard.press("Enter")
         print(f'  Typed "{query}" and pressed Enter')
         page.wait_for_timeout(2000)
@@ -107,6 +131,7 @@ def run(
                     continue
 
                 # Click into recipe page to get rating and cook time
+                checkpoint(f"Click recipe card: {name}")
                 card.evaluate("el => el.click()")
                 page.wait_for_timeout(2000)
 
@@ -138,14 +163,15 @@ def run(
                 except Exception:
                     pass
 
-                results.append({
-                    "name": name,
-                    "rating": rating,
-                    "cook_time": cook_time,
-                })
+                results.append(AllrecipesRecipe(
+                    name=name,
+                    rating=rating,
+                    cook_time=cook_time,
+                ))
                 print(f"  {len(results)}. {name} | Rating: {rating} | Time: {cook_time}")
 
                 # Go back to search results
+                checkpoint("Go back to search results")
                 page.go_back()
                 page.wait_for_timeout(2000)
 
@@ -161,25 +187,52 @@ def run(
         # ── Print results ─────────────────────────────────────────────────
         print(f"\nFound {len(results)} recipes for '{query}':")
         for i, r in enumerate(results, 1):
-            print(f"  {i}. {r['name']}")
-            print(f"     Rating: {r['rating']}  Cook Time: {r['cook_time']}")
+            print(f"  {i}. {r.name}")
+            print(f"     Rating: {r.rating}  Cook Time: {r.cook_time}")
 
     except Exception as e:
         import traceback
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
 
-    return results
+    return AllrecipesSearchResult(
+        query=query,
+        recipes=results,
+    )
+
+
+def test_search_allrecipes() -> None:
+    request = AllrecipesSearchRequest(
+        query="chicken parmesan",
+        max_results=5,
+    )
+
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = search_allrecipes(page, request)
+            assert result.query == request.query
+            assert len(result.recipes) <= request.max_results
+            print(f"\nTotal recipes found: {len(result.recipes)}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        items = run(playwright)
-        print(f"\nTotal recipes found: {len(items)}")
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_search_allrecipes)

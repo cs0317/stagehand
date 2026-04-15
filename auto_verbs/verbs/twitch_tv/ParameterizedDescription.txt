@@ -1,0 +1,10 @@
+Twitch – Stream Search
+
+Search for live streams matching a given query on twitch.tv.
+Compose a list of up to N results.
+Each stream has its streamer name, viewer count, and stream title.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "Minecraft")
+  max_results   – maximum number of streams to return (e.g. 5)

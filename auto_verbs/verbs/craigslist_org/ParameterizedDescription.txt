@@ -1,0 +1,8 @@
+Craigslist – For Sale Search
+
+Search for {query} (default: "bicycle") in the "For Sale" section on {region}.craigslist.org (default: "sfbay").
+Extract up to {max_results} (default: 5) listings, each with:
+  - title
+  - price
+  - location
+Print the list.

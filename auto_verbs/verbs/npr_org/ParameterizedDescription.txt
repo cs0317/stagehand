@@ -1,0 +1,10 @@
+NPR – Podcast Listing
+
+Navigate to the podcasts section on npr.org.
+Compose a list of up to N podcasts.
+Each podcast has its name and description.
+Print the list.
+
+Parameters:
+  section       – section to navigate to (e.g. "Podcasts")
+  max_results   – maximum number of podcasts to return (e.g. 5)

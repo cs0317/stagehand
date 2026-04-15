@@ -1,0 +1,10 @@
+Reuters – Article Search
+
+Search for articles matching a given query on reuters.com.
+Compose a list of up to N results.
+Each article has its title, date, and summary.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "artificial intelligence")
+  max_results   – maximum number of articles to return (e.g. 5)

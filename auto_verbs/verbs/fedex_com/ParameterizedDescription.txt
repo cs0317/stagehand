@@ -1,0 +1,9 @@
+FedEx.com – Package Tracking
+
+Navigate to the package tracking page on fedex.com.
+Enter a tracking number in the tracking input field.
+Extract the tracking status, last location, and estimated delivery date.
+Print the results.
+
+Parameters:
+  tracking_number – FedEx tracking number (e.g. "123456789012")

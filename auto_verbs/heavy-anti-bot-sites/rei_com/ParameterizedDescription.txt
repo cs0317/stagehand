@@ -1,0 +1,10 @@
+REI – Product Search
+
+Search for products matching a given query on rei.com.
+Compose a list of up to N results.
+Each product has its name, price, and rating.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "hiking backpack")
+  max_results   – maximum number of products to return (e.g. 5)

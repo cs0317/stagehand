@@ -1,0 +1,5 @@
+Zappos – Product Search
+
+Search for products matching a given query on zappos.com and sort by Customer Rating.
+Compose a list of up to N results.
+Each product has its name, brand, and price.

@@ -1,0 +1,10 @@
+Walmart – Store Finder
+
+Search for Walmart stores near a given location on walmart.com.
+Compose a list of up to N stores.
+Each store has its address, hours, and phone number.
+Print the list.
+
+Parameters:
+  location      – city/area to search (e.g. "Austin, TX")
+  max_results   – maximum number of stores to return (e.g. 3)

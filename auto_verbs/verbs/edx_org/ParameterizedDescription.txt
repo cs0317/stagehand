@@ -1,0 +1,10 @@
+edX.org – Course Search
+
+Search for courses matching a given query on edx.org.
+Compose a list of up to N courses from the search results.
+Each course has its title, institution, and duration.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "data science")
+  max_results   – maximum number of courses to return (e.g. 5)

@@ -1,0 +1,8 @@
+NPS – Park Info
+
+Search for a national park on nps.gov and extract its details.
+Extract the description, operating hours, entrance fees, and location.
+Print the results.
+
+Parameters:
+  park_name     – name of the park to look up (e.g. "Yellowstone")

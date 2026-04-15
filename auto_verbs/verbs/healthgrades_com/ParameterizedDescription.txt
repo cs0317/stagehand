@@ -1,0 +1,11 @@
+Healthgrades – Doctor Search
+
+Search for a type of doctor near a location on healthgrades.com.
+Compose a list of up to N doctors from the search results.
+Each doctor has their name, rating, and specialty.
+Print the list.
+
+Parameters:
+  specialty     – type of doctor to search for (e.g. "dentist")
+  location      – location to search near (e.g. "Chicago, IL")
+  max_results   – maximum number of doctors to return (e.g. 5)

@@ -1,0 +1,6 @@
+Zillow – Mortgage Calculator
+
+Navigate to Zillow's mortgage calculator page.
+Enter a home price and down payment percentage.
+Extract the estimated monthly payment, principal and interest, property tax, and insurance amounts.
+Return as a single result dict.

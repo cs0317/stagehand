@@ -1,0 +1,11 @@
+GitHub – Repository Issues
+
+Navigate to a given repository on github.com.
+Go to the Issues tab.
+Compose a list of up to N open issues.
+Each issue has its title, labels, and creation date.
+Print the list.
+
+Parameters:
+  repo          – repository path (e.g. "facebook/react")
+  max_results   – maximum number of issues to return (e.g. 5)

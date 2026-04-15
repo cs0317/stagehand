@@ -1,0 +1,9 @@
+eBay – Seller Info Lookup
+
+Search for {query} (default: "vintage watch") on eBay.
+Click on the first result.
+Extract the seller's:
+  - name
+  - feedback score
+  - positive feedback percentage
+Print the results.

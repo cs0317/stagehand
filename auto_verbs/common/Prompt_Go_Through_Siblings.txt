@@ -1,0 +1,1 @@
+Great! This is exactly what I want. Now please go through all sibling folders alphabetically, and follow the same prompt file. *DO NOT BATCH THE CASES TOGETHER*. Just do it case after case so that I can keep track of the progress.

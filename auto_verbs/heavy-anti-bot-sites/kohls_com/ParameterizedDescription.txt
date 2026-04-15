@@ -1,0 +1,10 @@
+Kohl's – Product Search
+
+Search for products matching a given query on kohls.com.
+Compose a list of up to N products from the search results.
+Each product has its name, price, and rating.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "kitchen appliances")
+  max_results   – maximum number of products to return (e.g. 5)

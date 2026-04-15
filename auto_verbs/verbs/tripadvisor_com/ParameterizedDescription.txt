@@ -1,0 +1,10 @@
+TripAdvisor – Hotel Search
+
+Search for hotels in a given destination on tripadvisor.com.
+Compose a list of up to N results sorted by Traveler Ranked.
+Each hotel has its name, price per night, and traveler rating.
+Print the list.
+
+Parameters:
+  destination   – city to search (e.g. "San Diego")
+  max_results   – maximum number of hotels to return (e.g. 5)

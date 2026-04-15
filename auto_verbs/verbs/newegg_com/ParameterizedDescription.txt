@@ -1,0 +1,11 @@
+Newegg – Product Search (Best Sellers)
+
+Search for products matching a given query on newegg.com.
+Sort results by Best Sellers.
+Compose a list of up to N results.
+Each product has its name, price, and rating.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "mechanical keyboard")
+  max_results   – maximum number of products to return (e.g. 5)

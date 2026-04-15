@@ -1,0 +1,10 @@
+ESPN.com – NBA Standings
+
+Navigate to the NBA standings page on espn.com.
+Compose a list of up to N teams from the current standings.
+Each team has its team name, wins, and losses.
+Print the list.
+
+Parameters:
+  league        – league to look up standings for (e.g. "NBA")
+  max_results   – maximum number of teams to return (e.g. 5)

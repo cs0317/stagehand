@@ -1,0 +1,10 @@
+Nike – Store Locator
+
+Search for Nike stores near a given location on nike.com.
+Compose a list of up to N stores.
+Each store has its name, address, and hours.
+Print the list.
+
+Parameters:
+  location      – city/area to search (e.g. "Los Angeles, CA")
+  max_results   – maximum number of stores to return (e.g. 3)

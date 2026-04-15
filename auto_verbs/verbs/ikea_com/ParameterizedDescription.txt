@@ -1,0 +1,10 @@
+IKEA – Product Search
+
+Search for products matching a given query on ikea.com.
+Compose a list of up to N products from the search results.
+Each product has its name, price, and dimensions.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "bookshelf")
+  max_results   – maximum number of products to return (e.g. 5)

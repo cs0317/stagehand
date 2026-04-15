@@ -1,0 +1,10 @@
+Indeed – Salary Search
+
+Navigate to the salary search page on indeed.com.
+Search for a job title's salary in a given location.
+Extract the average salary, salary range, and top paying companies.
+Print the results.
+
+Parameters:
+  job_title     – job title to search for (e.g. "data scientist")
+  location      – location for salary data (e.g. "New York, NY")

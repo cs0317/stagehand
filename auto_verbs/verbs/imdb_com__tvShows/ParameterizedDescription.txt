@@ -1,0 +1,12 @@
+IMDb – TV Show Info
+
+Search for a TV show on imdb.com.
+Navigate to the TV show page.
+Extract the show rating and number of seasons.
+Compose a list of up to N top rated episodes.
+Each episode has its title, season/episode number, and rating.
+Print the list.
+
+Parameters:
+  show_name     – TV show to search for (e.g. "Breaking Bad")
+  max_results   – maximum number of episodes to return (e.g. 5)

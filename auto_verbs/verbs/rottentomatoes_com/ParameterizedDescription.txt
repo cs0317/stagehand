@@ -1,0 +1,8 @@
+Rotten Tomatoes – Movie Info
+
+Search for a movie on rottentomatoes.com.
+Extract the Tomatometer score, audience score, and synopsis.
+Print the results.
+
+Parameters:
+  movie_name    – name of the movie to look up (e.g. "Inception")

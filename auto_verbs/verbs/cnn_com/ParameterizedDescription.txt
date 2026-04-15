@@ -1,0 +1,7 @@
+CNN.com – Tech Headlines
+
+Navigate to the Tech section on CNN.com.
+Extract up to {max_results} (default: 5) headlines, each with:
+  - title
+  - link
+Print the list.

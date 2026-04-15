@@ -1,0 +1,11 @@
+Sephora – Product Search (Top Rated)
+
+Search for products matching a given query on sephora.com.
+Sort results by Top Rated.
+Compose a list of up to N results.
+Each product has its name, brand, price, and rating.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "moisturizer")
+  max_results   – maximum number of products to return (e.g. 5)

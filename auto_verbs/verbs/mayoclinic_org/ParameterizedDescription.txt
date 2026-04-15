@@ -1,0 +1,8 @@
+Mayo Clinic – Condition Lookup
+
+Search for a medical condition on mayoclinic.org.
+Navigate to the condition page and extract the overview, symptoms, and causes.
+Print the results.
+
+Parameters:
+  condition     – medical condition to look up (e.g. "diabetes")

@@ -1,0 +1,10 @@
+Washington Post – Article Search
+
+Search for articles matching a given query on washingtonpost.com.
+Compose a list of up to N results.
+Each article has its title, date, and author.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "climate change")
+  max_results   – maximum number of articles to return (e.g. 5)

@@ -1,0 +1,10 @@
+Food Network – Recipe Search
+
+Search for recipes matching a given query on foodnetwork.com.
+Compose a list of up to N recipes from the search results.
+Each recipe has its name, rating, and total time.
+Print the list.
+
+Parameters:
+  query         – search query string (e.g. "pasta")
+  max_results   – maximum number of recipes to return (e.g. 5)

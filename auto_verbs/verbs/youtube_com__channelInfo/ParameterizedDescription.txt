@@ -1,0 +1,5 @@
+YouTube – Channel Info Extraction
+
+Search for a YouTube channel by name (e.g. "Veritasium") and navigate to its page.
+Extract the subscriber count, total video count, and channel description.
+Return as a single result dict.

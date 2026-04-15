@@ -1,0 +1,8 @@
+MarketWatch – Stock Lookup
+
+Look up a stock ticker on marketwatch.com.
+Extract the current price, price change, market cap, and P/E ratio.
+Print the results.
+
+Parameters:
+  ticker        – stock ticker symbol (e.g. "AAPL")

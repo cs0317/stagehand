@@ -1,50 +1,60 @@
 """
-BLS.gov – Occupational Outlook Handbook Lookup
+Playwright script (Python) — BLS.gov Occupational Outlook Handbook Lookup
 Search for an occupation and extract median pay, job outlook, and education.
 
-Uses Playwright via CDP connection with the user's Chrome profile.
+Uses the user's Chrome profile for persistent login state.
 """
 
 import re
-import os, sys, shutil
-from playwright.sync_api import Playwright, sync_playwright
+import os
+from urllib.parse import quote
+from dataclasses import dataclass
+from playwright.sync_api import sync_playwright, Page
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+import sys as _sys
+import os as _os
+_sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
+from playwright_debugger import checkpoint
 
 
-def run(
-    playwright: Playwright,
-    occupation: str = "software developer",
-) -> dict:
+@dataclass(frozen=True)
+class BlsOohRequest:
+    occupation: str
+
+
+@dataclass(frozen=True)
+class BlsOohResult:
+    occupation: str
+    median_pay: str
+    job_outlook: str
+    entry_level_education: str
+
+
+# Searches the BLS Occupational Outlook Handbook for a given occupation
+# and extracts the median pay, job outlook, and entry-level education.
+def lookup_bls_ooh(
+    page: Page,
+    request: BlsOohRequest,
+) -> BlsOohResult:
+    occupation = request.occupation
+
     print(f"  Occupation: {occupation}\n")
 
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir("bls_gov")
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
-    browser = playwright.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
-    result = {
-        "occupation": occupation,
-        "median_pay": "N/A",
-        "job_outlook": "N/A",
-        "entry_level_education": "N/A",
-    }
+    median_pay = "N/A"
+    job_outlook = "N/A"
+    entry_level_education = "N/A"
 
     try:
         # ── Navigate to OOH search ───────────────────────────────────────
         print("Loading BLS Occupational Outlook Handbook search...")
-        from urllib.parse import quote
         search_url = f"https://data.bls.gov/search/query/results?cx=013738036195919377644%3A6ih0hfrgl50&q={quote(occupation)}+inurl%3Abls.gov%2Fooh%2F"
+        checkpoint(f"Navigate to BLS search for {occupation}")
         page.goto(search_url)
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(2000)
 
         # ── STEP 1: Click the first OOH result ───────────────────────────
         print(f'STEP 1: Find "{occupation}" in search results...')
-        # Skip the generic OOH homepage link, find actual occupation links
         ooh_links = page.locator('a[href*="/ooh/"][href*=".htm"]')
         count = ooh_links.count()
         href = None
@@ -63,6 +73,7 @@ def run(
             if href and not href.startswith("http"):
                 href = f"https://www.bls.gov{href}"
 
+        checkpoint(f"Navigate to occupation page: {href}")
         page.goto(href)
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(2000)
@@ -70,7 +81,6 @@ def run(
         # ── STEP 2: Extract from Quick Facts table ────────────────────────
         print("STEP 2: Extract from Quick Facts table...")
 
-        # The Quick Facts table is the first table on the page
         table_text = ""
         try:
             table = page.locator('table').first
@@ -84,50 +94,79 @@ def run(
         # Median pay
         mp = re.search(r"20\d{2} Median Pay\s+(\$[\d,]+\s+per\s+\w+)", table_text)
         if mp:
-            result["median_pay"] = mp.group(1).strip()
+            median_pay = mp.group(1).strip()
         else:
             mp2 = re.search(r"\$([\d,]+)\s+per\s+year", table_text)
             if mp2:
-                result["median_pay"] = mp2.group(0).strip()
+                median_pay = mp2.group(0).strip()
 
         # Job outlook
         jo = re.search(r"Job Outlook,\s*\d{4}.\d{2,4}\s+(.+)", table_text)
         if jo:
-            result["job_outlook"] = jo.group(1).strip()
+            job_outlook = jo.group(1).strip()
         else:
             jo2 = re.search(r"(\d+%\s*\([^)]+\))", table_text)
             if jo2:
-                result["job_outlook"] = jo2.group(1).strip()
+                job_outlook = jo2.group(1).strip()
 
         # Entry-level education
         edu = re.search(r"Typical Entry[- ]Level Education\s+(.+)", table_text)
         if edu:
-            result["entry_level_education"] = edu.group(1).strip()
+            entry_level_education = edu.group(1).strip()
 
         # ── Print results ─────────────────────────────────────────────────
         print(f"\nResults for '{occupation}':")
-        print(f"  Median Pay:            {result['median_pay']}")
-        print(f"  Job Outlook:           {result['job_outlook']}")
-        print(f"  Entry-Level Education: {result['entry_level_education']}")
+        print(f"  Median Pay:            {median_pay}")
+        print(f"  Job Outlook:           {job_outlook}")
+        print(f"  Entry-Level Education: {entry_level_education}")
 
     except Exception as e:
         import traceback
         print(f"Error: {e}")
         traceback.print_exc()
-    finally:
-        try:
-            browser.close()
-        except Exception:
-            pass
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
 
-    return result
+    return BlsOohResult(
+        occupation=occupation,
+        median_pay=median_pay,
+        job_outlook=job_outlook,
+        entry_level_education=entry_level_education,
+    )
+
+
+def test_lookup_bls_ooh() -> None:
+    request = BlsOohRequest(
+        occupation="software developer",
+    )
+
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default"
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = lookup_bls_ooh(page, request)
+            assert result.occupation == request.occupation
+            print(f"\n--- Summary ---")
+            print(f"  Occupation: {result.occupation}")
+            print(f"  Median Pay: {result.median_pay}")
+            print(f"  Job Outlook: {result.job_outlook}")
+            print(f"  Entry-Level Education: {result.entry_level_education}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":
-    with sync_playwright() as playwright:
-        info = run(playwright)
-        print(f"\n--- Summary ---")
-        for k, v in info.items():
-            print(f"  {k}: {v}")
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_lookup_bls_ooh)

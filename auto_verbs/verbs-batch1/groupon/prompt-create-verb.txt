@@ -1,1 +1,1 @@
-Please follow the instruction auto_verbs\verbs\SystemPrompt2.txt.
+Please follow the instruction auto_verbs\common\SystemPrompt2.txt.

@@ -1,0 +1,10 @@
+Target – Weekly Deals
+
+Navigate to the deals section on target.com.
+Compose a list of up to N deal items.
+Each item has its product name, original price, and sale price.
+Print the list.
+
+Parameters:
+  section       – section to navigate to (e.g. "Top Deals")
+  max_results   – maximum number of deals to return (e.g. 5)
