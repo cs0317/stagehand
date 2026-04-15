@@ -1,0 +1,15 @@
+Uniqlo – Product Search
+
+Parameters:
+  - query (str): Search query, e.g. "ultra light down jacket"
+  - max_results (int): Maximum number of products to extract, e.g. 5
+
+Steps:
+  1. Navigate to https://www.uniqlo.com/us/en/search?q=<query>
+  2. Dismiss any modal overlays
+  3. Wait for product cards to load
+  4. Extract up to max_results products with:
+     - product name
+     - price
+     - available colors (count from color chip elements)
+  5. Print the list

@@ -1,0 +1,35 @@
+[
+  {
+    "timestamp": 0,
+    "type": "goto",
+    "url": "https://www.vrbo.com/search?destination=Lake+Tahoe&startDate=2026-06-15&endDate=2026-06-21&adults=4",
+    "description": "Navigate to VRBO search results for Lake Tahoe"
+  },
+  {
+    "timestamp": 2000,
+    "type": "wait",
+    "ms": 2000,
+    "description": "Wait for page load and cookie consent"
+  },
+  {
+    "timestamp": 4000,
+    "type": "act",
+    "instruction": "Dismiss cookie consent banner",
+    "description": "Click Accept on cookie consent",
+    "method": "click",
+    "selector": "button#onetrust-accept-btn-handler"
+  },
+  {
+    "timestamp": 6000,
+    "type": "wait",
+    "ms": 2000,
+    "description": "Wait for property cards to load"
+  },
+  {
+    "timestamp": 8000,
+    "type": "extract",
+    "instruction": "Extract vacation rental listings with name, nightly price, bedrooms, bathrooms, and rating",
+    "description": "Extract up to 5 properties from lodging-card-responsive cards",
+    "selector": "[data-stid=\"lodging-card-responsive\"]"
+  }
+]

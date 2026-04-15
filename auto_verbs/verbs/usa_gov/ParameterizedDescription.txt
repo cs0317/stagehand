@@ -1,0 +1,14 @@
+USA.gov – Government Information Search
+
+Parameters:
+  - query (str): Search query, e.g. "passport renewal"
+  - max_results (int): Maximum number of results to extract, e.g. 5
+
+Steps:
+  1. Navigate to https://search.usa.gov/search?affiliate=usagov_en_internal&query=<query>
+  2. Wait for search results to load
+  3. Extract up to max_results results with:
+     - page title
+     - description
+     - URL
+  4. Print the list

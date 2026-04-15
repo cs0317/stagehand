@@ -1,0 +1,21 @@
+[
+  {
+    "timestamp": 0,
+    "type": "goto",
+    "url": "https://search.usa.gov/search?affiliate=usagov_en_internal&query=passport+renewal",
+    "description": "Navigate to USA.gov search results"
+  },
+  {
+    "timestamp": 2000,
+    "type": "wait",
+    "ms": 2000,
+    "description": "Wait for search results to load"
+  },
+  {
+    "timestamp": 4000,
+    "type": "extract",
+    "instruction": "Extract search results with title, description, and URL",
+    "description": "Extract up to 5 results from .result cards",
+    "selector": ".result"
+  }
+]

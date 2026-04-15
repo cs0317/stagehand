@@ -1,0 +1,18 @@
+[
+  {
+    "action": "goto",
+    "url": "https://www.thumbtack.com/{state}/{city}/{service-slug}/",
+    "description": "Navigate to Thumbtack service category page for the given service and location"
+  },
+  {
+    "action": "wait",
+    "duration": 2000,
+    "description": "Wait for professional listing cards to load"
+  },
+  {
+    "action": "extract",
+    "selector": "body",
+    "fields": ["name", "rating", "reviews", "price"],
+    "description": "Extract professional name, rating, review count, and starting price from body text using rating-line anchoring"
+  }
+]

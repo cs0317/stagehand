@@ -1,0 +1,23 @@
+VRBO – Vacation Rental Search
+
+Parameters:
+  - destination (str): Location to search for, e.g. "Lake Tahoe"
+  - guests (int): Number of guests, e.g. 4
+  - checkin (str): Check-in date in YYYY-MM-DD format, e.g. "2025-08-01"
+  - checkout (str): Check-out date in YYYY-MM-DD format, e.g. "2025-08-07"
+  - max_results (int): Maximum number of properties to extract, e.g. 5
+
+Steps:
+  1. Navigate to https://www.vrbo.com
+  2. Enter the destination in the search box
+  3. Set check-in and check-out dates
+  4. Set the number of guests
+  5. Click Search
+  6. Wait for search results to load
+  7. Extract up to max_results properties with:
+     - property name
+     - nightly price
+     - bedrooms
+     - bathrooms
+     - rating
+  8. Print the list

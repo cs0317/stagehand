@@ -1,0 +1,29 @@
+[
+  {
+    "timestamp": 0,
+    "type": "goto",
+    "url": "https://www.uniqlo.com/us/en/search?q=ultra+light+down+jacket",
+    "description": "Navigate to Uniqlo search results"
+  },
+  {
+    "timestamp": 2000,
+    "type": "act",
+    "instruction": "Dismiss modal overlay",
+    "description": "Close popup dialog",
+    "method": "click",
+    "selector": "button[aria-label=\"Close\"]"
+  },
+  {
+    "timestamp": 4000,
+    "type": "wait",
+    "ms": 2000,
+    "description": "Wait for product cards to load"
+  },
+  {
+    "timestamp": 6000,
+    "type": "extract",
+    "instruction": "Extract products with name, price, and available colors",
+    "description": "Extract up to 5 products from product card links",
+    "selector": "a[class*=\"product\"]"
+  }
+]

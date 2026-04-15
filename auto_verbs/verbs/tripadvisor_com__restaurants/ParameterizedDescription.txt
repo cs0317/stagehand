@@ -1,0 +1,10 @@
+TripAdvisor – Restaurant Search
+
+Search for restaurants in a given city on tripadvisor.com.
+Compose a list of up to N results.
+Each restaurant has its name, cuisine type, rating, and price level.
+Print the list.
+
+Parameters:
+  destination   – city to search (e.g. "New Orleans, LA")
+  max_results   – maximum number of restaurants to return (e.g. 5)

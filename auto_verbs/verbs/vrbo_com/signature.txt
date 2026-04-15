@@ -1,0 +1,18 @@
+# Searches vrbo.com for vacation rentals matching a destination, date range,
+# and guest count, returning up to max_results properties with name, nightly
+# price, bedrooms, bathrooms, and rating.
+
+@dataclass(frozen=True)
+class VrboSearchRequest:
+    destination: str
+    guests: int
+    nights: int
+    max_results: int
+
+@dataclass(frozen=True)
+class VrboProperty:
+    name: str
+    nightly_price: str
+    bedrooms: str
+    bathrooms: str
+    rating: str

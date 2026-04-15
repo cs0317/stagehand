@@ -86,7 +86,8 @@ def get_temp_profile_dir(site: str = "default") -> str:
 
 
 def launch_chrome(
-    profile_dir: str, port: int, headless: bool = False
+    profile_dir: str, port: int, headless: bool = False,
+    extra_flags: list = None,
 ) -> subprocess.Popen:
     """
     Launch real Chrome with the same flags Stagehand uses (chrome-launcher defaults).
@@ -101,6 +102,8 @@ def launch_chrome(
         "--no-first-run",
         "--no-default-browser-check",
         "--disable-dev-shm-usage",
+        "--disable-gpu",
+        "--disable-software-rasterizer",
         "--site-per-process",
         # Anti-detection: matches Stagehand behavior
         "--disable-blink-features=AutomationControlled",
@@ -129,6 +132,8 @@ def launch_chrome(
     ]
     if headless:
         flags.insert(1, "--headless=new")
+    if extra_flags:
+        flags.extend(extra_flags)
 
     return subprocess.Popen(
         flags, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL

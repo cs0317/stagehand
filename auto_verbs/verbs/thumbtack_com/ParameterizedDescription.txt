@@ -1,0 +1,14 @@
+Thumbtack – Service Professional Search
+
+Search for service professionals in a given category and location on thumbtack.com.
+Compose a list of up to N results.
+Each professional has their name, rating, number of reviews, and starting price.
+Print the list.
+
+Parameters:
+  service       – type of service to search (e.g. "house cleaning")
+  location      – city/state (e.g. "Portland, OR") — used to form the URL slug
+  max_results   – maximum number of professionals to return (e.g. 5)
+
+Note: Starting prices are not visible on the listing page; they require
+individual profile visits or quote requests. The script reports "N/A" for price.

@@ -1,0 +1,13 @@
+# Searches uniqlo.com for products matching a query, returning up to
+# max_results products with name, price, and available color count.
+
+@dataclass(frozen=True)
+class UniqloSearchRequest:
+    query: str
+    max_results: int
+
+@dataclass(frozen=True)
+class UniqloProduct:
+    name: str
+    price: str
+    colors: str

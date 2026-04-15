@@ -1,0 +1,18 @@
+Whole Foods Market – Product Search: NOT SUITABLE
+
+Reason: The WFM grocery search (wholefoodsmarket.com/grocery/search) is powered
+by Amazon Fresh. Displaying product results (names, prices, sizes) requires:
+
+  1. Active Amazon account sign-in (session cookies)
+  2. A delivery-eligible ZIP code / address set on the Amazon account
+
+Without both conditions met, the search page shows "delivery isn't available
+for your location" and returns zero products. This is a location-gated,
+login-gated experience that cannot be reliably automated with a temp Chrome
+profile or from a server/codespace environment.
+
+The WFM brand site (/products?q=...) only shows product descriptions without
+prices. The Amazon storefront (amazon.com/s?i=wholefoods) triggers bot detection.
+
+Conclusion: Website requires authenticated session + geo-eligible delivery
+address — not suitable for a general-purpose automation verb.

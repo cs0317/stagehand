@@ -1,0 +1,19 @@
+thumbtack_search(service: str, location: str, max_results: int = 5) -> list[dict]
+
+@dataclass
+ThumbtackProfessional:
+    name: str           # Business or professional name
+    rating: str         # Rating out of 5, e.g. "4.9"
+    reviews: str        # Number of reviews, e.g. "213"
+    price: str          # Starting price or "N/A"
+
+Input:
+    service   – type of service to search for, e.g. "house cleaning"
+    location  – city and state, e.g. "Portland, OR"
+    max_results – maximum number of professionals to return (default 5)
+
+Output:
+    List of ThumbtackProfessional dicts with keys: name, rating, reviews, price
+
+URL pattern: https://www.thumbtack.com/{state}/{city}/{service-slug}/
+Example:    https://www.thumbtack.com/or/portland/house-cleaning/

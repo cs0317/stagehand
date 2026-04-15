@@ -1,0 +1,34 @@
+[
+  {
+    "timestamp": 0,
+    "type": "goto",
+    "url": "https://www.google.com/search?q=site%3Atripadvisor.com%20Restaurants%20New%20Orleans%2C%20LA",
+    "description": "Navigate to Google with TripAdvisor restaurant search query"
+  },
+  {
+    "timestamp": 2000,
+    "type": "wait",
+    "ms": 2000,
+    "description": "Wait for Google results"
+  },
+  {
+    "timestamp": 4000,
+    "type": "act",
+    "instruction": "Click the first TripAdvisor restaurants link",
+    "description": "Navigate to TripAdvisor via Google link",
+    "method": "click",
+    "selector": "a[href*='tripadvisor.com/Restaurants-']"
+  },
+  {
+    "timestamp": 6000,
+    "type": "wait",
+    "ms": 6000,
+    "description": "Wait for TripAdvisor page load (with possible challenge page reload)"
+  },
+  {
+    "timestamp": 12000,
+    "type": "extract",
+    "instruction": "Extract restaurant listings with name, cuisine, rating, and price level from body text",
+    "description": "Extract up to 5 restaurants from numbered list in body text"
+  }
+]
