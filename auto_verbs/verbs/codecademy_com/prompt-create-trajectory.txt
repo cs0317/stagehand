@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.codecademy.com
+
+* Concrete task
+- Search for "Python" courses.
+- Extract up to 5 courses with course title, skill level, and estimated duration.
+- Print the list.

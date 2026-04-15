@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.vrbo.com
+
+* Concrete task
+- Search for vacation rentals in "Lake Tahoe" for 4 guests, checking in 2025-08-01 and checking out 2025-08-07.
+- Extract up to 5 properties with property name, nightly price, bedrooms, bathrooms, and rating.
+- Print the list.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.angi.com
+
+* Concrete task
+- Search for "plumber" professionals near "Phoenix, AZ".
+- Extract up to 5 professionals with name, rating, number of reviews, and services offered.
+- Print the list.

@@ -1,0 +1,19 @@
+AutoTrader.com – Used Car Search
+
+Parameters:
+  - make (str): Car make (e.g. "Toyota")
+  - model (str): Car model (e.g. "Camry")
+  - zip_code (str): ZIP code for location (e.g. "60601")
+  - radius_miles (int): Search radius in miles (e.g. 50)
+  - max_results (int): Maximum number of results to return (e.g. 5)
+
+Steps:
+  1. Navigate to https://www.autotrader.com
+  2. Search for used cars matching {make} {model} within {radius_miles} miles of {zip_code}
+  3. Extract up to {max_results} results, each with:
+     - year
+     - make/model
+     - price
+     - mileage
+     - dealer name
+  4. Return/print the list of results

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.carvana.com
+
+* Concrete task
+- Search for "Honda Civic" cars.
+- Extract up to 5 results with year, trim, price, mileage, and monthly payment estimate.
+- Print the list.

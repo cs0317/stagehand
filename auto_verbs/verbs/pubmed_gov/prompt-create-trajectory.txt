@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://pubmed.ncbi.nlm.nih.gov
+
+* Concrete task
+- Search for "CRISPR gene therapy" articles.
+- Extract up to 5 articles with title, authors, journal, and publication date.
+- Print the list.

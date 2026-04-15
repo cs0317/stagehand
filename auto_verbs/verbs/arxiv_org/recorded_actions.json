@@ -1,0 +1,68 @@
+[
+  {
+    "timestamp": 1389,
+    "type": "goto",
+    "url": "https://arxiv.org",
+    "description": "Navigate to https://arxiv.org"
+  },
+  {
+    "timestamp": 1521,
+    "type": "wait",
+    "ms": 3000,
+    "description": "Initial page load"
+  },
+  {
+    "timestamp": 20181,
+    "type": "act",
+    "instruction": "Type 'transformer architecture' into search",
+    "description": "Fill search query: transformer architecture",
+    "method": "type"
+  },
+  {
+    "timestamp": 23939,
+    "type": "act",
+    "instruction": "Click Search button",
+    "description": "Submit search form",
+    "method": "click"
+  },
+  {
+    "timestamp": 40129,
+    "type": "extract",
+    "instruction": "Extract paper search results",
+    "description": "Extract up to 5 papers",
+    "results": {
+      "papers": [
+        {
+          "title": "CLAD: Efficient Log Anomaly Detection Directly on Compressed Representations",
+          "authors": "Benzhao Tang, Shiyu Yang",
+          "abstract": "…logs compress into regular byte patterns, while anomalies systematically disrupt them. To extract these multi-scale deviations from opaque bytes, we propose a purpose-built architecture integrating a dilated convolutional byte encoder, a hybrid Transformer--mLSTM, and four-way aggregation pooling. This is coupled with…",
+          "date": "14 April, 2026"
+        },
+        {
+          "title": "Learning Low-Dimensional Representation for O-RAN Testing via Transformer-ESN",
+          "authors": "Jiongyu Dai, Raymond Zhao, Farhad Rezazadeh, Lizhong Zheng, Haining Wang, Lingjia Liu",
+          "abstract": "Open Radio Access Network (O-RAN) architectures enhance flexibility for 6G and NextG networks. However, it also brings significant challenges in O-RAN testing with evaluating abundant, high-dimensional key performance indicators (KPIs). In this paper, we introduce a novel two-stage framework to learn temporally-aware low-dimensional representations of O-RAN…",
+          "date": "14 April, 2026"
+        },
+        {
+          "title": "Parcae: Scaling Laws For Stable Looped Language Models",
+          "authors": "Hayden Prairie, Zachary Novack, Taylor Berg-Kirkpatrick, Daniel Y. Fu",
+          "abstract": "Traditional fixed-depth architectures scale quality by increasing training FLOPs, typically through increased parameterization, at the expense of a higher memory footprint, or data. A potential alternative is looped…",
+          "date": "14 April, 2026"
+        },
+        {
+          "title": "LIFE -- an energy efficient advanced continual learning agentic AI framework for frontier systems",
+          "authors": "Anne Lee, Gurudutt Hosangadi",
+          "abstract": "…amplified, but existing rudimentary continual learning capabilities limit ability of AI to effectively manage HPCs. This paper reviews emerging directions beyond monolithic transformers, emphasizing agentic AI and brain inspired architectures as complementary paths toward sustainable, adaptive systems. We propose LIFE,…",
+          "date": "14 April, 2026"
+        },
+        {
+          "title": "From edges to meaning: Semantic line sketches as a cognitive scaffold for ancient pictograph invention",
+          "authors": "Seowung Leem, Lin Gu, Ruogu Fang",
+          "abstract": "…that appears early in development and persists across cultures, suggesting neural rather than purely learned origins. Yet the computational mechanism by which the brain transforms high-level semantic knowledge into low-level visual symbols remains poorly understood. Here we propose that ancient pictographic writing emerged from the brain's intrinsic tend…",
+          "date": "14 April, 2026"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://arxiv.org
+
+* Concrete task
+- Search for papers about "transformer architecture".
+- Extract up to 5 papers with title, authors, abstract snippet, and submission date.
+- Print the list.

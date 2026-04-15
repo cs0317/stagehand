@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.grants.gov
+
+* Concrete task
+- Search for grants related to "STEM education".
+- Extract up to 5 grants with title, agency, funding amount, and close date.
+- Print the list.

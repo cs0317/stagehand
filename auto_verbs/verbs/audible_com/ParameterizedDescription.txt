@@ -1,0 +1,16 @@
+Audible.com – Search Audiobooks
+
+Parameters:
+  - query (str): The search query for audiobooks (e.g. "science fiction")
+  - max_results (int): Maximum number of audiobooks to return (e.g. 5)
+
+Steps:
+  1. Navigate to https://www.audible.com
+  2. Search for audiobooks matching {query}
+  3. Extract up to {max_results} audiobooks, each with:
+     - title
+     - author
+     - narrator
+     - length
+     - rating
+  4. Return/print the list of audiobooks

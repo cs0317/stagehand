@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.rome2rio.com
+
+* Concrete task
+- Search for travel options from "Paris" to "Amsterdam".
+- Extract up to 5 transport routes with mode of transport (train, bus, flight, drive), estimated duration, and price range.
+- Print the list.

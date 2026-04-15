@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.avvo.com
+
+* Concrete task
+- Search for "immigration" lawyers in "Los Angeles, CA".
+- Extract up to 5 lawyers with name, rating, years of experience, and number of reviews.
+- Print the list.

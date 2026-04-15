@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.autotrader.com
+
+* Concrete task
+- Search for used cars: make "Toyota", model "Camry", within 50 miles of ZIP code "60601".
+- Extract up to 5 results with year, make/model, price, mileage, and dealer name.
+- Print the list.

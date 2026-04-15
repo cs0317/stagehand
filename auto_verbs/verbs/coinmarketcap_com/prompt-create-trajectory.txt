@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://coinmarketcap.com
+
+* Concrete task
+- Search for "Bitcoin".
+- Extract the current price, 24h change percentage, market cap, and 24h trading volume.
+- Print the results.

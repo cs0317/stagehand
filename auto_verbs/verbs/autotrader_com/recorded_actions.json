@@ -1,0 +1,48 @@
+[
+  {
+    "timestamp": 1330,
+    "type": "goto",
+    "url": "https://www.autotrader.com/cars-for-sale/used-cars/toyota/camry?zip=60601&searchRadius=50",
+    "description": "Navigate to https://www.autotrader.com/cars-for-sale/used-cars/toyota/camry?zip=60601&searchRadius=50"
+  },
+  {
+    "timestamp": 19569,
+    "type": "extract",
+    "instruction": "Extract used car listings",
+    "description": "Extract up to 5 cars",
+    "results": {
+      "cars": [
+        {
+          "yearMakeModel": "2023 Toyota Camry SE",
+          "price": "21,500",
+          "mileage": "54K mi",
+          "dealer": "River Oaks Hyundai Kia"
+        },
+        {
+          "yearMakeModel": "2025 Toyota Camry SE",
+          "price": "30,750",
+          "mileage": "13K mi",
+          "dealer": "Toyota of Downtown Chicago"
+        },
+        {
+          "yearMakeModel": "2018 Toyota Camry LE",
+          "price": "17,999",
+          "mileage": "71K mi",
+          "dealer": "Jaguar Land Rover Subaru Volvo Orland Park"
+        },
+        {
+          "yearMakeModel": "2024 Toyota Camry TRD",
+          "price": "29,900",
+          "mileage": "16K mi",
+          "dealer": "Private Seller Exchange"
+        },
+        {
+          "yearMakeModel": "2012 Toyota Camry L",
+          "price": "11,777",
+          "mileage": "109K mi",
+          "dealer": "Private Seller Exchange"
+        }
+      ]
+    }
+  }
+]

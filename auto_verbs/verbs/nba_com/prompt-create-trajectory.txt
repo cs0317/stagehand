@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.nba.com
+
+* Concrete task
+- Navigate to the standings page.
+- Extract the top 5 teams in the Eastern Conference with team name, wins, losses, and win percentage.
+- Print the list.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.recreation.gov
+
+* Concrete task
+- Search for campgrounds near "Yellowstone".
+- Extract up to 5 campgrounds with name, location, number of sites, and nightly fee.
+- Print the list.

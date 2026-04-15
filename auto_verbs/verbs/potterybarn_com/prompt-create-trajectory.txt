@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.potterybarn.com
+
+* Concrete task
+- Search for "sofa".
+- Extract up to 5 products with product name, price, and available materials/colors.
+- Print the list.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.meetup.com
+
+* Concrete task
+- Search for "hiking" groups near "Denver, CO".
+- Extract up to 5 meetup groups with group name, member count, and next event date.
+- Print the list.

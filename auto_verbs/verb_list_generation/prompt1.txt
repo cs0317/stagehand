@@ -1,7 +1,0 @@
-Please visit every folder in auto_verbs\verbs-batch1\*. In each folder, read the prompt-create-trajectory.txt file to understand how to write the prompt to generate a verb for a website.
-
-* Please think of 50 meaningful verbs for auto-generation. 
-* Please generate folders for them in auto_verbs\verbs. Each folder has a prompt-create-trajectory.txt file to describe a verb.
-* Similar to maps_google_com (in auto_verbs\verbs-batch1) which has multiple verbs: "createList", "directions", "nearby", you can define multiple verbs for the same website.
-
-

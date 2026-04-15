@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.audible.com
+
+* Concrete task
+- Search for "science fiction" audiobooks.
+- Extract up to 5 audiobooks with title, author, narrator, length, and rating.
+- Print the list.

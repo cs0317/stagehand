@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.barnesandnoble.com
+
+* Concrete task
+- Search for books by "Brandon Sanderson".
+- Extract up to 5 books with title, format, price, and rating.
+- Print the list.

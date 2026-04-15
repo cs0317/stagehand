@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.eventbrite.com
+
+* Concrete task
+- Search for "tech meetup" events in "San Francisco, CA".
+- Extract up to 5 events with event name, date, venue, and price.
+- Print the list.

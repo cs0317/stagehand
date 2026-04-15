@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.dominos.com
+
+* Concrete task
+- Navigate to the menu page.
+- Extract up to 5 pizza options with pizza name, size options, and starting price.
+- Print the list.

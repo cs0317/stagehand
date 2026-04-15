@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.nfl.com
+
+* Concrete task
+- Navigate to the schedule page for the "Seattle Seahawks".
+- Extract up to 5 upcoming or recent games with opponent, date, time, and score (if played).
+- Print the list.

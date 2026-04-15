@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.uniqlo.com
+
+* Concrete task
+- Search for "ultra light down jacket".
+- Extract up to 5 products with product name, price, and available colors.
+- Print the list.

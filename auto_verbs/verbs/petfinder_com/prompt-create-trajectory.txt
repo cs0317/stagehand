@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.petfinder.com
+
+* Concrete task
+- Search for adoptable dogs near ZIP code "90210".
+- Extract up to 5 pets with name, breed, age, gender, and shelter name.
+- Print the list.

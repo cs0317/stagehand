@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.rent.com
+
+* Concrete task
+- Search for apartments in "Chicago, IL".
+- Filter by 2+ bedrooms.
+- Extract up to 5 apartment listings with property name, price range, bedrooms, and neighborhood.
+- Print the list.

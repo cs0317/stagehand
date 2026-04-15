@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.bbb.org
+
+* Concrete task
+- Search for "Comcast" business profile.
+- Extract the BBB rating, accreditation status, customer review rating, and number of complaints.
+- Print the results.

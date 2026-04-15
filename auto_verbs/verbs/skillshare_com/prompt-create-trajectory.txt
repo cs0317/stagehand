@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.skillshare.com
+
+* Concrete task
+- Search for "illustration" classes.
+- Extract up to 5 classes with class title, teacher name, duration, and number of students.
+- Print the list.

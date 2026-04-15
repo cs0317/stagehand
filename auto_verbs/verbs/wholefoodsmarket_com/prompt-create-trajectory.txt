@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.wholefoodsmarket.com
+
+* Concrete task
+- Search for products matching "organic coffee".
+- Extract up to 5 products with product name, price, and size/weight.
+- Print the list.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.thumbtack.com
+
+* Concrete task
+- Search for "house cleaning" services near "Portland, OR".
+- Extract up to 5 professionals with name, rating, number of reviews, and starting price.
+- Print the list.

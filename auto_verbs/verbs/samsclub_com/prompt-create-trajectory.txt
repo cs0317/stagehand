@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.samsclub.com
+
+* Concrete task
+- Search for "protein bars".
+- Extract up to 5 products with product name, price, unit price, and rating.
+- Print the list.

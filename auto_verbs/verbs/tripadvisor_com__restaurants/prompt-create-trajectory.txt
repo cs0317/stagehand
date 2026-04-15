@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.tripadvisor.com
+
+* Concrete task
+- Search for restaurants in "New Orleans, LA".
+- Extract up to 5 restaurants with restaurant name, cuisine type, rating, and price level.
+- Print the list.

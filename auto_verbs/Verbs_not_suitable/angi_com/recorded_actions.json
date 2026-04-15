@@ -1,0 +1,14 @@
+[
+  {
+    "timestamp": 0,
+    "type": "goto",
+    "url": "https://www.angi.com/companylist/phoenix/plumbing.htm",
+    "description": "Navigate to https://www.angi.com/companylist/phoenix/plumbing.htm"
+  },
+  {
+    "timestamp": 388,
+    "type": "wait",
+    "ms": 4000,
+    "description": "Wait for Angi directory"
+  }
+]

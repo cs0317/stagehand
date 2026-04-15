@@ -1,0 +1,7 @@
+Please visit signature.txt in every folder in auto_verbs\verbs-batch1\* and auto_verbs\verbs-batch2\*, as well as auto_verbs\common\Summary_of_generated_verbs.txt.  Update auto_verbs\common\Summary_of_generated_verbs.txt, which summarizes (perhaps at a high level) the types of verbs that have been covered.
+
+* Please think of 50 meaningful new verbs for auto-generation. 
+* Please generate folders for them in auto_verbs\verbs. Each folder has a prompt-create-trajectory.txt file to describe a verb.
+* Similar to maps_google_com (in auto_verbs\verbs-batch1) which has multiple verbs: "createList", "directions", "nearby", you can define multiple verbs for the same website.
+
+

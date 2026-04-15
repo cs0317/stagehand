@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.kbb.com
+
+* Concrete task
+- Navigate to the car value/pricing tool.
+- Look up the value of a 2020 Toyota Camry SE.
+- Extract the fair purchase price range and trade-in value range.
+- Print the results.

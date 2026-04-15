@@ -1,0 +1,43 @@
+[
+  {
+    "timestamp": 1395,
+    "type": "goto",
+    "url": "https://www.asos.com/search/?q=men's+jackets",
+    "description": "Navigate to https://www.asos.com/search/?q=men's+jackets"
+  },
+  {
+    "timestamp": 19132,
+    "type": "extract",
+    "instruction": "Extract product search results",
+    "description": "Extract up to 5 products",
+    "results": {
+      "products": [
+        {
+          "name": "Jack & Jones harrington jacket in black",
+          "price": "£40.00",
+          "brand": "Jack & Jones"
+        },
+        {
+          "name": "Threadbare Showerproof lightweight zip through jacket in taupe",
+          "price": "£45.00",
+          "brand": "Threadbare"
+        },
+        {
+          "name": "Threadbare Showerproof lightweight zip through jacket in navy",
+          "price": "£45.00",
+          "brand": "Threadbare"
+        },
+        {
+          "name": "Bershka Hooded denim jacket in black",
+          "price": "£49.99",
+          "brand": "Bershka"
+        },
+        {
+          "name": "ASOS DESIGN cotton harrington jacket in black",
+          "price": "£30.00",
+          "brand": "ASOS DESIGN"
+        }
+      ]
+    }
+  }
+]

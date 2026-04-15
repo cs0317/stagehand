@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.stubhub.com
+
+* Concrete task
+- Search for "NBA" tickets.
+- Extract up to 5 results with event name, venue, date, and lowest ticket price.
+- Print the list.

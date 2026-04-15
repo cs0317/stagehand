@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.chewy.com
+
+* Concrete task
+- Search for "dog food grain free".
+- Extract up to 5 products with product name, price, rating, and brand.
+- Print the list.

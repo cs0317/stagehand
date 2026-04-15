@@ -1,0 +1,16 @@
+Avvo.com – Lawyer Search
+
+Parameters:
+  - specialty (str): Legal specialty to search for (e.g. "immigration")
+  - location (str): City and state (e.g. "Los Angeles, CA")
+  - max_results (int): Maximum number of lawyers to return (e.g. 5)
+
+Steps:
+  1. Navigate to https://www.avvo.com
+  2. Search for {specialty} lawyers in {location}
+  3. Extract up to {max_results} lawyers, each with:
+     - name
+     - rating
+     - years of experience
+     - number of reviews
+  4. Return/print the list of lawyers

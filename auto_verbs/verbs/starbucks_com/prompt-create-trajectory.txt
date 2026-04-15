@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.starbucks.com
+
+* Concrete task
+- Use the store locator to find stores near "Manhattan, NY".
+- Extract up to 5 stores with store name, address, hours, and available features (drive-thru, mobile order, etc.).
+- Print the list.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.mlb.com
+
+* Concrete task
+- Navigate to the standings page.
+- Extract the top 5 teams in the American League with team name, wins, losses, and games behind.
+- Print the list.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.crateandbarrel.com
+
+* Concrete task
+- Search for "dining table".
+- Extract up to 5 products with product name, price, dimensions, and rating.
+- Print the list.

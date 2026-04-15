@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://finance.yahoo.com
+
+* Concrete task
+- Search for the stock symbol "AAPL".
+- Extract the current price, day change (amount and percentage), volume, and market cap.
+- Print the results.

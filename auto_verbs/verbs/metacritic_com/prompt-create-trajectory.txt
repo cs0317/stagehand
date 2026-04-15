@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.metacritic.com
+
+* Concrete task
+- Search for the game "Elden Ring".
+- Extract the Metascore, user score, platform, and critic review summary.
+- Print the results.

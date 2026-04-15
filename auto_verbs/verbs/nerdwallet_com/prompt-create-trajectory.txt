@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.nerdwallet.com
+
+* Concrete task
+- Navigate to the credit cards comparison page.
+- Search for "cash back" credit cards.
+- Extract up to 5 cards with card name, annual fee, rewards rate, and sign-up bonus.
+- Print the list.

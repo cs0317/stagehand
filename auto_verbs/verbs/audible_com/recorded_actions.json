@@ -1,0 +1,53 @@
+[
+  {
+    "timestamp": 1471,
+    "type": "goto",
+    "url": "https://www.audible.com/search?keywords=science+fiction",
+    "description": "Navigate to https://www.audible.com/search?keywords=science+fiction"
+  },
+  {
+    "timestamp": 19207,
+    "type": "extract",
+    "instruction": "Extract audiobook search results",
+    "description": "Extract up to 5 audiobooks",
+    "results": {
+      "audiobooks": [
+        {
+          "title": "Emergence",
+          "author": "JK Franks",
+          "narrator": "Steven Varnum",
+          "length": "23 hrs and 23 mins",
+          "rating": "4.2"
+        },
+        {
+          "title": "Ruins of the Earth",
+          "author": "Christopher Hopper, J. N. Chaney",
+          "narrator": "R.C. Bray",
+          "length": "15 hrs and 59 mins",
+          "rating": "4.6"
+        },
+        {
+          "title": "Dragon Wars Omnibus: 20-Book Collection",
+          "author": "Craig Halloran",
+          "narrator": "Lee Alan",
+          "length": "128 hrs and 14 mins",
+          "rating": "4.0"
+        },
+        {
+          "title": "Living Starship 1",
+          "author": "Dante King",
+          "narrator": "Heather Stonewell, Wayne Kelly",
+          "length": "12 hrs and 27 mins",
+          "rating": "4.1"
+        },
+        {
+          "title": "Sufficiently Advanced Magic",
+          "author": "Andrew Rowe",
+          "narrator": "Nick Podehl",
+          "length": "21 hrs and 58 mins",
+          "rating": "4.6"
+        }
+      ]
+    }
+  }
+]

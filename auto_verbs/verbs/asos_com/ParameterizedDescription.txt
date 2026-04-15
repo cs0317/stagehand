@@ -1,0 +1,14 @@
+ASOS.com – Search Products
+
+Parameters:
+  - query (str): The search query for products (e.g. "men's jackets")
+  - max_results (int): Maximum number of products to return (e.g. 5)
+
+Steps:
+  1. Navigate to https://www.asos.com
+  2. Search for products matching {query}
+  3. Extract up to {max_results} products, each with:
+     - product name
+     - price
+     - brand
+  4. Return/print the list of products

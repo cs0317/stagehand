@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://soundcloud.com
+
+* Concrete task
+- Search for "lo-fi hip hop" tracks.
+- Extract up to 5 tracks with track title, artist, duration, and play count.
+- Print the list.

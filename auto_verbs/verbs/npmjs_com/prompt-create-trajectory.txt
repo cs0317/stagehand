@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.npmjs.com
+
+* Concrete task
+- Search for "state management" packages.
+- Extract up to 5 packages with package name, description, weekly downloads, and version.
+- Print the list.

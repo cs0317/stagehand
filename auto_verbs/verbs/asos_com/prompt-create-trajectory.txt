@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.asos.com
+
+* Concrete task
+- Search for "men's jackets".
+- Extract up to 5 products with product name, price, and brand.
+- Print the list.

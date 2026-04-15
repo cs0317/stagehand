@@ -1,0 +1,245 @@
+Summary of Generated Verbs
+===========================
+
+BATCH 1 (54 verbs)
+-------------------
+Travel & Transportation:
+  - airbnb_com: Search accommodation listings
+  - alaskaair_com: Search Alaska Airlines flights
+  - amtrak_com: Search train tickets
+  - booking_com: Search hotel bookings
+  - ctrip: Search China rail tickets
+  - expedia_com: Search hotel listings
+  - flights_google_com: Search Google Flights
+  - hertz_com: Search rental cars
+  - kayak_com: Search flights (price-sorted)
+  - maps_google_com__createList: Create saved place list on Google Maps
+  - maps_google_com__directions: Get driving directions
+  - maps_google_com__nearby: Search nearby businesses
+  - southwest_com: Search Southwest flights
+  - uber_com: Get ride estimates
+  - united_com: Search United Airlines flights
+
+Shopping & Retail:
+  - amazon_com: Search products
+  - bestbuy_com: Search electronics
+  - ebay_com: Search auction/buy listings
+  - etsy_com: Search handmade/vintage items
+  - homedepot_com: Search home improvement products
+  - lowes_com: Search home improvement products
+  - nike_com: Search athletic products
+  - target_com: Search general merchandise
+  - walmart_com: Search general merchandise
+
+Food & Dining:
+  - grubhub_com: Search restaurant delivery
+  - opentable_com: Search restaurant reservations
+
+Finance & Banking:
+  - bankofamerica_com: Branch/ATM locator
+  - chase_com: Branch locator
+  - fidelity_com: Stock quote lookup
+
+News & Media:
+  - bbc_com: Extract top headlines
+  - nytimes_com: Search articles
+  - spotify_com: Search playlists
+
+Entertainment:
+  - imdb_com: Search movies/shows
+  - youtube_com: Search videos
+  - ticketmaster_com: Search events
+
+Health:
+  - cvs_com: Store locator
+  - webmd_com: Search medical conditions
+
+Education:
+  - coursera_org: Search free courses
+  - khanacademy_org: Extract course info
+
+Jobs & Career:
+  - glassdoor_com: Company reviews
+  - indeed_com: Job search
+
+Tech & Developer:
+  - github_com: Search repositories
+  - huggingface_com: Search ML models
+  - stackoverflow_com: Search Q&A
+
+Government:
+  - irs_gov: Popular tax forms
+  - housing_illinois_edu: University housing costs
+
+Other:
+  - groupon: Search deals
+  - scholar_google_com__findArxivLinks: Find paper Arxiv links
+  - teams_microsoft_com: Send chat messages
+  - ubereats_com: Search food delivery restaurants
+  - usps_com: Package tracking
+  - walmart_com: Search products (included above)
+  - weather_com: Weather forecast
+  - wikipedia_org: Article search + infobox extraction
+  - zillow_com: Search homes for sale
+
+BATCH 2 (41 verbs)
+-------------------
+Travel:
+  - booking_com__attractions: Search city attractions
+  - flights_google_com__explore: Explore cheap flight destinations
+  - tripadvisor_com: Search hotels
+
+Shopping & Retail:
+  - gap_com: Search clothing
+  - ikea_com: Search furniture/home products
+  - newegg_com: Search electronics
+  - nike_com__storeLocator: Find Nike stores
+  - nordstrom_com: Search fashion products
+  - sephora_com: Search beauty products
+  - target_com__deals: Browse weekly deals
+  - walmart_com__storeLocator: Find Walmart stores
+  - walgreens_com: Search pharmacy/retail products
+
+Food & Dining:
+  - allrecipes_com: Search recipes
+  - foodnetwork_com: Search recipes
+  - instacart_com: Search grocery products
+  - traderjoes_com: Store locator
+
+Entertainment & Media:
+  - cnn_com: Tech headlines
+  - espn_com: Sports standings
+  - imdb_com__tvShows: TV show info + top episodes
+  - medium_com: Search articles
+  - pinterest_com: Search pins
+  - rottentomatoes_com: Movie review lookup
+  - twitch_tv: Search live streams
+  - youtube_com__channelInfo: Channel info lookup
+
+Health:
+  - healthgrades_com: Search doctors
+  - mayoclinic_org: Medical condition lookup
+
+Education:
+  - edx_org: Search online courses
+
+Jobs & Career:
+  - bls_gov: Occupational outlook data
+
+Real Estate:
+  - zillow_com__mortgage: Mortgage calculator
+
+Books & Reading:
+  - goodreads_com: Author book search
+
+Government:
+  - nps_gov: National park info
+  - npr_org: List podcasts
+
+Classifieds:
+  - craigslist_org: Search for-sale listings
+
+Tech:
+  - github_com__issues: Search repo issues
+
+Shipping & Tracking:
+  - fedex_com: Package tracking
+  - ups_com: Package tracking
+
+Business Info:
+  - ebay_com__seller: Seller info extraction
+
+Real Estate:
+  - wikipedia_org__listArticle: Extract list article entries
+
+BATCH 3 (50 new verbs — in auto_verbs/verbs/)
+----------------------------------------------
+Finance & Investing:
+  - finance_yahoo_com: Stock quote with price, change, volume, market cap
+  - coinmarketcap_com: Cryptocurrency price and market data
+  - bankrate_com: Compare savings account interest rates
+  - nerdwallet_com: Compare credit cards by rewards/fees
+
+Real Estate & Rentals:
+  - realtor_com: Search homes for sale
+  - rent_com: Search rental apartments
+
+Automotive:
+  - autotrader_com: Search used cars
+  - carvana_com: Search cars for purchase
+  - kbb_com: Kelley Blue Book vehicle value lookup
+
+Events & Tickets:
+  - eventbrite_com: Search local events
+  - stubhub_com: Search event tickets with prices
+  - meetup_com: Search local meetup groups/events
+
+Pets:
+  - petfinder_com: Search adoptable pets
+  - chewy_com: Search pet products
+
+Fashion:
+  - asos_com: Search fashion products
+  - uniqlo_com: Search clothing
+
+Books & Reading:
+  - barnesandnoble_com: Search books
+  - audible_com: Search audiobooks
+
+Sports:
+  - nfl_com: Get NFL team schedule
+  - nba_com: Get NBA standings
+  - mlb_com: Get MLB standings
+
+Tech & Developer:
+  - producthunt_com: Search product launches
+  - npmjs_com: Search NPM packages
+  - pypi_org: Search Python packages
+
+Research & Academic:
+  - arxiv_org: Search research papers
+  - pubmed_gov: Search medical/biomedical literature
+
+Government & Public Services:
+  - recreation_gov: Search campground reservations
+  - grants_gov: Search government grants
+  - usa_gov: Search government services/info
+
+Home Services:
+  - angi_com: Search home service professionals
+  - thumbtack_com: Search local service professionals
+
+Business:
+  - bbb_org: Look up business rating and reviews
+
+Shopping:
+  - samsclub_com: Search warehouse club products
+  - potterybarn_com: Search furniture/home decor
+  - crateandbarrel_com: Search home furnishings
+
+Food & Dining:
+  - dominos_com: Pizza menu and store locator
+  - starbucks_com: Store locator with menu
+  - wholefoodsmarket_com: Search grocery/organic products
+
+Travel:
+  - vrbo_com: Search vacation rentals
+  - hostelworld_com: Search hostels worldwide
+  - lonelyplanet_com: Destination travel guide extraction
+  - rome2rio_com: Compare multi-mode transport routes
+
+Education:
+  - codecademy_com: Search programming courses
+  - skillshare_com: Search creative classes
+
+Music & Entertainment:
+  - soundcloud_com: Search music tracks
+  - bandcamp_com: Search albums/artists
+  - metacritic_com: Search game/movie reviews with scores
+
+Legal:
+  - avvo_com: Search lawyers by specialty and location
+
+Extended Site Verbs:
+  - tripadvisor_com__restaurants: Search restaurant reviews (extends hotels verb)
+  - rottentomatoes_com__tvShows: TV show rating lookup (extends movie verb)

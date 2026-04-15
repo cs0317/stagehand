@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.usa.gov
+
+* Concrete task
+- Search for "passport renewal".
+- Extract up to 5 results with page title, description, and URL.
+- Print the list.

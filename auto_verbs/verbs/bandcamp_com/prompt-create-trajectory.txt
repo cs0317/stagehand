@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://bandcamp.com
+
+* Concrete task
+- Search for "jazz" albums.
+- Extract up to 5 albums with album title, artist, price, and genre tags.
+- Print the list.

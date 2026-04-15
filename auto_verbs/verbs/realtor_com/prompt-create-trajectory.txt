@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.realtor.com
+
+* Concrete task
+- Search for homes for sale in "Austin, TX".
+- Filter by price range ,000 to ,000.
+- Compose a list of the top 5 listings with address, price, bedrooms, bathrooms, and square footage.
+- Print the list.

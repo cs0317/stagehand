@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.hostelworld.com
+
+* Concrete task
+- Search for hostels in "Barcelona" for 2 guests.
+- Extract up to 5 hostels with hostel name, price per night, rating, and distance from city center.
+- Print the list.

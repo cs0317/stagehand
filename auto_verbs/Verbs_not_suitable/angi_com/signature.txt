@@ -1,0 +1,24 @@
+# Searches Angi.com for home service professionals matching a service type
+# near a location, returning up to max_results results with name, rating,
+# number of reviews, and services offered.
+
+@dataclass(frozen=True)
+class AngiSearchRequest:
+    service_type: str
+    location: str
+    max_results: int
+
+@dataclass(frozen=True)
+class AngiProfessional:
+    name: str
+    rating: str
+    reviews: str
+    services: str
+
+@dataclass(frozen=True)
+class AngiSearchResult:
+    service_type: str
+    location: str
+    professionals: list[AngiProfessional]
+
+def search_angi_professionals(page: Page, request: AngiSearchRequest) -> AngiSearchResult

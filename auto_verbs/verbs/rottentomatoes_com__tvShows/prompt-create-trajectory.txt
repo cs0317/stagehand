@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.rottentomatoes.com
+
+* Concrete task
+- Search for the TV show "Severance".
+- Extract the Tomatometer score, audience score, number of seasons, and synopsis.
+- Print the results.
