@@ -1,0 +1,19 @@
+starbucks_store_locator(location: str, max_results: int = 5) -> list[dict]
+
+@dataclass
+StarbucksStore:
+    name: str       # Store name, e.g. "59th & Broadway"
+    address: str    # Street address, e.g. "240 Central Park S, New York"
+    hours: str      # Operating hours, e.g. "Open 5:00 AM-10:00 PM"
+    distance: str   # Distance from search location, e.g. "0.1 miles"
+    features: str   # Order types, e.g. "In store, Order Here" or "N/A"
+
+Input:
+    location    – search location, e.g. "Manhattan, NY"
+    max_results – maximum number of stores to return (default 5)
+
+Output:
+    List of StarbucksStore dicts with keys: name, address, hours, distance, features
+
+URL: https://www.starbucks.com/store-locator
+Interaction: type location into search input, press Enter, parse body text

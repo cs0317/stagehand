@@ -1,10 +1,12 @@
-Website: skillshare.com
-Task: Search for classes and extract listings
+skillshare_search(query, max_results=5)
+
+Search for classes on Skillshare by keyword.
+Navigate to the search results page.
+Extract up to `max_results` classes with title, teacher name, duration, and number of students.
+Print the list of results.
+
 Parameters:
-  - query: "illustration" (search term)
-  - maxResults: 5 (number of classes to extract)
-Data to extract per class:
-  - class title
-  - teacher name
-  - duration
-  - number of students
+  query       – search term, e.g. "illustration"
+  max_results – maximum number of classes to return (default 5)
+
+URL pattern: https://www.skillshare.com/en/search?query={query}

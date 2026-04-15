@@ -1,0 +1,18 @@
+[
+  {
+    "action": "goto",
+    "url": "https://www.skillshare.com/en/search?query={query}",
+    "description": "Navigate to Skillshare search results for the given query"
+  },
+  {
+    "action": "wait",
+    "duration": 6000,
+    "description": "Wait for class listings to load (use domcontentloaded, retry on crash)"
+  },
+  {
+    "action": "extract",
+    "selector": "body",
+    "fields": ["title", "teacher", "duration", "students"],
+    "description": "Extract class title, teacher, duration, and students from body text using duration-line anchoring"
+  }
+]

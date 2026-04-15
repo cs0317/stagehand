@@ -1,0 +1,29 @@
+[
+  {
+    "action": "goto",
+    "url": "https://www.stubhub.com/secure/search?q={query}",
+    "description": "Navigate to StubHub search results for the given query"
+  },
+  {
+    "action": "wait",
+    "duration": 5000,
+    "description": "Wait for event listings to load"
+  },
+  {
+    "action": "extract",
+    "selector": "body",
+    "fields": ["name", "venue", "date", "location"],
+    "description": "Extract event name, venue, date from body text by locating 'See tickets' markers and parsing surrounding lines"
+  },
+  {
+    "action": "goto",
+    "url": "https://www.stubhub.com/{event-slug}/event/{event-id}/",
+    "description": "Navigate to individual event pages to retrieve lowest ticket price"
+  },
+  {
+    "action": "extract",
+    "selector": "body",
+    "fields": ["price"],
+    "description": "Extract lowest ticket price from event detail page using $-amount pattern"
+  }
+]

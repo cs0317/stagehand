@@ -1,0 +1,34 @@
+[
+  {
+    "action": "goto",
+    "url": "https://www.starbucks.com/store-locator",
+    "description": "Navigate to Starbucks store locator page"
+  },
+  {
+    "action": "click",
+    "selector": "button:has-text('Agree')",
+    "description": "Accept cookie consent banner if present"
+  },
+  {
+    "action": "fill",
+    "selector": "input[data-e2e='searchTermInput']",
+    "value": "{location}",
+    "description": "Type location into the store search field"
+  },
+  {
+    "action": "press",
+    "key": "Enter",
+    "description": "Submit the store search"
+  },
+  {
+    "action": "wait",
+    "duration": 8000,
+    "description": "Wait for map and store results to load"
+  },
+  {
+    "action": "extract",
+    "selector": "body",
+    "fields": ["name", "address", "hours", "distance", "features"],
+    "description": "Extract store name, address, hours, distance, and features from body text using distance/hours line as anchor"
+  }
+]

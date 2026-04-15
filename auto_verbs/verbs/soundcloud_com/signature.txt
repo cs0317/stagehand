@@ -1,0 +1,18 @@
+soundcloud_search(query: str, max_results: int = 5) -> list[dict]
+
+@dataclass
+SoundCloudTrack:
+    title: str      # Track title, e.g. "Lofi Hip Hop - LoFi.Zebraw - Sijang"
+    artist: str     # Artist/uploader name, e.g. "nigeldelviero"
+    duration: str   # Track duration or "N/A" (not shown in search results)
+    plays: str      # Play count, e.g. "598,371"
+
+Input:
+    query       – search keyword, e.g. "lo-fi hip hop"
+    max_results – maximum number of tracks to return (default 5)
+
+Output:
+    List of SoundCloudTrack dicts with keys: title, artist, duration, plays
+
+URL pattern: https://soundcloud.com/search/sounds?q={query}
+Note: Duration is not displayed in search results; use "N/A"
