@@ -1,0 +1,9 @@
+Website: potterybarn.com
+Task: Search for products and extract listings with details
+Parameters:
+  - query: "sofa" (search term)
+  - maxResults: 5 (number of products to extract)
+Data to extract per product:
+  - product name
+  - price
+  - available materials/colors

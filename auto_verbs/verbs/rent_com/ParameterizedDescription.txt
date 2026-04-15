@@ -1,0 +1,11 @@
+Website: rent.com
+Task: Search for apartments and extract listings
+Parameters:
+  - location: "Chicago, IL" (city/state)
+  - bedrooms: 2 (minimum bedrooms filter)
+  - maxResults: 5 (number of listings to extract)
+Data to extract per listing:
+  - property name
+  - price range
+  - bedrooms
+  - neighborhood

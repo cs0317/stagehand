@@ -1,0 +1,10 @@
+Website: skillshare.com
+Task: Search for classes and extract listings
+Parameters:
+  - query: "illustration" (search term)
+  - maxResults: 5 (number of classes to extract)
+Data to extract per class:
+  - class title
+  - teacher name
+  - duration
+  - number of students

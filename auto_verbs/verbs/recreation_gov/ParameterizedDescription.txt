@@ -1,0 +1,10 @@
+Website: recreation.gov
+Task: Search for campgrounds and extract listings
+Parameters:
+  - query: "Yellowstone" (search term)
+  - maxResults: 5 (number of campgrounds to extract)
+Data to extract per campground:
+  - name
+  - location
+  - number of sites
+  - nightly fee

@@ -1,0 +1,9 @@
+Website: pypi.org
+Task: Search for Python packages and extract listings
+Parameters:
+  - query: "web scraping" (search term)
+  - maxResults: 5 (number of packages to extract)
+Data to extract per package:
+  - package name
+  - description
+  - latest version

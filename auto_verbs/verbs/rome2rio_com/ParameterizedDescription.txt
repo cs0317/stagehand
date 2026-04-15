@@ -1,0 +1,10 @@
+Website: rome2rio.com
+Task: Search for travel routes between cities and extract options
+Parameters:
+  - origin: "Paris" (starting city)
+  - destination: "Amsterdam" (ending city)
+  - maxResults: 5 (number of routes to extract)
+Data to extract per route:
+  - mode of transport (train, bus, flight, drive)
+  - estimated duration
+  - price range

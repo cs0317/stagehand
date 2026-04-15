@@ -1,0 +1,9 @@
+Website: producthunt.com
+Task: Browse today's featured product launches and extract listings
+Parameters:
+  - maxResults: 5 (number of products to extract)
+Data to extract per product:
+  - product name
+  - tagline
+  - upvote count
+  - topic/category

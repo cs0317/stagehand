@@ -1,0 +1,13 @@
+Website: realtor.com
+Task: Search for homes for sale with price filter and extract listings
+Parameters:
+  - location: "Austin, TX" (city/state)
+  - priceMin: 300000 (minimum price filter)
+  - priceMax: 500000 (maximum price filter)
+  - maxResults: 5 (number of listings to extract)
+Data to extract per listing:
+  - address
+  - price
+  - bedrooms
+  - bathrooms
+  - square footage

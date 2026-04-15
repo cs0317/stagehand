@@ -1,0 +1,9 @@
+Website: rottentomatoes.com
+Task: Look up a TV show and extract ratings and info
+Parameters:
+  - show: "Severance" (TV show name)
+Data to extract:
+  - Tomatometer score
+  - audience score
+  - number of seasons
+  - synopsis

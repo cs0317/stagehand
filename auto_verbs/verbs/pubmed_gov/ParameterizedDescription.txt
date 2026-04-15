@@ -1,0 +1,10 @@
+Website: pubmed.ncbi.nlm.nih.gov
+Task: Search for articles and extract listings
+Parameters:
+  - query: "CRISPR gene therapy" (search term)
+  - maxResults: 5 (number of articles to extract)
+Data to extract per article:
+  - title
+  - authors
+  - journal
+  - publication date
