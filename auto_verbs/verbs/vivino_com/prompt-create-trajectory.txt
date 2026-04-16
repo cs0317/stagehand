@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.vivino.com
+
+* Concrete task
+- Search for wines matching "Pinot Noir".
+- Extract up to 5 wines with wine name, winery, region, average rating (out of 5), number of ratings, and price.

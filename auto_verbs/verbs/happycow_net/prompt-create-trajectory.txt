@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.happycow.net
+
+* Concrete task
+- Search for vegan and vegetarian restaurants in "Portland, OR".
+- Extract up to 5 restaurants with name, cuisine type (vegan/vegetarian/veg-friendly), rating, address, and price range.

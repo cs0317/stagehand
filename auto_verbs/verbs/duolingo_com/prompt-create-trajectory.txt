@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.duolingo.com
+
+* Concrete task
+- Navigate to the course catalog or language list page.
+- Extract up to 10 available language courses with the language name and number of learners.

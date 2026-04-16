@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.priceline.com
+
+* Concrete task
+- Search for hotels in "Las Vegas, NV" for 2 guests, checking in next Friday and checking out the following Sunday.
+- Extract up to 5 hotels with hotel name, star rating, nightly price, guest rating, and neighborhood/location.

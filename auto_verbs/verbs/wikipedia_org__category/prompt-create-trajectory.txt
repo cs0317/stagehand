@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://en.wikipedia.org
+
+* Concrete task
+- Navigate to the category page for "Category:Programming languages".
+- Extract up to 20 subcategories or page titles listed under this category.

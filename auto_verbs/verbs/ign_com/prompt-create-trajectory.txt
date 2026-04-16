@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.ign.com
+
+* Concrete task
+- Search for game reviews matching "Zelda".
+- Extract up to 5 reviews with game title, platform, review score (out of 10), and review summary.

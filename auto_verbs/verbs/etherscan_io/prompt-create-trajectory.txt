@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://etherscan.io
+
+* Concrete task
+- Search for the Ethereum address "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045" (vitalik.eth).
+- Extract the address, ETH balance, USD value of holdings, and the 5 most recent transactions with hash, from, to, value, and timestamp.

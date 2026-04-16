@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://dribbble.com
+
+* Concrete task
+- Search for design shots matching "mobile app UI".
+- Extract up to 5 shots with title, designer name, number of likes, and number of views.

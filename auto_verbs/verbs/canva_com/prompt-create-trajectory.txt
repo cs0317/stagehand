@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.canva.com
+
+* Concrete task
+- Search for design templates matching "business presentation".
+- Extract up to 5 templates with template name, category, dimensions or format, and whether it is free or pro.

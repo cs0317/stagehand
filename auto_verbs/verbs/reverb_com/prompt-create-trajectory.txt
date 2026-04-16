@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://reverb.com
+
+* Concrete task
+- Search for musical instruments matching "Fender Stratocaster".
+- Extract up to 5 listings with item title, condition (new/used), price, seller name, and location.

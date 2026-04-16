@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.sec.gov/cgi-bin/browse-edgar
+
+* Concrete task
+- Search for SEC filings for company "Tesla" (ticker TSLA).
+- Extract up to 5 recent filings with filing type (e.g. 10-K, 10-Q), filing date, description, and link to filing document.

@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.dictionary.com
+
+* Concrete task
+- Search for the word "ephemeral".
+- Extract the word, pronunciation, part of speech, primary definition, example sentence, and up to 3 synonyms.

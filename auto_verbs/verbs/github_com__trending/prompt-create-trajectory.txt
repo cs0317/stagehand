@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://github.com/trending
+
+* Concrete task
+- Navigate to the GitHub Trending page.
+- Filter by language "Python" and date range "This week".
+- Extract up to 10 trending repositories with repo name (owner/repo), description, language, total stars, and stars gained this week.

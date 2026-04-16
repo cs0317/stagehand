@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://techcrunch.com
+
+* Concrete task
+- Search for articles matching "artificial intelligence startup".
+- Extract up to 5 articles with headline, author, publication date, and summary snippet.

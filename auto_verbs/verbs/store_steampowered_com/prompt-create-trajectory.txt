@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://store.steampowered.com
+
+* Concrete task
+- Search for PC games matching "open world RPG".
+- Extract up to 5 games with title, price, release date, and review summary (e.g., "Very Positive").

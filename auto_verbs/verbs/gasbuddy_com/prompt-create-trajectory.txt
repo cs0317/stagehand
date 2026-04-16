@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.gasbuddy.com
+
+* Concrete task
+- Search for gas prices near "Denver, CO".
+- Extract up to 5 gas stations with station name, address, regular gas price, and last updated time.

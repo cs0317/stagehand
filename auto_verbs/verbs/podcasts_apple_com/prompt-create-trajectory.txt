@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://podcasts.apple.com
+
+* Concrete task
+- Search for podcasts matching "true crime".
+- Extract up to 5 podcasts with podcast name, publisher/creator, category, and rating.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.britannica.com
+
+* Concrete task
+- Search for the encyclopedia article on "photosynthesis".
+- Click on the top result.
+- Extract the article title, introductory summary paragraph, and key facts or data points.

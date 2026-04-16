@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.fiverr.com
+
+* Concrete task
+- Search for freelance services related to "logo design".
+- Extract up to 5 service listings with seller name, service title, starting price, rating, and number of reviews.

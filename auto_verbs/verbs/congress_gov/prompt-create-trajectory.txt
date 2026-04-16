@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.congress.gov
+
+* Concrete task
+- Search for legislation matching "infrastructure bill".
+- Extract up to 5 bills with bill number, title, sponsor, date introduced, and current status.

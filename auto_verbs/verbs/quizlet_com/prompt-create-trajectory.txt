@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://quizlet.com
+
+* Concrete task
+- Search for study sets matching "AP Biology".
+- Extract up to 5 study sets with title, creator name, number of terms, and number of learners or ratings.

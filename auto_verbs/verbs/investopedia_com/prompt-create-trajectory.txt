@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.investopedia.com
+
+* Concrete task
+- Search for the financial term "compound interest".
+- Click on the top result.
+- Extract the term name, definition, key takeaways (up to 3), and an example if provided.

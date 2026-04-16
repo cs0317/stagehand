@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.goodrx.com
+
+* Concrete task
+- Search for the prescription drug "metformin".
+- Extract the drug name, typical dosage shown, and up to 5 pharmacy prices with pharmacy name and price.

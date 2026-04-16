@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.transfermarkt.com
+
+* Concrete task
+- Search for the soccer player "Kylian Mbappé".
+- Click on the top result.
+- Extract the player name, current club, market value, age, nationality, and position.

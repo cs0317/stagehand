@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.amazon.com
+
+* Concrete task
+- Navigate to the "Today's Deals" page.
+- Extract up to 5 deals with product name, deal price, original price, discount percentage, and deal type (Lightning Deal, Deal of the Day, etc.).

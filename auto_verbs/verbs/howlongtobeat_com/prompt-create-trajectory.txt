@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://howlongtobeat.com
+
+* Concrete task
+- Search for the game "Elden Ring".
+- Extract the game title, main story completion time, main + extras completion time, and completionist time.

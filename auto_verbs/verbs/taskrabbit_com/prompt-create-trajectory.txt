@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.taskrabbit.com
+
+* Concrete task
+- Search for taskers offering "furniture assembly" in "San Francisco, CA".
+- Extract up to 5 taskers with name, number of tasks completed, rating, and hourly rate.

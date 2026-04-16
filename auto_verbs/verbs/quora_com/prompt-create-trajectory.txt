@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.quora.com
+
+* Concrete task
+- Search for questions about "machine learning career advice".
+- Extract up to 5 Q&A threads with the question text, top answer author, number of answers, and a snippet of the top answer.

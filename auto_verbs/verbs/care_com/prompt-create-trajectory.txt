@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.care.com
+
+* Concrete task
+- Search for babysitters in "Austin, TX".
+- Extract up to 5 caregiver profiles with name, years of experience, hourly rate, and rating or number of reviews.

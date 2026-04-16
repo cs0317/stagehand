@@ -243,3 +243,97 @@ Legal:
 Extended Site Verbs:
   - tripadvisor_com__restaurants: Search restaurant reviews (extends hotels verb)
   - rottentomatoes_com__tvShows: TV show rating lookup (extends movie verb)
+
+BATCH 4 (50 new verbs — in auto_verbs/verbs-batch4/)
+------------------------------------------------------
+Freelancing & Gig Economy:
+  - fiverr_com: Search freelance services by category
+  - upwork_com: Search freelancer profiles by skill
+  - taskrabbit_com: Search local taskers for home services
+
+Art, Design & Photography:
+  - behance_net: Search creative design portfolios
+  - dribbble_com: Search UI/UX design shots
+  - unsplash_com: Search free stock photos
+  - deviantart_com: Search digital artwork
+  - flickr_com: Search photos by keyword
+  - canva_com: Search design templates by category
+
+Music & Lyrics:
+  - genius_com: Search song lyrics by title/artist
+  - discogs_com: Search music releases and vinyl records
+  - reverb_com: Search musical instruments for sale
+
+Gaming:
+  - store_steampowered_com: Search PC games with prices and reviews
+  - ign_com: Search game reviews and scores
+  - howlongtobeat_com: Search game completion times
+
+Home & Lifestyle:
+  - houzz_com: Search home renovation ideas and professionals
+  - overstock_com: Search home goods and furniture deals
+
+Childcare & Family:
+  - care_com: Search caregivers and babysitters
+
+Education & Learning:
+  - duolingo_com: Browse language courses and learner counts
+  - quizlet_com: Search study sets and flashcards
+
+Automotive:
+  - cars_com: Search car listings with filters
+  - gasbuddy_com: Search gas station prices by location
+
+Local Business & Directories:
+  - yellowpages_com: Search local business listings
+  - mapquest_com: Get driving directions between locations
+
+News & Media:
+  - theguardian_com: Search UK/world news articles
+  - techcrunch_com: Search tech and startup news
+  - apnews_com: Search Associated Press news stories
+
+Government & Regulatory:
+  - sec_gov__edgar: Search SEC company filings (EDGAR)
+  - congress_gov: Search legislation and bills
+  - fda_gov: Search drug approval information
+
+Finance & Investing:
+  - investopedia_com: Search financial terms and definitions
+  - morningstar_com: Search mutual fund ratings and performance
+
+Reference & Knowledge:
+  - britannica_com: Search encyclopedia articles
+  - dictionary_com: Look up word definitions and synonyms
+  - quora_com: Search Q&A threads by topic
+
+Health & Pharma:
+  - goodrx_com: Search prescription drug prices at pharmacies
+
+Sports:
+  - nhl_com: Search NHL team standings and scores
+  - transfermarkt_com: Search soccer player market values
+
+Crypto & Blockchain:
+  - etherscan_io: Search Ethereum wallet addresses and transactions
+
+Food & Drink:
+  - vivino_com: Search wine ratings and reviews
+  - happycow_net: Search vegan and vegetarian restaurants
+
+Podcasts:
+  - podcasts_apple_com: Search podcasts by topic
+
+Travel:
+  - priceline_com: Search discounted hotel deals
+  - travelocity_com: Search vacation packages
+
+Classifieds & Marketplace:
+  - mercari_com: Search secondhand items for sale
+
+Extended Site Verbs (multi-verb variants):
+  - amazon_com__deals: Browse today's deals and lightning deals
+  - youtube_com__trending: Browse trending videos by category
+  - github_com__trending: Browse trending repositories by language
+  - imdb_com__actors: Search actor profiles and filmography
+  - wikipedia_org__category: Browse Wikipedia category listings

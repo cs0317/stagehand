@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://apnews.com
+
+* Concrete task
+- Search for news stories matching "space exploration".
+- Extract up to 5 articles with headline, publication date, and summary or first paragraph.

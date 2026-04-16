@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.mapquest.com
+
+* Concrete task
+- Search for directions from "Times Square, New York, NY" to "Central Park, New York, NY".
+- Select driving mode.
+- Extract the total distance, estimated travel time, and step-by-step turn directions.

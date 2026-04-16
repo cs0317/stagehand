@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.youtube.com
+
+* Concrete task
+- Navigate to the "Trending" page.
+- Extract up to 10 trending videos with video title, channel name, view count, and upload time (e.g., "2 hours ago").

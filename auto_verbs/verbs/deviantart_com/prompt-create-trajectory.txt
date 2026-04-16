@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.deviantart.com
+
+* Concrete task
+- Search for artwork matching "digital fantasy art".
+- Extract up to 5 artworks with title, artist name, number of favorites, and category.

@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.mercari.com
+
+* Concrete task
+- Search for secondhand items matching "Nintendo Switch".
+- Extract up to 5 listings with item title, price, condition, and seller name.

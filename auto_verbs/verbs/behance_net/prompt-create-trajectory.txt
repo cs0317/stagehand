@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.behance.net
+
+* Concrete task
+- Search for creative projects matching "brand identity".
+- Extract up to 5 projects with project title, creator name, number of appreciations (likes), and view count.

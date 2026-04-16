@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.houzz.com
+
+* Concrete task
+- Search for home renovation ideas matching "modern kitchen remodel".
+- Extract up to 5 photos/projects with title, style, number of saves/likes, and description.

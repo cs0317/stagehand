@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.imdb.com
+
+* Concrete task
+- Search for the actor "Meryl Streep".
+- Click on the actor's profile from the search results.
+- Extract the actor name, birth date, biography snippet, and up to 5 notable films with film title, year, and role played.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://genius.com
+
+* Concrete task
+- Search for the song "Bohemian Rhapsody" by Queen.
+- Click on the top result.
+- Extract the song title, artist name, album name, and the first verse of the lyrics.
