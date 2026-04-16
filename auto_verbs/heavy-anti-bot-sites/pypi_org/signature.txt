@@ -1,0 +1,22 @@
+# Search for Python packages on PyPI by query and extract package name, description,
+# and latest version for up to max_results packages.
+
+@dataclass(frozen=True)
+class PypiSearchRequest:
+    query: str = "web scraping"
+    max_results: int = 5
+
+
+@dataclass(frozen=True)
+class PypiPackage:
+    name: str = ""
+    description: str = ""
+    version: str = ""
+
+
+@dataclass(frozen=True)
+class PypiSearchResult:
+    packages: tuple = ()
+
+
+def pypi_search(page: Page, request: PypiSearchRequest) -> PypiSearchResult:
