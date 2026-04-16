@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://arxiv.org
+
+* Concrete task
+- Navigate to the "Cryptography and Security" listing page (cs.CR).
+- Compose a list of the latest 5 papers. Each has its title, authors, abstract snippet, and the arxiv ID (or PDF link).
+- Print the list.

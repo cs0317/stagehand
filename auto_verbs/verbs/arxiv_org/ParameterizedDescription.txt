@@ -1,0 +1,9 @@
+arXiv – Recent Papers by Category
+
+Navigate to the arXiv listing page for a given subject category and compose a list of the latest N papers.
+For each paper, extract: title, authors, abstract snippet, arXiv ID, and PDF URL.
+Print the list.
+
+Parameters:
+  category      – arXiv category code (e.g. "cs.CR" for Cryptography and Security)
+  max_results   – maximum number of papers to return (e.g. 5)

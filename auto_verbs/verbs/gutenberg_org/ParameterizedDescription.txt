@@ -1,0 +1,9 @@
+Project Gutenberg – Book Search
+
+Search the Project Gutenberg ebook catalog for a given query and compose a list of the top N results.
+For each result, extract: title, author, ebook ID, download count, and detail page URL.
+Print the list.
+
+Parameters:
+  query         – search query (e.g. "frankenstein")
+  max_results   – maximum number of books to return (e.g. 5)

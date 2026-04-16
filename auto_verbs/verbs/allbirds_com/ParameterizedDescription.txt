@@ -1,0 +1,8 @@
+Allbirds – Best Sellers
+
+Navigate to the Allbirds Best Sellers collection page and compose a list of the top N most popular items.
+For each product, extract: name, product handle, current price, compare-at (original) price, and detail page URL.
+Print the list.
+
+Parameters:
+  max_results   – maximum number of products to return (e.g. 5)

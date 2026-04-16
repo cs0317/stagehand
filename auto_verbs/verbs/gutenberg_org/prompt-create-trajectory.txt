@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.gutenberg.org
+
+* Concrete task
+- Search for books matching "frankenstein" using the site's search.
+- Compose a list of the top 5 results. Each has its title, author, Project Gutenberg ebook ID, download count, and the book's detail page URL.
+- Print the list.

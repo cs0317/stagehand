@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.allbirds.com
+
+* Concrete task
+- Navigate to the "Best Sellers" collection page.
+- Compose a list of the top 5 most popular items. Each has its name, product handle (URL slug), current price, compare-at / original price (empty if not on sale), and detail page URL.
+- Print the list.
