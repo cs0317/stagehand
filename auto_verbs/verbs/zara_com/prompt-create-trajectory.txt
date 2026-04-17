@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.zara.com
+
+* Concrete task
+- Search for "denim jacket" in the clothing section.
+- Extract up to 5 products with product name, price, available sizes, and product URL.
+- Print the results.

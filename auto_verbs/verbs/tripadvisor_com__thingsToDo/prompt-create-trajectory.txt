@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.tripadvisor.com
+
+* Concrete task
+- Search for things to do in "Barcelona, Spain".
+- Extract up to 5 activities/attractions with name, rating, number of reviews, category, and price level.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.payscale.com
+
+* Concrete task
+- Search for salary data for "Data Scientist".
+- Extract the average salary, salary range (low to high), and top-paying industries or skills if shown.
+- Print the results.

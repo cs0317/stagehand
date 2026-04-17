@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.cdc.gov
+
+* Concrete task
+- Search for health information about "flu vaccination".
+- Extract up to 5 results with page title, summary/description, and URL.
+- Print the results.

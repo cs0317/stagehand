@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.glassdoor.com
+
+* Concrete task
+- Search for salary information for "Software Engineer" in "San Francisco, CA".
+- Extract the median base salary, low estimate, high estimate, and total compensation if available.
+- Print the results.

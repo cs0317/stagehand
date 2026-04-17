@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.ratebeer.com
+
+* Concrete task
+- Search for "IPA" beers.
+- Extract up to 5 beers with beer name, brewery, style, ABV, and overall rating score.
+- Print the results.

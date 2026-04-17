@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://alternativeto.net
+
+* Concrete task
+- Search for alternatives to "Photoshop".
+- Extract up to 5 alternatives with software name, description, number of likes, platform availability, and whether it is free or paid.
+- Print the results.

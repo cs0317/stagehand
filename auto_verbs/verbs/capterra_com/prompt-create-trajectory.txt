@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.capterra.com
+
+* Concrete task
+- Search for "project management" software.
+- Extract up to 5 products with product name, overall rating, number of reviews, pricing info, and key features.
+- Print the results.

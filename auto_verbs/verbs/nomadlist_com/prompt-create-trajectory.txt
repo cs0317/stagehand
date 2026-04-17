@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://nomadlist.com
+
+* Concrete task
+- Browse the top-ranked cities for digital nomads.
+- Extract up to 10 cities with city name, country, overall score, internet speed, cost per month, and temperature.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.kaggle.com
+
+* Concrete task
+- Search for datasets matching "climate change".
+- Extract up to 5 datasets with title, author/owner, file size, number of downloads, and usability rating.
+- Print the results.

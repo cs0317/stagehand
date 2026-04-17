@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://builtwith.com
+
+* Concrete task
+- Look up the technology profile for "github.com".
+- Extract the list of detected technologies grouped by category (e.g., Analytics, CDN, Framework), up to 10 technologies total.
+- Print the results.

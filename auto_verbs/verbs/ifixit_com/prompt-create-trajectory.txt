@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.ifixit.com
+
+* Concrete task
+- Search for repair guides for "iPhone 15 battery replacement".
+- Extract up to 3 guides with guide title, difficulty level, estimated time, number of steps, and guide URL.
+- Print the results.

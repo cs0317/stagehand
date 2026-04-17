@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.timeanddate.com
+
+* Concrete task
+- Look up the current time in "Tokyo, Japan".
+- Extract the city name, current local time, date, timezone abbreviation, and UTC offset.
+- Print the results.

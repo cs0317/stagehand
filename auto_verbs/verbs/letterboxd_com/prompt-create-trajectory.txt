@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://letterboxd.com
+
+* Concrete task
+- Search for the film "Parasite".
+- Extract the film title, year, director, average rating, and up to 5 popular reviews with reviewer name, rating, and review snippet.
+- Print the results.

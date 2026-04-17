@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.trustpilot.com
+
+* Concrete task
+- Search for reviews of "Airbnb".
+- Extract the company name, TrustScore, total number of reviews, star rating, and up to 5 recent reviews with reviewer name, rating, and review text snippet.
+- Print the results.

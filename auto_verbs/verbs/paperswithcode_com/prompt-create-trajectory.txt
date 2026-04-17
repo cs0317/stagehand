@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://paperswithcode.com
+
+* Concrete task
+- Search for papers about "object detection".
+- Extract up to 5 papers with title, authors, publication date, number of stars, and task/benchmark name.
+- Print the results.

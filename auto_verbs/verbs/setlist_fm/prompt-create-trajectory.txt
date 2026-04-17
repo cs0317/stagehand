@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.setlist.fm
+
+* Concrete task
+- Search for setlists by "Taylor Swift".
+- Extract the most recent concert's venue, city, date, and up to 10 songs from the setlist.
+- Print the results.

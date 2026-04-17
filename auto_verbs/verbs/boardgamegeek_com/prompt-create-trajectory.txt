@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://boardgamegeek.com
+
+* Concrete task
+- Search for "cooperative board games".
+- Extract up to 5 games with game name, year published, average rating, number of voters, and recommended player count.
+- Print the results.

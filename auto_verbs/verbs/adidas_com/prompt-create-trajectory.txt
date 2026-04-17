@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.adidas.com
+
+* Concrete task
+- Search for "running shoes".
+- Extract up to 5 products with product name, price, color, rating, and number of reviews.
+- Print the results.

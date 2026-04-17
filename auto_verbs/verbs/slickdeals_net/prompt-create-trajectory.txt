@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://slickdeals.net
+
+* Concrete task
+- Search for deals on "headphones".
+- Extract up to 5 deals with deal title, price, original price, store name, and number of thumbs up.
+- Print the results.

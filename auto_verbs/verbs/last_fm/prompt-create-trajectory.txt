@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.last.fm
+
+* Concrete task
+- Search for the artist "Radiohead".
+- Extract the artist name, number of listeners, play count, biography summary, and top 5 tracks.
+- Print the results.

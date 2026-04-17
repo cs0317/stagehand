@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.numbeo.com
+
+* Concrete task
+- Compare the cost of living between "New York, NY" and "London, United Kingdom".
+- Extract key comparison categories: rent, groceries, restaurants, and overall index for each city.
+- Print the results.

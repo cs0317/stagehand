@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.xe.com
+
+* Concrete task
+- Look up the exchange rate from USD to EUR.
+- Extract the current rate, inverse rate, and the 30-day high/low if available.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.winemag.com
+
+* Concrete task
+- Search for wine reviews matching "Pinot Noir Oregon".
+- Extract up to 5 wines with wine name, winery, vintage, rating (points), price, and tasting notes.
+- Print the results.

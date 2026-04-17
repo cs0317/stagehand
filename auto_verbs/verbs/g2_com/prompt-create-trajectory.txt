@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.g2.com
+
+* Concrete task
+- Search for reviews of "Slack".
+- Extract the product name, overall rating, number of reviews, and up to 5 review summaries with reviewer title, rating, and pros/cons.
+- Print the results.

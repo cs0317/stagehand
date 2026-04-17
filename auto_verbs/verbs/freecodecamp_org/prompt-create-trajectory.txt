@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.freecodecamp.org
+
+* Concrete task
+- Search for tutorials about "Python web scraping".
+- Extract up to 5 articles/tutorials with title, author, publication date, and tags.
+- Print the results.

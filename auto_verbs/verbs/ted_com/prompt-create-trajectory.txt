@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.ted.com
+
+* Concrete task
+- Search for TED talks about "artificial intelligence".
+- Extract up to 5 talks with talk title, speaker name, duration, and view count.
+- Print the results.

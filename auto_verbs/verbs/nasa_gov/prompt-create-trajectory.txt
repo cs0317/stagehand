@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.nasa.gov
+
+* Concrete task
+- Search for articles about "Mars rover".
+- Extract up to 5 articles with title, publication date, summary, and article URL.
+- Print the results.

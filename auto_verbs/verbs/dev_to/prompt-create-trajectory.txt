@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://dev.to
+
+* Concrete task
+- Search for articles about "React hooks".
+- Extract up to 5 articles with title, author, publication date, number of reactions, and number of comments.
+- Print the results.

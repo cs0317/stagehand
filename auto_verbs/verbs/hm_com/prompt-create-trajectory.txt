@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www2.hm.com
+
+* Concrete task
+- Search for "winter jacket" in the clothing section.
+- Extract up to 5 products with product name, price, color options, and product URL.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://archive.org
+
+* Concrete task
+- Search for "history of computing" in the texts/books collection.
+- Extract up to 5 results with title, creator/author, date published, and number of views/downloads.
+- Print the results.

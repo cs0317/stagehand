@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.commonsensemedia.org
+
+* Concrete task
+- Search for "Minecraft" in the game reviews.
+- Extract the title, age rating, quality rating (stars), and a summary of what parents need to know.
+- Print the results.

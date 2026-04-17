@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://weworkremotely.com
+
+* Concrete task
+- Search for "backend developer" remote jobs.
+- Extract up to 5 listings with job title, company name, job type (full-time/contract), region, and posting date.
+- Print the results.

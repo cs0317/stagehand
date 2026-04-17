@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.ranker.com
+
+* Concrete task
+- Search for lists about "best sci-fi movies".
+- Extract the top list result's title and up to 10 ranked items with rank, item name, and number of votes.
+- Print the results.

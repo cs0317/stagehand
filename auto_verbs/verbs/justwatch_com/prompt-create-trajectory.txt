@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.justwatch.com
+
+* Concrete task
+- Search for the movie "Inception".
+- Extract the list of streaming services where it is available, along with the type (stream, rent, buy) and price if shown.
+- Print the results.

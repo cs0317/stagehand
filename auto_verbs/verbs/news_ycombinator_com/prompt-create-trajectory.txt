@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://news.ycombinator.com
+
+* Concrete task
+- Navigate to the front page (top stories).
+- Extract up to 10 stories with title, URL/domain, points, author, number of comments, and time posted.
+- Print the results.

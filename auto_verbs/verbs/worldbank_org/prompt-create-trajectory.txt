@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://data.worldbank.org
+
+* Concrete task
+- Search for the economic indicator "GDP per capita" for "Germany".
+- Extract the country name, indicator name, most recent value, year, and historical trend (last 5 data points if available).
+- Print the results.

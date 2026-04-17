@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.michaels.com
+
+* Concrete task
+- Search for "acrylic paint set".
+- Extract up to 5 products with product name, brand, price, rating, and availability status.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://open.spotify.com
+
+* Concrete task
+- Search for podcasts about "true crime".
+- Extract up to 5 podcasts with podcast name, publisher, description, and total number of episodes.
+- Print the results.

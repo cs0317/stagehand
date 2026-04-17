@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.petsmart.com
+
+* Concrete task
+- Search for "dog food grain free".
+- Extract up to 5 products with product name, brand, price, rating, and number of reviews.
+- Print the results.

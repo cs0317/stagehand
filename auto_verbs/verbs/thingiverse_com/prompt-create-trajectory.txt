@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.thingiverse.com
+
+* Concrete task
+- Search for "phone stand" 3D printable models.
+- Extract up to 5 models with model name, creator, number of downloads, number of likes, and model URL.
+- Print the results.

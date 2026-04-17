@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://openlibrary.org
+
+* Concrete task
+- Search for books by "Isaac Asimov".
+- Extract up to 5 books with title, author, first publish year, number of editions, and cover image URL if available.
+- Print the results.

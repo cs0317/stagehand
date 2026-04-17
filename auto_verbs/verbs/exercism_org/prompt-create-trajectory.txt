@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://exercism.org
+
+* Concrete task
+- Browse the Python track exercises.
+- Extract up to 10 exercises with exercise name, difficulty level, topic/concept, and number of completions.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.crunchbase.com
+
+* Concrete task
+- Search for the company "Stripe".
+- Extract the company name, description, founded date, headquarters location, total funding amount, and last funding round.
+- Print the results.

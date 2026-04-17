@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.imdb.com
+
+* Concrete task
+- Navigate to the Academy Awards (Oscars) event page for the most recent ceremony.
+- Extract up to 5 award categories with the category name, winner name, and film/show title.
+- Print the results.

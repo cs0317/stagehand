@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.dice.com
+
+* Concrete task
+- Search for "machine learning engineer" jobs.
+- Extract up to 5 job listings with job title, company name, location, posted date, and salary range if shown.
+- Print the results.

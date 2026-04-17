@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.instructables.com
+
+* Concrete task
+- Search for DIY projects about "LED lamp".
+- Extract up to 5 projects with project title, author, number of views, number of favorites, and project URL.
+- Print the results.

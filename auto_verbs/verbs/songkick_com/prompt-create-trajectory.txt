@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.songkick.com
+
+* Concrete task
+- Search for upcoming concerts in "Los Angeles".
+- Extract up to 5 events with artist/event name, venue, date, and ticket availability status.
+- Print the results.

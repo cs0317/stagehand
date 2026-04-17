@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.zillow.com
+
+* Concrete task
+- Search for rental properties in "Austin, TX" with a maximum rent of $2000/month.
+- Extract up to 5 listings with address, monthly rent, bedrooms, bathrooms, and square footage.
+- Print the results.
