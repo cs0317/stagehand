@@ -1,3 +1,4 @@
+import re
 import os
 from dataclasses import dataclass
 from playwright.sync_api import sync_playwright, Page
@@ -32,36 +33,41 @@ def reverb_search(page: Page, request: ReverbSearchRequest) -> ReverbSearchResul
     print(f"  Search term: {search_term}")
     print(f"  Max results: {max_results}\n")
 
-    search_url = f"https://reverb.com/marketplace?query={search_term.replace(' ', '+')}"
+    search_url = (
+        f"https://reverb.com/marketplace?query={search_term.replace(' ', '+')}"
+        f"&skip_autodirects=true"
+    )
     print(f"Loading {search_url}...")
     checkpoint("Navigate to Reverb marketplace search")
     page.goto(search_url, wait_until="domcontentloaded")
 
-    # Reverb SPA does client-side rendering — poll until item links appear
-    stable_count = 0
-    for attempt in range(30):
-        try:
-            link_count = page.evaluate("document.querySelectorAll(\"a[href*='/item/']\").length")
-            if link_count > 0:
-                stable_count += 1
-                if stable_count >= 3:
-                    print(f"  Content stable after {attempt + 1} polls ({link_count} links)")
-                    break
-            else:
-                stable_count = 0
-        except Exception:
-            stable_count = 0
-        page.wait_for_timeout(1000)
+    def _wait_for_listings():
+        """Wait until item links are present and the page stops navigating."""
+        for attempt in range(40):
+            try:
+                page.wait_for_load_state("domcontentloaded", timeout=5000)
+            except Exception:
+                pass
+            try:
+                count = page.evaluate(
+                    "document.querySelectorAll(\"a[href*='/item/']\").length"
+                )
+                if count > 0:
+                    return count
+            except Exception:
+                pass
+            page.wait_for_timeout(1000)
+        return 0
 
-    # Wait for any auto-redirect to settle (Reverb may append filters to URL)
-    page.wait_for_timeout(5000)
-    # Reverb often auto-navigates to add filters; wait for URL to stabilize
-    prev_url = page.url
-    for _ in range(6):
-        page.wait_for_timeout(2000)
-        if page.url == prev_url:
-            break
-        prev_url = page.url
+    link_count = _wait_for_listings()
+    print(f"  Initial links found: {link_count}")
+
+    # Final stabilization — wait for network to settle
+    try:
+        page.wait_for_load_state("networkidle", timeout=15000)
+    except Exception:
+        pass
+    page.wait_for_timeout(3000)
     print(f"  Loaded: {page.url}")
 
     # Dismiss cookie banner
@@ -83,53 +89,73 @@ def reverb_search(page: Page, request: ReverbSearchRequest) -> ReverbSearchResul
 
     results = []
 
-    # Use locator-based extraction (resilient to SPA context destruction)
+    # Extract listing data via Playwright locator API (more resilient to
+    # SPA context destruction than page.evaluate or page.content).
     checkpoint("Extract listing data from search results")
-    for _retry in range(3):
-        try:
-            # Try item links which are reliably present
-            item_links = page.locator('a[href*="/item/"]')
-            link_count = item_links.count()
-            print(f"  Found {link_count} item links (attempt {_retry + 1})")
+    condition_re = re.compile(
+        r'((?:Used|New)\s*[\u2013\u2014\u2013–-]\s*(?:Mint|Excellent|Very Good|Good|Fair|Poor)'
+        r'|Brand New)',
+        re.IGNORECASE,
+    )
+    price_re = re.compile(r'\$(\d[\d,]*(?:\.\d{2})?)')
 
+    for _retry in range(5):
+        try:
+            # Wait for at least one item link to be attached
+            page.locator("a[href*='/item/']").first.wait_for(state="attached", timeout=10000)
+
+            all_links = page.locator("a[href*='/item/']").all()
             seen_titles = set()
-            for i in range(link_count):
+            for a in all_links:
                 if len(results) >= max_results:
                     break
-                link = item_links.nth(i)
                 try:
-                    text = link.inner_text(timeout=2000).strip()
-                    href = link.get_attribute("href") or ""
-                    if not text or len(text) < 5 or text in seen_titles:
+                    href = a.get_attribute("href") or ""
+                    if not href.startswith("/item/"):
                         continue
-                    # Skip navigation/filter links
-                    if any(kw in text.lower() for kw in ["filter", "sort", "view all", "see all", "log in"]):
+                    title = (a.text_content() or "").strip()
+                    if len(title) < 5 or title in seen_titles:
                         continue
-                    seen_titles.add(text)
-                    lines = [l.strip() for l in text.split("\n") if l.strip()]
-                    title = lines[0] if lines else text
-                    condition = "N/A"
-                    price = "N/A"
-                    for line in lines[1:]:
-                        if re.match(r'^\$[\d,.]+', line):
-                            price = line
-                        elif re.match(r'^(Mint|Excellent|Very Good|Good|Fair|Poor|Brand New|Used)', line, re.I):
-                            condition = line
-                    url = f"https://reverb.com{href}" if href.startswith("/") else href
+                    seen_titles.add(title)
+
+                    # Get price/condition from the parent <li>
+                    card_text = ""
+                    try:
+                        li = a.locator("xpath=ancestor::li")
+                        card_text = li.text_content(timeout=2000) or ""
+                    except Exception:
+                        pass
+
+                    price_match = price_re.search(card_text)
+                    price = f"${price_match.group(1)}" if price_match else "N/A"
+
+                    cond_match = condition_re.search(card_text)
+                    condition = cond_match.group(1) if cond_match else "N/A"
+
+                    clean_href = href.split("?")[0]
                     results.append(ReverbListing(
                         item_title=title,
                         condition=condition,
                         price=price,
-                        url=url,
+                        url=f"https://reverb.com{clean_href}",
                         image_url="N/A",
                     ))
                 except Exception:
                     continue
-            break
+
+            print(f"  Extracted {len(results)} listings via locator API")
+            if results:
+                break
+            # Got 0 results despite links existing — retry
+            if _retry < 4:
+                print(f"  Got 0 results, retrying ({_retry+1}/5)...")
+                page.wait_for_timeout(3000)
         except Exception as e:
-            if _retry < 2:
-                print(f"  Extraction failed ({e}), retrying after wait...")
-                page.wait_for_timeout(5000)
+            if _retry < 4:
+                print(f"  Extraction attempt {_retry+1} failed ({e}), retrying...")
+                page.wait_for_timeout(3000)
+                _wait_for_listings()
+                page.wait_for_timeout(2000)
             else:
                 print(f"  All retries failed: {e}")
 
