@@ -1,0 +1,15 @@
+Get driving directions on MapQuest from one location to another.
+Extract total distance, estimated travel time, and step-by-step driving directions.
+
+Parameters:
+  from_location: str — Starting address or place (default: "Times Square, New York, NY")
+  to_location: str — Destination address or place (default: "Central Park, New York, NY")
+
+Return fields:
+  from_location: str — Starting location used
+  to_location: str — Destination location used
+  total_distance: str — Total driving distance
+  estimated_time: str — Estimated travel time
+  steps: list[DirectionStep] — Step-by-step driving directions
+    instruction: str — Turn-by-turn instruction text
+    distance: str — Distance for this step

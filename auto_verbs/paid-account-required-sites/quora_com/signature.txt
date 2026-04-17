@@ -1,0 +1,19 @@
+# quora_search — Search Quora for Q&A threads and extract details.
+
+@dataclass(frozen=True)
+class QuoraSearchRequest:
+    query: str = "machine learning career advice"
+    max_results: int = 5
+
+@dataclass(frozen=True)
+class QuoraThread:
+    question_text: str = ""
+    top_answer_author: str = ""
+    num_answers: str = ""
+    top_answer_snippet: str = ""
+
+@dataclass(frozen=True)
+class QuoraSearchResult:
+    threads: list = None  # list[QuoraThread]
+
+def quora_search(page: Page, request: QuoraSearchRequest) -> QuoraSearchResult:

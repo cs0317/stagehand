@@ -1,0 +1,15 @@
+Search for an actor on IMDB by name, navigate to their profile page,
+and extract biographical details along with notable filmography.
+
+Parameters:
+  query: str — The actor name to search for (default: "Meryl Streep")
+  max_films: int — Maximum number of notable films to return (default: 5)
+
+Return fields:
+  actor_name: str — Full name of the actor
+  birth_date: str — Date of birth
+  biography: str — Short biography text
+  films: list — Up to max_films notable films, each with:
+    film_title: str — Title of the film
+    year: str — Release year
+    role: str — Character or role played

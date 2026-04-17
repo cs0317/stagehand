@@ -1,0 +1,12 @@
+Search for game reviews on IGN matching a given query term.
+Extract up to N reviews with game title, platform, score, and summary.
+
+Parameters:
+  query: str — The search term to look for (default: "Zelda")
+  max_results: int — Maximum number of reviews to return (default: 5)
+
+Return fields (per review):
+  game_title: str — Title of the reviewed game
+  platform: str — Platform(s) the game is available on
+  score: str — Review score
+  summary: str — Brief summary or excerpt from the review

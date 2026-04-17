@@ -1,0 +1,14 @@
+Browse GitHub Trending repositories filtered by programming language and date range.
+Extract up to N trending repos with repository name, description, language, total stars, and stars gained this period.
+
+Parameters:
+  language: str — Programming language to filter by (default: "python")
+  since: str — Date range: "daily", "weekly", or "monthly" (default: "weekly")
+  max_results: int — Maximum number of repos to return (default: 10)
+
+Return fields (per repo):
+  repo_name: str — Full repository name in owner/repo format
+  description: str — Repository description
+  language: str — Primary programming language
+  total_stars: str — Total star count
+  stars_this_week: str — Stars gained in the selected period

@@ -1,0 +1,12 @@
+Search for podcasts on Apple Podcasts matching a given query term.
+Extract up to N podcasts with podcast name, publisher, url, and artwork url.
+
+Parameters:
+  query: str — The search term to look for (default: "true crime")
+  max_results: int — Maximum number of podcasts to return (default: 5)
+
+Return fields (per podcast):
+  podcast_name: str — Name of the podcast
+  publisher: str — Publisher / creator name
+  url: str — Direct link to the podcast on Apple Podcasts
+  artwork_url: str — URL of the podcast cover artwork image

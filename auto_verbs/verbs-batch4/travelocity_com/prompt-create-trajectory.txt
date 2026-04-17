@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.travelocity.com
+
+* Concrete task
+- Search for vacation packages from "New York" to "Cancun, Mexico" for 2 travelers.
+- Extract up to 5 packages with package name/hotel, total price, per-person price, duration, and what's included (flight + hotel).

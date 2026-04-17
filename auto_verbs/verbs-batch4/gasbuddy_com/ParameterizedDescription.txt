@@ -1,0 +1,12 @@
+Search for gas prices near a given location on GasBuddy.
+Extract up to N gas stations with station name, address, regular gas price, and last updated time.
+
+Parameters:
+  location: str — The location to search near (default: "Denver, CO")
+  max_results: int — Maximum number of stations to return (default: 5)
+
+Return fields (per station):
+  station_name: str — Name of the gas station
+  address: str — Street address of the station
+  regular_price: str — Price of regular unleaded gas
+  last_updated: str — When the price was last updated

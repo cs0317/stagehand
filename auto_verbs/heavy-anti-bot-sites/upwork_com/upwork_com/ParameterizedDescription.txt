@@ -1,0 +1,12 @@
+Website: upwork.com
+Task: Search for freelancers with a given skill and extract profiles
+Parameters:
+  - skill: str (e.g. "Python developer")
+  - max_results: int (number of freelancer profiles to extract)
+Returns: UpworkSearchResult
+  freelancers: list of UpworkFreelancer
+    - name: str
+    - title: str (headline)
+    - hourly_rate: str
+    - job_success_score: str
+    - total_earnings: str

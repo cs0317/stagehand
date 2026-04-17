@@ -1,0 +1,13 @@
+Flickr – Search Photos
+
+Search for photos on flickr.com matching a given query and extract photo details.
+
+Parameters:
+  - query (str, default "northern lights"): Search query string.
+  - max_results (int, default 5): Maximum number of photos to extract.
+
+Returns a list of photos, each containing:
+  - title (str): Photo title.
+  - photographer (str): Photographer username.
+  - url (str): Direct link to the photo on Flickr.
+  - image_url (str): URL of the photo image/thumbnail.

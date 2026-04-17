@@ -1,0 +1,16 @@
+Search for hotels on Priceline for a given destination, number of guests, and check-in/check-out dates.
+Extract up to N hotel listings with hotel name, star rating, nightly price, guest rating, and neighborhood.
+
+Parameters:
+  destination: str — The destination city to search for hotels (default: "Las Vegas, NV")
+  guests: int — Number of guests (default: 2)
+  check_in: str — Check-in date in YYYY-MM-DD format (default: "" for today)
+  check_out: str — Check-out date in YYYY-MM-DD format (default: "" for tomorrow)
+  max_results: int — Maximum number of hotels to return (default: 5)
+
+Return fields (per hotel):
+  hotel_name: str — Name of the hotel
+  star_rating: str — Star rating (e.g. "4", "3.5")
+  nightly_price: str — Nightly price (e.g. "$120")
+  guest_rating: str — Guest review rating (e.g. "8.5/10")
+  neighborhood: str — Neighborhood or area name

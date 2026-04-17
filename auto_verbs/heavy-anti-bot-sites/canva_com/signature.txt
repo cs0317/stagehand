@@ -1,0 +1,20 @@
+# Search for design templates on Canva matching a query and extract template
+# name, category, dimensions or format, and whether it is free or pro.
+
+@dataclass(frozen=True)
+class CanvaTemplateSearchRequest:
+    search_query: str = "business presentation"
+    max_results: int = 5
+
+@dataclass(frozen=True)
+class CanvaTemplate:
+    template_name: str = ""
+    category: str = ""
+    dimensions: str = ""
+    is_free: str = ""
+
+@dataclass(frozen=True)
+class CanvaTemplateSearchResult:
+    templates: list = None  # list[CanvaTemplate]
+
+def canva_template_search(page: Page, request: CanvaTemplateSearchRequest) -> CanvaTemplateSearchResult:

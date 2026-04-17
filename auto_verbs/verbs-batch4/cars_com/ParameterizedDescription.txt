@@ -1,0 +1,17 @@
+Cars.com – Used Car Search
+
+Search for used cars on Cars.com by make, model, and zip code, then extract listings.
+
+Parameters:
+  - make (str, default "Toyota"): Car make to search for.
+  - model (str, default "Camry"): Car model to search for.
+  - zip_code (str, default "60601"): Zip code for location-based search.
+  - distance (int, default 50): Search radius in miles.
+  - max_results (int, default 5): Maximum number of listings to extract.
+
+Returns a list of listings, each containing:
+  - title (str): Listing title including year and model (e.g., "2021 Toyota Camry SE").
+  - price (str): Listed price (e.g., "$25,999"), or "N/A" if not shown.
+  - mileage (str): Vehicle mileage (e.g., "32,450 mi."), or "N/A" if not shown.
+  - dealer_name (str): Name of the dealer, or "N/A" if not shown.
+  - location (str): Dealer location (e.g., "Chicago, IL"), or "N/A" if not shown.

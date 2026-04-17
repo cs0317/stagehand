@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.upwork.com
+
+* Concrete task
+- Search for freelancers with the skill "Python developer".
+- Extract up to 5 freelancer profiles with name, title/headline, hourly rate, job success score, and total earnings.

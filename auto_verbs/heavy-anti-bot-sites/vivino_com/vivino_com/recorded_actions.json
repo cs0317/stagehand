@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 3000,
+    "type": "goto",
+    "url": "https://www.vivino.com/search/wines?q=Pinot%20Noir",
+    "description": "Navigate to Vivino search"
+  },
+  {
+    "timestamp": 5000,
+    "type": "error",
+    "description": "BLOCKED: Vivino returns 403 via CloudFront. Heavy bot-detection — site not suitable for agent automation."
+  }
+]

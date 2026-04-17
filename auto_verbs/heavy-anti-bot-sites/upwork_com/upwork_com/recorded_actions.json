@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 3000,
+    "type": "goto",
+    "url": "https://www.upwork.com/nx/search/talent/?q=Python+developer",
+    "description": "Navigate to Upwork freelancer search"
+  },
+  {
+    "timestamp": 5000,
+    "type": "error",
+    "description": "BLOCKED: Upwork uses Cloudflare 'Just a moment...' challenge. Heavy bot-detection — site not suitable for agent automation."
+  }
+]

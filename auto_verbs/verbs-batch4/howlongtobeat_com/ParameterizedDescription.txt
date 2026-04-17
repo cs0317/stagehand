@@ -1,0 +1,12 @@
+Search for a game on HowLongToBeat and extract completion time estimates.
+Navigate to the site, search for a game by name, click the first result, and extract the main story,
+main + extras, and completionist play times.
+
+Parameters:
+  query: str — The game title to search for (default: "Elden Ring")
+
+Return fields:
+  game_title: str — The matched game title
+  main_story_time: str — Time to complete the main story
+  main_extras_time: str — Time to complete main story plus extras
+  completionist_time: str — Time to 100% complete the game

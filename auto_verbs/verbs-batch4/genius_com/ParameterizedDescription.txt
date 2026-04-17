@@ -1,0 +1,11 @@
+Search for a song on Genius by query, click the top result, and extract song details.
+Extract the song title, artist name, album name, and first verse of lyrics from the song page.
+
+Parameters:
+  query: str — The search query combining song name and artist (default: "Bohemian Rhapsody Queen")
+
+Return fields:
+  song_title: str — Title of the song
+  artist: str — Artist / performer name
+  album: str — Album name
+  first_verse: str — First verse of the song lyrics

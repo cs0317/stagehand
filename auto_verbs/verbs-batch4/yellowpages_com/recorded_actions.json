@@ -1,0 +1,69 @@
+[
+  {
+    "timestamp": 3000,
+    "type": "goto",
+    "url": "https://www.yellowpages.com",
+    "description": "Navigate to https://www.yellowpages.com"
+  },
+  {
+    "timestamp": 6500,
+    "type": "act",
+    "instruction": "Enter search term",
+    "description": "Type 'plumber' into the search input field",
+    "method": "fill"
+  },
+  {
+    "timestamp": 8000,
+    "type": "act",
+    "instruction": "Enter location",
+    "description": "Type 'Chicago, IL' into the location input field",
+    "method": "fill"
+  },
+  {
+    "timestamp": 9500,
+    "type": "act",
+    "instruction": "Click search button",
+    "description": "Click the Find button to submit the search",
+    "method": "click"
+  },
+  {
+    "timestamp": 15000,
+    "type": "extract",
+    "instruction": "Extract business listings",
+    "description": "Extract up to 5 business listings with name, phone, address, rating",
+    "results": {
+      "listings": [
+        {
+          "business_name": "Best Home Savings",
+          "phone_number": "(855) 566-6978",
+          "address": "Serving the Chicago area.",
+          "rating": "N/A"
+        },
+        {
+          "business_name": "ARS Rescue Rooter",
+          "phone_number": "(833) 947-9225",
+          "address": "Itasca, IL 60143",
+          "rating": "4"
+        },
+        {
+          "business_name": "All Ed Electric",
+          "phone_number": "(312) 549-9745",
+          "address": "2400 North Sheffield Avenue, Chicago, IL 60614",
+          "rating": "N/A"
+        },
+        {
+          "business_name": "Halsted Plumbing & Sewer",
+          "phone_number": "(773) 500-0144",
+          "address": "10409 South Lawndale Avenue, Chicago, IL 60655",
+          "rating": "N/A"
+        },
+        {
+          "business_name": "Landa's Carpet And Upholstery Cleaning",
+          "phone_number": "(773) 683-2043",
+          "address": "5005 West Sunnyside Avenue, Chicago, IL 60630",
+          "rating": "N/A"
+        }
+      ]
+    }
+  }
+]

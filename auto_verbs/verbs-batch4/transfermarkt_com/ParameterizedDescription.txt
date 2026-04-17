@@ -1,0 +1,12 @@
+Search Transfermarkt for a soccer player and extract profile details.
+
+Parameters:
+  player_name: str — Name of the player to search for (default: "Kylian Mbappé")
+
+Return fields:
+  player_name: str — Full player name
+  current_club: str — Current club name
+  market_value: str — Estimated market value
+  age: str — Player's age
+  nationality: str — Player's nationality/citizenship
+  position: str — Playing position

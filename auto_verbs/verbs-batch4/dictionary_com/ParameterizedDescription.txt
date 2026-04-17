@@ -1,0 +1,14 @@
+Dictionary.com – Word Lookup
+
+Search for a word on Dictionary.com and extract its definition details.
+
+Parameters:
+  - word (str, default "ephemeral"): The word to look up.
+
+Returns a result containing:
+  - word (str): The looked-up word.
+  - pronunciation (str): Phonetic pronunciation, or "N/A" if not found.
+  - part_of_speech (str): Part of speech (e.g., "adjective"), or "N/A" if not found.
+  - primary_definition (str): The primary definition of the word, or "N/A" if not found.
+  - example_sentence (str): An example sentence using the word, or "N/A" if not found.
+  - synonyms (list[str]): Up to 3 synonyms for the word.

@@ -1,0 +1,12 @@
+Search for secondhand items on Mercari matching a given query term.
+Extract up to N listings with item title, price, condition, and seller name.
+
+Parameters:
+  query: str — The search term to look for (default: "Nintendo Switch")
+  max_results: int — Maximum number of listings to return (default: 5)
+
+Return fields (per listing):
+  item_title: str — Item listing title
+  price: str — Listed price
+  condition: str — Item condition (e.g. "Like new", "Good")
+  seller_name: str — Seller's display name

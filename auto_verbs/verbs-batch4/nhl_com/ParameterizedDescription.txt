@@ -1,0 +1,4 @@
+Verb: nhl_standings
+Website: https://www.nhl.com
+Task: Navigate to the current season standings page. Extract NHL standings for a conference (default: Eastern) with team name, wins, losses, OT losses, and points for up to 10 teams.
+Parameters: conference (Eastern), maxTeams (10)

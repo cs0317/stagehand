@@ -1,0 +1,23 @@
+# priceline_hotels — Search for hotels on Priceline and extract listing details.
+
+@dataclass(frozen=True)
+class PricelineHotelsRequest:
+    destination: str = "Las Vegas, NV"
+    guests: int = 2
+    check_in: str = ""
+    check_out: str = ""
+    max_results: int = 5
+
+@dataclass(frozen=True)
+class PricelineHotel:
+    hotel_name: str = ""
+    star_rating: str = ""
+    nightly_price: str = ""
+    guest_rating: str = ""
+    neighborhood: str = ""
+
+@dataclass(frozen=True)
+class PricelineHotelsResult:
+    hotels: list = None  # list[PricelineHotel]
+
+def priceline_hotels(page: Page, request: PricelineHotelsRequest) -> PricelineHotelsResult:

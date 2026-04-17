@@ -1,0 +1,8 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.yellowpages.com
+
+* Concrete task
+- Search for "plumber" in "Chicago, IL".
+- Extract up to 5 business listings with business name, phone number, address, and rating.

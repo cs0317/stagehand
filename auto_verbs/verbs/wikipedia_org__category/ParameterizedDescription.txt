@@ -1,8 +1,0 @@
-Website: en.wikipedia.org
-Task: Navigate to a Wikipedia category page and extract subcategories or page titles
-Parameters:
-  - category: string (e.g. "Category:Programming languages")
-  - max_results: 20 (number of subcategories or page titles to extract)
-Data to extract per item:
-  - title (subcategory or page name)
-  - type ("subcategory" or "page")

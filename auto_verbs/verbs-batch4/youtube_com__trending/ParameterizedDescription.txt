@@ -1,0 +1,10 @@
+Website: youtube.com
+Task: Navigate to the Trending page and extract trending video listings
+Parameters:
+  - max_results: int (number of trending videos to extract)
+Returns: YouTubeTrendingResult
+  videos: list of YouTubeTrendingVideo
+    - title: str
+    - channel_name: str
+    - view_count: str
+    - upload_time: str (e.g. "2 hours ago")

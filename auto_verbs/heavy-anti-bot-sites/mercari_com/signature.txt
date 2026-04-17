@@ -1,0 +1,19 @@
+# mercari_search — Search for secondhand items on Mercari and extract listing details.
+
+@dataclass(frozen=True)
+class MercariSearchRequest:
+    query: str = "Nintendo Switch"
+    max_results: int = 5
+
+@dataclass(frozen=True)
+class MercariListing:
+    item_title: str = ""
+    price: str = ""
+    condition: str = ""
+    seller_name: str = ""
+
+@dataclass(frozen=True)
+class MercariSearchResult:
+    listings: list = None  # list[MercariListing]
+
+def mercari_search(page: Page, request: MercariSearchRequest) -> MercariSearchResult:

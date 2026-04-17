@@ -1,0 +1,14 @@
+Discogs.com – Search Music Releases
+
+Search for music releases on Discogs matching a given query and extract results.
+
+Parameters:
+  - query (str, default "Dark Side of the Moon"): Search term for music releases.
+  - max_results (int, default 5): Maximum number of releases to extract.
+
+Returns a list of releases, each containing:
+  - title (str): Release title.
+  - artist (str): Artist or band name.
+  - format (str): Format of the release (e.g., "Vinyl", "CD", "Cassette"), or "N/A" if not shown.
+  - year (str): Release year, or "N/A" if not shown.
+  - label (str): Record label, or "N/A" if not shown.

@@ -1,0 +1,13 @@
+Website: vivino.com
+Task: Search for wines and extract wine listings
+Parameters:
+  - search_term: str (e.g. "Pinot Noir")
+  - max_results: int (number of wines to extract)
+Returns: VivinoSearchResult
+  wines: list of VivinoWine
+    - wine_name: str
+    - winery: str
+    - region: str
+    - average_rating: str (out of 5)
+    - num_ratings: str
+    - price: str

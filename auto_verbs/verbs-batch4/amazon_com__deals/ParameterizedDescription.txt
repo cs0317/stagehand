@@ -1,0 +1,13 @@
+Amazon.com – Today's Deals
+
+Navigate to Amazon's "Today's Deals" page and extract deal listings.
+
+Parameters:
+  - max_results (int, default 5): Maximum number of deals to extract.
+
+Returns a list of deals, each containing:
+  - product_name (str): Name of the product.
+  - deal_price (str): Current deal price (e.g., "$19.99").
+  - original_price (str): Original price before discount (e.g., "$39.99"), or "N/A" if not shown.
+  - discount_percent (str): Discount percentage (e.g., "50% off"), or "N/A" if not shown.
+  - deal_type (str): Type of deal (e.g., "Lightning Deal", "Deal of the Day"), or "N/A" if not shown.

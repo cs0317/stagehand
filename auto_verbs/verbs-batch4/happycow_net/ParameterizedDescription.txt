@@ -1,0 +1,13 @@
+Search for vegan/vegetarian restaurants on HappyCow in a given location.
+Extract up to N restaurants with name, cuisine type, rating, address, and price range.
+
+Parameters:
+  location: str — The location to search for restaurants (default: "Portland, OR")
+  max_results: int — Maximum number of restaurants to return (default: 5)
+
+Return fields (per restaurant):
+  name: str — Restaurant name
+  cuisine_type: str — Cuisine type (vegan / vegetarian / veg-friendly)
+  rating: str — Rating score
+  address: str — Restaurant address
+  price_range: str — Price range indicator

@@ -1,0 +1,11 @@
+Search for a financial term on Investopedia and extract its definition and details.
+Navigate to the Investopedia search page, click the top result, and extract term details from the article page.
+
+Parameters:
+  query: str — The financial term to search for (default: "compound interest")
+
+Return fields:
+  term_name: str — The name/title of the financial term
+  definition: str — The definition or summary of the term
+  key_takeaways: list[str] — Up to 3 key takeaways from the article
+  example: str — An example illustrating the term

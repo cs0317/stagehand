@@ -1,0 +1,21 @@
+## upwork_freelancer_search
+Search Upwork for freelancers with a given skill and extract profiles.
+
+@dataclass
+class UpworkSearchRequest:
+    skill: str          # e.g. "Python developer"
+    max_results: int    # number of freelancer profiles to extract
+
+@dataclass
+class UpworkFreelancer:
+    name: str               # freelancer name
+    title: str              # headline / title
+    hourly_rate: str        # e.g. "$50.00/hr"
+    job_success_score: str  # e.g. "95% Job Success"
+    total_earnings: str     # e.g. "$100K+ earned"
+
+@dataclass
+class UpworkSearchResult:
+    freelancers: list  # list of UpworkFreelancer
+
+def upwork_freelancer_search(page: Page, request: UpworkSearchRequest) -> UpworkSearchResult

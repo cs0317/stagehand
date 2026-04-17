@@ -1,0 +1,12 @@
+Search SEC EDGAR for company filings by ticker symbol
+and extract filing details.
+
+Parameters:
+  ticker: str — Company ticker symbol (default: "TSLA")
+  max_results: int — Maximum number of filings to return (default: 5)
+
+Return fields (per filing):
+  filing_type: str — Type of filing (e.g. "10-K", "10-Q", "8-K")
+  filing_date: str — Date the filing was submitted
+  description: str — Description of the filing
+  filing_link: str — URL to the filing document

@@ -1,0 +1,13 @@
+Search TaskRabbit for taskers offering a service in a given location
+and extract tasker listing details.
+
+Parameters:
+  service_type: str — Type of service (default: "furniture assembly")
+  location: str — Location for the service (default: "San Francisco, CA")
+  max_results: int — Maximum number of taskers to return (default: 5)
+
+Return fields (per tasker):
+  name: str — Tasker's name
+  tasks_completed: str — Number of completed tasks
+  rating: str — Tasker's rating
+  hourly_rate: str — Hourly rate (e.g. "$77.68/hr")

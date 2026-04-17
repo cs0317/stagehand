@@ -1,0 +1,12 @@
+Search for products on Overstock.com matching a given query term.
+Extracts featured products from the homepage and filters by query keywords.
+Note: Search and category pages are blocked by bot detection, so only homepage products are available.
+
+Parameters:
+  query: str — The search term to filter featured products by (default: "sectional sofa")
+  max_results: int — Maximum number of products to return (default: 5)
+
+Return fields (per product):
+  product_name: str — Product name / title
+  price: str — Current listed price
+  original_price: str — Original price before discount (shown as discount percentage)

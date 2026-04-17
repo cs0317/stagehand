@@ -1,0 +1,22 @@
+## vivino_search
+Search Vivino for wines and extract listings.
+
+@dataclass
+class VivinoSearchRequest:
+    search_term: str    # e.g. "Pinot Noir"
+    max_results: int    # number of wines to extract
+
+@dataclass
+class VivinoWine:
+    wine_name: str       # name of the wine
+    winery: str          # producer / winery
+    region: str          # region or country
+    average_rating: str  # e.g. "4.2"
+    num_ratings: str     # e.g. "1,234 ratings"
+    price: str           # e.g. "$19.99"
+
+@dataclass
+class VivinoSearchResult:
+    wines: list  # list of VivinoWine
+
+def vivino_search(page: Page, request: VivinoSearchRequest) -> VivinoSearchResult

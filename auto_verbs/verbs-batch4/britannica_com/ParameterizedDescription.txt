@@ -1,0 +1,11 @@
+Search for an encyclopedia article on britannica.com and extract the article title, introductory summary paragraph, and key facts.
+
+Parameters:
+  - search_term (str): The topic to search for on Britannica. Default: "photosynthesis"
+  - max_facts (int): Maximum number of key facts to extract. Default: 10
+
+Returns:
+  - title (str): The article title
+  - summary (str): The introductory summary paragraph
+  - facts (list[str]): Key facts or data points from the article
+  - url (str): The URL of the article

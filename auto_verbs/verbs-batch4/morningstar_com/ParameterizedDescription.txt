@@ -1,0 +1,13 @@
+Look up a mutual fund on Morningstar by ticker symbol.
+Extract fund name, ticker, NAV price, Morningstar rating, expense ratio, and year-to-date return.
+
+Parameters:
+  ticker: str — Mutual fund ticker symbol to look up (default: "VFIAX")
+
+Return fields:
+  fund_name: str — Full name of the fund
+  ticker: str — Ticker symbol
+  nav_price: str — Net Asset Value price
+  morningstar_rating: str — Morningstar star rating (e.g. "4", "5")
+  expense_ratio: str — Fund expense ratio
+  ytd_return: str — Year-to-date return percentage

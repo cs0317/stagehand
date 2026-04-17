@@ -1,0 +1,14 @@
+FDA.gov – Drug Approval Search
+
+Search for drug approval information on fda.gov matching a given query and extract drug details.
+
+Parameters:
+  - query (str, default "ozempic"): Search query string for drug name or topic.
+  - max_results (int, default 5): Maximum number of drug results to extract.
+
+Returns a list of drug results, each containing:
+  - drug_name (str): Name of the drug, or "N/A" if not found.
+  - active_ingredient (str): Active ingredient of the drug, or "N/A" if not found.
+  - approval_date (str): Date of FDA approval, or "N/A" if not found.
+  - manufacturer (str): Manufacturer or applicant name, or "N/A" if not found.
+  - indications (str): Approved indications or uses, or "N/A" if not found.

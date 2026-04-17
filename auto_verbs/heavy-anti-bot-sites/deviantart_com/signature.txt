@@ -1,0 +1,20 @@
+# Search DeviantArt for artwork matching a query and extract artwork listings including
+# title, artist name, number of favorites, and category.
+
+@dataclass(frozen=True)
+class DeviantartSearchRequest:
+    search_query: str = "digital fantasy art"
+    max_results: int = 5
+
+@dataclass(frozen=True)
+class DeviantartArtwork:
+    title: str = ""
+    artist_name: str = ""
+    favorites: str = ""
+    category: str = ""
+
+@dataclass(frozen=True)
+class DeviantartSearchResult:
+    artworks: list = None  # list[DeviantartArtwork]
+
+def deviantart_search(page: Page, request: DeviantartSearchRequest) -> DeviantartSearchResult:

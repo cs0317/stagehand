@@ -1,0 +1,10 @@
+Duolingo.com – Language Courses
+
+Navigate to Duolingo's course catalog page and extract available language courses.
+
+Parameters:
+  - max_results (int, default 10): Maximum number of language courses to extract.
+
+Returns a list of courses, each containing:
+  - language_name (str): Name of the language course (e.g., "Spanish", "French").
+  - num_learners (str): Number of learners (e.g., "34.2M learners"), or "N/A" if not shown.

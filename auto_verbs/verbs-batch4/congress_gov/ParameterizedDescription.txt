@@ -1,0 +1,14 @@
+Congress.gov – Legislation Search
+
+Search Congress.gov for legislation matching a query and extract bill details.
+
+Parameters:
+  - query (str, default "infrastructure bill"): Search term to find matching legislation.
+  - max_results (int, default 5): Maximum number of bills to extract.
+
+Returns a list of bills, each containing:
+  - bill_number (str): Bill identifier (e.g., "H.R.3684").
+  - title (str): Title of the bill.
+  - sponsor (str): Name of the bill's sponsor.
+  - date_introduced (str): Date the bill was introduced (e.g., "06/04/2021").
+  - status (str): Current status of the bill (e.g., "Became Public Law").

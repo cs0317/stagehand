@@ -1,0 +1,12 @@
+Search for study sets on Quizlet matching a given query term.
+Extract up to N study sets with title, creator name, number of terms, and number of learners.
+
+Parameters:
+  query: str — The search term to look for (default: "AP Biology")
+  max_results: int — Maximum number of study sets to return (default: 5)
+
+Return fields (per study set):
+  title: str — Study set title
+  creator_name: str — Creator / author name
+  num_terms: str — Number of terms in the study set
+  num_learners: str — Number of learners using the study set

@@ -1,8 +1,0 @@
-Please read auto_verbs\common\SystemPrompt1.txt
-
-* The target website
-https://www.flickr.com
-
-* Concrete task
-- Search for photos matching "northern lights".
-- Extract up to 5 photos with title, photographer username, number of views, and number of faves.

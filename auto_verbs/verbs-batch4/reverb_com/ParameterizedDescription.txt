@@ -1,0 +1,13 @@
+Search for musical instruments on Reverb.com matching a search term
+and extract listing details.
+
+Parameters:
+  search_term: str — The instrument to search for (default: "Fender Stratocaster")
+  max_results: int — Maximum number of listings to return (default: 5)
+
+Return fields (per listing):
+  item_title: str — Title of the listing
+  condition: str — Condition (e.g. "Used – Good", "Brand New")
+  price: str — Listed price
+  url: str — Direct URL to the listing page
+  image_url: str — URL of the listing thumbnail image

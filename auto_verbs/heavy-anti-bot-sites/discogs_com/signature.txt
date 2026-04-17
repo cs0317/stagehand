@@ -1,0 +1,21 @@
+# Search for music releases on Discogs matching a query and extract release
+# title, artist, format, year, and label.
+
+@dataclass(frozen=True)
+class DiscogsSearchRequest:
+    query: str = "Dark Side of the Moon"
+    max_results: int = 5
+
+@dataclass(frozen=True)
+class DiscogsRelease:
+    title: str = ""
+    artist: str = ""
+    format: str = ""
+    year: str = ""
+    label: str = ""
+
+@dataclass(frozen=True)
+class DiscogsSearchResult:
+    releases: list = None  # list[DiscogsRelease]
+
+def discogs_search(page: Page, request: DiscogsSearchRequest) -> DiscogsSearchResult:

@@ -1,0 +1,12 @@
+Search Steam Store for PC games matching a search term
+and extract game listing details.
+
+Parameters:
+  search_term: str — The game search query (default: "open world RPG")
+  max_results: int — Maximum number of games to return (default: 5)
+
+Return fields (per game):
+  title: str — Title of the game
+  price: str — Listed price (e.g. "$29.99", "Free")
+  release_date: str — Release date of the game
+  review_summary: str — Review sentiment (e.g. "Very Positive", "Mixed")

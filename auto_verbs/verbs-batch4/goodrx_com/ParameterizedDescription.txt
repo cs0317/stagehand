@@ -1,0 +1,13 @@
+Search for a prescription drug on GoodRx and extract pricing information.
+Extract the drug name, dosage, and up to N pharmacy prices with pharmacy name and price.
+
+Parameters:
+  drug: str — The drug name to search for (default: "metformin")
+  max_results: int — Maximum number of pharmacy prices to return (default: 5)
+
+Return fields:
+  drug_name: str — Name of the drug
+  dosage: str — Dosage information
+  prices: list[PharmacyPrice] — List of pharmacy prices
+    pharmacy_name: str — Name of the pharmacy
+    price: str — Price at this pharmacy

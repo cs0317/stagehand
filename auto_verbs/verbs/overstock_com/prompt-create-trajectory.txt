@@ -1,8 +1,0 @@
-Please read auto_verbs\common\SystemPrompt1.txt
-
-* The target website
-https://www.overstock.com
-
-* Concrete task
-- Search for "sectional sofa".
-- Extract up to 5 products with product name, price, original price or discount, rating, and number of reviews.

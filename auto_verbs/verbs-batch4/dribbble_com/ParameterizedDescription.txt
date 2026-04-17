@@ -1,0 +1,13 @@
+Dribbble.com – Search Design Shots
+
+Search for design shots on Dribbble matching a given query and extract shot listings.
+
+Parameters:
+  - search_query (str, default "mobile app UI"): The search term to look for.
+  - max_results (int, default 5): Maximum number of shots to extract.
+
+Returns a list of shots, each containing:
+  - title (str): Title of the design shot.
+  - designer_name (str): Name of the designer who posted the shot.
+  - likes (str): Number of likes on the shot, or "N/A" if not shown.
+  - views (str): Number of views on the shot, or "N/A" if not shown.

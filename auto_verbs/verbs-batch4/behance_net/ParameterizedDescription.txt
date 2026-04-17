@@ -1,0 +1,5 @@
+Search for creative projects on Behance matching a query (e.g., "brand identity"). Extract up to max_results projects with:
+- title
+- creator (artist name)
+- appreciations (number of likes)
+- views (view count)

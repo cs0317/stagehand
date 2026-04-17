@@ -1,0 +1,12 @@
+Search for home renovation ideas on Houzz matching a given query term.
+Extract up to N photos/projects with title, style, number of saves, and description.
+
+Parameters:
+  query: str — The search term to look for (default: "modern kitchen remodel")
+  max_results: int — Maximum number of projects to return (default: 5)
+
+Return fields (per project):
+  title: str — Project/photo title
+  style: str — Design style (e.g. modern, traditional)
+  saves: str — Number of saves/likes
+  description: str — Project description

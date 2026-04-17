@@ -1,0 +1,12 @@
+Website: yellowpages.com
+Task: Search for a business type in a given location and extract business listings
+Parameters:
+  - search_term: str (e.g. "plumber")
+  - location: str (e.g. "Chicago, IL")
+  - max_results: int (number of listings to extract)
+Returns: YellowPagesSearchResult
+  listings: list of YellowPagesListing
+    - business_name: str
+    - phone_number: str
+    - address: str
+    - rating: str (e.g. "4.5" or "N/A")

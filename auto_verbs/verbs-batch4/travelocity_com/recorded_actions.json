@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 3000,
+    "type": "goto",
+    "url": "https://www.travelocity.com",
+    "description": "Navigate to Travelocity"
+  },
+  {
+    "timestamp": 5000,
+    "type": "error",
+    "description": "BLOCKED: Travelocity shows 'Bot or Not?' challenge. Heavy bot-detection — site not suitable for agent automation."
+  }
+]

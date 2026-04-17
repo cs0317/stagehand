@@ -1,0 +1,18 @@
+Etherscan.io – Ethereum Address Lookup
+
+Navigate to Etherscan.io and look up an Ethereum address to extract balance and recent transactions.
+
+Parameters:
+  - address (str, default "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"): Ethereum address to look up (e.g., vitalik.eth).
+  - max_transactions (int, default 5): Maximum number of recent transactions to extract.
+
+Returns:
+  - address (str): The Ethereum address queried.
+  - eth_balance (str): ETH balance of the address (e.g., "1,234.5678 Ether").
+  - usd_value (str): USD value of holdings (e.g., "$3,456,789.00").
+  - transactions (list): List of recent transactions, each containing:
+      - hash (str): Transaction hash.
+      - from_addr (str): Sender address.
+      - to_addr (str): Recipient address.
+      - value (str): Value transferred (e.g., "0.5 ETH").
+      - timestamp (str): Timestamp of the transaction.

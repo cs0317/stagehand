@@ -1,0 +1,12 @@
+Search The Guardian for articles matching a search term
+and extract article details.
+
+Parameters:
+  search_term: str — Topic to search for (default: "climate change policy")
+  max_results: int — Maximum number of articles to return (default: 5)
+
+Return fields (per article):
+  headline: str — Article headline
+  author: str — Author name
+  publication_date: str — Publication date
+  summary: str — First paragraph or standfirst summary

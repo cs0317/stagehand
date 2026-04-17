@@ -1,0 +1,12 @@
+Search Quora for Q&A threads matching a given query term.
+Extract up to N threads with question text, top answer author, number of answers, and a snippet of the top answer.
+
+Parameters:
+  query: str — The search term to look for (default: "machine learning career advice")
+  max_results: int — Maximum number of threads to return (default: 5)
+
+Return fields (per thread):
+  question_text: str — The question title
+  top_answer_author: str — Author of the top / first answer
+  num_answers: str — Number of answers on the thread
+  top_answer_snippet: str — Short snippet from the top answer

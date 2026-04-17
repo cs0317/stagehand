@@ -1,0 +1,19 @@
+# quizlet_search — Search for study sets on Quizlet and extract details.
+
+@dataclass(frozen=True)
+class QuizletSearchRequest:
+    query: str = "AP Biology"
+    max_results: int = 5
+
+@dataclass(frozen=True)
+class QuizletStudySet:
+    title: str = ""
+    creator_name: str = ""
+    num_terms: str = ""
+    num_learners: str = ""
+
+@dataclass(frozen=True)
+class QuizletSearchResult:
+    study_sets: list = None  # list[QuizletStudySet]
+
+def quizlet_search(page: Page, request: QuizletSearchRequest) -> QuizletSearchResult:
