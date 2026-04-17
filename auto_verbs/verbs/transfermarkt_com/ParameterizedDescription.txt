@@ -1,0 +1,11 @@
+Website: transfermarkt.com
+Task: Search for a soccer player and extract their profile details
+Parameters:
+  - player_name: string (e.g. "Kylian Mbappé")
+Data to extract:
+  - player_name
+  - current_club
+  - market_value
+  - age
+  - nationality
+  - position

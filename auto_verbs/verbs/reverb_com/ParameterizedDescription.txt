@@ -1,0 +1,11 @@
+Website: reverb.com
+Task: Search for musical instruments and extract listings
+Parameters:
+  - search_term: string (e.g. "Fender Stratocaster")
+  - max_results: 5 (number of listings to extract)
+Data to extract per listing:
+  - item_title
+  - condition (new/used)
+  - price
+  - seller_name
+  - location

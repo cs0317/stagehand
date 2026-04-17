@@ -1,0 +1,24 @@
+[
+  {
+    "type": "navigate",
+    "url": "https://store.steampowered.com/search/?term=open%20world%20RPG",
+    "description": "Navigate to Steam Store search results"
+  },
+  {
+    "type": "act",
+    "instruction": "Dismiss cookie consent or age gate if present",
+    "selectors": ["#acceptAllButton", "button:has-text('Accept All')"]
+  },
+  {
+    "type": "extract",
+    "instruction": "Extract game search results from Steam",
+    "description": "Extract up to 5 games with title, price, release date, review summary",
+    "selectors": ["a.search_result_row"],
+    "fields": {
+      "title": "span.title",
+      "price": ".discount_final_price, .search_price",
+      "release_date": ".search_released",
+      "review_summary": ".search_review_summary @data-tooltip-html"
+    }
+  }
+]

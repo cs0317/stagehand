@@ -1,0 +1,9 @@
+Website: unsplash.com
+Task: Search for photos and extract photo listings
+Parameters:
+  - search_term: string (e.g. "mountain landscape")
+  - max_results: 5 (number of photos to extract)
+Data to extract per photo:
+  - photographer_name
+  - description (or alt text)
+  - num_likes

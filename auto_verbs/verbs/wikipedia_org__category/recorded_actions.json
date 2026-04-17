@@ -1,0 +1,38 @@
+[
+  {
+    "timestamp": 2000,
+    "type": "goto",
+    "url": "https://en.wikipedia.org/wiki/Category:Programming_languages",
+    "description": "Navigate to https://en.wikipedia.org/wiki/Category:Programming_languages"
+  },
+  {
+    "timestamp": 6000,
+    "type": "extract",
+    "instruction": "Extract category items",
+    "description": "Extract up to 20 subcategories/pages from the category page",
+    "results": {
+      "items": [
+        {"title": "Compilers by programming language", "type": "subcategory"},
+        {"title": "Programming language families", "type": "subcategory"},
+        {"title": "Software by programming language", "type": "subcategory"},
+        {"title": "Programming languages conferences", "type": "subcategory"},
+        {"title": "Criticisms of programming languages", "type": "subcategory"},
+        {"title": "Programming languages by creation date", "type": "subcategory"},
+        {"title": "Lists of programming languages", "type": "subcategory"},
+        {"title": "Programming languages created by women", "type": "subcategory"},
+        {"title": "Academic programming languages", "type": "subcategory"},
+        {"title": "Agent-based programming languages", "type": "subcategory"},
+        {"title": "Algebraic modeling languages", "type": "subcategory"},
+        {"title": "Compiled programming languages", "type": "subcategory"},
+        {"title": "Concatenative programming languages", "type": "subcategory"},
+        {"title": "Concurrent programming languages", "type": "subcategory"},
+        {"title": "Constraint programming languages", "type": "subcategory"},
+        {"title": "Creative coding", "type": "subcategory"},
+        {"title": "Data-centric programming languages", "type": "subcategory"},
+        {"title": "Data-oriented programming", "type": "subcategory"},
+        {"title": "Data-structured programming languages", "type": "subcategory"},
+        {"title": "Declarative programming languages", "type": "subcategory"}
+      ]
+    }
+  }
+]

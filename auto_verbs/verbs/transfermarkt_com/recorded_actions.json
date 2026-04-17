@@ -1,0 +1,29 @@
+[
+  {
+    "timestamp": 3000,
+    "type": "goto",
+    "url": "https://www.transfermarkt.com/schnellsuche/ergebnis/schnellsuche?query=Kylian%20Mbapp%C3%A9",
+    "description": "Navigate to Transfermarkt search for 'Kylian Mbappé'"
+  },
+  {
+    "timestamp": 6000,
+    "type": "act",
+    "instruction": "Click top player result",
+    "description": "Click first player link in search results",
+    "method": "click"
+  },
+  {
+    "timestamp": 10000,
+    "type": "extract",
+    "instruction": "Extract player profile",
+    "description": "Extract player name, club, market value, age, nationality, position",
+    "results": {
+      "player_name": "#10 Kylian Mbappé",
+      "current_club": "Real Madrid",
+      "market_value": "€200.00m",
+      "age": "27",
+      "nationality": "France",
+      "position": "Centre-Forward"
+    }
+  }
+]

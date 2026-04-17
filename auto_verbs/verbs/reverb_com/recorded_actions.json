@@ -1,0 +1,47 @@
+[
+  {
+    "action": "goto",
+    "url": "https://reverb.com/marketplace?query=Fender+Stratocaster",
+    "timestamp": "2025-04-16T00:00:00.000Z"
+  },
+  {
+    "action": "wait",
+    "description": "Wait for SPA content to render (item links)",
+    "timeout": 7000,
+    "timestamp": "2025-04-16T00:00:01.000Z"
+  },
+  {
+    "action": "extract",
+    "instruction": "Extract up to 5 musical instrument listings with item_title, condition, and price",
+    "results": {
+      "listings": [
+        {
+          "item_title": "Fender Made in Mexico Standard Stratocaster 1998 - Sunburst",
+          "condition": "Used – Good",
+          "price": "$349"
+        },
+        {
+          "item_title": "Fender Player Stratocaster with Maple Fretboard 2018 - 2024 - Polar White",
+          "condition": "Used – Very Good",
+          "price": "$450"
+        },
+        {
+          "item_title": "Fender Limited Player Stratocaster Roasted Maple Neck Fat '50S Pickups",
+          "condition": "Used – Very Good",
+          "price": "$1,000"
+        },
+        {
+          "item_title": "Fender Player Stratocaster with Pau Ferro Fretboard 2018 - 2024 - Polar White",
+          "condition": "Used – Very Good",
+          "price": "$461.70"
+        },
+        {
+          "item_title": "Fender Stratocaster USA",
+          "condition": "Used – Fair",
+          "price": "$600"
+        }
+      ]
+    },
+    "timestamp": "2025-04-16T00:00:08.000Z"
+  }
+]

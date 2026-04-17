@@ -1,0 +1,25 @@
+[
+  {
+    "type": "navigate",
+    "url": "https://techcrunch.com/?s=artificial%20intelligence%20startup",
+    "description": "Navigate to TechCrunch search results"
+  },
+  {
+    "type": "act",
+    "instruction": "Dismiss cookie/consent banner if present",
+    "description": "Click Accept on OneTrust consent banner",
+    "selectors": ["#onetrust-accept-btn-handler", "button:has-text('Accept All')"]
+  },
+  {
+    "type": "extract",
+    "instruction": "Extract article search results from TechCrunch",
+    "description": "Extract up to 5 articles with headline, author, publication date",
+    "selectors": ["div.loop-card__content"],
+    "fields": {
+      "headline": "a.loop-card__title-link, h3.loop-card__title a",
+      "author": "ul.loop-card__author-list a",
+      "publication_date": "time[datetime] @datetime",
+      "category": "span.loop-card__cat"
+    }
+  }
+]

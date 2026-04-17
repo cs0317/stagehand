@@ -1,0 +1,23 @@
+[
+  {
+    "timestamp": 3000,
+    "type": "goto",
+    "url": "https://unsplash.com/s/photos/mountain-landscape",
+    "description": "Navigate to Unsplash search for 'mountain landscape'"
+  },
+  {
+    "timestamp": 8000,
+    "type": "extract",
+    "instruction": "Extract photo listings",
+    "description": "Extract up to 5 photos with photographer, description, likes",
+    "results": {
+      "photos": [
+        {"photographer_name": "aleskrivec", "description": "a green valley surrounded by mountains and trees", "num_likes": "N/A"},
+        {"photographer_name": "shafagh58", "description": "green grass field near green trees and mountains during daytime", "num_likes": "N/A"},
+        {"photographer_name": "ferdinand8a", "description": "brown rocky mountain under white clouds and blue sky during daytime", "num_likes": "N/A"},
+        {"photographer_name": "blop135", "description": "green pine trees near mountain during daytime", "num_likes": "N/A"},
+        {"photographer_name": "pinaljain1993", "description": "silhouette of mountains during daytime", "num_likes": "N/A"}
+      ]
+    }
+  }
+]

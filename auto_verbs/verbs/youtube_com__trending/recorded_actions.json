@@ -1,0 +1,85 @@
+[
+  {
+    "timestamp": 6568,
+    "type": "goto",
+    "url": "https://www.youtube.com/feed/trending",
+    "description": "Navigate to https://www.youtube.com/feed/trending"
+  },
+  {
+    "timestamp": 19475,
+    "type": "act",
+    "instruction": "Navigate to trending content",
+    "description": "Direct trending URL redirected; using YouTube search fallback",
+    "method": "goto"
+  },
+  {
+    "timestamp": 32019,
+    "type": "extract",
+    "instruction": "Extract trending video listings",
+    "description": "Extract up to 10 trending videos with title, channel, views, upload time",
+    "results": {
+      "videos": [
+        {
+          "title": "🔥 RCB BOWLING தெறிக்குது 🔥🔥 RCB VS LSG TROLL 2026 🔥Today Trending",
+          "channel_name": "Today Trending",
+          "view_count": "34K views",
+          "upload_time": "1 day ago"
+        },
+        {
+          "title": "🎞 What’s Trending Today? Click to Find Out! ✨",
+          "channel_name": "Trending Today",
+          "view_count": "3K views",
+          "upload_time": "5 years ago"
+        },
+        {
+          "title": "😱 Vadakku Atrocities Troll 😱 Today Trending",
+          "channel_name": "Today Trending",
+          "view_count": "412K views",
+          "upload_time": "7 months ago"
+        },
+        {
+          "title": "😱 பொண்ணு செம ஸ்பீடு 🤯 Indian Wedding Atrocities Troll 🤣 Today trending Troll",
+          "channel_name": "Today Trending",
+          "view_count": "150K views",
+          "upload_time": "1 month ago"
+        },
+        {
+          "title": "🤣 வருஷத்துக்கு ஒரு கிறுக்கன் வரானுங்க 🤣KOLAARU BOYS 👿 Atrocities Troll - Today Trending",
+          "channel_name": "Today Trending",
+          "view_count": "618K views",
+          "upload_time": "9 months ago"
+        },
+        {
+          "title": "TRUMP Atrocities Troll 😂 - Today Trending",
+          "channel_name": "Today Trending",
+          "view_count": "119K views",
+          "upload_time": "2 weeks ago"
+        },
+        {
+          "title": "Searched: The top three stories trending today",
+          "channel_name": "ABC News",
+          "view_count": "2.1K views",
+          "upload_time": "2 days ago"
+        },
+        {
+          "title": "TRUMP ATROCITIES Troll - Today Trending",
+          "channel_name": "Today Trending",
+          "view_count": "147K views",
+          "upload_time": "3 weeks ago"
+        },
+        {
+          "title": "Trump VS Kim Atrocities Troll - Today Trending",
+          "channel_name": "Today Trending",
+          "view_count": "263K views",
+          "upload_time": "4 weeks ago"
+        },
+        {
+          "title": "Trending Today: Top Business Trends from Main Street to Wall Street",
+          "channel_name": "Trending Today",
+          "view_count": "10K views",
+          "upload_time": "7 months ago"
+        }
+      ]
+    }
+  }
+]

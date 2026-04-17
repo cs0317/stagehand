@@ -1,0 +1,50 @@
+[
+  {
+    "type": "navigate",
+    "url": "https://www.taskrabbit.com/book/2030/details?form_referrer=services_page",
+    "description": "Start TaskRabbit furniture assembly booking flow"
+  },
+  {
+    "type": "act",
+    "instruction": "Enter location in task location input",
+    "description": "Fill location field with city and select autocomplete",
+    "selectors": ["input#location", "input[name='location']"]
+  },
+  {
+    "type": "act",
+    "instruction": "Click Continue",
+    "description": "Continue past location step",
+    "selectors": ["button:has-text('Continue')"]
+  },
+  {
+    "type": "act",
+    "instruction": "Select Other furniture items (non-IKEA)",
+    "description": "Choose furniture type",
+    "selectors": ["text='Other furniture items (non-IKEA)'"]
+  },
+  {
+    "type": "act",
+    "instruction": "Click Continue",
+    "description": "Continue past item type",
+    "selectors": ["button:has-text('Continue')"]
+  },
+  {
+    "type": "act",
+    "instruction": "Select Small - Est. 1 hr",
+    "description": "Choose task size",
+    "selectors": ["text='Small - Est. 1 hr'"]
+  },
+  {
+    "type": "act",
+    "instruction": "Click Continue",
+    "description": "Continue to recommendations",
+    "selectors": ["button:has-text('Continue')"]
+  },
+  {
+    "type": "extract",
+    "instruction": "Extract tasker recommendations",
+    "description": "Extract up to 5 taskers with name, rate, rating, tasks completed",
+    "method": "body_text_parsing",
+    "pattern": "Name (e.g. Hamza B.) followed by $XX.XX/hr, X.X (N reviews), NNN tasks"
+  }
+]

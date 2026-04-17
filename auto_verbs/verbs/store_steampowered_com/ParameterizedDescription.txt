@@ -1,0 +1,10 @@
+Website: store.steampowered.com
+Task: Search for PC games and extract game listings
+Parameters:
+  - search_term: string (e.g. "open world RPG")
+  - max_results: 5 (number of games to extract)
+Data to extract per game:
+  - title
+  - price
+  - release_date
+  - review_summary (e.g. "Very Positive")

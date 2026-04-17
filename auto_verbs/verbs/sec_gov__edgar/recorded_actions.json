@@ -1,0 +1,19 @@
+[
+  {
+    "type": "navigate",
+    "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=TSLA&type=&dateb=&owner=include&count=40&action=getcompany",
+    "description": "Navigate to SEC EDGAR company filings for Tesla (TSLA)"
+  },
+  {
+    "type": "extract",
+    "instruction": "Extract filing listings from EDGAR results table",
+    "description": "Extract up to 5 filings with type, date, description, link",
+    "selectors": ["table.tableFile2 tr"],
+    "fields": {
+      "filing_type": "td:nth-child(1)",
+      "filing_link": "td:nth-child(2) a @href",
+      "description": "td:nth-child(3)",
+      "filing_date": "td:nth-child(4)"
+    }
+  }
+]

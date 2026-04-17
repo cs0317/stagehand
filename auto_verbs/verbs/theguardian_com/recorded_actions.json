@@ -1,0 +1,41 @@
+[
+  {
+    "type": "navigate",
+    "url": "https://www.google.com/search?q=climate%20change%20policy+site%3Atheguardian.com",
+    "description": "Google site-restricted search for Guardian articles"
+  },
+  {
+    "type": "extract",
+    "instruction": "Extract article links from Google search results",
+    "description": "Extract up to 5 Guardian article URLs from Google results",
+    "selectors": ["a[href*='theguardian.com'] h3"]
+  },
+  {
+    "type": "navigate",
+    "url": "{article_url}",
+    "description": "Visit each Guardian article page"
+  },
+  {
+    "type": "act",
+    "instruction": "Dismiss cookie/consent banner if present",
+    "description": "Click Accept or OK on consent banner",
+    "selectors": ["button:has-text('Accept')", "button:has-text('Yes')", "button:has-text('OK')"]
+  },
+  {
+    "type": "extract",
+    "instruction": "Extract article details from Guardian article page",
+    "description": "Extract headline, author, publication date, and summary",
+    "selectors": [
+      "h1",
+      "[rel='author'], address a",
+      "time[datetime]",
+      "[data-gu-name='standfirst'] p, article p"
+    ],
+    "fields": {
+      "headline": "h1",
+      "author": "[rel='author'], address a, [data-link-name='byline']",
+      "publication_date": "time[datetime] @datetime || meta[property='article:published_time'] @content",
+      "summary": "[data-gu-name='standfirst'] p, article p"
+    }
+  }
+]

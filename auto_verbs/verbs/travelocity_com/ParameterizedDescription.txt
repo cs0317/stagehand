@@ -1,0 +1,13 @@
+Website: travelocity.com
+Task: Search for vacation packages and extract package listings
+Parameters:
+  - origin: string (e.g. "New York")
+  - destination: string (e.g. "Cancun, Mexico")
+  - num_travelers: 2
+  - max_results: 5 (number of packages to extract)
+Data to extract per package:
+  - package_name (or hotel name)
+  - total_price
+  - per_person_price
+  - duration
+  - included (e.g. "flight + hotel")

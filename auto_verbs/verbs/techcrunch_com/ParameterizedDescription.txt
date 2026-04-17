@@ -1,0 +1,10 @@
+Website: techcrunch.com
+Task: Search for articles and extract article listings
+Parameters:
+  - search_term: string (e.g. "artificial intelligence startup")
+  - max_results: 5 (number of articles to extract)
+Data to extract per article:
+  - headline
+  - author
+  - publication_date
+  - summary (snippet or first paragraph)
