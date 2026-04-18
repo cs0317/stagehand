@@ -1,0 +1,11 @@
+Search alternativeto.net for alternatives to a given software.
+Extract up to {max_results} alternatives with:
+  - software name
+  - description
+  - number of likes
+  - platforms
+  - pricing (free/paid)
+
+Parameters:
+  software_name: str  (e.g. "Photoshop")
+  max_results: int    (e.g. 5)

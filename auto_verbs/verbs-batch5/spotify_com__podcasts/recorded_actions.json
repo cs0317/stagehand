@@ -1,0 +1,38 @@
+[
+  {
+    "timestamp": 8687,
+    "type": "goto",
+    "url": "https://open.spotify.com/search/true%20crime/podcasts",
+    "description": "Search Spotify podcasts"
+  },
+  {
+    "timestamp": 14092,
+    "type": "extract",
+    "instruction": "Extract details for Serial Killers & Murderous Minds",
+    "description": "Rating: 4.8"
+  },
+  {
+    "timestamp": 19315,
+    "type": "extract",
+    "instruction": "Extract details for Crime Junkie",
+    "description": "Rating: 4.7"
+  },
+  {
+    "timestamp": 24581,
+    "type": "extract",
+    "instruction": "Extract details for Dateline NBC",
+    "description": "Rating: 4.8"
+  },
+  {
+    "timestamp": 29843,
+    "type": "extract",
+    "instruction": "Extract details for Rotten Mango",
+    "description": "Rating: 4.9"
+  },
+  {
+    "timestamp": 35356,
+    "type": "extract",
+    "instruction": "Extract details for Murder: True Crime Stories",
+    "description": "Rating: 4.7"
+  }
+]

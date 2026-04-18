@@ -1,0 +1,41 @@
+[
+  {
+    "timestamp": 17671,
+    "type": "goto",
+    "url": "https://search.epa.gov/epasearch/?querytext=air%20quality%20standards&typeofsearch=epa&result_type=",
+    "description": "Search EPA for \"air quality standards\""
+  },
+  {
+    "timestamp": 17675,
+    "type": "extract",
+    "instruction": "Extract EPA search results",
+    "description": "Extracted 5 results",
+    "results": [
+      {
+        "title": "Reviewing National Ambient Air Quality Standards (NAAQS)  Scientific and Technical Information",
+        "summary": "Reviewing National Ambient Air Quality Standards (NAAQS) Scientific and Technical Information This area provides information about the current or prior review of any of the six NAAQS. These pollutants are common in outdoor air, and considered harmful to public health and the environment.",
+        "url": "https://www.epa.gov/naaqs"
+      },
+      {
+        "title": "Air Quality Analysis",
+        "summary": "This site provides information for air quality data analysts inside and outside EPA. Much of the information is in the form of documented analyses that support the review of the national air quality standards.",
+        "url": "https://www.epa.gov/air-quality-analysis"
+      },
+      {
+        "title": "Air Quality Implementation Plans",
+        "summary": "States must develop plans to attain and maintain air quality standards. These plans, known as SIPs, are submitted to EPA for approval. This web site contains information about this process and the current status of the state submittals.",
+        "url": "https://www.epa.gov/air-quality-implementation-plans"
+      },
+      {
+        "title": "Air Quality",
+        "summary": "Learn about air quality and how it affects health. Discover how to check air quality forecasts, learn about what causes poor air quality, and find out how to help make our air cleaner every day.",
+        "url": "https://www.epa.gov/air-quality"
+      },
+      {
+        "title": "Air Quality Designations for Particle Pollution",
+        "summary": "This area provides information on the process EPA, the states, and the tribes follow to designate areas as attainment (meeting) or nonattainment (not meeting) the particle pollution air quality standards.",
+        "url": "https://www.epa.gov/particle-pollution-designations"
+      }
+    ]
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "timestamp": 8389,
+    "type": "goto",
+    "url": "https://www.thingiverse.com/search?q=phone%20stand&type=things",
+    "description": "Search Thingiverse"
+  },
+  {
+    "timestamp": 9894,
+    "type": "extract",
+    "instruction": "Extract Thingiverse models",
+    "description": "Extracted 5 models",
+    "results": [
+      {
+        "name": "Phone Stand",
+        "likes": "37K",
+        "creator": "GoAftens",
+        "url": "https://www.thingiverse.com/thing:2120591"
+      },
+      {
+        "name": "Phone/Tablet Stand - Flat fold - Print in place!",
+        "likes": "13K",
+        "creator": "jonnig",
+        "url": "https://www.thingiverse.com/thing:3146835"
+      },
+      {
+        "name": "Smart Stand - A smart little stand for Smart Devices (Phones and Tablets)",
+        "likes": "8K",
+        "creator": "muzz64",
+        "url": "https://www.thingiverse.com/thing:3416790"
+      },
+      {
+        "name": "Universal Phone Stand",
+        "likes": "5K",
+        "creator": "BCN3D",
+        "url": "https://www.thingiverse.com/thing:1464340"
+      },
+      {
+        "name": "Mechanical Quick Grab/Release Phone Stand",
+        "likes": "45K",
+        "creator": "Arron_mollet22",
+        "url": "https://www.thingiverse.com/thing:3681512"
+      }
+    ]
+  }
+]

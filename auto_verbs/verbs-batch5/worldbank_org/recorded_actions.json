@@ -1,0 +1,46 @@
+[
+  {
+    "timestamp": 8600,
+    "type": "goto",
+    "url": "https://data.worldbank.org/country/germany",
+    "description": "Navigate to World Bank country page"
+  },
+  {
+    "timestamp": 11638,
+    "type": "extract",
+    "instruction": "Extract indicator data",
+    "description": "Extracted GDP per capita (current US$): 56,103.7 (2024)",
+    "results": {
+      "indicatorName": "GDP per capita (current US$)",
+      "mostRecentValue": "56,103.7",
+      "year": "2024",
+      "related": [
+        {
+          "name": "GDP (current US$)",
+          "value": "4.69",
+          "year": "2024"
+        },
+        {
+          "name": "GDP growth (annual %)",
+          "value": "-0.5",
+          "year": "2024"
+        },
+        {
+          "name": "Unemployment, total (% of total labor force) (modeled ILO estimate)",
+          "value": "3.7",
+          "year": "2025"
+        },
+        {
+          "name": "Inflation, consumer prices (annual %)",
+          "value": "2.3",
+          "year": "2024"
+        },
+        {
+          "name": "Personal remittances, received (% of GDP)",
+          "value": "0.5",
+          "year": "2024"
+        }
+      ]
+    }
+  }
+]

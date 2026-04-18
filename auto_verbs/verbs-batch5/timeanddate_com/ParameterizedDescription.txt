@@ -1,0 +1,14 @@
+Time and Date – Look Up Current Time
+
+Website: https://www.timeanddate.com
+Task: Look up the current time in a city
+
+Parameters:
+  - city: city name (e.g., "Tokyo, Japan")
+
+Fields to extract:
+  - city_name: city name
+  - current_time: current local time
+  - date: current date
+  - timezone_abbr: timezone abbreviation
+  - utc_offset: UTC offset

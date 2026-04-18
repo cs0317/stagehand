@@ -1,0 +1,14 @@
+Last.fm – Artist Search
+
+Website: https://www.last.fm
+Task: Search for an artist and extract profile info with top tracks
+
+Parameters:
+  - artist_name: artist to search for (e.g., "Radiohead")
+
+Fields to extract:
+  - artist_name: name of the artist
+  - listeners: number of listeners
+  - play_count: total play count
+  - biography: biography summary
+  - top_tracks: list of top 5 track names

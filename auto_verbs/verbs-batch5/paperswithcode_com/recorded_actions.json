@@ -1,0 +1,51 @@
+[
+  {
+    "timestamp": 6394,
+    "type": "goto",
+    "url": "https://paperswithcode.com",
+    "description": "Navigate to PapersWithCode (→ HF Papers)"
+  },
+  {
+    "timestamp": 6398,
+    "type": "extract",
+    "instruction": "Extract trending papers",
+    "description": "Extracted 5 papers",
+    "results": [
+      {
+        "title": "Kronos: A Foundation Model for the Language of Financial Markets",
+        "authors": "7 authors",
+        "publication_date": "Aug 2, 2025",
+        "upvotes": "22",
+        "github_stars": "19k"
+      },
+      {
+        "title": "HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds",
+        "authors": "45 authors",
+        "publication_date": "Apr 14, 2026",
+        "upvotes": "68",
+        "github_stars": "1.02k"
+      },
+      {
+        "title": "Geometric Context Transformer for Streaming 3D Reconstruction",
+        "authors": "Robbyant",
+        "publication_date": "Apr 14, 2026",
+        "upvotes": "3",
+        "github_stars": "811"
+      },
+      {
+        "title": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
+        "authors": "4 authors",
+        "publication_date": "Dec 28, 2024",
+        "upvotes": "47",
+        "github_stars": "51.2k"
+      },
+      {
+        "title": "A decoder-only foundation model for time-series forecasting",
+        "authors": "4 authors",
+        "publication_date": "Oct 14, 2023",
+        "upvotes": "28",
+        "github_stars": "18k"
+      }
+    ]
+  }
+]

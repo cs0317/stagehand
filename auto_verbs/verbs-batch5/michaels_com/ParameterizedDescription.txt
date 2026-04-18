@@ -1,0 +1,14 @@
+Michaels – Product Search
+
+Website: https://www.michaels.com
+Task: Search for a product and extract results
+
+Parameters:
+  - query: search term (e.g., "acrylic paint set")
+
+Fields to extract:
+  - product_name: name of the product
+  - brand: brand name
+  - price: product price
+  - rating: product rating
+  - availability: availability status

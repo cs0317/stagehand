@@ -1,0 +1,30 @@
+[
+  {
+    "timestamp": 5917,
+    "type": "goto",
+    "url": "https://weworkremotely.com/remote-jobs/search?term=backend%20developer",
+    "description": "Search WWR"
+  },
+  {
+    "timestamp": 5921,
+    "type": "extract",
+    "instruction": "Extract remote jobs",
+    "description": "Extracted 2 jobs",
+    "results": [
+      {
+        "title": "Full-stack/Backend developers LLM focused.",
+        "company": "CloudDevs ",
+        "job_type": "Contract",
+        "region": "Anywhere in the World",
+        "posting_date": "10d"
+      },
+      {
+        "title": "Java Developer - AI (Backend)",
+        "company": "CloudDevs ",
+        "job_type": "Full-Time",
+        "region": "Anywhere in the World",
+        "posting_date": "29d"
+      }
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+freeCodeCamp.org – Tutorial Search
+
+Website: https://www.freecodecamp.org
+Task: Search for tutorials and extract article info
+
+Parameters:
+  - search_query: text to search for (e.g., "Python web scraping")
+  - max_results: maximum number of articles to extract (default: 5)
+
+Fields to extract:
+  - title: article title
+  - author: article author
+  - publication_date: date published
+  - tags: article tags/topics

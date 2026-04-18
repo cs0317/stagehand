@@ -1,0 +1,14 @@
+Verb: commonsensemedia_review
+Website: https://www.commonsensemedia.org
+Task: Look up a game review and extract review details
+
+Parameters:
+  - game_slug (str): The game slug in the URL (e.g., "minecraft")
+  - max_results (int): Maximum number of results (default: 1, single review page)
+
+Output Fields:
+  - title (str): Title of the game
+  - age_rating (str): Recommended age (e.g., "age 8+")
+  - quality_rating (str): Quality rating in stars (e.g., "4/5")
+  - one_liner (str): Short summary of the review
+  - parents_need_to_know (str): Summary of what parents need to know

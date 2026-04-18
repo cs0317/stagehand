@@ -1,0 +1,9 @@
+Look up the technology profile for a given domain on builtwith.com.
+Extract up to {max_technologies} detected technologies grouped by category.
+Each technology includes:
+  - category
+  - technology name
+
+Parameters:
+  domain: str             (e.g. "github.com")
+  max_technologies: int   (e.g. 10)

@@ -1,0 +1,96 @@
+[
+  {
+    "timestamp": 5520,
+    "type": "goto",
+    "url": "https://nomadlist.com",
+    "description": "Navigate to NomadList front page"
+  },
+  {
+    "timestamp": 5523,
+    "type": "extract",
+    "instruction": "Extract top cities",
+    "description": "Extracted 10 cities",
+    "results": [
+      {
+        "city_name": "Bangkok",
+        "country": "Thailand",
+        "overall_score": "5/5",
+        "internet_speed": "24 Mbps",
+        "cost_per_month": "$1,580/mo",
+        "temperature": "34°"
+      },
+      {
+        "city_name": "Tokyo",
+        "country": "Japan",
+        "overall_score": "4/5",
+        "internet_speed": "27 Mbps",
+        "cost_per_month": "$3,020/mo",
+        "temperature": "20°"
+      },
+      {
+        "city_name": "Uluwatu, Bali",
+        "country": "Indonesia",
+        "overall_score": "4/5",
+        "internet_speed": "19 Mbps",
+        "cost_per_month": "$2,069/mo",
+        "temperature": "29°"
+      },
+      {
+        "city_name": "Da Nang",
+        "country": "Vietnam",
+        "overall_score": "4/5",
+        "internet_speed": "9 Mbps",
+        "cost_per_month": "$1,180/mo",
+        "temperature": "29°"
+      },
+      {
+        "city_name": "Seoul",
+        "country": "South Korea",
+        "overall_score": "4/5",
+        "internet_speed": "33 Mbps",
+        "cost_per_month": "$2,502/mo",
+        "temperature": "25°"
+      },
+      {
+        "city_name": "Melbourne",
+        "country": "Australia",
+        "overall_score": "4/5",
+        "internet_speed": "19 Mbps",
+        "cost_per_month": "$3,777/mo",
+        "temperature": "13°"
+      },
+      {
+        "city_name": "Buenos Aires",
+        "country": "Argentina",
+        "overall_score": "4/5",
+        "internet_speed": "13 Mbps",
+        "cost_per_month": "$1,694/mo",
+        "temperature": "24°"
+      },
+      {
+        "city_name": "Auckland",
+        "country": "New Zealand",
+        "overall_score": "4/5",
+        "internet_speed": "25 Mbps",
+        "cost_per_month": "$3,273/mo",
+        "temperature": "20°"
+      },
+      {
+        "city_name": "Berlin",
+        "country": "Germany",
+        "overall_score": "4/5",
+        "internet_speed": "27 Mbps",
+        "cost_per_month": "$4,168/mo",
+        "temperature": "19°"
+      },
+      {
+        "city_name": "Cape Town",
+        "country": "South Africa",
+        "overall_score": "4/5",
+        "internet_speed": "9 Mbps",
+        "cost_per_month": "$2,627/mo",
+        "temperature": "16°"
+      }
+    ]
+  }
+]

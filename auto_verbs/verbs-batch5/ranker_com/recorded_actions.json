@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": 5465,
+    "type": "goto",
+    "url": "https://www.ranker.com/search?q=best+sci-fi+movies",
+    "description": "Search Ranker"
+  },
+  {
+    "timestamp": 11328,
+    "type": "goto",
+    "url": "https://www.ranker.com/list/best-sci-fi-movies-of-2019/grayson-titan",
+    "description": "Navigate to list page"
+  },
+  {
+    "timestamp": 11334,
+    "type": "extract",
+    "instruction": "Extract ranked items",
+    "description": "Extracted 6 items from \"The Best Sci-Fi Movies of 2019, Ranked\"",
+    "results": [
+      {
+        "rank": "1",
+        "item_name": "Alita: Battle Angel",
+        "votes": "387"
+      },
+      {
+        "rank": "2",
+        "item_name": "Avengers: Endgame",
+        "votes": "225"
+      },
+      {
+        "rank": "3",
+        "item_name": "Spider-Man: Far From Home",
+        "votes": "117"
+      },
+      {
+        "rank": "4",
+        "item_name": "I Am Mother",
+        "votes": "159"
+      },
+      {
+        "rank": "5",
+        "item_name": "The Wandering Earth",
+        "votes": "87"
+      },
+      {
+        "rank": "6",
+        "item_name": "Detective Pikachu",
+        "votes": "129"
+      }
+    ]
+  }
+]

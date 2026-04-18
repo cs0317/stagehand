@@ -1,0 +1,12 @@
+TED – Search TED Talks
+
+Website: https://www.ted.com
+Task: Search for TED talks on a topic
+
+Parameters:
+  - query: search term (e.g., "artificial intelligence")
+
+Fields to extract:
+  - talk_title: talk title
+  - speaker_name: speaker name
+  - duration: talk duration

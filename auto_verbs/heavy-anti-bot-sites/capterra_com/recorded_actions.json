@@ -1,0 +1,51 @@
+[
+  {
+    "timestamp": 10177,
+    "type": "goto",
+    "url": "https://www.capterra.com/project-management-software/",
+    "description": "Browse Capterra \"project-management-software\""
+  },
+  {
+    "timestamp": 10181,
+    "type": "extract",
+    "instruction": "Extract products from product cards",
+    "description": "Extracted 5 products",
+    "results": [
+      {
+        "productName": "monday.com",
+        "rating": "4.6",
+        "numReviews": "5732",
+        "keyFeature": "Access Controls/Permissions",
+        "description": "monday.com centralizes work, and automates tasks, allowing teams to manage the entire project lifecycle in one place."
+      },
+      {
+        "productName": "Jira",
+        "rating": "4.4",
+        "numReviews": "15325",
+        "keyFeature": "Access Controls/Permissions",
+        "description": "Jira is a project management tool for all teams to collaboratively plan, track, and manage projects, customize workflows, and more."
+      },
+      {
+        "productName": "Smartsheet",
+        "rating": "4.5",
+        "numReviews": "3489",
+        "keyFeature": "Access Controls/Permissions",
+        "description": "Smartsheet is an Intelligent Work Management Platform that revolutionizes how you manage projects, portfolios, and processes."
+      },
+      {
+        "productName": "Celoxis",
+        "rating": "4.4",
+        "numReviews": "327",
+        "keyFeature": "Access Controls/Permissions",
+        "description": "Celoxis is an all-in-one project management tool with built-in features, customizable reports and fast setup. Zero stress, just results"
+      },
+      {
+        "productName": "Zoho Projects",
+        "rating": "4.5",
+        "numReviews": "858",
+        "keyFeature": "Access Controls/Permissions",
+        "description": "Zoho Projects is an online project management tool that helps teams plan, track, and collaborate on tasks with ease."
+      }
+    ]
+  }
+]

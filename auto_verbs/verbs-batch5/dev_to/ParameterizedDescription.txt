@@ -1,0 +1,14 @@
+Verb: dev_to_search
+Website: https://dev.to
+Task: Search for articles and extract results
+
+Parameters:
+  - search_query (str): The topic to search for (e.g., "React hooks")
+  - max_results (int): Maximum number of results to return (default: 5)
+
+Output Fields:
+  - title (str): Article title
+  - author (str): Author name
+  - publication_date (str): When the article was published
+  - reactions (str): Number of reactions
+  - comments (str): Number of comments

@@ -1,0 +1,15 @@
+Zillow – Rental Property Search
+
+Website: https://www.zillow.com
+Task: Search for rental properties
+
+Parameters:
+  - location: city/area (e.g., "Austin, TX")
+  - locationSlug: URL slug (e.g., "austin-tx")
+  - maxRent: maximum monthly rent (e.g., 2000)
+
+Fields to extract:
+  - address: property address (may include property name)
+  - monthly_rent: monthly rent price
+  - bedrooms: number of bedrooms
+  - listing_url: link to listing page

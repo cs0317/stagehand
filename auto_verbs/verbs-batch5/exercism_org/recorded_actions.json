@@ -1,0 +1,66 @@
+[
+  {
+    "timestamp": 5461,
+    "type": "goto",
+    "url": "https://exercism.org/tracks/python/exercises",
+    "description": "Browse Exercism python exercises"
+  },
+  {
+    "timestamp": 5465,
+    "type": "extract",
+    "instruction": "Extract exercise listings",
+    "description": "Extracted 10 exercises",
+    "results": [
+      {
+        "name": "Hello World",
+        "difficulty": "Tutorial Exercise",
+        "description": "Exercism's classic introductory exercise. Just say \"Hello, World!\"."
+      },
+      {
+        "name": "Guido's Gorgeous Lasagna",
+        "difficulty": "Learning Exercise",
+        "description": "Learn the basics of Python by cooking Guido's Gorgeous Lasagna."
+      },
+      {
+        "name": "Ghost Gobble Arcade Game",
+        "difficulty": "Learning Exercise",
+        "description": "Learn about bools by setting up the rules for the Ghost Gobble arcade game."
+      },
+      {
+        "name": "Currency Exchange",
+        "difficulty": "Learning Exercise",
+        "description": "Learn about numbers by solving Chandler's currency exchange conundrums."
+      },
+      {
+        "name": "Meltdown Mitigation",
+        "difficulty": "Learning Exercise",
+        "description": "Learn about conditionals and avoid a meltdown by developing a simple control system for a Nuclear Reactor."
+      },
+      {
+        "name": "Black Jack",
+        "difficulty": "Learning Exercise",
+        "description": "Learn about comparisons by implementing some Black Jack judging rules."
+      },
+      {
+        "name": "Little Sister's Essay",
+        "difficulty": "Learning Exercise",
+        "description": "Learn about string methods while improving your little sister's school essay."
+      },
+      {
+        "name": "Little Sister's Vocabulary",
+        "difficulty": "Learning Exercise",
+        "description": "Learn about strings by helping your little sister with her vocabulary homework."
+      },
+      {
+        "name": "Card Games",
+        "difficulty": "Learning Exercise",
+        "description": "Learn about lists by tracking hands in card games."
+      },
+      {
+        "name": "Chaitana's Colossal Coaster",
+        "difficulty": "Learning Exercise",
+        "description": "Learn useful list methods helping Chaitana manage the lines for her colossal roller coaster."
+      }
+    ]
+  }
+]

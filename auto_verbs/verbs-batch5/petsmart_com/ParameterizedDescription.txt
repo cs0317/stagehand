@@ -1,0 +1,14 @@
+PetSmart – Search Products
+
+Website: https://www.petsmart.com
+Task: Search for products
+
+Parameters:
+  - query: search term (e.g., "dog food grain free")
+
+Fields to extract:
+  - product_name: product name
+  - brand: product brand
+  - price: product price
+  - rating: product rating
+  - num_reviews: number of reviews

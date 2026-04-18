@@ -1,0 +1,46 @@
+[
+  {
+    "timestamp": 6567,
+    "type": "goto",
+    "url": "https://www.nasa.gov/?search=Mars+rover",
+    "description": "Search NASA for \"Mars rover\""
+  },
+  {
+    "timestamp": 6570,
+    "type": "extract",
+    "instruction": "Extract NASA articles",
+    "description": "Extracted 5 articles",
+    "results": [
+      {
+        "title": "Spirit - NASA Science",
+        "publication_date": "FEBRUARY 18, 2021",
+        "summary": "Objective(s), Mars Surface Exploration ; Spacecraft, Mars Exploration Rover 2 (MER 2) [became MER-A] ; Spacecraft Mass, 2,341 pounds (1,062 kilograms) ; Mission ...",
+        "article_url": "https://science.nasa.gov/mission/mer-spirit/"
+      },
+      {
+        "title": "NASA’s Curiosity Rover Sees Martian ‘Spiderwebs’ Up Close",
+        "publication_date": "FEBRUARY 23, 2026",
+        "summary": "For about six months, NASA's Curiosity Mars rover has been exploring a region full of geologic formations called boxwork, low ridges standing roughly 3 to ...",
+        "article_url": "https://www.nasa.gov/missions/mars-science-laboratory/curiosity-rover/nasas-curiosity-rover-sees-martian-spiderwebs-up-close/"
+      },
+      {
+        "title": "Images of Mars Rovers and Landers - NASA Science",
+        "publication_date": "",
+        "summary": "NASA has explored the surface of Mars since 1976, when the Viking 1 and 2 landers arrived and scratched the surface to teach us more about the Red Planet.",
+        "article_url": "https://science.nasa.gov/gallery/mars-rovers-and-landers/"
+      },
+      {
+        "title": "Explore Mars: A Rover Game - NASA",
+        "publication_date": "FEBRUARY 15, 2023",
+        "summary": "Play this game to control a Mars rover and collect data on the planet.",
+        "article_url": "https://www.nasa.gov/stem-content/explore-mars-a-rover-game/"
+      },
+      {
+        "title": "Opportunity - NASA Science",
+        "publication_date": "MARCH 4, 2021",
+        "summary": "Opportunity. Mars Exploration Rover Opportunity (MER-B). Type. Rover.",
+        "article_url": "https://science.nasa.gov/mission/mer-opportunity/"
+      }
+    ]
+  }
+]

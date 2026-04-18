@@ -1,0 +1,14 @@
+Verb: crunchbase_company
+Website: https://www.crunchbase.com
+Task: Look up a company and extract key details
+
+Parameters:
+  - company_slug (str): The company identifier in the URL (e.g., "stripe")
+
+Output Fields:
+  - company_name (str): Name of the company
+  - description (str): Short description of the company
+  - founded_date (str): When the company was founded
+  - headquarters (str): Location of headquarters
+  - total_funding (str): Total funding amount
+  - last_funding_round (str): Details of the last funding round

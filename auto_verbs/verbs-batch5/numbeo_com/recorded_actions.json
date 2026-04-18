@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": 6266,
+    "type": "goto",
+    "url": "https://www.numbeo.com/cost-of-living/compare_cities.jsp?country1=United%20States&city1=New%20York%2C%20NY&country2=United%20Kingdom&city2=London",
+    "description": "Navigate to Numbeo comparison page"
+  },
+  {
+    "timestamp": 6271,
+    "type": "extract",
+    "instruction": "Extract comparison indices and city index values",
+    "description": "Extracted 6 indices, 2 city indices",
+    "results": {
+      "indices": [
+        {
+          "category": "Cost of Living",
+          "difference": "10.8% lower"
+        },
+        {
+          "category": "Cost of Living Including Rent",
+          "difference": "22.0% lower"
+        },
+        {
+          "category": "Rent Prices",
+          "difference": "34.9% lower"
+        },
+        {
+          "category": "Restaurant Prices",
+          "difference": "9.3% lower"
+        },
+        {
+          "category": "Groceries Prices",
+          "difference": "29.9% lower"
+        },
+        {
+          "category": "Local Purchasing Power",
+          "difference": "23.5% higher"
+        }
+      ],
+      "cityIndices": [
+        {
+          "city": "London",
+          "cost_of_living_index": "89.16"
+        },
+        {
+          "city": "New York, NY",
+          "cost_of_living_index": "100"
+        }
+      ]
+    }
+  }
+]

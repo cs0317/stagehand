@@ -1,0 +1,8 @@
+Search adidas.com for products matching a given search term.
+Extract up to {max_results} products with:
+  - product name
+  - product URL
+
+Parameters:
+  search_term: str  (e.g. "running shoes")
+  max_results: int  (e.g. 5)

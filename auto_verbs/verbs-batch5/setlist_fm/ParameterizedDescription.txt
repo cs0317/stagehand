@@ -1,0 +1,13 @@
+Setlist.fm – Search Concert Setlists
+
+Website: https://www.setlist.fm
+Task: Search for setlists by artist
+
+Parameters:
+  - artist: artist name (e.g., "Taylor Swift")
+
+Fields to extract:
+  - venue: concert venue
+  - city: city name
+  - date: concert date
+  - songs: up to 10 songs from the setlist

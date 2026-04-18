@@ -1,0 +1,14 @@
+RateBeer – Search Beers
+
+Website: https://www.ratebeer.com
+Task: Search for beers by name/style
+
+Parameters:
+  - query: search term (e.g., "IPA")
+
+Fields to extract:
+  - beer_name: beer name
+  - brewery: brewery name
+  - style: beer style
+  - abv: alcohol by volume
+  - rating: overall rating score

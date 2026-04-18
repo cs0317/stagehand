@@ -1,0 +1,17 @@
+Trustpilot – Company Reviews
+
+Website: https://www.trustpilot.com
+Task: Search for company reviews
+
+Parameters:
+  - company: company name (e.g., "Airbnb")
+
+Fields to extract:
+  - company_name: company name
+  - trust_score: TrustScore
+  - total_reviews: total number of reviews
+  - star_rating: star rating
+  - reviews: list of recent reviews
+    - reviewer_name: reviewer name
+    - rating: rating
+    - review_text: review text snippet

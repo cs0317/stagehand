@@ -1,0 +1,22 @@
+[
+  {
+    "timestamp": 8124,
+    "type": "goto",
+    "url": "https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=EUR",
+    "description": "Navigate to XE converter"
+  },
+  {
+    "timestamp": 9675,
+    "type": "extract",
+    "instruction": "Extract exchange rate data",
+    "description": "Extracted 1 USD = 0.85009874 EUR",
+    "results": {
+      "currentRate": "0.85009874",
+      "inverseRate": "1.17633",
+      "high30": "0.8729",
+      "low30": "0.8469",
+      "avg30": "0.8616",
+      "vol30": "0.45%"
+    }
+  }
+]

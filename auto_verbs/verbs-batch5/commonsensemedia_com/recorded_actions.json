@@ -1,0 +1,21 @@
+[
+  {
+    "timestamp": 8331,
+    "type": "goto",
+    "url": "https://www.commonsensemedia.org/game-reviews/minecraft",
+    "description": "View CSM review for \"minecraft\""
+  },
+  {
+    "timestamp": 8335,
+    "type": "extract",
+    "instruction": "Extract game review data",
+    "description": "Extracted review for Minecraft",
+    "data": {
+      "title": "Minecraft",
+      "ageRating": "age 8+",
+      "qualityRating": "4/5",
+      "oneLiner": "Sandbox-style game with open online play fosters creativity.",
+      "pntkText": "Parents need to know that Minecraft is a multiplatform sandbox adventure game. Players explore the world and use the building blocks of the game to customize that world to create nearly anything they can imagine. That also means other players can create whatever they can imagine as well, which could potentially lead…"
+    }
+  }
+]

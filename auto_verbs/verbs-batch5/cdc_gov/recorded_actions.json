@@ -1,0 +1,41 @@
+[
+  {
+    "timestamp": 8641,
+    "type": "goto",
+    "url": "https://search.cdc.gov/search/index.html?query=flu%20vaccination",
+    "description": "Search CDC for \"flu vaccination\""
+  },
+  {
+    "timestamp": 8645,
+    "type": "extract",
+    "instruction": "Extract search results",
+    "description": "Extracted 5 results",
+    "results": [
+      {
+        "pageTitle": "Who Needs a Flu Vaccine | Influenza (Flu)",
+        "summary": "Who Needs a Flu Vaccine. What to know. Everyone 6 months and older should get a flu vaccine every season with rare exceptions. Vaccination is particularly important for people who are at higher risk…",
+        "url": "https://www.cdc.gov/flu/vaccines/vaccinations.html"
+      },
+      {
+        "pageTitle": "CDC Seasonal Flu Vaccine Effectiveness Studies | Flu Vaccines Work",
+        "summary": "CDC Seasonal Flu Vaccine Effectiveness Studies. What to know. CDC conducts studies each flu season to help determine how well flu vaccines are working. These vaccine effectiveness (VE) studies…",
+        "url": "https://www.cdc.gov/flu-vaccines-work/php/effectiveness-studies/"
+      },
+      {
+        "pageTitle": "Weekly Flu Vaccination Dashboard",
+        "summary": "Weekly Flu Vaccination Dashboard. About. The Weekly Influenza (Flu) Vaccination Dashboard is designed to share preliminary weekly in-season flu vaccination information, including preliminary…",
+        "url": "https://www.cdc.gov/fluvaxview/dashboard/"
+      },
+      {
+        "pageTitle": "Different Types of Flu Vaccines | Influenza (Flu)",
+        "summary": "Different Types of Flu Vaccines. Key points. Influenza (flu) vaccines provide protection against infection with influenza viruses. Learn more about the different flu vaccines…",
+        "url": "https://www.cdc.gov/flu/vaccine-types/"
+      },
+      {
+        "pageTitle": "Key Facts About Seasonal Flu Vaccine | Influenza (Flu)",
+        "summary": "For people 65 years and older. For people 65 years and older, there are three flu vaccines that are preferentially recommended over standard-dose, unadjuvanted flu vaccines. These are Fluzone High-Dose flu…",
+        "url": "https://www.cdc.gov/flu/vaccines/keyfacts.html"
+      }
+    ]
+  }
+]

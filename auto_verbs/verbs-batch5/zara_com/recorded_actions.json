@@ -1,0 +1,41 @@
+[
+  {
+    "timestamp": 10892,
+    "type": "goto",
+    "url": "https://www.zara.com/us/en/search?searchTerm=denim%20jacket&section=WOMAN",
+    "description": "Search Zara"
+  },
+  {
+    "timestamp": 10896,
+    "type": "extract",
+    "instruction": "Extract Zara products",
+    "description": "Extracted 5 products",
+    "results": [
+      {
+        "product_name": "Z1975 DENIM JACKET",
+        "price": "$ 49.90",
+        "product_url": "https://www.zara.com/us/en/z1975-denim-jacket-p00108022.html"
+      },
+      {
+        "product_name": "DENIM JACKET WITH SHOULDER TABS",
+        "price": "$ 69.90",
+        "product_url": "https://www.zara.com/us/en/denim-jacket-with-shoulder-tabs-p08727071.html"
+      },
+      {
+        "product_name": "Z1975 CROPPED DENIM JACKET",
+        "price": "$ 49.90",
+        "product_url": "https://www.zara.com/us/en/z1975-cropped-denim-jacket-p00108029.html"
+      },
+      {
+        "product_name": "TRF RIPPED DENIM JACKET",
+        "price": "$ 59.90",
+        "product_url": "https://www.zara.com/us/en/trf-ripped-denim-jacket-p05252070.html"
+      },
+      {
+        "product_name": "Z1975 OVERSIZED DENIM HOODIE JACKET",
+        "price": "$ 69.90",
+        "product_url": "https://www.zara.com/us/en/z1975-oversized-hooded-denim-jacket-p00108031.html"
+      }
+    ]
+  }
+]

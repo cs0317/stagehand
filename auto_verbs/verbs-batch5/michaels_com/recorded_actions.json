@@ -1,0 +1,51 @@
+[
+  {
+    "timestamp": 13493,
+    "type": "goto",
+    "url": "https://www.michaels.com/search?q=acrylic+paint+set",
+    "description": "Search Michaels for \"acrylic paint set\""
+  },
+  {
+    "timestamp": 13498,
+    "type": "extract",
+    "instruction": "Extract product info",
+    "description": "Extracted 5 products",
+    "results": [
+      {
+        "product_name": "36 Color Acrylic Paint Value Set",
+        "brand": "Craft Smart®",
+        "price": "$19.99",
+        "rating": "4.8/5",
+        "availability": "7 In Stock at Crossroads Bellevue"
+      },
+      {
+        "product_name": "36 Color Acrylic Paint Value Pack",
+        "brand": "Artist's Loft™ Necessities™",
+        "price": "$13.11",
+        "rating": "4.7/5",
+        "availability": "Unavailable"
+      },
+      {
+        "product_name": "DecoArt® Dazzling Metallics™ 18 Color Acrylic Paint Set",
+        "brand": "DecoArt®",
+        "price": "$34.29",
+        "rating": "4.8/5",
+        "availability": "Unavailable"
+      },
+      {
+        "product_name": "Acrylic Paint Art Set",
+        "brand": "Artist's Loft™",
+        "price": "$49.99",
+        "rating": "4.7/5",
+        "availability": "5 In Stock at Crossroads Bellevue"
+      },
+      {
+        "product_name": "Super Value Acrylic Paint Set",
+        "brand": "Craft Smart®",
+        "price": "$25.99",
+        "rating": "4.7/5",
+        "availability": "14 In Stock at Crossroads Bellevue"
+      }
+    ]
+  }
+]

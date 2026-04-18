@@ -1,0 +1,15 @@
+Kaggle – Dataset Search
+
+Website: https://www.kaggle.com
+Task: Search for datasets and extract dataset info
+
+Parameters:
+  - search_query: dataset topic to search for (e.g., "climate change")
+  - max_results: maximum number of datasets to extract (default: 5)
+
+Fields to extract:
+  - title: dataset title
+  - author: dataset author/owner
+  - file_size: file size
+  - downloads: number of downloads
+  - usability_rating: usability rating

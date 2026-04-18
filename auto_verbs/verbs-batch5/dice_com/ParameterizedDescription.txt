@@ -1,0 +1,14 @@
+Verb: dice_search
+Website: https://www.dice.com
+Task: Search for tech jobs and extract listings
+
+Parameters:
+  - search_query (str): Job title/keyword to search for (e.g., "machine learning engineer")
+  - max_results (int): Maximum number of results to return (default: 5)
+
+Output Fields:
+  - job_title (str): Title of the job listing
+  - company_name (str): Name of the company
+  - location (str): Job location
+  - posted_date (str): When the job was posted
+  - salary_range (str): Salary range if available

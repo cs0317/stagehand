@@ -1,0 +1,15 @@
+Instructables – DIY Project Search
+
+Website: https://www.instructables.com
+Task: Search for DIY projects and extract project info
+
+Parameters:
+  - search_query: project topic to search for (e.g., "LED lamp")
+  - max_results: maximum number of projects to extract (default: 5)
+
+Fields to extract:
+  - project_title: title of the project
+  - author: project author
+  - views: number of views
+  - favorites: number of favorites
+  - project_url: link to the project

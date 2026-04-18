@@ -1,0 +1,14 @@
+H&M – Clothing Search
+
+Website: https://www2.hm.com
+Task: Search for clothing items and extract product info
+
+Parameters:
+  - search_query: item to search for (e.g., "winter jacket")
+  - max_results: maximum number of products to extract (default: 5)
+
+Fields to extract:
+  - product_name: name of the product
+  - price: product price
+  - color_options: available color options
+  - product_url: link to product page

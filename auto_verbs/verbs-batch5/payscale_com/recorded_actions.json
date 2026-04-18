@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 5473,
+    "type": "goto",
+    "url": "https://www.payscale.com/research/US/Job=Data_Scientist/Salary",
+    "description": "Navigate to PayScale salary page"
+  },
+  {
+    "timestamp": 5478,
+    "type": "extract",
+    "instruction": "Extract salary data",
+    "description": "Extracted salary data for Data Scientist",
+    "results": {
+      "avgSalary": "$103,382",
+      "rangeLow": "$73k",
+      "rangeHigh": "$145k",
+      "bonus": "$2k - $20k",
+      "totalPay": "$72k - $154k",
+      "numProfiles": "6,181",
+      "levels": [
+        {
+          "level": "Entry Level",
+          "direction": "-",
+          "percent": "14%"
+        },
+        {
+          "level": "Early Career",
+          "direction": "-",
+          "percent": "2%"
+        },
+        {
+          "level": "Mid Career",
+          "direction": "+",
+          "percent": "14%"
+        },
+        {
+          "level": "Late Career",
+          "direction": "+",
+          "percent": "22%"
+        },
+        {
+          "level": "Experienced",
+          "direction": "+",
+          "percent": "37%"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,14 @@
+Papers With Code (now Hugging Face Papers) – Trending Papers
+
+Website: https://paperswithcode.com (redirects to huggingface.co/papers/trending)
+Task: Extract trending papers
+
+Note: paperswithcode.com now redirects to Hugging Face. Search is not supported.
+      Script extracts trending papers from the landing page.
+
+Fields to extract:
+  - title: paper title
+  - authors: paper authors
+  - publication_date: publication date
+  - upvotes: number of upvotes
+  - github_stars: GitHub stars count

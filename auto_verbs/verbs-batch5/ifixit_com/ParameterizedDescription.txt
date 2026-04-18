@@ -1,0 +1,15 @@
+iFixit – Repair Guide Search
+
+Website: https://www.ifixit.com
+Task: Search for repair guides and extract guide info
+
+Parameters:
+  - search_query: repair guide to search for (e.g., "iPhone 15 battery replacement")
+  - max_results: maximum number of guides to extract (default: 3)
+
+Fields to extract:
+  - guide_title: title of the repair guide
+  - difficulty: difficulty level
+  - estimated_time: estimated time to complete
+  - num_steps: number of steps
+  - guide_url: link to the guide

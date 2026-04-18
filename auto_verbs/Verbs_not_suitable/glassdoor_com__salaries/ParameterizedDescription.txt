@@ -1,0 +1,14 @@
+Glassdoor.com – Salary Information Search
+
+Website: https://www.glassdoor.com
+Task: Search for salary information for a job title in a location
+
+Parameters:
+  - job_title: job title to search for (e.g., "Software Engineer")
+  - location: location for salary info (e.g., "San Francisco, CA")
+
+Fields to extract:
+  - median_base_salary: median base salary
+  - low_estimate: low salary estimate
+  - high_estimate: high salary estimate
+  - total_compensation: total compensation if available

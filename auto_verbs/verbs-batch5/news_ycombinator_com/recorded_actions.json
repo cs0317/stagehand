@@ -1,0 +1,96 @@
+[
+  {
+    "timestamp": 3228,
+    "type": "goto",
+    "url": "https://news.ycombinator.com",
+    "description": "Navigate to Hacker News front page"
+  },
+  {
+    "timestamp": 3232,
+    "type": "extract",
+    "instruction": "Extract top stories",
+    "description": "Extracted 10 stories",
+    "results": [
+      {
+        "title": "Claude Design",
+        "url": "https://www.anthropic.com/news/claude-design-anthropic-labs (anthropic.com)",
+        "points": "838 points",
+        "author": "meetpateltech",
+        "num_comments": "563 comments",
+        "time_posted": "10 hours ago"
+      },
+      {
+        "title": "A simplified model of Fil-C",
+        "url": "https://www.corsix.org/content/simplified-model-of-fil-c (corsix.org)",
+        "points": "110 points",
+        "author": "aw1621107",
+        "num_comments": "56 comments",
+        "time_posted": "4 hours ago"
+      },
+      {
+        "title": "All 12 moonwalkers had \"lunar hay fever\" from dust smelling like gunpowder (2018)",
+        "url": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/The_toxic_side_of_the_Moon (esa.int)",
+        "points": "227 points",
+        "author": "cybermango",
+        "num_comments": "131 comments",
+        "time_posted": "7 hours ago"
+      },
+      {
+        "title": "Landmark ancient-genome study shows surprise acceleration of human evolution",
+        "url": "https://www.nature.com/articles/d41586-026-01204-5 (nature.com)",
+        "points": "48 points",
+        "author": "unsuspecting",
+        "num_comments": "27 comments",
+        "time_posted": "3 hours ago"
+      },
+      {
+        "title": "Measuring Claude 4.7's tokenizer costs",
+        "url": "https://www.claudecodecamp.com/p/i-measured-claude-4-7-s-new-tokenizer-here-s-what-it-costs-you (claudecodecamp.com)",
+        "points": "538 points",
+        "author": "aray07",
+        "num_comments": "373 comments",
+        "time_posted": "10 hours ago"
+      },
+      {
+        "title": "Isaac Asimov: The Last Question (1956)",
+        "url": "https://hex.ooo/library/last_question.html (hex.ooo)",
+        "points": "619 points",
+        "author": "ColinWright",
+        "num_comments": "256 comments",
+        "time_posted": "13 hours ago"
+      },
+      {
+        "title": "Show HN: Smol machines – subsecond coldstart, portable virtual machines",
+        "url": "https://github.com/smol-machines/smolvm (github.com/smol-machines)",
+        "points": "221 points",
+        "author": "binsquare",
+        "num_comments": "89 comments",
+        "time_posted": "8 hours ago"
+      },
+      {
+        "title": "Are the costs of AI agents also rising exponentially? (2025)",
+        "url": "https://www.tobyord.com/writing/hourly-costs-for-ai-agents (tobyord.com)",
+        "points": "92 points",
+        "author": "louiereederson",
+        "num_comments": "11 comments",
+        "time_posted": "4 hours ago"
+      },
+      {
+        "title": "NASA Force",
+        "url": "https://nasaforce.gov/ (nasaforce.gov)",
+        "points": "230 points",
+        "author": "LorenDB",
+        "num_comments": "242 comments",
+        "time_posted": "9 hours ago"
+      },
+      {
+        "title": "Slop Cop",
+        "url": "https://awnist.com/slop-cop (awnist.com)",
+        "points": "79 points",
+        "author": "ericHosick",
+        "num_comments": "48 comments",
+        "time_posted": "8 hours ago"
+      }
+    ]
+  }
+]

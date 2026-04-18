@@ -1,0 +1,27 @@
+[
+  {
+    "timestamp": 3289,
+    "type": "goto",
+    "url": "https://www.timeanddate.com/worldclock/results.html?query=Tokyo",
+    "description": "Search for city"
+  },
+  {
+    "timestamp": 9082,
+    "type": "goto",
+    "url": "https://www.timeanddate.com/worldclock/japan/tokyo",
+    "description": "Navigate to city page"
+  },
+  {
+    "timestamp": 9296,
+    "type": "extract",
+    "instruction": "Extract time data",
+    "description": "Extracted time for Tokyo, Japan",
+    "results": {
+      "city_name": "Tokyo, Japan",
+      "current_time": "11:30:27 am",
+      "date": "Saturday, April 18, 2026",
+      "timezone_abbr": "JST",
+      "utc_offset": "UTC/GMT +9 hours"
+    }
+  }
+]

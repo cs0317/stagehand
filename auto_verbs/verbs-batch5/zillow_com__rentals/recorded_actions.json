@@ -1,0 +1,46 @@
+[
+  {
+    "timestamp": 10950,
+    "type": "goto",
+    "url": "https://www.zillow.com/austin-tx/rentals/?searchQueryState=%7B%22pagination%22%3A%7B%7D%2C%22isMapVisible%22%3Atrue%2C%22filterState%22%3A%7B%22price%22%3A%7B%22max%22%3A2000%7D%2C%22fr%22%3A%7B%22value%22%3Atrue%7D%2C%22fsba%22%3A%7B%22value%22%3Afalse%7D%2C%22fsbo%22%3A%7B%22value%22%3Afalse%7D%2C%22nc%22%3A%7B%22value%22%3Afalse%7D%2C%22cmsn%22%3A%7B%22value%22%3Afalse%7D%2C%22auc%22%3A%7B%22value%22%3Afalse%7D%2C%22fore%22%3A%7B%22value%22%3Afalse%7D%7D%7D",
+    "description": "Navigate to Zillow rentals"
+  },
+  {
+    "timestamp": 10957,
+    "type": "extract",
+    "instruction": "Extract rental listings",
+    "description": "Extracted 5 listings",
+    "results": [
+      {
+        "address": "Ryder Ridge | 9351 Decker Lake Rd, Austin, TX",
+        "monthly_rent": "$1,355+",
+        "bedrooms": "1 bd",
+        "listing_url": "https://www.zillow.com/apartments/austin-tx/ryder-ridge/Cgw53g/"
+      },
+      {
+        "address": "Ascend at Pioneer Hill | 1701 Daleside Ln, Austin, TX",
+        "monthly_rent": "$1,361+",
+        "bedrooms": "1 bd",
+        "listing_url": "https://www.zillow.com/apartments/austin-tx/ascend-at-pioneer-hill/CmWCqz/"
+      },
+      {
+        "address": "Overture Domain 55+ Apartment Homes | 3100 Kramer Ln, Austin, TX",
+        "monthly_rent": "$1,879+",
+        "bedrooms": "1 bd",
+        "listing_url": "https://www.zillow.com/apartments/austin-tx/overture-domain-55+-apartment-homes/CkCYFh/"
+      },
+      {
+        "address": "The Janis | 3500 E Parmer Ln, Austin, TX",
+        "monthly_rent": "$1,524+",
+        "bedrooms": "1 bd",
+        "listing_url": "https://www.zillow.com/apartments/austin-tx/the-janis/CqW86G/"
+      },
+      {
+        "address": "Alexan Riverside | 1400 Royal Crest Dr, Austin, TX",
+        "monthly_rent": "$1,551+",
+        "bedrooms": "Studio",
+        "listing_url": "https://www.zillow.com/apartments/austin-tx/alexan-riverside/CkBPyf/"
+      }
+    ]
+  }
+]

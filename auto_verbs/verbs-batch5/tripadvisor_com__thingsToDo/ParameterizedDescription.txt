@@ -1,0 +1,13 @@
+TripAdvisor – Things to Do
+
+Website: https://www.tripadvisor.com
+Task: Search for things to do in a city
+
+Parameters:
+  - city: city name (e.g., "Barcelona, Spain")
+
+Fields to extract:
+  - name: attraction/activity name
+  - rating: rating score
+  - num_reviews: number of reviews
+  - category: category

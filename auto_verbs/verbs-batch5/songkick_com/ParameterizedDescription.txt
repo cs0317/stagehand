@@ -1,0 +1,12 @@
+Songkick – Upcoming Concerts by City
+
+Website: https://www.songkick.com
+Task: Search for upcoming concerts in a city
+
+Parameters:
+  - city: city name (e.g., "Los Angeles")
+
+Fields to extract:
+  - artist_name: artist or event name
+  - venue: concert venue
+  - date: event date

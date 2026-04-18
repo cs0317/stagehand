@@ -1,0 +1,14 @@
+Slickdeals – Search Deals
+
+Website: https://slickdeals.net
+Task: Search for deals on a product
+
+Parameters:
+  - query: search term (e.g., "headphones")
+
+Fields to extract:
+  - deal_title: deal title
+  - price: deal price
+  - original_price: original/list price
+  - store_name: retailer name
+  - thumbs_up: number of thumbs up votes

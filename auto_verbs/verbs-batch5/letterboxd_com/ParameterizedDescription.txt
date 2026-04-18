@@ -1,0 +1,14 @@
+Letterboxd – Film Search
+
+Website: https://letterboxd.com
+Task: Search for a film and extract info with popular reviews
+
+Parameters:
+  - film_title: film to search for (e.g., "Parasite")
+
+Fields to extract:
+  - film_title: title of the film
+  - year: release year
+  - director: director name
+  - average_rating: average rating
+  - reviews: list of up to 5 popular reviews with reviewer_name, rating, review_snippet

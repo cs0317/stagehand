@@ -1,0 +1,12 @@
+Verb: cdc_gov_search
+Website: https://www.cdc.gov
+Task: Search for health information and extract results
+
+Parameters:
+  - search_query (str): The health topic to search for (e.g., "flu vaccination")
+  - max_results (int): Maximum number of results to return (default: 5)
+
+Output Fields:
+  - page_title (str): Title of the result page
+  - summary (str): Brief description or summary of the result
+  - url (str): URL of the result page

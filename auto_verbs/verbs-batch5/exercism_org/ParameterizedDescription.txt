@@ -1,0 +1,13 @@
+Exercism.org – Python Track Exercises
+
+Website: https://exercism.org
+Task: Browse the Python track exercises and extract exercise info
+
+Parameters:
+  - track: programming language track (e.g., "python")
+  - max_results: maximum number of exercises to extract (default: 10)
+
+Fields to extract:
+  - exercise_name: name of the exercise
+  - difficulty: difficulty level / exercise type (Tutorial, Learning, Easy, Medium, Hard)
+  - description: blurb describing the exercise

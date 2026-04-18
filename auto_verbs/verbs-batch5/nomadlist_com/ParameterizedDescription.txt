@@ -1,0 +1,12 @@
+NomadList – Top Cities
+
+Website: https://nomadlist.com
+Task: Browse top-ranked cities for digital nomads
+
+Fields to extract:
+  - city_name: name of the city
+  - country: country name
+  - overall_score: overall score
+  - internet_speed: internet speed
+  - cost_per_month: monthly cost
+  - temperature: temperature

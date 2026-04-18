@@ -1,0 +1,51 @@
+[
+  {
+    "timestamp": 7109,
+    "type": "goto",
+    "url": "https://www.kaggle.com/datasets?search=climate+change",
+    "description": "Search Kaggle for \"climate change\" datasets"
+  },
+  {
+    "timestamp": 7113,
+    "type": "extract",
+    "instruction": "Extract dataset cards",
+    "description": "Extracted 5 datasets",
+    "results": [
+      {
+        "title": "Climate change Indicators",
+        "author": "Tarun Mugesh",
+        "file_size": "35 kB",
+        "downloads": "19.8K",
+        "usability_rating": "10.0"
+      },
+      {
+        "title": "Climate Change: Earth Surface Temperature Data",
+        "author": "Berkeley Earth",
+        "file_size": "89 MB",
+        "downloads": "181K",
+        "usability_rating": "7.6"
+      },
+      {
+        "title": "Twitter Climate Change Sentiment Dataset",
+        "author": "Edward Qian",
+        "file_size": "3 MB",
+        "downloads": "7,127",
+        "usability_rating": "10.0"
+      },
+      {
+        "title": "Temperature change",
+        "author": "Sevgi SY",
+        "file_size": "4 MB",
+        "downloads": "33.2K",
+        "usability_rating": "10.0"
+      },
+      {
+        "title": "climate change",
+        "author": "ai1776",
+        "file_size": "9 kB",
+        "downloads": "6,502",
+        "usability_rating": "5.3"
+      }
+    ]
+  }
+]

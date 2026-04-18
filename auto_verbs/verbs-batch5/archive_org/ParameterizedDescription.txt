@@ -1,0 +1,11 @@
+Search archive.org for items matching a given query in a specified collection.
+Extract up to {max_results} results with:
+  - title
+  - creator/author
+  - date published
+  - views/downloads
+
+Parameters:
+  search_query: str   (e.g. "history of computing")
+  collection: str     (e.g. "texts")
+  max_results: int    (e.g. 5)

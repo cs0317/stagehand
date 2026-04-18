@@ -1,0 +1,11 @@
+Search boardgamegeek.com for board games matching a given query.
+Extract up to {max_results} results with:
+  - game name
+  - year published
+  - geek rating
+  - average rating
+  - number of voters
+
+Parameters:
+  search_query: str   (e.g. "cooperative")
+  max_results: int    (e.g. 5)

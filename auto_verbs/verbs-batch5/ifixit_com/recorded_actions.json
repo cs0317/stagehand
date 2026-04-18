@@ -1,0 +1,37 @@
+[
+  {
+    "timestamp": 5619,
+    "type": "goto",
+    "url": "https://www.ifixit.com/Search?query=iPhone%2015%20battery%20replacement",
+    "description": "Search iFixit for \"iPhone 15 battery replacement\""
+  },
+  {
+    "timestamp": 16544,
+    "type": "extract",
+    "instruction": "Extract iFixit repair guides",
+    "description": "Extracted 3 guides with metadata",
+    "results": [
+      {
+        "title": "iPhone 15 Pro Battery Replacement",
+        "url": "https://www.ifixit.com/Guide/iPhone+15+Pro+Battery+Replacement/166394",
+        "difficulty": "Moderate",
+        "time": "1 - 2 hours",
+        "numSteps": 34
+      },
+      {
+        "title": "iPhone 15 Battery Replacement",
+        "url": "https://www.ifixit.com/Guide/iPhone+15+Battery+Replacement/165733",
+        "difficulty": "Moderate",
+        "time": "1 - 2 hours",
+        "numSteps": 60
+      },
+      {
+        "title": "iPhone 15 Plus Battery Replacement",
+        "url": "https://www.ifixit.com/Guide/iPhone+15+Plus+Battery+Replacement/166864",
+        "difficulty": "Moderate",
+        "time": "1 - 2 hours",
+        "numSteps": 19
+      }
+    ]
+  }
+]

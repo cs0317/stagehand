@@ -1,0 +1,11 @@
+Ranker – Search for Ranked Lists
+
+Website: https://www.ranker.com
+Task: Search for lists and extract ranked items
+
+Parameters:
+  - query: search term (e.g., "best sci-fi movies")
+
+Fields to extract:
+  - list_title: title of the top list result
+  - items: up to 10 ranked items with rank, item_name, votes

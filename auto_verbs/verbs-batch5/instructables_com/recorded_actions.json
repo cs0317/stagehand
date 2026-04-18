@@ -1,0 +1,51 @@
+[
+  {
+    "timestamp": 5910,
+    "type": "goto",
+    "url": "https://www.instructables.com/search/?q=LED+lamp&projects=all",
+    "description": "Search Instructables for \"LED lamp\""
+  },
+  {
+    "timestamp": 5914,
+    "type": "extract",
+    "instruction": "Extract DIY project cards",
+    "description": "Extracted 5 projects",
+    "results": [
+      {
+        "project_title": "Led Lamp",
+        "author": "esposito",
+        "views": "17K",
+        "favorites": "32",
+        "project_url": "https://www.instructables.com/Led_Lamp"
+      },
+      {
+        "project_title": "LED lamp",
+        "author": "BOOJAN",
+        "views": "8.2K",
+        "favorites": "16",
+        "project_url": "https://www.instructables.com/LED-lamp"
+      },
+      {
+        "project_title": "led lamp",
+        "author": "zekabmf",
+        "views": "5.7K",
+        "favorites": "30",
+        "project_url": "https://www.instructables.com/led-lamp-3"
+      },
+      {
+        "project_title": "Led Lamp",
+        "author": "PinoS",
+        "views": "1.9K",
+        "favorites": "45",
+        "project_url": "https://www.instructables.com/Led-Lamp-5"
+      },
+      {
+        "project_title": "Led Lamp",
+        "author": "maxs8642",
+        "views": "492",
+        "favorites": "0",
+        "project_url": "https://www.instructables.com/Led-Lamp-6"
+      }
+    ]
+  }
+]

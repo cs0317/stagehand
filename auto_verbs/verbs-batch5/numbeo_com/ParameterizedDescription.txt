@@ -1,0 +1,14 @@
+Numbeo – Cost of Living Comparison
+
+Website: https://www.numbeo.com
+Task: Compare cost of living between two cities
+
+Parameters:
+  - city1: first city (e.g., "New York, NY")
+  - city2: second city (e.g., "London, United Kingdom")
+
+Fields to extract:
+  - rent_index: rent index for each city
+  - groceries_index: groceries index for each city
+  - restaurant_index: restaurant price index for each city
+  - overall_index: overall cost of living index for each city

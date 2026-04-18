@@ -1,0 +1,51 @@
+[
+  {
+    "timestamp": 10747,
+    "type": "goto",
+    "url": "https://www.dice.com/jobs?q=machine%20learning%20engineer",
+    "description": "Search Dice for \"machine learning engineer\""
+  },
+  {
+    "timestamp": 10751,
+    "type": "extract",
+    "instruction": "Extract job listings",
+    "description": "Extracted 5 jobs",
+    "results": [
+      {
+        "jobTitle": "AI/ML Engineer.",
+        "companyName": "Healthcare Triangle Inc",
+        "location": "Dallas, Texas",
+        "postedDate": "Today",
+        "salary": "Depends on Experience"
+      },
+      {
+        "jobTitle": "Staff Machine Learning Engineer",
+        "companyName": "Oscar Technology",
+        "location": "Austin, Texas",
+        "postedDate": "Today",
+        "salary": "$205000 - $250000 per annum"
+      },
+      {
+        "jobTitle": "Senior Machine Learning Engineer/ Applied Research",
+        "companyName": "Oscar Technology",
+        "location": "Palo Alto, California",
+        "postedDate": "Today",
+        "salary": "$230000 - $250000 per annum"
+      },
+      {
+        "jobTitle": "Machine Learning Engineer",
+        "companyName": "Randstad Digital",
+        "location": "Smithfield, Rhode Island",
+        "postedDate": "Today",
+        "salary": "Not listed"
+      },
+      {
+        "jobTitle": "Sr. Machine Learning Engineer FULL-TIME",
+        "companyName": "SANS",
+        "location": "Hybrid in New York, New York",
+        "postedDate": "11d ago",
+        "salary": "$170,000 - $200,000"
+      }
+    ]
+  }
+]

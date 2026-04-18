@@ -1,0 +1,12 @@
+Hacker News – Top Stories
+
+Website: https://news.ycombinator.com
+Task: Navigate to front page and extract top stories
+
+Fields to extract:
+  - title: story title
+  - url: story URL/domain
+  - points: number of points
+  - author: author username
+  - num_comments: number of comments
+  - time_posted: time posted

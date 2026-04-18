@@ -1,0 +1,11 @@
+Search capterra.com for software matching a given category.
+Extract up to {max_results} products with:
+  - product name
+  - overall rating
+  - number of reviews
+  - key feature
+  - description
+
+Parameters:
+  category_slug: str   (e.g. "project-management-software")
+  max_results: int     (e.g. 5)

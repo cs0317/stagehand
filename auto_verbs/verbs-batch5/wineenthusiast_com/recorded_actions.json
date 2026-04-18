@@ -1,0 +1,56 @@
+[
+  {
+    "timestamp": 8393,
+    "type": "goto",
+    "url": "https://www.winemag.com/?s=Pinot%20Noir%20Oregon&search_type=ratings",
+    "description": "Search Wine Enthusiast"
+  },
+  {
+    "timestamp": 8397,
+    "type": "extract",
+    "instruction": "Extract wine reviews",
+    "description": "Extracted 5 wines",
+    "results": [
+      {
+        "wine_name": "Greenwing 2024 Pinot Noir (Oregon)",
+        "winery": "Greenwing",
+        "vintage": "2024",
+        "rating": "88 Points",
+        "price": "$20.00",
+        "tasting_notes": "The light-bodied Greenwing opens up with rich, almost boozy aromas of blueberries, black cherries and a trace of caramel. The Pino..."
+      },
+      {
+        "wine_name": "Rascal 2023 Pinot Noir (Oregon)",
+        "winery": "Rascal",
+        "vintage": "2023",
+        "rating": "86 Points",
+        "price": "$15.00",
+        "tasting_notes": "Rascal's raspberry aroma reminds me of a popsicle, with the wooden stick. It also has light touches of pipe tobacco and lemon peel..."
+      },
+      {
+        "wine_name": "Primarius 2023 Pinot Noir (Oregon)",
+        "winery": "Primarius",
+        "vintage": "2023",
+        "rating": "89 Points",
+        "price": "$15.00",
+        "tasting_notes": "This rich Pinot Noir possesses a perfume-like aromatic set of sweet raspberries and a lavender sachet hidden away in a chest of ce..."
+      },
+      {
+        "wine_name": "Larkspur 2023 Pinot Noir (Oregon)",
+        "winery": "Larkspur",
+        "vintage": "2023",
+        "rating": "90 Points",
+        "price": "$20.00",
+        "tasting_notes": "The wine's blackberry aroma is so sweet, you half expect to be buzzed by bees. That ripe fruit is joined by aromas of orange zest ..."
+      },
+      {
+        "wine_name": "Acrobat 2023 Pinot Noir (Oregon)",
+        "winery": "Acrobat",
+        "vintage": "2023",
+        "rating": "90 Points",
+        "price": "$24.00",
+        "tasting_notes": "With restrained alcohol and boisterous acidity, the Acrobat is aptly named as it flies across the palate with the greatest of ease..."
+      }
+    ]
+  }
+]

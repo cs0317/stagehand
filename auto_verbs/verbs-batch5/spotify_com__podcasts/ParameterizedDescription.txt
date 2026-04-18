@@ -1,0 +1,13 @@
+Spotify – Search Podcasts
+
+Website: https://open.spotify.com
+Task: Search for podcasts by topic
+
+Parameters:
+  - query: search term (e.g., "true crime")
+
+Fields to extract:
+  - podcast_name: podcast title
+  - publisher: publisher name
+  - description: podcast description
+  - rating: rating (e.g., "4.7")

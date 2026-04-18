@@ -1,0 +1,51 @@
+[
+  {
+    "timestamp": 8795,
+    "type": "goto",
+    "url": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=cooperative",
+    "description": "Search BGG for \"cooperative\""
+  },
+  {
+    "timestamp": 8800,
+    "type": "extract",
+    "instruction": "Extract games from search results table",
+    "description": "Extracted 5 games from collection_table",
+    "results": [
+      {
+        "gameName": "Viticulture World: Cooperative Expansion",
+        "year": "2022",
+        "geekRating": "6.446",
+        "avgRating": "7.63",
+        "numVoters": "1915"
+      },
+      {
+        "gameName": "The Dresden Files Cooperative Card Game",
+        "year": "2017",
+        "geekRating": "6.138",
+        "avgRating": "6.99",
+        "numVoters": "1943"
+      },
+      {
+        "gameName": "Mint Cooperative",
+        "year": "2020",
+        "geekRating": "5.622",
+        "avgRating": "6.02",
+        "numVoters": "840"
+      },
+      {
+        "gameName": "The Lost Expedition: The Lost World – Cooperative Promo",
+        "year": "2017",
+        "geekRating": "5.602",
+        "avgRating": "7.50",
+        "numVoters": "130"
+      },
+      {
+        "gameName": "Save The World: A Cooperative Environmental Game",
+        "year": "1980",
+        "geekRating": "N/A",
+        "avgRating": "5.50",
+        "numVoters": "3"
+      }
+    ]
+  }
+]

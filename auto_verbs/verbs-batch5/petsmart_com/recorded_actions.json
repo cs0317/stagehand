@@ -1,0 +1,51 @@
+[
+  {
+    "timestamp": 10726,
+    "type": "goto",
+    "url": "https://www.petsmart.com/search/?q=dog+food+grain+free",
+    "description": "Navigate to PetSmart search"
+  },
+  {
+    "timestamp": 10730,
+    "type": "extract",
+    "instruction": "Extract product results",
+    "description": "Extracted 5 products",
+    "results": [
+      {
+        "product_name": "Purina® Pro Plan Complete Essentials Adult Wet Dog Food - Grain Free, Turkey & Sweet Potato, 13 oz",
+        "brand": "Purina",
+        "price": "$2.89",
+        "rating": "4.7/5",
+        "num_reviews": "344"
+      },
+      {
+        "product_name": "Natural Balance Limited Ingredient Diet Adult Dry Dog Food - Grain Free, Sweet Potato & Venison",
+        "brand": "",
+        "price": "$27.98",
+        "rating": "4.4/5",
+        "num_reviews": "383"
+      },
+      {
+        "product_name": "Blue Buffalo® Basics™ Skin & Stomach Care Adult Dog Dry Food - Grain Free, Salmon & Potato",
+        "brand": "Blue Buffalo",
+        "price": "$22.99",
+        "rating": "4.7/5",
+        "num_reviews": "392"
+      },
+      {
+        "product_name": "Blue Buffalo® Basics™ Skin & Stomach Care Adult Dog Dry Food - Grain Free, Turkey & Potato",
+        "brand": "Blue Buffalo",
+        "price": "$20.99",
+        "rating": "4.7/5",
+        "num_reviews": "316"
+      },
+      {
+        "product_name": "Purina Pro Plan Complete Essentials Adult Wet Dog Food - Grain Free, Beef & Salmon, 13 oz",
+        "brand": "",
+        "price": "$2.89",
+        "rating": "4.6/5",
+        "num_reviews": "369"
+      }
+    ]
+  }
+]

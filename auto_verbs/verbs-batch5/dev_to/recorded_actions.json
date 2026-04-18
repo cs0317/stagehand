@@ -1,0 +1,51 @@
+[
+  {
+    "timestamp": 8541,
+    "type": "goto",
+    "url": "https://dev.to/search?q=React%20hooks",
+    "description": "Search dev.to for \"React hooks\""
+  },
+  {
+    "timestamp": 8545,
+    "type": "extract",
+    "instruction": "Extract articles",
+    "description": "Extracted 5 articles",
+    "results": [
+      {
+        "title": "React Hooks Performance: How to Avoid Unnecessary Re-renders",
+        "author": "reactuse.com",
+        "pubDate": "Mar 20",
+        "reactions": "5",
+        "comments": "0"
+      },
+      {
+        "title": "React Hooks Explained (Beginner-Friendly)",
+        "author": "Sospeter Mong'are",
+        "pubDate": "Feb 9",
+        "reactions": "1",
+        "comments": "0"
+      },
+      {
+        "title": "React Hooks and the Rules of Hooks – The Understanding That Finally Clicked for Me",
+        "author": "Usama",
+        "pubDate": "Jan 3",
+        "reactions": "3",
+        "comments": "0"
+      },
+      {
+        "title": "React Hooks - Part 1: useState",
+        "author": "Ethan Zhang",
+        "pubDate": "Dec 26",
+        "reactions": "0",
+        "comments": "0"
+      },
+      {
+        "title": "React Hooks - Part 1: useState",
+        "author": "Ethan Zhang",
+        "pubDate": "Dec 25",
+        "reactions": "0",
+        "comments": "0"
+      }
+    ]
+  }
+]

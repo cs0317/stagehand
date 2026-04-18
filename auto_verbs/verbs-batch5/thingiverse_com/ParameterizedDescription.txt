@@ -1,0 +1,13 @@
+Thingiverse – Search 3D Models
+
+Website: https://www.thingiverse.com
+Task: Search for 3D printable models
+
+Parameters:
+  - query: search term (e.g., "phone stand")
+
+Fields to extract:
+  - model_name: model name
+  - creator: creator username
+  - likes: number of likes
+  - model_url: model URL

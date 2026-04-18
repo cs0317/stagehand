@@ -1,0 +1,53 @@
+[
+  {
+    "timestamp": 5581,
+    "type": "goto",
+    "url": "https://alternativeto.net/software/adobe-photoshop/",
+    "description": "Navigate to alternativeto.net alternatives for Photoshop"
+  },
+  {
+    "timestamp": 5643,
+    "type": "extract",
+    "instruction": "Extract alternative software listings",
+    "description": "Extracted 5 alternatives via DOM queries",
+    "results": {
+      "alternatives": [
+        {
+          "name": "GIMP",
+          "description": "Free open-source suite offering advanced photo retouching, image composition, original artwork creation, batch processing, plugin support, custom scripting, mass image format conversion, and integrati",
+          "likes": "4757",
+          "platforms": "Mac, Windows, Linux, BSD, Snapcraft, Flathub",
+          "pricing": "Free / Open Source"
+        },
+        {
+          "name": "Krita",
+          "description": "Free, open-source painting software designed by artists for artists. Offers customizable UI, 9 brush engines, color management, tablet support, non-destructive editing, and privacy features. Portable ",
+          "likes": "1436",
+          "platforms": "Mac, Windows, Linux, Android Tablet, KDE Plasma, Epic Games Store",
+          "pricing": "Free / Open Source"
+        },
+        {
+          "name": "Paint.NET",
+          "description": "Free Windows image editor with support for layers, plugins, and special effects. Offers intuitive interface, works offline, ad-free, and portable, consuming fewer resources.\n\n165 Paint.NET alternative",
+          "likes": "1662",
+          "platforms": "Windows, .NET Framework",
+          "pricing": "Free / Proprietary"
+        },
+        {
+          "name": "Photopea",
+          "description": "Browser-based image editing supports PSD, XCF, Sketch formats, advanced layers, vector tools, RAW photo support, and exports in 40+ formats. Fully client-side with AI background removal, content-aware",
+          "likes": "348",
+          "platforms": "Online, Software as a Service (SaaS)",
+          "pricing": "Freemium / Proprietary"
+        },
+        {
+          "name": "Pixlr",
+          "description": "Web-based editor with AI image generation, quick fixes, overlays, intricate lighting and texture adjustments, customizable templates, advanced filters, support for layers, high-res export, and ad-free",
+          "likes": "367",
+          "platforms": "Windows, Online, Android, iPhone, Chrome OS, Android Tablet",
+          "pricing": "Freemium / Proprietary"
+        }
+      ]
+    }
+  }
+]

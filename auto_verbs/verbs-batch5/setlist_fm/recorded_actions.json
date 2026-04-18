@@ -1,0 +1,38 @@
+[
+  {
+    "timestamp": 5496,
+    "type": "goto",
+    "url": "https://www.setlist.fm/search?query=Taylor+Swift",
+    "description": "Search setlist.fm"
+  },
+  {
+    "timestamp": 15987,
+    "type": "goto",
+    "url": "https://www.setlist.fm/setlist/taylor-swift/2024/bc-place-stadium-vancouver-bc-canada-3baa40bc.html",
+    "description": "Navigate to setlist page"
+  },
+  {
+    "timestamp": 15989,
+    "type": "extract",
+    "instruction": "Extract setlist details",
+    "description": "Extracted 10 songs",
+    "results": {
+      "venue": "BC Place Stadium",
+      "city": "Vancouver, BC, Canada",
+      "date": "December 8, 2024",
+      "tour": "The Eras Tour",
+      "songs": [
+        "Miss Americana & the Heartbreak Prince",
+        "Cruel Summer",
+        "The Man",
+        "You Need to Calm Down",
+        "Lover",
+        "Fearless",
+        "You Belong With Me",
+        "Love Story",
+        "22",
+        "We Are Never Ever Getting Back Together"
+      ]
+    }
+  }
+]

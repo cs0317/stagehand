@@ -1,0 +1,14 @@
+Open Library – Search Books by Author
+
+Website: https://openlibrary.org
+Task: Search for books by a given author
+
+Parameters:
+  - author: author name (e.g., "Isaac Asimov")
+
+Fields to extract:
+  - title: book title
+  - author: book author
+  - first_publish_year: year first published
+  - num_editions: number of editions
+  - cover_image_url: URL of cover image

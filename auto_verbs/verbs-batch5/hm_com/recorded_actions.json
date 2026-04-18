@@ -1,0 +1,46 @@
+[
+  {
+    "timestamp": 9855,
+    "type": "goto",
+    "url": "https://www2.hm.com/en_us/search-results.html?q=winter%20jacket",
+    "description": "Search H&M for \"winter jacket\""
+  },
+  {
+    "timestamp": 9859,
+    "type": "extract",
+    "instruction": "Extract H&M product listings",
+    "description": "Extracted 5 products",
+    "results": [
+      {
+        "name": "Linen-Blend Jacket with Scarf Collar",
+        "price": "$59.99",
+        "colors": "1 color",
+        "url": "https://www2.hm.com/en_us/productpage.1329333001.html"
+      },
+      {
+        "name": "Short-Sleeved Jacket",
+        "price": "$49.99",
+        "colors": "1 color",
+        "url": "https://www2.hm.com/en_us/productpage.1323641003.html"
+      },
+      {
+        "name": "Linen-Blend Jacket",
+        "price": "$59.99",
+        "colors": "1 color",
+        "url": "https://www2.hm.com/en_us/productpage.1336927001.html"
+      },
+      {
+        "name": "Jacket",
+        "price": "$29.99",
+        "colors": "1 color",
+        "url": "https://www2.hm.com/en_us/productpage.0718908018.html"
+      },
+      {
+        "name": "Denim Jacket",
+        "price": "$29.99",
+        "colors": "2+ colors",
+        "url": "https://www2.hm.com/en_us/productpage.1260993011.html"
+      }
+    ]
+  }
+]

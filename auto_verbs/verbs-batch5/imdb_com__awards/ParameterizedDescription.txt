@@ -1,0 +1,12 @@
+IMDb – Academy Awards (Oscars)
+
+Website: https://www.imdb.com
+Task: Extract award categories and winners from the most recent Oscar ceremony
+
+Parameters:
+  - max_results: maximum number of award categories to extract (default: 5)
+
+Fields to extract:
+  - category_name: name of the award category
+  - winner_name: name of the winner
+  - film_title: title of the film/show

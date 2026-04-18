@@ -1,0 +1,51 @@
+[
+  {
+    "timestamp": 7201,
+    "type": "goto",
+    "url": "https://slickdeals.net/newsearch.php?q=headphones&searcharea=deals&searchin=first",
+    "description": "Search slickdeals"
+  },
+  {
+    "timestamp": 7217,
+    "type": "extract",
+    "instruction": "Extract deal cards",
+    "description": "Extracted 5 deals",
+    "results": [
+      {
+        "title": "$4.99: Philips K2000 Lightweight On-Ear Wired Kids Headphones(Pink/Blue) at Woot!",
+        "price": "$4.99",
+        "original_price": "$25",
+        "store": "Woot!",
+        "thumbs_up": "+9"
+      },
+      {
+        "title": "$179.99 | Bose QuietComfort Wireless Noise Cancelling Headphones at Woot!",
+        "price": "$180",
+        "original_price": "",
+        "store": "Woot!",
+        "thumbs_up": "+2"
+      },
+      {
+        "title": "Golrex Active Noise Cancelling Wireless Earbuds Bluetooth Headphones Black $44.98",
+        "price": "$45",
+        "original_price": "$190",
+        "store": "Amazon",
+        "thumbs_up": "0"
+      },
+      {
+        "title": "$64.95 | JBL Tune 770NC ANC Wireless Headphones (Black) at Woot!",
+        "price": "$65",
+        "original_price": "$150",
+        "store": "Woot!",
+        "thumbs_up": "+3"
+      },
+      {
+        "title": "$197.05 | Sennheiser Consumer Audio Momentum 4 Wireless Headphones at Amazon",
+        "price": "$197",
+        "original_price": "$261",
+        "store": "Amazon",
+        "thumbs_up": "+2"
+      }
+    ]
+  }
+]

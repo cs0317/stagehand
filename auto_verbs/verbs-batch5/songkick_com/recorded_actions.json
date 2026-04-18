@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": 5795,
+    "type": "goto",
+    "url": "https://www.songkick.com/search?query=Los%20Angeles&type=cities",
+    "description": "Search songkick for city"
+  },
+  {
+    "timestamp": 11333,
+    "type": "goto",
+    "url": "https://www.songkick.com/metro-areas/17835-us-los-angeles-la",
+    "description": "Navigate to metro area"
+  },
+  {
+    "timestamp": 11335,
+    "type": "extract",
+    "instruction": "Extract concert events",
+    "description": "Extracted 5 events",
+    "results": [
+      {
+        "artist": "Open Melody 2026 Preparty 2026\nDeradoorian",
+        "venue": "Permanent Records Roadhouse",
+        "city": "Los Angeles (LA), CA, US",
+        "date": "Thursday 02 April 2026 – Sunday 03 May 2026"
+      },
+      {
+        "artist": "Lebanon Hanover and Soft Vein",
+        "venue": "The Vermont Hollywood",
+        "city": "Los Angeles (LA), CA, US",
+        "date": "Friday 17 April 2026"
+      },
+      {
+        "artist": "Mon Laferte",
+        "venue": "Club Legacy",
+        "city": "Los Angeles (LA), CA, US",
+        "date": "Friday 17 April 2026"
+      },
+      {
+        "artist": "J Boog",
+        "venue": "House of Blues - Old Location",
+        "city": "Anaheim, CA, US",
+        "date": "Friday 17 April 2026"
+      },
+      {
+        "artist": "KOTA The Friend",
+        "venue": "Blue Note Los Angeles",
+        "city": "Los Angeles (LA), CA, US",
+        "date": "Friday 17 April 2026"
+      }
+    ]
+  }
+]

@@ -1,0 +1,12 @@
+JustWatch – Streaming Availability Search
+
+Website: https://www.justwatch.com
+Task: Search for a movie and extract streaming availability
+
+Parameters:
+  - movie_title: movie to search for (e.g., "Inception")
+
+Fields to extract:
+  - service_name: streaming service name
+  - availability_type: type (stream, rent, buy)
+  - price: price if shown

@@ -1,0 +1,16 @@
+World Bank – Economic Indicator Lookup
+
+Website: https://data.worldbank.org
+Task: Look up economic indicators for a country
+
+Parameters:
+  - indicator: indicator name (e.g., "GDP per capita")
+  - country: country name (e.g., "Germany")
+  - countrySlug: URL slug (e.g., "germany")
+
+Fields to extract:
+  - country_name: country name
+  - indicator_name: full indicator name (e.g., "GDP per capita (current US$)")
+  - most_recent_value: most recent value
+  - year: year of most recent value
+  - related_indicators: other economic indicators with values and years

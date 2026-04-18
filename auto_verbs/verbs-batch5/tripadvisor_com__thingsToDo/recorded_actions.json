@@ -1,0 +1,46 @@
+[
+  {
+    "timestamp": 10269,
+    "type": "goto",
+    "url": "https://www.tripadvisor.com/Attractions-g187497-Activities-Barcelona_Catalonia.html",
+    "description": "Load TripAdvisor things to do"
+  },
+  {
+    "timestamp": 26879,
+    "type": "extract",
+    "instruction": "Extract top attractions",
+    "description": "Extracted 5 attractions",
+    "results": [
+      {
+        "name": "Basílica de la Sagrada Familia",
+        "rating": "4.7",
+        "num_reviews": "167,786",
+        "category": "Points of Interest & Landmarks"
+      },
+      {
+        "name": "Casa Batlló",
+        "rating": "4.6",
+        "num_reviews": "59,395",
+        "category": "Points of Interest & Landmarks"
+      },
+      {
+        "name": "Park Güell",
+        "rating": "4.2",
+        "num_reviews": "78,706",
+        "category": "Parks"
+      },
+      {
+        "name": "Gothic Quarter",
+        "rating": "4.6",
+        "num_reviews": "40,603",
+        "category": "Neighborhoods"
+      },
+      {
+        "name": "Mercat de la Boqueria",
+        "rating": "4.5",
+        "num_reviews": "27,242",
+        "category": "Farmers Markets"
+      }
+    ]
+  }
+]

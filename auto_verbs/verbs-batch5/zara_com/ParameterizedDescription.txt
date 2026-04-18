@@ -1,0 +1,12 @@
+Zara – Product Search
+
+Website: https://www.zara.com
+Task: Search for clothing products
+
+Parameters:
+  - query: search term (e.g., "denim jacket")
+
+Fields to extract:
+  - product_name: product name
+  - price: price
+  - product_url: link to product page

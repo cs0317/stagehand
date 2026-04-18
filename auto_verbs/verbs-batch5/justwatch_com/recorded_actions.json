@@ -1,0 +1,106 @@
+[
+  {
+    "timestamp": 5442,
+    "type": "goto",
+    "url": "https://www.justwatch.com/us/movie/inception",
+    "description": "Navigate to JustWatch for \"Inception\""
+  },
+  {
+    "timestamp": 5447,
+    "type": "extract",
+    "instruction": "Extract streaming offers",
+    "description": "Extracted 18 offers",
+    "results": [
+      {
+        "service_name": "HBO Max Amazon Channel",
+        "availability_type": "Stream",
+        "price": "$10.99 / month"
+      },
+      {
+        "service_name": "Amazon Video",
+        "availability_type": "Rent",
+        "price": "$4.99"
+      },
+      {
+        "service_name": "HBO Max",
+        "availability_type": "Stream",
+        "price": "$10.99 / month"
+      },
+      {
+        "service_name": "Plex",
+        "availability_type": "Rent",
+        "price": "$2.99"
+      },
+      {
+        "service_name": "Spectrum On Demand",
+        "availability_type": "Rent",
+        "price": "$3.99"
+      },
+      {
+        "service_name": "Apple TV Store",
+        "availability_type": "Rent",
+        "price": "$4.99"
+      },
+      {
+        "service_name": "Fandango At Home",
+        "availability_type": "Rent",
+        "price": "$4.99"
+      },
+      {
+        "service_name": "Amazon Video",
+        "availability_type": "Buy",
+        "price": "$9.99"
+      },
+      {
+        "service_name": "Apple TV Store",
+        "availability_type": "Buy",
+        "price": "$9.99"
+      },
+      {
+        "service_name": "Fandango At Home",
+        "availability_type": "Buy",
+        "price": "$14.99"
+      },
+      {
+        "service_name": "Barnes & Noble",
+        "availability_type": "Buy",
+        "price": "$4.99"
+      },
+      {
+        "service_name": "GRUV",
+        "availability_type": "Buy",
+        "price": "$7.49"
+      },
+      {
+        "service_name": "Amazon DVD / Blu-ray",
+        "availability_type": "Buy",
+        "price": "$18.96"
+      },
+      {
+        "service_name": "Amazon DVD / Blu-ray",
+        "availability_type": "Buy",
+        "price": "$4.55"
+      },
+      {
+        "service_name": "Barnes & Noble",
+        "availability_type": "Buy",
+        "price": "$14.99"
+      },
+      {
+        "service_name": "Amazon DVD / Blu-ray",
+        "availability_type": "Buy",
+        "price": "$16.99"
+      },
+      {
+        "service_name": "Barnes & Noble",
+        "availability_type": "Buy",
+        "price": "$24.49"
+      },
+      {
+        "service_name": "Zavvi",
+        "availability_type": "Buy",
+        "price": "$43.99"
+      }
+    ]
+  }
+]

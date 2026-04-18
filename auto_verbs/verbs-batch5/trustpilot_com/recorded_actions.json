@@ -1,0 +1,54 @@
+[
+  {
+    "timestamp": 5117,
+    "type": "goto",
+    "url": "https://www.trustpilot.com/search?query=Airbnb",
+    "description": "Search Trustpilot"
+  },
+  {
+    "timestamp": 13218,
+    "type": "goto",
+    "url": "https://www.trustpilot.com/review/www.airbnb.com",
+    "description": "Navigate to company page"
+  },
+  {
+    "timestamp": 13223,
+    "type": "extract",
+    "instruction": "Extract reviews",
+    "description": "Extracted 5 reviews",
+    "results": {
+      "summary": {
+        "company_name": "Airbnb",
+        "trust_score": "1.3",
+        "total_reviews": "16,790"
+      },
+      "reviews": [
+        {
+          "reviewer_name": "GuillermoMFdC",
+          "rating": "Rated 1 out of 5 stars",
+          "review_text": "Horrible experience We booked a house for 6 people in Barcelona for 3 nights with 5 rooms, great location, small terrace… we book it with month in adv..."
+        },
+        {
+          "reviewer_name": "Mrs Mundy",
+          "rating": "Rated 1 out of 5 stars",
+          "review_text": "I booked an Airbnb over a month ago for a place in Ireland. There are 7 of us going over for my 60th birthday and this place Duchas House in Newcastle..."
+        },
+        {
+          "reviewer_name": "IS",
+          "rating": "Rated 1 out of 5 stars",
+          "review_text": "Will honestly never use this app again. We are affected by the war in the Middle East and unable to travel there as a result. Airbnb and the host are ..."
+        },
+        {
+          "reviewer_name": "Liliana Rodriguez Panozo",
+          "rating": "Rated 1 out of 5 stars",
+          "review_text": "My host canceled my Airbnb reservation at the last minute, leaving me without accommodation just before my trip. This forced me to find a much more ex..."
+        },
+        {
+          "reviewer_name": "David Newbitt",
+          "rating": "Rated 1 out of 5 stars",
+          "review_text": "We booked a stay in Cyprus for 4 weeks, but left after 1 week. The villa was cold (it was January) with no working heating or nearby facilities (despi..."
+        }
+      ]
+    }
+  }
+]

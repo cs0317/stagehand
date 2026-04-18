@@ -1,0 +1,51 @@
+[
+  {
+    "timestamp": 19846,
+    "type": "goto",
+    "url": "https://archive.org/search?query=history+of+computing&and[]=mediatype%3A%22texts%22",
+    "description": "Search archive.org for \"history of computing\""
+  },
+  {
+    "timestamp": 19849,
+    "type": "extract",
+    "instruction": "Extract search results from shadow DOM",
+    "description": "Extracted 5 results via tile-dispatcher.model",
+    "results": [
+      {
+        "title": "The History Of Computing",
+        "creator": "Marguerite Zientara",
+        "datePublished": "1981-01-01T00:00:00.000Z",
+        "viewCount": 3028,
+        "identifier": "TheHistoryOfComputing"
+      },
+      {
+        "title": "A history of computing in the twentieth century : a collection of essays with introductory essay and indexes",
+        "creator": "International Research Conference on the History of Computing (1976 : Los Alamos Scientific Laboratory)",
+        "datePublished": "1980-01-01T00:00:00.000Z",
+        "viewCount": 611,
+        "identifier": "historyofcomputi0000inte"
+      },
+      {
+        "title": "Annals of the History of Computing 1990: Vol 12 Index",
+        "creator": "",
+        "datePublished": "1990-01-01T00:00:00.000Z",
+        "viewCount": 87,
+        "identifier": "sim_ieee-annals-of-the-history-of-computing_1990_12_index"
+      },
+      {
+        "title": "Annals of the History of Computing 1989: Vol 11 Index",
+        "creator": "",
+        "datePublished": "1989-01-01T00:00:00.000Z",
+        "viewCount": 92,
+        "identifier": "sim_ieee-annals-of-the-history-of-computing_1989_11_index"
+      },
+      {
+        "title": "Annals of the History of Computing 1990: Vol 12 Table of Contents",
+        "creator": "",
+        "datePublished": "1990-01-01T00:00:00.000Z",
+        "viewCount": 85,
+        "identifier": "sim_ieee-annals-of-the-history-of-computing_1990_12_contents"
+      }
+    ]
+  }
+]

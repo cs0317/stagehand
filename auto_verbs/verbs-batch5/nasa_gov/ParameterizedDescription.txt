@@ -1,0 +1,13 @@
+NASA – Article Search
+
+Website: https://www.nasa.gov
+Task: Search for articles and extract results
+
+Parameters:
+  - query: search term (e.g., "Mars rover")
+
+Fields to extract:
+  - title: article title
+  - publication_date: publication date
+  - summary: article summary
+  - article_url: URL of the article

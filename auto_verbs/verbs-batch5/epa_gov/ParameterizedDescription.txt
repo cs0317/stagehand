@@ -1,0 +1,13 @@
+EPA.gov – Environmental Information Search
+
+Website: https://www.epa.gov
+Task: Search for environmental/regulatory info and extract results
+
+Parameters:
+  - search_query: text to search for (e.g., "air quality standards")
+  - max_results: maximum number of results to extract (default: 5)
+
+Fields to extract:
+  - page_title: title of the result page
+  - summary: description/snippet of the result
+  - url: link to the result page

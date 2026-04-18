@@ -1,0 +1,46 @@
+[
+  {
+    "timestamp": 5354,
+    "type": "goto",
+    "url": "https://www.freecodecamp.org/news/search/?query=Python%20web%20scraping",
+    "description": "Search freeCodeCamp for \"Python web scraping\""
+  },
+  {
+    "timestamp": 5358,
+    "type": "extract",
+    "instruction": "Extract freeCodeCamp articles",
+    "description": "Extracted 5 articles",
+    "results": [
+      {
+        "title": "Learn Web Scraping with Python and Beautiful Soup in Spanish – Course for Beginners",
+        "author": "Estefania Cassingena Navone",
+        "date": "August 14, 2023",
+        "tags": ""
+      },
+      {
+        "title": "Use Scrapy for Web Scraping in Python",
+        "author": "Beau Carnes",
+        "date": "April 27, 2023",
+        "tags": "#Python"
+      },
+      {
+        "title": "Web Scraping in Python – How to Scrape Sci-Fi Movies from IMDB",
+        "author": "freeCodeCamp",
+        "date": "August 9, 2022",
+        "tags": "#Python"
+      },
+      {
+        "title": "Web Scraping with Python – How to Scrape Data from Twitter using Tweepy and Snscrape",
+        "author": "Ibrahim ogunbiyi",
+        "date": "July 12, 2022",
+        "tags": "#Python"
+      },
+      {
+        "title": "Python Web Scraping Tutorial – How to Scrape Data From Any Website with Python",
+        "author": "freeCodeCamp",
+        "date": "August 10, 2021",
+        "tags": "#Python"
+      }
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+We Work Remotely – Remote Job Search
+
+Website: https://weworkremotely.com
+Task: Search for remote jobs
+
+Parameters:
+  - query: search term (e.g., "backend developer")
+
+Fields to extract:
+  - job_title: job title
+  - company_name: company name
+  - job_type: job type (full-time/contract)
+  - region: region
+  - posting_date: posting date

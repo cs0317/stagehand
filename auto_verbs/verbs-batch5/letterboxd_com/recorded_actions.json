@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 5875,
+    "type": "goto",
+    "url": "https://letterboxd.com/film/parasite-2019/",
+    "description": "Navigate to Letterboxd film page for \"Parasite\""
+  },
+  {
+    "timestamp": 5886,
+    "type": "extract",
+    "instruction": "Extract film info and popular reviews",
+    "description": "Extracted film info and 5 reviews",
+    "results": {
+      "filmInfo": {
+        "title": "Parasite",
+        "year": "2019",
+        "director": "Bong Joon Ho",
+        "avgRating": "4.53"
+      },
+      "reviews": [
+        {
+          "reviewer_name": "Philbert Dy",
+          "rating": "★★★★★",
+          "review_snippet": "Update: Now in video form"
+        },
+        {
+          "reviewer_name": "hollie amanda",
+          "rating": "★★★★★",
+          "review_snippet": "call me by your name’s cum peach walked so parasite’s killer peach could run"
+        },
+        {
+          "reviewer_name": "Matt Singer",
+          "rating": "",
+          "review_snippet": "Another Bong hit."
+        },
+        {
+          "reviewer_name": "Karsten",
+          "rating": "★★★★★",
+          "review_snippet": "Our expectations were high but HOLY FUCK"
+        },
+        {
+          "reviewer_name": "clementine",
+          "rating": "★★★★★",
+          "review_snippet": "a question to people who rate this 4.5: what more do you want literally what more do you want"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "timestamp": 5891,
+    "type": "goto",
+    "url": "https://www.imdb.com/event/ev0000003/",
+    "description": "Navigate to IMDb Oscars page"
+  },
+  {
+    "timestamp": 6276,
+    "type": "extract",
+    "instruction": "Extract Oscar categories and winners",
+    "description": "Extracted 5 categories",
+    "results": [
+      {
+        "category_name": "Best Motion Picture of the Year",
+        "winner_name": "Adam Somner",
+        "film_title": "One Battle After Another"
+      },
+      {
+        "category_name": "Best Performance by an Actor in a Leading Role",
+        "winner_name": "Michael B. Jordan",
+        "film_title": "Sinners"
+      },
+      {
+        "category_name": "Best Performance by an Actress in a Leading Role",
+        "winner_name": "Jessie Buckley",
+        "film_title": "Hamnet"
+      },
+      {
+        "category_name": "Best Performance by an Actor in a Supporting Role",
+        "winner_name": "Sean Penn",
+        "film_title": "One Battle After Another"
+      },
+      {
+        "category_name": "Best Performance by an Actress in a Supporting Role",
+        "winner_name": "Amy Madigan",
+        "film_title": "Weapons"
+      }
+    ]
+  }
+]

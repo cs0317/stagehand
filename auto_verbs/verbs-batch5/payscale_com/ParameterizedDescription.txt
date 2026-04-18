@@ -1,0 +1,13 @@
+PayScale – Salary Data
+
+Website: https://www.payscale.com
+Task: Search for salary data for a job title
+
+Parameters:
+  - job_title: job title (e.g., "Data Scientist")
+
+Fields to extract:
+  - average_salary: average salary
+  - salary_range_low: low end of salary range
+  - salary_range_high: high end of salary range
+  - top_skills: top-paying skills if shown

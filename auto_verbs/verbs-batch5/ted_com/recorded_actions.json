@@ -1,0 +1,41 @@
+[
+  {
+    "timestamp": 5846,
+    "type": "goto",
+    "url": "https://www.ted.com/talks?q=artificial%20intelligence",
+    "description": "Search TED talks"
+  },
+  {
+    "timestamp": 5863,
+    "type": "extract",
+    "instruction": "Extract TED talks",
+    "description": "Extracted 5 talks",
+    "results": [
+      {
+        "duration": "17:32",
+        "title": "How I created OpenClaw, the breakthrough AI agent",
+        "speaker": "PETER STEINBERGER"
+      },
+      {
+        "duration": "28:36",
+        "title": "What to do when you’re told there’s nothing left to try",
+        "speaker": "DAVID FAJGENBAUM AND KIAH WILLIAMS"
+      },
+      {
+        "duration": "07:39",
+        "title": "What ancestral intelligence can teach us about AI",
+        "speaker": "NANJIRA SAMBULI"
+      },
+      {
+        "duration": "15:57",
+        "title": "How competition is stifling AI breakthroughs",
+        "speaker": "LLION JONES"
+      },
+      {
+        "duration": "10:55",
+        "title": "This is how kids should be learning with AI",
+        "speaker": "PRIYA LAKHANI"
+      }
+    ]
+  }
+]

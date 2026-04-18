@@ -1,0 +1,15 @@
+Wine Enthusiast – Wine Reviews
+
+Website: https://www.winemag.com
+Task: Search for wine reviews
+
+Parameters:
+  - query: search term (e.g., "Pinot Noir Oregon")
+
+Fields to extract:
+  - wine_name: wine name
+  - winery: winery
+  - vintage: vintage year
+  - rating: rating (points)
+  - price: price
+  - tasting_notes: tasting notes
