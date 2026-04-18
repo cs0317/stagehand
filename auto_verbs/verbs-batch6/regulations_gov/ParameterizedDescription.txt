@@ -1,0 +1,7 @@
+Regulations.gov Federal Regulation Search
+
+Searches for federal regulations on Regulations.gov
+using Google site search. Returns regulation titles and URLs
+matching the policy query.
+
+Default query: "environmental protection clean water"

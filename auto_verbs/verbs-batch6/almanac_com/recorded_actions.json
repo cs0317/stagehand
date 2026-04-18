@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": 3820,
+    "type": "goto",
+    "url": "https://www.almanac.com",
+    "description": "Navigate to Almanac"
+  },
+  {
+    "timestamp": 15684,
+    "type": "act",
+    "description": "Search for plant"
+  },
+  {
+    "timestamp": 25052,
+    "type": "act",
+    "description": "Click plant result"
+  },
+  {
+    "timestamp": 29172,
+    "type": "extract",
+    "instruction": "Extract planting guide",
+    "results": {
+      "extraction": "tomatoes"
+    }
+  }
+]

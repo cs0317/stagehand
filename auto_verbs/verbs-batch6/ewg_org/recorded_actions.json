@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 5341,
+    "type": "goto",
+    "url": "https://www.ewg.org/skindeep/search/?search=sunscreen",
+    "description": "Search EWG Skin Deep"
+  },
+  {
+    "timestamp": 10497,
+    "type": "extract",
+    "instruction": "Extract products",
+    "results": {
+      "extraction": "Product 1:\nName: Sheer Zinc Fragrance Free Mineral Sunscreen Lotion, SPF 30\nBrand: BABO BOTANICALS\nEWG hazard score: EWG VERIFIED\nKey concerns: \n\nProduct 2:\nName: Sunly Mineral Sunscreen Lotion, Orange Blossom, SPF 30\nBrand: ATTITUDE\nEWG hazard score: EWG VERIFIED\nKey concerns: \n\nProduct 3:\nName: Sport Sunscreen Lotion, Tinted, SPF 30\nBrand: STREAM2SEA\nEWG hazard score: EWG VERIFIED\nKey concerns: \n\nProduct 4:\nName: EcoStick Sport Sunscreen Stick, SPF 35+\nBrand: STREAM2SEA\nEWG hazard score: EWG VERIFIED\nKey concerns: \n\nProduct 5:\nName: Glow Natural Daily Tinted Mineral Face Sunscreen & Moisturizer Lotion, Pearl, SPF 30\nBrand: LOVE SUN BODY\nEWG hazard score: EWG VERIFIED\nKey concerns: "
+    }
+  }
+]

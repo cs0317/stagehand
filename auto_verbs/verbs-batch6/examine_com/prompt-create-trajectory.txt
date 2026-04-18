@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://examine.com
+
+* Concrete task
+- Search for supplement "creatine".
+- Extract the supplement name, primary benefits, evidence grade, dosage recommendation, and key research findings summary.
+- Print the results.

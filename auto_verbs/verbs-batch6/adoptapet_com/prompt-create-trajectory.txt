@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.adoptapet.com
+
+* Concrete task
+- Search for adoptable dogs near "Portland, OR".
+- Extract up to 5 pets with pet name, breed, age, gender, and shelter/organization name.
+- Print the results.

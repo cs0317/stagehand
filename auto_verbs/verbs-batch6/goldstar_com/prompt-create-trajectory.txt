@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.goldstar.com
+
+* Concrete task
+- Search for discount event tickets near "New York".
+- Extract up to 5 events with event name, venue, date, original price, and discount price.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.merriam-webster.com
+
+* Concrete task
+- Look up the word "serendipity".
+- Extract the word, pronunciation, part of speech, definition, example sentence, and first known use date.
+- Print the results.

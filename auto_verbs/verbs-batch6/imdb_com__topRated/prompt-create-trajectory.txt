@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.imdb.com
+
+* Concrete task
+- Navigate to IMDb's Top Rated Movies page (Top 250).
+- Extract the top 10 movies with rank, title, year, rating, and number of votes.
+- Print the results.

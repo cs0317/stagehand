@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.nih.gov
+
+* Concrete task
+- Search for health topics matching "diabetes prevention".
+- Extract up to 5 results with title, summary, and URL.
+- Print the results.

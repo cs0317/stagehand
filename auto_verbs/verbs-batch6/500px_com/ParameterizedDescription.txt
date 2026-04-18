@@ -1,0 +1,13 @@
+500px – Photo Search
+
+Search for photos matching a given query on 500px.com and extract up to N results.
+
+Parameters:
+  - query (str): The search term (e.g., "street photography")
+  - max_results (int): Maximum number of photos to extract (e.g., 5)
+
+Returns for each photo:
+  - photo_title (str): Title of the photo
+  - photographer (str): Name of the photographer
+  - likes (str): Number of likes/pulses
+  - photo_url (str): URL of the photo page

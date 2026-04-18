@@ -1,0 +1,8 @@
+Website: https://www.bodybuilding.com
+Task: Navigate to exercise database and search for exercises targeting "chest".
+Extract up to 5 exercises with:
+  - Exercise name
+  - Muscle group
+  - Equipment needed
+  - Difficulty level
+Print the results.

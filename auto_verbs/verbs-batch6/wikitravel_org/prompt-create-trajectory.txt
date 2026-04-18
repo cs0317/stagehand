@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://wikitravel.org
+
+* Concrete task
+- Look up the travel guide for "Bangkok".
+- Extract the city name, country, introduction summary, top attractions (up to 5), and best time to visit.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.acehardware.com
+
+* Concrete task
+- Search for products matching "LED light bulbs".
+- Extract up to 5 products with product name, brand, price, and product URL.
+- Print the results.

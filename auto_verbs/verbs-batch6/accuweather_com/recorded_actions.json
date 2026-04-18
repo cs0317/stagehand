@@ -1,0 +1,28 @@
+[
+  {
+    "timestamp": 6139,
+    "type": "goto",
+    "url": "https://www.accuweather.com",
+    "description": "Navigate to AccuWeather"
+  },
+  {
+    "timestamp": 11984,
+    "type": "search",
+    "location": "San Francisco, CA",
+    "description": "Searched for San Francisco, CA"
+  },
+  {
+    "timestamp": 23704,
+    "type": "select",
+    "description": "Selected first suggestion"
+  },
+  {
+    "timestamp": 27227,
+    "type": "extract",
+    "instruction": "Extract current weather",
+    "description": "Extracted current conditions",
+    "results": {
+      "extraction": "50°\nF\nRealFeel®\n51°"
+    }
+  }
+]

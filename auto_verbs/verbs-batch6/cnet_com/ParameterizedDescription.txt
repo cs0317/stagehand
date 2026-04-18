@@ -1,0 +1,8 @@
+Website: https://www.cnet.com
+Task: Search for product reviews matching "best laptops".
+Extract up to 5 results with:
+  - Product name
+  - Rating
+  - Price
+  - Summary
+Print the results.

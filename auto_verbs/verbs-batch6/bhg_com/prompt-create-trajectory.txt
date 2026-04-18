@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.bhg.com
+
+* Concrete task
+- Search for home decor ideas matching "small bathroom remodel".
+- Extract up to 5 articles with title, description, and article URL.
+- Print the results.

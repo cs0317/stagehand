@@ -1,0 +1,11 @@
+Website: https://www.gsmarena.com
+Task: Search for smartphones matching "Samsung Galaxy S24".
+Click on the first result to open the phone specs page.
+Extract:
+  - Display size
+  - Processor
+  - RAM
+  - Battery capacity
+  - Camera resolution
+  - Price
+Print the results.

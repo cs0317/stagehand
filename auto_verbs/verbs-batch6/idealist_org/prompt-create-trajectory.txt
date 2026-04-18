@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.idealist.org
+
+* Concrete task
+- Search for non-profit jobs matching "environmental policy" near "Washington, DC".
+- Extract up to 5 job listings with job title, organization name, location, and job type (full-time/part-time/volunteer).
+- Print the results.

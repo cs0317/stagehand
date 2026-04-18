@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://stockanalysis.com
+
+* Concrete task
+- Look up stock ticker "AAPL".
+- Extract the stock price, market cap, P/E ratio, dividend yield, 52-week high, and 52-week low.
+- Print the results.

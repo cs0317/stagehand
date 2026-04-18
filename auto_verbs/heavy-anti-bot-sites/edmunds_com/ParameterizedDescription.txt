@@ -1,0 +1,9 @@
+Website: https://www.edmunds.com
+Task: Search for car reviews for "2024 Honda Civic".
+Extract:
+  - Model name
+  - Edmunds rating
+  - MSRP price range
+  - MPG (city/highway)
+  - Pros/cons summary
+Print the results.

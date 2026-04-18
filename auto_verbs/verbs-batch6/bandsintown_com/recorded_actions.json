@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6468,
+    "type": "goto",
+    "url": "https://www.bandsintown.com/a/1-beyonce",
+    "description": "Navigate to artist page"
+  },
+  {
+    "timestamp": 16753,
+    "type": "extract",
+    "instruction": "Extract concerts",
+    "results": {
+      "extraction": "Venue: 3Arena\nCity: Dublin, Ireland\nDate: APR 23\nTicket URL ID: [145-414]\n\nVenue: 3Arena\nCity: Dublin, Ireland\nDate: APR 24\nTicket URL ID: [145-432]\n\nVenue: 3Arena\nCity: Dublin, Ireland\nDate: APR 25\nTicket URL ID: [145-451]\n\nVenue: Utilita Arena Newcastle\nCity: Newcastle Upon Tyne, United Kingdom\nDate: APR 27\nTicket URL ID: [145-470]\n\nVenue: OVO Hydro\nCity: Glasgow, United Kingdom\nDate: APR 28\nTicket URL ID: [145-489]\n"
+    }
+  }
+]

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.menards.com
+
+* Concrete task
+- Search for products matching "cordless drill".
+- Extract up to 5 products with product name, brand, price, rating, and product URL.
+- Print the results.

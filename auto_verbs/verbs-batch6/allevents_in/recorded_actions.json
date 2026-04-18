@@ -1,0 +1,46 @@
+[
+  {
+    "timestamp": 8732,
+    "type": "goto",
+    "url": "https://allevents.in/austin?q=music%20festival",
+    "description": "Search AllEvents"
+  },
+  {
+    "timestamp": 8736,
+    "type": "extract",
+    "instruction": "Extract events",
+    "description": "Extracted 5 events",
+    "results": [
+      {
+        "event_name": "ATX AURA | ELECTRO DESI HEIGHTS AT TWINS Rooftop",
+        "date": "Fri, 08 May • 10:00 PM",
+        "venue": "219 W 4th St",
+        "event_url": "https://allevents.in/austin/atx-aura-%7C-electro-desi-heights-at-twins-rooftop-tickets/100001987526610595"
+      },
+      {
+        "event_name": "\"New to Austin\" Speed Friending (20s/30s): Make New Social Connections!",
+        "date": "Fri, 24 Jul • 07:00 PM",
+        "venue": "Hideaway Kitchen & Bar",
+        "event_url": "https://allevents.in/austin/new-to-austin-speed-friending-20s-30s-make-new-social-connections-tickets/10000914766510257"
+      },
+      {
+        "event_name": "Sober & Proud: Austin's Zero Proof Pride Bar Crawl",
+        "date": "Sat, 27 Jun • 04:00 PM",
+        "venue": "Austin",
+        "event_url": "https://allevents.in/austin/sober-and-proud-austins-zero-proof-pride-bar-crawl-tickets/80001416643090"
+      },
+      {
+        "event_name": "Memorial Day Weekend Austin Bar Crawl",
+        "date": "Fri, 22 May Onwards",
+        "venue": "Austin",
+        "event_url": "https://allevents.in/austin/memorial-day-weekend-austin-bar-crawl-tickets/80001234964373"
+      },
+      {
+        "event_name": "Austin City LOVE Scavenger Hunt for Couples Date Night!!",
+        "date": "Fri, 17 Apr Onwards",
+        "venue": "Recommended Scavenger Starting Point Or Other City Spot Of Your Choice! (YOU MUST USE PDF TICKETS EMAILED FOR EVENT- NO MOBILE APP OR QR CODES ACCEPTED)",
+        "event_url": "https://allevents.in/austin/austin-city-love-scavenger-hunt-for-couples-date-night-tickets/100001892669618779"
+      }
+    ]
+  }
+]

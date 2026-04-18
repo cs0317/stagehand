@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.sofascore.com
+
+* Concrete task
+- Navigate to the football (soccer) section and browse today's live/upcoming matches.
+- Extract up to 5 matches with home team, away team, score (or start time), league name, and match status.
+- Print the results.

@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 5697,
+    "type": "goto",
+    "url": "https://www.healthline.com/search?q1=intermittent+fasting+benefits",
+    "description": "Navigate to Healthline search"
+  },
+  {
+    "timestamp": 11615,
+    "type": "extract",
+    "instruction": "Extract articles",
+    "results": {
+      "extraction": "Title: Intermittent Fasting: Benefits, How It Works, and More\nAuthor: \nPublication Date: \nSummary: Learn about various intermittent fasting benefits. Intermittent fasting may help reduce cancer side effects and inflammation, extend life span, and more.\n\nTitle: Weight Loss: Intermittent Fasting No More Effective Than Other Diets\nAuthor: \nPublication Date: \nSummary: Researchers report that intermittent fasting is no more effective for weight loss than other dietary routines. Experts say intermittent fasting can help people lose weight, but the effects are usually short-lived.\n\nTitle: Intermittent Fasting: How To, Types, Benefits, and Safety\nAuthor: \nPublication Date: \nSummary: This is a detailed guide to intermittent fasting (IF). Studies show that it can help you lose weight, improve health and perhaps even live longer.\n\nTitle: Intermittent Fasting For Women: A Beginner's Guide\nAuthor: \nPublication Date: \nSummary: Intermittent fasting has several impressive benefits, but women may need to follow a modified approach. Here's how to get started.\n\nTitle: The Beginner’s Guide to the 5:2 Diet: Benefits, Foods to Eat and Avoid\nAuthor: \nPublication Date: \nSummary: Learn foods to eat and avoid on the 5:2 intermittent fasting diet, plus tips to manage side effects."
+    }
+  }
+]

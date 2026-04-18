@@ -1,0 +1,7 @@
+Poshmark Fashion Listing Search
+
+Searches for fashion listings on Poshmark.com
+using Google site search. Returns listing titles and URLs
+matching the fashion/product query.
+
+Default query: "designer handbag Louis Vuitton"

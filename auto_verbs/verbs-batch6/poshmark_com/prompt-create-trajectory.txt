@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://poshmark.com
+
+* Concrete task
+- Search for fashion items matching "vintage leather jacket".
+- Extract up to 5 listings with item name, brand, size, price, and listing URL.
+- Print the results.

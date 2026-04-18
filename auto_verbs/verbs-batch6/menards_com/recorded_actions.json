@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 245432,
+    "type": "goto",
+    "url": "https://www.menards.com/main/search.html?search=cordless+drill",
+    "description": "Navigate to Menards search"
+  },
+  {
+    "timestamp": 249630,
+    "type": "extract",
+    "instruction": "Extract products",
+    "results": {
+      "extraction": ""
+    }
+  }
+]

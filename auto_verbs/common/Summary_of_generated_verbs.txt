@@ -243,3 +243,311 @@ Legal:
 Extended Site Verbs:
   - tripadvisor_com__restaurants: Search restaurant reviews (extends hotels verb)
   - rottentomatoes_com__tvShows: TV show rating lookup (extends movie verb)
+
+BATCH 4 (44 verbs)
+-------------------
+Shopping & Retail:
+  - allbirds_com: Best sellers product listings
+  - amazon_com__deals: Today's Deals extraction
+  - overstock_com: Search home/furniture products
+
+News & Media:
+  - apnews_com: AP News article search
+  - techcrunch_com: Tech startup news search
+  - theguardian_com: Guardian article search
+
+Research & Reference:
+  - arxiv_org: Recent papers by category
+  - britannica_com: Encyclopedia article lookup
+  - dictionary_com: Word definition lookup
+  - gutenberg_org: Project Gutenberg ebook search
+  - investopedia_com: Financial term definitions
+  - wikipedia_org__category: Category page extraction
+
+Design & Creative:
+  - behance_net: Creative project search
+  - dribbble_com: Design shot search
+  - unsplash_com: Free photo search
+
+Home Services & Care:
+  - care_com: Babysitter search
+  - taskrabbit_com: Local service professional search
+
+Automotive:
+  - cars_com: Used car search
+
+Government & Regulation:
+  - congress_gov: Legislation search
+  - fda_gov: Drug approval search
+
+Education:
+  - duolingo_com: Language course catalog
+
+Finance & Crypto:
+  - etherscan_io: Ethereum address lookup
+  - goodrx_com: Prescription drug pricing
+  - morningstar_com: Mutual fund lookup
+  - sec_gov__edgar: SEC company filings
+
+Entertainment & Gaming:
+  - genius_com: Song lyrics lookup
+  - howlongtobeat_com: Game completion times
+  - ign_com: Game review search
+  - store_steampowered_com: Steam game search
+  - imdb_com__actors: Actor profile/filmography
+  - podcasts_apple_com: Podcast search
+
+Sports:
+  - nhl_com: NHL standings
+  - transfermarkt_com: Soccer player profiles
+
+Travel:
+  - travelocity_com: Vacation package search
+  - happycow_net: Vegan/vegetarian restaurant search
+
+Music:
+  - reverb_com: Musical instrument marketplace search
+
+Photography:
+  - flickr_com: Photo search
+
+Local Services:
+  - gasbuddy_com: Gas price comparison
+  - mapquest_com: Driving directions
+  - yellowpages_com: Business directory search
+
+Home & Decor:
+  - houzz_com: Home renovation ideas
+
+Tech & Developer:
+  - github_com__trending: Trending repositories
+
+Entertainment:
+  - youtube_com__trending: Trending videos
+
+BATCH 5 (42 verbs)
+-------------------
+Shopping & Retail:
+  - adidas_com: Search athletic products
+  - hm_com: Search clothing
+  - michaels_com: Arts & crafts products
+  - petsmart_com: Pet product search
+  - zara_com: Fashion product search
+
+News & Community:
+  - dev_to: Developer article search
+  - freecodecamp_org: Programming tutorial search
+  - news_ycombinator_com: Hacker News top stories
+
+Research & Data:
+  - archive_org: Internet Archive search
+  - kaggle_com: Dataset search
+  - paperswithcode_com: Trending ML papers
+  - worldbank_org: Economic indicator lookup
+
+Entertainment & Reviews:
+  - boardgamegeek_com: Board game search
+  - commonsensemedia_com: Game review (age ratings)
+  - imdb_com__awards: Oscar/awards extraction
+  - justwatch_com: Streaming availability search
+  - letterboxd_com: Film info + reviews
+  - ranker_com: Ranked list search
+  - ted_com: TED talk search
+  - trustpilot_com: Company review search
+
+Music & Events:
+  - setlist_fm: Concert setlist search
+  - songkick_com: Upcoming concerts by city
+  - spotify_com__podcasts: Podcast search
+
+Health & Government:
+  - cdc_gov: CDC health info search
+  - epa_gov: Environmental info search
+
+Education:
+  - exercism_org: Programming track exercises
+
+DIY & Maker:
+  - ifixit_com: Repair guide search
+  - instructables_com: DIY project search
+  - thingiverse_com: 3D model search
+
+Travel & Lifestyle:
+  - nomadlist_com: Digital nomad city rankings
+  - numbeo_com: Cost of living comparison
+  - tripadvisor_com__thingsToDo: City activities/attractions
+  - wineenthusiast_com: Wine review search
+
+Jobs:
+  - dice_com: Tech job search
+  - weworkremotely_com: Remote job search
+
+Deals:
+  - slickdeals_net: Deal/coupon search
+
+Tech & Tools:
+  - alternativeto_net: Software alternatives
+  - timeanddate_com: World clock/timezone lookup
+  - xe_com: Currency exchange rates
+  - payscale_com: Salary data lookup
+
+Real Estate:
+  - zillow_com__rentals: Rental property search
+
+BATCH 6 (100 new verbs — in auto_verbs/verbs/)
+-----------------------------------------------
+Recipes & Cooking:
+  - epicurious_com: Recipe search with ratings and prep time
+  - seriouseats_com: Recipe/technique article search
+  - simplyrecipes_com: Recipe search with ratings
+  - budgetbytes_com: Budget-friendly recipe search
+  - food52_com: Recipe and community search
+
+Science & Research:
+  - nature_com: Scientific journal article search
+  - sciencedaily_com: Science news article search
+  - plos_org: Open access research paper search
+  - nih_gov: NIH health research search
+  - scholar_google_com__search: Academic paper search
+
+Tech Reviews & Hardware:
+  - rtings_com: Product review comparison scores
+  - tomshardware_com: Hardware review/benchmark search
+  - pcpartpicker_com: PC component price comparison
+  - gsmarena_com: Smartphone specs comparison
+  - cnet_com: Tech product review search
+
+Crypto & Finance:
+  - coingecko_com: Cryptocurrency price/market data
+  - fool_com: Motley Fool investment article search
+  - stockanalysis_com: Stock fundamental data lookup
+  - macrotrends_net: Historical financial data
+  - finviz_com: Stock screener/financial metrics
+
+Sports Statistics:
+  - basketball_reference_com: NBA player stats lookup
+  - baseball_reference_com: MLB player stats lookup
+  - pro_football_reference_com: NFL player stats lookup
+  - sofascore_com: Live sports scores
+  - fangraphs_com: Baseball analytics/sabermetrics
+
+Health & Wellness:
+  - healthline_com: Health article search
+  - drugs_com: Drug information/interaction lookup
+  - medlineplus_gov: NIH medical information
+  - bodybuilding_com__exercises: Exercise database search
+  - examine_com: Supplement/nutrition research
+
+Music:
+  - pitchfork_com: Album review search
+  - allmusic_com: Artist/album information lookup
+  - bandsintown_com: Concert listing by artist
+  - musixmatch_com: Song lyrics search
+  - whosampled_com: Music sampling database
+
+Language & Reference:
+  - thesaurus_com: Synonym/antonym lookup
+  - etymonline_com: Word etymology/origin lookup
+  - merriam_webster_com: Dictionary definition lookup
+  - wordreference_com: Word translation lookup
+  - vocabulary_com: Word definition with examples
+
+Weather & Environment:
+  - accuweather_com: Weather forecast lookup
+  - wunderground_com: Historical/detailed weather data
+  - airnow_gov: Air quality index lookup
+
+Art & Museums:
+  - metmuseum_org: Met Museum collection search
+  - artic_edu: Art Institute of Chicago collection
+  - moma_org: MoMA artwork search
+  - nga_gov: National Gallery of Art collection
+
+Photography & Stock Images:
+  - pexels_com: Free stock photo search
+  - pixabay_com: Free stock image/video search
+  - 500px_com: Photography community search
+
+Home & Garden:
+  - menards_com: Home improvement product search
+  - acehardware_com: Hardware product search
+  - almanac_com: Planting/gardening guide lookup
+  - bhg_com: Better Homes & Gardens ideas
+
+Legal:
+  - justia_com: Legal case/statute search
+  - regulations_gov: Federal regulation search
+  - courtlistener_com: Court opinion search
+
+Government & Open Data:
+  - census_gov: Census/demographic data lookup
+  - data_gov: Government dataset search
+  - noaa_gov: Weather/climate/ocean data
+  - usgs_gov: Earthquake/geological data
+
+Marketplaces & Secondhand:
+  - offerup_com: Local marketplace listing search
+  - poshmark_com: Secondhand fashion search
+  - thredup_com: Online thrift store search
+  - swappa_com: Used electronics marketplace
+
+Volunteering & Non-profit:
+  - volunteermatch_org: Volunteer opportunity search
+  - charitynavigator_org: Charity rating/evaluation
+  - idealist_org: Non-profit job/volunteer search
+
+Pets & Animals:
+  - adoptapet_com: Pet adoption search
+  - akc_org: Dog breed information lookup
+  - petmd_com: Pet health article search
+
+Sustainability & Ethics:
+  - ewg_org: Product safety rating search
+  - goodonyou_com: Ethical fashion brand ratings
+
+Automotive:
+  - edmunds_com: Car review/pricing lookup
+  - motortrend_com: Car review/comparison search
+
+Books & Reading:
+  - librarything_com: Book search/catalog
+  - storygraph_com: Book recommendation search
+  - loc_gov: Library of Congress digital collection
+
+Gaming:
+  - rawg_io: Video game database search
+  - pcgamer_com: PC gaming news/review search
+  - gog_com: DRM-free game store search
+
+Outdoor & Adventure:
+  - alltrails_com: Hiking trail search
+  - mountainproject_com: Rock climbing route search
+  - skiresort_info: Ski resort information lookup
+
+Education:
+  - class_central_com: Online course aggregator search
+  - openstax_org: Free textbook catalog
+  - ocw_mit_edu: MIT OpenCourseWare search
+
+Home Services:
+  - homeadvisor_com: Home service professional search
+  - porch_com: Home improvement service search
+
+Travel:
+  - atlasobscura_com: Unusual places/attractions search
+  - seat61_com: International train travel guide
+  - wikitravel_org: City travel guide extraction
+
+Events:
+  - allevents_in: Local events search
+  - goldstar_com: Discount event ticket search
+
+News & Journalism:
+  - arstechnica_com: Tech news article search
+  - propublica_org: Investigative journalism search
+  - theatlantic_com: Magazine article search
+
+Extended Site Verbs:
+  - imdb_com__topRated: Top 250 rated movies
+  - amazon_com__bestsellers: Best sellers by category
+  - github_com__profile: User profile info extraction

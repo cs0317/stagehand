@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 8592,
+    "type": "goto",
+    "url": "https://data.census.gov/all?q=population%20New%20York",
+    "description": "Search Census data"
+  },
+  {
+    "timestamp": 16651,
+    "type": "extract",
+    "instruction": "Extract census tables",
+    "results": {
+      "extraction": "Table Title: Total Population in New York\nGeographic Area: New York\nYear: (Year not explicitly listed; likely latest available, possibly 2023 or 2022 based on filter options nearby)\nKey Population Figure: 20,201,249\n\nTable Title: DP05 ACS Demographic and Housing Estimates\nGeographic Area: New York\nYear: (Year not explicitly listed; ACS tables typically include the latest estimate, possibly 2023 or 2022)\nKey Population Figure: (Not explicitly stated; population figures would be within table)\n\nTable Title: GS00EMP01 State and Local Government Employment and Payroll Data: U.S. and States: 2017 - 2025\nGeographic Area: New York (as state, based on search context)\nYear: 2017 - 2025\nKey Population Figure: (Not explicitly stated; employment/population figures would be within table)\n\nTable Title: S0101 Age and Sex\nGeographic Area: New York\nYear: (Year not explicitly listed; based on ACS filter, likely 2022 or 2023)\nKey Population Figure: (Not explicitly stated; age/sex population breakdowns would be within table)\n\nTable Title: S0102 Population 60 Years and Over in the United States\nGeographic Area: New York\nYear: (Year not explicitly listed; ACS filter nearby, likely 2022 or 2023)\nKey Population Figure: (Not explicitly stated; population 60+ would be within table)"
+    }
+  }
+]

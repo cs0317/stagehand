@@ -1,0 +1,9 @@
+Website: https://www.moma.org
+Task: Search the MoMA collection for "Andy Warhol".
+Extract up to 5 artworks with:
+  - Title
+  - Artist
+  - Date
+  - Medium
+  - Artwork URL
+Print the results.

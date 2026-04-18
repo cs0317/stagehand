@@ -1,0 +1,21 @@
+[
+  {
+    "timestamp": 7238,
+    "type": "goto",
+    "url": "https://www.gsmarena.com/results.php3?sQuickSearch=yes&sName=Samsung+Galaxy+S24",
+    "description": "Navigate to GSMArena search"
+  },
+  {
+    "timestamp": 30500,
+    "type": "act",
+    "instruction": "Click first result"
+  },
+  {
+    "timestamp": 42589,
+    "type": "extract",
+    "instruction": "Extract phone specs",
+    "results": {
+      "extraction": "Samsung Galaxy S24 Ultra\nSize\nChipset\nInternal\nQuad\nPrice\nSamsung Galaxy S24 Ultra\nSize\nChipset\nInternal\nQuad\nPrice\nSamsung Galaxy S24 Ultra\nSize\nChipset\nInternal\nQuad\nPrice\nSamsung Galaxy S24 Ultra\nSize\nChipset\nInternal\nQuad\nPrice\nSamsung Galaxy S24 Ultra\nSize\nChipset\nInternal\nQuad\nPrice\n"
+    }
+  }
+]

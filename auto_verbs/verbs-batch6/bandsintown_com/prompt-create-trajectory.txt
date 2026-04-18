@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.bandsintown.com
+
+* Concrete task
+- Search for upcoming concerts by "Beyoncé".
+- Extract up to 5 upcoming events with venue name, city, date, and ticket URL.
+- Print the results.

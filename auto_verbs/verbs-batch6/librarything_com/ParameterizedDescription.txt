@@ -1,0 +1,9 @@
+Website: https://www.librarything.com
+Task: Search for books matching "science fiction dystopia".
+Extract up to 5 books with:
+  - Title
+  - Author
+  - Average rating
+  - Number of members who own it
+  - Book URL
+Print the results.

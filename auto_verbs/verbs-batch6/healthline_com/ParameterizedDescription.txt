@@ -1,0 +1,8 @@
+Website: https://www.healthline.com
+Task: Search for health articles matching "intermittent fasting benefits".
+Extract up to 5 articles with:
+  - Title
+  - Author
+  - Publication date
+  - Summary
+Print the results.

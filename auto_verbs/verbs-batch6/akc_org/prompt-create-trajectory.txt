@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.akc.org
+
+* Concrete task
+- Search for dog breed "Golden Retriever".
+- Extract the breed name, breed group, size, life expectancy, temperament traits, and AKC popularity ranking.
+- Print the results.

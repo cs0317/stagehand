@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://catalog.data.gov
+
+* Concrete task
+- Search for government datasets matching "air quality".
+- Extract up to 5 datasets with title, publisher/organization, description, and dataset URL.
+- Print the results.

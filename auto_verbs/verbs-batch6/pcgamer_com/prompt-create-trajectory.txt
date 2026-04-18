@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.pcgamer.com
+
+* Concrete task
+- Search for game reviews matching "Baldur's Gate 3".
+- Extract up to 5 articles with headline, author, publication date, and summary.
+- Print the results.

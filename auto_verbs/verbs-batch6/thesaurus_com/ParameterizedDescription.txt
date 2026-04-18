@@ -1,0 +1,4 @@
+Thesaurus.com – Synonym Search
+Search Thesaurus.com (thesaurus.com) for synonyms and word definitions.
+Uses Google site search pattern to find results.
+Parameters: query (search terms), max_results (default 5)

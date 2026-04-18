@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.basketball-reference.com
+
+* Concrete task
+- Search for player "LeBron James".
+- Extract career stats: points per game, rebounds per game, assists per game, games played, and career totals.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.vocabulary.com
+
+* Concrete task
+- Look up the word "ubiquitous".
+- Extract the word, short definition, long definition, and example sentences.
+- Print the results.

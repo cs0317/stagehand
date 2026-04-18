@@ -1,0 +1,14 @@
+AllEvents – Event Search
+
+Search for events in a city matching a query on allevents.in.
+
+Parameters:
+  - city (str): City to search in (e.g., "Austin")
+  - query (str): Search term (e.g., "music festival")
+  - max_results (int): Maximum number of events to extract (e.g., 5)
+
+Returns for each event:
+  - event_name (str): Name of the event
+  - date (str): Event date
+  - venue (str): Venue name
+  - event_url (str): URL of the event page

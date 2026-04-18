@@ -1,0 +1,17 @@
+[
+  {
+    "timestamp": 5838,
+    "type": "goto",
+    "url": "https://www.akc.org/dog-breeds/golden-retriever/",
+    "description": "Navigate to AKC breed page"
+  },
+  {
+    "timestamp": 13285,
+    "type": "extract",
+    "instruction": "Extract breed details",
+    "description": "Extracted breed information",
+    "results": {
+      "extraction": "Breed name: Golden Retriever\nBreed group: SPORTING GROUP »\nSize/height:\nHEIGHT\n23-24 inches (male)\n21.5-22.5 inches (female)\nWEIGHT\n65-75 pounds (male)\n55-65 pounds (female)\nLife expectancy:\nLIFE EXPECTANCY\n10-12 years\nTemperament traits: intelligent / friendly / devoted\nAKC popularity ranking: 3 of 205"
+    }
+  }
+]

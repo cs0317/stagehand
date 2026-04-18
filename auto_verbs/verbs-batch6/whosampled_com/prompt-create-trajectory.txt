@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.whosampled.com
+
+* Concrete task
+- Search for song "Harder Better Faster Stronger" by Daft Punk.
+- Extract the song title, artist, and up to 5 samples used in the track with original song name, original artist, and year.
+- Print the results.

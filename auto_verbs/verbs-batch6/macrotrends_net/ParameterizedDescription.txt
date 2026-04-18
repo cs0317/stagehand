@@ -1,0 +1,6 @@
+Website: https://www.macrotrends.net
+Task: Look up "Apple" revenue history.
+Extract the annual revenue figures for the most recent 5 years with:
+  - Year
+  - Revenue amount
+Print the results.

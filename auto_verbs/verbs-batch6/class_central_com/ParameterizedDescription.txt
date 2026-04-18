@@ -1,0 +1,9 @@
+Website: https://www.classcentral.com
+Task: Search for online courses matching "data science".
+Extract up to 5 courses with:
+  - Course title
+  - Provider (e.g., Coursera, edX)
+  - Institution
+  - Rating
+  - Number of reviews
+Print the results.

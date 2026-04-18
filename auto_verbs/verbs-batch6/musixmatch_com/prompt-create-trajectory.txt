@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.musixmatch.com
+
+* Concrete task
+- Search for song "Bohemian Rhapsody" by Queen.
+- Extract the song title, artist, album, and the first verse of the lyrics.
+- Print the results.

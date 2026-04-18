@@ -1,0 +1,4 @@
+Sofascore – Sports Score Search
+Search Sofascore (sofascore.com) for live sports scores and standings.
+Uses Google site search pattern to find results.
+Parameters: query (search terms), max_results (default 5)

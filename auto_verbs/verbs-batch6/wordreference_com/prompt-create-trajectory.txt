@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.wordreference.com
+
+* Concrete task
+- Translate the word "butterfly" from English to Spanish.
+- Extract the source word, translation(s), part of speech, and example phrases.
+- Print the results.

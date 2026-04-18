@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.edmunds.com
+
+* Concrete task
+- Search for car reviews for "2024 Honda Civic".
+- Extract the model name, edmunds rating, MSRP price range, MPG (city/highway), and pros/cons summary.
+- Print the results.

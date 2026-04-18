@@ -1,0 +1,4 @@
+WordReference – Translation Search
+Search WordReference (wordreference.com) for word translations and definitions.
+Uses Google site search pattern to find results.
+Parameters: query (search terms), max_results (default 5)

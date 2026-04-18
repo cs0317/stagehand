@@ -1,0 +1,9 @@
+Website: https://www.nature.com
+Task: Search for scientific articles matching "CRISPR gene editing".
+Extract up to 5 results with:
+  - Article title
+  - Authors
+  - Journal name
+  - Publication date
+  - Article URL
+Print the results.

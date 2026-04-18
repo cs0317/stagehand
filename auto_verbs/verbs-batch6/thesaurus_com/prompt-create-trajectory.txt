@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.thesaurus.com
+
+* Concrete task
+- Look up the word "happy".
+- Extract the word, up to 5 synonyms ranked by relevance, up to 3 antonyms, and example sentence.
+- Print the results.

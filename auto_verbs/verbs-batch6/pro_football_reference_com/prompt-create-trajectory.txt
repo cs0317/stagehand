@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.pro-football-reference.com
+
+* Concrete task
+- Search for player "Patrick Mahomes".
+- Extract career passing stats: passing yards, touchdowns, interceptions, passer rating, and games played.
+- Print the results.

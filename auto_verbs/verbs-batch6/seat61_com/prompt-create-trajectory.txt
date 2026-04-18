@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.seat61.com
+
+* Concrete task
+- Look up train travel information for "London to Paris".
+- Extract the route, travel time, train operator, frequency, typical fare range, and booking tips.
+- Print the results.

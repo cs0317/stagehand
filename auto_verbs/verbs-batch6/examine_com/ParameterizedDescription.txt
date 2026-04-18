@@ -1,0 +1,9 @@
+Website: https://examine.com
+Task: Search for supplement "creatine".
+Extract:
+  - Supplement name
+  - Primary benefits
+  - Evidence grade
+  - Dosage recommendation
+  - Key research findings summary
+Print the results.

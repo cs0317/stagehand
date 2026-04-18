@@ -1,0 +1,13 @@
+Ace Hardware – Product Search
+
+Search for products matching a given query on acehardware.com and extract up to N results.
+
+Parameters:
+  - query (str): The search term (e.g., "LED light bulbs")
+  - max_results (int): Maximum number of products to extract (e.g., 5)
+
+Returns for each product:
+  - product_name (str): Name of the product
+  - brand (str): Brand name
+  - price (str): Product price
+  - product_url (str): URL of the product page

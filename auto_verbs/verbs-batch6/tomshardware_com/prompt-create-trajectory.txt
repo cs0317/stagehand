@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.tomshardware.com
+
+* Concrete task
+- Search for reviews matching "best graphics cards".
+- Extract up to 5 results with product name, rating, benchmark score, price, and review URL.
+- Print the results.

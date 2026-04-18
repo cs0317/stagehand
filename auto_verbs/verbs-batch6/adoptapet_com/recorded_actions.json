@@ -1,0 +1,51 @@
+[
+  {
+    "timestamp": 7185,
+    "type": "goto",
+    "url": "https://www.adoptapet.com/pet-search?pet_type=dogs&location=Portland%2C%20OR",
+    "description": "Search Adopt-a-Pet"
+  },
+  {
+    "timestamp": 7189,
+    "type": "extract",
+    "instruction": "Extract pet listings",
+    "description": "Extracted 5 pets",
+    "results": [
+      {
+        "name": "Rendy - Foster Needed!\n\nGerman Shepherd Dog\n\nMale, Adult\n\nKirkland, WA",
+        "breed": "",
+        "age": "",
+        "gender": "",
+        "shelter": ""
+      },
+      {
+        "name": "Learn More",
+        "breed": "",
+        "age": "",
+        "gender": "",
+        "shelter": ""
+      },
+      {
+        "name": "Nacho\n\nChihuahua\n\nMale, Young\n\nVancouver, WA",
+        "breed": "",
+        "age": "",
+        "gender": "",
+        "shelter": ""
+      },
+      {
+        "name": "Learn More",
+        "breed": "",
+        "age": "",
+        "gender": "",
+        "shelter": ""
+      },
+      {
+        "name": "MARS\n\nDomestic Shorthair\n\nFemale, 2 Yrs 7 Mos\n\nGraham, WA",
+        "breed": "",
+        "age": "",
+        "gender": "",
+        "shelter": ""
+      }
+    ]
+  }
+]

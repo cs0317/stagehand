@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6541,
+    "type": "goto",
+    "url": "https://www.gog.com/en/games?query=roguelike",
+    "description": "Search GOG"
+  },
+  {
+    "timestamp": 16344,
+    "type": "extract",
+    "instruction": "Extract games",
+    "results": {
+      "extraction": "1. Title: Kaamos: Puzzle Roguelike\n   Price: $9.99\n   Discount Percentage: \n   Rating: \n   Game URL: [2-7404]\n2. Title: Space Robinson: Hardcore Roguelike Action\n   Price: $1.19 (was $9.99)\n   Discount Percentage: -88%\n   Rating: \n   Game URL: [2-7481]\n3. Title: Smash it Wild: Tactical Volleyball Roguelike\n   Price: $9.59 (was $11.99)\n   Discount Percentage: -20%\n   Rating: \n   Game URL: [2-401]\n4. Title: Jotunnslayer: Hordes of Hel - Conan\n   Price: $5.49\n   Discount Percentage: \n   Rating: \n   Game URL: [2-7640]\n5. Title: BLOODLETTER\n   Price: Coming soon\n   Discount Percentage: \n   Rating: \n   Game URL: [2-7719]"
+    }
+  }
+]

@@ -1,0 +1,8 @@
+Website: https://www.idealist.org
+Task: Search for non-profit jobs matching "environmental policy" near "Washington, DC".
+Extract up to 5 job listings with:
+  - Job title
+  - Organization name
+  - Location
+  - Job type (full-time/part-time/volunteer)
+Print the results.

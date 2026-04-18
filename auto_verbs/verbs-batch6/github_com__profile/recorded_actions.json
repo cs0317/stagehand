@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6385,
+    "type": "goto",
+    "url": "https://github.com/torvalds",
+    "description": "Navigate to GitHub profile"
+  },
+  {
+    "timestamp": 11530,
+    "type": "extract",
+    "instruction": "Extract profile",
+    "results": {
+      "extraction": "torvalds\nLinus Torvalds torvalds\n\n\n\nNumber of public repos: 11\nFollowers count: 298k followers\nPinned repositories:\n\nName: linux\nDescription: Linux kernel source tree\nStar count: stars 230k\n\nName: GuitarPedal\nDescription: \nStar count: stars 1.9k\n\nName: uemacs\nDescription: \nStar count: stars 2k\n\nName: AudioNoise\nDescription: \nStar count: stars 4.3k\n\nName: HunspellColorize\nDescription: \nStar count: stars 334\n"
+    }
+  }
+]

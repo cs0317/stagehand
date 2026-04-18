@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.cnet.com
+
+* Concrete task
+- Search for product reviews matching "best laptops".
+- Extract up to 5 results with product name, rating, price, and summary.
+- Print the results.

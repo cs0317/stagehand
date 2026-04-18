@@ -1,0 +1,4 @@
+Stock Analysis – Stock Analysis Search
+Search Stock Analysis (stockanalysis.com) for stock market analysis.
+Uses Google site search pattern to find results.
+Parameters: query (search terms), max_results (default 5)

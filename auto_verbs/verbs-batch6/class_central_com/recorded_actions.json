@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6268,
+    "type": "goto",
+    "url": "https://www.classcentral.com/search?q=data%20science",
+    "description": "Search Class Central"
+  },
+  {
+    "timestamp": 11679,
+    "type": "extract",
+    "instruction": "Extract courses",
+    "results": {
+      "extraction": "Data Science & AI Certificate\nProvider: Noble Desktop\nInstitution: Noble Desktop\nRating: Four and a half out of five stars\nNumber of reviews: 781 ratings at Noble Desktop\n\nData Scientist\nProvider: Udacity\nInstitution: Udacity\nRating: Five out of five stars\nNumber of reviews: 11 reviews\n\nAssociate Data Scientist in Python\nProvider: DataCamp\nInstitution: DataCamp\nRating: Four and a half out of five stars\nNumber of reviews: 27 ratings at DataCamp\n\nGoogle Advanced Data Analytics\nProvider: Coursera\nInstitution: Google\nRating: Zero out of five stars\nNumber of reviews: \n\nIntroduction to Data Science in Python\nProvider: Coursera\nInstitution: University of Michigan\nRating: Two and a half out of five stars\nNumber of reviews: 46 reviews"
+    }
+  }
+]

@@ -1,0 +1,10 @@
+Website: https://www.drugs.com
+Task: Search for drug "ibuprofen".
+Extract:
+  - Drug name
+  - Generic name
+  - Drug class
+  - Common uses
+  - Common side effects
+  - Dosage information
+Print the results.

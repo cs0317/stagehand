@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.usgs.gov
+
+* Concrete task
+- Navigate to the USGS earthquake page and extract the 5 most recent earthquakes.
+- For each earthquake, extract magnitude, location, depth, and date/time.
+- Print the results.

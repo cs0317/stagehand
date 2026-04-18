@@ -1,0 +1,8 @@
+Website: https://data.census.gov
+Task: Search for demographic data matching "population New York".
+Extract up to 5 data tables with:
+  - Table title
+  - Geographic area
+  - Year
+  - Key population figure
+Print the results.

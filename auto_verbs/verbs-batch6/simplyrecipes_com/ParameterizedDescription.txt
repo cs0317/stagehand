@@ -1,0 +1,4 @@
+Simply Recipes – Recipe Search
+Search Simply Recipes (simplyrecipes.com) for cooking recipes.
+Uses Google site search pattern to find results.
+Parameters: query (search terms), max_results (default 5)

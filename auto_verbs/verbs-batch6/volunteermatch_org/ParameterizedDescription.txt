@@ -1,0 +1,4 @@
+VolunteerMatch – Volunteer Opportunity Search
+Search VolunteerMatch (volunteermatch.org) for volunteer opportunities.
+Uses Google site search pattern to find results.
+Parameters: query (search terms), max_results (default 5)

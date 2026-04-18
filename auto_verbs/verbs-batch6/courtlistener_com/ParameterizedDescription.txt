@@ -1,0 +1,8 @@
+Website: https://www.courtlistener.com
+Task: Search for court opinions matching "freedom of speech".
+Extract up to 5 results:
+  - Case name
+  - Court
+  - Date filed
+  - Case summary
+Print the results.

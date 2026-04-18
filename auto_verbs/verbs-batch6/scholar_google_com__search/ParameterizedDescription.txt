@@ -1,0 +1,7 @@
+Google Scholar Academic Paper Search
+
+Searches for academic papers directly on Google Scholar
+using the native Scholar search interface. Returns paper
+titles and URLs matching the research query.
+
+Default query: "deep learning neural networks"

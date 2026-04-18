@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.gsmarena.com
+
+* Concrete task
+- Search for smartphones matching "Samsung Galaxy S24".
+- Click on the first result to open the phone specs page.
+- Extract key specs: display size, processor, RAM, battery capacity, camera resolution, and price.
+- Print the results.

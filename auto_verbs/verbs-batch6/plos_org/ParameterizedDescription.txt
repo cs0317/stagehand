@@ -1,0 +1,7 @@
+PLOS Scientific Article Search
+
+Searches for scientific articles on PLOS (Public Library of Science)
+using Google site search. Returns article titles and URLs matching
+the research query.
+
+Default query: "climate change impact ocean"

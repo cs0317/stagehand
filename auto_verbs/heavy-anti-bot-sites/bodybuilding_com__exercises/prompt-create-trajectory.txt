@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.bodybuilding.com
+
+* Concrete task
+- Navigate to the exercise database and search for exercises targeting "chest".
+- Extract up to 5 exercises with exercise name, muscle group, equipment needed, and difficulty level.
+- Print the results.

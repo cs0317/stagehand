@@ -1,0 +1,6 @@
+Website: https://www.pcgamer.com
+Task: Search for gaming articles matching "best graphics cards 2024".
+Extract up to 5 results with:
+  - Article title
+  - Article URL
+Print the results.

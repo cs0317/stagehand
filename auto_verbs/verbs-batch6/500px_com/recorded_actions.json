@@ -1,0 +1,46 @@
+[
+  {
+    "timestamp": 5713,
+    "type": "goto",
+    "url": "https://500px.com/search?q=street%20photography&type=photos",
+    "description": "Search 500px photos"
+  },
+  {
+    "timestamp": 5718,
+    "type": "extract",
+    "instruction": "Extract photo search results",
+    "description": "Extracted 5 photos",
+    "results": [
+      {
+        "title": "The lazy bicycle",
+        "photographer": "Unknown",
+        "likes": "0",
+        "photo_url": "https://500px.com/photo/1031571240/the-lazy-bicycle-by-eeshan-mohapatra"
+      },
+      {
+        "title": "The mediator",
+        "photographer": "Unknown",
+        "likes": "0",
+        "photo_url": "https://500px.com/photo/1023228505/the-mediator-by-zuka-kotrikadze"
+      },
+      {
+        "title": "Light",
+        "photographer": "Unknown",
+        "likes": "0",
+        "photo_url": "https://500px.com/photo/1030212771/light-by-yanjun-wang"
+      },
+      {
+        "title": "Aerial view of cityscape",
+        "photographer": "Unknown",
+        "likes": "0",
+        "photo_url": "https://500px.com/photo/1114439036/aerial-view-of-cityscape-by-azim-khan-ronnie"
+      },
+      {
+        "title": "Aerial view of city",
+        "photographer": "Unknown",
+        "likes": "0",
+        "photo_url": "https://500px.com/photo/1119417534/aerial-view-of-city-by-azim-khan-ronnie"
+      }
+    ]
+  }
+]

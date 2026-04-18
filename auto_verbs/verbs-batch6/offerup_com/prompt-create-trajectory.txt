@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://offerup.com
+
+* Concrete task
+- Search for items matching "mountain bike" near "Seattle, WA".
+- Extract up to 5 listings with item title, price, condition, location, and listing URL.
+- Print the results.

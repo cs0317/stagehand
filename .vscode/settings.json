@@ -7,5 +7,5 @@
   "terminal.integrated.env.windows": {
     "CHROME_PATH": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
   },
-  "chat.agent.maxRequests": 300
+  "chat.agent.maxRequests": 1000
 }

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://finviz.com
+
+* Concrete task
+- Look up stock ticker "MSFT" on Finviz.
+- Extract key metrics: price, market cap, P/E ratio, EPS, dividend yield, 52-week range, and analyst target price.
+- Print the results.

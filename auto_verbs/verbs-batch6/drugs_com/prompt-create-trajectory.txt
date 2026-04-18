@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.drugs.com
+
+* Concrete task
+- Search for drug "ibuprofen".
+- Extract the drug name, generic name, drug class, common uses, common side effects, and dosage information.
+- Print the results.

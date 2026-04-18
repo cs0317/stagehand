@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.petmd.com
+
+* Concrete task
+- Search for pet health information matching "dog ear infection".
+- Extract the condition name, symptoms, causes, treatment options, and prevention tips.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.librarything.com
+
+* Concrete task
+- Search for books matching "science fiction dystopia".
+- Extract up to 5 books with title, author, average rating, number of members who own it, and book URL.
+- Print the results.

@@ -1,0 +1,8 @@
+Website: https://food52.com
+Task: Search for recipes matching "sourdough bread".
+Extract up to 5 recipes:
+  - Recipe name
+  - Author
+  - Rating
+  - Description
+Print the results.

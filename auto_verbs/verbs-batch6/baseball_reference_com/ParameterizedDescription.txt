@@ -1,0 +1,9 @@
+Website: https://www.baseball-reference.com
+Task: Search for player "Shohei Ohtani".
+Extract career batting stats:
+  - Batting average
+  - Home runs
+  - RBIs
+  - Hits
+  - Games played
+Print the results.

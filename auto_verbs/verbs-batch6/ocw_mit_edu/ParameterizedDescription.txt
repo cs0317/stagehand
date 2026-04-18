@@ -1,0 +1,8 @@
+Website: https://ocw.mit.edu
+Task: Search for courses matching "machine learning".
+Extract up to 5 results with:
+  - Course title
+  - Course number
+  - Instructor
+  - Course URL
+Print the results.

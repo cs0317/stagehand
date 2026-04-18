@@ -1,0 +1,7 @@
+Website: https://pcpartpicker.com
+Task: Search for PC parts matching "RTX 4070 graphics card".
+Extract up to 5 results with:
+  - Product name
+  - Price
+  - Product URL
+Print the results.

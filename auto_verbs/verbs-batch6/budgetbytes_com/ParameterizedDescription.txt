@@ -1,0 +1,9 @@
+Website: https://www.budgetbytes.com
+Task: Search for recipes matching "meal prep".
+Extract up to 5 recipes with:
+  - Recipe name
+  - Estimated cost per serving
+  - Prep time
+  - Cook time
+  - Servings
+Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.regulations.gov
+
+* Concrete task
+- Search for federal regulations matching "clean water".
+- Extract up to 5 results with document title, agency, document type, posting date, and comment deadline.
+- Print the results.

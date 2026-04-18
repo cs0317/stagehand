@@ -1,0 +1,7 @@
+Porch Home Service Search
+
+Searches for home service professionals on Porch.com
+using Google site search. Returns service provider listings
+and URLs matching the query.
+
+Default query: "plumber near me reviews"

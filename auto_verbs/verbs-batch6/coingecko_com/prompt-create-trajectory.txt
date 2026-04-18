@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.coingecko.com
+
+* Concrete task
+- Search for cryptocurrency "Ethereum".
+- Extract the current price, 24h change, 24h trading volume, market cap, and all-time high price.
+- Print the results.

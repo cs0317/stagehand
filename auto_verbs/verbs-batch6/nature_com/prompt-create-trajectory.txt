@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.nature.com
+
+* Concrete task
+- Search for articles matching "CRISPR gene editing".
+- Extract up to 5 articles with title, authors, publication date, journal name, and article URL.
+- Print the results.

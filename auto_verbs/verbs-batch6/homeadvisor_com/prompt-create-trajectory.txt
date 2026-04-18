@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.homeadvisor.com
+
+* Concrete task
+- Search for home service professionals for "plumbing" near "Denver, CO".
+- Extract up to 5 professionals with business name, rating, number of reviews, years in business, and phone number.
+- Print the results.

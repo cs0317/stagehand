@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6326,
+    "type": "goto",
+    "url": "https://www.bhg.com/search?q=small%20bathroom%20remodel",
+    "description": "Search BHG"
+  },
+  {
+    "timestamp": 12006,
+    "type": "extract",
+    "instruction": "Extract articles",
+    "results": {
+      "extraction": "Title: Before and After: Budget-Friendly Remodel Ideas for Small Bathrooms\nDescription: Before and After: Budget-Friendly Remodel Ideas for Small Bathrooms\nArticle URL: [9-1284]\n\nTitle: A Small Bathroom Makeover Delivers with a Sleek Shower and DIY Touches\nDescription: A Small Bathroom Makeover Delivers with a Sleek Shower and DIY Touches\nArticle URL: [9-1303]\n\nTitle: 19 Universal Bathroom Design Ideas to Incorporate in Your Remodel\nDescription: 19 Universal Bathroom Design Ideas to Incorporate in Your Remodel\nArticle URL: [9-1322]\n\nTitle: 16 Bathroom Floor Tile Ideas to Transform a Small Space\nDescription: 16 Bathroom Floor Tile Ideas to Transform a Small Space\nArticle URL: [9-1341]\n\nTitle: 15 Before-and-After Bathroom Remodels to Inspire Your Design\nDescription: 15 Before-and-After Bathroom Remodels to Inspire Your Design\nArticle URL: [9-1360]"
+    }
+  }
+]

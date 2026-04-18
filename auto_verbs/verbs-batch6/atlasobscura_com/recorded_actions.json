@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 7223,
+    "type": "goto",
+    "url": "https://www.atlasobscura.com/search?q=underground%20caves",
+    "description": "Search Atlas Obscura"
+  },
+  {
+    "timestamp": 18626,
+    "type": "extract",
+    "instruction": "Extract places",
+    "results": {
+      "extraction": "Place name: Andrée Strindberg Frænkel Memorial\nLocation: NORWAY\nDescription: Here ended one of the most ambitious North Pole expeditions in Arctic history.\nPlace URL: [86-107]\n\nPlace name: Jim Murray Memorial\nLocation: NEWMAINS, SCOTLAND\nDescription: This bronze statue pays tribute to a Scottish professional boxer, who tragically died following a championship fight.\nPlace URL: [86-70]\n\nPlace name: Fuente de los Tres Sombreros\nLocation: BÉCAL, MEXICO\nDescription: This hat-shaped fountain pays tribute to a centuries-old textile tradition in the Yucatán Peninsula.\nPlace URL: [86-1238]\n\nPlace name: Klerksdorp Spheres\nLocation: OTTOSDAL, SOUTH AFRICA\nDescription: Tiny pyrophyllite spheres from 3 billion years ago.\nPlace URL: [86-1289]\n\nPlace name: John Duigan Monument\nLocation: MIA MIA, AUSTRALIA\nDescription: Dedicated to the first flight of an aircraft to be designed and built in Australia.\nPlace URL: [86-1340]"
+    }
+  }
+]

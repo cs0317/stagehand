@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.baseball-reference.com
+
+* Concrete task
+- Search for player "Shohei Ohtani".
+- Extract career batting stats: batting average, home runs, RBIs, hits, and games played.
+- Print the results.

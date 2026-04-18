@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.fangraphs.com
+
+* Concrete task
+- Navigate to the leaderboards page for the current MLB season.
+- Extract the top 5 players by WAR (Wins Above Replacement) with player name, team, WAR, batting average, home runs, and RBIs.
+- Print the results.

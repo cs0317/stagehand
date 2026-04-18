@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://pcpartpicker.com
+
+* Concrete task
+- Search for PC components matching "RTX 4070" in the video card category.
+- Extract up to 5 results with product name, price, rating, and number of ratings.
+- Print the results.

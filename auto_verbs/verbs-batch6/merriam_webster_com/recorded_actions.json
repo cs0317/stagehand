@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6151,
+    "type": "goto",
+    "url": "https://www.merriam-webster.com/dictionary/serendipity",
+    "description": "Navigate to Merriam-Webster"
+  },
+  {
+    "timestamp": 23466,
+    "type": "extract",
+    "instruction": "Extract word data",
+    "results": {
+      "extraction": "serendipity\nser·​en·​dip·​i·​ty\nˌser-ən-ˈdi-pə-tē\nnoun\n: the ability to find valuable or agreeable things not sought for\n… materials researchers, who now rely mostly on rules of thumb, trial-and-error and serendipity for developing new materials.\n— I. Amato\nAs they leapfrog from South Africa to Singapore in search of local delicacies, the authors prove again and again that serendipity is the traveler's strongest ally: many of their most memorable meals issue from the hands of generous strangers …\n— Sarah Karnasiewicz\nalso\n: luck that takes the form of such finding\n… the pleasure of wandering while lost and discovering by serendipity interesting new places.\n— Katie Davis and Howard Gardner\n… [Sh'Kia] Augustin landed the role through the charmed stroke of serendipity and destiny.\n— Yolanda Baruch\nFor most of his life, he has been blessed with good fortune, tinged with a bit of serendipity.\n— Marice Richter\nFirst Known Use\n1754, in the meaning defined"
+    }
+  }
+]

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://scholar.google.com
+
+* Concrete task
+- Search for academic papers matching "transformer neural network architecture".
+- Extract up to 5 results with paper title, authors, year, number of citations, and URL.
+- Print the results.

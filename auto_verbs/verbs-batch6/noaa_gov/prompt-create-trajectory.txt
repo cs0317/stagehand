@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.noaa.gov
+
+* Concrete task
+- Search for climate/weather information matching "hurricane season forecast".
+- Extract up to 5 results with article title, publication date, summary, and article URL.
+- Print the results.

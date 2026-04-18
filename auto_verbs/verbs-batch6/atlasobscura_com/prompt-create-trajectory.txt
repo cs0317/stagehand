@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.atlasobscura.com
+
+* Concrete task
+- Search for unusual places matching "underground caves".
+- Extract up to 5 places with place name, location (city/country), description, and place URL.
+- Print the results.

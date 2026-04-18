@@ -1,0 +1,7 @@
+Website: https://www.motortrend.com
+Task: Search for car comparisons matching "SUV comparison 2024".
+Extract up to 5 results with:
+  - Article title
+  - Vehicles compared
+  - Article URL
+Print the results.

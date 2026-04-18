@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.pexels.com
+
+* Concrete task
+- Search for free stock photos matching "sunset ocean".
+- Extract up to 5 photos with photographer name, photo description, dimensions, and photo URL.
+- Print the results.

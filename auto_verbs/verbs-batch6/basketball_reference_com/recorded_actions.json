@@ -1,0 +1,21 @@
+[
+  {
+    "timestamp": 5747,
+    "type": "goto",
+    "url": "https://www.basketball-reference.com/search/search.fcgi?search=LeBron%20James",
+    "description": "Search player"
+  },
+  {
+    "timestamp": 15815,
+    "type": "click",
+    "description": "Click first player result"
+  },
+  {
+    "timestamp": 46615,
+    "type": "extract",
+    "instruction": "Extract career stats",
+    "results": {
+      "extraction": "Per Game\nSeason  Tm  LG  G   GS  MP  FG  FGA  FG%  3P  3PA  3P%  2P  2PA  2P%  FT  FTA  FT%  ORB  DRB  TRB  AST  STL  BLK  TOV  PF  PTS\nCareer  NBA  1564 1560 38.0 10.0 19.9 .502 2.2 6.2 .353 7.7 13.7 .562 5.6 7.7 .735 1.1 6.1 7.2 7.3 1.5 0.7 3.5 1.9 27.0\nTotals\nSeason  Tm  LG  G   GS  MP   FG    FGA   3P    3PA   2P    2PA   FT    FTA   ORB   DRB   TRB   AST   STL   BLK   TOV   PF    PTS\nCareer  NBA  1564 1560 59,464 15,845 31,541 3,450 9,680 12,395 21,861 8,799 12,125 1,695 9,539 11,234 11,449 2,260 1,090 5,380 2,941 44,960"
+    }
+  }
+]

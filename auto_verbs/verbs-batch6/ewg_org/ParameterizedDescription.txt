@@ -1,0 +1,8 @@
+Website: https://www.ewg.org
+Task: Search the EWG Skin Deep database for "sunscreen".
+Extract up to 5 products:
+  - Product name
+  - Brand
+  - EWG hazard score (1-10)
+  - Key concerns
+Print the results.

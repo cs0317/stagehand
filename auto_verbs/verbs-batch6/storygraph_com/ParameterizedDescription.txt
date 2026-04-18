@@ -1,0 +1,4 @@
+The StoryGraph – Book Search
+Search The StoryGraph (thestorygraph.com) for books and reading recommendations.
+Uses Google site search pattern to find results.
+Parameters: query (search terms), max_results (default 5)

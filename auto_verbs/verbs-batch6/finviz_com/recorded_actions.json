@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6221,
+    "type": "goto",
+    "url": "https://finviz.com/quote.ashx?t=MSFT",
+    "description": "Navigate to Finviz quote"
+  },
+  {
+    "timestamp": 27516,
+    "type": "extract",
+    "instruction": "Extract stock metrics",
+    "results": {
+      "extraction": "Target Price 576.66\nDividend Est. 3.61 (0.85%)\nDividend TTM 3.48 (0.82%)\nDividend Gr. 3/5Y 10.21% 10.23%\nPayout 24.34%\nEPS/Sales Surpr. 6.07% 1.20%"
+    }
+  }
+]

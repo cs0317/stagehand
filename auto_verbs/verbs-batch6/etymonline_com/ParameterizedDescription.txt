@@ -1,0 +1,8 @@
+Website: https://www.etymonline.com
+Task: Look up the etymology of the word "algorithm".
+Extract:
+  - Word
+  - Origin language
+  - Earliest known usage date
+  - Etymology description
+Print the results.

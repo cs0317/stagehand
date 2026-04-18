@@ -1,0 +1,9 @@
+Website: https://www.artic.edu
+Task: Search the Art Institute of Chicago collection for "Claude Monet".
+Extract up to 5 artworks with:
+  - Title
+  - Artist
+  - Date
+  - Medium
+  - Artwork URL
+Print the results.

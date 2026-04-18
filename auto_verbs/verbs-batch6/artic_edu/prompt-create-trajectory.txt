@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.artic.edu
+
+* Concrete task
+- Search the Art Institute of Chicago collection for "Claude Monet".
+- Extract up to 5 artworks with title, artist, date, medium, and artwork URL.
+- Print the results.

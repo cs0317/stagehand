@@ -1,0 +1,10 @@
+Website: https://github.com
+Task: Look up GitHub user profile "torvalds".
+Extract:
+  - Display name
+  - Bio
+  - Location
+  - Number of public repositories
+  - Number of followers
+  - Up to 5 pinned/popular repositories (name, description, stars)
+Print the results.

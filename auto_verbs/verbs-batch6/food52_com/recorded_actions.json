@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 5398,
+    "type": "goto",
+    "url": "https://food52.com/recipes/search?q=sourdough%20bread",
+    "description": "Search Food52"
+  },
+  {
+    "timestamp": 9717,
+    "type": "extract",
+    "instruction": "Extract recipes",
+    "results": {
+      "extraction": ""
+    }
+  }
+]

@@ -1,0 +1,8 @@
+Website: https://medlineplus.gov
+Task: Search for health topic "high blood pressure".
+Extract:
+  - Topic title
+  - Summary
+  - Key points
+  - Related links
+Print the results.

@@ -1,0 +1,9 @@
+Website: https://www.basketball-reference.com
+Task: Search for player "LeBron James".
+Extract career stats:
+  - Points per game
+  - Rebounds per game
+  - Assists per game
+  - Games played
+  - Career totals
+Print the results.

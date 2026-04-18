@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://goodonyou.eco
+
+* Concrete task
+- Search for fashion brand rating for "Patagonia".
+- Extract the brand name, overall rating (out of 5), planet score, people score, animals score, and rating summary.
+- Print the results.

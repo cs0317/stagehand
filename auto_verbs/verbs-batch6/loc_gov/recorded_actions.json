@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 5359,
+    "type": "goto",
+    "url": "https://www.loc.gov/search/?q=civil%20war%20photographs&fa=original-format:photo,+print,+drawing",
+    "description": "Navigate to LOC search"
+  },
+  {
+    "timestamp": 8993,
+    "type": "extract",
+    "instruction": "Extract LOC items",
+    "results": {
+      "extraction": ""
+    }
+  }
+]

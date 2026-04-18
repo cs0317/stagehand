@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 8418,
+    "type": "goto",
+    "url": "https://www.budgetbytes.com/?s=meal%20prep",
+    "description": "Search Budget Bytes"
+  },
+  {
+    "timestamp": 15265,
+    "type": "extract",
+    "instruction": "Extract recipes",
+    "results": {
+      "extraction": "Recipe 1:\nName: RANCH CHICKEN MEAL PREP\nEstimated cost per serving: $2.90 Serving\nPrep time: \nCook time: \nServings: \n\nRecipe 2:\nName: MEAL PREP NOODLE SOUP JARS\nEstimated cost per serving: $0.81 Serving\nPrep time: \nCook time: \nServings: \n\nRecipe 3:\nName: EASY CHICKEN AND VEGETABLE MEAL PREP\nEstimated cost per serving: $2.65 Serving\nPrep time: \nCook time: \nServings: \n\nRecipe 4:\nName: ROASTED VEGETABLE SALAD MEAL PREP\nEstimated cost per serving: $2.91 Serving\nPrep time: \nCook time: \nServings: \n\nRecipe 5:\nName: MEAL PREP VEGETABLE SNACK PACKS\nEstimated cost per serving: $1.47 Each\nPrep time: \nCook time: \nServings: "
+    }
+  }
+]

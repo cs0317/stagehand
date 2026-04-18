@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.nga.gov
+
+* Concrete task
+- Search the National Gallery of Art collection for "Rembrandt".
+- Extract up to 5 artworks with title, artist, date, medium, and artwork URL.
+- Print the results.

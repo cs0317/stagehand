@@ -1,0 +1,17 @@
+[
+  {
+    "timestamp": 6228,
+    "type": "goto",
+    "url": "https://www.airnow.gov/?city=&state=&country=USA&zipcode=90210",
+    "description": "Navigate to AirNow"
+  },
+  {
+    "timestamp": 10775,
+    "type": "extract",
+    "instruction": "Extract AQI data",
+    "description": "Extracted AQI information",
+    "results": {
+      "extraction": ""
+    }
+  }
+]

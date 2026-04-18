@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.gog.com
+
+* Concrete task
+- Search for games matching "roguelike".
+- Extract up to 5 games with title, price, discount percentage (if any), rating, and game URL.
+- Print the results.

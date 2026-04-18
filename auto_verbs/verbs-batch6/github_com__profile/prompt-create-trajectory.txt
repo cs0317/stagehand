@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://github.com
+
+* Concrete task
+- Look up GitHub user profile "torvalds".
+- Extract the user's display name, bio, location, number of public repositories, number of followers, and up to 5 pinned/popular repositories with name, description, and stars.
+- Print the results.

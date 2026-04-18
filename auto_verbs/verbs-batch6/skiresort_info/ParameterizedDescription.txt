@@ -1,0 +1,4 @@
+Skiresort.info – Ski Resort Search
+Search Skiresort.info (skiresort.info) for ski resort information.
+Uses Google site search pattern to find results.
+Parameters: query (search terms), max_results (default 5)

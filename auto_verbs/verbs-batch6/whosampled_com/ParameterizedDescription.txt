@@ -1,0 +1,4 @@
+WhoSampled – Music Sample Search
+Search WhoSampled (whosampled.com) for music samples and covers.
+Uses Google site search pattern to find results.
+Parameters: query (search terms), max_results (default 5)

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.ewg.org
+
+* Concrete task
+- Search the EWG Skin Deep database for "sunscreen".
+- Extract up to 5 products with product name, brand, EWG hazard score (1-10), and key concerns.
+- Print the results.

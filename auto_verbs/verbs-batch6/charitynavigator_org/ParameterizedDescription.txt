@@ -1,0 +1,9 @@
+Website: https://www.charitynavigator.org
+Task: Search for charities matching "disaster relief".
+Extract up to 5 charities with:
+  - Charity name
+  - Overall rating (out of 4 stars)
+  - Financial health score
+  - Accountability score
+  - Charity URL
+Print the results.

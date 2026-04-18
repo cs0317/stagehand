@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.motortrend.com
+
+* Concrete task
+- Search for car comparisons matching "SUV comparison 2024".
+- Extract up to 5 results with article title, vehicles compared, and article URL.
+- Print the results.

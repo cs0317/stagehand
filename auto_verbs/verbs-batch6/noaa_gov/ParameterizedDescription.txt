@@ -1,0 +1,7 @@
+Website: https://www.noaa.gov
+Task: Search for weather/climate articles matching "hurricane season forecast 2024".
+Extract up to 5 results with:
+  - Article title
+  - Description/summary
+  - Article URL
+Print the results.

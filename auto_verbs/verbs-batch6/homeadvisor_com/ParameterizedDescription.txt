@@ -1,0 +1,9 @@
+Website: https://www.homeadvisor.com
+Task: Search for home service professionals for "plumbing" near "Denver, CO".
+Extract up to 5 professionals with:
+  - Business name
+  - Rating
+  - Number of reviews
+  - Years in business
+  - Phone number
+Print the results.

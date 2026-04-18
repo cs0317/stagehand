@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://pitchfork.com
+
+* Concrete task
+- Search for album reviews matching "Radiohead".
+- Extract up to 5 reviews with album name, artist, rating score (out of 10), reviewer name, and review date.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.loc.gov
+
+* Concrete task
+- Search the Library of Congress digital collections for "civil war photographs".
+- Extract up to 5 results with item title, creator, date, collection name, and item URL.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.etymonline.com
+
+* Concrete task
+- Look up the etymology of the word "algorithm".
+- Extract the word, origin language, earliest known usage date, and etymology description.
+- Print the results.

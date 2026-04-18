@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.rtings.com
+
+* Concrete task
+- Search for product reviews matching "wireless headphones".
+- Extract up to 5 products with product name, overall score, sound quality score, comfort score, and review URL.
+- Print the results.

@@ -1,0 +1,13 @@
+AirNow – Air Quality Index Lookup
+
+Look up the current Air Quality Index (AQI) for a given zip code on airnow.gov.
+
+Parameters:
+  - zip_code (str): The zip code to look up (e.g., "90210")
+
+Returns:
+  - location (str): Location name
+  - aqi_value (str): Current AQI value
+  - aqi_category (str): AQI category (Good/Moderate/Unhealthy/etc.)
+  - primary_pollutant (str): Primary pollutant
+  - health_recommendation (str): Health recommendations

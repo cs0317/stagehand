@@ -1,0 +1,4 @@
+The Atlantic – Magazine Article Search
+Search The Atlantic (theatlantic.com) for long-form journalism.
+Uses Google site search pattern to find results.
+Parameters: query (search terms), max_results (default 5)

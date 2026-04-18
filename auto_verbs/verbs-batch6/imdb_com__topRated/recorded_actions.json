@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6261,
+    "type": "goto",
+    "url": "https://www.imdb.com/chart/top/",
+    "description": "Navigate to IMDb Top 250"
+  },
+  {
+    "timestamp": 18656,
+    "type": "extract",
+    "instruction": "Extract top movies",
+    "results": {
+      "extraction": "1. The Shawshank Redemption\nYear: 1994\nRating: 9.3\nVotes: 2,970,800\n2. The Godfather\nYear: 1972\nRating: 9.2\nVotes: 2,070,600\n3. The Dark Knight\nYear: 2008\nRating: 9.0\nVotes: 2,700,100\n4. The Godfather Part II\nYear: 1974\nRating: 9.0\nVotes: 1,367,800\n5. 12 Angry Men\nYear: 1957\nRating: 9.0\nVotes: 858,000\n6. The Lord of the Rings: The Return of the King\nYear: 2003\nRating: 9.0\nVotes: 2,026,000\n7. Schindler's List\nYear: 1993\nRating: 9.0\nVotes: 1,470,600\n8. The Lord of the Rings: The Fellowship of the Ring\nYear: 2001\nRating: 8.9\nVotes: 1,684,400\n9. Pulp Fiction\nYear: 1994\nRating: 8.9\nVotes: 2,105,700\n10. The Good, the Bad and the Ugly\nYear: 1966\nRating: 8.8\nVotes: 860,000"
+    }
+  }
+]

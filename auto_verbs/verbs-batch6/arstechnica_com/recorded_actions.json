@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6314,
+    "type": "goto",
+    "url": "https://arstechnica.com/search/?query=artificial%20intelligence%20regulation",
+    "description": "Search Ars Technica"
+  },
+  {
+    "timestamp": 9528,
+    "type": "extract",
+    "instruction": "Extract articles",
+    "results": {
+      "extraction": ""
+    }
+  }
+]

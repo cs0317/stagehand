@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://pixabay.com
+
+* Concrete task
+- Search for free images matching "mountain landscape".
+- Extract up to 5 images with image description, photographer, downloads count, likes count, and image URL.
+- Print the results.

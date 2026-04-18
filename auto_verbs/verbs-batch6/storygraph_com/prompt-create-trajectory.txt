@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://app.thestorygraph.com
+
+* Concrete task
+- Search for books matching "magical realism".
+- Extract up to 5 books with title, author, average rating, page count, and mood/pace tags.
+- Print the results.

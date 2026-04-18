@@ -1,0 +1,8 @@
+Website: https://www.musixmatch.com
+Task: Search for song lyrics matching "Bohemian Rhapsody".
+Extract up to 5 results with:
+  - Song title
+  - Artist name
+  - Album
+  - Song URL
+Print the results.

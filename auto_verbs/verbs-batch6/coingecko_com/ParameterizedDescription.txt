@@ -1,0 +1,9 @@
+Website: https://www.coingecko.com
+Task: Search for cryptocurrency "Ethereum".
+Extract:
+  - Current price
+  - 24h change
+  - 24h trading volume
+  - Market cap
+  - All-time high price
+Print the results.

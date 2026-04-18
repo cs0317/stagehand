@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.sciencedaily.com
+
+* Concrete task
+- Search for articles matching "quantum computing".
+- Extract up to 5 articles with headline, publication date, summary, and source institution.
+- Print the results.

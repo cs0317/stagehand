@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.courtlistener.com
+
+* Concrete task
+- Search for court opinions matching "freedom of speech".
+- Extract up to 5 results with case name, court, date filed, and case summary.
+- Print the results.

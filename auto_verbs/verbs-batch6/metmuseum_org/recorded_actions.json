@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 5423,
+    "type": "goto",
+    "url": "https://www.metmuseum.org/search-results#!/search?q=impressionism",
+    "description": "Navigate to Met Museum search"
+  },
+  {
+    "timestamp": 11407,
+    "type": "extract",
+    "instruction": "Extract artworks",
+    "results": {
+      "extraction": "1. Title: Japanese Illustrated Books\nArtist Name: Kitao Masanobu (Santō Kyōden)\nDate: \nMedium: ...numerous masterpieces of woodblock printing, many of which are nearly impossible to find in such fine condition today...\nImage URL: Image for Japanese Illustrated Books\n\n2. Title: Mishneh Torah\nArtist Name: Master of the Barbo Missal\nDate: \nMedium: \"...The Met takes a major step in presenting masterpieces of Judaica...\"\nImage URL: Image for Mishneh Torah\n\n3. Title: Électricité\nArtist Name: Man Ray\nDate: \nMedium: This remarkably seductive album of photogravures is an exquisite example of his legacy as America's greatest Surrealist photographer...\nImage URL: Image for Électricité\n\n4. Title: A Wooded River Landscape with a Church and Figures\nArtist Name: Hendrick Avercamp\nDate: \nMedium: \"...His finished drawings are much rarer, and the present one is among his best of an imaginary landscape...\"\nImage URL: Image for A Wooded River Landscape with a Church and Figures\n\n5. Title: Nineteenth-Century Exhibition Pistols\nArtist Name: Gilles Michel Louis Moutier-Le Page\nDate: \nMedium: ...these very pistols spectacularly confirmed that the French were then unsurpassed in their mastery of the gunmaker's art...\nImage URL: Image for Nineteenth-Century Exhibition Pistols"
+    }
+  }
+]

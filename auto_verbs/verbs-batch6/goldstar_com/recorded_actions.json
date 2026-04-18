@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6485,
+    "type": "goto",
+    "url": "https://www.goldstar.com/new-york",
+    "description": "Navigate to Goldstar"
+  },
+  {
+    "timestamp": 9868,
+    "type": "extract",
+    "instruction": "Extract events",
+    "results": {
+      "extraction": ""
+    }
+  }
+]

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.budgetbytes.com
+
+* Concrete task
+- Search for recipes matching "meal prep".
+- Extract up to 5 recipes with recipe name, estimated cost per serving, prep time, cook time, and servings.
+- Print the results.

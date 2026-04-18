@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://swappa.com
+
+* Concrete task
+- Search for used devices matching "iPhone 15 Pro".
+- Extract up to 5 listings with device name, condition, price, carrier/unlocked status, and listing URL.
+- Print the results.

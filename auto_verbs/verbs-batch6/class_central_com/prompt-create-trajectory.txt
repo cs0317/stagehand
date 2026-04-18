@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.classcentral.com
+
+* Concrete task
+- Search for online courses matching "data science".
+- Extract up to 5 courses with course title, provider (e.g., Coursera, edX), institution, rating, and number of reviews.
+- Print the results.

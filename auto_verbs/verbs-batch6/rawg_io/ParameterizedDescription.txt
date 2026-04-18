@@ -1,0 +1,6 @@
+RAWG Video Game Search
+
+Searches for video games on RAWG.io using Google site search.
+Returns game titles and URLs matching the query.
+
+Default query: "best RPG games 2024"

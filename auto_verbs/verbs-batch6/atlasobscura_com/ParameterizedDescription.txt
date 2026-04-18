@@ -1,0 +1,8 @@
+Website: https://www.atlasobscura.com
+Task: Search for unusual places matching "underground caves".
+Extract up to 5 places with:
+  - Place name
+  - Location (city/country)
+  - Description
+  - Place URL
+Print the results.

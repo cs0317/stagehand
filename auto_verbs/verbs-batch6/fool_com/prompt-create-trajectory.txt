@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.fool.com
+
+* Concrete task
+- Search for articles matching "dividend stocks 2025".
+- Extract up to 5 articles with headline, author, publication date, and summary.
+- Print the results.

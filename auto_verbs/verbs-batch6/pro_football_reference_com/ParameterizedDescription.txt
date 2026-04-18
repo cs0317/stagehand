@@ -1,0 +1,7 @@
+Pro Football Reference NFL Player Stats Search
+
+Searches for NFL player statistics on Pro-Football-Reference.com
+using Google site search. Returns player stat pages and URLs
+matching the query.
+
+Default query: "Patrick Mahomes career stats"

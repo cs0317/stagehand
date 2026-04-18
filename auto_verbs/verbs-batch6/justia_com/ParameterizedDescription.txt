@@ -1,0 +1,8 @@
+Website: https://www.justia.com
+Task: Search for legal cases matching "employment discrimination".
+Extract up to 5 case results with:
+  - Case name
+  - Court
+  - Date
+  - Case summary
+Print the results.

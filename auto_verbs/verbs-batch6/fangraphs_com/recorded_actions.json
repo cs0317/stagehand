@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6034,
+    "type": "goto",
+    "url": "https://www.fangraphs.com/leaders/major-league?pos=all&stats=bat&lg=all&type=8&sortcol=21&sortdir=desc",
+    "description": "Navigate to FanGraphs leaderboard"
+  },
+  {
+    "timestamp": 20440,
+    "type": "extract",
+    "instruction": "Extract WAR leaders",
+    "results": {
+      "extraction": "1. Yordan Alvarez, HOU, WAR: 1.5, AVG: .328, HR: 7, RBI: 18\n2. Andy Pages, LAD, WAR: 1.3, AVG: .409, HR: 5, RBI: 20\n3. CJ Abrams, WSN, WAR: 1.3, AVG: .371, HR: 6, RBI: 19\n4. Jordan Walker, STL, WAR: 1.2, AVG: .319, HR: 8, RBI: 15\n5. Nico Hoerner, CHC, WAR: 1.1, AVG: .324, HR: 2, RBI: 18"
+    }
+  }
+]

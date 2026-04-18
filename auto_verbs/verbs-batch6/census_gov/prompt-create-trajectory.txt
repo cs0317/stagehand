@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://data.census.gov
+
+* Concrete task
+- Search for demographic data matching "population New York".
+- Extract up to 5 data tables with table title, geographic area, year, and key population figure.
+- Print the results.

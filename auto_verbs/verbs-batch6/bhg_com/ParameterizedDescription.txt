@@ -1,0 +1,7 @@
+Website: https://www.bhg.com
+Task: Search for home decor ideas matching "small bathroom remodel".
+Extract up to 5 articles with:
+  - Title
+  - Description
+  - Article URL
+Print the results.

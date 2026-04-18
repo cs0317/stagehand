@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 7221,
+    "type": "goto",
+    "url": "https://www.charitynavigator.org/search?q=disaster%20relief",
+    "description": "Search Charity Navigator"
+  },
+  {
+    "timestamp": 12630,
+    "type": "extract",
+    "instruction": "Extract charities",
+    "results": {
+      "extraction": "Charity Name: Churches of Christ Disaster Relief Effort\nOverall Rating: FOUR-STAR CHARITY\nFinancial Health Score: 93%\nAccountability Score: null\nCharity URL: null\n\nCharity Name: Disaster Relief at Work Inc.\nOverall Rating: FOUR-STAR CHARITY\nFinancial Health Score: 93%\nAccountability Score: null\nCharity URL: null\n\nCharity Name: Disaster Relief From Florida\nOverall Rating: FOUR-STAR CHARITY\nFinancial Health Score: 100%\nAccountability Score: null\nCharity URL: null\n\nCharity Name: Brethren Disaster Relief Auction Inc.\nOverall Rating: FOUR-STAR CHARITY\nFinancial Health Score: 90%\nAccountability Score: null\nCharity URL: null\n\nCharity Name: Mutual Aid Disaster Relief Inc.\nOverall Rating: FOUR-STAR CHARITY\nFinancial Health Score: 96%\nAccountability Score: null\nCharity URL: null"
+    }
+  }
+]

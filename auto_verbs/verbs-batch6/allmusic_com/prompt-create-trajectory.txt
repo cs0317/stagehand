@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.allmusic.com
+
+* Concrete task
+- Search for artist "Miles Davis".
+- Extract the artist name, active years, genres, biography summary, and up to 5 top albums with album name, year, and rating.
+- Print the results.

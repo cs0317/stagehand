@@ -1,0 +1,7 @@
+Website: https://openstax.org
+Task: Search for textbooks matching "calculus".
+Extract up to 5 results with:
+  - Book title
+  - Subject
+  - Book URL
+Print the results.

@@ -1,0 +1,14 @@
+AllMusic – Artist Info
+
+Search for an artist on allmusic.com and extract artist details and top albums.
+
+Parameters:
+  - artist (str): Artist name to search for (e.g., "Miles Davis")
+  - max_albums (int): Maximum number of top albums (e.g., 5)
+
+Returns:
+  - artist_name (str): Artist name
+  - active_years (str): Years active
+  - genres (str): Genres
+  - bio_summary (str): Biography summary
+  - albums (list): Top albums with name, year, rating

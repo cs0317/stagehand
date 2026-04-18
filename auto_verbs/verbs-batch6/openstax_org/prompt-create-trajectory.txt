@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://openstax.org
+
+* Concrete task
+- Browse the free textbook catalog.
+- Extract up to 5 textbooks with title, subject area, authors, and textbook URL.
+- Print the results.

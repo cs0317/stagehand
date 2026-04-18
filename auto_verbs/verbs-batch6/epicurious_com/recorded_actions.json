@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 9072,
+    "type": "goto",
+    "url": "https://www.epicurious.com/search?q=chicken%20tikka%20masala",
+    "description": "Search Epicurious"
+  },
+  {
+    "timestamp": 13818,
+    "type": "extract",
+    "instruction": "Extract recipes",
+    "results": {
+      "extraction": "Chicken Tikka Masala\nQuick Chicken Tikka Masala\nChicken Tikka Masala\nChicken Tikka Masala\nChicken Tikkas\n\nRating, number of reviews, prep time, and cook time information not found."
+    }
+  }
+]

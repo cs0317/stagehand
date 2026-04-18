@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.healthline.com
+
+* Concrete task
+- Search for health articles matching "intermittent fasting benefits".
+- Extract up to 5 articles with title, author, publication date, and summary.
+- Print the results.

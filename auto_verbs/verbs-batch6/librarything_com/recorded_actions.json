@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6192,
+    "type": "goto",
+    "url": "https://www.librarything.com/search?search=science%20fiction%20dystopia&searchtype=newwork_merged",
+    "description": "Navigate to LibraryThing search"
+  },
+  {
+    "timestamp": 10950,
+    "type": "extract",
+    "instruction": "Extract books",
+    "results": {
+      "extraction": ""
+    }
+  }
+]

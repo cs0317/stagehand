@@ -1,0 +1,4 @@
+Wikitravel – Travel Guide Search
+Search Wikitravel (wikitravel.org) for travel guides and destinations.
+Uses Google site search pattern to find results.
+Parameters: query (search terms), max_results (default 5)

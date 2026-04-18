@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.justia.com
+
+* Concrete task
+- Search for legal cases matching "employment discrimination".
+- Extract up to 5 case results with case name, court, date, and case summary.
+- Print the results.

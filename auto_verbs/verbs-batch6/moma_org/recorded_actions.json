@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 5460,
+    "type": "goto",
+    "url": "https://www.moma.org/collection/?q=Andy+Warhol&on_view=0",
+    "description": "Navigate to MoMA search"
+  },
+  {
+    "timestamp": 9249,
+    "type": "extract",
+    "instruction": "Extract artworks",
+    "results": {
+      "extraction": ""
+    }
+  }
+]

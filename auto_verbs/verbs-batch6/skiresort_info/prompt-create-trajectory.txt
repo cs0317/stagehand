@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.skiresort.info
+
+* Concrete task
+- Search for ski resorts matching "Colorado".
+- Extract up to 5 ski resorts with resort name, overall rating, number of slopes/runs, elevation (top/bottom), and snow conditions.
+- Print the results.

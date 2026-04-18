@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6579,
+    "type": "goto",
+    "url": "https://www.cnet.com/search/?query=best%20laptops",
+    "description": "Search CNET"
+  },
+  {
+    "timestamp": 11234,
+    "type": "extract",
+    "instruction": "Extract products",
+    "results": {
+      "extraction": ""
+    }
+  }
+]

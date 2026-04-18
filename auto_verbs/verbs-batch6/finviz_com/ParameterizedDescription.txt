@@ -1,0 +1,11 @@
+Website: https://finviz.com
+Task: Look up stock ticker "MSFT".
+Extract:
+  - Price
+  - Market cap
+  - P/E ratio
+  - EPS
+  - Dividend yield
+  - 52-week range
+  - Analyst target price
+Print the results.

@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 5959,
+    "type": "goto",
+    "url": "https://goodonyou.eco/brand/patagonia/",
+    "description": "Navigate to Good On You"
+  },
+  {
+    "timestamp": 9657,
+    "type": "extract",
+    "instruction": "Extract brand rating",
+    "results": {
+      "extraction": "There has been a critical error on this website."
+    }
+  }
+]

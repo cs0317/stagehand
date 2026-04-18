@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 5271,
+    "type": "goto",
+    "url": "https://www.fool.com/search/?q=dividend%20stocks%202025",
+    "description": "Search Motley Fool"
+  },
+  {
+    "timestamp": 7679,
+    "type": "extract",
+    "instruction": "Extract articles",
+    "results": {
+      "extraction": ""
+    }
+  }
+]

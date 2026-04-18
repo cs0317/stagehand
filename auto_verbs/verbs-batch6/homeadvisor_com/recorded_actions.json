@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 5862,
+    "type": "goto",
+    "url": "https://www.homeadvisor.com/c.plumbing.Denver.CO.html",
+    "description": "Navigate to HomeAdvisor"
+  },
+  {
+    "timestamp": 9002,
+    "type": "extract",
+    "instruction": "Extract professionals",
+    "results": {
+      "extraction": ""
+    }
+  }
+]

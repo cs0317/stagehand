@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.alltrails.com
+
+* Concrete task
+- Search for hiking trails matching "Yosemite National Park".
+- Extract up to 5 trails with trail name, difficulty, length (miles), elevation gain, and average rating.
+- Print the results.

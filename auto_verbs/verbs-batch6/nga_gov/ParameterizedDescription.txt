@@ -1,0 +1,9 @@
+Website: https://www.nga.gov
+Task: Search for artworks matching "Monet impressionism".
+Extract up to 5 results with:
+  - Artwork title
+  - Artist name
+  - Date/year
+  - Medium
+  - Artwork URL
+Print the results.

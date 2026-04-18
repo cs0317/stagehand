@@ -1,0 +1,15 @@
+Adopt-a-Pet – Pet Search
+
+Search for adoptable pets near a given location on adoptapet.com.
+
+Parameters:
+  - pet_type (str): Type of pet (e.g., "dogs")
+  - location (str): Location to search near (e.g., "Portland, OR")
+  - max_results (int): Maximum number of pets to extract (e.g., 5)
+
+Returns for each pet:
+  - name (str): Pet name
+  - breed (str): Breed
+  - age (str): Age
+  - gender (str): Gender
+  - shelter (str): Shelter/organization name

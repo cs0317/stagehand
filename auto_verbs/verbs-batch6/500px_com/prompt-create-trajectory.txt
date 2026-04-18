@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://500px.com
+
+* Concrete task
+- Search for photos matching "street photography".
+- Extract up to 5 photos with photo title, photographer name, number of likes, and photo URL.
+- Print the results.

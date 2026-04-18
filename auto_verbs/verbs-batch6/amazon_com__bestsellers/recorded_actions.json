@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6710,
+    "type": "goto",
+    "url": "https://www.amazon.com/best-sellers-books-Amazon/zgbs/books",
+    "description": "Navigate to Amazon Best Sellers Books"
+  },
+  {
+    "timestamp": 12758,
+    "type": "extract",
+    "instruction": "Extract bestsellers",
+    "results": {
+      "extraction": "1. Untitled Empyrean (Not Book Four)\n   Author: Rebecca Yarros\n   Price: $24.99\n   Rating: 4.7 out of 5 stars, 76,884 ratings\n\n2. Theo of Golden: A Novel\n   Author: Allen Levi\n   Price: $14.98\n   Rating: 4.7 out of 5 stars, 76,884 ratings\n\n3. Project Hail Mary: A Novel\n   Author: Andy Weir\n   Price: $13.98\n   Rating: 4.7 out of 5 stars, 217,950 ratings\n\n4. The Correspondent: A Novel\n   Author: Virginia Evans\n   Price: $19.58\n   Rating: 4.6 out of 5 stars, 92,944 ratings\n\n5. Through Mom's Eyes: Simple Wisdom From Mothers Who Raised Extraordinary Humans\n   Author: Sheinelle Jones\n   Price: $20.28\n   Rating: 5.0 out of 5 stars, 5 ratings"
+    }
+  }
+]

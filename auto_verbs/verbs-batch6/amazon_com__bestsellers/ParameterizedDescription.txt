@@ -1,0 +1,9 @@
+Website: https://www.amazon.com
+Task: Navigate to Amazon Best Sellers in the "Books" category.
+Extract top 5 best-selling books with:
+  - Rank
+  - Title
+  - Author
+  - Price
+  - Rating
+Print the results.

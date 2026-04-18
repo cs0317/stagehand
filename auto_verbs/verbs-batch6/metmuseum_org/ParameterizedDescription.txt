@@ -1,0 +1,9 @@
+Website: https://www.metmuseum.org
+Task: Search the Met Museum collection for "impressionism".
+Extract up to 5 artworks with:
+  - Artwork title
+  - Artist name
+  - Date
+  - Medium
+  - Image URL
+Print the results.

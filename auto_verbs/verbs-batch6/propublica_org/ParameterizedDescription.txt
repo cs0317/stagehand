@@ -1,0 +1,7 @@
+ProPublica Investigative Article Search
+
+Searches for investigative journalism articles on ProPublica.org
+using Google site search. Returns article titles and URLs
+matching the investigation query.
+
+Default query: "government spending investigation"

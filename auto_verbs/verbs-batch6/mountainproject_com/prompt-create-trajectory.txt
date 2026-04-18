@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.mountainproject.com
+
+* Concrete task
+- Search for climbing routes matching "El Capitan".
+- Extract up to 5 routes with route name, grade/difficulty, type (sport/trad/boulder), location, and rating (stars).
+- Print the results.

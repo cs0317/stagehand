@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 5751,
+    "type": "goto",
+    "url": "https://www.edmunds.com/honda/civic/2024/review/",
+    "description": "Navigate to Edmunds review"
+  },
+  {
+    "timestamp": 13337,
+    "type": "extract",
+    "instruction": "Extract car review",
+    "results": {
+      "extraction": "2024 Honda Civic\n8.1 out of 10 edmundsTESTED\nMSRP price range:\nLX - $25,045 MSRP\nSport (Most Popular) - $26,645 MSRP\nEX (Editors' Pick) - $28,045 MSRP\nSi - $30,195 MSRP\nTouring - $31,645 MSRP\n35 mpg Combined MPG\nPros\nCons"
+    }
+  }
+]

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.metmuseum.org
+
+* Concrete task
+- Search the Met Museum collection for "impressionism".
+- Extract up to 5 artworks with artwork title, artist name, date, medium, and image URL.
+- Print the results.

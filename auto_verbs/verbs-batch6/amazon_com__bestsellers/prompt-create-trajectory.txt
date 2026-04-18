@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.amazon.com
+
+* Concrete task
+- Navigate to Amazon Best Sellers in the "Books" category.
+- Extract the top 5 best-selling books with rank, title, author, price, and rating.
+- Print the results.

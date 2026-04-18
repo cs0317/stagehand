@@ -1,0 +1,9 @@
+Website: https://www.loc.gov
+Task: Search the Library of Congress digital collections for "civil war photographs".
+Extract up to 5 results with:
+  - Item title
+  - Creator
+  - Date
+  - Collection name
+  - Item URL
+Print the results.

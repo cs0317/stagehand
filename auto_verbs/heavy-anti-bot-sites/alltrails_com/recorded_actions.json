@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 5420,
+    "type": "goto",
+    "url": "https://www.alltrails.com/search?q=Yosemite%20National%20Park",
+    "description": "Search AllTrails"
+  },
+  {
+    "timestamp": 11496,
+    "type": "extract",
+    "instruction": "Extract trail listings",
+    "results": {
+      "extraction": ""
+    }
+  }
+]

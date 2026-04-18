@@ -1,0 +1,10 @@
+Website: https://www.almanac.com
+Task: Search for planting guide for "tomatoes".
+Extract:
+  - Plant name
+  - Planting season
+  - Sun requirements
+  - Soil requirements
+  - Days to maturity
+  - Spacing guidelines
+Print the results.

@@ -1,0 +1,9 @@
+Website: https://www.imdb.com
+Task: Navigate to IMDb's Top Rated Movies page (Top 250).
+Extract the top 10 movies with:
+  - Rank
+  - Title
+  - Year
+  - Rating
+  - Number of votes
+Print the results.

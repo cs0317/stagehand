@@ -1,0 +1,15 @@
+AccuWeather – Weather Forecast
+
+Search for weather forecast for a given location on accuweather.com and extract current conditions and 5-day forecast.
+
+Parameters:
+  - location (str): The location to search for (e.g., "San Francisco, CA")
+
+Returns:
+  - current_temp (str): Current temperature
+  - condition (str): Current weather condition (e.g., "Sunny", "Cloudy")
+  - high (str): Today's high temperature
+  - low (str): Today's low temperature
+  - humidity (str): Current humidity percentage
+  - wind (str): Current wind speed
+  - forecast (list): 5-day forecast with day, high, low, condition

@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6667,
+    "type": "goto",
+    "url": "https://www.coingecko.com/en/coins/ethereum",
+    "description": "Navigate to coin page"
+  },
+  {
+    "timestamp": 12045,
+    "type": "extract",
+    "instruction": "Extract coin data",
+    "results": {
+      "extraction": "Ethereum (ETH) price has increased today."
+    }
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6464,
+    "type": "goto",
+    "url": "https://www.drugs.com/ibuprofen.html",
+    "description": "Navigate to drug page"
+  },
+  {
+    "timestamp": 25644,
+    "type": "extract",
+    "instruction": "Extract drug info",
+    "results": {
+      "extraction": "Ibuprofen\nWhat is ibuprofen?\nIbuprofen is a nonsteroidal anti-inflammatory drug (NSAID).\nIbuprofen is used to reduce fever and treat pain or inflammation caused by many conditions such as headache, toothache, back pain, arthritis, menstrual cramps, or minor injury.\nCommon uses:\nIbuprofen is used to reduce fever and treat pain or inflammation caused by many conditions such as headache, toothache, back pain, arthritis, menstrual cramps, or minor injury.\nDrug class:\nNonsteroidal anti-inflammatory drugs\nCommon side effects:\nGet emergency medical help if you have signs of an allergic reaction to ibuprofen: hives; swelling of your face, lips, tongue, or throat.\nStop taking ibuprofen and seek medical attention if you have symptoms of a serious side effect:\n- swelling, rapid weight gain, feeling short of breath\n- skin rash, bruising, severe tingling, numbness, pain\n- nausea, upper stomach pain, itching, loss of appetite, dark urine, clay-colored stools, jaundice (yellowing of the skin or eyes)\n- severe headache, confusion, vision problems\n- chest pain, weakness, shortness of breath, slurred speech, problems with balance\nCommon ibuprofen side effects may include:\n- upset stomach, mild heartburn, nausea, vomiting\n- bloating, gas, diarrhea, constipation\n- dizziness, headache\nDosage information:\nTake ibuprofen exactly as directed on the label, or as prescribed by your doctor. Do not take this medicine in larger amounts or for longer than recommended. Use the lowest dose that is effective in treating your condition.\nAn overdose of ibuprofen can cause damage to your stomach or intestines. The maximum amount of ibuprofen for adults is 800 milligrams per dose or 3200 mg per day (4 maximum doses). Use only the smallest amount needed to relieve your pain, swelling, or fever.\nA child's dose of ibuprofen is based on the age and weight of the child. Carefully follow the dosing instructions provided with children's ibuprofen for the age and weight of your child. Do not give ibuprofen to a child younger than 6 months old.\nTake with food or milk to lessen stomach upset.\nMeasure liquid medicine with the dosing syringe provided, or with a special dose-measuring spoon or medicine cup. If you do not have a dose-measuring device, ask your pharmacist for one."
+    }
+  }
+]

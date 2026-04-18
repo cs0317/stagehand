@@ -1,0 +1,9 @@
+Website: https://www.alltrails.com
+Task: Search for hiking trails matching "Yosemite National Park".
+Extract up to 5 trails with:
+  - Trail name
+  - Difficulty
+  - Length (miles)
+  - Elevation gain
+  - Average rating
+Print the results.

@@ -1,0 +1,7 @@
+Website: https://www.nih.gov
+Task: Search for health research articles matching "diabetes prevention".
+Extract up to 5 results with:
+  - Article title
+  - Description/summary
+  - Article URL
+Print the results.

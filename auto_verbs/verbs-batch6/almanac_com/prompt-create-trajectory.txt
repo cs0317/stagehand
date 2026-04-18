@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.almanac.com
+
+* Concrete task
+- Search for planting guide for "tomatoes".
+- Extract the plant name, planting season, sun requirements, soil requirements, days to maturity, and spacing guidelines.
+- Print the results.

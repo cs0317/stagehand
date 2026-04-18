@@ -1,0 +1,8 @@
+Website: https://arstechnica.com
+Task: Search for articles matching "artificial intelligence regulation".
+Extract up to 5 articles with:
+  - Headline
+  - Author
+  - Publication date
+  - Summary
+Print the results.

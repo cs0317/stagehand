@@ -1,0 +1,8 @@
+Website: https://offerup.com
+Task: Search for listings matching "used bicycle".
+Extract up to 5 results with:
+  - Item title
+  - Price
+  - Location
+  - Listing URL
+Print the results.

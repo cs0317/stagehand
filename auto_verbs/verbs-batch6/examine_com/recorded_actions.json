@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6307,
+    "type": "goto",
+    "url": "https://examine.com/supplements/creatine/",
+    "description": "Navigate to Examine"
+  },
+  {
+    "timestamp": 16519,
+    "type": "extract",
+    "instruction": "Extract supplement info",
+    "results": {
+      "extraction": "Supplement name: Creatine\n\nPrimary benefits:\nCreatine supplementation has been shown to enhance athletic performance, increase muscle mass, strength, and power output, reduce exercise-induced muscle damage and fatigue, promote muscle recovery, and support muscular endurance. It may also have potential benefits for brain health and depression symptoms.\n\nEvidence grade:\nA Muscle Creatine Content + 3 more\nB Depression Symptoms + 18 more\nC 34 outcomes\nD 47 outcomes\n\nDosage recommendation:\nA typical creatine dosage is a loading phase of 20 grams per day (split into 4 doses) for 5–7 days, followed by a maintenance phase of 3–5 grams per day. Alternatively, skipping the loading phase and taking 3–5 grams per day will saturate muscles in about 3–4 weeks.\n\nKey research findings:\n- Creatine supplementation reliably increases muscle creatine content, muscle size, strength, and peak power output in both athletes and non-athletes.\n- It is effective across multiple exercise modalities and outcomes, including jump height, sprint, and swimming performance metrics.\n- Creatine has been extensively studied (hundreds of references, dozens of outcomes), with strong evidence across muscular, metabolic, and cognitive domains.\n- It is considered generally safe for most individuals, though caution is recommended for people with established kidney disease or those taking nephrotoxic drugs.\n- Side effects are rare and usually mild, most commonly gastrointestinal symptoms during loading phases.\n- Creatine is not prohibited by the World Anti-Doping Agency."
+    }
+  }
+]

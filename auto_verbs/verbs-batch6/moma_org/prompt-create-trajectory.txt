@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.moma.org
+
+* Concrete task
+- Search the MoMA collection for "Andy Warhol".
+- Extract up to 5 artworks with title, artist, date, medium, and artwork URL.
+- Print the results.

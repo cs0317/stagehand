@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.airnow.gov
+
+* Concrete task
+- Look up the current Air Quality Index (AQI) for zip code "90210".
+- Extract the location, current AQI value, AQI category (Good/Moderate/Unhealthy), primary pollutant, and health recommendations.
+- Print the results.

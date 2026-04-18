@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.accuweather.com
+
+* Concrete task
+- Search for weather forecast for "San Francisco, CA".
+- Extract the current temperature, weather condition, high/low forecast, humidity, wind speed, and 5-day forecast summary.
+- Print the results.

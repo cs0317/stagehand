@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.wunderground.com
+
+* Concrete task
+- Look up weather history for "Chicago, IL" for yesterday's date.
+- Extract the date, high temperature, low temperature, average temperature, precipitation, and humidity.
+- Print the results.

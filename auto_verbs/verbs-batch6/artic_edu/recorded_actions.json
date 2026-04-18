@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 5092,
+    "type": "goto",
+    "url": "https://www.artic.edu/collection?q=Claude%20Monet",
+    "description": "Search AIC collection"
+  },
+  {
+    "timestamp": 9875,
+    "type": "extract",
+    "instruction": "Extract artworks",
+    "results": {
+      "extraction": ""
+    }
+  }
+]

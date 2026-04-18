@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.thredup.com
+
+* Concrete task
+- Search for secondhand clothing matching "cashmere sweater".
+- Extract up to 5 items with item name, brand, size, price, and condition.
+- Print the results.

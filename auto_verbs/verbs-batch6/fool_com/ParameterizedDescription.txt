@@ -1,0 +1,8 @@
+Website: https://www.fool.com
+Task: Search for articles matching "dividend stocks 2025".
+Extract up to 5 articles:
+  - Headline
+  - Author
+  - Publication date
+  - Summary
+Print the results.

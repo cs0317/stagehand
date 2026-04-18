@@ -1,0 +1,8 @@
+Website: https://www.mountainproject.com
+Task: Search for climbing routes matching "Yosemite trad climbing".
+Extract up to 5 routes with:
+  - Route name
+  - Grade/difficulty
+  - Location
+  - Route URL
+Print the results.

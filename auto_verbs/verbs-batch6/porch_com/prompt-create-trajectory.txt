@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://porch.com
+
+* Concrete task
+- Search for home improvement services for "roof repair" near "Phoenix, AZ".
+- Extract up to 5 service providers with business name, rating, number of reviews, and services offered.
+- Print the results.

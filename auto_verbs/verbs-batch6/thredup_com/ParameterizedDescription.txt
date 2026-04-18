@@ -1,0 +1,4 @@
+ThredUp – Secondhand Fashion Search
+Search ThredUp (thredup.com) for secondhand clothing listings.
+Uses Google site search pattern to find results.
+Parameters: query (search terms), max_results (default 5)

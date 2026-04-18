@@ -1,0 +1,8 @@
+Website: https://www.bandsintown.com
+Task: Search for upcoming concerts by "Beyoncé".
+Extract up to 5 upcoming events with:
+  - Venue name
+  - City
+  - Date
+  - Ticket URL
+Print the results.

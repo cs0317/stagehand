@@ -1,0 +1,9 @@
+Website: https://www.menards.com
+Task: Search for products matching "cordless drill".
+Extract up to 5 products with:
+  - Product name
+  - Brand
+  - Price
+  - Rating
+  - Product URL
+Print the results.

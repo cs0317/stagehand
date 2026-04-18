@@ -1,0 +1,10 @@
+Website: https://goodonyou.eco
+Task: Search for fashion brand rating for "Patagonia".
+Extract:
+  - Brand name
+  - Overall rating (out of 5)
+  - Planet score
+  - People score
+  - Animals score
+  - Rating summary
+Print the results.

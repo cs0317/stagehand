@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 5674,
+    "type": "goto",
+    "url": "https://www.idealist.org/en/jobs?q=environmental%20policy&loc=Washington%2C%20DC",
+    "description": "Navigate to Idealist job search"
+  },
+  {
+    "timestamp": 11071,
+    "type": "extract",
+    "instruction": "Extract job listings",
+    "results": {
+      "extraction": "Job Title: Institutional Giving Officer\nOrganization Name: The Mountaineers\nLocation: Seattle, WA\nJob Type: Full Time\n\nJob Title: K-8 Partnership Manager\nOrganization Name: Cascade Bicycle Club\nLocation: Washington, US\nJob Type: Full Time\n\nJob Title: Match Support Specialist\nOrganization Name: Big Brothers Big Sisters of Puget Sound\nLocation: Bellevue, WA\nJob Type: Full Time\n\nJob Title: Contract Writer & Researcher: Monthly Global Plastic Waste Trade Newsletter\nOrganization Name: Basel Action Network\nLocation: United States\nJob Type: Contract/Freelance\n\nJob Title: Park Events and Information Booth Assistant\nOrganization Name: Friends of Waterfront Park\nLocation: Seattle, WA\nJob Type: Part Time"
+    }
+  }
+]

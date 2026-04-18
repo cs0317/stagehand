@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://food52.com
+
+* Concrete task
+- Search for recipes matching "sourdough bread".
+- Extract up to 5 recipes with recipe name, author, rating, and description.
+- Print the results.

@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 7290,
+    "type": "goto",
+    "url": "https://www.courtlistener.com/?q=freedom%20of%20speech&type=o",
+    "description": "Search CourtListener"
+  },
+  {
+    "timestamp": 14230,
+    "type": "extract",
+    "instruction": "Extract opinions",
+    "results": {
+      "extraction": "State v. Dolcini (Ohio Ct. App. 2024)\nCourt: Ohio Ct. App.\nDate Filed: May 13th, 2024\nCase Summary: …[Cite as State v. Dolcini, 2024-Ohio-1843.] STATE\nOF OHIO ) IN …\n\nMorrison v. Dible (Ohio Ct. App. 2025)\nCourt: Ohio Ct. App.\nDate Filed: September 22nd, 2025\nCase Summary: …2025-Ohio-4415.] IN THE COURT\nOF APPEALS OF OHIO THIRD APPELLATE …\n\nPortage Cty. Educators Assn. for Dev. Disabilities-Unit B, OEA/NEA v. State Emp. Relations Bd. (Ohio 2022)\nCourt: Ohio\nDate Filed: September 13th, 2022\nCase Summary: …before it is published in an advance sheet\nof the Ohio Official Reports. Readers are requested …\n\nCenter for Individual Freedom, Inc. v. Tennant (S.D.W. Va 2011)\nCourt: S.D.W. Va\nDate Filed: July 18th, 2011\nCase Summary: …the Court are Plaintiff Center for Individual\nFreedom, Inc.’s (CFIF) Renewed Motion for Summary Judgment …\n\nCenter for Individual Freedom v. Natalie H. Tennant (4th Cir. 2013)\nCourt: 4th Cir.\nDate Filed: January 18th, 2013\nCase Summary: …“Congress shall make no law ... abridging the\nfreedom of speech.” U.S. Const, amend. I. In its now-famous …"
+    }
+  }
+]

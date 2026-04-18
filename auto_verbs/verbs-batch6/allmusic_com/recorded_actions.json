@@ -1,0 +1,22 @@
+[
+  {
+    "timestamp": 6142,
+    "type": "goto",
+    "url": "https://www.allmusic.com/search/all/Miles%20Davis",
+    "description": "Search AllMusic"
+  },
+  {
+    "timestamp": 27645,
+    "type": "click",
+    "description": "Clicked first artist result"
+  },
+  {
+    "timestamp": 62140,
+    "type": "extract",
+    "instruction": "Extract artist info",
+    "description": "Extracted artist data",
+    "results": {
+      "extraction": "Miles Davis\nActive\nBorn\nMay 26, 1926\nAlton, IL\nDied\nSeptember 28, 1991\nSanta Monica, CA\nGenre\nJazz\nStyles\nBop\nCool\nFusion\nHard Bop\nJazz-Funk\nJazz-Rock\nModal Music\nPost-Bop\nJazz Instrument\nTrumpet Jazz\nBiography\nMiles Davis Biography by William Ruhlmann\nThe most influential and innovative figure in jazz history, Miles Davis was a restless trumpeter, bandleader, and composer whose career spanned five decades and countless transformations. He was at the forefront of major jazz movements, including bebop, cool jazz, hard bop, modal jazz, and jazz fusion. Davis pushed boundaries not just musically—leading groups featuring legends like John Coltrane, Herbie Hancock, Bill Evans, Wayne Shorter, and Chick Corea—but also through his distinct style, attitude, and experimentation. His albums, from \"Birth of the Cool\" and \"Kind of Blue\" to \"Bitches Brew,\" changed the sound and direction of jazz. Davis was celebrated for his constant evolution and risk-taking, earning Grammy nominations and accolades throughout his life, and his legacy continues to inspire musicians across genres."
+    }
+  }
+]

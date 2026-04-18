@@ -1,0 +1,9 @@
+Website: https://www.goldstar.com
+Task: Search for discount event tickets near "New York".
+Extract up to 5 events:
+  - Event name
+  - Venue
+  - Date
+  - Original price
+  - Discount price
+Print the results.

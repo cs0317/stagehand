@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 5958,
+    "type": "goto",
+    "url": "https://www.macrotrends.net/stocks/charts/AAPL/apple/revenue",
+    "description": "Navigate to Macrotrends revenue"
+  },
+  {
+    "timestamp": 25164,
+    "type": "extract",
+    "instruction": "Extract revenue data",
+    "results": {
+      "extraction": "2025: $416,161\n2024: $391,035\n2023: $383,285\n2022: $394,328\n2021: $365,817"
+    }
+  }
+]

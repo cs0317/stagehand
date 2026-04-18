@@ -1,0 +1,6 @@
+RTINGS Product Review Search
+
+Searches for product reviews on RTINGS.com using Google site search.
+Returns review titles and URLs matching the product query.
+
+Default query: "best 4K TV 2024"

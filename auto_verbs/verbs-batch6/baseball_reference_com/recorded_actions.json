@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6129,
+    "type": "goto",
+    "url": "https://www.baseball-reference.com/search/search.fcgi?search=Shohei%20Ohtani",
+    "description": "Search player"
+  },
+  {
+    "timestamp": 21851,
+    "type": "extract",
+    "instruction": "Extract batting stats",
+    "results": {
+      "extraction": "How many hits does Shohei Ohtani have?\n1,037 hits\nHow many home runs does Shohei Ohtani have?\n225 home runs\nWhat is Shohei Ohtani's average?\n.281 batting average"
+    }
+  }
+]

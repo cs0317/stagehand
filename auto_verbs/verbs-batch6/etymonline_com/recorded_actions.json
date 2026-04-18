@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 5404,
+    "type": "goto",
+    "url": "https://www.etymonline.com/word/algorithm",
+    "description": "Navigate to Etymonline"
+  },
+  {
+    "timestamp": 12341,
+    "type": "extract",
+    "instruction": "Extract etymology",
+    "results": {
+      "extraction": "algorithm\nOrigin language: French (algorithme), Old French (algorisme), Medieval Latin (algorismus), Arabic (al-Khwarizmi)\nEarliest known usage date: 1690s\nFull etymology description: 1690s, \"Arabic system of computation,\" from French algorithme, refashioned (under mistaken connection with Greek arithmos \"number\") from Old French algorisme \"the Arabic numeral system\" (13c.), from Medieval Latin algorismus, a mangled transliteration of Arabic al-Khwarizmi \"native of Khwarazm\" (modern Khiva in Uzbekistan), surname of the mathematician whose works introduced sophisticated mathematics to the West (see algebra). The earlier form in Middle English was algorism (early 13c.), from Old French. The meaning broadened to any method of computation; from mid-20c. especially with reference to computing."
+    }
+  }
+]

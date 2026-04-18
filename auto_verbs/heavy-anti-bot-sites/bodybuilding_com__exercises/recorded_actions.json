@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 7141,
+    "type": "goto",
+    "url": "https://www.bodybuilding.com/exercises/finder/?muscle=chest",
+    "description": "Navigate to exercise database"
+  },
+  {
+    "timestamp": 11445,
+    "type": "extract",
+    "instruction": "Extract exercises",
+    "results": {
+      "extraction": ""
+    }
+  }
+]

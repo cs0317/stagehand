@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.seriouseats.com
+
+* Concrete task
+- Search for recipes matching "pasta carbonara".
+- Extract up to 5 recipes with recipe name, author, total time, and description.
+- Print the results.

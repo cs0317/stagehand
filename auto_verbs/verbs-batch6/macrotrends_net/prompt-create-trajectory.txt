@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://www.macrotrends.net
+
+* Concrete task
+- Look up "Apple" revenue history.
+- Extract the annual revenue figures for the most recent 5 years with year and revenue amount.
+- Print the results.

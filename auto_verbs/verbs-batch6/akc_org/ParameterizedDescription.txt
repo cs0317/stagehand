@@ -1,0 +1,14 @@
+AKC – Dog Breed Info
+
+Look up a dog breed on akc.org and extract breed details.
+
+Parameters:
+  - breed (str): The breed name to search for (e.g., "Golden Retriever")
+
+Returns:
+  - breed_name (str): Official breed name
+  - breed_group (str): Breed group (e.g., "Sporting")
+  - size (str): Size category
+  - life_expectancy (str): Life expectancy range
+  - temperament (str): Temperament traits
+  - popularity_rank (str): AKC popularity ranking

@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://ocw.mit.edu
+
+* Concrete task
+- Search for MIT OpenCourseWare courses matching "algorithms".
+- Extract up to 5 courses with course number, course title, instructor, department, and course URL.
+- Print the results.

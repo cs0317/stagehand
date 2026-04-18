@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 5918,
+    "type": "goto",
+    "url": "https://catalog.data.gov/dataset?q=air%20quality",
+    "description": "Search Data.gov"
+  },
+  {
+    "timestamp": 12466,
+    "type": "extract",
+    "instruction": "Extract datasets",
+    "results": {
+      "extraction": "Electric Vehicle Population Data\nState of Washington\nThis dataset shows the Battery Electric Vehicles (BEVs) and Plug-in Hybrid Electric Vehicles (PHEVs) that are currently registered through Washington State Department of Licensing (DOL).\n[4-241]\nCrime Data from 2020 to 2024\nCity of Los Angeles\n******Notice: Transition to NIBRS-Compliant Crime Data Reporting The Los Angeles Police Department (LAPD) has completed its transition from the legacy Records Management System, which reported...\n[4-281]\nFIMA NFIP Redacted Claims (OpenFEMA)\nDepartment of Homeland Security\nCongress passed the National Flood Insurance Act (NFIA), 42 U.S.C. 4001 in 1968, creating the National Flood Insurance Program (NFIP) in order to reduce future flood losses through flood hazard...\n[4-322]\nSupply Chain Greenhouse Gas Emission Factors v1.3 by NAICS-6\nU.S. Environmental Protection Agency\nThe datasets comprise greenhouse gas (GHG) emission factors (Factors) for 1,016 U.S. commodities as defined by the 2017 version of the North American Industry Classification System (NAICS). The...\n[4-355]\nBaby Names from Social Security Card Applications - National Data\nSocial Security Administration\nThe data (name, year of birth, sex, and number) are from a 100 percent sample of Social Security card applications for 1880 on.\n[4-391]"
+    }
+  }
+]

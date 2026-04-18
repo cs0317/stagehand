@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 6328,
+    "type": "goto",
+    "url": "https://www.justia.com/search?q=employment+discrimination",
+    "description": "Navigate to Justia search"
+  },
+  {
+    "timestamp": 12242,
+    "type": "extract",
+    "instruction": "Extract case results",
+    "results": {
+      "extraction": "Case 1:\nCase name: Employment Discrimination and Harassment Laws - Justia\nCourt: Justia › Employment Law Center\nDate: Oct 15, 2025\nCase summary: Examples of Illegal Employment Discrimination. Under Title VII, the Age Discrimination in Employment Act, the Americans with Disabilities Act, ...\n\nCase 2:\nCase name: Employment Discrimination Laws: 50-State Survey - Justia\nCourt: Justia › Employment Laws: 50-State Surveys\nDate: Sep 26, 2022\nCase summary: Alabama also has no state agency enforcing employment discrimination laws, unlike most states. The age discrimination law applies to employers ...\n\nCase 3:\nCase name: Title VII and Employees' Legal Rights | Employment Law Center\nCourt: Justia › employment › employment-discrimination › title-vii\nDate: Oct 15, 2025\nCase summary: Title VII of the Civil Rights Act of 1964 is a federal law that protects employees against discrimination based on certain specified characteristics.\n\nCase 4:\nCase name: Sex Stereotyping & Employment Discrimination Laws - Justia\nCourt: Justia › employment › sex-stereotyping-discrimination\nDate: Oct 15, 2025\nCase summary: Sex or gender stereotyping can be less obvious than other types of sex discrimination. It occurs when an employer or its agent discriminates ...\n\nCase 5:\nCase name: Medical Condition Discrimination Laws in Employment - Justia\nCourt: Justia › employment › medical-condition-discrimination\nDate: Oct 15, 2025\nCase summary: It is illegal under both federal and state laws to discriminate against an employee based on his or her medical condition with regard to ..."
+    }
+  }
+]

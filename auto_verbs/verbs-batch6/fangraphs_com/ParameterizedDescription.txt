@@ -1,0 +1,10 @@
+Website: https://www.fangraphs.com
+Task: Navigate to the leaderboards page for the current MLB season.
+Extract top 5 players by WAR:
+  - Player name
+  - Team
+  - WAR
+  - Batting average
+  - Home runs
+  - RBIs
+Print the results.

@@ -1,0 +1,7 @@
+ScienceDaily Science News Search
+
+Searches for science news articles on ScienceDaily.com
+using Google site search. Returns article titles and URLs
+matching the science topic query.
+
+Default query: "artificial intelligence healthcare"

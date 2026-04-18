@@ -1,0 +1,10 @@
+Website: https://www.merriam-webster.com
+Task: Look up the word "serendipity".
+Extract:
+  - Word
+  - Pronunciation
+  - Part of speech
+  - Definition
+  - Example sentence
+  - First known use date
+Print the results.

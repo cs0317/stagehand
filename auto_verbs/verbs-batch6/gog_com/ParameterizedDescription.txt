@@ -1,0 +1,9 @@
+Website: https://www.gog.com
+Task: Search for games matching "roguelike".
+Extract up to 5 games:
+  - Title
+  - Price
+  - Discount percentage (if any)
+  - Rating
+  - Game URL
+Print the results.

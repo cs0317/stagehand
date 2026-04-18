@@ -1,0 +1,9 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://allevents.in
+
+* Concrete task
+- Search for events in "Austin" matching "music festival".
+- Extract up to 5 events with event name, date, venue, and event URL.
+- Print the results.
