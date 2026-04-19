@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.ufc.com
+
+* Concrete task
+- Search UFC.com for fighter "Jon Jones".
+- Extract: fighter name, nickname, professional record (W-L-D), weight class, height, reach, and last 3 fight results.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.songsterr.com
+
+* Concrete task
+- Search Songsterr for "Stairway to Heaven Led Zeppelin".
+- Extract the top 5 tab results: song title, artist, instrument, and tab type.
+- Print the list.

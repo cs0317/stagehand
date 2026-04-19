@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.hotpads.com
+
+* Concrete task
+- Search HotPads for apartments in "Chicago, IL" under $2000/month.
+- Extract the first 5 listings: address, monthly rent, bedrooms, bathrooms, and square footage.
+- Print the list.

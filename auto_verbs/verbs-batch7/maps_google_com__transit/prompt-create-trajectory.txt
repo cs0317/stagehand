@@ -1,0 +1,10 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://maps.google.com
+
+* Concrete task
+- Search for public transit directions from "Union Station, Los Angeles" to "Santa Monica Pier".
+- Select the "Transit" travel mode.
+- Extract the recommended route: departure time, arrival time, total duration, number of transfers, and transit line names.
+- Print the results.

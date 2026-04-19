@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://anilist.co
+
+* Concrete task
+- Search AniList for "Fullmetal Alchemist".
+- Extract: title, average score, episodes, status, genres, and description.
+- Print the results.

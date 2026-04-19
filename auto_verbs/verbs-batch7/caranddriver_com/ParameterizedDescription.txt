@@ -1,0 +1,10 @@
+Task: Search Car and Driver for articles/reviews and extract search results.
+
+Parameters:
+- search_query (str): The search query (e.g., "best SUV 2025")
+
+Extract (first 5):
+- title (str): Article/review title
+- url (str): Link to the article
+- description (str): Brief summary/snippet
+- date (str): Publication date if available

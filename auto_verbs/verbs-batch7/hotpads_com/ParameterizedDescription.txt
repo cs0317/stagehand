@@ -1,0 +1,13 @@
+Search HotPads for apartments in a given city under a given monthly price and extract listings.
+
+Parameters:
+- city: The city to search (e.g. "Chicago, IL")
+- max_price: Maximum monthly rent (e.g. 2000)
+- max_results: Number of listings to return (default 5)
+
+Output per listing:
+- name: Apartment/building name
+- price: Monthly rent or rent range
+- bedrooms: Number of bedrooms or range
+- location: City, state
+- building_type: Type of building (e.g. "Apt building")

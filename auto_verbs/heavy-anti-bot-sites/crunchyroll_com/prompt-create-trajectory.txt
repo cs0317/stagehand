@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.crunchyroll.com
+
+* Concrete task
+- Search Crunchyroll for "Attack on Titan".
+- Extract the first 5 results: title, number of episodes/seasons, rating, and description.
+- Print the list.

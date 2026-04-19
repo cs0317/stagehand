@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.opensecrets.org
+
+* Concrete task
+- Search OpenSecrets for lobbying data related to "technology".
+- Extract the top 5 lobbying organizations: name, total spending amount, and number of lobbyists.
+- Print the list.

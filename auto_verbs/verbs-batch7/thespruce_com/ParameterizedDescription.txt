@@ -1,0 +1,8 @@
+Task: Search The Spruce for articles.
+
+Parameters:
+- search_query: str = "best indoor plants low light"
+- max_results: int = 5
+
+Extract per article:
+- title (str)

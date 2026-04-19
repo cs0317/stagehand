@@ -1,8 +1,9 @@
-Please read auto_verbs\common\SystemPrompt1.txt
+Please read auto_verbs\verbs\SystemPrompt1.txt
 
 * The target website
 https://www.vivino.com
 
 * Concrete task
-- Search for wines matching "Pinot Noir".
-- Extract up to 5 wines with wine name, winery, region, average rating (out of 5), number of ratings, and price.
+- Search Vivino for "Cabernet Sauvignon" wines.
+- Extract the top 5 results: wine name, winery, region, rating, number of ratings, and price.
+- Print the list.

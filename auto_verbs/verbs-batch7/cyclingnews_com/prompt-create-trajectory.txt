@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.cyclingnews.com
+
+* Concrete task
+- Extract the latest cycling news headlines from CyclingNews.
+- For the first 5 articles: title, author, publication date, and summary.
+- Print the list.

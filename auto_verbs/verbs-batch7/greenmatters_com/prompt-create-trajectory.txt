@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.greenmatters.com
+
+* Concrete task
+- Search Green Matters for "sustainable living" articles.
+- Extract the first 5 articles: title, author, date, and summary.
+- Print the list.

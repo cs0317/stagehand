@@ -1,0 +1,12 @@
+depop_search
+
+Search Depop for items and extract listing details.
+For each listing: item name (from URL slug), brand, price, size, and seller username (from URL slug).
+
+URL pattern: https://www.depop.com/search/?q={query}
+
+Parameters:
+  - query: Search term (default: "vintage denim jacket")
+  - max_results: Max results to extract (default: 5)
+
+Output: Array of listing objects with item_name, brand, price, size, seller

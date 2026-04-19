@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.farfetch.com
+
+* Concrete task
+- Search Farfetch for "Gucci bags".
+- Extract the first 5 results: product name, brand, price, and available colors.
+- Print the list.

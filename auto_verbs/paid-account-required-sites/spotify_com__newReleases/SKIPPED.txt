@@ -1,0 +1,3 @@
+SKIPPED: Spotify's new releases section (open.spotify.com/section/0JQ5DAqbMKFz6FAsICynMR) requires login. 
+The homepage shows trending songs and popular albums but does not include release dates.
+Without authentication, new release data is inaccessible.

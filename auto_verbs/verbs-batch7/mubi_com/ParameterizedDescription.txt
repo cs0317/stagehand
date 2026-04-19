@@ -1,0 +1,11 @@
+Browse MUBI's current film selection (Now Showing).
+
+Parameters:
+- max_results: Number of films to return (default 5)
+
+Output per film:
+- title: Film title
+- director: Director name
+- year: Release year
+- country: Country of origin
+- description: Film description

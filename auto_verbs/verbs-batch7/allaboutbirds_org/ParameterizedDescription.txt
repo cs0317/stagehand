@@ -1,0 +1,12 @@
+Task: Search All About Birds for a given bird species and extract detailed information.
+
+Parameters:
+- bird_name (str): The bird species to search for (e.g., "bald eagle")
+
+Extract:
+- common_name (str)
+- scientific_name (str)
+- size_wingspan (str)
+- habitat (str)
+- diet (str)
+- conservation_status (str)

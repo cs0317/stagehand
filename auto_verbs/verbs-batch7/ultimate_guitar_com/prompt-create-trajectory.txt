@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.ultimate-guitar.com
+
+* Concrete task
+- Search Ultimate Guitar for "Wonderwall Oasis".
+- Extract the top 5 results: title, artist, rating, type (tab/chords), and difficulty.
+- Print the list.

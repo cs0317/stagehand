@@ -1,0 +1,12 @@
+Task: Search Grailed for fashion items and extract listings.
+
+Parameters:
+- search_query (str): The search query (e.g., "Rick Owens")
+- max_results (int): Maximum number of results (default: 5)
+
+Extract:
+- name (str): Item name/title
+- designer (str): Designer/brand
+- size (str): Size
+- price (str): Current price
+- url (str): Listing URL

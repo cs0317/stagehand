@@ -1,0 +1,13 @@
+Task: Look up fuel economy data for a vehicle on FuelEconomy.gov.
+
+Parameters:
+- year (int): Vehicle model year (e.g., 2025)
+- make (str): Vehicle make (e.g., "Toyota")
+- model (str): Vehicle model (e.g., "Camry")
+
+Extract (all trims):
+- trim (str): Full trim name with engine details
+- fuel_type (str): Fuel type (Regular Gasoline, Premium, etc.)
+- city_mpg (int): City MPG
+- highway_mpg (int): Highway MPG
+- combined_mpg (int): Combined MPG

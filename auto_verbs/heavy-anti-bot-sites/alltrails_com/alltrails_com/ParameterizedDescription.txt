@@ -1,0 +1,21 @@
+Task: Search AllTrails for hiking trails near a given location and extract trail details.
+
+Parameters:
+- location (str): The location to search near (e.g., "Yosemite National Park")
+- max_results (int): Maximum number of trails to extract (e.g., 5)
+
+For each trail, extract:
+- trail_name (str)
+- difficulty (str)
+- distance_miles (str)
+- elevation_gain (str)
+- avg_rating (str)
+Website: https://www.alltrails.com
+Task: Search for hiking trails matching "Yosemite National Park".
+Extract up to 5 trails with:
+  - Trail name
+  - Difficulty
+  - Length (miles)
+  - Elevation gain
+  - Average rating
+Print the results.

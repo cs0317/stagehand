@@ -1,0 +1,12 @@
+Task: Search Adorama for a given search query, extract the top N results with product details, and print them.
+
+Parameters:
+- search_query (str): The product search term (e.g., "mirrorless camera")
+- max_results (int): Maximum number of results to extract (e.g., 5)
+
+For each result, extract:
+- product_name (str)
+- brand (str)
+- price (str)
+- customer_rating (str)
+- availability (str)

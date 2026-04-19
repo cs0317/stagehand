@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.amazon.com/coupons
+
+* Concrete task
+- Browse Amazon's coupons page.
+- Extract the first 5 coupon deals: product name, discount percentage, original price, and category.
+- Print the list.

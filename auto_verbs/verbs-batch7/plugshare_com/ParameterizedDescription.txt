@@ -1,0 +1,23 @@
+Search PlugShare for EV charging stations in a given city. Extract the top stations: station name, address, checkins, and detail URL.
+
+Parameters:
+- City: The city to search for (e.g. "San Francisco")
+- State: The US state (e.g. "California")
+- num_results: Number of results to extract (default 5)
+
+Approach:
+Use the PlugShare directory page at /directory/us/{state}/{city} (lowercase, hyphens for spaces).
+The directory page lists top-rated stations with name, address, checkins count, and detail links.
+
+Steps:
+1. Navigate to the directory page
+2. Wait for station cards to load
+3. Extract station data from div.location elements:
+   - Station name (text before "(X checkins)")
+   - Address (second line of text)
+   - Number of checkins
+   - Detail page URL (/location/{id})
+4. Print the results
+
+Note: For full connector types, number of plugs, and charging network,
+visit the station detail page at the URL.

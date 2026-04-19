@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.totalwine.com
+
+* Concrete task
+- Search Total Wine for "Pinot Noir" wines.
+- Extract the top 5 results: wine name, region, price, customer rating, and bottle size.
+- Print the list.

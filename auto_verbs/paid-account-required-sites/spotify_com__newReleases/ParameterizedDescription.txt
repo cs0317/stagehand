@@ -1,0 +1,9 @@
+Task: Extract new album releases from Spotify.
+
+Parameters:
+- max_results: int = 10
+
+Extract per release:
+- album_name (str)
+- artist_name (str)
+- release_date (str)

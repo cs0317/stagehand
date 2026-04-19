@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.plugshare.com
+
+* Concrete task
+- Search PlugShare for EV charging stations near "San Francisco, CA".
+- Extract the first 5 stations: station name, address, connector types, number of plugs, and charging network.
+- Print the list.

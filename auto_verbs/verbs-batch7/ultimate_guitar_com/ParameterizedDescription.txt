@@ -1,0 +1,14 @@
+Ultimate Guitar – Tab Search
+
+Search Ultimate Guitar for guitar tabs and chords.
+
+Parameters:
+- search_query (str): The search query (e.g. "Wonderwall Oasis"). Default: "Wonderwall Oasis"
+- max_results (int): Maximum number of results to return. Default: 5
+
+Returns:
+- tabs: list of TabResult
+  - title (str): Song title/version
+  - artist (str): Artist name
+  - rating (str): Rating count
+  - type (str): Type (Chords, Tab, Guitar Pro, etc.)

@@ -1,0 +1,10 @@
+Task: Search National Geographic for articles.
+
+Parameters:
+- search_query (str): The topic to search for (e.g., "coral reef")
+
+Extract (first 5):
+- title (str)
+- date (str)
+- summary (str)
+- url (str)

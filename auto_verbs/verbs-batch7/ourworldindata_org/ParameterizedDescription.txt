@@ -1,0 +1,15 @@
+Search Our World in Data for articles/charts related to a given query. Extract the first 5 results: title, description, and URL.
+
+Parameters:
+- Query: The search query (e.g. "CO2 emissions by country")
+- num_results: Number of results to extract (default 5)
+
+Steps:
+1. Navigate to https://ourworldindata.org/search?q={encoded query}
+2. Wait for search results to load
+3. Find all `a.search-chart-hit-header` elements (each is one search result)
+4. For each, extract:
+   - Title: first text content (before "Source:")
+   - Description: text after "Source:" or the subtitle text
+   - URL: the href attribute
+5. Print the results

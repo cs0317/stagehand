@@ -1,0 +1,12 @@
+Treehugger – Article Search
+
+Search Treehugger for articles by keyword.
+
+Parameters:
+- search_query (str): The search query (e.g. "solar panel"). Default: "solar panel"
+- max_results (int): Maximum number of results to return. Default: 5
+
+Returns:
+- articles: list of ArticleResult
+  - title (str): Article title
+  - summary (str): Article summary/description

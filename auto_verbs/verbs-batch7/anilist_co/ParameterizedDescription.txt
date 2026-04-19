@@ -1,0 +1,12 @@
+Task: Search AniList for an anime and extract its details.
+
+Parameters:
+- anime_title (str): The anime title to search for (e.g., "Fullmetal Alchemist")
+
+Extract:
+- title (str)
+- avg_score (str)
+- episodes (str)
+- status (str)
+- genres (str)
+- description (str)

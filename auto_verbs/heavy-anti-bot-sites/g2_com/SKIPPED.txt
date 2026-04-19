@@ -1,0 +1,2 @@
+SKIPPED: g2.com - DataDome CAPTCHA + Cloudflare challenge
+Bot detection prevents automated access.

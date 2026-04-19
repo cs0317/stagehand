@@ -1,0 +1,12 @@
+Task: Search GoFundMe campaigns and extract details.
+
+Parameters:
+- search_query (str): The search query (e.g., "education")
+- max_results (int): Maximum number of results (default: 5)
+
+Extract:
+- title (str): Campaign title
+- organizer (str): Organizer name
+- raised (str): Amount raised so far
+- progress_pct (str): Percentage of goal reached
+- url (str): Campaign URL

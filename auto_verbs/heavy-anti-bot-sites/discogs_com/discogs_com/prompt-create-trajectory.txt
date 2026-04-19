@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.discogs.com
+
+* Concrete task
+- Search Discogs for "Pink Floyd Dark Side of the Moon".
+- Extract the first 5 releases: title, format (vinyl/CD), label, year, and lowest price.
+- Print the list.

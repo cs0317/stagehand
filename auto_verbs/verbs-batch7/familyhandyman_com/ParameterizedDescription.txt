@@ -1,0 +1,9 @@
+Task: Search Family Handyman for articles and extract results.
+
+Parameters:
+- search_query (str): The search query (e.g., "plumbing repair guide")
+
+Extract (first 5):
+- title (str)
+- url (str)
+- summary (str)

@@ -1,0 +1,10 @@
+Task: Browse SCOTUSblog for recent Supreme Court cases.
+
+Parameters:
+- term (str): The SCOTUS term (e.g., "ot2025" for October Term 2025)
+
+Extract (first 5):
+- case_name (str)
+- docket_number (str)
+- issue (str): The legal issue or holding
+- status (str): Decided date or pending status

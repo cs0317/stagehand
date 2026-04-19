@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.worldometers.info
+
+* Concrete task
+- Extract current real-time world statistics from Worldometers.
+- Capture: current world population, births today, deaths today, net population growth today, and world population growth rate.
+- Print the results.

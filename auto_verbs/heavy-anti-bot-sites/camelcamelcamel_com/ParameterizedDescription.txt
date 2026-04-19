@@ -1,0 +1,11 @@
+Task: Search CamelCamelCamel for a product and extract price history.
+
+Parameters:
+- search_query (str): The product to search for (e.g., "Apple AirPods Pro")
+
+Extract:
+- product_name (str)
+- current_price (str)
+- lowest_price (str)
+- highest_price (str)
+- average_price (str)

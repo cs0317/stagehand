@@ -1,0 +1,10 @@
+Task: Browse Amazon coupons page and extract coupon deals.
+
+Parameters:
+- max_results (int): Maximum number of coupon deals to extract (e.g., 5)
+
+For each coupon, extract:
+- product_name (str)
+- discount (str): e.g. "Save 10%" or "Save $420"
+- price (str)
+- category (str)

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.federalregister.gov
+
+* Concrete task
+- Search the Federal Register for "artificial intelligence" documents.
+- Extract the first 5 results: document title, publishing agency, document type, publication date, and summary.
+- Print the list.

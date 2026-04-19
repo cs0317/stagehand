@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.crunchbase.com
+
+* Concrete task
+- Search Crunchbase for "OpenAI".
+- Extract: company name, description, founded date, headquarters, total funding, and number of employees.
+- Print the results.

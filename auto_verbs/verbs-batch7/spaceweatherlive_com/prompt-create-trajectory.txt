@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.spaceweatherlive.com
+
+* Concrete task
+- Check current space weather conditions on SpaceWeatherLive.
+- Extract: solar wind speed, Kp index, aurora forecast probability, recent solar flare activity, and sunspot count.
+- Print the results.

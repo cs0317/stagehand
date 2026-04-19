@@ -1,0 +1,13 @@
+Search Kickstarter for projects and extract listing info.
+
+Parameters:
+- query: Search term (e.g. "board game")
+- max_results: Number of results to return (default 5)
+
+Output per project:
+- name: Project name
+- creator: Creator name
+- days_left: Days remaining in campaign
+- percent_funded: Percent funded
+- description: Short project description
+- category: Project category

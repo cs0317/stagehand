@@ -1,0 +1,12 @@
+Task: Look up a technology on StackShare and extract details.
+
+Parameters:
+- tech_slug: str = "react"     (URL slug for the technology)
+
+Extract:
+- tech_name (str)
+- category (str)
+- description (str)
+- stacks_count (str)
+- followers_count (str)
+- pros (list of str, top 5)

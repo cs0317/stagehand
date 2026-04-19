@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.energy.gov
+
+* Concrete task
+- Search Energy.gov for "renewable energy" articles and news.
+- Extract the first 5 results: title, publication date, summary, and URL.
+- Print the list.

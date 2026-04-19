@@ -1,0 +1,12 @@
+Look up an artist on Last.fm and extract profile info and top tracks.
+
+Parameters:
+- artist: Artist name (e.g. "Radiohead")
+- max_tracks: Number of top tracks to extract (default 5)
+
+Output:
+- artist_name: Artist name
+- listeners: Total listener count
+- scrobbles: Total scrobble count
+- bio: Short biography snippet
+- top_tracks: List of {name, listeners} for top tracks

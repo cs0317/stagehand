@@ -1,0 +1,15 @@
+Site: worldometers.info
+Task: Extract real-time world population stats.
+
+URL Pattern:
+  https://www.worldometers.info
+
+Parameters:
+  (none – single page with live stats)
+
+Fields to extract:
+  - world_population (string): Current world population counter
+  - births_today (string): Births today counter
+  - deaths_today (string): Deaths today counter
+  - net_growth_today (string): Net population growth today
+  - growth_rate (string): World population growth rate

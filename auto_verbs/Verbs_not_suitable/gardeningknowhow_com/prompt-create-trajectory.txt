@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.gardeningknowhow.com
+
+* Concrete task
+- Search Gardening Know How for "tomato growing tips".
+- Extract the first 5 articles: title, summary, and URL.
+- Print the list.

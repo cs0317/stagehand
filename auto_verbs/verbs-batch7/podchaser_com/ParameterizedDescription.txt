@@ -1,0 +1,17 @@
+Search Podchaser for podcasts related to a given query. Extract the top results: podcast name, description, and categories.
+
+Parameters:
+- Query: The search query (e.g. "true crime")
+- num_results: Number of results to extract (default 5)
+
+Steps:
+1. Navigate to https://www.podchaser.com/search/podcasts?q={encoded query}
+2. Wait for search results table to load
+3. Extract from each table row:
+   - Podcast name (second cell)
+   - Description (third cell)
+   - Categories (fourth cell)
+4. Print the results
+
+Note: Rating, creator/network, and reach data are behind the Podchaser paywall
+and not available in the free search results.

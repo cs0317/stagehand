@@ -1,0 +1,15 @@
+TotalWine – Wine Search
+
+Search TotalWine for wines by keyword.
+
+Parameters:
+- search_query (str): The search query (e.g. "Pinot Noir"). Default: "Pinot Noir"
+- max_results (int): Maximum number of results to return. Default: 5
+
+Returns:
+- wines: list of WineResult
+  - name (str): Wine name
+  - region (str): Wine region
+  - price (str): Price
+  - rating (str): Customer rating
+  - bottle_size (str): Bottle size

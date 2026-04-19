@@ -1,0 +1,13 @@
+Task: Search BeerAdvocate for beers of a given style and extract top results.
+
+Parameters:
+- beer_style (str): The beer style to search for (e.g., "stout")
+- style_id (int): The BeerAdvocate style ID (e.g., 157 for American Imperial Stout)
+
+Extract (top 5):
+- beer_name (str)
+- brewery (str)
+- style (str)
+- abv (str)
+- rating_score (str)
+- num_reviews (str)

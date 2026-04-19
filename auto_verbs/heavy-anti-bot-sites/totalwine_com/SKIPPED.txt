@@ -1,0 +1,1 @@
+SKIPPED – Bot detection: "Press & Hold to confirm you are a human" anti-bot challenge blocks automated access.

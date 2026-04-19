@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.ebay.com
+
+* Concrete task
+- Search eBay for "Nintendo Switch OLED" and filter to show completed/sold listings only.
+- Extract the first 5 sold items: title, sold price, sold date, and item condition.
+- Print the list.

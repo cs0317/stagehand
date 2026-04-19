@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://gist.github.com
+
+* Concrete task
+- Search GitHub Gists for "python web scraper".
+- Extract the first 5 gists: description, author username, number of stars, number of forks, and creation date.
+- Print the list.

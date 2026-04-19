@@ -1,0 +1,3 @@
+SKIPPED: gardeningknowhow.com - Search results don't render
+Search page exists but returns empty results (SPA content not rendering in automated browser).
+Topic category pages return 404.

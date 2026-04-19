@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.thriftbooks.com
+
+* Concrete task
+- Search ThriftBooks for "1984 George Orwell".
+- Extract the first 5 results: title, author, condition, price, and format (paperback/hardcover).
+- Print the list.

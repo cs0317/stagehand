@@ -1,0 +1,5 @@
+SKIPPED – Cloudflare bot detection + SPA rendering failure.
+
+Homepage returns "Something Went Wrong" error.
+Series pages trigger Cloudflare security verification ("Performing security verification... verifies you are not a bot").
+Search page renders empty SPA shell with no actual results.

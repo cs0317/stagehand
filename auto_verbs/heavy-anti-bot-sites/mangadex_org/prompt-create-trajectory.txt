@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://mangadex.org
+
+* Concrete task
+- Search MangaDex for "One Piece".
+- Extract the first 5 results: manga title, author, status, genres, and description.
+- Print the list.

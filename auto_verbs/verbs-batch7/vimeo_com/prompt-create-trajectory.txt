@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://vimeo.com
+
+* Concrete task
+- Search Vimeo for "short film documentary".
+- Extract the first 5 videos: title, creator name, duration, number of views, and number of likes.
+- Print the list.

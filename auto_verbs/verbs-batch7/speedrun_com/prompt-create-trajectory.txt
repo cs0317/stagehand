@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.speedrun.com
+
+* Concrete task
+- Search Speedrun.com for "Super Mario 64" and navigate to the leaderboard for the main category.
+- Extract the top 5 runs: runner name, completion time, category, date submitted, and platform.
+- Print the list.

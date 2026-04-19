@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.movoto.com
+
+* Concrete task
+- Search Movoto for homes in "Denver, CO".
+- Extract the first 5 listings: address, listing price, bedrooms, bathrooms, and square footage.
+- Print the list.

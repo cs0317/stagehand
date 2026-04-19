@@ -1,0 +1,13 @@
+Search IGDB for games and extract results from the search page JSON data.
+
+Parameters:
+- query: Search query (e.g. "The Legend of Zelda")
+- max_results: Number of results to return (default 5)
+
+Output per game:
+- title: Game title
+- release_year: Year of release
+- platforms: List of platforms
+- category: Game type (Main Game, Port, Mod, etc.)
+
+Note: User rating and genres are only available on detail pages (Cloudflare-protected).

@@ -1,0 +1,13 @@
+Task: Check current space weather conditions on SpaceWeatherLive.
+
+Parameters: None (reads current conditions)
+
+Extract:
+- solar_wind_speed (str)
+- kp_index (str)
+- bz_value (str)
+- density (str)
+- bt_value (str)
+- last_x_flare (str)
+- last_geomagnetic_storm (str)
+- sunspot_number (str)

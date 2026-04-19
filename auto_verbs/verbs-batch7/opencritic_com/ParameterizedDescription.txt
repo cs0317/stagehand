@@ -1,0 +1,16 @@
+Search OpenCritic for a given game name. Extract: game title, top critic average score, percent recommended, platforms, and release date.
+
+Parameters:
+- Game_Name: The name of the game to search for (e.g. "Elden Ring")
+
+Steps:
+1. Navigate to https://opencritic.com
+2. Type the game name into the search input
+3. Press Enter to navigate to the first search result game page
+4. Wait for the game page to load
+5. Extract from the game page:
+   - Game title (h1 element)
+   - Top Critic Average score (first .score-orb element)
+   - Percent Recommended (second .score-orb element)
+   - Platforms and release date (text after "Release Date:" in body)
+6. Print the results

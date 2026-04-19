@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.thespruce.com
+
+* Concrete task
+- Search The Spruce for "best indoor plants low light".
+- Extract the first 5 articles: title, author, summary, and URL.
+- Print the list.

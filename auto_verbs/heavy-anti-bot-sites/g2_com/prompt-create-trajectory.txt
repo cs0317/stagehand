@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.g2.com
+
+* Concrete task
+- Search G2 for "project management software".
+- Extract the top 5 products: name, star rating, number of reviews, pricing category, and one-line description.
+- Print the list.

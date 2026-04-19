@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.statista.com
+
+* Concrete task
+- Search Statista for "global smartphone market share".
+- Extract the first 5 statistics found: title, key figure/value, time period, and source.
+- Print the list.

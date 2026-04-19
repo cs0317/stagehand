@@ -1,0 +1,13 @@
+Task: Search Speedrun.com for a game and extract leaderboard runs.
+
+Parameters:
+- game_slug: str = "sm64"       (URL slug for the game)
+- game_name: str = "Super Mario 64"
+- max_results: int = 5
+
+Extract per run:
+- rank (int)
+- runner (str)
+- time (str)
+- date (str)
+- platform (str)

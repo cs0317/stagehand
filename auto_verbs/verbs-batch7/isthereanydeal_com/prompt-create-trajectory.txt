@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://isthereanydeal.com
+
+* Concrete task
+- Search IsThereAnyDeal for "Baldur's Gate 3".
+- Extract: game name, current best price, store name, historical low price, and regular price.
+- Print the results.

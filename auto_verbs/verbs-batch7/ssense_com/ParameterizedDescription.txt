@@ -1,0 +1,10 @@
+Task: Browse designer sneakers on SSENSE.
+
+Parameters:
+- category_url: str = "https://www.ssense.com/en-us/men/shoes/sneakers"
+- max_results: int = 5
+
+Extract per product:
+- brand (str)
+- product_name (str)
+- price (str)

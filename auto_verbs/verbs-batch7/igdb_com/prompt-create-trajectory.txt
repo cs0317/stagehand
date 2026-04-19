@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.igdb.com
+
+* Concrete task
+- Search IGDB for "The Legend of Zelda".
+- Extract the first 5 results: game title, release year, platforms, user rating, and genres.
+- Print the list.

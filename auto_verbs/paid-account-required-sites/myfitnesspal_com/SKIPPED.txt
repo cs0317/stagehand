@@ -1,0 +1,3 @@
+SKIPPED: myfitnesspal.com
+- Food search requires login (redirects to login page)
+- Public calorie chart pages blocked by Cloudflare security verification

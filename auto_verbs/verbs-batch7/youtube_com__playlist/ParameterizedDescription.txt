@@ -1,0 +1,15 @@
+Site: youtube.com (playlists)
+Task: Extract videos from a YouTube playlist.
+
+URL Pattern:
+  https://www.youtube.com/results?search_query={query}
+  Then navigate to first playlist result.
+
+Parameters:
+  - search_query (str): Search term, default "Lo-Fi Hip Hop Radio"
+  - max_results (int): Max videos to extract, default 10
+
+Fields to extract per video:
+  - title (string): Video title
+  - channel (string): Channel name
+  - duration (string): Video duration

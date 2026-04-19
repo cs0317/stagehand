@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.allaboutbirds.org
+
+* Concrete task
+- Search All About Birds for "bald eagle".
+- Extract: common name, scientific name, size/wingspan, habitat, diet, and conservation status.
+- Print the results.

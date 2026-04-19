@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.pbs.org
+
+* Concrete task
+- Search PBS for "nature documentary" shows.
+- Extract the first 5 results: show title, description, number of episodes or seasons, and URL.
+- Print the list.

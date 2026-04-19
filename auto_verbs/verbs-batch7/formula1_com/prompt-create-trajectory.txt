@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.formula1.com
+
+* Concrete task
+- Navigate to the F1 driver standings page.
+- Extract the top 10 drivers: position, driver name, team/constructor, and total points.
+- Print the list.

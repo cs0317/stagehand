@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.verywellfit.com
+
+* Concrete task
+- Search Verywell Fit for "squat exercise guide".
+- Extract the first 3 articles: title, author, summary, and URL.
+- Print the results.

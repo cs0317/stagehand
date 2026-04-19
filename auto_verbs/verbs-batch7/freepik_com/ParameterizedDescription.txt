@@ -1,0 +1,11 @@
+Task: Search Freepik for resources and extract details.
+
+Parameters:
+- search_query (str): The search query (e.g., "business infographic template")
+- max_results (int): Maximum number of results to return (default: 5)
+
+Extract:
+- title (str): Resource title from img alt text
+- url (str): Link to the resource
+- resource_type (str): Type derived from URL (Vector, PSD, Photo, etc.)
+- is_premium (bool): Whether the resource is premium

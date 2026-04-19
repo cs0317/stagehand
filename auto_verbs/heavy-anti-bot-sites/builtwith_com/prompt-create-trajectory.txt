@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://builtwith.com
+
+* Concrete task
+- Look up the technology profile for "stripe.com" on BuiltWith.
+- Extract the top 10 technologies detected: technology name, category, and description.
+- Print the results.

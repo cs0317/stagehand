@@ -1,0 +1,10 @@
+crunchbase_search
+
+Search Crunchbase for a company and extract: company name, description, founded date, headquarters, total funding, number of employees.
+
+URL pattern: https://www.crunchbase.com/organization/{company_slug}
+
+Parameters:
+  - company: Company slug to look up (default: "openai")
+
+Output: Company details (name, description, founded_date, headquarters, total_funding, employees)

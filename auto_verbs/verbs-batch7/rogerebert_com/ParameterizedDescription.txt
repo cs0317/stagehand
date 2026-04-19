@@ -1,0 +1,20 @@
+Search RogerEbert.com for a movie review. Extract the review details.
+
+Parameters:
+- movie_slug: URL slug for the movie review (e.g. "parasite-movie-review-2019")
+
+Steps:
+1. Navigate to https://www.rogerebert.com/reviews/{movie_slug}
+2. Wait for content to load
+3. Extract:
+   - Title from h1
+   - Star rating from .star-box .filled class "starNN" (NN / 10 = rating out of 4)
+   - Review date from text matching "Month DD, YYYY" pattern
+   - Author from a[href*="/contributors/"] link
+   - First paragraph (first <p> with >100 chars in the review body)
+4. Print results
+
+Notes:
+- Star rating is encoded in CSS class like "star40" = 4.0, "star35" = 3.5, etc.
+- The star images are SVG overlays (filled vs unfilled)
+- Go up 8 parent levels from .star-box to find the review section container

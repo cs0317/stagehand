@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.bhphotovideo.com
+
+* Concrete task
+- Search B&H Photo for "Sony A7 IV".
+- Extract the first 5 results: product name, price, customer rating, and availability status.
+- Print the list.

@@ -1,0 +1,12 @@
+Site: yogajournal.com
+Task: Search for a yoga pose and extract details.
+
+URL Pattern:
+  https://www.yogajournal.com/?s={query}
+
+Parameters:
+  - query (str): Search term, default "warrior pose"
+
+Fields to extract:
+  - title (string): Article/pose title
+  - summary (string): Description or summary

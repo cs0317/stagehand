@@ -1,0 +1,11 @@
+cyclingnews_headlines
+
+Extract the latest cycling news headlines from CyclingNews.
+For each article: title, author, publication date, and summary.
+
+URL: https://www.cyclingnews.com/news/
+
+Parameters:
+  - max_articles: Max articles to extract (default: 5)
+
+Output: Array of article objects with title, author, date, summary

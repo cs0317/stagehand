@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.beeradvocate.com
+
+* Concrete task
+- Search BeerAdvocate for "stout" beers.
+- Extract the top 5 results: beer name, brewery, style, ABV, rating score, and number of reviews.
+- Print the list.

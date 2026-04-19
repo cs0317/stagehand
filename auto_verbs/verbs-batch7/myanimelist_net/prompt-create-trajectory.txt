@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://myanimelist.net
+
+* Concrete task
+- Search MyAnimeList for "Steins;Gate".
+- Extract the top result's details: title, score, rank, episodes, aired dates, synopsis, and genres.
+- Print the results.

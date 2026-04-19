@@ -1,0 +1,10 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.goodreads.com/list
+
+* Concrete task
+- Browse Goodreads popular lists and search for "best science fiction".
+- Navigate to the first matching list.
+- Extract the list title and the top 5 books: title, author, and score.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.caranddriver.com
+
+* Concrete task
+- Search Car and Driver for "best SUV 2025".
+- Extract the first 5 vehicles mentioned: name, base price, horsepower, MPG rating, and expert score.
+- Print the list.

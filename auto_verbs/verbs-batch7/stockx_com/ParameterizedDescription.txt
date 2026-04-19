@@ -1,0 +1,9 @@
+Task: Search StockX for sneakers.
+
+Parameters:
+- search_query: str = "Nike Air Jordan 1 Retro"
+- max_results: int = 5
+
+Extract per shoe:
+- shoe_name (str)
+- lowest_ask (str)

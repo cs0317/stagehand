@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.similarweb.com
+
+* Concrete task
+- Look up traffic analytics for "reddit.com" on SimilarWeb.
+- Extract: global rank, country rank, monthly visits, bounce rate, pages per visit, and average visit duration.
+- Print the results.

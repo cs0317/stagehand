@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://substack.com
+
+* Concrete task
+- Search Substack for newsletters about "artificial intelligence".
+- Extract the first 5 results: newsletter name, author, description, and category.
+- Print the list.

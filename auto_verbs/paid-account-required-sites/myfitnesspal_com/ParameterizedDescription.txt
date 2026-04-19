@@ -1,0 +1,12 @@
+Task: Search MyFitnessPal food database and extract nutrition info.
+
+Parameters:
+- search_query (str): The food to search for (e.g., "grilled chicken breast")
+
+Extract (top 3):
+- food_name (str)
+- calories (str)
+- protein (str)
+- carbs (str)
+- fat (str)
+- serving_size (str)

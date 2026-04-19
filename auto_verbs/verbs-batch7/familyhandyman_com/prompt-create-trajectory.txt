@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.familyhandyman.com
+
+* Concrete task
+- Search Family Handyman for "plumbing repair guide".
+- Extract the first 5 articles: title, summary, and URL.
+- Print the list.

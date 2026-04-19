@@ -1,0 +1,10 @@
+Search Literary Hub for recent book reviews and articles.
+
+Parameters:
+- max_results: Number of articles to return (default 5)
+
+Output per article:
+- title: Article title
+- author: Author name
+- date: Publication date
+- summary: Review summary / excerpt

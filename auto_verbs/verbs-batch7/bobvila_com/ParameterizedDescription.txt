@@ -1,0 +1,9 @@
+Task: Search Bob Vila for articles and extract details.
+
+Parameters:
+- search_query (str): The topic to search for (e.g., "bathroom renovation ideas")
+
+Extract (first 5 articles):
+- title (str)
+- summary (str)
+- url (str)

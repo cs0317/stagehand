@@ -1,0 +1,3 @@
+SKIPPED: similarweb.com - CloudFront 403 block
+Request blocked by CloudFront CDN with "too much traffic or configuration error".
+Automated browsers are blocked at the CDN level.

@@ -1,0 +1,4 @@
+SKIPPED: Heavy bot detection.
+AllTrails returns empty body content on content pages when accessed
+via automated Chrome (CDP). The homepage loads but search/park pages
+are blocked.

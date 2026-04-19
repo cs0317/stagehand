@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://strengthlevel.com
+
+* Concrete task
+- Look up strength standards for "bench press" for a 180 lb male.
+- Extract the weight standards for each level: beginner, novice, intermediate, advanced, and elite.
+- Print the results.

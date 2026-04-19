@@ -1,0 +1,15 @@
+Task: Search Hipcamp for camping sites and extract listings.
+
+Parameters:
+- location (str): Location to search (e.g., "Joshua Tree, CA")
+- lat (str): Latitude (e.g., "34.1347")
+- lng (str): Longitude (e.g., "-116.3131")
+- max_results (int): Maximum number of results (default: 5)
+
+Extract:
+- name (str): Site name
+- price (str): Price per night
+- site_type (str): Accommodation type (Tents/RVs/Lodging)
+- rating (str): Rating percentage
+- reviews (str): Number of reviews
+- location (str): City, state

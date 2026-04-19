@@ -1,0 +1,4 @@
+SKIPPED – Cloudflare bot detection.
+
+Page shows "Performing security verification" with Cloudflare challenge.
+Cannot bypass programmatically.

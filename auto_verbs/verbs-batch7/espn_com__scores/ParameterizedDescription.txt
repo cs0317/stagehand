@@ -1,0 +1,12 @@
+Task: Extract NBA game scores from ESPN scoreboard.
+
+Parameters:
+- max_games (int): Maximum number of games to extract (default: 5)
+
+Extract (per game):
+- away_team (str)
+- home_team (str)
+- away_score (str)
+- home_score (str)
+- status (str): e.g., "Final", "11:12 - 4th", "5:30 PM"
+- series_info (str): e.g., "East 1st Round - Game 1"

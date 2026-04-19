@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.autoblog.com
+
+* Concrete task
+- Search Autoblog for "2025 Toyota Camry review".
+- Extract the first 3 articles: title, author, publication date, and summary.
+- Print the results.

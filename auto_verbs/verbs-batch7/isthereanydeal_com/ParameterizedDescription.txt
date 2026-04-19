@@ -1,0 +1,13 @@
+Search IsThereAnyDeal for a game and extract pricing info from the detail page.
+
+Parameters:
+- query: Game to search for (e.g. "Baldur's Gate 3")
+
+Output:
+- game_name: Game title
+- current_best_price: Current best price
+- current_best_store: Store with current best price
+- all_time_low: Historical lowest price
+- all_time_low_store: Store that had historical low
+- regular_price: Regular/full price
+- store_prices: List of stores with their current and historical low prices

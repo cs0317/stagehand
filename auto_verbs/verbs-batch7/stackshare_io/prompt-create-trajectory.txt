@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://stackshare.io
+
+* Concrete task
+- Search StackShare for "React" technology.
+- Extract: technology name, category, description, number of companies using it, and top 5 companies listed.
+- Print the results.

@@ -1,0 +1,2 @@
+SKIPPED: camelcamelcamel.com is behind Cloudflare security verification.
+"Performing security verification... This website uses a security service to protect against malicious bots."

@@ -1,0 +1,4 @@
+SKIPPED: scholastic.com - Search functionality unavailable
+Both scholastic.com/search and shop.scholastic.com/search return no results.
+Book Wizard and dedicated book pages return 404 Not Found.
+No accessible search or book listing endpoint for scraping.

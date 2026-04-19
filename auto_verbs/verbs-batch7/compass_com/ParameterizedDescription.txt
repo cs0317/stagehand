@@ -1,0 +1,12 @@
+Task: Search Compass.com for homes for sale and extract listings.
+
+Parameters:
+- location (str): City/neighborhood to search (e.g., "Brooklyn, NY" -> "brooklyn-ny")
+
+Extract (first 5):
+- address (str): Street address with unit number
+- neighborhood (str): Neighborhood name
+- price (str): Listing price
+- bedrooms (str): Number of bedrooms
+- bathrooms (str): Number of bathrooms
+- sqft (str): Square footage (may be "Unavailable")

@@ -551,3 +551,188 @@ Extended Site Verbs:
   - imdb_com__topRated: Top 250 rated movies
   - amazon_com__bestsellers: Best sellers by category
   - github_com__profile: User profile info extraction
+
+BATCH 7 (100 new verbs — in auto_verbs/verbs/)
+-----------------------------------------------
+Multi-verb Extensions (10):
+  - youtube_com__playlist: Extract videos from a playlist
+  - spotify_com__newReleases: Browse new music releases
+  - github_com__gists: Search public code gists
+  - imdb_com__boxOffice: Weekend box office data
+  - espn_com__scores: Recent game scores by sport
+  - nytimes_com__bestsellers: NYT bestseller book list
+  - amazon_com__coupons: Browse coupons by category
+  - ebay_com__completedSales: Completed/sold listing search
+  - maps_google_com__transit: Public transit directions
+  - goodreads_com__lists: Popular/curated book lists
+
+Wine, Beer & Spirits (5):
+  - vivino_com: Wine ratings and price search
+  - untappd_com: Beer ratings/review search
+  - beeradvocate_com: Beer review/ratings search
+  - liquor_com: Cocktail recipe search
+  - totalwine_com: Wine/spirits store search
+
+Anime & Manga (4):
+  - myanimelist_net: Anime database/ratings
+  - crunchyroll_com: Anime streaming catalog search
+  - anilist_co: Anime/manga database search
+  - mangadex_org: Manga title search
+
+Music & Audio (5):
+  - discogs_com: Vinyl/music release database
+  - songsterr_com: Guitar tab search
+  - ultimate_guitar_com: Guitar tab/chord search
+  - last_fm: Artist/track scrobble stats
+  - rateyourmusic_com: Album rating/review search
+
+Fitness & Wellness (5):
+  - myfitnesspal_com: Food calorie/nutrition lookup
+  - verywellfit_com: Fitness article search
+  - runnersworld_com: Running gear/training search
+  - yogajournal_com: Yoga pose library
+  - strengthlevel_com: Strength standard benchmarks
+
+Science & Nature (5):
+  - inaturalist_org: Wildlife/nature observation search
+  - allaboutbirds_org: Bird species information
+  - mindat_org: Mineral/rock database search
+  - spaceweatherlive_com: Solar activity/aurora forecast
+  - nationalgeographic_com: NatGeo article search
+
+Business & Tech (5):
+  - crunchbase_com: Startup/company profile search
+  - g2_com: Software review comparison
+  - builtwith_com: Website technology stack lookup
+  - similarweb_com: Website traffic analytics
+  - stackshare_io: Tech stack decision search
+
+Gaming (5):
+  - nexusmods_com: Game mod search
+  - opencritic_com: Game review aggregator
+  - isthereanydeal_com: Game price comparison
+  - speedrun_com: Speedrun leaderboard search
+  - igdb_com: Internet Game Database search
+
+Photography & Media (4):
+  - bhphotovideo_com: Photo/video equipment search
+  - vimeo_com: Video search
+  - freepik_com: Free design resource search
+  - adorama_com: Camera/photo gear search
+
+Writing & Publishing (4):
+  - substack_com: Newsletter/article search
+  - wattpad_com: Story/fiction search
+  - lithub_com: Literary news/book review
+  - thriftbooks_com: Used book search
+
+Marketplace & Resale (5):
+  - mercari_com: Secondhand marketplace search
+  - depop_com: Vintage/streetwear marketplace
+  - grailed_com: Men's fashion resale
+  - stockx_com: Sneaker/streetwear price lookup
+  - camelcamelcamel_com: Amazon price history tracker
+
+Automotive (4):
+  - autoblog_com: Auto news/review search
+  - caranddriver_com: Car review/comparison
+  - fueleconomy_gov: Vehicle fuel economy data
+  - plugshare_com: EV charging station finder
+
+Real Estate (3):
+  - hotpads_com: Rental listing search
+  - compass_com: Real estate listing search
+  - movoto_com: Home search/neighborhood info
+
+Kids & Family (3):
+  - pbs_org: PBS educational content search
+  - scholastic_com: Children's book search
+  - babycenter_com: Parenting article search
+
+Sustainability & Green (3):
+  - treehugger_com: Green living article search
+  - energy_gov: Energy information search
+  - greenmatters_com: Sustainability news search
+
+Sports Extended (5):
+  - formula1_com: F1 driver standings/results
+  - ufc_com: Fighter profile/stats
+  - cricbuzz_com: Cricket score/stats
+  - flashscore_com: Multi-sport live scores
+  - cyclingnews_com: Cycling news/results
+
+Home & DIY (4):
+  - thespruce_com: Home/garden article search
+  - bobvila_com: Home improvement guide search
+  - familyhandyman_com: DIY repair article search
+  - gardeningknowhow_com: Plant care guide search
+
+Government & Policy (4):
+  - govtrack_us: Legislation tracking/search
+  - opensecrets_org: Political donation data
+  - federalregister_gov: Federal Register search
+  - scotusblog_com: Supreme Court case analysis
+
+Data & Statistics (3):
+  - statista_com: Statistical data search
+  - ourworldindata_org: Global data/visualization
+  - worldometers_com: Real-time world statistics
+
+Outdoor & Adventure (3):
+  - alltrails_com: Hiking trail search
+  - hipcamp_com: Camping/glamping site search
+  - trailforks_com: Mountain biking trail search
+
+Podcasting (2):
+  - listennotes_com: Podcast episode search engine
+  - podchaser_com: Podcast database search
+
+Streaming & Film (3):
+  - reelgood_com: Streaming availability search
+  - mubi_com: Curated film catalog
+  - rogerebert_com: Movie review search
+
+Fashion (3):
+  - lyst_com: Fashion product aggregator
+  - ssense_com: Luxury fashion search
+  - farfetch_com: Designer fashion marketplace
+
+Crowdfunding & Social (3):
+  - gofundme_com: Crowdfunding campaign search
+  - kickstarter_com: Creative project crowdfunding
+  - change_org: Petition/cause search
+
+OVERALL COVERAGE (batches 1–7)
+==============================
+~419 total verbs across 7 batches covering:
+  - Shopping/Retail/Marketplace (~45 verbs)
+  - Travel/Transportation (~30 verbs)
+  - Food/Dining/Recipes (~20 verbs)
+  - Finance/Investing/Crypto (~20 verbs)
+  - Entertainment/Movies/TV (~20 verbs)
+  - Music/Audio (~20 verbs)
+  - Health/Medical/Fitness (~20 verbs)
+  - News/Media/Journalism (~15 verbs)
+  - Sports/Athletics (~20 verbs)
+  - Education/Learning (~15 verbs)
+  - Government/Legal/Policy (~20 verbs)
+  - Tech/Developer/Software (~20 verbs)
+  - Science/Nature/Research (~20 verbs)
+  - Real Estate/Housing (~10 verbs)
+  - Jobs/Career (~10 verbs)
+  - Books/Reading/Writing (~15 verbs)
+  - Gaming (~15 verbs)
+  - Home/DIY/Garden (~15 verbs)
+  - Photography/Stock Images (~10 verbs)
+  - Outdoor/Adventure (~10 verbs)
+  - Pets/Animals (~8 verbs)
+  - Art/Museums (~8 verbs)
+  - Automotive (~10 verbs)
+  - Wine/Beer/Spirits (~5 verbs)
+  - Anime/Manga (~4 verbs)
+  - Kids/Parenting (~5 verbs)
+  - Sustainability/Green (~5 verbs)
+  - Crowdfunding/Social (~5 verbs)
+  - Reference/Language (~10 verbs)
+  - Podcasting (~5 verbs)
+  - Data/Statistics (~5 verbs)

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://rateyourmusic.com
+
+* Concrete task
+- Search RateYourMusic for "OK Computer Radiohead".
+- Extract: album title, artist, release year, average rating, number of ratings, and genres.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.rogerebert.com
+
+* Concrete task
+- Search RogerEbert.com for a review of "Parasite".
+- Extract: movie title, director, star rating (out of 4), review date, and opening paragraph of the review.
+- Print the results.

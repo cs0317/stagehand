@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.fueleconomy.gov
+
+* Concrete task
+- Look up fuel economy data for "2025 Toyota Camry" on FuelEconomy.gov.
+- Extract: make, model, year, city MPG, highway MPG, combined MPG, annual fuel cost, and fuel type.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.lyst.com
+
+* Concrete task
+- Search Lyst for "leather boots women".
+- Extract the first 5 results: product name, brand, price, and retailer name.
+- Print the list.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.myfitnesspal.com
+
+* Concrete task
+- Search MyFitnessPal's food database for "grilled chicken breast".
+- Extract the top 3 results: food name, calories, protein, carbs, fat, and serving size.
+- Print the results.

@@ -1,0 +1,10 @@
+Extract the current top 10 weekend box office movies from IMDb.
+
+Parameters:
+- max_results: Number of movies to return (default 10)
+
+Output per movie:
+- title: Movie title
+- weekend_gross: Weekend box office gross
+- total_gross: Total cumulative gross
+- weeks_released: Number of weeks in release

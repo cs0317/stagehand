@@ -1,0 +1,13 @@
+Search Movoto for real estate listings in a city.
+
+Parameters:
+- city: City name (e.g. "Denver")
+- state: State abbreviation (e.g. "CO")
+- max_results: Number of listings to return (default 5)
+
+Output per listing:
+- address: Full address
+- price: Listing price
+- bedrooms: Number of bedrooms
+- bathrooms: Number of bathrooms
+- sqft: Square footage

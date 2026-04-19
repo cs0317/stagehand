@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://lithub.com
+
+* Concrete task
+- Search Literary Hub for recent book reviews.
+- Extract the first 5 articles: title, author, date, and review summary.
+- Print the list.

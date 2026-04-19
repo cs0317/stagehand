@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.wattpad.com
+
+* Concrete task
+- Search Wattpad for "fantasy adventure" stories.
+- Extract the first 5 results: story title, author, total reads, votes, and description.
+- Print the list.

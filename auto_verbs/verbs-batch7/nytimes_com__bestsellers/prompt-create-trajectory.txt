@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.nytimes.com/books/best-sellers
+
+* Concrete task
+- Extract the top 5 fiction bestsellers from the NYT bestseller list.
+- For each book: rank, title, author, publisher, and weeks on list.
+- Print the list.

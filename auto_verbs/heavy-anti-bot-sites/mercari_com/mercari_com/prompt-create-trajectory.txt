@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.mercari.com
+
+* Concrete task
+- Search Mercari for "vintage Polaroid camera".
+- Extract the first 5 listings: item name, price, condition, and seller rating.
+- Print the list.

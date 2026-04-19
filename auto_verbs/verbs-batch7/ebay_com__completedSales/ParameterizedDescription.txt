@@ -1,0 +1,12 @@
+ebay_sold_search
+
+Search eBay for completed/sold listings and extract details.
+For each sold item: title, sold_price, sold_date, condition.
+
+URL pattern: https://www.ebay.com/sch/i.html?_nkw={query}&LH_Complete=1&LH_Sold=1
+
+Parameters:
+  - query: Search term (default: "Nintendo Switch OLED")
+  - max_results: Max results to extract (default: 5)
+
+Output: Array of sold item objects with title, sold_price, sold_date, condition

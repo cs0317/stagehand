@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://mubi.com
+
+* Concrete task
+- Browse MUBI's current film selection ("Now Showing").
+- Extract the first 5 films: title, director, year, country of origin, and description.
+- Print the list.

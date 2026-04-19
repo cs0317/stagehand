@@ -1,0 +1,12 @@
+Verywell Fit – Article Search
+
+Search Verywell Fit for fitness articles by keyword.
+
+Parameters:
+- search_query (str): The search query (e.g. "squat exercise guide"). Default: "squat exercise guide"
+- max_results (int): Maximum number of results to return. Default: 3
+
+Returns:
+- articles: list of ArticleResult
+  - title (str): Article title
+  - summary (str): Article summary/description

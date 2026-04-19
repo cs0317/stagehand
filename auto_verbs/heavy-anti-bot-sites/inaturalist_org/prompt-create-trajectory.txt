@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.inaturalist.org
+
+* Concrete task
+- Search iNaturalist for observations of "monarch butterfly".
+- Extract the first 5 observations: species name, observer username, location, date, and observation URL.
+- Print the list.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://opencritic.com
+
+* Concrete task
+- Search OpenCritic for "Elden Ring".
+- Extract: game title, top critic average score, percent recommended, platforms, and release date.
+- Print the results.

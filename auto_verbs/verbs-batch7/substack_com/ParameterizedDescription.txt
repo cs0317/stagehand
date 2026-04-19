@@ -1,0 +1,10 @@
+Task: Search Substack for newsletters.
+
+Parameters:
+- search_query: str = "artificial intelligence"
+- max_results: int = 5
+
+Extract per newsletter:
+- name (str)
+- handle (str)
+- description (str)

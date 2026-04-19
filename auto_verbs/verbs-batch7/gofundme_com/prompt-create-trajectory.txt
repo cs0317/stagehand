@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.gofundme.com
+
+* Concrete task
+- Search GoFundMe for "education" campaigns.
+- Extract the first 5 results: campaign title, organizer name, goal amount, amount raised so far, and number of donors.
+- Print the list.

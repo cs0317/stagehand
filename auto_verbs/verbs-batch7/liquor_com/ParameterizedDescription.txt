@@ -1,0 +1,9 @@
+Search Liquor.com for cocktail recipes and extract details.
+
+Parameters:
+- query: Search term (e.g. "margarita")
+- max_results: Number of recipes to extract (default 3)
+
+Output per cocktail:
+- name: Cocktail name
+- ingredients: List of ingredients

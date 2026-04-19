@@ -1,0 +1,11 @@
+Task: Search Energy.gov for articles/news and extract results.
+
+Parameters:
+- search_query (str): The search query (e.g., "renewable energy")
+
+Extract (first 5):
+- title (str)
+- url (str)
+- date (str)
+- content_type (str): e.g., "ARTICLE", "PAGE", "PRESS RELEASES"
+- office (str): The responsible DOE office

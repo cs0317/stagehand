@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.adorama.com
+
+* Concrete task
+- Search Adorama for "mirrorless camera".
+- Extract the first 5 results: product name, brand, price, customer rating, and availability.
+- Print the list.

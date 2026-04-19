@@ -1,0 +1,9 @@
+Task: Look up a technology profile on BuiltWith and extract technologies.
+
+Parameters:
+- domain (str): The domain to look up (e.g., "stripe.com")
+
+Extract (top 10):
+- technology_name (str)
+- category (str)
+- description (str)

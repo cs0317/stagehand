@@ -1,0 +1,16 @@
+Untappd – Beer Search
+
+Search Untappd for beers by keyword.
+
+Parameters:
+- search_query (str): The search query (e.g. "IPA"). Default: "IPA"
+- max_results (int): Maximum number of results to return. Default: 5
+
+Returns:
+- beers: list of BeerResult
+  - name (str): Beer name
+  - brewery (str): Brewery name
+  - style (str): Beer style
+  - abv (str): ABV percentage
+  - ibu (str): IBU rating
+  - rating (str): User rating (e.g. "3.687")

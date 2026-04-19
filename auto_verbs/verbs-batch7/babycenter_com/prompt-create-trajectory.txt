@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.babycenter.com
+
+* Concrete task
+- Search BabyCenter for "baby sleep training" articles.
+- Extract the first 5 articles: title, author, summary, and URL.
+- Print the list.

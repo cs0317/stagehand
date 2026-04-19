@@ -1,0 +1,15 @@
+ThriftBooks – Book Search
+
+Search ThriftBooks for books by keyword.
+
+Parameters:
+- search_query (str): The search query (e.g. "1984 George Orwell"). Default: "1984 George Orwell"
+- max_results (int): Maximum number of results to return. Default: 5
+
+Returns:
+- books: list of BookResult
+  - title (str): Book title
+  - author (str): Author name(s)
+  - price (str): Price (e.g. "$5.09")
+  - condition (str): Condition (e.g. "Good", "New", "Like New")
+  - format (str): Format (e.g. "Paperback", "Hardcover")

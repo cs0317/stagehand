@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.listennotes.com
+
+* Concrete task
+- Search Listen Notes for "machine learning" podcasts.
+- Extract the first 5 results: podcast name, publisher, description, total episodes, and latest episode date.
+- Print the list.

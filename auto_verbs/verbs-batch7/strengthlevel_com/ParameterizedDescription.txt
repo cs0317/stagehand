@@ -1,0 +1,12 @@
+Task: Look up strength standards for an exercise.
+
+Parameters:
+- exercise_slug: str = "bench-press"
+- bodyweight: int = 180
+
+Extract:
+- beginner (str)
+- novice (str)
+- intermediate (str)
+- advanced (str)
+- elite (str)

@@ -1,0 +1,4 @@
+SKIPPED – Cloudflare session verification wall.
+
+Page shows "We must verify your session before you can proceed" with a Ray ID.
+This is a Cloudflare anti-bot challenge that cannot be bypassed programmatically.

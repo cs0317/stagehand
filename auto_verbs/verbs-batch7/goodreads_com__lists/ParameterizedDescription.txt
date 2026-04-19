@@ -1,0 +1,13 @@
+Task: Search Goodreads lists and extract top books from the first matching list.
+
+Parameters:
+- search_query (str): The search query (e.g., "best science fiction")
+- max_results (int): Maximum number of books to extract (default: 5)
+
+Extract:
+- list_title (str): Title of the list
+- books[]:
+  - rank (str): Position on the list
+  - title (str): Book title
+  - author (str): Author name
+  - score (str): List score

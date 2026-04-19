@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.grailed.com
+
+* Concrete task
+- Search Grailed for "Rick Owens" items.
+- Extract the first 5 listings: item name, designer/brand, size, price, and condition.
+- Print the list.

@@ -1,0 +1,10 @@
+Task: Extract F1 driver standings.
+
+Parameters: (none)
+
+Extract (top 10):
+- position (int)
+- driver_name (str)
+- nationality (str)
+- team (str)
+- points (int)

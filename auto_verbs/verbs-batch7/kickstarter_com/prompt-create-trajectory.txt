@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.kickstarter.com
+
+* Concrete task
+- Search Kickstarter for "board game" projects.
+- Extract the first 5 results: project name, creator, funding goal, amount pledged, percent funded, and days remaining.
+- Print the list.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.hipcamp.com
+
+* Concrete task
+- Search Hipcamp for camping sites near "Joshua Tree, CA".
+- Extract the first 5 results: site name, price per night, accommodation type (tent/RV/cabin), rating, and number of reviews.
+- Print the list.

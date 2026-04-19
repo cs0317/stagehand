@@ -1,0 +1,12 @@
+Search Google Maps for public transit directions between two locations.
+
+Parameters:
+- origin: Starting location (e.g. "Union Station, Los Angeles")
+- destination: Destination (e.g. "Santa Monica Pier")
+
+Output per route:
+- duration: Total travel time
+- departure_time: Departure time
+- arrival_time: Arrival time
+- transit_lines: List of transit line names
+- fare: Fare if available

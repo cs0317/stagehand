@@ -1,0 +1,12 @@
+Task: Extract NYT fiction bestsellers.
+
+Parameters:
+- list_name (str): The bestseller list to extract (default "Combined Print & E-Book Fiction")
+- max_results (int): Number of books to extract (default 5)
+
+Extract:
+- rank (int)
+- title (str)
+- author (str)
+- weeks_on_list (str)
+- description (str)

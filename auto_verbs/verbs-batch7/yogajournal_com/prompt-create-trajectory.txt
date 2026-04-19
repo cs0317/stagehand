@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.yogajournal.com
+
+* Concrete task
+- Search Yoga Journal for "warrior pose".
+- Extract the pose details: pose name, Sanskrit name, difficulty level, body parts targeted, and step-by-step instructions summary.
+- Print the results.

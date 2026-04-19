@@ -1,0 +1,10 @@
+cricbuzz_scores
+
+Extract current/recent live cricket match scores from Cricbuzz live scores page.
+For each match, extract: team1, team1_score, team2, team2_score, status, venue, match_info.
+
+URL: https://www.cricbuzz.com/cricket-match/live-scores
+
+Parameters: None (returns current live/recent matches)
+
+Output: Array of match objects with team1, team1_score, team2, team2_score, status, venue, match_info

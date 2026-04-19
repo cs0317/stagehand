@@ -1,0 +1,2 @@
+SKIPPED: builtwith.com shows image-based CAPTCHA challenge ("Select both images that match").
+Heavy bot detection that blocks automated browsers.

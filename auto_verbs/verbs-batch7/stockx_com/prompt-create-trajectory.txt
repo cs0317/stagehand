@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://stockx.com
+
+* Concrete task
+- Search StockX for "Nike Air Jordan 1 Retro".
+- Extract the first 5 results: shoe name, colorway, retail price, last sale price, and price premium percentage.
+- Print the list.

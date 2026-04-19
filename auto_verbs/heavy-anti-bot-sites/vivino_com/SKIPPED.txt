@@ -1,0 +1,1 @@
+SKIPPED – Bot detection: CloudFront 403 error blocks automated access.

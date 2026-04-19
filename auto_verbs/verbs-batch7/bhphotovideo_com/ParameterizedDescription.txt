@@ -1,0 +1,10 @@
+Task: Search B&H Photo for products and extract results.
+
+Parameters:
+- search_query (str): The product search query (e.g., "Sony A7 IV")
+
+Extract (first 5):
+- product_name (str)
+- price (str)
+- customer_rating (str)
+- availability (str)

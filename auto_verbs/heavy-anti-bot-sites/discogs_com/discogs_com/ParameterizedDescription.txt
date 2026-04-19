@@ -1,0 +1,11 @@
+discogs_search
+
+Search Discogs for releases and extract: title, format, label, year, lowest price.
+
+URL pattern: https://www.discogs.com/search/?q={query}&type=release
+
+Parameters:
+  - query: Search term (default: "Pink Floyd Dark Side of the Moon")
+  - max_results: Max results to extract (default: 5)
+
+Output: Array of release objects with title, format, label, year, lowest_price

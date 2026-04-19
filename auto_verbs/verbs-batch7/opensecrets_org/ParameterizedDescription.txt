@@ -1,0 +1,28 @@
+Search OpenSecrets for lobbying data related to a given topic. Extract the top 5 lobbying organizations: name, total spending amount, and number of reports.
+
+Parameters:
+- Topic: The lobbying topic/issue to search for (e.g. "technology")
+
+Approach:
+The site has a lobbying issues page at /federal-lobbying/issues/summary with issue code and cycle year.
+For "technology" the issue code is "SCI" (Science & Technology).
+The table shows Client, Subsidiary, and No. of Reports columns.
+
+Steps:
+1. Navigate to the issues summary page:
+   https://www.opensecrets.org/federal-lobbying/issues/summary?id=SCI&cycle=2024
+2. Wait for the table to load
+3. Extract the top 5 rows from the table:
+   - Client name
+   - Subsidiary (if any)
+   - Number of reports
+4. Print the results
+
+Note: The issue code mapping for common topics:
+- technology → SCI (Science & Technology)
+- healthcare → HCR (Health Issues)
+- defense → DEF (Defense)
+- energy → ENG (Energy & Nuclear Power)
+- environment → ENV (Environment & Superfund)
+- taxes → TAX (Taxation/Internal Revenue Code)
+- trade → TRD (Trade)

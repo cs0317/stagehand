@@ -1,0 +1,13 @@
+Search MyAnimeList for an anime and extract details.
+
+Parameters:
+- query: Search term (default "Steins;Gate")
+
+Output:
+- title: Anime title
+- score: Rating score
+- rank: Overall rank
+- episodes: Number of episodes
+- aired: Aired dates
+- synopsis: Plot synopsis
+- genres: List of genres

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.mindat.org
+
+* Concrete task
+- Search Mindat for "amethyst".
+- Extract: mineral name, chemical formula, crystal system, Mohs hardness, color, and notable localities.
+- Print the results.

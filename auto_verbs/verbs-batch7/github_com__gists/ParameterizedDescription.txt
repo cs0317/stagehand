@@ -1,0 +1,13 @@
+Task: Search GitHub Gists and extract details.
+
+Parameters:
+- search_query (str): The search query (e.g., "python web scraper")
+- max_results (int): Maximum number of results (default: 5)
+
+Extract:
+- author (str): GitHub username
+- description (str): Gist description/title
+- stars (str): Number of stars
+- forks (str): Number of forks
+- url (str): Link to the gist
+- created (str): Creation date (ISO format)

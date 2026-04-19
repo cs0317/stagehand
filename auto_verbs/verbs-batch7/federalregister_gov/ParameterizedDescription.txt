@@ -1,0 +1,12 @@
+Task: Search Federal Register for documents and extract results.
+
+Parameters:
+- search_query (str): The search query (e.g., "artificial intelligence")
+
+Extract (first 5):
+- title (str)
+- agency (str)
+- document_type (str)
+- publication_date (str)
+- summary (str)
+- url (str)

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.flashscore.com
+
+* Concrete task
+- Extract today's soccer (football) match results from Flashscore.
+- For the first 5 matches: home team, away team, final score, league name, and kick-off time.
+- Print the list.

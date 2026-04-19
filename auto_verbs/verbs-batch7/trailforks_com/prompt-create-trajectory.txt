@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.trailforks.com
+
+* Concrete task
+- Search Trailforks for mountain biking trails near "Moab, Utah".
+- Extract the first 5 trails: trail name, difficulty rating, length, descent, and trail condition.
+- Print the list.

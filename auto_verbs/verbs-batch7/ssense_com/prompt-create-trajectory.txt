@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.ssense.com
+
+* Concrete task
+- Search SSENSE for "designer sneakers".
+- Extract the first 5 results: product name, brand, price, and available sizes.
+- Print the list.

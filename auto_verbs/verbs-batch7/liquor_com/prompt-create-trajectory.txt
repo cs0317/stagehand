@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.liquor.com
+
+* Concrete task
+- Search Liquor.com for "margarita" cocktail recipes.
+- Extract the first 3 cocktails: name, ingredients list, and prep time.
+- Print the results.

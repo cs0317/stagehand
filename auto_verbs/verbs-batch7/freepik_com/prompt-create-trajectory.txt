@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.freepik.com
+
+* Concrete task
+- Search Freepik for "business infographic template".
+- Extract the first 5 results: resource title, type (vector/PSD/photo), author, and download count.
+- Print the list.

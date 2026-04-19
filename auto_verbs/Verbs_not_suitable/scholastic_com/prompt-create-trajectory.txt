@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.scholastic.com
+
+* Concrete task
+- Search Scholastic for "Harry Potter" books.
+- Extract the first 5 results: title, author, recommended age range, format, and price.
+- Print the list.

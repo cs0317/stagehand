@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.change.org
+
+* Concrete task
+- Search Change.org for "environmental protection" petitions.
+- Extract the first 5 results: petition title, petition creator, number of signatures, and signature goal.
+- Print the list.

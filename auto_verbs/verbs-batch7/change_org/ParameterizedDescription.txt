@@ -1,0 +1,11 @@
+Task: Search Change.org for petitions and extract details.
+
+Parameters:
+- search_query (str): The topic to search for (e.g., "environmental protection")
+
+Extract (first 5):
+- petition_title (str)
+- petition_url (str)
+- num_signatures (str)
+- location (str)
+- start_date (str)

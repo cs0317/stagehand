@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.youtube.com
+
+* Concrete task
+- Navigate to a YouTube playlist page (e.g. search for "Lo-Fi Hip Hop Radio" and open a playlist).
+- Extract the first 10 videos in the playlist: video title, channel name, duration, and video URL.
+- Print the list.

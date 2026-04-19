@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.nexusmods.com
+
+* Concrete task
+- Search Nexus Mods for "Skyrim" mods.
+- Extract the top 5 trending mods: mod name, author, endorsement count, total downloads, and short description.
+- Print the list.

@@ -1,0 +1,11 @@
+Task: Browse Green Matters sustainable living articles and extract details.
+
+Parameters:
+- topic (str): The topic slug (e.g., "what-is-sustainable-living")
+- max_results (int): Maximum number of articles (default: 5)
+
+Extract:
+- title (str): Article title
+- author (str): Author name
+- date (str): Publication date (ISO format)
+- summary (str): Article excerpt/summary

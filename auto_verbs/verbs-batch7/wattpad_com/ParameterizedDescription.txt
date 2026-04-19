@@ -1,0 +1,15 @@
+Wattpad – Story Search
+
+Search Wattpad for stories by keyword.
+
+Parameters:
+- search_query (str): The search query (e.g. "fantasy adventure"). Default: "fantasy adventure"
+- max_results (int): Maximum number of results to return. Default: 5
+
+Returns:
+- stories: list of StoryResult
+  - title (str): Story title
+  - reads (str): Total reads (e.g. "12.1K", "2.7M")
+  - votes (str): Total votes
+  - parts (str): Number of parts
+  - description (str): Story description (truncated)

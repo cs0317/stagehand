@@ -1,0 +1,12 @@
+Search Listen Notes for podcasts and extract details from each podcast page.
+
+Parameters:
+- query: Search term (e.g. "machine learning")
+- max_results: Number of podcasts to return (default 5)
+
+Output per podcast:
+- name: Podcast name
+- publisher: Publisher name
+- description: Short description
+- total_episodes: Number of episodes
+- latest_episode_date: Date of most recent episode

@@ -1,0 +1,10 @@
+Task: Extract today's soccer match results from Flashscore.
+
+Parameters: (none - always today's matches)
+
+Extract (first 5):
+- home_team (str)
+- away_team (str)
+- score (str) - e.g., "0 - 0"
+- league (str)
+- status (str) - e.g., "Finished", "90+4", "17:45"

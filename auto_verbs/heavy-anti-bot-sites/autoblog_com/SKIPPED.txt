@@ -1,0 +1,2 @@
+SKIPPED: autoblog.com returns empty body content on both homepage and search pages.
+Heavy bot detection / JavaScript rendering that blocks automated browsers.

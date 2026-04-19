@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://untappd.com
+
+* Concrete task
+- Search Untappd for "IPA" beers.
+- Extract the top 5 results: beer name, brewery, style, ABV, and rating.
+- Print the list.

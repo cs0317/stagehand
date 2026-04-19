@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.espn.com/nba/scoreboard
+
+* Concrete task
+- Extract recent NBA game scores from the scoreboard page.
+- For each of the first 5 games: team names, final scores, and game date.
+- Print the results.

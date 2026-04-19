@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.govtrack.us
+
+* Concrete task
+- Search GovTrack for recent bills about "climate change".
+- Extract the first 5 bills: bill number, title, sponsor name, current status, and date introduced.
+- Print the list.

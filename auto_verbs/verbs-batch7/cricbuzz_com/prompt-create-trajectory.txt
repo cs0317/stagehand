@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.cricbuzz.com
+
+* Concrete task
+- Extract current/recent live cricket match scores from Cricbuzz.
+- For the first 3 matches: teams, scores, match status/result, and venue.
+- Print the results.

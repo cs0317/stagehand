@@ -1,0 +1,20 @@
+UFC – Fighter Profile
+
+Get UFC fighter profile information.
+
+Parameters:
+- fighter_slug (str): Fighter URL slug (e.g. "jon-jones"). Default: "jon-jones"
+
+Returns:
+- name (str): Fighter name
+- nickname (str): Fighter nickname
+- record (str): Professional record (W-L-D)
+- weight_class (str): Weight class
+- height (str): Height
+- reach (str): Reach
+- recent_fights: list of FightResult (last 3)
+  - opponent (str): Opponent name from fight description
+  - date (str): Fight date
+  - result (str): Win/Loss
+  - method (str): Method (KO/TKO, SUB, DEC)
+  - round (str): Round number

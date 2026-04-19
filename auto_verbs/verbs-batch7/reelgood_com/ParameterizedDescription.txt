@@ -1,0 +1,18 @@
+Search Reelgood for movies by genre. Extract the top results: title, release year, and detail URL.
+
+Parameters:
+- Genre: The genre to filter by (e.g. "thriller")
+- num_results: Number of results to extract (default 5)
+
+Steps:
+1. Navigate to https://reelgood.com/movies/genre/{genre}
+2. Wait for the movie grid to load
+3. Skip promoted/ad cards (those containing "Promoted" in text)
+4. Extract from each movie card (a[href*="/movie/"]):
+   - Title from [data-testid="content-listing-title"]
+   - Year from the text pattern "(YYYY)"
+   - Detail URL from the href
+5. Print the results
+
+Note: IMDb rating, streaming services, and description are only available
+on individual movie detail pages, not the genre listing grid.

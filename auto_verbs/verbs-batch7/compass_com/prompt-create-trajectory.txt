@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.compass.com
+
+* Concrete task
+- Search Compass for homes for sale in "Brooklyn, NY".
+- Extract the first 5 listings: address, price, bedrooms, bathrooms, and square footage.
+- Print the list.

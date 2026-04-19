@@ -1,0 +1,12 @@
+Search Mindat.org for a mineral and extract its properties.
+
+Parameters:
+- query: Mineral name to search (e.g. "amethyst")
+
+Output:
+- name: Mineral name
+- formula: Chemical formula
+- crystal_system: Crystal system
+- hardness: Mohs hardness
+- color: Color description
+- localities: Notable localities

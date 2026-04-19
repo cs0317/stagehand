@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://ourworldindata.org
+
+* Concrete task
+- Search Our World in Data for "CO2 emissions by country".
+- Extract the first 5 articles/charts: title, description, and URL.
+- Print the list.

@@ -1,0 +1,12 @@
+Task: Search GovTrack for bills on a topic and extract details.
+
+Parameters:
+- search_query (str): The search query (e.g., "climate change")
+- max_results (int): Maximum number of results (default: 5)
+
+Extract:
+- bill_number (str): Display number (e.g., "S. 1471")
+- title (str): Bill title
+- sponsor (str): Sponsor name
+- status (str): Current status label
+- introduced_date (str): Date introduced

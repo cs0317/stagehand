@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://open.spotify.com
+
+* Concrete task
+- Navigate to Spotify's new album releases section.
+- Extract the first 10 new releases: album name, artist name, and release date.
+- Print the list.

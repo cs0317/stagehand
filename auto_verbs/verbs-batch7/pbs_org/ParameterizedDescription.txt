@@ -1,0 +1,18 @@
+Search PBS for shows/videos related to a given query. Extract the first 5 video results: show title, episode title, description, and URL.
+
+Parameters:
+- Query: The search query (e.g. "nature documentary")
+- num_results: Number of results to extract (default 5)
+
+Steps:
+1. Navigate to https://www.pbs.org/search/?q={encoded query}
+2. Wait for search results to load
+3. Find video cards in the results section:
+   - Each card has 3 links: thumbnail (a[href*="/video/"]), show name (a[href*="/show/"]), episode title (a[href*="/video/"] with text)
+   - Navigate up to the parent container to get all parts
+4. For each card, extract:
+   - Show name from the a[href*="/show/"] link
+   - Episode title from the a[href*="/video/"] link with text
+   - Description from the text content (after episode title)
+   - URL from the video link
+5. Print the results

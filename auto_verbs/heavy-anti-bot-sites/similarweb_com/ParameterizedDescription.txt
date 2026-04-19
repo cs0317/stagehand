@@ -1,0 +1,12 @@
+Task: Look up traffic analytics for a website on SimilarWeb.
+
+Parameters:
+- domain (str): The domain to look up (e.g., "reddit.com")
+
+Extract:
+- global_rank (str)
+- country_rank (str)
+- monthly_visits (str)
+- bounce_rate (str)
+- pages_per_visit (str)
+- avg_visit_duration (str)

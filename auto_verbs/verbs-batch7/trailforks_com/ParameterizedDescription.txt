@@ -1,0 +1,15 @@
+Trailforks – Mountain Bike Trails
+
+List mountain bike trails in a region from Trailforks.
+
+Parameters:
+- region (str): Region slug (e.g. "moab"). Default: "moab"
+- max_results (int): Maximum number of trails to return. Default: 5
+
+Returns:
+- trails: list of TrailResult
+  - name (str): Trail name
+  - riding_area (str): Riding area name
+  - distance (str): Trail distance (e.g. "6 miles")
+  - descent (str): Descent (e.g. "-189 ft")
+  - climb (str): Climb (e.g. "821 ft")

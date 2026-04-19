@@ -1,0 +1,14 @@
+Task: Browse trending Skyrim mods on Nexus Mods.
+
+Parameters:
+- game (str): The game slug (e.g., "skyrimspecialedition")
+- max_results (int): Number of mods to extract (default 5)
+
+Extract (first 5):
+- mod_name (str)
+- author (str)
+- category (str)
+- description (str)
+- endorsements (str)
+- downloads (str)
+- url (str)

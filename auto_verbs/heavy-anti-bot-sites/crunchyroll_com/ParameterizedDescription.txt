@@ -1,0 +1,11 @@
+crunchyroll_search
+
+Search Crunchyroll for an anime and extract: title, episodes/seasons, rating, description.
+
+URL pattern: https://www.crunchyroll.com/search?q={query}
+
+Parameters:
+  - query: Search term (default: "Attack on Titan")
+  - max_results: Max results to extract (default: 5)
+
+Output: Array of anime results with title, episodes, rating, description

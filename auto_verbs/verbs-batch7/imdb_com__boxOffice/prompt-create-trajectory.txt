@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.imdb.com/chart/boxoffice
+
+* Concrete task
+- Extract the current top 10 weekend box office movies.
+- For each movie: title, weekend gross, total gross, and weeks in release.
+- Print the results.

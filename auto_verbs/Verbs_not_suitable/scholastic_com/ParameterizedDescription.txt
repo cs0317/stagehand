@@ -1,0 +1,11 @@
+Task: Search Scholastic for books and extract details.
+
+Parameters:
+- search_query (str): The book search query (e.g., "Harry Potter")
+
+Extract (first 5):
+- title (str)
+- author (str)
+- age_range (str)
+- format (str)
+- price (str)

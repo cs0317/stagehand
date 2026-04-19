@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://reelgood.com
+
+* Concrete task
+- Search Reelgood for "thriller" movies currently available to stream.
+- Extract the first 5 results: title, release year, IMDb rating, streaming services, and description.
+- Print the list.

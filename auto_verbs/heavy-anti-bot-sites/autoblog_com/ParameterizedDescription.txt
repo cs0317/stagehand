@@ -1,0 +1,10 @@
+Task: Search Autoblog for articles and extract details.
+
+Parameters:
+- search_query (str): The search query (e.g., "2025 Toyota Camry review")
+
+Extract (first 3 articles):
+- title (str)
+- author (str)
+- publication_date (str)
+- summary (str)

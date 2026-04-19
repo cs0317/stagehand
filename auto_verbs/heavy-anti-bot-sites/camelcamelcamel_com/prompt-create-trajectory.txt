@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://camelcamelcamel.com
+
+* Concrete task
+- Search CamelCamelCamel for "Apple AirPods Pro".
+- Extract from the top result: product name, current Amazon price, lowest price ever, highest price ever, and average price.
+- Print the results.

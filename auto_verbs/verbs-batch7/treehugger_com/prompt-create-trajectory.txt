@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.treehugger.com
+
+* Concrete task
+- Search Treehugger for "solar panel" articles.
+- Extract the first 5 articles: title, author, publication date, and summary.
+- Print the list.

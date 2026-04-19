@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.scotusblog.com
+
+* Concrete task
+- Browse SCOTUSblog for recent Supreme Court cases.
+- Extract the first 5 cases: case name, docket number, legal issue, and current status.
+- Print the list.

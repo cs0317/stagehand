@@ -1,0 +1,15 @@
+Vimeo – Video Search
+
+Search Vimeo for videos by keyword.
+
+Parameters:
+- search_query (str): The search query (e.g. "short film documentary"). Default: "short film documentary"
+- max_results (int): Maximum number of results to return. Default: 5
+
+Returns:
+- videos: list of VideoResult
+  - title (str): Video title
+  - creator (str): Creator name
+  - duration (str): Video duration
+  - views (str): View count
+  - likes (str): Number of likes
