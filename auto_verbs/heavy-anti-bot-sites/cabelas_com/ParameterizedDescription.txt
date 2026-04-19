@@ -1,0 +1,8 @@
+Search for outdoor products on Cabela's.
+
+Parameters:
+- search_query: str — Search term for products (default: "fishing rod")
+- max_results: int — Maximum number of products to return (default: 5)
+
+Returns:
+- A list of products, each with: product_name, brand, price, original_price, rating, num_reviews

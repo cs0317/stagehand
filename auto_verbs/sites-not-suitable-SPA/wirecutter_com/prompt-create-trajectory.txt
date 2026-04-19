@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.nytimes.com/wirecutter/
+
+* Concrete task
+- Search for "best headphones" product recommendations on Wirecutter.
+- Extract the top 5 product picks: product name, category, price, rating summary (best overall, budget pick, etc.), and key pros.
+- Print the list.

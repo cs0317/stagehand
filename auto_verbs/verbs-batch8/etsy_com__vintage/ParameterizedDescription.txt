@@ -1,0 +1,8 @@
+Search for vintage items on Etsy.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "vintage jewelry")
+- max_results: int — Maximum number of items to return (default: 5)
+
+Returns:
+- A list of items, each with: item_name, shop_name, price, original_price, rating, num_reviews, is_free_shipping

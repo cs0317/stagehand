@@ -1,0 +1,8 @@
+Search for artwork on DeviantArt by keyword.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "digital painting")
+- max_results: int — Maximum number of artworks to return (default: 5)
+
+Returns:
+- A list of artworks, each with: title, artist_name, num_favorites, num_comments, category, image_url

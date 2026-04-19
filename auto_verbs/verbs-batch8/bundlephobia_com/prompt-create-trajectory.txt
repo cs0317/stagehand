@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://bundlephobia.com/
+
+* Concrete task
+- Search for the npm package "lodash" on Bundlephobia.
+- Extract the package info: package name, version, minified size, gzipped size, download time (slow 3G), and number of dependencies.
+- Print the results.

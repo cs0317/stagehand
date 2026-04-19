@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class PsychologyTodaySearchRequest:
+    location: str = "new-york-ny"
+    max_results: int = 5
+
+
+@dataclass
+class PsychologyTodayTherapistItem:
+    therapist_name: str = ""
+    credentials: str = ""
+    specialties: str = ""
+    insurance_accepted: str = ""
+    phone: str = ""
+    verified_status: str = ""
+
+
+@dataclass
+class PsychologyTodaySearchResult:
+    items: List[PsychologyTodayTherapistItem] = field(default_factory=list)
+
+
+# Search for therapists on Psychology Today by location.
+def psychologytoday_search(page: Page, request: PsychologyTodaySearchRequest) -> PsychologyTodaySearchResult:

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.boxofficemojo.com/
+
+* Concrete task
+- Browse the current weekend box office results on Box Office Mojo.
+- Extract the top 5 movies: rank, title, weekend gross, total gross, weeks in release, and distributor.
+- Print the list.

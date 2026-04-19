@@ -1,0 +1,8 @@
+Search for highest-rated albums on Album of the Year.
+
+Parameters:
+- year: str — The year to browse (e.g., "2024", or empty for current year)
+- max_results: int — Maximum number of albums to return (default: 5)
+
+Returns:
+- A list of albums, each with: title, artist, aggregate_score, num_critic_reviews, user_score, genre

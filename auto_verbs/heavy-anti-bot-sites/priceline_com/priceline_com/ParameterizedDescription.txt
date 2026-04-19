@@ -1,0 +1,8 @@
+Search for hotel deals on Priceline by destination.
+
+Parameters:
+- destination: str — The destination slug to search for hotels (default: "new-york")
+- max_results: int — Maximum number of hotels to return (default: 5)
+
+Returns:
+- A list of hotels, each with: hotel_name, star_rating, guest_rating, price_per_night, neighborhood, amenities

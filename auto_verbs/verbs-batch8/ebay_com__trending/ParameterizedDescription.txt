@@ -1,0 +1,7 @@
+Browse trending products on eBay.
+
+Parameters:
+- max_results: int — Maximum number of trending products to return (default: 10)
+
+Returns:
+- A list of products, each with: product_name, price, num_sold, trending_rank, category

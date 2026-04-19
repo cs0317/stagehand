@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.usaspending.gov/
+
+* Concrete task
+- Browse federal spending by agency on USASpending.gov.
+- Extract the top 5 agencies by spending: agency name, total obligations, total outlays, number of transactions, and percentage of total budget.
+- Print the list.

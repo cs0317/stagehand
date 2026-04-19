@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.whiskyadvocate.com/ratings-reviews/
+
+* Concrete task
+- Browse whisky ratings and reviews on Whisky Advocate.
+- Extract the top 5 reviewed whiskies: whisky name, distillery, category (bourbon/scotch/etc.), score, price, and reviewer.
+- Print the list.

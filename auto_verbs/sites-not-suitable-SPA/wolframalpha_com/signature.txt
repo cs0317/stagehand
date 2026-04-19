@@ -1,0 +1,15 @@
+@dataclass(frozen=True)
+class WolframalphaSearchRequest:
+    query: str = "population of Tokyo"
+
+
+@dataclass
+class WolframalphaPodItem:
+    pod_title: str = ""
+    pod_value: str = ""
+
+
+@dataclass
+class WolframalphaSearchResult:
+    query_input: str = ""
+    result_pods: List[WolframalphaPodItem] = field(default_factory=list)

@@ -1,0 +1,1 @@
+Search for food and travel articles on Thrillist. Given a search query, navigates to Thrillist search results page and extracts article information including title, author, publish date, category, and summary.

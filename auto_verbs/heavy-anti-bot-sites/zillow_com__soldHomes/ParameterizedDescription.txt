@@ -1,0 +1,8 @@
+Browse recently sold homes on Zillow by location.
+
+Parameters:
+- location: str — Location slug for Zillow search (default: "san-francisco-ca")
+- max_results: int — Maximum number of sold homes to return (default: 5)
+
+Returns:
+- A list of sold homes, each with: address, sold_price, sold_date, beds, baths, sqft, price_per_sqft, listing_type

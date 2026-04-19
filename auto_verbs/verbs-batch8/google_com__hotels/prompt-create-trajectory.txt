@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.google.com/travel/hotels
+
+* Concrete task
+- Search for hotels in "San Francisco" on Google Hotels with check-in next week for 2 adults.
+- Extract the top 5 hotels: hotel name, star rating, price per night, review score, number of reviews, and amenities summary.
+- Print the list.

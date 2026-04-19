@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://dogtime.com/dog-breeds
+
+* Concrete task
+- Search for "Golden Retriever" breed information on DogTime.
+- Extract the breed profile: breed name, breed group, size (height/weight), life span, temperament traits, and overall rating.
+- Print the results.

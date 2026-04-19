@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.deviantart.com/
+
+* Concrete task
+- Search for "digital painting landscape" on DeviantArt.
+- Extract the top 5 artworks: title, artist username, number of favorites, number of comments, category, and thumbnail URL.
+- Print the list.

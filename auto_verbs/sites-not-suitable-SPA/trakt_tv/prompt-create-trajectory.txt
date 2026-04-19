@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://trakt.tv/
+
+* Concrete task
+- Browse the most popular TV shows this week on Trakt.tv.
+- Extract the top 5 shows: title, year, rating, number of watchers, genres, and network.
+- Print the list.

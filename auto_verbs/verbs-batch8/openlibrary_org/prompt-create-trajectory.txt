@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://openlibrary.org/
+
+* Concrete task
+- Search for "science fiction" books on Open Library.
+- Extract the top 5 books: title, author, first publish year, number of editions, and availability (borrow/read online).
+- Print the list.

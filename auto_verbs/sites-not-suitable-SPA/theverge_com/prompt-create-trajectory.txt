@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.theverge.com/
+
+* Concrete task
+- Search for "smartphone reviews" on The Verge.
+- Extract the top 5 articles: title, author, publish date, score (if review), and summary.
+- Print the list.

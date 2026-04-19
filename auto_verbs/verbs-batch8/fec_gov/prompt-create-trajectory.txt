@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.fec.gov/data/
+
+* Concrete task
+- Search for campaign finance data for a candidate "Biden" on FEC.gov.
+- Extract the top 5 committee results: committee name, candidate, party, total receipts, total disbursements, and filing date.
+- Print the list.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.skyscanner.com/
+
+* Concrete task
+- Search for flights from "New York" to "London" for a round trip next month.
+- Extract the top 5 flight options: airline, departure time, arrival time, duration, number of stops, and price.
+- Print the list.

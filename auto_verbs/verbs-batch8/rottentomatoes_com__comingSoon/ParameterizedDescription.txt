@@ -1,0 +1,7 @@
+Browse upcoming movie releases on Rotten Tomatoes.
+
+Parameters:
+- max_results: int — Maximum number of movies to return (default: 10)
+
+Returns:
+- A list of movies, each with: movie_title, tomatometer_score, audience_score, release_date, synopsis, critics_consensus

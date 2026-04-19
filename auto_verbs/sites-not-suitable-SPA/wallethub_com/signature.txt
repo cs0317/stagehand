@@ -1,0 +1,22 @@
+@dataclass(frozen=True)
+class WallethubSearchRequest:
+    search_query: str = "best credit cards"
+    max_results: int = 5
+
+
+@dataclass
+class WallethubArticleItem:
+    title: str = ""
+    category: str = ""
+    publish_date: str = ""
+    summary: str = ""
+    url: str = ""
+
+
+@dataclass
+class WallethubSearchResult:
+    items: List[WallethubArticleItem] = field(default_factory=list)
+
+
+# Search for personal finance articles and rankings on WalletHub.
+def wallethub_search(page: Page, request: WallethubSearchRequest) -> WallethubSearchResult:

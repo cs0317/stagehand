@@ -1,0 +1,8 @@
+Search for stock analysis articles on Seeking Alpha.
+
+Parameters:
+- search_query: str — The search query for stock analysis articles (default: "AAPL")
+- max_results: int — Maximum number of articles to return (default: 5)
+
+Returns:
+- A list of articles, each with: title, author, publish_date, ticker, summary, sentiment

@@ -1,0 +1,8 @@
+Search for auction items on ShopGoodwill.
+
+Parameters:
+- search_query: str — The item keyword to search for (default: "vintage watch")
+- max_results: int — Maximum number of items to return (default: 5)
+
+Returns:
+- A list of items, each with: item_name, current_bid, num_bids, time_remaining, condition

@@ -1,0 +1,9 @@
+Search for places and venues on Foursquare by location and keyword.
+
+Parameters:
+- location: str — The city or area to search near (default: "New York")
+- search_query: str — The type of venue to search for (default: "coffee")
+- max_results: int — Maximum number of venues to return (default: 5)
+
+Returns:
+- A list of venues, each with: venue_name, category, address, rating, price_tier, num_tips

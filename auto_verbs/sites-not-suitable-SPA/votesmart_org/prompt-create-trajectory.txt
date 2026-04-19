@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://justfacts.votesmart.org/
+
+* Concrete task
+- Search for a politician "Elizabeth Warren" on Vote Smart.
+- Extract the politician profile: name, party, state, current position, key voting positions (top 5), and overall rating from interest groups.
+- Print the results.

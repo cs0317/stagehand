@@ -1,0 +1,15 @@
+Apartment Therapy – Search Articles
+
+Website: https://www.apartmenttherapy.com
+Task: Search for articles on Apartment Therapy by keyword
+
+Parameters:
+  - search_query: search term (e.g., "small kitchen ideas")
+  - max_results: maximum number of articles to return (default 5)
+
+Fields to extract:
+  - title: article title
+  - author: article author
+  - publish_date: publication date
+  - category: article category
+  - summary: article summary/description

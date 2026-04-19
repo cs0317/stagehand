@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.capterra.com/
+
+* Concrete task
+- Search for "CRM software" on Capterra.
+- Extract the top 5 products: product name, overall rating, number of reviews, pricing model, deployment type, and key feature highlights.
+- Print the list.

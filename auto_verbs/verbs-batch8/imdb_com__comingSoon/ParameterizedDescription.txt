@@ -1,0 +1,7 @@
+Browse upcoming movie releases on IMDb.
+
+Parameters:
+- max_results: int — Maximum number of upcoming movies to return (default: 10)
+
+Returns:
+- A list of movies, each with: movie_title, release_date, genres, stars, director, synopsis

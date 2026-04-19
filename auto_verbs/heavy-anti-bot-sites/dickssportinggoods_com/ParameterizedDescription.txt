@@ -1,0 +1,8 @@
+Search for sporting goods products on Dick's Sporting Goods.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "running shoes")
+- max_results: int — Maximum number of products to return (default: 5)
+
+Returns:
+- A list of products, each with: product_name, brand, price, original_price, rating, num_reviews

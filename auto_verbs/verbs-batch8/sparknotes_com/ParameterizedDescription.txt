@@ -1,0 +1,8 @@
+Search for study guides on SparkNotes by keyword.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "hamlet")
+- max_results: int — Maximum number of results to return (default: 5)
+
+Returns:
+- A list of results, each with: title, author, type, summary, url

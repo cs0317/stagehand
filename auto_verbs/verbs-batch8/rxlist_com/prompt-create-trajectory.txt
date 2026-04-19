@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.rxlist.com/
+
+* Concrete task
+- Search for "ibuprofen" on RxList.
+- Extract the drug information: generic name, brand names, drug class, uses, common side effects, dosage forms, and warnings summary.
+- Print the results.

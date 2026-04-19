@@ -1,0 +1,1 @@
+Search for TV show listings on TV Guide. Given a search query, navigates to TV Guide search results page and extracts show information including show title, network, genre, air time, rating, and summary.

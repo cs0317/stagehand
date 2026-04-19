@@ -1,0 +1,8 @@
+Search for dog breed information on DogTime.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "golden retriever")
+- max_results: int — Maximum number of results to return (default: 5)
+
+Returns:
+- A list of results, each with: breed_name, size, energy_level, grooming_needs, good_with_kids, description

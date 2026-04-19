@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.rover.com/
+
+* Concrete task
+- Search for dog sitters in "Portland, OR" on Rover.
+- Extract the top 5 sitters: name, service type (boarding, walking, etc.), price per night, rating, number of reviews, and response time.
+- Print the list.

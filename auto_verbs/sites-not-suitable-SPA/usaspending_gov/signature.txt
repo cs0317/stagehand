@@ -1,0 +1,16 @@
+usaspending_search(search_query: str = "education", max_results: int = 5) -> list[dict]
+
+Search for federal spending data on USAspending.gov.
+
+Parameters:
+  search_query (str): The search query to look up on USAspending.gov. Default: "education"
+  max_results (int): Maximum number of results to return. Default: 5
+
+Returns:
+  list[dict]: A list of dictionaries, each containing:
+    - recipient_name (str): The name of the award recipient
+    - award_amount (str): The award amount
+    - awarding_agency (str): The awarding agency
+    - award_type (str): The type of award
+    - date (str): The award date
+    - description (str): A description of the award

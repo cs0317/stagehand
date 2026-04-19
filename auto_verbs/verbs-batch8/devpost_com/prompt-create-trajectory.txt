@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://devpost.com/
+
+* Concrete task
+- Search for hackathon projects related to "AI healthcare" on Devpost.
+- Extract the top 5 projects: project name, team members count, hackathon name, technologies used, number of likes, and description.
+- Print the list.

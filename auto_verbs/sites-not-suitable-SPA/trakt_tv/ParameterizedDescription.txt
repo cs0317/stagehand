@@ -1,0 +1,1 @@
+Search for TV shows and movies on Trakt. Given a search query, navigates to Trakt search results page and extracts media information including title, year, type, rating, number of votes, runtime, genres, and overview.

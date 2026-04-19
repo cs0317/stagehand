@@ -1,0 +1,18 @@
+trakt_search(search_query: str = "breaking bad", max_results: int = 5) -> list[dict]
+
+Search for TV shows and movies on Trakt.
+
+Parameters:
+  search_query (str): The search query to look up on Trakt. Default: "breaking bad"
+  max_results (int): Maximum number of results to return. Default: 5
+
+Returns:
+  list[dict]: A list of dictionaries, each containing:
+    - title (str): The show or movie title
+    - year (str): The release year
+    - type (str): The media type (show, movie, etc.)
+    - rating (str): The rating score
+    - num_votes (str): The number of votes
+    - runtime (str): The runtime duration
+    - genres (str): The genres
+    - overview (str): A brief overview or synopsis

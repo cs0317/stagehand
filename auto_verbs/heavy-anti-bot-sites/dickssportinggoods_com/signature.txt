@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class DickssportinggoodsSearchRequest:
+    search_query: str = "running shoes"
+    max_results: int = 5
+
+
+@dataclass
+class DickssportinggoodsProductItem:
+    product_name: str = ""
+    brand: str = ""
+    price: str = ""
+    original_price: str = ""
+    rating: str = ""
+    num_reviews: str = ""
+
+
+@dataclass
+class DickssportinggoodsSearchResult:
+    items: List[DickssportinggoodsProductItem] = field(default_factory=list)
+
+
+# Search for sporting goods products on Dick's Sporting Goods.
+def dickssportinggoods_search(page: Page, request: DickssportinggoodsSearchRequest) -> DickssportinggoodsSearchResult:

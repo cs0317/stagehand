@@ -1,0 +1,16 @@
+tripadvisor_hotels_search(destination: str = "Paris", max_results: int = 5) -> list[dict]
+
+Search for hotels on TripAdvisor.
+
+Parameters:
+  destination (str): The destination to search for hotels. Default: "Paris"
+  max_results (int): Maximum number of results to return. Default: 5
+
+Returns:
+  list[dict]: A list of dictionaries, each containing:
+    - hotel_name (str): The name of the hotel
+    - rating (str): The hotel rating
+    - num_reviews (str): The number of reviews
+    - price_per_night (str): The price per night
+    - location (str): The hotel location
+    - amenities (str): The hotel amenities

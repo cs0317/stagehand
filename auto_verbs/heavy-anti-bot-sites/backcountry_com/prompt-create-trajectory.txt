@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.backcountry.com/
+
+* Concrete task
+- Search for "hiking boots" on Backcountry.
+- Extract the top 5 products: product name, brand, price, original price (if on sale), rating, and number of reviews.
+- Print the list.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.openculture.com/
+
+* Concrete task
+- Browse free online courses listed on Open Culture.
+- Extract the top 5 courses: course title, university/institution, subject area, platform (YouTube, Coursera, etc.), and URL.
+- Print the list.

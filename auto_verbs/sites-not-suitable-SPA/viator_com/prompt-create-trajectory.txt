@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.viator.com/
+
+* Concrete task
+- Search for tours and activities in "Rome, Italy" on Viator.
+- Extract the top 5 activities: activity name, price, duration, rating, number of reviews, and category.
+- Print the list.

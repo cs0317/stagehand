@@ -1,0 +1,22 @@
+@dataclass(frozen=True)
+class SierraSearchRequest:
+    search_query: str = "hiking jacket"
+    max_results: int = 5
+
+
+@dataclass
+class SierraProductItem:
+    product_name: str = ""
+    brand: str = ""
+    price: str = ""
+    original_price: str = ""
+    discount_percentage: str = ""
+
+
+@dataclass
+class SierraSearchResult:
+    items: List[SierraProductItem] = field(default_factory=list)
+
+
+# Search for outdoor and active products on Sierra.
+def sierra_search(page: Page, request: SierraSearchRequest) -> SierraSearchResult:

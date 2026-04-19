@@ -1,0 +1,1 @@
+Search for hotels on TripAdvisor. Given a destination, navigates to TripAdvisor hotel search results page and extracts hotel information including hotel name, rating, number of reviews, price per night, location, and amenities.

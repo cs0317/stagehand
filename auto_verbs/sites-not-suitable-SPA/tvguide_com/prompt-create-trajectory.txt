@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.tvguide.com/
+
+* Concrete task
+- Browse tonight's TV schedule/listings on TV Guide.
+- Extract the top 5 shows airing tonight: show name, network/channel, air time, episode title, and genre.
+- Print the list.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.hunker.com/
+
+* Concrete task
+- Search for "bathroom renovation" articles on Hunker.
+- Extract the top 5 articles: title, author, publish date, category, and summary.
+- Print the list.

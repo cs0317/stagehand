@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.sparknotes.com/
+
+* Concrete task
+- Search for "The Great Gatsby" on SparkNotes.
+- Extract the book summary information: title, author, summary overview, list of main characters with descriptions, and key themes.
+- Print the results.

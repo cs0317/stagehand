@@ -1,0 +1,8 @@
+Search for tools and integrations on GitHub Marketplace by keyword.
+
+Parameters:
+- search_query: str — The tool or integration keyword to search for (default: "code review")
+- max_results: int — Maximum number of tools to return (default: 5)
+
+Returns:
+- A list of tools, each with: tool_name, publisher, category, description, pricing, num_installs, rating

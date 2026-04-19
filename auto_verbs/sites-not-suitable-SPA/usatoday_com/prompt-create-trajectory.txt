@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.usatoday.com/
+
+* Concrete task
+- Browse the latest news on USA Today.
+- Extract the top 5 articles: headline, author, section (News, Sports, Money, etc.), publish date, and summary.
+- Print the list.

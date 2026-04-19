@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.semanticscholar.org/
+
+* Concrete task
+- Search for papers about "transformer architecture" on Semantic Scholar.
+- Extract the top 5 papers: title, authors (first 3), year, citation count, venue, and abstract snippet.
+- Print the list.

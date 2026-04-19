@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.lego.com/en-us/themes
+
+* Concrete task
+- Search for "Star Wars" LEGO sets on lego.com.
+- Extract the top 5 sets: set name, set number, piece count, price, age range, and availability status.
+- Print the list.

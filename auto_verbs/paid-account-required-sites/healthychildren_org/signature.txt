@@ -1,0 +1,22 @@
+@dataclass(frozen=True)
+class HealthychildrenSearchRequest:
+    search_query: str = "infant sleep"
+    max_results: int = 5
+
+
+@dataclass
+class HealthychildrenArticleItem:
+    title: str = ""
+    category: str = ""
+    age_group: str = ""
+    summary: str = ""
+    url: str = ""
+
+
+@dataclass
+class HealthychildrenSearchResult:
+    items: List[HealthychildrenArticleItem] = field(default_factory=list)
+
+
+# Search for pediatric health articles on HealthyChildren.org (AAP).
+def healthychildren_search(page: Page, request: HealthychildrenSearchRequest) -> HealthychildrenSearchResult:

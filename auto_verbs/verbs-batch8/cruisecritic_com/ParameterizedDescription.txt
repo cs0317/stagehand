@@ -1,0 +1,8 @@
+Search for cruise deals on Cruise Critic by keyword.
+
+Parameters:
+- search_query: str — The destination or keyword to search for (default: "Caribbean")
+- max_results: int — Maximum number of results to return (default: 5)
+
+Returns:
+- A list of cruise deals, each with: cruise_line, ship_name, destination, duration, departure_date, price_from, rating

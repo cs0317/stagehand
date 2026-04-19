@@ -1,0 +1,8 @@
+Search for therapists on Psychology Today by location.
+
+Parameters:
+- location: str — The location slug to search for therapists (default: "new-york-ny")
+- max_results: int — Maximum number of therapists to return (default: 5)
+
+Returns:
+- A list of therapists, each with: therapist_name, credentials, specialties, insurance_accepted, phone, verified_status

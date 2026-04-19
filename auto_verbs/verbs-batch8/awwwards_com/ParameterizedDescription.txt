@@ -1,0 +1,15 @@
+Awwwards – Browse Award-Winning Websites
+
+Website: https://www.awwwards.com
+Task: Browse award-winning websites on Awwwards
+
+Parameters:
+  - max_results: maximum number of sites to return (default 5)
+
+Fields to extract:
+  - site_name: website/project name
+  - agency: agency or creator name
+  - country: agency country
+  - award_type: type of award (Site of the Day, Honorable Mention, etc.)
+  - score: overall score
+  - site_url: URL of the awarded website

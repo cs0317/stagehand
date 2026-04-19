@@ -1,0 +1,16 @@
+Athlinks – Search Race Results
+
+Website: https://www.athlinks.com
+Task: Search for race results on Athlinks
+
+Parameters:
+  - race_name: race name to search (e.g., "Boston Marathon")
+  - max_results: maximum number of results to return (default 5)
+
+Fields to extract:
+  - runner_name: runner's full name
+  - bib_number: bib/race number
+  - finish_time: finishing time
+  - overall_place: overall placement
+  - age_group: age group category
+  - age_group_place: placement within age group

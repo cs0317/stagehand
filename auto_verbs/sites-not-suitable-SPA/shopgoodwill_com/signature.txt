@@ -1,0 +1,22 @@
+@dataclass(frozen=True)
+class ShopgoodwillSearchRequest:
+    search_query: str = "vintage watch"
+    max_results: int = 5
+
+
+@dataclass
+class ShopgoodwillAuctionItem:
+    item_name: str = ""
+    current_bid: str = ""
+    num_bids: str = ""
+    time_remaining: str = ""
+    condition: str = ""
+
+
+@dataclass
+class ShopgoodwillSearchResult:
+    items: List[ShopgoodwillAuctionItem] = field(default_factory=list)
+
+
+# Search for auction items on ShopGoodwill.
+def shopgoodwill_search(page: Page, request: ShopgoodwillSearchRequest) -> ShopgoodwillSearchResult:

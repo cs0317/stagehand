@@ -1,0 +1,8 @@
+Search for comic book characters on Comic Vine by keyword.
+
+Parameters:
+- search_query: str — The character name or keyword to search for (default: "Spider-Man")
+- max_results: int — Maximum number of results to return (default: 5)
+
+Returns:
+- A list of characters, each with: character_name, real_name, publisher, first_appearance, description, num_appearances

@@ -1,0 +1,8 @@
+Search for official White House briefings and statements by keyword.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "executive order")
+- max_results: int — Maximum number of results to return (default: 5)
+
+Returns:
+- A list of briefings/statements, each with: title, publish_date, category, summary, url

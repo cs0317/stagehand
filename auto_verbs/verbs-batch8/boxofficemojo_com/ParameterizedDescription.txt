@@ -1,0 +1,7 @@
+Browse the current weekend box office rankings on Box Office Mojo.
+
+Parameters:
+- max_results: int — Maximum number of movies to return (default: 10)
+
+Returns:
+- A list of movies, each with: rank, movie_title, weekend_gross, total_gross, weeks_in_release, distributor

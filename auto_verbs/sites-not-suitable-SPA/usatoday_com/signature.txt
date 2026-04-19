@@ -1,0 +1,15 @@
+usatoday_search(search_query: str = "technology", max_results: int = 5) -> list[dict]
+
+Search for news articles on USA Today.
+
+Parameters:
+  search_query (str): The search query to look up on USA Today. Default: "technology"
+  max_results (int): Maximum number of results to return. Default: 5
+
+Returns:
+  list[dict]: A list of dictionaries, each containing:
+    - title (str): The article title
+    - author (str): The article author
+    - publish_date (str): The publication date
+    - section (str): The article section
+    - summary (str): A brief summary of the article

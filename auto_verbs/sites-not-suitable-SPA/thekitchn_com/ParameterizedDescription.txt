@@ -1,0 +1,8 @@
+Search for recipes and kitchen tips on The Kitchn by keyword.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "chocolate chip cookies")
+- max_results: int — Maximum number of articles to return (default: 5)
+
+Returns:
+- A list of articles, each with: title, author, category, summary, image_url

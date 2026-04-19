@@ -1,0 +1,8 @@
+Search for study sets on Quizlet by keyword.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "biology")
+- max_results: int — Maximum number of study sets to return (default: 5)
+
+Returns:
+- A list of study sets, each with: set_title, creator, num_terms, num_learners, rating, subject

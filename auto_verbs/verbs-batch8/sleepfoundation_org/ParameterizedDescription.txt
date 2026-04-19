@@ -1,0 +1,8 @@
+Search for sleep health articles on Sleep Foundation by keyword.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "insomnia")
+- max_results: int — Maximum number of articles to return (default: 5)
+
+Returns:
+- A list of articles, each with: title, author, reviewed_by, publish_date, summary

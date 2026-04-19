@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.psychologytoday.com/us/therapists
+
+* Concrete task
+- Search for therapists in "Seattle, WA" specializing in "anxiety" on Psychology Today.
+- Extract the top 5 therapists: name, specialty, insurance accepted, session cost, and availability (accepting new clients).
+- Print the list.

@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class CabelasSearchRequest:
+    search_query: str = "fishing rod"
+    max_results: int = 5
+
+
+@dataclass
+class CabelasProductItem:
+    product_name: str = ""
+    brand: str = ""
+    price: str = ""
+    original_price: str = ""
+    rating: str = ""
+    num_reviews: str = ""
+
+
+@dataclass
+class CabelasSearchResult:
+    items: List[CabelasProductItem] = field(default_factory=list)
+
+
+# Search for outdoor products on Cabela's.
+def cabelas_search(page: Page, request: CabelasSearchRequest) -> CabelasSearchResult:

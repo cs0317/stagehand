@@ -1,0 +1,15 @@
+Architectural Digest – Search Articles
+
+Website: https://www.architecturaldigest.com
+Task: Browse and search home tour articles on Architectural Digest
+
+Parameters:
+  - search_query: search term (e.g., "home tour")
+  - max_results: maximum number of articles to return (default 5)
+
+Fields to extract:
+  - title: article title
+  - author: article author
+  - publish_date: publication date
+  - location: home/property location
+  - summary: article summary/description

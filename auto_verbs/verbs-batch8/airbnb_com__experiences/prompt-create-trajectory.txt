@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.airbnb.com/s/experiences
+
+* Concrete task
+- Search for experiences in "Tokyo, Japan" on Airbnb Experiences.
+- Extract the top 5 experiences: title, host name, duration, price per person, rating, and number of reviews.
+- Print the list.

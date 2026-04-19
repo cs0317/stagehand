@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class SwimcloudSearchRequest:
+    search_query: str = "100 freestyle"
+    max_results: int = 5
+
+
+@dataclass
+class SwimcloudResultItem:
+    swimmer_name: str = ""
+    team: str = ""
+    event: str = ""
+    time: str = ""
+    meet_name: str = ""
+    date: str = ""
+
+
+@dataclass
+class SwimcloudSearchResult:
+    items: List[SwimcloudResultItem] = field(default_factory=list)
+
+
+# Search for swim meet results on SwimCloud by keyword.
+def swimcloud_search(page: Page, request: SwimcloudSearchRequest) -> SwimcloudSearchResult:

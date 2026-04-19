@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.amazon.com/warehouse
+
+* Concrete task
+- Browse Amazon Warehouse deals for "electronics" category.
+- Extract the top 5 deals: product name, original price, warehouse price, condition (e.g., "Used - Like New"), and discount percentage.
+- Print the list.

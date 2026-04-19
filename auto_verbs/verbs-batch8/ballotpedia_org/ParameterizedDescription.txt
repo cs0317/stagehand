@@ -1,0 +1,8 @@
+Search for election information on Ballotpedia.
+
+Parameters:
+- search_query: str — The election or political topic to search for (default: "2024 Senate election")
+- max_results: int — Maximum number of results to return (default: 5)
+
+Returns:
+- A list of search results, each with: title, snippet, url, category

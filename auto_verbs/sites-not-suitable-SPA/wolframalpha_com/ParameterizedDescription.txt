@@ -1,0 +1,7 @@
+Query Wolfram Alpha for computational answers.
+
+Parameters:
+- query: str — The query to compute (default: "population of Tokyo")
+
+Returns:
+- query_input, and a list of result_pods, each with: pod_title, pod_value

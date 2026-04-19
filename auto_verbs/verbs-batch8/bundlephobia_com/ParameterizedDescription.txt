@@ -1,0 +1,7 @@
+Look up npm package bundle size information on Bundlephobia.
+
+Parameters:
+- package_name: str — Name of the npm package to look up (default: "react")
+
+Returns:
+- Package info with: package_name, version, minified_size, gzipped_size, download_time_3g, download_time_4g, num_dependencies, tree_shakeable

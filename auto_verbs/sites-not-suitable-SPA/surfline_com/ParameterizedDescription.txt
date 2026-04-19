@@ -1,0 +1,8 @@
+Search for surf forecasts on Surfline by keyword.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "Malibu")
+- max_results: int — Maximum number of spots to return (default: 5)
+
+Returns:
+- A list of surf spots, each with: spot_name, location, wave_height, wind_conditions, water_temp, rating

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.myfonts.com/
+
+* Concrete task
+- Search for "sans serif" fonts on MyFonts.
+- Extract the top 5 fonts: font family name, foundry/designer, number of styles, price, and sample text preview description.
+- Print the list.

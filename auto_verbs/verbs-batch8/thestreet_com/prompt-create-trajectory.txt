@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.thestreet.com/
+
+* Concrete task
+- Browse the latest market news on TheStreet.
+- Extract the top 5 articles: headline, author, publish date, category (stocks, economy, crypto, etc.), and summary.
+- Print the list.

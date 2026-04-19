@@ -1,0 +1,8 @@
+Search for interview questions and experiences on Glassdoor.
+
+Parameters:
+- company_name: str — The company to search interview questions for (default: "Google")
+- max_results: int — Maximum number of interview entries to return (default: 5)
+
+Returns:
+- A list of interview entries, each with: company_name, position, difficulty_rating, interview_experience, question, answer, date

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://github.com/marketplace
+
+* Concrete task
+- Browse the GitHub Marketplace for actions related to "CI/CD".
+- Extract the top 5 actions: name, creator, description, number of stars, and whether it is free or paid.
+- Print the list.

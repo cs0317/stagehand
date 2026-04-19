@@ -1,0 +1,21 @@
+@dataclass(frozen=True)
+class SpotifyNewReleasesSearchRequest:
+    max_results: int = 10
+
+
+@dataclass
+class SpotifyReleaseItem:
+    album_title: str = ""
+    artist_name: str = ""
+    release_date: str = ""
+    album_type: str = ""
+    num_tracks: str = ""
+
+
+@dataclass
+class SpotifyNewReleasesSearchResult:
+    items: List[SpotifyReleaseItem] = field(default_factory=list)
+
+
+# Browse new music releases on Spotify's web player.
+def spotify_new_releases_search(page: Page, request: SpotifyNewReleasesSearchRequest) -> SpotifyNewReleasesSearchResult:

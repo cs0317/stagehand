@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.cruisecritic.com/
+
+* Concrete task
+- Search for cruises to "Caribbean" on Cruise Critic.
+- Extract the top 5 cruises: cruise line, ship name, itinerary, duration, departure port, and price.
+- Print the list.

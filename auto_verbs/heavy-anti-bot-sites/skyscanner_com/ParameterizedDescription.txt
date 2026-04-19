@@ -1,0 +1,10 @@
+Search for flights on Skyscanner by origin, destination, and departure date.
+
+Parameters:
+- origin: str — The departure airport code (default: "SFO")
+- destination: str — The arrival airport code (default: "LAX")
+- departure_date: str — The departure date in YYYY-MM-DD format (default: "2025-02-01")
+- max_results: int — Maximum number of flight results to return (default: 5)
+
+Returns:
+- A list of flights, each with: airline, departure_time, arrival_time, duration, stops, price

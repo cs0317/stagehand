@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class BackcountrySearchRequest:
+    search_query: str = "hiking boots"
+    max_results: int = 5
+
+
+@dataclass
+class BackcountryProductItem:
+    product_name: str = ""
+    brand: str = ""
+    price: str = ""
+    original_price: str = ""
+    rating: str = ""
+    num_reviews: str = ""
+
+
+@dataclass
+class BackcountrySearchResult:
+    items: List[BackcountryProductItem] = field(default_factory=list)
+
+
+# Search for outdoor gear products on Backcountry.
+def backcountry_search(page: Page, request: BackcountrySearchRequest) -> BackcountrySearchResult:

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.architecturaldigest.com/
+
+* Concrete task
+- Browse the latest home tours/articles on Architectural Digest.
+- Extract the top 5 articles: title, author, publish date, location/home featured, and summary.
+- Print the list.

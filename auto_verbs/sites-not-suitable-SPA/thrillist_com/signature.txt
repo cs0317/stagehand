@@ -1,0 +1,15 @@
+thrillist_search(search_query: str = "best bars", max_results: int = 5) -> list[dict]
+
+Search for food and travel articles on Thrillist.
+
+Parameters:
+  search_query (str): The search query to look up on Thrillist. Default: "best bars"
+  max_results (int): Maximum number of results to return. Default: 5
+
+Returns:
+  list[dict]: A list of dictionaries, each containing:
+    - title (str): The article title
+    - author (str): The article author
+    - publish_date (str): The publication date
+    - category (str): The article category
+    - summary (str): A brief summary of the article

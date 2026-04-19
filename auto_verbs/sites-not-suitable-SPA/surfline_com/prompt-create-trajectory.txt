@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.surfline.com/
+
+* Concrete task
+- Search for surf conditions at "Huntington Beach" on Surfline.
+- Extract the forecast: spot name, wave height range, wind speed/direction, water temperature, tide info, and overall surf rating.
+- Print the results.

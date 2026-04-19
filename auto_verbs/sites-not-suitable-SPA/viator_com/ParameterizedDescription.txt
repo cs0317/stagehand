@@ -1,0 +1,8 @@
+Search for tours and activities on Viator.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "Rome walking tour")
+- max_results: int — Maximum number of results to return (default: 5)
+
+Returns:
+- A list of results, each with: tour_name, price, duration, rating, num_reviews, location, highlights

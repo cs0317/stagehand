@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.nami.org/
+
+* Concrete task
+- Search for "depression" resources on NAMI (National Alliance on Mental Illness).
+- Extract the top 5 resources: title, resource type (article, guide, factsheet), topic, and URL.
+- Print the list.

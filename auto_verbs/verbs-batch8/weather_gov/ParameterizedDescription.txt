@@ -1,0 +1,9 @@
+Get weather forecast from the National Weather Service.
+
+Parameters:
+- latitude: str — The latitude coordinate (default: "41.8781")
+- longitude: str — The longitude coordinate (default: "-87.6298")
+- max_results: int — Maximum number of forecast periods to return (default: 7)
+
+Returns:
+- A list of forecast periods, each with: period, temperature, wind_speed, wind_direction, forecast_summary, icon_description

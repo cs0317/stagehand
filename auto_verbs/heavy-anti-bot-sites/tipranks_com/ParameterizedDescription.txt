@@ -1,0 +1,1 @@
+Search for stock analyst ratings on TipRanks. Given a stock ticker, navigates to the TipRanks stock page and extracts analyst rating information including ticker, company name, analyst consensus, price target, smart score, number of analysts, and sector.

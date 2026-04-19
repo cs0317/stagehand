@@ -1,0 +1,12 @@
+nami_search - Search for mental health resources on NAMI (National Alliance on Mental Illness)
+
+Parameters:
+  - search_query (str): The mental health topic to search for. Default: "depression"
+  - max_results (int): Maximum number of results to return. Default: 5
+
+Returns a list of mental health resource items, each containing:
+  - title (str): Title of the resource or article
+  - category (str): Category of the resource (e.g., "Mental Health Conditions", "Support")
+  - summary (str): Brief summary or excerpt of the resource
+  - url (str): Direct URL to the resource page
+  - resource_type (str): Type of resource (e.g., "Article", "Blog Post", "Guide", "Fact Sheet")

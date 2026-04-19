@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.politico.com/
+
+* Concrete task
+- Browse the latest political news on Politico.
+- Extract the top 5 articles: headline, author, publish date, section (Congress, White House, etc.), and summary.
+- Print the list.

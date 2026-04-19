@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.etsy.com/c/vintage
+
+* Concrete task
+- Search for "vintage watches" on Etsy's vintage section.
+- Extract the top 5 listings: item name, shop name, price, era/decade, condition, and number of favorites.
+- Print the list.

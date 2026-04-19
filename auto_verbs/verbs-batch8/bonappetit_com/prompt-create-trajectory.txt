@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.bonappetit.com/
+
+* Concrete task
+- Search for "pasta" recipes on Bon Appétit.
+- Extract the top 5 recipes: recipe name, author, prep time, difficulty level, and rating.
+- Print the list.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.eater.com/
+
+* Concrete task
+- Navigate to Eater and search for restaurant guides in "New York".
+- Extract the top 5 featured restaurants: restaurant name, cuisine type, neighborhood, price range, and article headline.
+- Print the list.

@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class DeviantartSearchRequest:
+    search_query: str = "digital painting"
+    max_results: int = 5
+
+
+@dataclass
+class DeviantartArtworkItem:
+    title: str = ""
+    artist_name: str = ""
+    num_favorites: str = ""
+    num_comments: str = ""
+    category: str = ""
+    image_url: str = ""
+
+
+@dataclass
+class DeviantartSearchResult:
+    items: List[DeviantartArtworkItem] = field(default_factory=list)
+
+
+# Search for artwork on DeviantArt by keyword.
+def deviantart_search(page: Page, request: DeviantartSearchRequest) -> DeviantartSearchResult:

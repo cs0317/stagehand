@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.axios.com/
+
+* Concrete task
+- Browse the latest news articles on Axios.
+- Extract the top 5 articles: headline, author, publish date, topic/section, and key bullet points (Axios "Why it matters" format).
+- Print the list.

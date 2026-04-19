@@ -1,0 +1,15 @@
+lego_search - Search for LEGO sets on the official LEGO website
+
+Parameters:
+  - search_query (str): The LEGO theme or set name to search for. Default: "star wars"
+  - max_results (int): Maximum number of results to return. Default: 5
+
+Returns a list of LEGO set items, each containing:
+  - set_name (str): Name of the LEGO set
+  - set_number (str): Official LEGO set number
+  - price (str): Price of the set (e.g., "$79.99")
+  - age_range (str): Recommended age range (e.g., "9+")
+  - piece_count (str): Number of pieces in the set
+  - theme (str): LEGO theme (e.g., "Star Wars", "Technic")
+  - rating (str): Customer rating
+  - availability (str): Availability status (e.g., "Available Now", "Out of Stock")

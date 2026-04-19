@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.whitehouse.gov/presidential-actions/
+
+* Concrete task
+- Browse the latest presidential actions/executive orders on WhiteHouse.gov.
+- Extract the top 5 actions: title, date signed, type (executive order, memorandum, proclamation), and summary.
+- Print the list.

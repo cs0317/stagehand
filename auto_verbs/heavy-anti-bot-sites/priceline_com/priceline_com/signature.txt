@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class PricelineSearchRequest:
+    destination: str = "new-york"
+    max_results: int = 5
+
+
+@dataclass
+class PricelineHotelItem:
+    hotel_name: str = ""
+    star_rating: str = ""
+    guest_rating: str = ""
+    price_per_night: str = ""
+    neighborhood: str = ""
+    amenities: str = ""
+
+
+@dataclass
+class PricelineSearchResult:
+    items: List[PricelineHotelItem] = field(default_factory=list)
+
+
+# Search for hotel deals on Priceline by destination.
+def priceline_search(page: Page, request: PricelineSearchRequest) -> PricelineSearchResult:

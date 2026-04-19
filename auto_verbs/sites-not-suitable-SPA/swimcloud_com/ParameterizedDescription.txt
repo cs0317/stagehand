@@ -1,0 +1,8 @@
+Search for swim meet results on SwimCloud by keyword.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "100 freestyle")
+- max_results: int — Maximum number of results to return (default: 5)
+
+Returns:
+- A list of swim results, each with: swimmer_name, team, event, time, meet_name, date

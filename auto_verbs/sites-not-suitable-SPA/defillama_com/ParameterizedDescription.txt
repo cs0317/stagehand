@@ -1,0 +1,7 @@
+Browse top DeFi protocols by total value locked on DefiLlama.
+
+Parameters:
+- max_results: int — Maximum number of protocols to return (default: 10)
+
+Returns:
+- A list of protocols, each with: rank, protocol_name, chain, tvl, change_1d, change_7d, mcap_tvl_ratio, category

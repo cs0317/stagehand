@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.wolframalpha.com/
+
+* Concrete task
+- Query Wolfram Alpha with "population of Tokyo".
+- Extract the computed answer: input interpretation, result value, additional data (population rank, metro area population, population history data points).
+- Print the results.

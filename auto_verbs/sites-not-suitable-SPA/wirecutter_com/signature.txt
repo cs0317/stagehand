@@ -1,0 +1,19 @@
+@dataclass(frozen=True)
+class WirecutterSearchRequest:
+    search_query: str = "headphones"
+    max_results: int = 5
+
+
+@dataclass
+class WirecutterArticleItem:
+    title: str = ""
+    top_pick: str = ""
+    runner_up: str = ""
+    budget_pick: str = ""
+    publish_date: str = ""
+    summary: str = ""
+
+
+@dataclass
+class WirecutterSearchResult:
+    items: List[WirecutterArticleItem] = field(default_factory=list)

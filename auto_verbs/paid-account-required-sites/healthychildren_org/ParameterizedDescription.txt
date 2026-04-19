@@ -1,0 +1,8 @@
+Search for pediatric health articles on HealthyChildren.org (AAP).
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "infant sleep")
+- max_results: int — Maximum number of articles to return (default: 5)
+
+Returns:
+- A list of articles, each with: title, category, age_group, summary, url

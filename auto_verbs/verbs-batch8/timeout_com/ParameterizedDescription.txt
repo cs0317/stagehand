@@ -1,0 +1,1 @@
+Search for things to do in a city on Time Out. Given a search query, navigates to Time Out search results page and extracts venue and activity information including title, venue name, category, location, summary, and rating.

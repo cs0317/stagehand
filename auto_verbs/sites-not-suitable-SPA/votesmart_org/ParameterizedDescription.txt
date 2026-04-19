@@ -1,0 +1,8 @@
+Search for politician voting records on Vote Smart.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "senator")
+- max_results: int — Maximum number of results to return (default: 5)
+
+Returns:
+- A list of results, each with: politician_name, party, office, state, voting_record_url

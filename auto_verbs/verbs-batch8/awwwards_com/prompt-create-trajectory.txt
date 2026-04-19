@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.awwwards.com/
+
+* Concrete task
+- Browse the latest award-winning websites on Awwwards.
+- Extract the top 5 sites: site name, agency/designer, country, award type (Site of the Day, Honorable Mention, etc.), score, and URL.
+- Print the list.

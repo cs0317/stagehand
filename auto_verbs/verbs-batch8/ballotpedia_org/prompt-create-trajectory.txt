@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://ballotpedia.org/
+
+* Concrete task
+- Search for "2024 Senate elections" on Ballotpedia.
+- Extract the top 5 race entries: state, candidates (with party), incumbent, election date, and race status.
+- Print the list.

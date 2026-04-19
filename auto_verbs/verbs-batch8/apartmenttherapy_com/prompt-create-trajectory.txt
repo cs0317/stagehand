@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.apartmenttherapy.com/
+
+* Concrete task
+- Search for "small kitchen ideas" on Apartment Therapy.
+- Extract the top 5 articles: title, author, publish date, category (decorating, organizing, etc.), and summary.
+- Print the list.

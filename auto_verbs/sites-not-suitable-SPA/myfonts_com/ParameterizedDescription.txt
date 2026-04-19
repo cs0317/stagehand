@@ -1,0 +1,13 @@
+myfonts_search - Search for fonts on MyFonts
+
+Parameters:
+  - search_query (str): The font name, style, or classification to search for. Default: "serif"
+  - max_results (int): Maximum number of results to return. Default: 5
+
+Returns a list of font items, each containing:
+  - font_name (str): Name of the font family
+  - foundry (str): The type foundry that created the font
+  - price (str): Starting price for the font (e.g., "$29.00")
+  - num_styles (str): Number of available styles/weights
+  - classification (str): Font classification (e.g., "Serif", "Sans Serif", "Display")
+  - sample_text (str): Sample text preview shown for the font

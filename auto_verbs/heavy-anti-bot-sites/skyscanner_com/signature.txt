@@ -1,0 +1,25 @@
+@dataclass(frozen=True)
+class SkyscannerSearchRequest:
+    origin: str = "SFO"
+    destination: str = "LAX"
+    departure_date: str = "2025-02-01"
+    max_results: int = 5
+
+
+@dataclass
+class SkyscannerFlightItem:
+    airline: str = ""
+    departure_time: str = ""
+    arrival_time: str = ""
+    duration: str = ""
+    stops: str = ""
+    price: str = ""
+
+
+@dataclass
+class SkyscannerSearchResult:
+    items: List[SkyscannerFlightItem] = field(default_factory=list)
+
+
+# Search for flights on Skyscanner by origin, destination, and departure date.
+def skyscanner_search(page: Page, request: SkyscannerSearchRequest) -> SkyscannerSearchResult:

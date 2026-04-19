@@ -1,0 +1,8 @@
+Look up demographic and economic data for a US location on DataUSA.
+
+Parameters:
+- search_query: str — The US city, state, or location to search for (default: "Chicago")
+- max_results: int — Maximum number of results to return (default: 5)
+
+Returns:
+- A list of location results, each with: location_name, population, median_income, poverty_rate, median_age, employment_rate

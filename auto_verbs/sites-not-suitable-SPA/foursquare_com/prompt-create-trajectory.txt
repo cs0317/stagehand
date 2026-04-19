@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://foursquare.com/
+
+* Concrete task
+- Search for "coffee shops" near "San Francisco" on Foursquare.
+- Extract the top 5 venues: venue name, address, category, rating, number of tips, and price tier.
+- Print the list.

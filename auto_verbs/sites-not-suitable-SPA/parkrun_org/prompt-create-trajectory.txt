@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.parkrun.org/
+
+* Concrete task
+- Search for parkrun events near "London" on parkrun.org.
+- Extract the top 5 events: event name, location/park, country, number of runners (last event), course description, and URL.
+- Print the list.

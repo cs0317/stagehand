@@ -1,0 +1,13 @@
+openculture_search: Browse and search for free online courses on Open Culture.
+
+Parameters:
+  - search_query (str): The search term to filter courses by subject. Default: "philosophy"
+  - max_results (int): Maximum number of course results to return. Default: 5
+
+Returns a list of course items, each containing:
+  - course_name (str): The name of the course
+  - institution (str): The university or institution offering the course
+  - instructor (str): The instructor or professor teaching the course
+  - subject (str): The subject area or category of the course
+  - format (str): The format of the course (e.g., "Video", "Audio", "Online Course")
+  - url (str): The URL link to the course

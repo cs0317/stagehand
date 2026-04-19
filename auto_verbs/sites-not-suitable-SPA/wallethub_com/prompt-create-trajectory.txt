@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://wallethub.com/best-credit-cards
+
+* Concrete task
+- Browse the best credit cards on WalletHub.
+- Extract the top 5 credit cards: card name, issuer, annual fee, rewards rate, intro APR, and WalletHub score.
+- Print the list.

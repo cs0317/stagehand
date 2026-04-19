@@ -1,0 +1,22 @@
+@dataclass(frozen=True)
+class VotesmartSearchRequest:
+    search_query: str = "senator"
+    max_results: int = 5
+
+
+@dataclass
+class VotesmartPoliticianItem:
+    politician_name: str = ""
+    party: str = ""
+    office: str = ""
+    state: str = ""
+    voting_record_url: str = ""
+
+
+@dataclass
+class VotesmartSearchResult:
+    items: List[VotesmartPoliticianItem] = field(default_factory=list)
+
+
+# Search for politician voting records on Vote Smart.
+def votesmart_search(page: Page, request: VotesmartSearchRequest) -> VotesmartSearchResult:

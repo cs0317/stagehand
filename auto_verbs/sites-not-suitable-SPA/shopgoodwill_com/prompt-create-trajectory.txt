@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.shopgoodwill.com/
+
+* Concrete task
+- Search for "leather jacket" on ShopGoodwill.
+- Extract the top 5 auction listings: item name, current bid, number of bids, time remaining, seller location, and item condition.
+- Print the list.

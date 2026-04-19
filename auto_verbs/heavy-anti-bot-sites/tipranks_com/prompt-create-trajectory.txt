@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.tipranks.com/
+
+* Concrete task
+- Search for analyst ratings for "MSFT" (Microsoft) on TipRanks.
+- Extract the consensus: stock ticker, consensus rating (buy/hold/sell), average price target, high target, low target, and number of analysts.
+- Print the results.

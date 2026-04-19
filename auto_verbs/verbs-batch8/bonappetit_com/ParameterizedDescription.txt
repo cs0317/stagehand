@@ -1,0 +1,8 @@
+Search for recipes on Bon Appetit.
+
+Parameters:
+- search_query: str — The recipe keyword to search for (default: "pasta")
+- max_results: int — Maximum number of recipes to return (default: 5)
+
+Returns:
+- A list of recipes, each with: recipe_name, author, rating, total_time, description, image_url

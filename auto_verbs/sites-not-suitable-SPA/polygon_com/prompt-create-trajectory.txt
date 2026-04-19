@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.polygon.com/
+
+* Concrete task
+- Browse the latest gaming news and reviews on Polygon.
+- Extract the top 5 articles: title, author, publish date, game/topic, score (if review), and summary.
+- Print the list.

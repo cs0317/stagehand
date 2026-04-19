@@ -1,0 +1,8 @@
+Search for fact-check articles on FactCheck.org by keyword.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "climate change")
+- max_results: int — Maximum number of articles to return (default: 5)
+
+Returns:
+- A list of articles, each with: title, author, publish_date, claim_reviewed, verdict, summary

@@ -1,0 +1,8 @@
+Search for academic papers on Semantic Scholar.
+
+Parameters:
+- search_query: str — The search query for academic papers (default: "transformer neural network")
+- max_results: int — Maximum number of papers to return (default: 5)
+
+Returns:
+- A list of papers, each with: title, authors, year, venue, citation_count, abstract, fields_of_study

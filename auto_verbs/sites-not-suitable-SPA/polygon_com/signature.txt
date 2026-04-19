@@ -1,0 +1,22 @@
+@dataclass(frozen=True)
+class PolygonSearchRequest:
+    search_query: str = "nintendo"
+    max_results: int = 5
+
+
+@dataclass
+class PolygonArticleItem:
+    title: str = ""
+    author: str = ""
+    publish_date: str = ""
+    category: str = ""
+    summary: str = ""
+
+
+@dataclass
+class PolygonSearchResult:
+    items: List[PolygonArticleItem] = field(default_factory=list)
+
+
+# Search for gaming and entertainment articles on Polygon by keyword.
+def polygon_search(page: Page, request: PolygonSearchRequest) -> PolygonSearchResult:

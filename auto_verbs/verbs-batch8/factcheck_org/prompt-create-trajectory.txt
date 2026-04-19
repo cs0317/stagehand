@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.factcheck.org/
+
+* Concrete task
+- Browse the latest political fact-checks on FactCheck.org.
+- Extract the top 5 articles: headline, politician/source, claim summary, verdict, author, and publish date.
+- Print the list.

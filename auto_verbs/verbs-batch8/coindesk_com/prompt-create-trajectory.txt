@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.coindesk.com/
+
+* Concrete task
+- Browse the latest cryptocurrency news on CoinDesk.
+- Extract the top 5 news articles: headline, author, publish date, category (Bitcoin, Ethereum, DeFi, etc.), and summary.
+- Print the list.

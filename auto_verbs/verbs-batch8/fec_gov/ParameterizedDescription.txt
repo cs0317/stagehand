@@ -1,0 +1,8 @@
+Search for campaign finance data on FEC.gov by candidate name or keyword.
+
+Parameters:
+- search_query: str — The candidate name or keyword to search for (default: "president")
+- max_results: int — Maximum number of candidates to return (default: 5)
+
+Returns:
+- A list of candidates, each with: candidate_name, party, office, state, total_receipts, total_disbursements, cash_on_hand, election_year

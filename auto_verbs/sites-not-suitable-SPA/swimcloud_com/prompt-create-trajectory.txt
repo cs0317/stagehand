@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.swimcloud.com/
+
+* Concrete task
+- Search for top swimming times in "100m Freestyle Men" on SwimCloud.
+- Extract the top 5 performances: swimmer name, team/club, time, meet name, date, and rank.
+- Print the list.

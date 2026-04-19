@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://roadtrippers.com/
+
+* Concrete task
+- Plan a road trip from "Los Angeles" to "Las Vegas" on Roadtrippers.
+- Extract the top 5 suggested stops along the route: stop name, category (food, attraction, etc.), distance from start, rating, and description.
+- Print the list.

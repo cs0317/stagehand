@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.priceline.com/
+
+* Concrete task
+- Search for hotel deals in "Miami, FL" on Priceline with check-in next month.
+- Extract the top 5 deals: hotel name, star rating, price per night, discount percentage, neighborhood, and guest rating.
+- Print the list.

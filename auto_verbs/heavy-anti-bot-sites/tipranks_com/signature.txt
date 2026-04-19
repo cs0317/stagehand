@@ -1,0 +1,16 @@
+tipranks_search(ticker: str = "AAPL") -> dict
+
+Search for stock analyst ratings on TipRanks.
+
+Parameters:
+  ticker (str): The stock ticker symbol to look up. Default: "AAPL"
+
+Returns:
+  dict: A dictionary containing:
+    - ticker (str): The stock ticker symbol
+    - company_name (str): The company name
+    - analyst_consensus (str): The analyst consensus rating (e.g., Strong Buy, Buy, Hold)
+    - price_target (str): The average analyst price target
+    - smart_score (str): The TipRanks Smart Score
+    - num_analysts (str): The number of analysts covering the stock
+    - sector (str): The sector the company belongs to

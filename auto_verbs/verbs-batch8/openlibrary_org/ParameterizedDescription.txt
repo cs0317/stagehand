@@ -1,0 +1,14 @@
+openlibrary_search: Search for books on Open Library.
+
+Parameters:
+  - search_query (str): The search term to look for books. Default: "machine learning"
+  - max_results (int): Maximum number of book results to return. Default: 5
+
+Returns a list of book items, each containing:
+  - title (str): The title of the book
+  - author (str): The author(s) of the book
+  - first_publish_year (str): The year the book was first published
+  - publisher (str): The publisher of the book
+  - num_editions (int): The number of editions available
+  - isbn (str): The ISBN of the book
+  - subjects (str): The subject areas or topics of the book

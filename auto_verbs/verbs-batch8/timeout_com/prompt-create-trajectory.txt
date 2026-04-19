@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.timeout.com/
+
+* Concrete task
+- Navigate to Time Out and search for things to do in "Chicago".
+- Extract the top 5 recommendations: title, category (food, arts, nightlife, etc.), neighborhood, description summary, and URL.
+- Print the list.

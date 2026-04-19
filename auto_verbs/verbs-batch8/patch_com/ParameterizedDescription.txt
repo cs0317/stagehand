@@ -1,0 +1,12 @@
+patch_search: Search for local news articles on Patch.
+
+Parameters:
+  - search_query (str): The search term to look for local news articles. Default: "community events"
+  - max_results (int): Maximum number of article results to return. Default: 5
+
+Returns a list of article items, each containing:
+  - title (str): The title of the news article
+  - location (str): The local area or neighborhood the article covers
+  - publish_date (str): The publication date of the article
+  - summary (str): A brief summary or description of the article
+  - url (str): The URL link to the full article

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.sleepfoundation.org/
+
+* Concrete task
+- Search for "insomnia" articles on Sleep Foundation.
+- Extract the top 5 articles: title, author, last updated date, category, and article summary.
+- Print the list.

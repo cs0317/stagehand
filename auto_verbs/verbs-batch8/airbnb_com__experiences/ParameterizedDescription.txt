@@ -1,0 +1,8 @@
+Search for Airbnb Experiences in a given city.
+
+Parameters:
+- city: str — The city to search for experiences in (e.g., "Tokyo, Japan")
+- max_results: int — Maximum number of experiences to return (default: 5)
+
+Returns:
+- A list of experiences, each with: title, host_name, duration, price_per_person, rating, num_reviews

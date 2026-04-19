@@ -1,0 +1,8 @@
+Search Amazon Warehouse deals for a given product category.
+
+Parameters:
+- category: str — Product category to search (e.g., "electronics")
+- max_results: int — Maximum number of deals to return (default: 5)
+
+Returns:
+- A list of deals, each with: product_name, original_price, warehouse_price, condition, discount_percentage

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.cabelas.com/
+
+* Concrete task
+- Search for "fly fishing rod" on Cabela's.
+- Extract the top 5 products: product name, brand, price, rating, number of reviews, and availability.
+- Print the list.

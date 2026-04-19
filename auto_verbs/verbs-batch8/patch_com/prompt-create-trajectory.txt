@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://patch.com/
+
+* Concrete task
+- Browse the latest local news for a specific community, e.g., "Manhattan, NY" on Patch.
+- Extract the top 5 news articles: headline, author, publish date/time, category, and summary.
+- Print the list.

@@ -1,0 +1,8 @@
+Search for outdoor gear products on Backcountry.
+
+Parameters:
+- search_query: str — The product keyword to search for (default: "hiking boots")
+- max_results: int — Maximum number of products to return (default: 5)
+
+Returns:
+- A list of products, each with: product_name, brand, price, original_price, rating, num_reviews

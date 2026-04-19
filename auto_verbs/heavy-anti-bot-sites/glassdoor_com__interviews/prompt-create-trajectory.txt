@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.glassdoor.com/Interview/
+
+* Concrete task
+- Search for interview questions at "Google" on Glassdoor's interview section.
+- Extract the top 5 interview experiences: job title, difficulty rating, interview question, outcome (accepted/rejected/no offer), and date.
+- Print the list.

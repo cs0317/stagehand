@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class SeekingalphaSearchRequest:
+    search_query: str = "AAPL"
+    max_results: int = 5
+
+
+@dataclass
+class SeekingalphaArticleItem:
+    title: str = ""
+    author: str = ""
+    publish_date: str = ""
+    ticker: str = ""
+    summary: str = ""
+    sentiment: str = ""
+
+
+@dataclass
+class SeekingalphaSearchResult:
+    items: List[SeekingalphaArticleItem] = field(default_factory=list)
+
+
+# Search for stock analysis articles on Seeking Alpha.
+def seekingalpha_search(page: Page, request: SeekingalphaSearchRequest) -> SeekingalphaSearchResult:

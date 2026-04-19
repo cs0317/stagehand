@@ -1,0 +1,1 @@
+Search for news articles on USA Today. Given a search query, navigates to USA Today search results page and extracts article information including title, author, publish date, section, and summary.

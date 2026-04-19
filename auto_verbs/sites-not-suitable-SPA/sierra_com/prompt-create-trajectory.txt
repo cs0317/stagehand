@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.sierra.com/
+
+* Concrete task
+- Search for "camping gear" on Sierra Trading Post.
+- Extract the top 5 deals: product name, brand, sale price, original price, discount percentage, and rating.
+- Print the list.

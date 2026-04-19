@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.zillow.com/homes/recently_sold/
+
+* Concrete task
+- Search for recently sold homes in "Austin, TX".
+- Extract the top 5 results: address, sale price, sale date, bedrooms, bathrooms, and square footage.
+- Print the list.

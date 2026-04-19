@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.healthychildren.org/
+
+* Concrete task
+- Search for "toddler nutrition" articles on HealthyChildren.org (by the AAP).
+- Extract the top 5 articles: title, age group, topic category, last reviewed date, and article summary.
+- Print the list.

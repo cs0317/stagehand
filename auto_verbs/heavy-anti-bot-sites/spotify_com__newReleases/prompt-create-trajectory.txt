@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://open.spotify.com/genre/new-releases-page
+
+* Concrete task
+- Navigate to Spotify's new releases page.
+- Extract the top 5 new albums/singles: title, artist, release date, number of tracks, and type (album/single/EP).
+- Print the list.

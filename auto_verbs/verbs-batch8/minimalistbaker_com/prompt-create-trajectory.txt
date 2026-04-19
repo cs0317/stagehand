@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://minimalistbaker.com/
+
+* Concrete task
+- Search for "chocolate" recipes on Minimalist Baker.
+- Extract the top 5 recipes: recipe name, prep time, cook time, servings, dietary tags (vegan, gluten-free, etc.), and rating.
+- Print the list.

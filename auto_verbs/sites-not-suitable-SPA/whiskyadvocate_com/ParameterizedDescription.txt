@@ -1,0 +1,8 @@
+Search for whisky reviews on Whisky Advocate by keyword.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "bourbon")
+- max_results: int — Maximum number of reviews to return (default: 5)
+
+Returns:
+- A list of whisky reviews, each with: whisky_name, distillery, region, score, price, age, proof, review_summary

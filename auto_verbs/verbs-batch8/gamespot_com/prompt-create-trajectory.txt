@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.gamespot.com/
+
+* Concrete task
+- Search for the latest game reviews on GameSpot.
+- Extract the top 5 reviews: game title, platform, score, reviewer, publish date, and verdict summary.
+- Print the list.

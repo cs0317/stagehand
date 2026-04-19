@@ -1,0 +1,24 @@
+@dataclass(frozen=True)
+class FoursquareSearchRequest:
+    location: str = "New York"
+    search_query: str = "coffee"
+    max_results: int = 5
+
+
+@dataclass
+class FoursquareVenueItem:
+    venue_name: str = ""
+    category: str = ""
+    address: str = ""
+    rating: str = ""
+    price_tier: str = ""
+    num_tips: str = ""
+
+
+@dataclass
+class FoursquareSearchResult:
+    items: List[FoursquareVenueItem] = field(default_factory=list)
+
+
+# Search for places and venues on Foursquare by location and keyword.
+def foursquare_search(page: Page, request: FoursquareSearchRequest) -> FoursquareSearchResult:

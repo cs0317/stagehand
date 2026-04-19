@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.wired.com/
+
+* Concrete task
+- Search for "artificial intelligence" articles on Wired.
+- Extract the top 5 articles: title, author, publish date, category, and summary.
+- Print the list.

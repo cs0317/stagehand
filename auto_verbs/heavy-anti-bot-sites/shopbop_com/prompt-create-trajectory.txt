@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.shopbop.com/
+
+* Concrete task
+- Search for "designer handbags" on Shopbop.
+- Extract the top 5 products: product name, designer/brand, price, discount (if any), and product category.
+- Print the list.

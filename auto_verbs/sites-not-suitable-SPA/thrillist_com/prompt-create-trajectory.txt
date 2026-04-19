@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.thrillist.com/
+
+* Concrete task
+- Search for "best pizza" in "Brooklyn" on Thrillist.
+- Extract the top 5 recommended places: restaurant name, neighborhood, cuisine type, price range, and description/highlight.
+- Print the list.

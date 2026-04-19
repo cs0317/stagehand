@@ -1,0 +1,8 @@
+Search for hotel listings on Google Hotels.
+
+Parameters:
+- destination: str — The destination city to search hotels for (default: "San Francisco")
+- max_results: int — Maximum number of hotel listings to return (default: 5)
+
+Returns:
+- A list of hotels, each with: hotel_name, price_per_night, rating, num_reviews, amenities, distance_from_center

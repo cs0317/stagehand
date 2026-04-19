@@ -1,0 +1,8 @@
+Search for pet-friendly hotels on BringFido by destination city.
+
+Parameters:
+- city: str — City slug for the destination (default: "san-francisco-ca")
+- max_results: int — Maximum number of hotels to return (default: 5)
+
+Returns:
+- A list of hotels, each with: hotel_name, address, rating, price_range, pet_policy, amenities

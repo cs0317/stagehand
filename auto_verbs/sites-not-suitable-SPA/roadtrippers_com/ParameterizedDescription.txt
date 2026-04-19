@@ -1,0 +1,8 @@
+Search for road trip stops and attractions on Roadtrippers by keyword.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "Route 66")
+- max_results: int — Maximum number of results to return (default: 5)
+
+Returns:
+- A list of places, each with: place_name, category, location, rating, description, distance

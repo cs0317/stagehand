@@ -1,0 +1,12 @@
+law_cornell_search - Search for legal codes and statutes on Cornell Law's Legal Information Institute
+
+Parameters:
+  - search_query (str): The legal topic or statute to search for. Default: "first amendment"
+  - max_results (int): Maximum number of results to return. Default: 5
+
+Returns a list of legal resource items, each containing:
+  - title (str): Title of the legal resource or statute
+  - code_section (str): The code or section number (e.g., "42 U.S.C. § 1983")
+  - jurisdiction (str): The jurisdiction (e.g., "Federal", "U.S. Constitution")
+  - summary (str): Brief summary or description of the legal resource
+  - url (str): Direct URL to the full text of the resource

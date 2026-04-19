@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.rottentomatoes.com/browse/movies_coming_soon/
+
+* Concrete task
+- Navigate to Rotten Tomatoes upcoming movies page.
+- Extract the top 5 upcoming movies: title, release date, Tomatometer score (if available), audience score (if available), and synopsis.
+- Print the list.

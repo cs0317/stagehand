@@ -1,0 +1,24 @@
+@dataclass(frozen=True)
+class CapterraSearchRequest:
+    search_query: str = "project management"
+    max_results: int = 5
+
+
+@dataclass
+class CapterraSoftwareItem:
+    software_name: str = ""
+    vendor: str = ""
+    overall_rating: str = ""
+    num_reviews: str = ""
+    pricing: str = ""
+    description: str = ""
+    top_features: str = ""
+
+
+@dataclass
+class CapterraSearchResult:
+    items: List[CapterraSoftwareItem] = field(default_factory=list)
+
+
+# Search for software reviews on Capterra.
+def capterra_search(page: Page, request: CapterraSearchRequest) -> CapterraSearchResult:

@@ -1,0 +1,7 @@
+Search browser compatibility data on Can I Use.
+
+Parameters:
+- feature_query: str — Web feature to search for (default: "flexbox")
+
+Returns:
+- A list of features, each with: feature_name, description, usage_percentage, chrome_support, firefox_support, safari_support, edge_support

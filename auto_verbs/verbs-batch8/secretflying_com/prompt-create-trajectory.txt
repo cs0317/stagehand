@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.secretflying.com/
+
+* Concrete task
+- Browse the latest flight deals on Secret Flying from the United States.
+- Extract the top 5 deals: route (origin to destination), price, airline, travel dates, and deal type (mistake fare, sale, etc.).
+- Print the list.

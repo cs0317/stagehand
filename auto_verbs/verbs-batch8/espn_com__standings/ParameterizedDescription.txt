@@ -1,0 +1,8 @@
+Get current league standings from ESPN.
+
+Parameters:
+- sport: str — The sport to get standings for (default: "nba")
+- max_results: int — Maximum number of teams to return (default: 15)
+
+Returns:
+- A list of teams, each with: team_name, wins, losses, ties, win_percentage, games_behind, division, conference

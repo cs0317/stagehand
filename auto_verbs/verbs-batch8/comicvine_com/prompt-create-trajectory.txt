@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://comicvine.gamespot.com/
+
+* Concrete task
+- Search for "Spider-Man" on Comic Vine.
+- Extract the character profile: character name, real name, aliases, publisher, first appearance, powers (top 5), and number of issue appearances.
+- Print the results.

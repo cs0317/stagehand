@@ -1,0 +1,24 @@
+@dataclass(frozen=True)
+class LegoSearchRequest:
+    search_query: str = "star wars"
+    max_results: int = 5
+
+@dataclass
+class LegoSearchItem:
+    set_name: str = ""
+    set_number: str = ""
+    price: str = ""
+    age_range: str = ""
+    piece_count: str = ""
+    theme: str = ""
+    rating: str = ""
+    availability: str = ""
+
+@dataclass
+class LegoSearchResult:
+    items: List[LegoSearchItem] = field(default_factory=list)
+    query: str = ""
+    result_count: int = 0
+
+def lego_search(request: LegoSearchRequest) -> LegoSearchResult:
+    ...

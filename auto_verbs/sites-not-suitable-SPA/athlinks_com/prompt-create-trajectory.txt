@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.athlinks.com/
+
+* Concrete task
+- Search for race results for a "Boston Marathon" on Athlinks.
+- Extract the top 5 results from the latest edition: runner name, bib number, finish time, overall place, age group, and age group place.
+- Print the list.

@@ -1,0 +1,24 @@
+@dataclass(frozen=True)
+class ViatorSearchRequest:
+    search_query: str = "Rome walking tour"
+    max_results: int = 5
+
+
+@dataclass
+class ViatorTourItem:
+    tour_name: str = ""
+    price: str = ""
+    duration: str = ""
+    rating: str = ""
+    num_reviews: str = ""
+    location: str = ""
+    highlights: str = ""
+
+
+@dataclass
+class ViatorSearchResult:
+    items: List[ViatorTourItem] = field(default_factory=list)
+
+
+# Search for tours and activities on Viator.
+def viator_search(page: Page, request: ViatorSearchRequest) -> ViatorSearchResult:

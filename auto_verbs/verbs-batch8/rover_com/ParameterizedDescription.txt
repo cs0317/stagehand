@@ -1,0 +1,8 @@
+Search for pet sitters on Rover by location.
+
+Parameters:
+- location: str — The location to search for pet sitters (default: "Seattle, WA")
+- max_results: int — Maximum number of sitters to return (default: 5)
+
+Returns:
+- A list of sitters, each with: sitter_name, rating, num_reviews, price_per_night, services_offered, distance, response_time

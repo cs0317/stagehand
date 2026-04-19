@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class RoadtrippersSearchRequest:
+    search_query: str = "Route 66"
+    max_results: int = 5
+
+
+@dataclass
+class RoadtrippersPlaceItem:
+    place_name: str = ""
+    category: str = ""
+    location: str = ""
+    rating: str = ""
+    description: str = ""
+    distance: str = ""
+
+
+@dataclass
+class RoadtrippersSearchResult:
+    items: List[RoadtrippersPlaceItem] = field(default_factory=list)
+
+
+# Search for road trip stops and attractions on Roadtrippers by keyword.
+def roadtrippers_search(page: Page, request: RoadtrippersSearchRequest) -> RoadtrippersSearchResult:

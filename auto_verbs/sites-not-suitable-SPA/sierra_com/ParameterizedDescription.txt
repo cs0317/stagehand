@@ -1,0 +1,8 @@
+Search for outdoor and active products on Sierra.
+
+Parameters:
+- search_query: str — The product keyword to search for (default: "hiking jacket")
+- max_results: int — Maximum number of products to return (default: 5)
+
+Returns:
+- A list of products, each with: product_name, brand, price, original_price, discount_percentage

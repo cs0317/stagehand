@@ -1,0 +1,1 @@
+Search for federal spending data on USAspending.gov. Given a search query, navigates to USAspending.gov keyword search results page and extracts spending information including recipient name, award amount, awarding agency, award type, date, and description.

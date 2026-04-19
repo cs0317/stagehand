@@ -702,31 +702,173 @@ Crowdfunding & Social (3):
   - kickstarter_com: Creative project crowdfunding
   - change_org: Petition/cause search
 
-OVERALL COVERAGE (batches 1–7)
+BATCH 8 (100 new verbs — in auto_verbs/verbs/)
+-----------------------------------------------
+Multi-verb Extensions (10):
+  - amazon_com__warehouse: Amazon Warehouse deals search
+  - github_com__marketplace: GitHub Marketplace actions/apps search
+  - imdb_com__comingSoon: IMDb upcoming movie releases
+  - youtube_com__live: YouTube live streams browse
+  - zillow_com__soldHomes: Recently sold homes data
+  - tripadvisor_com__hotels: Hotel search with reviews
+  - espn_com__standings: League standings (multi-sport)
+  - spotify_com__newReleases: New music releases
+  - rottentomatoes_com__comingSoon: Upcoming movies
+  - ebay_com__trending: eBay trending products
+
+Shopping/Marketplace (8):
+  - shopgoodwill_com: Goodwill online auction search
+  - backcountry_com: Outdoor gear search
+  - dickssportinggoods_com: Sporting goods search
+  - shopbop_com: Designer fashion search
+  - sierra_com: Outdoor discount deals
+  - lego_com: LEGO set search
+  - cabelas_com: Outdoor/hunting gear search
+  - wirecutter_com: NYT Wirecutter product recommendations
+
+Food/Drink (6):
+  - eater_com: Restaurant news and city guides
+  - bonappetit_com: Recipe search
+  - thekitchn_com: Cooking article/recipe search
+  - tastingtable_com: Food/drink article search
+  - whiskyadvocate_com: Whisky reviews and scores
+  - minimalistbaker_com: Simple recipe search
+
+Travel (8):
+  - skyscanner_com: Flight search/compare
+  - viator_com: Tours and activities search
+  - cruisecritic_com: Cruise ship reviews
+  - secretflying_com: Cheap flight deals
+  - timeout_com: City guide/things to do
+  - cntraveler_com: Travel destination guides
+  - google_com__hotels: Google Hotels search
+  - roadtrippers_com: Road trip planner/stops
+  - priceline_com: Hotel/flight bargain deals
+
+Health/Wellness (6):
+  - psychologytoday_com: Therapist/provider finder
+  - sleepfoundation_org: Sleep research articles
+  - rxlist_com: Drug information lookup
+  - healthychildren_org: AAP child health info
+  - nami_org: Mental health resource search
+
+Finance (6):
+  - seekingalpha_com: Stock analysis articles
+  - tipranks_com: Analyst stock ratings
+  - wallethub_com: Credit card/financial comparisons
+  - coindesk_com: Cryptocurrency news
+  - defillama_com: DeFi protocol rankings
+  - thestreet_com: Market news/analysis
+
+Science/Education (6):
+  - semanticscholar_org: Academic paper search
+  - quizlet_com: Study set/flashcard search
+  - sparknotes_com: Book summaries/study guides
+  - wolframalpha_com: Computational answer engine
+  - openculture_com: Free courses/resources catalog
+  - openlibrary_org: Open Library book search
+
+Government/Civic (6):
+  - ballotpedia_org: Election/political information
+  - fec_gov: Campaign finance data
+  - usaspending_gov: Federal spending transparency
+  - votesmart_org: Politician voting records
+  - whitehouse_gov: Presidential actions/exec orders
+  - datausa_io: US demographic/economic data
+
+Entertainment (8):
+  - tvtropes_org: TV/media trope database
+  - trakt_tv: TV show/movie tracking
+  - albumoftheyear_org: Album review aggregator
+  - boxofficemojo_com: Box office revenue data
+  - comicvine_com: Comic book/character database
+  - tvguide_com: TV schedule/show guide
+
+Art/Design (4):
+  - artstation_com: Digital art portfolio search
+  - deviantart_com: Community art search
+  - myfonts_com: Font search and browse
+  - awwwards_com: Award-winning website gallery
+
+Outdoor/Sports (6):
+  - surfline_com: Surf conditions and forecasts
+  - parkrun_org: Parkrun event results
+  - athlinks_com: Race results search
+  - swimcloud_com: Swimming times database
+  - weather_gov: NWS weather forecasts
+
+Pets (4):
+  - rover_com: Pet sitter/walker search
+  - bringfido_com: Dog-friendly travel guide
+  - dogtime_com: Dog breed information
+  - vetstreet_com: Pet health articles
+
+Home/Interior (4):
+  - apartmenttherapy_com: Home decor articles
+  - hunker_com: Home/garden articles
+  - architecturaldigest_com: Architecture/design articles
+
+Legal/Reference (4):
+  - findlaw_com: Legal info/lawyer search
+  - law_cornell_edu: Legal code lookup
+  - snopes_com: Fact-checking search
+  - factcheck_org: Political fact-check search
+
+Tech/Developer (4):
+  - caniuse_com: Browser feature compatibility
+  - bundlephobia_com: npm package size check
+  - capterra_com: Business software search
+  - devpost_com: Hackathon project search
+
+Events/Local (4):
+  - thrillist_com: Local food/drink/entertainment guides
+  - patch_com: Local news by city
+  - foursquare_com: Venue/restaurant discovery
+
+News/Media (6):
+  - wired_com: Tech/science article search
+  - politico_com: Political news search
+  - theverge_com: Tech news/review search
+  - newyorker_com: Magazine article search
+  - axios_com: News article search
+  - usatoday_com: News article search
+
+Gaming (2):
+  - polygon_com: Gaming news/review search
+  - gamespot_com: Game review search
+
+Extended Site Verbs (2):
+  - airbnb_com__experiences: Airbnb experiences search
+  - etsy_com__vintage: Etsy vintage item search
+
+Misc (2):
+  - glassdoor_com__interviews: Interview questions by company
+
+OVERALL COVERAGE (batches 1–8)
 ==============================
-~419 total verbs across 7 batches covering:
-  - Shopping/Retail/Marketplace (~45 verbs)
-  - Travel/Transportation (~30 verbs)
-  - Food/Dining/Recipes (~20 verbs)
-  - Finance/Investing/Crypto (~20 verbs)
-  - Entertainment/Movies/TV (~20 verbs)
+~519 total verbs across 8 batches covering:
+  - Shopping/Retail/Marketplace (~53 verbs)
+  - Travel/Transportation (~39 verbs)
+  - Food/Dining/Recipes (~26 verbs)
+  - Finance/Investing/Crypto (~26 verbs)
+  - Entertainment/Movies/TV (~28 verbs)
   - Music/Audio (~20 verbs)
-  - Health/Medical/Fitness (~20 verbs)
-  - News/Media/Journalism (~15 verbs)
-  - Sports/Athletics (~20 verbs)
-  - Education/Learning (~15 verbs)
-  - Government/Legal/Policy (~20 verbs)
-  - Tech/Developer/Software (~20 verbs)
+  - Health/Medical/Fitness (~25 verbs)
+  - News/Media/Journalism (~21 verbs)
+  - Sports/Athletics (~26 verbs)
+  - Education/Learning (~21 verbs)
+  - Government/Legal/Policy (~30 verbs)
+  - Tech/Developer/Software (~24 verbs)
   - Science/Nature/Research (~20 verbs)
   - Real Estate/Housing (~10 verbs)
   - Jobs/Career (~10 verbs)
   - Books/Reading/Writing (~15 verbs)
-  - Gaming (~15 verbs)
-  - Home/DIY/Garden (~15 verbs)
+  - Gaming (~17 verbs)
+  - Home/DIY/Garden (~18 verbs)
   - Photography/Stock Images (~10 verbs)
-  - Outdoor/Adventure (~10 verbs)
-  - Pets/Animals (~8 verbs)
-  - Art/Museums (~8 verbs)
+  - Outdoor/Adventure (~16 verbs)
+  - Pets/Animals (~12 verbs)
+  - Art/Museums/Design (~12 verbs)
   - Automotive (~10 verbs)
   - Wine/Beer/Spirits (~5 verbs)
   - Anime/Manga (~4 verbs)

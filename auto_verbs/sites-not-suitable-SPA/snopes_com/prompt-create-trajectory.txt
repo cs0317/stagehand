@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.snopes.com/
+
+* Concrete task
+- Search for "5G" fact checks on Snopes.
+- Extract the top 5 fact-check articles: claim title, rating (true/false/mixture), author, publish date, and summary of the claim.
+- Print the list.

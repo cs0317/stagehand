@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.cntraveler.com/
+
+* Concrete task
+- Search for "best beaches" on Condé Nast Traveler.
+- Extract the top 5 destination articles: title, destination, region, author, and publish date.
+- Print the list.

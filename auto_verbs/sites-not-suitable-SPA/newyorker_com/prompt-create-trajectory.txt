@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.newyorker.com/
+
+* Concrete task
+- Browse the latest articles on The New Yorker.
+- Extract the top 5 articles: title, author, section (News, Culture, Fiction, etc.), publish date, and summary.
+- Print the list.

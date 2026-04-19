@@ -1,0 +1,21 @@
+@dataclass(frozen=True)
+class WhiskyadvocateSearchRequest:
+    search_query: str = "bourbon"
+    max_results: int = 5
+
+
+@dataclass
+class WhiskyReviewItem:
+    whisky_name: str = ""
+    distillery: str = ""
+    region: str = ""
+    score: str = ""
+    price: str = ""
+    age: str = ""
+    proof: str = ""
+    review_summary: str = ""
+
+
+@dataclass
+class WhiskyadvocateSearchResult:
+    items: List[WhiskyReviewItem] = field(default_factory=list)

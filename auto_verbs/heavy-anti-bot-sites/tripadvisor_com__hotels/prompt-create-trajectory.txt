@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.tripadvisor.com/Hotels
+
+* Concrete task
+- Search for hotels in "Barcelona, Spain" with check-in next month and 2 guests.
+- Extract the top 5 hotels: name, star rating, price per night, review score, number of reviews, and neighborhood.
+- Print the list.

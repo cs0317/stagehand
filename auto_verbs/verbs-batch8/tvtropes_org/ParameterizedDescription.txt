@@ -1,0 +1,1 @@
+Search for tropes on TV Tropes. Given a search query, navigates to TV Tropes search results page and extracts trope information including trope name, category, description, and URL.

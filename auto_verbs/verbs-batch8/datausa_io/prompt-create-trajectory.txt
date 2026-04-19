@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://datausa.io/
+
+* Concrete task
+- Search for demographic data about "Austin, TX" on Data USA.
+- Extract: population, median household income, poverty rate, median age, largest industries (top 3), and most common occupations (top 3).
+- Print the results.

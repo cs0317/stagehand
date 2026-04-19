@@ -1,0 +1,7 @@
+Browse new music releases on Spotify's web player.
+
+Parameters:
+- max_results: int — Maximum number of new releases to return (default: 10)
+
+Returns:
+- A list of releases, each with: album_title, artist_name, release_date, album_type, num_tracks

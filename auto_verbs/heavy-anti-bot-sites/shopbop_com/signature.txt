@@ -1,0 +1,22 @@
+@dataclass(frozen=True)
+class ShopbopSearchRequest:
+    search_query: str = "handbag"
+    max_results: int = 5
+
+
+@dataclass
+class ShopbopProductItem:
+    product_name: str = ""
+    brand: str = ""
+    price: str = ""
+    original_price: str = ""
+    discount: str = ""
+
+
+@dataclass
+class ShopbopSearchResult:
+    items: List[ShopbopProductItem] = field(default_factory=list)
+
+
+# Search for fashion products on Shopbop.
+def shopbop_search(page: Page, request: ShopbopSearchRequest) -> ShopbopSearchResult:

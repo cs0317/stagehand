@@ -1,0 +1,1 @@
+Search for tech articles on The Verge. Given a search query, navigates to The Verge search results page and extracts article information including title, author, publish date, category, and summary.

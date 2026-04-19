@@ -1,0 +1,8 @@
+Search for hackathon projects on Devpost.
+
+Parameters:
+- search_query: str — The keyword or phrase to search for (default: "machine learning")
+- max_results: int — Maximum number of projects to return (default: 5)
+
+Returns:
+- A list of projects, each with: project_name, tagline, num_likes, num_comments, built_with, hackathon_name

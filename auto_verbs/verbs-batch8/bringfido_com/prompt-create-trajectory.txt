@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.bringfido.com/
+
+* Concrete task
+- Search for dog-friendly hotels in "Savannah, GA" on BringFido.
+- Extract the top 5 results: hotel name, address, pet fee, rating, number of reviews, and pet policy summary.
+- Print the list.

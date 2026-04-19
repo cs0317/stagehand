@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.imdb.com/calendar/
+
+* Concrete task
+- Navigate to IMDb's upcoming releases calendar page.
+- Extract the next 5 upcoming movies: title, release date, genre, director, and cast (first 3 names).
+- Print the list.

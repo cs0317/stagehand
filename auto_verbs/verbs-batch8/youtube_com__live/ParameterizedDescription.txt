@@ -1,0 +1,8 @@
+Browse current live streams on YouTube.
+
+Parameters:
+- search_query: str — Search query for live streams (default: "music")
+- max_results: int — Maximum number of live streams to return (default: 5)
+
+Returns:
+- A list of live streams, each with: video_title, channel_name, viewer_count, started_time, category, url

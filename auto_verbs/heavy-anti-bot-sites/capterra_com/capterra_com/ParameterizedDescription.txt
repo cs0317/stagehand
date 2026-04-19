@@ -1,0 +1,8 @@
+Search for software reviews on Capterra.
+
+Parameters:
+- search_query: str — Search term for software (default: "project management")
+- max_results: int — Maximum number of software listings to return (default: 5)
+
+Returns:
+- A list of software, each with: software_name, vendor, overall_rating, num_reviews, pricing, description, top_features

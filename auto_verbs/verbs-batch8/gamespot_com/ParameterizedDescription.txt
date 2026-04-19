@@ -1,0 +1,8 @@
+Search for video game reviews on GameSpot by keyword.
+
+Parameters:
+- search_query: str — The game title or keyword to search for (default: "zelda")
+- max_results: int — Maximum number of results to return (default: 5)
+
+Returns:
+- A list of results, each with: game_title, platform, score, review_date, reviewer, summary

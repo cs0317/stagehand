@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.dickssportinggoods.com/
+
+* Concrete task
+- Search for "running shoes" on Dick's Sporting Goods.
+- Extract the top 5 products: product name, brand, price, rating, number of reviews, and available colors.
+- Print the list.

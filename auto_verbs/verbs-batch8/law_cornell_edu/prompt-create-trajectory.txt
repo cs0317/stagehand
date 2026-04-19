@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.law.cornell.edu/
+
+* Concrete task
+- Search for "First Amendment" on Cornell Law's Legal Information Institute.
+- Extract the relevant legal code entry: title, section number, full text excerpt, related statutes, and source citation.
+- Print the results.

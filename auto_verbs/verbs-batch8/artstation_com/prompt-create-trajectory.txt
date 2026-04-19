@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.artstation.com/
+
+* Concrete task
+- Search for "concept art" on ArtStation.
+- Extract the top 5 artworks: title, artist name, medium/software, number of likes, number of views, and tags.
+- Print the list.

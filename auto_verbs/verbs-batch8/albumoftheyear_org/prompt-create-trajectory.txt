@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.albumoftheyear.org/
+
+* Concrete task
+- Browse the highest-rated albums of the current year on Album of the Year.
+- Extract the top 5 albums: title, artist, aggregate score, number of critic reviews, user score, and genre.
+- Print the list.

@@ -1,0 +1,24 @@
+@dataclass(frozen=True)
+class GlassdoorInterviewsSearchRequest:
+    company_name: str = "Google"
+    max_results: int = 5
+
+
+@dataclass
+class GlassdoorInterviewItem:
+    company_name: str = ""
+    position: str = ""
+    difficulty_rating: str = ""
+    interview_experience: str = ""
+    question: str = ""
+    answer: str = ""
+    date: str = ""
+
+
+@dataclass
+class GlassdoorInterviewsSearchResult:
+    items: List[GlassdoorInterviewItem] = field(default_factory=list)
+
+
+# Search for interview questions and experiences on Glassdoor.
+def glassdoor_interviews_search(page: Page, request: GlassdoorInterviewsSearchRequest) -> GlassdoorInterviewsSearchResult:

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.findlaw.com/
+
+* Concrete task
+- Search for lawyers specializing in "family law" in "Dallas, TX" on FindLaw.
+- Extract the top 5 lawyers: name, firm, specialty, rating, years of experience, and phone number.
+- Print the list.

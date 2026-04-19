@@ -1,0 +1,22 @@
+@dataclass(frozen=True)
+class ThekitchnSearchRequest:
+    search_query: str = "chocolate chip cookies"
+    max_results: int = 5
+
+
+@dataclass
+class ThekitchnArticleItem:
+    title: str = ""
+    author: str = ""
+    category: str = ""
+    summary: str = ""
+    image_url: str = ""
+
+
+@dataclass
+class ThekitchnSearchResult:
+    items: List[ThekitchnArticleItem] = field(default_factory=list)
+
+
+# Search for recipes and kitchen tips on The Kitchn by keyword.
+def thekitchn_search(page: Page, request: ThekitchnSearchRequest) -> ThekitchnSearchResult:

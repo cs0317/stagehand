@@ -1,0 +1,13 @@
+parkrun_search: Search for parkrun events by location.
+
+Parameters:
+  - search_query (str): The location or area to search for parkrun events. Default: "London"
+  - max_results (int): Maximum number of event results to return. Default: 5
+
+Returns a list of parkrun event items, each containing:
+  - event_name (str): The name of the parkrun event
+  - location (str): The location or venue of the event
+  - country (str): The country where the event takes place
+  - distance (str): The distance of the run (e.g., "5k")
+  - day_of_week (str): The day of the week the event is held (e.g., "Saturday")
+  - avg_runners (str): The average number of runners at the event

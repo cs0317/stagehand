@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.thekitchn.com/
+
+* Concrete task
+- Search for "meal prep" articles on The Kitchn.
+- Extract the top 5 articles: title, author, publish date, category, and short description.
+- Print the list.

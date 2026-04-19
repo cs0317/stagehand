@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.espn.com/nba/standings
+
+* Concrete task
+- Navigate to ESPN NBA standings page (or NFL/MLB depending on season).
+- Extract standings for one conference: team name, wins, losses, win percentage, games behind, and current streak.
+- Print the standings table.

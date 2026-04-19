@@ -1,0 +1,13 @@
+minimalistbaker_search - Search for plant-based recipes on Minimalist Baker
+
+Parameters:
+  - search_query (str): The recipe or ingredient to search for. Default: "vegan pasta"
+  - max_results (int): Maximum number of results to return. Default: 5
+
+Returns a list of recipe items, each containing:
+  - recipe_name (str): Name of the recipe
+  - total_time (str): Total preparation and cook time (e.g., "30 minutes")
+  - servings (str): Number of servings the recipe makes
+  - rating (str): Recipe rating from users
+  - description (str): Brief description of the recipe
+  - diet_tags (str): Dietary tags (e.g., "vegan, gluten-free, oil-free")

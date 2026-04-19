@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.youtube.com/live
+
+* Concrete task
+- Navigate to YouTube Live streams page.
+- Extract the top 5 live streams: title, channel name, viewer count, category, and thumbnail URL.
+- Print the list.

@@ -1,0 +1,8 @@
+Search for medication information on RxList by keyword.
+
+Parameters:
+- search_query: str — The medication name to search for (default: "ibuprofen")
+- max_results: int — Maximum number of results to return (default: 5)
+
+Returns:
+- A list of medications, each with: drug_name, generic_name, drug_class, uses, side_effects, dosage_forms

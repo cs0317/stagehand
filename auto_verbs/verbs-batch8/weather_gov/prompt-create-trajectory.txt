@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.weather.gov/
+
+* Concrete task
+- Look up the 7-day weather forecast for a location (e.g., zip code "10001" or "New York, NY") on weather.gov.
+- Extract the forecast for the next 5 periods: period name (Tonight, Monday, etc.), temperature, wind speed/direction, short forecast, and detailed forecast.
+- Print the results.

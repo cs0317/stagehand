@@ -1,0 +1,25 @@
+@dataclass(frozen=True)
+class ZillowSoldHomesSearchRequest:
+    location: str = "san-francisco-ca"
+    max_results: int = 5
+
+
+@dataclass
+class ZillowSoldHomesItem:
+    address: str = ""
+    sold_price: str = ""
+    sold_date: str = ""
+    beds: str = ""
+    baths: str = ""
+    sqft: str = ""
+    price_per_sqft: str = ""
+    listing_type: str = ""
+
+
+@dataclass
+class ZillowSoldHomesSearchResult:
+    items: List[ZillowSoldHomesItem] = field(default_factory=list)
+
+
+# Browse recently sold homes on Zillow by location.
+def zillow_sold_homes_search(page: Page, request: ZillowSoldHomesSearchRequest) -> ZillowSoldHomesSearchResult:

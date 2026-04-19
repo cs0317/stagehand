@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://defillama.com/
+
+* Concrete task
+- Browse the top DeFi protocols by Total Value Locked (TVL) on DefiLlama.
+- Extract the top 5 protocols: protocol name, chain (Ethereum, Solana, etc.), TVL, 24h change percentage, category, and number of chains supported.
+- Print the list.

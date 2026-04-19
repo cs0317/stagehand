@@ -1,0 +1,16 @@
+ArtStation – Search Artwork
+
+Website: https://www.artstation.com
+Task: Search for artwork on ArtStation by keyword
+
+Parameters:
+  - search_query: search term (e.g., "concept art")
+  - max_results: maximum number of artworks to return (default 5)
+
+Fields to extract:
+  - title: artwork title
+  - artist_name: artist/creator name
+  - medium: medium or software used
+  - num_likes: number of likes
+  - num_views: number of views
+  - tags: associated tags

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://tvtropes.org/
+
+* Concrete task
+- Search for tropes related to "Breaking Bad" on TV Tropes.
+- Extract the top 5 tropes: trope name, description snippet, related media, and URL.
+- Print the list.

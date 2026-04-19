@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.ebay.com/deals/trending
+
+* Concrete task
+- Navigate to eBay's trending deals/products page.
+- Extract the top 5 trending items: product name, current price, original price, discount percentage, number sold, and category.
+- Print the list.
