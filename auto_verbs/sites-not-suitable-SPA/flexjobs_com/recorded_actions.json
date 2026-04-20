@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 2015,
+    "type": "goto",
+    "url": "https://www.flexjobs.com/search?search=UX%20designer&tele_level%5B%5D=All+Telecommuting",
+    "description": "Navigate to https://www.flexjobs.com/search?search=UX%20designer&tele_level%5B%5D=All+Telecommuting"
+  },
+  {
+    "timestamp": 7036,
+    "type": "extract",
+    "results": []
+  }
+]

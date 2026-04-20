@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": 812,
+    "type": "goto",
+    "url": "https://mastodon.social/explore",
+    "description": "Navigate to https://mastodon.social/explore"
+  },
+  {
+    "timestamp": 11862,
+    "type": "extract",
+    "results": [
+      {
+        "author": "Andrea Junker @Strandjunker@mstdn.social",
+        "content": "Just a thought: How about we stop shaming the poor for buying things that may not be essential, and start shaming the rich for making a profit off things that are essential?",
+        "boosts": "360",
+        "favorites": "446"
+      },
+      {
+        "author": "Carl Watkins @CarlWatkins",
+        "content": "I've been enjoying my time on Mastodon far more than my time on Bluesky lately. Think I'm going to stick around for a bit and invest some effort into this platform.\nIt's just a different vibe. I feel ",
+        "boosts": "56",
+        "favorites": "87"
+      },
+      {
+        "author": "Jerry 🦙💝🦙 @jerry@infosec.exchange",
+        "content": "If you or someone you know has an account on mastodon.cloud, I would highly recommend migrating to a new server.  Lots of instances are in the process of completely blocking mastodon.cloud which w",
+        "boosts": "400",
+        "favorites": "177"
+      },
+      {
+        "author": "Lisa Melton",
+        "content": "<p>Just checked stock market futures and everything is heading down, on a elevator to Hell as the prophet Hudson put it.</p><p>Is this anything to be concerned about?</p><p>Depends on whether you wan",
+        "boosts": "",
+        "favorites": ""
+      },
+      {
+        "author": "War and Peas 🧿",
+        "content": "",
+        "boosts": "",
+        "favorites": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": 2017,
+    "type": "goto",
+    "url": "https://www.farmers.gov/search?query=crop%20insurance",
+    "description": "Navigate to https://www.farmers.gov/search?query=crop%20insurance"
+  },
+  {
+    "timestamp": 7033,
+    "type": "extract",
+    "results": [
+      {
+        "title": "Search Hints",
+        "category": "PDF",
+        "description": "1) Search for exact phrases by wrapping quotes around an expression (e.g., \"natural resources\").\r\n2) Narrow a search by adding words. Searching for eqip may have lots of results. Searching for eqip mo",
+        "link": "https://search.farmers.gov/search?affiliate=farmers.gov&query=crop+insurance"
+      },
+      {
+        "title": "Risk Management Agency",
+        "category": "PDF",
+        "description": "USDA’s Risk Management Agency (RMA) connects agricultural producers with high-quality and affordable crop insurance sold by approved insurance providers.",
+        "link": "https://www.rma.usda.gov/"
+      },
+      {
+        "title": "Crop Insurance Coast to Coast - Meet the Producer Behind the Policy: Adrian Locklear, Locklear Brothers Farm, Pembroke, North Carolina | Farmers.gov",
+        "category": "PDF",
+        "description": "of Locklear Brothers Farm says crop insurance is a must for his operation....of Locklear Brothers Farm says crop insurance is a must for his operation. “It's...and rapeseed,” said Locklear. “Crop insu",
+        "link": ""
+      },
+      {
+        "title": "Crop Insurance Coast to Coast - Meet the Producer Behind the Policy: Eric Borton, Borton and Sons Fruit, Yakima, Washington | Farmers.gov",
+        "category": "",
+        "description": "Spokane, Washington, explains that crop insurance...storms can decimate a crop. Market volatility for their crops can be just as disruptive...work with USDA and find ways to insure our crop and protec",
+        "link": ""
+      },
+      {
+        "title": "Breaking Down Barriers to Crop Insurance | Farmers.gov",
+        "category": "",
+        "description": "We want to make Federal crop insurance available and accessible to all producers...ambassadors to help us expand our reach. Crop insurance can seem complicated sometimes",
+        "link": ""
+      }
+    ]
+  }
+]

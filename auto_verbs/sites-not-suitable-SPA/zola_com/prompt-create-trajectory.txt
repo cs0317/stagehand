@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.zola.com
+
+* Concrete task
+- Browse Zola's wedding registry gift ideas in the "Kitchen" category.
+- Extract the top 5 items: product name, brand, price, and number of registrants who added it.
+- Print the results.

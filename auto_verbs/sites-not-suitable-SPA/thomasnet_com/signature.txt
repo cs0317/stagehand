@@ -1,0 +1,20 @@
+@dataclass
+class ThomasNetRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class SupplierItem:
+    company: str
+    location: str
+    revenue: str
+    employees: str
+    certifications: str
+
+@dataclass
+class ThomasNetResult:
+    suppliers: List[SupplierItem]
+
+# Searches ThomasNet for industrial suppliers and extracts company,
+# location, revenue range, employees, and certifications.
+def search_thomasnet(page: Page, request: ThomasNetRequest) -> ThomasNetResult

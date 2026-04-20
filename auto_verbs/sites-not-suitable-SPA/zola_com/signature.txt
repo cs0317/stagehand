@@ -1,0 +1,19 @@
+@dataclass
+class ZolaRequest:
+    category: str
+    max_results: int
+
+@dataclass
+class GiftItem:
+    name: str
+    brand: str
+    price: str
+    registrants: str
+
+@dataclass
+class ZolaResult:
+    items: List[GiftItem]
+
+# Browses Zola registry gift ideas and extracts product name,
+# brand, price, and number of registrants who added it.
+def browse_zola_registry(page: Page, request: ZolaRequest) -> ZolaResult

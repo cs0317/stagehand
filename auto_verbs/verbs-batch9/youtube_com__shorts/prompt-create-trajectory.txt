@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.youtube.com/shorts
+
+* Concrete task
+- Browse YouTube Shorts trending feed.
+- Extract the top 5 Shorts: title, channel name, view count, and likes.
+- Print the results.

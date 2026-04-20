@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": 1279,
+    "type": "goto",
+    "url": "https://www.mtggoldfish.com/metagame/standard",
+    "description": "Navigate to https://www.mtggoldfish.com/metagame/standard"
+  },
+  {
+    "timestamp": 22640,
+    "type": "extract",
+    "results": [
+      {
+        "name": "Astrologian's Planisphere",
+        "colors": "WU",
+        "meta_share": "10.4%",
+        "price": "$308"
+      },
+      {
+        "name": "Izzet Prowess",
+        "colors": "UR",
+        "meta_share": "9.6%",
+        "price": "$192"
+      },
+      {
+        "name": "Mono-Green Landfall",
+        "colors": "G",
+        "meta_share": "8.2%",
+        "price": "$76"
+      },
+      {
+        "name": "Izzet Lessons",
+        "colors": "UR",
+        "meta_share": "7.4%",
+        "price": "$139"
+      },
+      {
+        "name": "Dimir Excruciator",
+        "colors": "UB",
+        "meta_share": "6.9%",
+        "price": "$111"
+      }
+    ]
+  }
+]

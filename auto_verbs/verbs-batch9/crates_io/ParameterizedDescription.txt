@@ -1,0 +1,8 @@
+Search crates.io for Rust crates by keyword.
+
+Parameters:
+- query: str — Search query (e.g., "async runtime")
+- max_results: int — Maximum crates to return (default: 5)
+
+Returns:
+- A list of crates, each with: name, version, downloads, description, last_updated

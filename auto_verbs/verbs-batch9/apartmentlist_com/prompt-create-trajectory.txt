@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.apartmentlist.com
+
+* Concrete task
+- Search Apartment List for apartments in "Seattle, WA".
+- Extract the top 5 listings: property name, rent range, bedrooms, and rating.
+- Print the results.

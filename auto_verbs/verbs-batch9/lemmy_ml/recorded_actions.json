@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": 7229,
+    "type": "goto",
+    "url": "https://lemmy.ml/communities?listingType=Local&sort=TopMonth",
+    "description": "Navigate to https://lemmy.ml/communities?listingType=Local&sort=TopMonth"
+  },
+  {
+    "timestamp": 12247,
+    "type": "extract",
+    "results": [
+      {
+        "name": "Memes",
+        "description": "55.5K",
+        "subscribers": "344K",
+        "posts": "SubscribeSubscribe from Remote InstanceEnter the instance you would like to follow this community fromCancelFetch Community"
+      },
+      {
+        "name": "Privacy",
+        "description": "48K",
+        "subscribers": "132K",
+        "posts": "SubscribeSubscribe from Remote InstanceEnter the instance you would like to follow this community fromCancelFetch Community"
+      },
+      {
+        "name": "Linux",
+        "description": "64.7K",
+        "subscribers": "253K",
+        "posts": "SubscribeSubscribe from Remote InstanceEnter the instance you would like to follow this community fromCancelFetch Community"
+      },
+      {
+        "name": "Asklemmy",
+        "description": "54K",
+        "subscribers": "423K",
+        "posts": "SubscribeSubscribe from Remote InstanceEnter the instance you would like to follow this community fromCancelFetch Community"
+      },
+      {
+        "name": "World News",
+        "description": "40.3K",
+        "subscribers": "169K",
+        "posts": "SubscribeSubscribe from Remote InstanceEnter the instance you would like to follow this community fromCancelFetch Community"
+      }
+    ]
+  }
+]

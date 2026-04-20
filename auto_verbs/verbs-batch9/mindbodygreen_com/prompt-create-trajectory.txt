@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.mindbodygreen.com
+
+* Concrete task
+- Search mindbodygreen for wellness articles about "gut health".
+- Extract the top 5 articles: title, author, publish date, category, and summary.
+- Print the results.

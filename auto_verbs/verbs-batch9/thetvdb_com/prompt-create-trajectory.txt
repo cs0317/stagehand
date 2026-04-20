@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://thetvdb.com
+
+* Concrete task
+- Search TheTVDB for TV show "Breaking Bad".
+- Extract: show name, network, status, first/last air dates, number of seasons, number of episodes, genre, and rating.
+- Print the information.

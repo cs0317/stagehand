@@ -1,0 +1,8 @@
+Search Brides.com for wedding articles by keyword.
+
+Parameters:
+- query: str — Search query (e.g., "outdoor wedding ideas")
+- max_results: int — Maximum articles to return (default: 5)
+
+Returns:
+- A list of articles, each with: title, author, publish_date, summary

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://pypi.org
+
+* Concrete task
+- Search PyPI for Python packages related to "web scraping".
+- Extract the top 5 packages: package name, version, description, author, and last release date.
+- Print the results.

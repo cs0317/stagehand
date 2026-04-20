@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.cargurus.com
+
+* Concrete task
+- Search CarGurus for used "Tesla Model 3" cars.
+- Extract the top 5 listings: year, trim, mileage, price, deal rating (great/good/fair), and seller name.
+- Print the results.

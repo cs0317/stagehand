@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class GiantBombSearchRequest:
+    search_query: str
+
+@dataclass
+class GameInfo:
+    title: str
+    platforms: str
+    release_date: str
+    developer: str
+    publisher: str
+    genre: str
+    rating: str
+    link: str
+
+@dataclass
+class GiantBombSearchResult:
+    query: str
+    items: List[GameInfo]
+
+# Searches Giant Bomb for game information and returns results
+# including title, platforms, release date, developer, publisher, genre, and rating.
+def search_giantbomb(page: Page, request: GiantBombSearchRequest) -> GiantBombSearchResult:

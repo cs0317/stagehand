@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.airtable.com/templates
+
+* Concrete task
+- Browse Airtable templates for "content calendar".
+- Extract the top 5 template names.
+- Print the results.

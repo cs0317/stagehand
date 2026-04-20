@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.marketbeat.com
+
+* Concrete task
+- Search MarketBeat for stock information on "AAPL" (Apple Inc.).
+- Extract: current price, market cap, P/E ratio, dividend yield, 52-week high, 52-week low, and analyst consensus rating.
+- Print the data.

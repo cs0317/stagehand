@@ -1,0 +1,8 @@
+Search Alibaba for wholesale products.
+
+Parameters:
+- search_query: str — Search query for products (e.g., "LED strip lights")
+- max_results: int — Maximum number of products to return (default: 5)
+
+Returns:
+- A list of products, each with: product_name, supplier, price_range, min_order_qty, supplier_rating

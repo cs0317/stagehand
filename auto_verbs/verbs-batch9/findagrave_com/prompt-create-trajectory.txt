@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.findagrave.com
+
+* Concrete task
+- Search Find a Grave for memorials with the last name "Roosevelt" in "New York".
+- Extract the top 5 results: full name, birth date, death date, cemetery name, and location.
+- Print the results.

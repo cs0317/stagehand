@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://blog.hubspot.com
+
+* Concrete task
+- Search HubSpot blog for articles about "email marketing".
+- Extract the top 5 articles: title, author, publish date, category, and estimated read time.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.dealnews.com
+
+* Concrete task
+- Browse DealNews for the latest deals in "electronics".
+- Extract the top 5 deals: product name, store, sale price, original price, and popularity.
+- Print the results.

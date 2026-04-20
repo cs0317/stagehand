@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 1061,
+    "type": "goto",
+    "url": "https://www.history.com/search?q=World%20War%20II",
+    "description": "Navigate to https://www.history.com/search?q=World%20War%20II"
+  },
+  {
+    "timestamp": 7057,
+    "type": "extract",
+    "results": []
+  }
+]

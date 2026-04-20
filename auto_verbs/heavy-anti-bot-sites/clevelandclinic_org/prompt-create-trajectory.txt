@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://my.clevelandclinic.org/health
+
+* Concrete task
+- Search Cleveland Clinic for health articles about "migraine".
+- Extract: condition name, overview, symptoms, causes, diagnosis methods, and management/treatment.
+- Print the information.

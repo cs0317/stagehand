@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.reddit.com
+
+* Concrete task
+- Search Reddit for communities (subreddits) about "photography".
+- Extract the top 5 subreddits: name, member count, description, and online count.
+- Print the results.

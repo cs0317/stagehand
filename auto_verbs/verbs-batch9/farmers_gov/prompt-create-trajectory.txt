@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.farmers.gov
+
+* Concrete task
+- Search Farmers.gov for USDA resources about "crop insurance".
+- Extract the top 5 resources: title, category, description, and link.
+- Print the results.

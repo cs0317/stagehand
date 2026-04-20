@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.usajobs.gov
+
+* Concrete task
+- Search USAJobs for federal positions in "information technology" in Washington, DC.
+- Extract the top 5 listings: job title, agency, salary range, grade level, and closing date.
+- Print the results.

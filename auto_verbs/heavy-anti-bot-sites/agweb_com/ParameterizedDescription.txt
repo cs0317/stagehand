@@ -1,0 +1,8 @@
+Search AgWeb for agriculture news articles.
+
+Parameters:
+- search_query: str — Search query (e.g., "corn prices")
+- max_results: int — Maximum number of articles to return (default: 5)
+
+Returns:
+- A list of articles, each with: headline, author, publish_date, summary

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://hub.docker.com
+
+* Concrete task
+- Search Docker Hub for "python" images.
+- Extract the top 5 images: image name, publisher, pulls, stars, and last updated.
+- Print the results.

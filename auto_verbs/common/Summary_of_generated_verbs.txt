@@ -844,37 +844,308 @@ Extended Site Verbs (2):
 Misc (2):
   - glassdoor_com__interviews: Interview questions by company
 
-OVERALL COVERAGE (batches 1–8)
+BATCH 9 (200 new verbs — in auto_verbs/verbs/)
+-----------------------------------------------
+Multi-verb Extensions (25):
+  - google_com__shopping: Google Shopping product price comparison
+  - google_com__flights: Google Flights search
+  - google_com__news: Google News article search
+  - amazon_com__reviews: Product customer review extraction
+  - amazon_com__subscribe: Subscribe & Save deals browse
+  - youtube_com__channels: YouTube channel search by topic
+  - youtube_com__shorts: YouTube Shorts trending browse
+  - reddit_com__communities: Subreddit directory search
+  - walmart_com__grocery: Grocery product search
+  - target_com__deals: Target Circle deals browse
+  - bestbuy_com__openBox: Best Buy open box deals search
+  - booking_com__attractions: Attractions/activities search
+  - expedia_com__carRental: Car rental search
+  - tripadvisor_com__forums: Travel forum post search
+  - maps_google_com__places: Place detail extraction (reviews, hours)
+  - yelp_com__events: Local events search
+  - zillow_com__mortgage: Mortgage rate comparison
+  - goodreads_com__quotes: Quote search by tag
+  - etsy_com__sellers: Shop/seller search
+  - espn_com__fantasy: Fantasy sports rankings
+  - spotify_com__charts: Music charts/top songs
+  - github_com__discussions: Discussions search
+  - nytimes_com__recipes: NYT Cooking recipe search
+  - ebay_com__motors: eBay Motors vehicle search
+  - airbnb_com__luxe: Luxury stays search
+
+Wedding & Events (5):
+  - theknot_com: Wedding vendor search
+  - weddingwire_com: Wedding venue search
+  - zola_com: Wedding registry gift search
+  - brides_com: Wedding inspiration article search
+  - minted_com: Wedding invitation design search
+
+Genealogy & History (5):
+  - findagrave_com: Cemetery/memorial search
+  - newspapers_com: Historical newspaper search
+  - smithsonianmag_com: Smithsonian article search
+  - worldhistory_org: Ancient civilization encyclopedia search
+  - history_com: History article search
+
+Personal Finance (6):
+  - nerdwallet_com: Financial product comparison
+  - bankrate_com: Savings/loan rate comparison
+  - creditcards_com: Credit card comparison
+  - marketbeat_com: Stock market data/analyst ratings
+  - barrons_com: Investment article search
+  - kiplinger_com: Retirement/finance article search
+
+Productivity & Tools (8):
+  - canva_com: Design template search
+  - figma_com: Community design file search
+  - notion_so: Template gallery search
+  - hubspot_com: Marketing blog article search
+  - zapier_com: Integration/Zap template search
+  - airtable_com: Template gallery search
+  - mailchimp_com: Resource article search
+  - typeform_com: Form template search
+
+Social & Community (6):
+  - quora_com: Question/answer search
+  - medium_com: Article/publication search
+  - producthunt_com: Product launch search
+  - mastodon_social: Trending posts browse
+  - lemmy_ml: Community/post search
+  - slashdot_org: Tech news discussion search
+
+Beauty & Personal Care (5):
+  - sephora_com: Beauty product search
+  - ulta_com: Beauty product search
+  - makeupalley_com: Product review search
+  - allure_com: Beauty article/review search
+  - byrdie_com: Skincare article search
+
+Hobbies & Crafts (10):
+  - ravelry_com: Knitting/crochet pattern search
+  - brickset_com: LEGO set database search
+  - mtggoldfish_com: MTG deck/card price search
+  - tcgplayer_com: Trading card marketplace search
+  - pokemondb_net: Pokemon database search
+  - hobbylobby_com: Craft supply search
+  - joann_com: Fabric/craft supply search
+  - miniaturemarket_com: Board game/miniature shop search
+  - chess_com: Chess leaderboard/player search
+  - lichess_org: Chess puzzle database search
+
+Agriculture & Rural (4):
+  - farmers_gov: USDA farmer resources search
+  - tractorsupply_com: Farm/ranch supply search
+  - agweb_com: Agriculture news search
+  - modernfarmer_com: Farm article search
+
+Shopping (10):
+  - nordstrom_com: Fashion product search
+  - anthropologie_com: Home/fashion product search
+  - asos_com: Fashion product search
+  - gap_com: Clothing product search
+  - uniqlo_com: Clothing product search
+  - nike_com: Athletic product search
+  - newegg_com: Electronics/computer parts search
+  - iherb_com: Health supplement search
+  - lowes_com: Home improvement product search
+  - staples_com: Office supply search
+
+Food & Dining (8):
+  - opentable_com: Restaurant reservation search
+  - zagat_com: Restaurant review/rating search
+  - foodnetwork_com: Recipe/show search
+  - kingarthurbaking_com: Baking recipe search
+  - smittenkitchen_com: Recipe blog search
+  - cookstr_com: Cookbook recipe search
+  - chowhound_com: Food article search
+  - delish_com: Recipe search
+
+Travel (8):
+  - kayak_com: Flight/hotel metasearch
+  - trivago_com: Hotel comparison search
+  - agoda_com: Hotel/accommodation search
+  - orbitz_com: Vacation package search
+  - momondo_com: Flight search/comparison
+  - kiwi_com: Flight search
+  - thetrainline_com: Train ticket search
+  - rentalcars_com: Car rental comparison
+
+Entertainment (8):
+  - fandango_com: Movie showtime search
+  - tubi_tv: Free movie/show catalog
+  - shudder_com: Horror movie catalog search
+  - criterionchannel_com: Criterion film catalog
+  - thetvdb_com: TV show database search
+  - pluto_tv: Free streaming channel guide
+  - tunefind_com: Music from TV/movie lookup
+  - tvmaze_com: TV show schedule/episode search
+
+Education (8):
+  - khanacademy_org: Course/lesson search
+  - edx_org: Online course search
+  - udacity_com: Nanodegree program search
+  - brilliant_org: Math/science course search
+  - masterclass_com: MasterClass catalog search
+  - pluralsight_com: Tech course search
+  - coursehero_com: Study resource search
+  - chegg_com: Textbook solution search
+
+Health (8):
+  - webmd_com: Symptom/condition search
+  - mayoclinic_org: Disease/condition information
+  - clevelandclinic_org: Health article search
+  - verywellhealth_com: Health article search
+  - mindbodygreen_com: Wellness article search
+  - everydayhealth_com: Health news search
+  - menshealth_com: Men's health/fitness article search
+  - womenshealthmag_com: Women's health article search
+
+Jobs & Career (6):
+  - monster_com: Job listing search
+  - ziprecruiter_com: Job listing search
+  - simplyhired_com: Job listing search
+  - careerbuilder_com: Job listing search
+  - flexjobs_com: Remote/flexible job search
+  - wellfound_com: Startup job search
+
+Tech & Developer (8):
+  - npmjs_com: npm package search
+  - pypi_org: Python package search
+  - crates_io: Rust crate search
+  - rubygems_org: Ruby gem search
+  - dockerhub_com: Docker image search
+  - hackernoon_com: Tech article search
+  - infoq_com: Software development article search
+  - smashingmagazine_com: Web design article search
+
+Sports (6):
+  - nba_com: NBA standings/stats
+  - mlb_com: MLB standings/stats
+  - nfl_com: NFL standings/stats
+  - premierleague_com: EPL standings/fixtures
+  - whoscored_com: Football match player ratings
+  - oddsshark_com: Sports betting odds comparison
+
+Government (5):
+  - gao_gov: GAO report search
+  - usajobs_gov: Federal job search
+  - ssa_gov: Social Security benefits info
+  - bls_gov: Bureau of Labor Statistics data
+  - opm_gov: Federal pay scale/HR info
+
+Science (5):
+  - newscientist_com: Science news article search
+  - livescience_com: Science article search
+  - phys_org: Physics/astronomy news search
+  - scientificamerican_com: Science article search
+  - eurekalert_org: Science press release search
+
+Books (5):
+  - bookshop_org: Independent bookstore search
+  - abebooks_com: Used/rare book search
+  - bookriot_com: Book recommendation article search
+  - audiobooks_com: Audiobook search
+  - libro_fm: Audiobook search
+
+Automotive (4):
+  - autotrader_com: Used car listing search
+  - cargurus_com: Used car deal search
+  - kbb_com: Car value/pricing lookup
+  - truecar_com: New car pricing search
+
+Real Estate (4):
+  - realtor_com: Home listing search
+  - homes_com: Home listing search
+  - rent_com: Apartment rental search
+  - apartmentlist_com: Apartment search
+
+B2B/Business (6):
+  - thomasnet_com: Industrial supplier search
+  - alibaba_com: Wholesale product search
+  - fiverr_com: Freelance service search
+  - upwork_com: Freelance talent search
+  - 99designs_com: Design contest search
+  - clutch_co: Agency/service provider search
+
+Fashion/Style (4):
+  - fashionphile_com: Luxury handbag resale search
+  - therealreal_com: Luxury consignment search
+  - renttherunway_com: Fashion rental browse
+  - whowhatwear_com: Fashion trend article search
+
+Gaming (5):
+  - giantbomb_com: Game database/review search
+  - pricecharting_com: Retro game price guide
+  - dekudeals_com: Nintendo Switch deal tracker
+  - gamefaqs_com: Game guide/FAQ search
+  - gg_deals_com: PC game deal search
+
+Retail & Home (8):
+  - walgreens_com: Pharmacy/health product search
+  - chewy_com: Pet supply search
+  - barnesandnoble_com: Book search
+  - gamestop_com: Video game/console search
+  - guitarcenter_com: Musical instrument search
+  - containerstore_com: Organization product search
+  - westelm_com: Furniture/home decor search
+  - cb2_com: Modern furniture search
+
+Deals & Coupons (3):
+  - retailmenot_com: Coupon code search
+  - dealnews_com: Shopping deal search
+  - offers_com: Coupon/offer search
+
+How-to & Reference (4):
+  - wikihow_com: How-to article search
+  - howstuffworks_com: Explainer article search
+  - mentalfloss_com: Trivia/knowledge article search
+  - lifehacker_com: Productivity/life tips article search
+
+Remaining (3):
+  - babbel_com: Language course catalog
+  - coursera_org__degrees: Online degree program search
+  - wholefoods_com__deals: Weekly grocery deals
+
+OVERALL COVERAGE (batches 1–9)
 ==============================
-~519 total verbs across 8 batches covering:
-  - Shopping/Retail/Marketplace (~53 verbs)
-  - Travel/Transportation (~39 verbs)
-  - Food/Dining/Recipes (~26 verbs)
-  - Finance/Investing/Crypto (~26 verbs)
-  - Entertainment/Movies/TV (~28 verbs)
+~719 total verbs across 9 batches covering:
+  - Shopping/Retail/Marketplace (~63 verbs)
+  - Travel/Transportation (~47 verbs)
+  - Food/Dining/Recipes (~34 verbs)
+  - Finance/Investing/Crypto (~32 verbs)
+  - Entertainment/Movies/TV (~36 verbs)
   - Music/Audio (~20 verbs)
-  - Health/Medical/Fitness (~25 verbs)
+  - Health/Medical/Fitness (~33 verbs)
   - News/Media/Journalism (~21 verbs)
-  - Sports/Athletics (~26 verbs)
-  - Education/Learning (~21 verbs)
-  - Government/Legal/Policy (~30 verbs)
-  - Tech/Developer/Software (~24 verbs)
-  - Science/Nature/Research (~20 verbs)
-  - Real Estate/Housing (~10 verbs)
-  - Jobs/Career (~10 verbs)
-  - Books/Reading/Writing (~15 verbs)
-  - Gaming (~17 verbs)
-  - Home/DIY/Garden (~18 verbs)
+  - Sports/Athletics (~32 verbs)
+  - Education/Learning (~29 verbs)
+  - Government/Legal/Policy (~35 verbs)
+  - Tech/Developer/Software (~32 verbs)
+  - Science/Nature/Research (~25 verbs)
+  - Real Estate/Housing (~14 verbs)
+  - Jobs/Career (~16 verbs)
+  - Books/Reading/Writing (~20 verbs)
+  - Gaming (~22 verbs)
+  - Home/DIY/Garden (~26 verbs)
   - Photography/Stock Images (~10 verbs)
   - Outdoor/Adventure (~16 verbs)
   - Pets/Animals (~12 verbs)
   - Art/Museums/Design (~12 verbs)
-  - Automotive (~10 verbs)
+  - Automotive (~14 verbs)
   - Wine/Beer/Spirits (~5 verbs)
   - Anime/Manga (~4 verbs)
   - Kids/Parenting (~5 verbs)
   - Sustainability/Green (~5 verbs)
   - Crowdfunding/Social (~5 verbs)
-  - Reference/Language (~10 verbs)
+  - Reference/Language/How-to (~14 verbs)
   - Podcasting (~5 verbs)
   - Data/Statistics (~5 verbs)
+  - Wedding/Events (~5 verbs)
+  - Beauty/Personal Care (~5 verbs)
+  - Hobbies/Crafts (~10 verbs)
+  - Agriculture/Rural (~4 verbs)
+  - Productivity/Tools (~8 verbs)
+  - Social/Community (~6 verbs)
+  - B2B/Business/Freelance (~6 verbs)
+  - Fashion/Style (~4 verbs)
+  - Deals/Coupons (~3 verbs)

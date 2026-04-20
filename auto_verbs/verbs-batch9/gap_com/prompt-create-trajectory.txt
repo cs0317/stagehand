@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.gap.com
+
+* Concrete task
+- Search Gap for "men's jeans".
+- Extract the top 5 products: product name, style (slim, straight, etc.), price, colors, and available sizes.
+- Print the results.

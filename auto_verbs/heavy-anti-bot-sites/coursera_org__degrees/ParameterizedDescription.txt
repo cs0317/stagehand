@@ -1,0 +1,8 @@
+Browse Coursera online degree programs by field of study.
+
+Parameters:
+- field: str — Field of study (e.g., "Computer Science")
+- max_results: int — Maximum programs to return (default: 5)
+
+Returns:
+- A list of degree programs, each with: name, university, degree_type, tuition, duration

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.barnesandnoble.com
+
+* Concrete task
+- Search Barnes & Noble for bestselling books in "fiction".
+- Extract the top 5 books: title, author, format (hardcover, paperback), price, and rating.
+- Print the results.

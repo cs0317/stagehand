@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://clutch.co
+
+* Concrete task
+- Search Clutch for top "web development" agencies in the United States.
+- Extract the top 5 agencies: company name, location, minimum project size, hourly rate, Clutch rating, and number of reviews.
+- Print the results.

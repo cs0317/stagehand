@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.tripadvisor.com/ForumHome
+
+* Concrete task
+- Search TripAdvisor forums for discussions about "Japan travel tips".
+- Extract the top 5 forum posts: title, forum name, author, reply count, and last reply date.
+- Print the results.

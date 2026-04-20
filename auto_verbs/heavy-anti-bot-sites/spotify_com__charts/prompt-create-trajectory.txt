@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://charts.spotify.com/
+
+* Concrete task
+- Browse Spotify's Top Songs chart for the United States.
+- Extract the top 10 songs: rank, song title, artist, peak position, and weeks on chart.
+- Print the chart.

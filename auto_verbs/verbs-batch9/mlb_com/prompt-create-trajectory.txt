@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.mlb.com
+
+* Concrete task
+- Browse MLB standings for the current season's American League.
+- Extract all teams: team name, wins, losses, win percentage, games behind, and last 10 record.
+- Print the standings.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://brilliant.org
+
+* Concrete task
+- Browse Brilliant.org courses in "Mathematics".
+- Extract the top 5 courses: course name.
+- Print the results.

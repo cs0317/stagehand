@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.walmart.com/cp/food/976759
+
+* Concrete task
+- Browse Walmart's grocery section for "organic snacks".
+- Extract the top 5 products: product name, price, price per unit, rating, and availability.
+- Print the results.

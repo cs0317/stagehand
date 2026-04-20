@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.offers.com
+
+* Concrete task
+- Search Offers.com for coupon codes for "Amazon".
+- Extract the top 5 offers: offer description, discount type (% off, $ off, free shipping), code (if applicable), and expiration date.
+- Print the results.

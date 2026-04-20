@@ -1,0 +1,10 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.chess.com
+
+* Concrete task
+- Browse Chess.com's leaderboard for the top blitz players.
+- Extract the top 10 players: rank, username, rating, title (GM, IM, etc.), won, draw, lost.
+- Note: country is displayed as a flag image only (no text), so it is not extracted.
+- Print the leaderboard.

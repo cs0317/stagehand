@@ -1,0 +1,21 @@
+@dataclass
+class MasterClassRequest:
+    category: str
+    max_results: int
+
+@dataclass
+class ClassItem:
+    instructor: str
+    title: str
+    lessons: str
+    runtime: str
+    description: str
+
+@dataclass
+class MasterClassResult:
+    category: str
+    classes: List[ClassItem]
+
+# Browses MasterClass cooking category and extracts class details
+# including instructor, title, lessons, runtime, and description.
+def browse_masterclass_cooking(page: Page, request: MasterClassRequest) -> MasterClassResult

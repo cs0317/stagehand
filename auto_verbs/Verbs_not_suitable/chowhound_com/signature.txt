@@ -1,0 +1,22 @@
+@dataclass(frozen=True)
+class ChowhoundSearchRequest:
+    query: str = "best pizza in Chicago"
+    max_results: int = 5
+
+
+@dataclass
+class ArticleItem:
+    title: str = ""
+    author: str = ""
+    publish_date: str = ""
+    summary: str = ""
+
+
+@dataclass
+class ChowhoundSearchResult:
+    query: str = ""
+    items: List[ArticleItem] = field(default_factory=list)
+
+
+# Search Chowhound for food articles.
+def search_chowhound(page: Page, request: ChowhoundSearchRequest) -> ChowhoundSearchResult:

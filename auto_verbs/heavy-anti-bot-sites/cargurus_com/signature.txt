@@ -1,0 +1,27 @@
+@dataclass(frozen=True)
+class CarGurusSearchRequest:
+    make: str = "Tesla"
+    model: str = "Model 3"
+    zip_code: str = "10001"
+    max_results: int = 5
+
+
+@dataclass
+class CarItem:
+    year: str = ""
+    trim: str = ""
+    mileage: str = ""
+    price: str = ""
+    deal_rating: str = ""
+    seller_name: str = ""
+
+
+@dataclass
+class CarGurusSearchResult:
+    make: str = ""
+    model: str = ""
+    items: List[CarItem] = field(default_factory=list)
+
+
+# Search CarGurus for used cars.
+def search_cargurus(page: Page, request: CarGurusSearchRequest) -> CarGurusSearchResult:

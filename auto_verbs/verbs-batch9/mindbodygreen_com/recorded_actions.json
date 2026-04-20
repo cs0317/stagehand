@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 1378,
+    "type": "goto",
+    "url": "https://www.mindbodygreen.com/search?q=gut%20health",
+    "description": "Navigate to https://www.mindbodygreen.com/search?q=gut%20health"
+  },
+  {
+    "timestamp": 13335,
+    "type": "extract",
+    "results": [
+      {
+        "title": "If Your Gut Health Feels Off, You May Be Lacking These Nutrients",
+        "author": "",
+        "date": "",
+        "category": "",
+        "summary": ""
+      },
+      {
+        "title": "How To Nurture Your Gut-Brain Axis For Better Mental Health, From A PhD",
+        "author": "",
+        "date": "",
+        "category": "",
+        "summary": ""
+      },
+      {
+        "title": "These Are The Underrated Compounds That Help Your Gut Thrive (Not Probiotics)",
+        "author": "",
+        "date": "",
+        "category": "",
+        "summary": ""
+      },
+      {
+        "title": "This Common Factor Could Be Making You Less Motivated To Work Out",
+        "author": "",
+        "date": "",
+        "category": "",
+        "summary": ""
+      },
+      {
+        "title": "How The Gut-Brain Axis Really Works, According To A Gut Microbiome Expert",
+        "author": "",
+        "date": "",
+        "category": "",
+        "summary": ""
+      }
+    ]
+  }
+]

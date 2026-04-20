@@ -1,0 +1,54 @@
+[
+  {
+    "timestamp": 3323,
+    "type": "goto",
+    "url": "https://www.newegg.com/p/pl?d=graphics%20cards",
+    "description": "Navigate to https://www.newegg.com/p/pl?d=graphics%20cards"
+  },
+  {
+    "timestamp": 16226,
+    "type": "extract",
+    "results": [
+      {
+        "name": "MSI Ventus GeForce RTX 5060 Ti 16GB GDDR7 PCI Express 5.0 x 16 (use x8) ATX Graphics Card RTX 5060 Ti 16G VENTUS 2X OC PLUS",
+        "brand": "MSI",
+        "price": "More options from $514.99 - $1,645.00",
+        "rating": "4.6",
+        "reviews": "125",
+        "specs": "16GB GDDR7 PCI Express 5.0 x 16 (use x8) ATX"
+      },
+      {
+        "name": "PowerColor Reaper Radeon RX 9060 XT 16GB GDDR6 PCI Express 5.0 x16 ATX Video Card RX9060XT 16G-A",
+        "brand": "PowerColor",
+        "price": "More options from $469.99 - $759.00",
+        "rating": "4.4",
+        "reviews": "32",
+        "specs": "16GB GDDR6 PCI Express 5.0 x16 ATX"
+      },
+      {
+        "name": "MSI SHADOW GeForce RTX 5060 Ti 16GB GDDR7 PCI Express 5.0 Graphics Card RTX 5060 Ti 16G SHADOW 2X OC PLUS",
+        "brand": "MSI",
+        "price": "More options from $499.99 - $1,076.97",
+        "rating": "4.6",
+        "reviews": "125",
+        "specs": "16GB GDDR7 PCI Express 5.0"
+      },
+      {
+        "name": "SAPPHIRE PULSE Radeon RX 9070 XT 16GB GDDR6 PCI Express 5.0 x16 ATX Graphics Card 11348-03-20G",
+        "brand": "Sapphire Tech",
+        "price": "More options from $749.99 - $1,154.00",
+        "rating": "4.5",
+        "reviews": "357",
+        "specs": "16GB GDDR6 PCI Express 5.0 x16 ATX"
+      },
+      {
+        "name": "Yeston Radeon RX 6800 XT 16GB D6 GDDR6 256bit 7nm Desktop computer PC Video Graphics Cards support PCI-Express 4.0 video cards 3*DP RGB light effect Fragrant graphics card(No HDMI interface)",
+        "brand": "",
+        "price": "",
+        "rating": "4.3",
+        "reviews": "57",
+        "specs": "16GB D6 GDDR6 256bit 7nm PCI-Express 4.0 video cards 3*DP RGB light effect"
+      }
+    ]
+  }
+]

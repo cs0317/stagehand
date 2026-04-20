@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.figma.com/community
+
+* Concrete task
+- Search the Figma Community for "dashboard" design files.
+- Extract the top 5 results: file name, creator, likes, duplicates count, and description.
+- Print the results.

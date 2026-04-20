@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.autotrader.com
+
+* Concrete task
+- Search AutoTrader for used "Honda Civic" cars under $25,000 within 50 miles of zip code 60601.
+- Extract the top 5 listings: title (year make model trim), mileage, price, and dealer name.
+- Print the results.

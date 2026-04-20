@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.anthropologie.com
+
+* Concrete task
+- Search Anthropologie for "throw pillows" in home decor.
+- Extract the top 5 products: product name and price.
+- Print the results.

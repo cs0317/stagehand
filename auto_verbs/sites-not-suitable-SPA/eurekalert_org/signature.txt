@@ -1,0 +1,22 @@
+@dataclass(frozen=True)
+class EurekAlertSearchRequest:
+    search_query: str = "Alzheimer's research"
+    max_results: int = 5
+
+
+@dataclass
+class PressReleaseItem:
+    headline: str = ""
+    institution: str = ""
+    date: str = ""
+    summary: str = ""
+
+
+@dataclass
+class EurekAlertSearchResult:
+    query: str = ""
+    items: List[PressReleaseItem] = field(default_factory=list)
+
+
+# Search EurekAlert for science press releases.
+def search_eurekalert(page: Page, request: EurekAlertSearchRequest) -> EurekAlertSearchResult:

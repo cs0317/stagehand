@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.pricecharting.com
+
+* Concrete task
+- Search PriceCharting for "Super Mario Bros" retro game prices.
+- Extract the top 5 listings: game title, platform, loose price, complete price, new price, and price trend.
+- Print the results.

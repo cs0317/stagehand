@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.audiobooks.com
+
+* Concrete task
+- Search Audiobooks.com for audiobooks in the "mystery" genre.
+- Extract the top 5 audiobooks: title, author, duration, and price.
+- Print the results.

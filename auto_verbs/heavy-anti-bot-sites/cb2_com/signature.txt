@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class CB2SearchRequest:
+    query: str = "dining tables"
+    max_results: int = 5
+
+
+@dataclass
+class ProductItem:
+    name: str = ""
+    price: str = ""
+    dimensions: str = ""
+    material: str = ""
+    seating_capacity: str = ""
+
+
+@dataclass
+class CB2SearchResult:
+    query: str = ""
+    items: List[ProductItem] = field(default_factory=list)
+
+
+# Search CB2 for furniture products.
+def search_cb2(page: Page, request: CB2SearchRequest) -> CB2SearchResult:

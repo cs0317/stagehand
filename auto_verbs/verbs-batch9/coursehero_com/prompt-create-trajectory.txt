@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.coursehero.com
+
+* Concrete task
+- Search Course Hero for study resources about "organic chemistry".
+- Extract the top 5 resources: document title, course name, school, type (notes, flashcards, etc.), and number of views.
+- Print the results.

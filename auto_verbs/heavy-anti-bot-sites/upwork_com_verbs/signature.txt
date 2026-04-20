@@ -1,0 +1,21 @@
+@dataclass
+class UpworkRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class FreelancerItem:
+    name: str
+    title: str
+    rate: str
+    success: str
+    earnings: str
+    skills: str
+
+@dataclass
+class UpworkResult:
+    freelancers: List[FreelancerItem]
+
+# Searches Upwork for freelancers and extracts name, title,
+# hourly rate, job success score, total earnings, and skills.
+def search_upwork(page: Page, request: UpworkRequest) -> UpworkResult

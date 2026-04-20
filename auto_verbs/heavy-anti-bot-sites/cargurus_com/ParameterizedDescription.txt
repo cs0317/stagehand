@@ -1,0 +1,10 @@
+Search CarGurus for used car listings.
+
+Parameters:
+- make: str — Car make (e.g., "Tesla")
+- model: str — Car model (e.g., "Model 3")
+- zip_code: str — ZIP code for location (default: "10001")
+- max_results: int — Maximum listings to return (default: 5)
+
+Returns:
+- A list of car listings, each with: year, trim, mileage, price, deal_rating, seller_name

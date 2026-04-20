@@ -1,0 +1,21 @@
+[
+  {
+    "timestamp": 746,
+    "type": "goto",
+    "url": "https://blog.hubspot.com/search?query=email%20marketing",
+    "description": "Navigate to https://blog.hubspot.com/search?query=email%20marketing"
+  },
+  {
+    "timestamp": 5763,
+    "type": "extract",
+    "results": [
+      {
+        "title": "Search results",
+        "author": "",
+        "publish_date": "",
+        "category": "",
+        "read_time": ""
+      }
+    ]
+  }
+]

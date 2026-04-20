@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.edx.org
+
+* Concrete task
+- Search edX for online courses about "data science".
+- Extract the top 5 courses: course name, institution, instructor, duration, level (introductory, intermediate), and whether it's free or paid.
+- Print the results.

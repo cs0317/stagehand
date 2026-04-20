@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://gamefaqs.gamespot.com
+
+* Concrete task
+- Search GameFAQs for guides and walkthroughs for "The Legend of Zelda: Tears of the Kingdom".
+- Extract the top 5 FAQs/guides: guide title, author, type (walkthrough, FAQ, etc.), and rating.
+- Print the results.

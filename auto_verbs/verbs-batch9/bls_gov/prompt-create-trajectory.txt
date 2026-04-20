@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.bls.gov
+
+* Concrete task
+- Search the Bureau of Labor Statistics for data on "unemployment rate".
+- Extract: current unemployment rate and key labor statistics (participation rate, employment-population ratio).
+- Print the data.

@@ -1,0 +1,54 @@
+[
+  {
+    "timestamp": 1167,
+    "type": "goto",
+    "url": "https://www.google.com/travel/flights?q=Flights%20from%20SFO%20to%20JFK%20on%202026-05-19%20one%20way",
+    "description": "Navigate to https://www.google.com/travel/flights?q=Flights%20from%20SFO%20to%20JFK%20on%202026-05-19%20one%20way"
+  },
+  {
+    "timestamp": 9186,
+    "type": "extract",
+    "results": [
+      {
+        "airline": "10:15 PM10:15 PM on Tue, May 19 – 11:39 AM+111:39 AM on Wed, May 20Frontier",
+        "departure": "10:15 PM",
+        "arrival": "10:15 PM",
+        "duration": "10 hr 24 min",
+        "stops": "1 stop",
+        "price": "10:15 PM10:15 PM on Tue, May 19 – 11:39 AM+111:39 AM on Wed, May 20"
+      },
+      {
+        "airline": "10:15 PM10:15 PM on Tue, May 19 – 11:39 AM+111:39 AM on Wed, May 20Frontier",
+        "departure": "10:15 PM",
+        "arrival": "10:15 PM",
+        "duration": "10 hr 24 min",
+        "stops": "1 stop",
+        "price": "10:15 PM10:15 PM on Tue, May 19 – 11:39 AM+111:39 AM on Wed, May 20"
+      },
+      {
+        "airline": "12:20 PM12:20 PM on Tue, May 19 – 9:22 PM9:22 PM on Tue, May 19JetBlue",
+        "departure": "12:20 PM",
+        "arrival": "12:20 PM",
+        "duration": "6 hr 2 min",
+        "stops": "Nonstop",
+        "price": "12:20 PM12:20 PM on Tue, May 19 – 9:22 PM9:22 PM on Tue, May 19"
+      },
+      {
+        "airline": "2:45 PM2:45 PM on Tue, May 19 – 11:38 PM11:38 PM on Tue, May 19JetBlue",
+        "departure": "2:45 PM",
+        "arrival": "2:45 PM",
+        "duration": "5 hr 53 min",
+        "stops": "Nonstop",
+        "price": "2:45 PM2:45 PM on Tue, May 19 – 11:38 PM11:38 PM on Tue, May 19"
+      },
+      {
+        "airline": "6:00 AM6:00 AM on Tue, May 19 – 5:35 PM5:35 PM on Tue, May 19American",
+        "departure": "6:00 AM",
+        "arrival": "6:00 AM",
+        "duration": "8 hr 35 min",
+        "stops": "1 stop",
+        "price": "6:00 AM6:00 AM on Tue, May 19 – 5:35 PM5:35 PM on Tue, May 19"
+      }
+    ]
+  }
+]

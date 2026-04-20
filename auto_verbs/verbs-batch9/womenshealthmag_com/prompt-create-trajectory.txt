@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.womenshealthmag.com
+
+* Concrete task
+- Search Women's Health for articles about "HIIT workouts".
+- Extract the top 5 articles: title, author, publish date, category, and summary.
+- Print the results.

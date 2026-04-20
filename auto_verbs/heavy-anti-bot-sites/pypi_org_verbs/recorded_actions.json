@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 445,
+    "type": "goto",
+    "url": "https://pypi.org/search/?q=web%20scraping",
+    "description": "Navigate to https://pypi.org/search/?q=web%20scraping"
+  },
+  {
+    "timestamp": 16024,
+    "type": "extract",
+    "results": [
+      {
+        "name": "kmy-web-scraping",
+        "version": "",
+        "description": "search engines use scraping!",
+        "author": "",
+        "last_release": "Dec 22, 2023"
+      },
+      {
+        "name": "web-scraping-framework",
+        "version": "",
+        "description": "web scraping wrapper built on puppeteer and celery.",
+        "author": "",
+        "last_release": "Jun 30, 2019"
+      },
+      {
+        "name": "web-scraping-toolkit",
+        "version": "",
+        "description": "A toolkit for web scraping",
+        "author": "",
+        "last_release": "Jun 15, 2024"
+      },
+      {
+        "name": "Web-Scraping-Utility",
+        "version": "",
+        "description": "Web Scraping Utility",
+        "author": "",
+        "last_release": "Aug 8, 2017"
+      },
+      {
+        "name": "utils-web-scraping",
+        "version": "",
+        "description": "All the functions that are shared between all the web scrappers",
+        "author": "",
+        "last_release": "Sep 4, 2024"
+      }
+    ]
+  }
+]

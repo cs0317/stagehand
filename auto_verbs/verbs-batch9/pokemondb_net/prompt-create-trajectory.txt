@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://pokemondb.net
+
+* Concrete task
+- Search PokemonDB for the Pokemon "Pikachu".
+- Extract: name, Pokedex number, type(s), abilities, base stats (HP, Attack, Defense, Sp. Atk, Sp. Def, Speed), and evolution chain.
+- Print the information.

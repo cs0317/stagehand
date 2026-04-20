@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.thetrainline.com
+
+* Concrete task
+- Search Trainline for train tickets from "London" to "Paris" for tomorrow.
+- Extract the top 5 options: operator, departure time, arrival time, duration, and price.
+- Print the results.

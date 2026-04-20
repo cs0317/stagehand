@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://medium.com
+
+* Concrete task
+- Search Medium for articles about "startup fundraising".
+- Extract the top 5 articles: title, author, publication, read time, and clap count.
+- Print the results.

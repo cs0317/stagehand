@@ -1,0 +1,21 @@
+@dataclass
+class MakeupAlleyRequest:
+    search_query: str
+    max_results: int
+
+@dataclass
+class ProductItem:
+    name: str
+    brand: str
+    rating: str
+    reviews: str
+    repurchase: str
+
+@dataclass
+class MakeupAlleyResult:
+    query: str
+    products: List[ProductItem]
+
+# Searches MakeupAlley for product reviews matching the query and returns
+# up to max_results products with name, brand, rating, reviews, and repurchase percentage.
+def search_makeupalley_products(page: Page, request: MakeupAlleyRequest) -> MakeupAlleyResult

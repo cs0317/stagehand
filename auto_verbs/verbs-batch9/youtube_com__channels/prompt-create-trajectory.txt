@@ -1,0 +1,10 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.youtube.com
+
+* Concrete task
+- Search YouTube for channels related to "science education".
+- Filter results by Channel type.
+- Extract the top 5 channels: channel name, subscriber count, video count, and description.
+- Print the results.

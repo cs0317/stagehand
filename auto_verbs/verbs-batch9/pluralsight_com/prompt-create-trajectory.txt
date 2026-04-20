@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.pluralsight.com
+
+* Concrete task
+- Search Pluralsight for courses on "Kubernetes".
+- Extract the top 5 courses: course title, author, skill level, duration, and rating.
+- Print the results.

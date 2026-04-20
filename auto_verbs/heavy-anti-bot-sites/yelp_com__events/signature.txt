@@ -1,0 +1,20 @@
+@dataclass
+class YelpEventsRequest:
+    location: str
+    max_results: int
+
+@dataclass
+class EventItem:
+    name: str
+    date: str
+    venue: str
+    category: str
+    description: str
+
+@dataclass
+class YelpEventsResult:
+    events: List[EventItem]
+
+# Browses Yelp events and extracts event name, date, venue,
+# category, and description.
+def get_yelp_events(page: Page, request: YelpEventsRequest) -> YelpEventsResult

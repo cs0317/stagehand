@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.retailmenot.com
+
+* Concrete task
+- Search RetailMeNot for coupon codes for "Nike".
+- Extract the top 5 coupons: coupon description, discount amount/percentage, coupon code, expiration date, and success rate.
+- Print the results.

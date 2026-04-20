@@ -1,0 +1,22 @@
+[
+  {
+    "timestamp": 722,
+    "type": "goto",
+    "url": "https://www.marketbeat.com/stocks/NASDAQ/AAPL/",
+    "description": "Navigate to https://www.marketbeat.com/stocks/NASDAQ/AAPL/"
+  },
+  {
+    "timestamp": 15252,
+    "type": "extract",
+    "result": {
+      "ticker": "AAPL",
+      "price": "",
+      "market_cap": "",
+      "pe_ratio": "",
+      "dividend_yield": "",
+      "high_52w": "",
+      "low_52w": "",
+      "analyst_rating": "Moderate Buy"
+    }
+  }
+]

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.booking.com/attractions/
+
+* Concrete task
+- Search Booking.com attractions in "Paris, France".
+- Extract the top 5 activities: name, price, rating, number of reviews, and duration.
+- Print the results.

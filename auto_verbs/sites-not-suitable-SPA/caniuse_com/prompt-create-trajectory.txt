@@ -1,9 +1,0 @@
-Please read auto_verbs\verbs\SystemPrompt1.txt
-
-* The target website
-https://caniuse.com/
-
-* Concrete task
-- Search for "css grid" browser support on Can I Use.
-- Extract the feature support info: feature name, overall support percentage, and support status per browser (Chrome, Firefox, Safari, Edge) with version numbers.
-- Print the results.

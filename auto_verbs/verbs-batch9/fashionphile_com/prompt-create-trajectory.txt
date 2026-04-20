@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.fashionphile.com
+
+* Concrete task
+- Search Fashionphile for pre-owned "Louis Vuitton" handbags.
+- Extract the top 5 listings: product name, condition, price, original retail price, and savings.
+- Print the results.

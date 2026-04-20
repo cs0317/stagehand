@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 9953,
+    "type": "goto",
+    "url": "https://www.kayak.com/flights/Boston-London/2026-05-19/2026-05-26?sort=bestflight_a",
+    "description": "Navigate to https://www.kayak.com/flights/Boston-London/2026-05-19/2026-05-26?sort=bestflight_a"
+  },
+  {
+    "timestamp": 17958,
+    "type": "extract",
+    "results": []
+  }
+]

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.quora.com
+
+* Concrete task
+- Search Quora for questions about "machine learning career".
+- Extract the top 5 questions: question text, number of answers, number of followers, and the top answer's author and upvote count.
+- Print the results.

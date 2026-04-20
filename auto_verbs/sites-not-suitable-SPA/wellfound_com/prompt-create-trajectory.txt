@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://wellfound.com
+
+* Concrete task
+- Search Wellfound (AngelList Talent) for startup jobs in "machine learning".
+- Extract the top 5 listings: job title, company name, salary range, equity range, and company stage (seed, series A, etc.).
+- Print the results.

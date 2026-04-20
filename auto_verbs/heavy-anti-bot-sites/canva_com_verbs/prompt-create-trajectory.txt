@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.canva.com/templates/
+
+* Concrete task
+- Browse Canva design templates for "Instagram posts".
+- Extract the top 5 templates: template name, category, dimensions, and whether it's free or premium.
+- Print the results.

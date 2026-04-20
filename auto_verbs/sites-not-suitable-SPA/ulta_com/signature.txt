@@ -1,0 +1,21 @@
+@dataclass
+class UltaRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class ProductItem:
+    name: str
+    brand: str
+    price: str
+    rating: str
+    reviews: str
+    shades: str
+
+@dataclass
+class UltaResult:
+    products: List[ProductItem]
+
+# Searches Ulta for products and extracts name, brand,
+# price, rating, reviews, and shade count.
+def search_ulta(page: Page, request: UltaRequest) -> UltaResult

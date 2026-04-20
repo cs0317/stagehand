@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.mentalfloss.com
+
+* Concrete task
+- Search Mental Floss for articles about "fascinating facts".
+- Extract the top 5 articles: title, author, publish date, and summary.
+- Print the results.

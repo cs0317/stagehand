@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.miniaturemarket.com
+
+* Concrete task
+- Search Miniature Market for board games in the "strategy" category.
+- Extract the top 5 games: name, publisher, price, player count, and play time.
+- Print the results.

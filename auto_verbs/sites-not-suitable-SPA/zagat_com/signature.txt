@@ -1,0 +1,22 @@
+@dataclass
+class ZagatRequest:
+    location: str
+    max_results: int
+
+@dataclass
+class RestaurantItem:
+    name: str
+    cuisine: str
+    neighborhood: str
+    food_score: str
+    decor_score: str
+    service_score: str
+    price_range: str
+
+@dataclass
+class ZagatResult:
+    restaurants: List[RestaurantItem]
+
+# Searches Zagat for top-rated restaurants and extracts name,
+# cuisine, neighborhood, Zagat scores, and price range.
+def search_zagat(page: Page, request: ZagatRequest) -> ZagatResult

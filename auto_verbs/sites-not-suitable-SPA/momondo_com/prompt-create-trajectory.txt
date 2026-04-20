@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.momondo.com
+
+* Concrete task
+- Search Momondo for the cheapest flights from "Chicago" to "Tokyo".
+- Extract the top 5 flights: airline, departure/arrival times, duration, stops, and price.
+- Print the results.

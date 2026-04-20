@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": 1752,
+    "type": "goto",
+    "url": "https://www.goodreads.com/quotes/tag/inspirational",
+    "description": "Navigate to https://www.goodreads.com/quotes/tag/inspirational"
+  },
+  {
+    "timestamp": 6762,
+    "type": "extract",
+    "results": [
+      {
+        "text": "You've gotta dance like there's nobody watching,Love like you'll never be hurt,Sing like there's nobody listening,And live like it's heaven on earth.",
+        "author": "William W. Purkey",
+        "book": "",
+        "likes": ""
+      },
+      {
+        "text": "You've gotta dance like there's nobody watching,Love like you'll never be hurt,Sing like there's nobody listening,And live like it's heaven on earth.",
+        "author": "William W. Purkey",
+        "book": "",
+        "likes": ""
+      },
+      {
+        "text": "Be the change that you wish to see in the world.",
+        "author": "Mahatma Gandhi",
+        "book": "",
+        "likes": ""
+      },
+      {
+        "text": "Be the change that you wish to see in the world.",
+        "author": "Mahatma Gandhi",
+        "book": "",
+        "likes": ""
+      },
+      {
+        "text": "Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that.",
+        "author": "Martin Luther King Jr.",
+        "book": "",
+        "likes": ""
+      }
+    ]
+  }
+]

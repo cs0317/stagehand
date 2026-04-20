@@ -1,0 +1,25 @@
+@dataclass(frozen=True)
+class CareerBuilderSearchRequest:
+    query: str = "marketing manager"
+    location: str = "New York, NY"
+    max_results: int = 5
+
+
+@dataclass
+class JobItem:
+    title: str = ""
+    company: str = ""
+    location: str = ""
+    salary_range: str = ""
+    employment_type: str = ""
+
+
+@dataclass
+class CareerBuilderSearchResult:
+    query: str = ""
+    location: str = ""
+    items: List[JobItem] = field(default_factory=list)
+
+
+# Search CareerBuilder for jobs.
+def search_careerbuilder(page: Page, request: CareerBuilderSearchRequest) -> CareerBuilderSearchResult:

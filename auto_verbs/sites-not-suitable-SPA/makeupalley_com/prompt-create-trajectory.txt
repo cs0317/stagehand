@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.makeupalley.com
+
+* Concrete task
+- Search MakeupAlley for reviews of "mascara" products.
+- Extract the top 5 reviewed products: product name, brand, average rating, number of reviews, and repurchase percentage.
+- Print the results.

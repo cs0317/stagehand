@@ -1,0 +1,8 @@
+Browse Best Buy open-box deals by category.
+
+Parameters:
+- category: str — Product category (e.g., "laptops")
+- max_results: int — Maximum items to return (default: 5)
+
+Returns:
+- A list of open-box items, each with: product_name, condition, open_box_price, original_price, savings

@@ -1,0 +1,21 @@
+@dataclass(frozen=True)
+class FlexJobsSearchRequest:
+    search_query: str
+    max_results: int
+
+@dataclass
+class JobItem:
+    title: str
+    company: str
+    job_type: str
+    flexibility: str
+    location: str
+
+@dataclass
+class FlexJobsSearchResult:
+    query: str
+    items: List[JobItem]
+
+# Searches FlexJobs.com for remote jobs matching the query and returns
+# up to max_results listings with title, company, job type, flexibility, and location.
+def search_flexjobs(page: Page, request: FlexJobsSearchRequest) -> FlexJobsSearchResult:

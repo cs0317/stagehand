@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://phys.org
+
+* Concrete task
+- Search Phys.org for articles about "CRISPR gene editing".
+- Extract the top 5 articles: title, source institution, publish date, and summary.
+- Print the results.

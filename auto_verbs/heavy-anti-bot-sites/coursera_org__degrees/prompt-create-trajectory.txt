@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.coursera.org/degrees
+
+* Concrete task
+- Browse Coursera's online degree programs in "Computer Science".
+- Extract the top 5 degree programs: degree name, university, degree type (bachelor's/master's), tuition, and duration.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.webmd.com
+
+* Concrete task
+- Search WebMD for information about "Type 2 Diabetes".
+- Extract: condition name, overview, symptoms list, causes, risk factors, and treatment options.
+- Print the information.

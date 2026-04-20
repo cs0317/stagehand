@@ -1,0 +1,21 @@
+@dataclass
+class ZipRecruiterRequest:
+    query: str
+    location: str
+    max_results: int
+
+@dataclass
+class JobItem:
+    title: str
+    company: str
+    location: str
+    salary: str
+    posted: str
+
+@dataclass
+class ZipRecruiterResult:
+    jobs: List[JobItem]
+
+# Searches ZipRecruiter for jobs and extracts job title,
+# company, location, salary estimate, and days posted.
+def search_ziprecruiter(page: Page, request: ZipRecruiterRequest) -> ZipRecruiterResult

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.renttherunway.com
+
+* Concrete task
+- Browse Rent the Runway for dresses available for "black tie" events.
+- Extract the top 5 dresses: designer, dress name, rental price, retail price, available sizes, and rating.
+- Print the results.

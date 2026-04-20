@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.allure.com
+
+* Concrete task
+- Search Allure for articles about "best sunscreens".
+- Extract the top 5 articles: title, author, publish date, and summary.
+- Print the results.

@@ -1,0 +1,21 @@
+@dataclass(frozen=True)
+class EspnFantasyRequest:
+    max_results: int = 10
+
+
+@dataclass
+class PlayerRankingItem:
+    rank: str = ""
+    name: str = ""
+    team: str = ""
+    position: str = ""
+    projected_points: str = ""
+
+
+@dataclass
+class EspnFantasyResult:
+    items: List[PlayerRankingItem] = field(default_factory=list)
+
+
+# Browse ESPN Fantasy Football player rankings.
+def get_espn_fantasy_rankings(page: Page, request: EspnFantasyRequest) -> EspnFantasyResult:

@@ -1,0 +1,10 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.creditcards.com
+
+* Concrete task
+- Search for the best balance transfer credit cards.
+- Extract the top 5 cards: card name, rating, intro APR, intro period, and regular APR.
+- Note: annual fee and balance transfer fee are not shown in the "At A Glance" section. Cards are in top-level product-box elements.
+- Print the comparison.

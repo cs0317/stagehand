@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": 5175,
+    "type": "goto",
+    "url": "https://www.gao.gov/search?keyword=cybersecurity",
+    "description": "Navigate to https://www.gao.gov/search?keyword=cybersecurity"
+  },
+  {
+    "timestamp": 10195,
+    "type": "extract",
+    "results": [
+      {
+        "title": "Cybersecurity",
+        "report_number": "",
+        "publish_date": "",
+        "summary": "… Cybersecurity … been an increase in most types of cyberattacks across the United States, and the cost of these attacks is also increasing. Most Common Types of Cybersecurity Incidents in the U.S. Do"
+      },
+      {
+        "title": "Fiscal Year 2027 Budget Request: U.S. Government Accountability Office",
+        "report_number": "GAO-26-900719",
+        "publish_date": "2026-04-15T12:00:00Z",
+        "summary": "… to continue to meet key areas of importance to Congress and the nation including fraud prevention, national security, science and technology, cybersecurity, and health care costs. These resources wi"
+      },
+      {
+        "title": "Artificial Intelligence Acquisitions: Agencies Should Collect and Apply Lessons Learned to Improve Future Procurements",
+        "report_number": "GAO-26-107859",
+        "publish_date": "2026-04-13T12:00:00Z",
+        "summary": "… on specific types of AI, such as 31GAO, Artificial Intelligence: Fully Implementing Key Practices Could Help DHS Ensure Responsible Use for Cybersecurity, GAO-24-106246 (Washington, D.C.: Feb. 7, 20"
+      },
+      {
+        "title": "DOD Financial Management: Navy Needs to Fully Address Strategic Planning and Systems Migration Leading Practices",
+        "report_number": "GAO-26-107119",
+        "publish_date": "2026-04-14T12:00:00Z",
+        "summary": "… resource planning platform that uses and is based on 1GAO, IT Systems Annual Assessment: DOD Needs to Improve Performance Reporting and Cybersecurity Planning, GAO-25-107649 (Washington, D.C.: June "
+      },
+      {
+        "title": "Retirement Plans: Department of Labor Guidance Could Mitigate Privacy Risks for Participants",
+        "report_number": "GAO-26-107271",
+        "publish_date": "2026-03-30T12:00:00Z",
+        "summary": "… and loyalty should sufficiently deter plan sponsors and service providers from unauthorized uses of participant data. In addition, DOL issued cybersecurity guidance in April 2021 that discussed data"
+      }
+    ]
+  }
+]

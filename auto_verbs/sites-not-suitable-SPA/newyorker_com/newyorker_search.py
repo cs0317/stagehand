@@ -31,32 +31,43 @@ class NewyorkerSearchResult:
 
 
 def newyorker_search(page, request: NewyorkerSearchRequest) -> NewyorkerSearchResult:
-    url = f"https://www.newyorker.com/search/q/{request.search_query}"
+    url = f"https://www.newyorker.com/search?q={request.search_query.replace(' ', '+')}&sort=relevance"
     page.goto(url, wait_until="domcontentloaded")
     page.wait_for_timeout(8000)
 
-    items = page.evaluate("""() => {
-        const links = document.querySelectorAll('a[href]');
-        const seen = new Set();
+    items = page.evaluate("""(max) => {
         const results = [];
-        for (const a of links) {
-            const href = a.getAttribute('href') || '';
-            // Match New Yorker article paths like /news/..., /culture/..., /tech/...
-            if (!/^\\/(news|culture|tech|science|magazine|books|humor|sports|business)\\/.+/.test(href)) continue;
-            if (seen.has(href)) continue;
-            seen.add(href);
-            const title = a.textContent.trim();
-            if (!title || title.length < 10 || title.length > 300) continue;
-            results.push({
-                title: title,
-                author: '',
-                publish_date: '',
-                section: href.split('/')[1] || '',
-                summary: ''
-            });
+        const seen = new Set();
+        // New Yorker search results use H2 elements for article titles
+        const h2s = document.querySelectorAll('h2');
+        for (const h2 of h2s) {
+            if (results.length >= max) break;
+            const title = h2.innerText.trim();
+            if (!title || title.length < 10 || seen.has(title)) continue;
+            // Skip nav/UI headings
+            if (title.match(/^(Sign|Subscribe|Newsletter|Privacy|Menu|Search)/i)) continue;
+            seen.add(title);
+
+            // Look for author/date/section in surrounding container
+            const container = h2.closest('div') || h2.parentElement;
+            const text = container ? container.innerText : '';
+
+            const authorMatch = text.match(/by\\s+([A-Z][a-z]+(?:\\s+[A-Z][a-z]+)+)/);
+            const author = authorMatch ? authorMatch[1] : '';
+
+            const dateMatch = text.match(/(\\w+\\.?\\s+\\d{1,2},?\\s+\\d{4})/);
+            const publish_date = dateMatch ? dateMatch[1] : '';
+
+            // Try to find section from link
+            const link = container ? container.querySelector('a[href]') : null;
+            const href = link ? (link.getAttribute('href') || '') : '';
+            const sectionMatch = href.match(/^\\/(\\w+)\\//);
+            const section = sectionMatch ? sectionMatch[1] : '';
+
+            results.push({ title, author, publish_date, section, summary: '' });
         }
         return results;
-    }""")
+    }""", request.max_results)
 
     result = NewyorkerSearchResult()
     for item in items[: request.max_results]:

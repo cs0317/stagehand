@@ -1,0 +1,54 @@
+[
+  {
+    "timestamp": 1737,
+    "type": "goto",
+    "url": "https://www.momondo.com/flight-search/CHI-TYO/2025-06-15?sort=price_a",
+    "description": "Navigate to https://www.momondo.com/flight-search/CHI-TYO/2025-06-15?sort=price_a"
+  },
+  {
+    "timestamp": 22607,
+    "type": "extract",
+    "results": [
+      {
+        "airline": "",
+        "departure": "Wed 5/27",
+        "arrival": "Sat 5/30",
+        "duration": "1h 50m",
+        "stops": "non-stop",
+        "price": "from $177"
+      },
+      {
+        "airline": "",
+        "departure": "Wed 5/13",
+        "arrival": "Sat 5/16",
+        "duration": "1h 46m",
+        "stops": "non-stop",
+        "price": "from $187"
+      },
+      {
+        "airline": "",
+        "departure": "Wed 5/20",
+        "arrival": "Sat 5/23",
+        "duration": "1h 11m",
+        "stops": "non-stop",
+        "price": "from $197"
+      },
+      {
+        "airline": "",
+        "departure": "Tue 5/26",
+        "arrival": "Sat 5/30",
+        "duration": "2h",
+        "stops": "non-stop",
+        "price": "from $197"
+      },
+      {
+        "airline": "",
+        "departure": "Wed 5/27",
+        "arrival": "Sun 5/31",
+        "duration": "1h 44m",
+        "stops": "non-stop",
+        "price": "from $207"
+      }
+    ]
+  }
+]

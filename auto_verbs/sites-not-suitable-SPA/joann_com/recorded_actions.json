@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 2624,
+    "type": "goto",
+    "url": "https://www.joann.com/search?q=quilting%20fabric",
+    "description": "Navigate to https://www.joann.com/search?q=quilting%20fabric"
+  },
+  {
+    "timestamp": 7638,
+    "type": "extract",
+    "results": []
+  }
+]

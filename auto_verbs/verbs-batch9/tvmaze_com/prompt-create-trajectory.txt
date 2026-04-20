@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.tvmaze.com
+
+* Concrete task
+- Search TVmaze for the TV show "The Office".
+- Extract: show name, network, status, premiered date, genres, rating, and a list of the first 5 episodes with titles and air dates.
+- Print the information.

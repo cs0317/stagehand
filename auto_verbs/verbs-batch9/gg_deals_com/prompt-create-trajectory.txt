@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://gg.deals
+
+* Concrete task
+- Browse GG.deals for the best current PC game deals.
+- Extract the top 5 deals: game title, store, current price, historical low, and discount percentage.
+- Print the results.

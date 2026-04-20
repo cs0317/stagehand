@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.giantbomb.com
+
+* Concrete task
+- Search Giant Bomb for information about the game "Elden Ring".
+- Extract: game title, platforms, release date, developer, publisher, genre, and user rating.
+- Print the information.

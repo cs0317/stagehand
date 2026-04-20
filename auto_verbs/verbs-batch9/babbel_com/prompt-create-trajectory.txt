@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.babbel.com
+
+* Concrete task
+- Browse Babbel's language course catalog.
+- Extract the available language names.
+- Print the top 5 languages.

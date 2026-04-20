@@ -1,0 +1,20 @@
+@dataclass
+class TrivagoRequest:
+    destination: str
+    max_results: int
+
+@dataclass
+class HotelItem:
+    name: str
+    stars: str
+    guest_rating: str
+    price: str
+    neighborhood: str
+
+@dataclass
+class TrivagoResult:
+    hotels: List[HotelItem]
+
+# Searches Trivago for hotels and extracts name, star rating,
+# guest rating, price per night, and neighborhood.
+def search_trivago(page: Page, request: TrivagoRequest) -> TrivagoResult

@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 605,
+    "type": "goto",
+    "url": "https://www.infoq.com/search.action?queryString=microservices%20architecture&page=1&searchOrder=relevance",
+    "description": "Navigate to https://www.infoq.com/search.action?queryString=microservices%20architecture&page=1&searchOrder=relevance"
+  },
+  {
+    "timestamp": 5619,
+    "type": "extract",
+    "results": [
+      {
+        "title": "From VR to Flat Screens: Bridging the Input and Immersion Gap",
+        "author": "",
+        "publish_date": "",
+        "topic": "",
+        "summary": "Dany Lepage discusses the architectural journey of porting a hit VR title to seven non-VR platforms. He explains how his team solved the challenges of cross-progression, diverse input paradigms, and m"
+      },
+      {
+        "title": "Platform Engineering: Lessons from the Rise and Fall of eBay Velocity",
+        "author": "",
+        "publish_date": "",
+        "topic": "",
+        "summary": "Randy Shoup discusses the \"Velocity Initiative,\" a transformation that doubled engineering productivity and modernized eBay’s DORA metrics. He shares the technical playbook used to scale 4,500 service"
+      },
+      {
+        "title": "Lakehouse Tower of Babel: Handling Identifier Resolution Rules Across Database Engines",
+        "author": "",
+        "publish_date": "",
+        "topic": "",
+        "summary": "Lakehouse architectures enable multiple engines to operate on shared data using open table formats such as Apache Iceberg. However, differences in SQL identifier resolution and catalog naming rules cr"
+      },
+      {
+        "title": "Empower Your Developers: How Open Source Dependencies Risk Management Can Unlock Innovation",
+        "author": "",
+        "publish_date": "",
+        "topic": "",
+        "summary": "Celine Pypaert discusses the ubiquitous nature of open-source software and shares a blueprint for securing modern applications. She explains how to prioritize high-risk vulnerabilities using exploitab"
+      },
+      {
+        "title": "Beyond One-Click: Designing an Enterprise-Grade Observability Extension for Docker",
+        "author": "",
+        "publish_date": "",
+        "topic": "",
+        "summary": "Docker Extensions boost developer speed but create a \"visibility gap\" by isolating telemetry. To meet enterprise needs, extensions must act as bridges to centralized platforms. This article details ho"
+      }
+    ]
+  }
+]

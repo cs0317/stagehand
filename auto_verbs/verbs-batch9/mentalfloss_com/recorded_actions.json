@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 625,
+    "type": "goto",
+    "url": "https://www.mentalfloss.com/section/amazing-facts",
+    "description": "Navigate to https://www.mentalfloss.com/section/amazing-facts"
+  },
+  {
+    "timestamp": 9715,
+    "type": "extract",
+    "results": []
+  }
+]

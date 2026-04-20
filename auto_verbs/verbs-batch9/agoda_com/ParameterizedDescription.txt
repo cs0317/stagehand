@@ -1,0 +1,10 @@
+Search Agoda for hotels in a destination and extract listing details.
+
+Parameters:
+- destination: str — Destination city/location (e.g., "Bangkok, Thailand")
+- checkin_date: date — Check-in date (default: 2 months from today)
+- checkout_date: date — Check-out date (default: 3 nights after check-in)
+- max_results: int — Maximum number of hotel listings to return (default: 5)
+
+Returns:
+- A list of hotel listings, each with: hotel_name, star_rating, guest_score, price_per_night, distance_from_center

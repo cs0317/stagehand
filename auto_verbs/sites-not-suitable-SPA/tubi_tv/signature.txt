@@ -1,0 +1,20 @@
+@dataclass
+class TubiRequest:
+    genre: str
+    max_results: int
+
+@dataclass
+class MovieItem:
+    title: str
+    year: str
+    rating: str
+    duration: str
+    description: str
+
+@dataclass
+class TubiResult:
+    movies: List[MovieItem]
+
+# Browses Tubi TV movie catalog by genre and extracts title,
+# year, content rating, duration, and description.
+def browse_tubi(page: Page, request: TubiRequest) -> TubiResult

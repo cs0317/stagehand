@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 1221,
+    "type": "goto",
+    "url": "https://libro.fm/search?q=self-improvement",
+    "description": "Navigate to https://libro.fm/search?q=self-improvement"
+  },
+  {
+    "timestamp": 11094,
+    "type": "extract",
+    "results": [
+      {
+        "title": "Self Improvement",
+        "author": "Ava Hadley",
+        "narrator": "",
+        "duration": "",
+        "price": ""
+      },
+      {
+        "title": "Self Improvement",
+        "author": "Ryan Eadie",
+        "narrator": "",
+        "duration": "",
+        "price": ""
+      },
+      {
+        "title": "Self-Improvement",
+        "author": "Marissa Winslow",
+        "narrator": "",
+        "duration": "",
+        "price": ""
+      },
+      {
+        "title": "Self-Improvement 101",
+        "author": "John C. Maxwell & Sean Runnette",
+        "narrator": "",
+        "duration": "",
+        "price": ""
+      },
+      {
+        "title": "Self-Improvement 101",
+        "author": "John C. Maxwell",
+        "narrator": "",
+        "duration": "",
+        "price": ""
+      }
+    ]
+  }
+]

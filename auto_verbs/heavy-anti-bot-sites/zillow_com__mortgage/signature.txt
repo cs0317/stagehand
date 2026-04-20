@@ -1,0 +1,18 @@
+@dataclass
+class ZillowMortgageRequest:
+    loan_amount: int
+
+@dataclass
+class RateItem:
+    loan_type: str
+    rate: str
+    apr: str
+    monthly_payment: str
+
+@dataclass
+class ZillowMortgageResult:
+    rates: List[RateItem]
+
+# Looks up Zillow mortgage rates and extracts loan type, rate,
+# APR, and monthly payment for 30-yr, 15-yr, and 5/1 ARM.
+def get_zillow_mortgage(page: Page, request: ZillowMortgageRequest) -> ZillowMortgageResult

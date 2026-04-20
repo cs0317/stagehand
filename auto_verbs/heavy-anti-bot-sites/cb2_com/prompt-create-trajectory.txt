@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.cb2.com
+
+* Concrete task
+- Search CB2 for "dining tables".
+- Extract the top 5 products: product name, price, dimensions, material, and seating capacity.
+- Print the results.

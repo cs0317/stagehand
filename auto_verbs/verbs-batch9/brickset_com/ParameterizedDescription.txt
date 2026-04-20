@@ -1,0 +1,8 @@
+Search Brickset for LEGO sets by theme.
+
+Parameters:
+- theme: str — LEGO theme name (e.g., "Star Wars")
+- max_results: int — Maximum sets to return (default: 5)
+
+Returns:
+- A list of LEGO sets, each with: name, set_number, piece_count, price, year_released, rating

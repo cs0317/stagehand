@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.oddsshark.com
+
+* Concrete task
+- Browse OddsShark for today's NFL game odds.
+- Extract all games: teams, spread, over/under, moneyline odds, and game time.
+- Print the odds.

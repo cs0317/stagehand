@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.notion.so/templates
+
+* Concrete task
+- Browse Notion templates for "project management".
+- Extract the top 5 templates: template name, creator, category, and description.
+- Print the results.

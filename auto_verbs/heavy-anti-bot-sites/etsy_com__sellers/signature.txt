@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class EtsyShopsSearchRequest:
+    search_query: str = "handmade jewelry"
+    max_results: int = 5
+
+
+@dataclass
+class ShopItem:
+    name: str = ""
+    location: str = ""
+    rating: str = ""
+    sales: str = ""
+    description: str = ""
+
+
+@dataclass
+class EtsyShopsSearchResult:
+    query: str = ""
+    items: List[ShopItem] = field(default_factory=list)
+
+
+# Search Etsy for shops.
+def search_etsy_shops(page: Page, request: EtsyShopsSearchRequest) -> EtsyShopsSearchResult:

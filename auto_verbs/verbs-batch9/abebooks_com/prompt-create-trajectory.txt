@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.abebooks.com
+
+* Concrete task
+- Search AbeBooks for first edition copies of "To Kill a Mockingbird".
+- Extract the top 5 listings: title, author, edition, condition, seller, and price.
+- Print the results.

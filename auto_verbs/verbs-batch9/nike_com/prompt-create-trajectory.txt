@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.nike.com
+
+* Concrete task
+- Search Nike for "running shoes" for men.
+- Extract the top 5 products: shoe name, price, colors, available sizes, and rating.
+- Print the results.

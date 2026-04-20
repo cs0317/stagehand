@@ -1,0 +1,24 @@
+@dataclass(frozen=True)
+class KiwiFlightRequest:
+    origin: str
+    destination: str
+    max_results: int
+
+@dataclass
+class FlightOption:
+    airline: str
+    departure: str
+    arrival: str
+    duration: str
+    stops: str
+    price: str
+
+@dataclass
+class KiwiFlightResult:
+    origin: str
+    destination: str
+    items: List[FlightOption]
+
+# Searches Kiwi.com for one-way flights from origin to destination and returns
+# up to max_results flight options with airline, departure/arrival times, duration, stops, and price.
+def search_kiwi_flights(page: Page, request: KiwiFlightRequest) -> KiwiFlightResult:

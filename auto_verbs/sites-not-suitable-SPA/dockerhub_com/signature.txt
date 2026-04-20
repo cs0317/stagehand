@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class DockerHubSearchRequest:
+    search_query: str = "python"
+    max_results: int = 5
+
+
+@dataclass
+class DockerImageItem:
+    name: str = ""
+    publisher: str = ""
+    pulls: str = ""
+    stars: str = ""
+    last_updated: str = ""
+
+
+@dataclass
+class DockerHubSearchResult:
+    query: str = ""
+    items: List[DockerImageItem] = field(default_factory=list)
+
+
+# Search Docker Hub for container images.
+def search_dockerhub(page: Page, request: DockerHubSearchRequest) -> DockerHubSearchResult:

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.trivago.com
+
+* Concrete task
+- Search Trivago for hotels in "Barcelona, Spain" for 2 nights next month.
+- Extract the top 5 hotels: hotel name, star rating, guest rating, price per night, and neighborhood.
+- Print the results.

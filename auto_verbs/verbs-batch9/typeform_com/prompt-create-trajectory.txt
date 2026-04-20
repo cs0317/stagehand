@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.typeform.com/templates/
+
+* Concrete task
+- Browse Typeform templates for "customer feedback" forms.
+- Extract the top 5 templates: template name, category, number of questions, and description.
+- Print the results.

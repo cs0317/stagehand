@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 561,
+    "type": "goto",
+    "url": "https://www.gamestop.com/search/?q=PlayStation%205&lang=default",
+    "description": "Navigate to https://www.gamestop.com/search/?q=PlayStation%205&lang=default"
+  },
+  {
+    "timestamp": 5574,
+    "type": "extract",
+    "results": []
+  }
+]

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://smittenkitchen.com
+
+* Concrete task
+- Search Smitten Kitchen for recipes tagged "vegetarian".
+- Extract the top 5 recipes: recipe name, publish date, description, and comment count.
+- Print the results.

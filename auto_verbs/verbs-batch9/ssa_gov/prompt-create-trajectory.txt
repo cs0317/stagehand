@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.ssa.gov
+
+* Concrete task
+- Search the SSA website for information about "retirement benefits".
+- Extract: topic name, eligibility age, benefit calculation overview, and links to key resources.
+- Print the information.

@@ -1,0 +1,8 @@
+Search Cleveland Clinic for health information by keyword.
+
+Parameters:
+- query: str — Health topic (e.g., "migraine")
+- max_results: int — Maximum articles to return (default: 5)
+
+Returns:
+- A list of health articles, each with: title, category, summary, url

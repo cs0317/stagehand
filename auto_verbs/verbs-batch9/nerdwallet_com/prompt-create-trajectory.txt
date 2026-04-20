@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.nerdwallet.com
+
+* Concrete task
+- Search NerdWallet for the best credit cards for travel rewards.
+- Extract the top 5 cards: card name, issuer, annual fee, rewards rate, sign-up bonus, and NerdWallet rating.
+- Print the comparison.

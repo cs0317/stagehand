@@ -1,0 +1,8 @@
+Search Chewy for pet products by keyword.
+
+Parameters:
+- query: str — Search query (e.g., "dog food grain-free")
+- max_results: int — Maximum products to return (default: 5)
+
+Returns:
+- A list of products, each with: name, brand, price, size, rating, num_reviews

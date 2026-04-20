@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.google.com/travel/flights
+
+* Concrete task
+- Search for one-way flights from San Francisco (SFO) to New York (JFK) for next month.
+- Extract the top 5 flight options: airline, departure time, arrival time, duration, number of stops, and price.
+- Print the results.

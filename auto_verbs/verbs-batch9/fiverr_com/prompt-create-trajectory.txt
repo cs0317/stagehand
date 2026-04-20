@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.fiverr.com
+
+* Concrete task
+- Search Fiverr for freelancers offering "logo design" services.
+- Extract the top 5 gigs: gig title, seller name, seller level, price starting from, rating, and number of reviews.
+- Print the results.

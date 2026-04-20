@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.ebay.com/motors
+
+* Concrete task
+- Search eBay Motors for "Toyota Camry" cars under $20,000.
+- Extract the top 5 listings: title, price, mileage, year, location, and listing type (auction/buy-it-now).
+- Print the results.

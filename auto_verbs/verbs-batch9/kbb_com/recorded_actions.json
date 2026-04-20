@@ -1,0 +1,17 @@
+[
+  {
+    "timestamp": 1856,
+    "type": "goto",
+    "url": "https://www.kbb.com/toyota/rav4/2021/",
+    "description": "Navigate to https://www.kbb.com/toyota/rav4/2021/"
+  },
+  {
+    "timestamp": 6895,
+    "type": "extract",
+    "trade_in": "$19,350",
+    "private_party": "$19,350",
+    "retail": "",
+    "fair_market_range": "",
+    "displayed_prices": []
+  }
+]

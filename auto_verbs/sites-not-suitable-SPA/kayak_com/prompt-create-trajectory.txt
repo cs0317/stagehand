@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.kayak.com
+
+* Concrete task
+- Search Kayak for flights from "Boston" to "London" round-trip next month.
+- Extract the top 5 options: airline(s), departure/arrival times, duration, stops, and price.
+- Print the results.

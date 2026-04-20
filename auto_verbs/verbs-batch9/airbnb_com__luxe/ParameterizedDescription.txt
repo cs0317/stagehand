@@ -1,0 +1,8 @@
+Browse Airbnb Luxe luxury property listings in a location.
+
+Parameters:
+- location: str — Location to search (e.g., "Malibu, California")
+- max_results: int — Maximum number of listings to return (default: 5)
+
+Returns:
+- A list of luxury properties, each with: property_name, price_per_night, bedrooms, bathrooms, guest_capacity, rating

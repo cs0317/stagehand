@@ -1,0 +1,39 @@
+[
+  {
+    "timestamp": 934,
+    "type": "goto",
+    "url": "https://lichess.org/training/themes",
+    "description": "Navigate to https://lichess.org/training/themes"
+  },
+  {
+    "timestamp": 12337,
+    "type": "extract",
+    "results": [
+      {
+        "theme": "Healthy mix",
+        "count": "6,228,283",
+        "rating": ""
+      },
+      {
+        "theme": "Opening",
+        "count": "315,006",
+        "rating": ""
+      },
+      {
+        "theme": "Fork",
+        "count": "819,175",
+        "rating": ""
+      },
+      {
+        "theme": "Checkmate",
+        "count": "1,909,298",
+        "rating": ""
+      },
+      {
+        "theme": "Advantage",
+        "count": "1,855,615",
+        "rating": "200cp ≤ eval ≤ 600cp"
+      }
+    ]
+  }
+]

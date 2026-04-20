@@ -1,0 +1,8 @@
+Search Airtable templates by keyword.
+
+Parameters:
+- search_query: str — Search query for templates (e.g., "content calendar")
+- max_results: int — Maximum number of templates to return (default: 5)
+
+Returns:
+- A list of templates, each with: template_name, category, description, num_uses

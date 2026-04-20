@@ -53,32 +53,28 @@ def defillama_search(page: Page, request: DefillamaSearchRequest) -> DefillamaSe
         const items = [];
         const seen = new Set();
         
-        // Look for table rows with actual data
-        const rows = document.querySelectorAll('table tbody tr');
-        for (const row of rows) {
+        // DefiLlama uses div-based layout with protocol links
+        const links = document.querySelectorAll('a[href*="/protocol/"]');
+        for (const link of links) {
             if (items.length >= max) break;
-            const cells = row.querySelectorAll('td');
-            if (cells.length < 3) continue;
-            
-            const texts = Array.from(cells).map(c => c.textContent.trim());
-            
-            // Find the name - usually has a link
-            const nameEl = row.querySelector('td a');
-            const name = nameEl ? nameEl.textContent.trim() : texts[1] || '';
+            const name = link.innerText.trim();
             if (!name || name.length < 2 || seen.has(name)) continue;
             seen.add(name);
             
+            // Get the parent row-like container
+            const row = link.closest('div[class]') || link.parentElement;
+            const text = row ? row.innerText : '';
+            
             // Find dollar amounts for TVL
             let tvl = '';
-            for (const t of texts) {
-                if (t.startsWith('$') && t.length > 3) { tvl = t; break; }
-            }
+            const dollarMatch = text.match(/\\$[\\d,.]+[bBmMkK]?/);
+            if (dollarMatch) tvl = dollarMatch[0];
             
             // Find percentage changes
-            const pcts = texts.filter(t => t.match(/^[+-]?\\d+\\.\\d+%$/));
+            const pcts = text.match(/[+-]?\\d+\\.\\d+%/g) || [];
             
             items.push({
-                rank: texts[0] || '',
+                rank: String(items.length + 1),
                 protocol_name: name,
                 chain: '',
                 tvl: tvl,

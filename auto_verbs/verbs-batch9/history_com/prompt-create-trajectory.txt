@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.history.com
+
+* Concrete task
+- Search History.com for articles about "World War II".
+- Extract the top 5 articles: title, author, publish date, category, and summary.
+- Print the results.

@@ -1,0 +1,8 @@
+Search Barnes & Noble for bestselling books.
+
+Parameters:
+- query: str — Search query or genre (e.g., "fiction")
+- max_results: int — Maximum books to return (default: 5)
+
+Returns:
+- A list of books, each with: title, author, book_format, price, rating

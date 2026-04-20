@@ -1,0 +1,7 @@
+Look up current high-yield savings account rates on Bankrate.
+
+Parameters:
+- max_results: int — Maximum accounts to return (default: 5)
+
+Returns:
+- A list of savings accounts, each with: bank_name, apy, min_deposit, monthly_fee

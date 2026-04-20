@@ -1,0 +1,54 @@
+[
+  {
+    "timestamp": 1475,
+    "type": "goto",
+    "url": "https://www.pricecharting.com/search-products?q=Super%20Mario%20Bros&type=prices",
+    "description": "Navigate to https://www.pricecharting.com/search-products?q=Super%20Mario%20Bros&type=prices"
+  },
+  {
+    "timestamp": 12324,
+    "type": "extract",
+    "results": [
+      {
+        "title": "Super Mario Bros 3",
+        "platform": "NES",
+        "loose_price": "",
+        "complete_price": "",
+        "new_price": "",
+        "trend": ""
+      },
+      {
+        "title": "New Super Mario Bros. Wii",
+        "platform": "Wii",
+        "loose_price": "",
+        "complete_price": "",
+        "new_price": "",
+        "trend": ""
+      },
+      {
+        "title": "New Super Mario Bros",
+        "platform": "Nintendo DS",
+        "loose_price": "",
+        "complete_price": "",
+        "new_price": "",
+        "trend": ""
+      },
+      {
+        "title": "Super Mario Bros",
+        "platform": "NES",
+        "loose_price": "",
+        "complete_price": "",
+        "new_price": "",
+        "trend": ""
+      },
+      {
+        "title": "Super Mario Bros 2",
+        "platform": "NES",
+        "loose_price": "",
+        "complete_price": "",
+        "new_price": "",
+        "trend": ""
+      }
+    ]
+  }
+]

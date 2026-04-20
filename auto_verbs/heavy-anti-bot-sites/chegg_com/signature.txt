@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class CheggSearchRequest:
+    query: str = "calculus"
+    max_results: int = 5
+
+
+@dataclass
+class TextbookItem:
+    title: str = ""
+    author: str = ""
+    edition: str = ""
+    num_solutions: str = ""
+    price: str = ""
+
+
+@dataclass
+class CheggSearchResult:
+    query: str = ""
+    items: List[TextbookItem] = field(default_factory=list)
+
+
+# Search Chegg for textbook solutions.
+def search_chegg(page: Page, request: CheggSearchRequest) -> CheggSearchResult:

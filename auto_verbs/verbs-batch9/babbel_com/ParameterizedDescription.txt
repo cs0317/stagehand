@@ -1,0 +1,7 @@
+Browse available language courses on Babbel.
+
+Parameters:
+- max_results: int — Maximum languages to return (default: 5)
+
+Returns:
+- A list of languages, each with: language_name, num_courses, learning_time, beginner_description

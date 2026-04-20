@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.livescience.com
+
+* Concrete task
+- Search Live Science for articles about "black holes".
+- Extract the top 5 articles: title, author, publish date, and summary.
+- Print the results.

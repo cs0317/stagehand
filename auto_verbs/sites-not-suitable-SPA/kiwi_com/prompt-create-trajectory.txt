@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.kiwi.com
+
+* Concrete task
+- Search Kiwi.com for flights from "Berlin" to "Rome" one-way.
+- Extract the top 5 options: airline, departure/arrival, duration, stops, and price.
+- Print the results.

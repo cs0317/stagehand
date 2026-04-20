@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 913,
+    "type": "goto",
+    "url": "https://www.giantbomb.com/search/?i=&q=Elden%20Ring",
+    "description": "Navigate to https://www.giantbomb.com/search/?i=&q=Elden%20Ring"
+  },
+  {
+    "timestamp": 5923,
+    "type": "extract",
+    "results": []
+  }
+]

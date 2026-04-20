@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.barrons.com
+
+* Concrete task
+- Search Barron's for articles about "technology stocks".
+- Extract the top 5 articles: headline, author, publish date, and summary.
+- Print the results.

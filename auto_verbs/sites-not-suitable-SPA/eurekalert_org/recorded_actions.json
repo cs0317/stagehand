@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 512,
+    "type": "goto",
+    "url": "https://www.eurekalert.org/search?query=Alzheimer's%20research",
+    "description": "Navigate to https://www.eurekalert.org/search?query=Alzheimer's%20research"
+  },
+  {
+    "timestamp": 5527,
+    "type": "extract",
+    "results": []
+  }
+]

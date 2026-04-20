@@ -1,0 +1,38 @@
+[
+  {
+    "timestamp": 2742,
+    "type": "goto",
+    "url": "https://www.fiverr.com/search/gigs?query=logo%20design",
+    "description": "Navigate to https://www.fiverr.com/search/gigs?query=logo%20design"
+  },
+  {
+    "timestamp": 7936,
+    "type": "extract",
+    "results": [
+      {
+        "title": "Sort by:",
+        "seller": "",
+        "level": "",
+        "price": "From $20",
+        "rating": "5.0",
+        "reviews": "170,000"
+      },
+      {
+        "title": "Services that people loved for superb work and delivery",
+        "seller": "",
+        "level": "",
+        "price": "From $20",
+        "rating": "5.0",
+        "reviews": "92"
+      },
+      {
+        "title": "Get inspired by amazing logos",
+        "seller": "",
+        "level": "",
+        "price": "From $45",
+        "rating": "4.8",
+        "reviews": "174"
+      }
+    ]
+  }
+]

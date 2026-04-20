@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 1045,
+    "type": "goto",
+    "url": "https://www.nba.com/standings",
+    "description": "Navigate to https://www.nba.com/standings"
+  },
+  {
+    "timestamp": 15540,
+    "type": "extract",
+    "results": []
+  }
+]

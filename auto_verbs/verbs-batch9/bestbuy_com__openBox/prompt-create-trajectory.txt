@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.bestbuy.com/site/electronics/open-box/pcmcat748300527084.c
+
+* Concrete task
+- Browse Best Buy Open-Box deals for "laptops".
+- Extract the top 5 open-box items: product name, open-box price, original price, and rating.
+- Print the results.

@@ -1,0 +1,8 @@
+Search Clutch.co for top agencies by service category.
+
+Parameters:
+- service: str — Service type (e.g., "web development")
+- max_results: int — Maximum agencies to return (default: 5)
+
+Returns:
+- A list of agencies, each with: name, location, min_project_size, hourly_rate, rating, num_reviews

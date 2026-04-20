@@ -1,0 +1,8 @@
+Search CreditCards.com for credit cards by category.
+
+Parameters:
+- category: str — Card category (e.g., "balance transfer", "cash back", "travel")
+- max_results: int — Maximum cards to return (default: 5)
+
+Returns:
+- A list of credit cards, each with: name, intro_apr, intro_period, regular_apr, annual_fee, balance_transfer_fee

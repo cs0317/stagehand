@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 645,
+    "type": "goto",
+    "url": "https://www.etsy.com/search?q=handmade%20jewelry&ref=search_bar&search_type=shops",
+    "description": "Navigate to https://www.etsy.com/search?q=handmade%20jewelry&ref=search_bar&search_type=shops"
+  },
+  {
+    "timestamp": 5657,
+    "type": "extract",
+    "results": []
+  }
+]

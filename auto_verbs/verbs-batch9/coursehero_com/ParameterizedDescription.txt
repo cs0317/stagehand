@@ -1,0 +1,8 @@
+Search Course Hero for study resources by keyword.
+
+Parameters:
+- query: str — Subject or keyword (e.g., "organic chemistry")
+- max_results: int — Maximum resources to return (default: 5)
+
+Returns:
+- A list of resources, each with: title, course_name, school, resource_type, num_views

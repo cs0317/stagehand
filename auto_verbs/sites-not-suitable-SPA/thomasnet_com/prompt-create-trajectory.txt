@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.thomasnet.com
+
+* Concrete task
+- Search ThomasNet for industrial suppliers of "CNC machining services".
+- Extract the top 5 suppliers: company name, location, annual revenue range, number of employees, and certifications.
+- Print the results.

@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": 1569,
+    "type": "goto",
+    "url": "https://www.khanacademy.org/computing",
+    "description": "Navigate to https://www.khanacademy.org/computing"
+  },
+  {
+    "timestamp": 6582,
+    "type": "extract",
+    "results": [
+      {
+        "title": "Intro to computer science - Python",
+        "unit_count": "",
+        "estimated_time": "",
+        "description": ""
+      },
+      {
+        "title": "Computational thinking with variables",
+        "unit_count": "",
+        "estimated_time": "",
+        "description": ""
+      },
+      {
+        "title": "Designing algorithms with conditionals",
+        "unit_count": "",
+        "estimated_time": "",
+        "description": ""
+      },
+      {
+        "title": "Simulating phenomena with loops",
+        "unit_count": "",
+        "estimated_time": "",
+        "description": ""
+      },
+      {
+        "title": "Playing games with functions",
+        "unit_count": "",
+        "estimated_time": "",
+        "description": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class CourseraDegreesRequest:
+    field: str = "Computer Science"
+    max_results: int = 5
+
+
+@dataclass
+class DegreeItem:
+    name: str = ""
+    university: str = ""
+    degree_type: str = ""
+    tuition: str = ""
+    duration: str = ""
+
+
+@dataclass
+class CourseraDegreesResult:
+    search_field: str = ""
+    items: List[DegreeItem] = field(default_factory=list)
+
+
+# Browse Coursera degree programs.
+def browse_coursera_degrees(page: Page, request: CourseraDegreesRequest) -> CourseraDegreesResult:

@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 1716,
+    "type": "goto",
+    "url": "https://github.com/search?q=machine%20learning%20best%20practices&type=discussions",
+    "description": "Navigate to https://github.com/search?q=machine%20learning%20best%20practices&type=discussions"
+  },
+  {
+    "timestamp": 6733,
+    "type": "extract",
+    "results": [
+      {
+        "title": "vic/den",
+        "repo": "",
+        "author": "",
+        "answers": "",
+        "upvotes": ""
+      },
+      {
+        "title": "Best practices for configurable aspects?",
+        "repo": "",
+        "author": "",
+        "answers": "",
+        "upvotes": ""
+      },
+      {
+        "title": "psi-oss/get-physics-done",
+        "repo": "",
+        "author": "",
+        "answers": "",
+        "upvotes": ""
+      },
+      {
+        "title": "Machine Learning paper project",
+        "repo": "",
+        "author": "",
+        "answers": "",
+        "upvotes": ""
+      },
+      {
+        "title": "DhyeyTeraiya/DhyeyTeraiya",
+        "repo": "",
+        "author": "",
+        "answers": "",
+        "upvotes": ""
+      }
+    ]
+  }
+]

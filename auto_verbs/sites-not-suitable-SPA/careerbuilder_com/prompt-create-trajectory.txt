@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.careerbuilder.com
+
+* Concrete task
+- Search CareerBuilder for "marketing manager" jobs in "New York, NY".
+- Extract the top 5 listings: job title, company, location, salary range, and employment type.
+- Print the results.

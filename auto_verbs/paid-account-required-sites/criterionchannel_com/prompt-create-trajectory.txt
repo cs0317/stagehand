@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.criterionchannel.com
+
+* Concrete task
+- Browse the Criterion Channel's curated film collections.
+- Extract the top 5 collections: collection name, number of films, curator, and description.
+- Print the results.

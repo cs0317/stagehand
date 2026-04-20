@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.cookstr.com
+
+* Concrete task
+- Search Cookstr for "pasta" recipes from famous cookbooks.
+- Extract the top 5 recipes: recipe name, cookbook title, author, and cuisine type.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.upwork.com
+
+* Concrete task
+- Search Upwork for freelancers specializing in "React development".
+- Extract the top 5 freelancers: name, title, hourly rate, job success score, total earnings, and skills.
+- Print the results.

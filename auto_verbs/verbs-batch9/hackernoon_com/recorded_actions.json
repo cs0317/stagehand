@@ -1,0 +1,21 @@
+[
+  {
+    "timestamp": 121,
+    "type": "goto",
+    "url": "https://hackernoon.com/search?query=blockchain%20development",
+    "description": "Navigate to https://hackernoon.com/search?query=blockchain%20development"
+  },
+  {
+    "timestamp": 5140,
+    "type": "extract",
+    "results": [
+      {
+        "title": "HACKERNOON",
+        "author": "",
+        "publish_date": "",
+        "read_time": "",
+        "reactions": ""
+      }
+    ]
+  }
+]

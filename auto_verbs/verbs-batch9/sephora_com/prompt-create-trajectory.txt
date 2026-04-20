@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.sephora.com
+
+* Concrete task
+- Search Sephora for "moisturizer" products.
+- Extract the top 5 products: product name, brand, price, rating, number of reviews, and skin type suitability.
+- Print the results.

@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 1678,
+    "type": "goto",
+    "url": "https://www.foodnetwork.com/search/chocolate-cake",
+    "description": "Navigate to https://www.foodnetwork.com/search/chocolate-cake"
+  },
+  {
+    "timestamp": 6690,
+    "type": "extract",
+    "results": []
+  }
+]

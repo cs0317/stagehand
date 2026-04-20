@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 2910,
+    "type": "goto",
+    "url": "https://www.gap.com/browse/search.do?searchText=men's%20jeans",
+    "description": "Navigate to https://www.gap.com/browse/search.do?searchText=men's%20jeans"
+  },
+  {
+    "timestamp": 8812,
+    "type": "extract",
+    "results": [
+      {
+        "name": "All Products",
+        "style": "Straight",
+        "price": "$69.95$41.00",
+        "colors": "Product Color Options, Straight Jeans - New medium wash, Straight Jeans - Rinse, Straight Jeans - Light wash, Straight Jeans - Medium wash",
+        "sizes": ""
+      },
+      {
+        "name": "Straight Jeans",
+        "style": "Straight",
+        "price": "$69.95$41.00",
+        "colors": "Product Color Options, Straight Jeans - New medium wash, Straight Jeans - Rinse, Straight Jeans - Light wash, Straight Jeans - Medium wash",
+        "sizes": ""
+      },
+      {
+        "name": "Relaxed Straight Jeans",
+        "style": "Relaxed",
+        "price": "$79.95$63.00",
+        "colors": "Product Color Options, Relaxed Straight Jeans - Dark Blue wash, Relaxed Straight Jeans - RINSED, Relaxed Straight Jeans - moonless night, Relaxed Straight Jeans - light wash",
+        "sizes": ""
+      },
+      {
+        "name": "Baggy Jeans",
+        "style": "",
+        "price": "$79.95$63.00",
+        "colors": "Product Color Options, Baggy Jeans - Medium wash, Baggy Jeans - Black, Baggy Jeans - Dark wash, Baggy Jeans - Dark rinse",
+        "sizes": ""
+      },
+      {
+        "name": "'90s Loose Jeans",
+        "style": "",
+        "price": "$79.95$63.00",
+        "colors": "Product Color Options, '90s Loose Jeans - Washed black, '90s Loose Jeans - Light wash, '90s Loose Jeans - Dark wash",
+        "sizes": ""
+      }
+    ]
+  }
+]

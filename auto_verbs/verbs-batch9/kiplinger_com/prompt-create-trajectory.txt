@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.kiplinger.com
+
+* Concrete task
+- Search Kiplinger for articles about "retirement planning".
+- Extract the top 5 articles: title, author, publish date, category, and summary.
+- Print the results.

@@ -1,0 +1,8 @@
+Search ApartmentList for apartment listings by location.
+
+Parameters:
+- location: str — City and state (e.g., "Seattle, WA")
+- max_results: int — Maximum listings to return (default: 5)
+
+Returns:
+- A list of apartments, each with: property_name, rent_range, bedrooms, bathrooms, rating, amenities

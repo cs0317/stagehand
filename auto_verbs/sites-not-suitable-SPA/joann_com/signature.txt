@@ -1,0 +1,21 @@
+@dataclass(frozen=True)
+class JoannRequest:
+    search_query: str
+    max_results: int
+
+@dataclass
+class ProductItem:
+    name: str
+    price: str
+    price_per_yard: str
+    material: str
+    rating: str
+
+@dataclass
+class JoannResult:
+    query: str
+    items: List[ProductItem]
+
+# Searches JOANN for craft/fabric supplies and returns
+# up to max_results products with name, price, price per yard, material, and rating.
+def search_joann(page: Page, request: JoannRequest) -> JoannResult:

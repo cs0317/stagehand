@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.alibaba.com
+
+* Concrete task
+- Search Alibaba for wholesale "LED strip lights".
+- Extract the top 5 products: product name, supplier, price range, minimum order quantity, and supplier rating.
+- Print the results.

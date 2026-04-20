@@ -1,0 +1,54 @@
+[
+  {
+    "timestamp": 469,
+    "type": "goto",
+    "url": "https://www.google.com/maps/search/coffee%20shops%20near%20Times%20Square%2C%20New%20York",
+    "description": "Navigate to https://www.google.com/maps/search/coffee%20shops%20near%20Times%20Square%2C%20New%20York"
+  },
+  {
+    "timestamp": 14660,
+    "type": "extract",
+    "results": [
+      {
+        "name": "787 coffee",
+        "rating": "4.9",
+        "reviews": "",
+        "address": "245 W 46th St",
+        "hours": "Closes soon · 9 PM · Opens 7 AM Mon",
+        "price_level": ""
+      },
+      {
+        "name": "Times Square Cafe",
+        "rating": "4.5",
+        "reviews": "",
+        "address": "1657 Broadway",
+        "hours": "Open 24 hours",
+        "price_level": ""
+      },
+      {
+        "name": "Bluestone Lane Times Square Coffee Shop",
+        "rating": "4.1",
+        "reviews": "",
+        "address": "11 Times Sq",
+        "hours": "Closed · Opens 6:30 AM Mon",
+        "price_level": ""
+      },
+      {
+        "name": "Bird & Branch Coffee Roasters",
+        "rating": "4.6",
+        "reviews": "",
+        "address": "359 W 45th St",
+        "hours": "Closed · Opens 7 AM Mon",
+        "price_level": ""
+      },
+      {
+        "name": "Central Perk Coffee Company",
+        "rating": "4.0",
+        "reviews": "",
+        "address": "20 Times Square",
+        "hours": "Open · Closes 11 PM",
+        "price_level": ""
+      }
+    ]
+  }
+]

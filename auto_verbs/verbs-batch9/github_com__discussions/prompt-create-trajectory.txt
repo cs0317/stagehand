@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://github.com/discussions
+
+* Concrete task
+- Search GitHub Discussions for "machine learning best practices".
+- Extract the top 5 discussions: title, repository, author, answer count, and upvote count.
+- Print the results.

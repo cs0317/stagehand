@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.rentalcars.com
+
+* Concrete task
+- Search RentalCars.com for car rentals at "Miami International Airport" for 5 days.
+- Extract the top 5 options: car type, rental company, price per day, total price, and included features.
+- Print the results.

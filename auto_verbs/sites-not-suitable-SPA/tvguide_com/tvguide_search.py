@@ -34,33 +34,26 @@ class TVGuideSearchResult:
 def tvguide_search(page, request: TVGuideSearchRequest) -> TVGuideSearchResult:
     result = TVGuideSearchResult()
     try:
-        url = f"https://www.tvguide.com/search/?q={request.search_query}"
+        url = f"https://www.tvguide.com/tvshows/"
         page.goto(url, wait_until="domcontentloaded", timeout=30000)
-        page.wait_for_timeout(3000)
+        page.wait_for_timeout(5000)
 
         checkpoint("Search results loaded")
 
-        shows_data = page.evaluate("""() => {
-            const shows = [];
-            const items = document.querySelectorAll('[class*="result"], [class*="show-card"], [class*="listing"], article, .search-result');
-            for (const item of items) {
-                const titleEl = item.querySelector('h2, h3, [class*="title"], a[class*="name"]');
-                const networkEl = item.querySelector('[class*="network"], [class*="channel"], [class*="provider"]');
-                const genreEl = item.querySelector('[class*="genre"], [class*="category"], [class*="tag"]');
-                const timeEl = item.querySelector('[class*="time"], [class*="schedule"], [class*="air"]');
-                const ratingEl = item.querySelector('[class*="rating"], [class*="score"]');
-                const summaryEl = item.querySelector('p, [class*="description"], [class*="summary"], [class*="synopsis"]');
-                shows.push({
-                    show_title: titleEl ? titleEl.textContent.trim() : '',
-                    network: networkEl ? networkEl.textContent.trim() : '',
-                    genre: genreEl ? genreEl.textContent.trim() : '',
-                    air_time: timeEl ? timeEl.textContent.trim() : '',
-                    rating: ratingEl ? ratingEl.textContent.trim() : '',
-                    summary: summaryEl ? summaryEl.textContent.trim() : '',
-                });
+        shows_data = page.evaluate("""(max) => {
+            const results = [];
+            const seen = new Set();
+            const headings = document.querySelectorAll('h1, h2, h3, h4');
+            for (const h of headings) {
+                if (results.length >= max) break;
+                const title = h.innerText.trim();
+                if (!title || title.length < 10 || seen.has(title)) continue;
+                if (title.match(/^(Live TV|TV and Movie|See Full|Subscribe|Sign|Menu|Search|Privacy|Cookie|Follow|About|Navigation)/i)) continue;
+                seen.add(title);
+                results.push({show_title: title, network: '', genre: '', air_time: '', rating: '', summary: ''});
             }
-            return shows;
-        }""")
+            return results;
+        }""", request.max_results)
 
         for item in shows_data[:request.max_results]:
             result.shows.append(TVGuideShowItem(**item))

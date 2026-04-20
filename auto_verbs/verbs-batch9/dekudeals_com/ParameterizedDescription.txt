@@ -1,0 +1,7 @@
+Browse Deku Deals for Nintendo Switch game deals.
+
+Parameters:
+- max_results: int — Maximum deals to return (default: 5)
+
+Returns:
+- A list of game deals, each with: title, current_price, regular_price, discount, rating

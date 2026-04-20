@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.premierleague.com
+
+* Concrete task
+- Browse the Premier League standings table for the current season.
+- Extract the top 10 teams: position, team name, played, won, drawn, lost, goals for, goals against, goal difference, and points.
+- Print the standings.

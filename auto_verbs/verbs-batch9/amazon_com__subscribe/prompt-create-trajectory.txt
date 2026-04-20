@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.amazon.com/subscribe-save/
+
+* Concrete task
+- Browse the Subscribe & Save section for "baby" category.
+- Extract the top 5 items: product name, regular price, Subscribe & Save price, and discount percentage.
+- Print the list.

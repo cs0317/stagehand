@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 1968,
+    "type": "goto",
+    "url": "https://www.nike.com/w/mens-running-shoes-37v7jznik1zy7ok",
+    "description": "Navigate to https://www.nike.com/w/mens-running-shoes-37v7jznik1zy7ok"
+  },
+  {
+    "timestamp": 17331,
+    "type": "extract",
+    "results": [
+      {
+        "name": "Nike Pegasus 42",
+        "price": "$145",
+        "colors": "7 Colors",
+        "sizes": "",
+        "rating": ""
+      },
+      {
+        "name": "Nike Pegasus Premium",
+        "price": "$220",
+        "colors": "11 Colors",
+        "sizes": "",
+        "rating": ""
+      },
+      {
+        "name": "Nike Vomero 18",
+        "price": "$155",
+        "colors": "9 Colors",
+        "sizes": "",
+        "rating": ""
+      },
+      {
+        "name": "Nike Vomero Plus",
+        "price": "$180",
+        "colors": "14 Colors",
+        "sizes": "",
+        "rating": ""
+      },
+      {
+        "name": "Nike ACG Pegasus Trail",
+        "price": "$155",
+        "colors": "5 Colors",
+        "sizes": "",
+        "rating": ""
+      }
+    ]
+  }
+]

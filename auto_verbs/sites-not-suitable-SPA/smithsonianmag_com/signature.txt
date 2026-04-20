@@ -1,0 +1,20 @@
+@dataclass
+class SmithsonianRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class ArticleItem:
+    title: str
+    author: str
+    publish_date: str
+    category: str
+    summary: str
+
+@dataclass
+class SmithsonianResult:
+    articles: List[ArticleItem]
+
+# Searches Smithsonian Magazine for articles and extracts title,
+# author, publish date, category, and summary.
+def search_smithsonian(page: Page, request: SmithsonianRequest) -> SmithsonianResult

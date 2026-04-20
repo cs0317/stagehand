@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 1342,
+    "type": "goto",
+    "url": "https://www.espn.com/fantasy/football/story/_/id/36631158/fantasy-football-rankings-2024",
+    "description": "Navigate to https://www.espn.com/fantasy/football/story/_/id/36631158/fantasy-football-rankings-2024"
+  },
+  {
+    "timestamp": 6385,
+    "type": "extract",
+    "results": []
+  }
+]

@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 1244,
+    "type": "goto",
+    "url": "https://news.google.com/search?q=artificial%20intelligence",
+    "description": "Navigate to https://news.google.com/search?q=artificial%20intelligence"
+  },
+  {
+    "timestamp": 6262,
+    "type": "extract",
+    "results": []
+  }
+]

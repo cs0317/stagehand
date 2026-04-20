@@ -1,0 +1,8 @@
+Extract customer reviews from an Amazon product listing.
+
+Parameters:
+- search_query: str — Product to search for (e.g., "kindle paperwhite")
+- max_results: int — Maximum number of reviews to return (default: 5)
+
+Returns:
+- A list of reviews, each with: reviewer_name, star_rating, review_title, review_date, review_text

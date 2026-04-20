@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.worldhistory.org
+
+* Concrete task
+- Search World History Encyclopedia for articles about "Roman Empire".
+- Extract the top 5 articles: title, author, publish date, and summary.
+- Print the results.

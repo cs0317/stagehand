@@ -1,0 +1,22 @@
+[
+  {
+    "timestamp": 1108,
+    "type": "goto",
+    "url": "https://www.homes.com/portland-or/",
+    "description": "Navigate to https://www.homes.com/portland-or/"
+  },
+  {
+    "timestamp": 6125,
+    "type": "extract",
+    "results": [
+      {
+        "address": "Real Estate & Homes for Sale in Portland, OR",
+        "price": "$69,500",
+        "beds": "3",
+        "baths": "2",
+        "sqft": "1,440",
+        "year_built": ""
+      }
+    ]
+  }
+]

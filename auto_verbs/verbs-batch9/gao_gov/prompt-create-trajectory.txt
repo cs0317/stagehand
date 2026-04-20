@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.gao.gov
+
+* Concrete task
+- Search GAO (Government Accountability Office) for reports about "cybersecurity".
+- Extract the top 5 reports: report title, report number, publish date, and summary.
+- Print the results.

@@ -1,0 +1,54 @@
+[
+  {
+    "timestamp": 451,
+    "type": "goto",
+    "url": "https://www.lowes.com/search?searchTerm=cordless%20drills",
+    "description": "Navigate to https://www.lowes.com/search?searchTerm=cordless%20drills"
+  },
+  {
+    "timestamp": 19868,
+    "type": "extract",
+    "results": [
+      {
+        "name": "V20 20-volt Max 1/2-in Keyless Cordless Drill ( 1 -Batteries Included, and Charger Included )",
+        "brand": "CRAFTSMAN",
+        "price": "",
+        "voltage": "20-volt",
+        "rating": "4.5",
+        "reviews": ""
+      },
+      {
+        "name": "XTREME 12-volt Max 3/8-in Keyless Brushless Cordless Drill ( 2 -Batteries Included, and Charger Included )",
+        "brand": "DEWALT",
+        "price": "",
+        "voltage": "12-volt",
+        "rating": "4.6",
+        "reviews": ""
+      },
+      {
+        "name": "24-volt 1/2-in Keyless Brushless Cordless Drill ( 1 -Batteries Included, and Charger Included )",
+        "brand": "Greenworks",
+        "price": "",
+        "voltage": "24-volt",
+        "rating": "4.8",
+        "reviews": ""
+      },
+      {
+        "name": "24-volt 1/2-in Keyless Brushless Cordless Drill ( 1 -Batteries Included, and Charger Included )",
+        "brand": "Kobalt",
+        "price": "",
+        "voltage": "24-volt",
+        "rating": "4.5",
+        "reviews": ""
+      },
+      {
+        "name": "20-volt Max 1/2-in Keyless Cordless Drill ( 2 -Batteries Included, and Charger Included )",
+        "brand": "DEWALT",
+        "price": "",
+        "voltage": "20-volt",
+        "rating": "4.6",
+        "reviews": ""
+      }
+    ]
+  }
+]

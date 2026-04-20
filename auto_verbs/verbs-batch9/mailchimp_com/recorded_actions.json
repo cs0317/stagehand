@@ -1,0 +1,39 @@
+[
+  {
+    "timestamp": 1094,
+    "type": "goto",
+    "url": "https://mailchimp.com/resources/",
+    "description": "Navigate to https://mailchimp.com/resources/"
+  },
+  {
+    "timestamp": 10850,
+    "type": "extract",
+    "results": [
+      {
+        "title": "Holiday Shopping Has Changed—Here’s What You Need to Know",
+        "type": "Articles",
+        "summary": "Learn the seven distinct phases, and seven kinds of shoppers, reshaping the holiday season."
+      },
+      {
+        "title": "New Year, New Subscribers",
+        "type": "Articles",
+        "summary": "How Content Creators Can Turn Holiday Moments into Audience Growth"
+      },
+      {
+        "title": "From Gift Lists to Giving Lists",
+        "type": "Articles",
+        "summary": "How nonprofits can tap into the generosity, emotion, and cultural moments that define the holiday season."
+      },
+      {
+        "title": "Streamline your lead management with Mailchimp and Meta Lead Ads",
+        "type": "Articles",
+        "summary": "Learn how you can optimize your acquisition strategy by integrating Meta Lead Ads with Mailchimp."
+      },
+      {
+        "title": "Unlock the Power of Social Media Holidays",
+        "type": "Articles",
+        "summary": "Boost your brand with social media holidays. Create engaging content, join the conversation, and track success. Maximize engagement and showcase your brand’s personality."
+      }
+    ]
+  }
+]

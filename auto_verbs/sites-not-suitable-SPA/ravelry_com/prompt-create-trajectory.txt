@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.ravelry.com
+
+* Concrete task
+- Search Ravelry for knitting patterns tagged "scarf".
+- Extract the top 5 patterns: pattern name, designer, difficulty level, yarn weight, and number of projects made.
+- Print the results.

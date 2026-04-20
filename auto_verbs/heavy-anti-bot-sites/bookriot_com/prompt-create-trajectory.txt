@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://bookriot.com
+
+* Concrete task
+- Search Book Riot for articles about "best fantasy novels".
+- Extract the top 5 articles: title, author, publish date, and summary.
+- Print the results.

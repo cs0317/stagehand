@@ -1,0 +1,22 @@
+@dataclass(frozen=True)
+class CookstrSearchRequest:
+    query: str = "pasta"
+    max_results: int = 5
+
+
+@dataclass
+class RecipeItem:
+    name: str = ""
+    cookbook_title: str = ""
+    author: str = ""
+    cuisine_type: str = ""
+
+
+@dataclass
+class CookstrSearchResult:
+    query: str = ""
+    items: List[RecipeItem] = field(default_factory=list)
+
+
+# Search Cookstr for recipes.
+def search_cookstr(page: Page, request: CookstrSearchRequest) -> CookstrSearchResult:

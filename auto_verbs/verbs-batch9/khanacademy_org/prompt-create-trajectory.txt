@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.khanacademy.org
+
+* Concrete task
+- Browse Khan Academy courses in the "Computer Science" domain.
+- Extract the top 5 courses: course name, unit count, estimated time, and description.
+- Print the results.

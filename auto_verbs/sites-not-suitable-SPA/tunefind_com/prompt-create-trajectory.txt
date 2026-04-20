@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.tunefind.com
+
+* Concrete task
+- Search Tunefind for music featured in the TV show "Stranger Things".
+- Extract the top 5 songs: song title, artist, season/episode it appeared in, and scene description.
+- Print the results.

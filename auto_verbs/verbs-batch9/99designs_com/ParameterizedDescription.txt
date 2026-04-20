@@ -1,0 +1,8 @@
+Search 99designs for designers in a given design category.
+
+Parameters:
+- category: str — Design category to search (e.g., "website design")
+- max_results: int — Maximum number of designers to return (default: 5)
+
+Returns:
+- A list of designers, each with: designer_name, design_style, rating, contests_won, price_range

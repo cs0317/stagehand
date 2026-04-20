@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 1356,
+    "type": "goto",
+    "url": "https://www.figma.com/community/search?resource_type=mixed&sort_by=relevancy&query=dashboard",
+    "description": "Navigate to https://www.figma.com/community/search?resource_type=mixed&sort_by=relevancy&query=dashboard"
+  },
+  {
+    "timestamp": 6370,
+    "type": "extract",
+    "results": [
+      {
+        "name": "UI kitsPre-made essentials like buttons and toasts",
+        "creator": "",
+        "likes": "",
+        "duplicates": "",
+        "description": ""
+      },
+      {
+        "name": "UI kits",
+        "creator": "",
+        "likes": "",
+        "duplicates": "",
+        "description": ""
+      },
+      {
+        "name": "WireframesExplore your early ideas with lo-fi frames",
+        "creator": "",
+        "likes": "",
+        "duplicates": "",
+        "description": ""
+      },
+      {
+        "name": "Wireframes",
+        "creator": "",
+        "likes": "",
+        "duplicates": "",
+        "description": ""
+      },
+      {
+        "name": "Social mediaCreate content like a pro",
+        "creator": "",
+        "likes": "",
+        "duplicates": "",
+        "description": ""
+      }
+    ]
+  }
+]

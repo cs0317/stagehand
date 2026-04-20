@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.newspapers.com
+
+* Concrete task
+- Search historical newspapers for articles about "moon landing 1969".
+- Extract the top 5 results: newspaper name, date, headline, location, and snippet.
+- Print the results.

@@ -1,0 +1,8 @@
+Browse Canva design templates by search query.
+
+Parameters:
+- query: str — Template search query (e.g., "Instagram posts")
+- max_results: int — Maximum templates to return (default: 5)
+
+Returns:
+- A list of templates, each with: name, category, dimensions, is_free

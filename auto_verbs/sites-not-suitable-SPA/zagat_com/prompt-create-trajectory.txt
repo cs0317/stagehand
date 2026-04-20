@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.zagat.com
+
+* Concrete task
+- Search Zagat for top-rated restaurants in "Los Angeles".
+- Extract the top 5 restaurants: name, cuisine, neighborhood, Zagat food/decor/service scores, and price range.
+- Print the results.

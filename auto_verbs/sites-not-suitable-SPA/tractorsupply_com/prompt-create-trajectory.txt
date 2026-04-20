@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.tractorsupply.com
+
+* Concrete task
+- Search Tractor Supply Co. for "chicken coops".
+- Extract the top 5 products: product name, brand, price, rating, and number of reviews.
+- Print the results.

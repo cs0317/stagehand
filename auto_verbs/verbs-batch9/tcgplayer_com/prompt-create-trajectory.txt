@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.tcgplayer.com
+
+* Concrete task
+- Search TCGPlayer for "Charizard" Pokemon trading cards.
+- Extract the top 5 listings: card name, set, condition, price, and seller.
+- Print the results.

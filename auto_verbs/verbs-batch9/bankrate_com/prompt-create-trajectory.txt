@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.bankrate.com
+
+* Concrete task
+- Look up current high-yield savings account rates on Bankrate.
+- Extract the top 5 accounts: bank name, APY, minimum deposit, and monthly fee.
+- Print the comparison.

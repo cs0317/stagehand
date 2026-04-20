@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 181,
+    "type": "goto",
+    "url": "https://www.masterclass.com/categories/cooking",
+    "description": "Navigate to https://www.masterclass.com/categories/cooking"
+  },
+  {
+    "timestamp": 17224,
+    "type": "extract",
+    "results": []
+  }
+]

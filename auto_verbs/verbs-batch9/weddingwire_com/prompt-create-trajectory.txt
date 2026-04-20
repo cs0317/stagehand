@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.weddingwire.com
+
+* Concrete task
+- Search WeddingWire for wedding photographers in "Chicago, Illinois".
+- Extract the top 5 photographers: name, price range, rating, number of reviews, and location.
+- Print the results.

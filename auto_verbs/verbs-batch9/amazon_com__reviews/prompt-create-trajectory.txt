@@ -1,0 +1,10 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.amazon.com
+
+* Concrete task
+- Search for "kindle paperwhite" and open the first product listing.
+- Navigate to the customer reviews section.
+- Extract the top 5 most helpful reviews: reviewer name, star rating, review title, date, and review text (first 200 chars).
+- Print the reviews.

@@ -1,0 +1,23 @@
+@dataclass
+class RealtorRequest:
+    location: str
+    min_price: int
+    max_price: int
+    max_results: int
+
+@dataclass
+class ListingItem:
+    address: str
+    price: str
+    bedrooms: str
+    bathrooms: str
+    sqft: str
+    status: str
+
+@dataclass
+class RealtorResult:
+    listings: List[ListingItem]
+
+# Searches Realtor.com for homes and extracts address,
+# price, bedrooms, bathrooms, sqft, and listing status.
+def search_realtor(page: Page, request: RealtorRequest) -> RealtorResult

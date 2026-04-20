@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://bookshop.org
+
+* Concrete task
+- Search Bookshop.org for books about "science fiction".
+- Extract the top 5 books: title, author, price, and format (Paperback/Hardcover).
+- Print the results.

@@ -1,0 +1,54 @@
+[
+  {
+    "timestamp": 1999,
+    "type": "goto",
+    "url": "https://www.iherb.com/search?kw=vitamin%20D%20supplements",
+    "description": "Navigate to https://www.iherb.com/search?kw=vitamin%20D%20supplements"
+  },
+  {
+    "timestamp": 8718,
+    "type": "extract",
+    "results": [
+      {
+        "name": "California Gold Nutrition, Vitamin D3, 125 mcg (5,000 IU), 90 Fish Gelatin Softgels",
+        "brand": "",
+        "price": "$4.69\n                                        \n                                            \n                                                $5.52\n                                            \n                            \n                                \n                                    \n                                        15% off",
+        "dosage": "125 mcg",
+        "servings": "120",
+        "rating": "318,113"
+      },
+      {
+        "name": "California Gold Nutrition, Vitamin D3, 125 mcg (5,000 IU), 360 Fish Gelatin Softgels",
+        "brand": "",
+        "price": "$13.84\n                                        \n                                            \n                                                $16.28\n                                            \n                            \n                                \n                                    \n                                        15% off",
+        "dosage": "125 mcg",
+        "servings": "",
+        "rating": "318,112"
+      },
+      {
+        "name": "New Chapter, Fermented Vitamin D3, 90 Vegetarian Tablets",
+        "brand": "",
+        "price": "$29.97",
+        "dosage": "",
+        "servings": "",
+        "rating": "149"
+      },
+      {
+        "name": "Force Factor, Vitamin D3, High Potency, 125 mcg (5,000 IU), 120 Softgels",
+        "brand": "",
+        "price": "$4.99",
+        "dosage": "125 mcg",
+        "servings": "120",
+        "rating": "3,329"
+      },
+      {
+        "name": "NOW Foods, Vitamin D-3, 2,000 IU, 30 Softgels",
+        "brand": "",
+        "price": "$3.05",
+        "dosage": "2,000 IU",
+        "servings": "30",
+        "rating": "189,758"
+      }
+    ]
+  }
+]

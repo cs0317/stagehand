@@ -1,0 +1,20 @@
+@dataclass(frozen=True)
+class GameFAQsSearchRequest:
+    search_query: str
+    max_results: int
+
+@dataclass
+class GuideItem:
+    title: str
+    author: str
+    guide_type: str
+    rating: str
+
+@dataclass
+class GameFAQsSearchResult:
+    query: str
+    items: List[GuideItem]
+
+# Searches GameFAQs for guides/walkthroughs for the given game and returns
+# up to max_results guides with title, author, guide type, and rating.
+def search_gamefaqs_guides(page: Page, request: GameFAQsSearchRequest) -> GameFAQsSearchResult:

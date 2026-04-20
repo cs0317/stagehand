@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.nfl.com
+
+* Concrete task
+- Browse NFL standings for the current season's AFC.
+- Extract all teams: team name, division, wins, losses, ties, win percentage, and points for/against.
+- Print the standings.

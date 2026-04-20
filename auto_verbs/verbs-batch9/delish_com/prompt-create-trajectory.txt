@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.delish.com
+
+* Concrete task
+- Search Delish for "slow cooker" recipes.
+- Extract the top 5 recipes: recipe name, total time, servings, rating, and description.
+- Print the results.

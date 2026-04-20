@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": 1729,
+    "type": "goto",
+    "url": "https://www.newscientist.com/search/?q=quantum%20computing",
+    "description": "Navigate to https://www.newscientist.com/search/?q=quantum%20computing"
+  },
+  {
+    "timestamp": 13253,
+    "type": "extract",
+    "results": [
+      {
+        "title": "We urgently need to prepare for quantum computers breaking encryption",
+        "author": "",
+        "date": "8 April 2026",
+        "summary": "The maths problems that secure your online bank transactions and emails may soon be undermined by quantum technology. It’s imperative we act now, before it’s too late"
+      },
+      {
+        "title": "Quantum entanglement can be measured in solids for the first time",
+        "author": "",
+        "date": "8 April 2026",
+        "summary": "A method that relies on hitting materials with neutrons can measure how much quantum entanglement hides within them, which could enable new kinds of quantum technology"
+      },
+      {
+        "title": "We're solving the fundamental mystery of how reality is glued together",
+        "author": "",
+        "date": "6 April 2026",
+        "summary": "For decades, scientists have tried and failed to explain how the force that binds the heart of atoms together really works. But new mathematical tools are finally prising the problem open"
+      },
+      {
+        "title": "The first quantum computer to break encryption is now shockingly close",
+        "author": "",
+        "date": "1 April 2026",
+        "summary": "Traditional encryption methods have long been vulnerable to quantum computers, but two new analyses suggest a capable enough machine may be built much sooner than previously thought"
+      },
+      {
+        "title": "How Anthony Leggett pushed the boundaries of quantum physics",
+        "author": "",
+        "date": "27 March 2026",
+        "summary": "After the passing of physicist Anthony Leggett, columnist Karmela Padavic-Callaghan remembers their personal connection with this giant of quantum physics, and explores the legacy of his enduring recipe for testing the edges of the quantum world"
+      }
+    ]
+  }
+]

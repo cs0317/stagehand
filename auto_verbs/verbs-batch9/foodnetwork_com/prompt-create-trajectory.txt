@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.foodnetwork.com
+
+* Concrete task
+- Search Food Network for "chocolate cake" recipes.
+- Extract the top 5 recipes: recipe name, chef/show, rating, number of reviews, prep time, and difficulty level.
+- Print the results.

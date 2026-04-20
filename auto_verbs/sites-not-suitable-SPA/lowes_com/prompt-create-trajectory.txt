@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.lowes.com
+
+* Concrete task
+- Search Lowe's for "cordless drills".
+- Extract the top 5 products: product name, brand, price, voltage, rating, and number of reviews.
+- Print the results.

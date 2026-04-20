@@ -1,0 +1,20 @@
+@dataclass(frozen=True)
+class CriterionCollectionsRequest:
+    max_results: int = 5
+
+
+@dataclass
+class CollectionItem:
+    name: str = ""
+    num_films: str = ""
+    curator: str = ""
+    description: str = ""
+
+
+@dataclass
+class CriterionCollectionsResult:
+    items: List[CollectionItem] = field(default_factory=list)
+
+
+# Browse Criterion Channel curated film collections.
+def browse_criterion_collections(page: Page, request: CriterionCollectionsRequest) -> CriterionCollectionsResult:

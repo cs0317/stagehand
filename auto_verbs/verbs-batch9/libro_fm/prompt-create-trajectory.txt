@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://libro.fm
+
+* Concrete task
+- Search Libro.fm for audiobooks about "self-improvement".
+- Extract the top 5 audiobooks: title, author, narrator, duration, and price.
+- Print the results.

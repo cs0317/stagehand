@@ -1,0 +1,22 @@
+@dataclass
+class RentRequest:
+    location: str
+    bedrooms: int
+    max_results: int
+
+@dataclass
+class ApartmentItem:
+    name: str
+    rent_range: str
+    bedrooms: str
+    bathrooms: str
+    sqft: str
+    amenities: str
+
+@dataclass
+class RentResult:
+    listings: List[ApartmentItem]
+
+# Searches Rent.com for apartments and extracts property name,
+# rent range, bedrooms, bathrooms, sqft, and amenities.
+def search_rent(page: Page, request: RentRequest) -> RentResult

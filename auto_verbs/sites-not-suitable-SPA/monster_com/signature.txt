@@ -1,0 +1,21 @@
+@dataclass
+class MonsterRequest:
+    query: str
+    location: str
+    max_results: int
+
+@dataclass
+class JobItem:
+    title: str
+    company: str
+    location: str
+    salary: str
+    date: str
+
+@dataclass
+class MonsterResult:
+    jobs: List[JobItem]
+
+# Searches Monster for job listings and extracts job title,
+# company, location, salary range, and post date.
+def search_monster_jobs(page: Page, request: MonsterRequest) -> MonsterResult

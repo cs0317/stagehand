@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 2316,
+    "type": "goto",
+    "url": "https://medium.com/search?q=startup%20fundraising",
+    "description": "Navigate to https://medium.com/search?q=startup%20fundraising"
+  },
+  {
+    "timestamp": 13042,
+    "type": "extract",
+    "results": [
+      {
+        "title": "The Startup Fundraising Playbook Has Changed And Most Founders Are Behind",
+        "author": "David Dobrovitsky",
+        "publication": "",
+        "read_time": "Mar 6",
+        "claps": "1"
+      },
+      {
+        "title": "Startup Fundraising Lessons-What VCs Actually Tell Founders (Behind Closed Doors)",
+        "author": "Jaytech",
+        "publication": "ILLUMINATION",
+        "read_time": "Feb 18",
+        "claps": "100"
+      },
+      {
+        "title": "Why Disrupt 2025 Will Revolutionize Startup Fundraising",
+        "author": "Vikram Lingam",
+        "publication": "DataDrivenInvestor",
+        "read_time": "Oct 19, 2025",
+        "claps": "49"
+      },
+      {
+        "title": "Customer Obsession vs. Pitch Deck Obsession: The Brutal Truth About Startup Fundraising",
+        "author": "Viineet Naag (https://marketinggasoline.com/)",
+        "publication": "",
+        "read_time": "Sep 11, 2025",
+        "claps": "543"
+      },
+      {
+        "title": "Startup fundraising and landing paying customers both boil down to one key thing: ➡️ You have to convince someone to see the future 🌟",
+        "author": "Gerald Duran",
+        "publication": "",
+        "read_time": "Jul 27, 2025",
+        "claps": ""
+      }
+    ]
+  }
+]

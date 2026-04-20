@@ -1,0 +1,8 @@
+Browse audiobooks by genre on Audiobooks.com.
+
+Parameters:
+- genre: str — Genre to browse (e.g., "mystery")
+- max_results: int — Maximum audiobooks to return (default: 5)
+
+Returns:
+- A list of audiobooks, each with: title, author, narrator, duration, rating

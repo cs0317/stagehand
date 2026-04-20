@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.wholefoodsmarket.com/sales-flyer
+
+* Concrete task
+- Browse Whole Foods Market weekly deals.
+- Extract the top 5 deals: product name, sale price, regular price, and discount/savings.
+- Print the results.

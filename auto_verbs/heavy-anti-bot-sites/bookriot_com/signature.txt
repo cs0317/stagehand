@@ -1,0 +1,22 @@
+@dataclass(frozen=True)
+class BookRiotSearchRequest:
+    query: str = "best fantasy novels"
+    max_results: int = 5
+
+
+@dataclass
+class ArticleItem:
+    title: str = ""
+    author: str = ""
+    publish_date: str = ""
+    summary: str = ""
+
+
+@dataclass
+class BookRiotSearchResult:
+    query: str = ""
+    items: List[ArticleItem] = field(default_factory=list)
+
+
+# Search Book Riot for articles.
+def search_bookriot(page: Page, request: BookRiotSearchRequest) -> BookRiotSearchResult:

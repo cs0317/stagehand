@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 2035,
+    "type": "goto",
+    "url": "https://www.everydayhealth.com/search/?q=arthritis%20management",
+    "description": "Navigate to https://www.everydayhealth.com/search/?q=arthritis%20management"
+  },
+  {
+    "timestamp": 7059,
+    "type": "extract",
+    "results": [
+      {
+        "title": "7 Self-Care Tips to Kick Up Your Psoriatic Arthritis Management Routine",
+        "author": "",
+        "medical_reviewer": "",
+        "publish_date": "Mar 21, 2024",
+        "summary": "Along with following your psoriatic arthritis treatment plan, practicing self-care can help you cope with and, in many cases, ease joint symptoms."
+      },
+      {
+        "title": "Goals That Can Help You Manage Rheumatoid Arthritis",
+        "author": "",
+        "medical_reviewer": "",
+        "publish_date": "Jan 2, 2018",
+        "summary": "Setting goals can help you stay on track with your rheumatoid arthritis management plan. Here’s what to consider when setting realistic goals and forming action plans."
+      },
+      {
+        "title": "Diabetes, Aching Joints, and Arthritis",
+        "author": "",
+        "medical_reviewer": "",
+        "publish_date": "Feb 11, 2026",
+        "summary": "Diabetes and arthritic joint pain are closely linked. Learn more about the medicines and lifestyle changes that can help manage both conditions."
+      },
+      {
+        "title": "What to Expect When Starting an IV Biologic for Psoriatic Arthritis",
+        "author": "",
+        "medical_reviewer": "",
+        "publish_date": "Apr 13, 2026",
+        "summary": "Learn what to expect with IV biologics for psoriatic arthritis, including treatment steps, side effects, and infusion tips."
+      },
+      {
+        "title": "How to Treat Psoriatic Arthritis and Psoriasis at the Same Time",
+        "author": "",
+        "medical_reviewer": "",
+        "publish_date": "Mar 27, 2026",
+        "summary": "Learn how to manage psoriatic arthritis and psoriasis simultaneously with the right medication and treatment plan. Discover the different drug options and tips for balancing dual treatments."
+      }
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.brides.com
+
+* Concrete task
+- Search Brides for articles about "outdoor wedding ideas".
+- Extract the top 5 articles: title.
+- Print the results.

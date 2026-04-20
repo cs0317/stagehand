@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.target.com/circle/deals
+
+* Concrete task
+- Browse Target Circle deals in the "Electronics" category.
+- Extract the top 5 deals: product name, original price, deal price, discount percentage, and deal expiration.
+- Print the results.

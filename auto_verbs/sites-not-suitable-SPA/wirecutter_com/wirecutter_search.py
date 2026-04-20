@@ -50,29 +50,18 @@ def wirecutter_search(page: Page, request: WirecutterSearchRequest) -> Wirecutte
 
     checkpoint("Extract product recommendation listings")
     js_code = """(max) => {
-        const cards = document.querySelectorAll('article, [class*="result"], [class*="SearchResult"], [class*="card"], [class*="post"], li[class*="search"]');
-        const items = [];
-        for (const card of cards) {
-            if (items.length >= max) break;
-            const titleEl = card.querySelector('h2, h3, [class*="title"], [class*="headline"]');
-            const topPickEl = card.querySelector('[class*="top-pick"], [class*="topPick"], [class*="pick"]:first-of-type');
-            const runnerUpEl = card.querySelector('[class*="runner"], [class*="also-great"]');
-            const budgetEl = card.querySelector('[class*="budget"], [class*="affordable"]');
-            const dateEl = card.querySelector('time, [class*="date"], [class*="time"]');
-            const summaryEl = card.querySelector('p, [class*="description"], [class*="summary"], [class*="excerpt"]');
-
-            const title = titleEl ? titleEl.textContent.trim() : '';
-            const top_pick = topPickEl ? topPickEl.textContent.trim() : '';
-            const runner_up = runnerUpEl ? runnerUpEl.textContent.trim() : '';
-            const budget_pick = budgetEl ? budgetEl.textContent.trim() : '';
-            const publish_date = dateEl ? (dateEl.getAttribute('datetime') || dateEl.textContent.trim()) : '';
-            const summary = summaryEl ? summaryEl.textContent.trim() : '';
-
-            if (title) {
-                items.push({title, top_pick, runner_up, budget_pick, publish_date, summary});
-            }
+        const results = [];
+        const seen = new Set();
+        const headings = document.querySelectorAll('h2, h3');
+        for (const h of headings) {
+            if (results.length >= max) break;
+            const title = h.innerText.trim();
+            if (!title || title.length < 10 || seen.has(title)) continue;
+            if (title.match(/^(Our|We found|Articles|Subscribe|Sign|Menu|Search|Privacy|Cookie|Wirecutter|Filter|Sort)/i)) continue;
+            seen.add(title);
+            results.push({title, top_pick: '', runner_up: '', budget_pick: '', publish_date: '', summary: ''});
         }
-        return items;
+        return results;
     }"""
     items_data = page.evaluate(js_code, request.max_results)
 

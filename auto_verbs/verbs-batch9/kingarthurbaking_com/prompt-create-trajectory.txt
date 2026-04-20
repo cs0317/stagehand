@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.kingarthurbaking.com/recipes
+
+* Concrete task
+- Search King Arthur Baking for "sourdough bread" recipes.
+- Extract the top 5 recipes: recipe name, rating, number of reviews, prep time, bake time, and difficulty.
+- Print the results.

@@ -1,0 +1,23 @@
+@dataclass
+class MomondoRequest:
+    origin: str
+    destination: str
+    date: str
+    max_results: int
+
+@dataclass
+class FlightItem:
+    airline: str
+    departure: str
+    arrival: str
+    duration: str
+    stops: str
+    price: str
+
+@dataclass
+class MomondoResult:
+    flights: List[FlightItem]
+
+# Searches Momondo for flights and extracts airline, departure/arrival
+# times, duration, stops, and price.
+def search_momondo_flights(page: Page, request: MomondoRequest) -> MomondoResult

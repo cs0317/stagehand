@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.nordstrom.com
+
+* Concrete task
+- Search Nordstrom for "men's dress shoes".
+- Extract the top 5 products: product name, brand, price, rating, number of reviews, and available sizes.
+- Print the results.

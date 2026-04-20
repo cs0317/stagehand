@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class ExpediaCarSearchRequest:
+    location: str
+    pickup_date: date
+    dropoff_date: date
+    max_results: int
+
+@dataclass
+class CarRentalItem:
+    car_type: str
+    company: str
+    price_per_day: str
+    total_price: str
+    features: str
+
+@dataclass
+class ExpediaCarSearchResult:
+    location: str
+    items: List[CarRentalItem]
+
+# Searches Expedia.com for car rentals at the given location and date range,
+# returning up to max_results options with car type, company, pricing, and features.
+def search_expedia_car_rentals(page: Page, request: ExpediaCarSearchRequest) -> ExpediaCarSearchResult:

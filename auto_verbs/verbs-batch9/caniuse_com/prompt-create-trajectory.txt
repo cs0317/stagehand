@@ -1,0 +1,10 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://caniuse.com/
+
+* Concrete task
+- Search for "css grid" browser support on Can I Use.
+- Extract the feature support info: feature name, description, and global usage percentage.
+- Note: caniuse.com uses nested shadow DOM (Lit web components). Feature data is inside ciu-feature-list > ciu-feature elements, each with their own shadow roots.
+- Print the results.

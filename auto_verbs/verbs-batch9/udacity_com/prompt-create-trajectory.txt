@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.udacity.com
+
+* Concrete task
+- Browse Udacity nanodegree programs in "artificial intelligence".
+- Extract the top 5 programs: program name, estimated duration, skill level, and key skills covered.
+- Print the results.

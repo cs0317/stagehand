@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 1721,
+    "type": "goto",
+    "url": "https://www.ebay.com/sch/Cars-Trucks/6001/i.html?_nkw=Toyota%20Camry&_udhi=20000",
+    "description": "Navigate to https://www.ebay.com/sch/Cars-Trucks/6001/i.html?_nkw=Toyota%20Camry&_udhi=20000"
+  },
+  {
+    "timestamp": 6727,
+    "type": "extract",
+    "results": []
+  }
+]

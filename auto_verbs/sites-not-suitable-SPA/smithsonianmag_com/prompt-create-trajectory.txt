@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.smithsonianmag.com
+
+* Concrete task
+- Search Smithsonian Magazine for articles about "ancient Egypt".
+- Extract the top 5 articles: title, author, publish date, category, and summary.
+- Print the results.

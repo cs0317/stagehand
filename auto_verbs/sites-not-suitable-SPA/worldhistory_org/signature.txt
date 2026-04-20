@@ -1,0 +1,19 @@
+@dataclass
+class WorldHistoryRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class ArticleItem:
+    title: str
+    author: str
+    date: str
+    summary: str
+
+@dataclass
+class WorldHistoryResult:
+    articles: List[ArticleItem]
+
+# Searches World History Encyclopedia for articles and extracts
+# title, author, publish date, and summary.
+def search_worldhistory(page: Page, request: WorldHistoryRequest) -> WorldHistoryResult

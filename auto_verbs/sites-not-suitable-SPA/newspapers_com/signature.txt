@@ -1,0 +1,20 @@
+@dataclass
+class NewspapersRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class ResultItem:
+    newspaper: str
+    date: str
+    headline: str
+    location: str
+    snippet: str
+
+@dataclass
+class NewspapersResult:
+    results: List[ResultItem]
+
+# Searches Newspapers.com for historical articles and extracts
+# newspaper name, date, headline, location, and snippet.
+def search_newspapers(page: Page, request: NewspapersRequest) -> NewspapersResult

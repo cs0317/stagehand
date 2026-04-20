@@ -1,0 +1,23 @@
+@dataclass(frozen=True)
+class BNSearchRequest:
+    query: str = "fiction"
+    max_results: int = 5
+
+
+@dataclass
+class BookItem:
+    title: str = ""
+    author: str = ""
+    book_format: str = ""
+    price: str = ""
+    rating: str = ""
+
+
+@dataclass
+class BNSearchResult:
+    query: str = ""
+    items: List[BookItem] = field(default_factory=list)
+
+
+# Search Barnes & Noble for books.
+def search_bn(page: Page, request: BNSearchRequest) -> BNSearchResult:

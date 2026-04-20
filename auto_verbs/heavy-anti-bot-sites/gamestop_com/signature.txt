@@ -1,0 +1,21 @@
+@dataclass(frozen=True)
+class GameStopSearchRequest:
+    search_query: str
+    max_results: int
+
+@dataclass
+class GameItem:
+    title: str
+    platform: str
+    price: str
+    condition: str
+    rating: str
+
+@dataclass
+class GameStopSearchResult:
+    query: str
+    items: List[GameItem]
+
+# Searches GameStop.com for games matching the query and returns
+# up to max_results games with title, platform, price, condition, and rating.
+def search_gamestop(page: Page, request: GameStopSearchRequest) -> GameStopSearchResult:

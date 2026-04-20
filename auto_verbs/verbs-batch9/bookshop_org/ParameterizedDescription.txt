@@ -1,0 +1,8 @@
+Search Bookshop.org for books by keyword.
+
+Parameters:
+- query: str — Search query (e.g., "science fiction")
+- max_results: int — Maximum books to return (default: 5)
+
+Returns:
+- A list of books, each with: title, author, price, publisher, description

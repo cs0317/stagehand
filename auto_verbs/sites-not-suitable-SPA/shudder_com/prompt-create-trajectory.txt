@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.shudder.com
+
+* Concrete task
+- Browse Shudder's horror movie catalog for "supernatural" films.
+- Extract the top 5 movies: title, year, director, duration, and description.
+- Print the results.

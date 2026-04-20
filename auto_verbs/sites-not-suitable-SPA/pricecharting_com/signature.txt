@@ -1,0 +1,21 @@
+@dataclass
+class PriceChartingRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class GameListing:
+    title: str
+    platform: str
+    loose_price: str
+    complete_price: str
+    new_price: str
+    trend: str
+
+@dataclass
+class PriceChartingResult:
+    listings: List[GameListing]
+
+# Searches PriceCharting for game prices and extracts title,
+# platform, loose price, complete price, new price, and trend.
+def search_pricecharting(page: Page, request: PriceChartingRequest) -> PriceChartingResult

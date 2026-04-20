@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.agoda.com
+
+* Concrete task
+- Search Agoda for hotels in "Bangkok, Thailand" for 3 nights.
+- Extract the top 5 hotels: hotel name, guest score, price per night, and location.
+- Print the results.

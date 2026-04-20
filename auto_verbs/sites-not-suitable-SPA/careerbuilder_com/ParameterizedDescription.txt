@@ -1,0 +1,9 @@
+Search CareerBuilder for jobs by keyword and location.
+
+Parameters:
+- query: str — Job search query (e.g., "marketing manager")
+- location: str — City and state (e.g., "New York, NY")
+- max_results: int — Maximum listings to return (default: 5)
+
+Returns:
+- A list of jobs, each with: title, company, location, salary_range, employment_type

@@ -1,0 +1,22 @@
+@dataclass(frozen=True)
+class ClevelandClinicSearchRequest:
+    query: str = "migraine"
+    max_results: int = 5
+
+
+@dataclass
+class HealthArticleItem:
+    title: str = ""
+    category: str = ""
+    summary: str = ""
+    url: str = ""
+
+
+@dataclass
+class ClevelandClinicSearchResult:
+    query: str = ""
+    items: List[HealthArticleItem] = field(default_factory=list)
+
+
+# Search Cleveland Clinic for health articles.
+def search_clevelandclinic(page: Page, request: ClevelandClinicSearchRequest) -> ClevelandClinicSearchResult:

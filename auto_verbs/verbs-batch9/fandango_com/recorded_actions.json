@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 2000,
+    "type": "goto",
+    "url": "https://www.fandango.com/90210_movietimes",
+    "description": "Navigate to https://www.fandango.com/90210_movietimes"
+  },
+  {
+    "timestamp": 7018,
+    "type": "extract",
+    "results": [
+      {
+        "title": "The Super Mario Galaxy Movie (2026)",
+        "genre": "",
+        "runtime": "1 hr 38 min",
+        "score": "",
+        "next_showtime": "Rated: \n                        PG\n                    \n                \n\n                \n                    Runtime: \n                    1 hr 38 min\n                \n\n                \n                    •\n                \n\n                Now Playing"
+      },
+      {
+        "title": "The Blue Trail (O Último Azul)",
+        "genre": "",
+        "runtime": "1 hr 25 min",
+        "score": "",
+        "next_showtime": "The Blue Trail (O Último Azul)\n                    \n                \n\n                \n                    \n                        \n                            Rated: \n                            Not Rated\n                        \n                    \n\n                    \n                        Runtime: \n                        1 hr 25 min"
+      },
+      {
+        "title": "Ballistic (2026)",
+        "genre": "",
+        "runtime": "1 hr 30 min",
+        "score": "",
+        "next_showtime": "Ballistic (2026)\n                    \n                \n\n                \n                    \n                        \n                            Rated: \n                            Not Rated\n                        \n                    \n\n                    \n                        Runtime: \n                        1 hr 30 min"
+      },
+      {
+        "title": "Bunnylovr (2026)",
+        "genre": "",
+        "runtime": "1 hr 26 min",
+        "score": "",
+        "next_showtime": "Bunnylovr (2026)\n                    \n                \n\n                \n                    \n                        \n                            Rated: \n                            Not Rated\n                        \n                    \n\n                    \n                        Runtime: \n                        1 hr 26 min"
+      },
+      {
+        "title": "Faces of Death (2026)",
+        "genre": "",
+        "runtime": "1 hr 38 min",
+        "score": "",
+        "next_showtime": "Faces of Death (2026)\n                    \n                \n\n                \n                    \n                        \n                            Rated: \n                            R\n                        \n                    \n\n                    \n                        Runtime: \n                        1 hr 38 min"
+      }
+    ]
+  }
+]

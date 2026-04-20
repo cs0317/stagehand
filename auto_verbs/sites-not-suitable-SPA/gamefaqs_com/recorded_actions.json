@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 431,
+    "type": "goto",
+    "url": "https://gamefaqs.gamespot.com/search?game=The%20Legend%20of%20Zelda%20Tears%20of%20the%20Kingdom",
+    "description": "Navigate to https://gamefaqs.gamespot.com/search?game=The%20Legend%20of%20Zelda%20Tears%20of%20the%20Kingdom"
+  },
+  {
+    "timestamp": 5459,
+    "type": "extract",
+    "results": []
+  }
+]

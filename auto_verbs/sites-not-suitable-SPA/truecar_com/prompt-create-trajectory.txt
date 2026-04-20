@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.truecar.com
+
+* Concrete task
+- Search TrueCar for new "Ford F-150" pricing.
+- Extract: model/trim options, MSRP, TrueCar average price paid, potential savings, and nearby dealer inventory count.
+- Print the pricing data.

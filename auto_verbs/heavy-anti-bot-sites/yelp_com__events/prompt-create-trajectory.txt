@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.yelp.com/events
+
+* Concrete task
+- Browse Yelp events in "San Francisco, CA".
+- Extract the top 5 upcoming events: event name, date, venue, category, and description.
+- Print the results.

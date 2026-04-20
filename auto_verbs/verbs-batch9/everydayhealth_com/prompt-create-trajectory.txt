@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.everydayhealth.com
+
+* Concrete task
+- Search Everyday Health for articles about "arthritis management".
+- Extract the top 5 articles: title, author, medical reviewer, publish date, and summary.
+- Print the results.

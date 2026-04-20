@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 519,
+    "type": "goto",
+    "url": "https://www.howstuffworks.com/search?terms=how%20solar%20panels%20work",
+    "description": "Navigate to https://www.howstuffworks.com/search?terms=how%20solar%20panels%20work"
+  },
+  {
+    "timestamp": 7056,
+    "type": "extract",
+    "results": []
+  }
+]

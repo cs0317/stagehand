@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 1696,
+    "type": "goto",
+    "url": "https://gg.deals/deals/",
+    "description": "Navigate to https://gg.deals/deals/"
+  },
+  {
+    "timestamp": 6708,
+    "type": "extract",
+    "results": [
+      {
+        "title": "Teenage Mutant Ninja Turtles: Splintered Fate (Switch)",
+        "store": "Teenage Mutant Ninja Turtles: Splintered Fate (Switch)\t\t\t\t\t\n\t\t\n\t\t\t\n2d ago\t\t\n\t\t$29.99-90%$2.99Historical low\t\n\n\t\n\t\n\t\tGo to ShopShopShop",
+        "current_price": "$29.99-90%$2.99",
+        "historical_low": "",
+        "discount": "-90%"
+      },
+      {
+        "title": "Legend of Keepers: Career of a Dungeon Manager",
+        "store": "Legend of Keepers: Career of a Dungeon Manager PC",
+        "current_price": "$19.99-100%Free",
+        "historical_low": "",
+        "discount": "-100%"
+      },
+      {
+        "title": "The Stone of Madness",
+        "store": "The Stone of Madness PC",
+        "current_price": "$29.99-100%Free",
+        "historical_low": "",
+        "discount": "-100%"
+      },
+      {
+        "title": "El Paso, Elsewhere",
+        "store": "El Paso, Elsewhere PC",
+        "current_price": "$19.99-50%$9.99",
+        "historical_low": "",
+        "discount": "-50%"
+      },
+      {
+        "title": "The Tenants",
+        "store": "The Tenants PC",
+        "current_price": "$19.99-93%~$1.37",
+        "historical_low": "",
+        "discount": "5"
+      }
+    ]
+  }
+]

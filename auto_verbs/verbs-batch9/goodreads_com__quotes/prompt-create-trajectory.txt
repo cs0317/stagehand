@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.goodreads.com/quotes
+
+* Concrete task
+- Search Goodreads quotes for the tag "inspirational".
+- Extract the top 5 quotes: quote text, author, book title (if applicable), and number of likes.
+- Print the quotes.

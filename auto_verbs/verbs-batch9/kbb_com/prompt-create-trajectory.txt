@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.kbb.com
+
+* Concrete task
+- Look up the Kelley Blue Book value for a 2021 Toyota RAV4 with 30,000 miles in "good" condition.
+- Extract: trade-in value, private party value, suggested retail price, and fair market range.
+- Print the values.

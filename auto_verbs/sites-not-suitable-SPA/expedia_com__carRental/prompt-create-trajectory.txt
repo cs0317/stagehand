@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.expedia.com/Cars
+
+* Concrete task
+- Search for car rentals in "Los Angeles" for a 3-day period next month.
+- Extract the top 5 rental options: car type, company, price per day, total price, and included features.
+- Print the results.

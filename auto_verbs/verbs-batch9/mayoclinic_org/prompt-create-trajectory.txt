@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.mayoclinic.org
+
+* Concrete task
+- Search Mayo Clinic for information about "high blood pressure".
+- Extract: condition name, definition, symptoms, causes, risk factors, and when to see a doctor.
+- Print the information.

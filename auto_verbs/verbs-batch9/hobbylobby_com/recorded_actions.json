@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": 698,
+    "type": "goto",
+    "url": "https://www.hobbylobby.com/search/?text=acrylic%20paint",
+    "description": "Navigate to https://www.hobbylobby.com/search/?text=acrylic%20paint"
+  },
+  {
+    "timestamp": 5708,
+    "type": "extract",
+    "results": [
+      {
+        "name": "All-Purpose Acrylic Paint - 20 Piece Set",
+        "brand": "",
+        "price": "price: $9.99",
+        "availability": ""
+      },
+      {
+        "name": "Master's Touch Acrylic Paint",
+        "brand": "",
+        "price": "Current price range: $3.59—$7.19 Original price range: $5.99—$11.99",
+        "availability": ""
+      },
+      {
+        "name": "Master's Touch Acrylic Paint - 24 Piece Set",
+        "brand": "",
+        "price": "price: $10.99",
+        "availability": ""
+      },
+      {
+        "name": "Liquitex Basics Acrylic Paint",
+        "brand": "",
+        "price": "price range: $5.99—$9.99",
+        "availability": ""
+      },
+      {
+        "name": "Crafter's Collection Acrylic Paint - 12 Piece Set",
+        "brand": "",
+        "price": "price: $5.99",
+        "availability": ""
+      }
+    ]
+  }
+]

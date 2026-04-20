@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 427,
+    "type": "goto",
+    "url": "https://www.google.com/search?tbm=shop&q=wireless%20headphones",
+    "description": "Navigate to https://www.google.com/search?tbm=shop&q=wireless%20headphones"
+  },
+  {
+    "timestamp": 5446,
+    "type": "extract",
+    "results": []
+  }
+]

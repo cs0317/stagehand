@@ -1,0 +1,9 @@
+Search ASOS for fashion products by keyword with price filter.
+
+Parameters:
+- query: str — Search query (e.g., "women's dresses")
+- max_price: int — Maximum price filter (default: 50)
+- max_results: int — Maximum products to return (default: 5)
+
+Returns:
+- A list of products, each with: product_name, brand, price, sizes, colors

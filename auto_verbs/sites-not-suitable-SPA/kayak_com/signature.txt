@@ -1,0 +1,24 @@
+@dataclass(frozen=True)
+class KayakRequest:
+    origin: str
+    destination: str
+    max_results: int
+
+@dataclass
+class FlightItem:
+    airline: str
+    departure: str
+    arrival: str
+    duration: str
+    stops: str
+    price: str
+
+@dataclass
+class KayakResult:
+    origin: str
+    destination: str
+    items: List[FlightItem]
+
+# Searches Kayak for round-trip flights and returns
+# up to max_results flights with airline, departure/arrival times, duration, stops, and price.
+def search_kayak(page: Page, request: KayakRequest) -> KayakResult:

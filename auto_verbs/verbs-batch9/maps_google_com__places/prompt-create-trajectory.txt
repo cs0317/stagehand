@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://maps.google.com
+
+* Concrete task
+- Search Google Maps for "coffee shops near Times Square, New York".
+- Extract the top 5 places: name, rating, number of reviews, address, opening hours, and price level.
+- Print the results.

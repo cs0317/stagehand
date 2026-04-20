@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.whoscored.com
+
+* Concrete task
+- Browse WhoScored for top-rated football/soccer players in the Premier League this season.
+- Extract the top 10 players: name, team, position, appearances, goals, assists, and WhoScored rating.
+- Print the rankings.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.etsy.com
+
+* Concrete task
+- Search Etsy for shops selling "handmade jewelry".
+- Extract the top 5 shops: shop name, location, star rating, number of sales, and description.
+- Print the results.

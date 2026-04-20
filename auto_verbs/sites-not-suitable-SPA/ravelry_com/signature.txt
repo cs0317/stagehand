@@ -1,0 +1,20 @@
+@dataclass
+class RavelryRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class PatternItem:
+    name: str
+    designer: str
+    difficulty: str
+    yarn_weight: str
+    projects: str
+
+@dataclass
+class RavelryResult:
+    patterns: List[PatternItem]
+
+# Searches Ravelry for knitting patterns and extracts name,
+# designer, difficulty, yarn weight, and number of projects.
+def search_ravelry(page: Page, request: RavelryRequest) -> RavelryResult

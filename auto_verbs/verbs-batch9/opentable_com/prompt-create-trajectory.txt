@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.opentable.com
+
+* Concrete task
+- Search OpenTable for restaurants in "New York City" with cuisine type "Italian".
+- Extract the top 5 restaurants: name, cuisine, price range, rating, number of reviews, and next available reservation time.
+- Print the results.

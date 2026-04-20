@@ -37,29 +37,42 @@ def myfonts_search(page, request: MyfontsSearchRequest) -> MyfontsSearchResult:
     page.goto(url, wait_until="domcontentloaded", timeout=30000)
     page.wait_for_timeout(8000)
 
-    raw_items = page.evaluate("""() => {
+    raw_items = page.evaluate("""(max) => {
         const items = [];
         const seen = new Set();
-        // Try link-based extraction for font family pages
-        const links = document.querySelectorAll('a[href]');
-        for (const a of links) {
-            const href = a.getAttribute('href') || '';
-            if (!/\\/fonts\\/[^/]+\\/[^/]+/.test(href) && !/\\/collections\\//.test(href)) continue;
-            if (seen.has(href)) continue;
-            seen.add(href);
-            const text = a.textContent.trim();
-            if (!text || text.length < 2 || text.length > 150) continue;
+        // MyFonts uses H2 elements for font family names in search results
+        const h2s = document.querySelectorAll('h2');
+        for (const h2 of h2s) {
+            if (items.length >= max) break;
+            const name = h2.innerText.trim();
+            if (!name || name.length < 2 || seen.has(name)) continue;
+            // Skip UI headings
+            if (name.match(/^(Price|Styles|Languages|Foundries|Visual|Advanced|Not able|Sign|Subscribe)/i)) continue;
+            seen.add(name);
+
+            const container = h2.closest('div, li, article') || h2.parentElement;
+            const text = container ? container.innerText : '';
+
+            const foundryMatch = text.match(/by\\s+(.+?)(?:\\n|$)/i);
+            const foundry = foundryMatch ? foundryMatch[1].trim() : '';
+
+            const priceMatch = text.match(/\\$[\\d,.]+/);
+            const price = priceMatch ? priceMatch[0] : '';
+
+            const stylesMatch = text.match(/(\\d+)\\s*style/i);
+            const num_styles = stylesMatch ? stylesMatch[1] : '';
+
             items.push({
-                font_name: text,
-                foundry: '',
-                price: '',
-                num_styles: '',
+                font_name: name,
+                foundry: foundry,
+                price: price,
+                num_styles: num_styles,
                 classification: '',
                 sample_text: '',
             });
         }
         return items;
-    }""")
+    }""", request.max_results)
 
     checkpoint("Extracted font search results")
 

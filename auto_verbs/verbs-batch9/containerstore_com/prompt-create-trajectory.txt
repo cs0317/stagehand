@@ -1,0 +1,10 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.containerstore.com
+
+* Concrete task
+- Search The Container Store for "closet organization" products.
+- Extract the top 5 products: product name, price, original price (Was price), and review count.
+- Note: dimensions, material, and rating are not shown on search result cards.
+- Print the results.

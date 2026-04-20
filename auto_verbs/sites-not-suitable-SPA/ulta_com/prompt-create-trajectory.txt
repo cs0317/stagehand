@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.ulta.com
+
+* Concrete task
+- Search Ulta for "foundation" products.
+- Extract the top 5 products: product name, brand, price, rating, number of reviews, and shade count.
+- Print the results.

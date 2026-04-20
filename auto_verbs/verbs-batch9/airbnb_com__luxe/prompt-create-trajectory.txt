@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.airbnb.com/luxury
+
+* Concrete task
+- Browse Airbnb Luxe listings in "Malibu, California".
+- Extract the top 5 luxury stays: property name, price, number of bedrooms, and rating.
+- Print the results.

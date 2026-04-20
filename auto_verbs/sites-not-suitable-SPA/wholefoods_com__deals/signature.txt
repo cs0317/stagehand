@@ -1,0 +1,18 @@
+@dataclass
+class WholeFoodsDealsRequest:
+    max_results: int
+
+@dataclass
+class DealItem:
+    name: str
+    sale_price: str
+    regular_price: str
+    savings: str
+
+@dataclass
+class WholeFoodsDealsResult:
+    deals: List[DealItem]
+
+# Browses Whole Foods weekly deals and extracts product name,
+# sale price, regular price, and discount/savings.
+def get_wholefoods_deals(page: Page, request: WholeFoodsDealsRequest) -> WholeFoodsDealsResult

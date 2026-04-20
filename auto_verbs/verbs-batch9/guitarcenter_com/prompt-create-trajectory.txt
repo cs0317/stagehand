@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.guitarcenter.com
+
+* Concrete task
+- Search Guitar Center for "acoustic guitars" under $500.
+- Extract the top 5 guitars: model name, brand, price, body type, and rating.
+- Print the results.

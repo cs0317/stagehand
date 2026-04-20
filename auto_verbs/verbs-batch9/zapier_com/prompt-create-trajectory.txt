@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://zapier.com/apps
+
+* Concrete task
+- Search Zapier for integrations (Zaps) involving "Google Sheets".
+- Extract the top 5 popular Zaps: Zap name, connected apps, number of users, and description.
+- Print the results.

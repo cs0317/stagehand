@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.simplyhired.com
+
+* Concrete task
+- Search SimplyHired for "product manager" jobs in "San Francisco, CA".
+- Extract the top 5 listings: job title, company, location, estimated salary, and description snippet.
+- Print the results.

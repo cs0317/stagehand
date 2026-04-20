@@ -1,0 +1,20 @@
+@dataclass(frozen=True)
+class GoogleNewsRequest:
+    search_query: str
+    max_results: int
+
+@dataclass
+class NewsArticle:
+    headline: str
+    source: str
+    time: str
+    snippet: str
+
+@dataclass
+class GoogleNewsResult:
+    query: str
+    items: List[NewsArticle]
+
+# Searches Google News for articles matching the query and returns
+# up to max_results articles with headline, source, publish time, and snippet.
+def search_google_news(page: Page, request: GoogleNewsRequest) -> GoogleNewsResult:

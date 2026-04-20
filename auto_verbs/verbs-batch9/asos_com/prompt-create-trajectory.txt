@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.asos.com
+
+* Concrete task
+- Search ASOS for "women's dresses" under $50.
+- Extract the top 5 products: product name, brand, price, sizes available, and color options.
+- Print the results.

@@ -1,0 +1,8 @@
+Get unemployment rate data from Bureau of Labor Statistics.
+
+Parameters:
+- query: str — Data topic (e.g., "unemployment rate")
+- max_results: int — Maximum demographic groups (default: 5)
+
+Returns:
+- Current rate, previous rate, year-over-year change, and demographics breakdown

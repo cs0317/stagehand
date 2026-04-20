@@ -1,0 +1,17 @@
+@dataclass
+class OPMRequest:
+    year: int
+
+@dataclass
+class GradeItem:
+    grade: str
+    step1: str
+    step10: str
+
+@dataclass
+class OPMResult:
+    grades: List[GradeItem]
+
+# Extracts the GS pay scale table with grade levels,
+# Step 1 and Step 10 annual salaries.
+def get_gs_payscale(page: Page, request: OPMRequest) -> OPMResult

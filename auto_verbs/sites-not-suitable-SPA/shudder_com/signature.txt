@@ -1,0 +1,20 @@
+@dataclass
+class ShudderRequest:
+    genre: str
+    max_results: int
+
+@dataclass
+class MovieItem:
+    title: str
+    year: str
+    director: str
+    duration: str
+    description: str
+
+@dataclass
+class ShudderResult:
+    movies: List[MovieItem]
+
+# Browses Shudder's horror catalog and extracts movie title,
+# year, director, duration, and description.
+def search_shudder(page: Page, request: ShudderRequest) -> ShudderResult

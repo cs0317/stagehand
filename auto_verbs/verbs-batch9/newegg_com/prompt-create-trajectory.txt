@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.newegg.com
+
+* Concrete task
+- Search Newegg for "graphics cards".
+- Extract the top 5 products: product name, brand, price, rating, number of reviews, and key specs (memory, clock speed).
+- Print the results.

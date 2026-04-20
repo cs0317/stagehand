@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.mtggoldfish.com
+
+* Concrete task
+- Browse MTGGoldfish for the top Standard format Magic: The Gathering decks.
+- Extract the top 5 decks: deck name, colors, meta share percentage, and average price.
+- Print the results.

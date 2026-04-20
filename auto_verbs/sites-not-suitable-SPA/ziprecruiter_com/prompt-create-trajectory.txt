@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.ziprecruiter.com
+
+* Concrete task
+- Search ZipRecruiter for "data analyst" jobs in "Denver, CO".
+- Extract the top 5 listings: job title, company, location, salary estimate, and days posted.
+- Print the results.

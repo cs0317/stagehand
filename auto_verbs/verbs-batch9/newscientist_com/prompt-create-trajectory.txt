@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.newscientist.com
+
+* Concrete task
+- Search New Scientist for articles about "quantum computing".
+- Extract the top 5 articles: title, author, publish date, and summary.
+- Print the results.

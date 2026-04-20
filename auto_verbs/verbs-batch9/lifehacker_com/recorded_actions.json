@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": 566,
+    "type": "goto",
+    "url": "https://lifehacker.com",
+    "description": "Navigate to https://lifehacker.com"
+  },
+  {
+    "timestamp": 17783,
+    "type": "extract",
+    "results": [
+      {
+        "title": "You Should Start Spring Cleaning With This Dyson Cordless Vacuum While It's on Sale for Over $200 Off",
+        "author": "",
+        "date": "April 18, 2026",
+        "summary": ""
+      },
+      {
+        "title": "This Sony Portable Outdoor Speaker Is Almost 50% Off Just in Time for Summer",
+        "author": "",
+        "date": "April 18, 2026",
+        "summary": ""
+      },
+      {
+        "title": "This Compact HP Mini Desktop Is on Sale for Just $320 Right Now",
+        "author": "",
+        "date": "April 17, 2026",
+        "summary": ""
+      },
+      {
+        "title": "Perfect for the Beach, Pool, or Park, This Skullcandy Portable Speaker on Sale for Just $33 Right Now",
+        "author": "",
+        "date": "April 17, 2026",
+        "summary": ""
+      },
+      {
+        "title": "If X Isn't Working, It's Not Just You",
+        "author": "",
+        "date": "April 17, 2026",
+        "summary": ""
+      }
+    ]
+  }
+]

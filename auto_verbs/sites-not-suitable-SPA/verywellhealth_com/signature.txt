@@ -1,0 +1,20 @@
+@dataclass
+class VerywellRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class ArticleItem:
+    title: str
+    author: str
+    reviewer: str
+    date: str
+    summary: str
+
+@dataclass
+class VerywellResult:
+    articles: List[ArticleItem]
+
+# Searches Verywell Health for articles and extracts title,
+# author, medical reviewer, publish date, and summary.
+def search_verywellhealth(page: Page, request: VerywellRequest) -> VerywellResult

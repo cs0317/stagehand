@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.byrdie.com
+
+* Concrete task
+- Search Byrdie for skincare articles about "retinol".
+- Extract the top 5 articles: title.
+- Print the results.

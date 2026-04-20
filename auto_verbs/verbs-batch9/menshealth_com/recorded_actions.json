@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 4976,
+    "type": "goto",
+    "url": "https://www.menshealth.com/search/?q=strength%20training%20for%20beginners",
+    "description": "Navigate to https://www.menshealth.com/search/?q=strength%20training%20for%20beginners"
+  },
+  {
+    "timestamp": 16298,
+    "type": "extract",
+    "results": [
+      {
+        "title": "The 12-Week Beginner's Guide to Strength Training",
+        "author": "LOU SCHULER, CSCS",
+        "date": "FEB 14, 2023",
+        "category": "",
+        "summary": "This is the must-have plan for getting strong, no matter where you're starting from."
+      },
+      {
+        "title": "The Beginner's Guide to Weight Training",
+        "author": "EBENEZER SAMUEL, C.S.C.S., BRETT WILLIAMS, NASM, CORI RITCHEY",
+        "date": "JAN 9, 2026",
+        "category": "",
+        "summary": "Get started with your new workout routine with these guidelines, tips, exercises, and more."
+      },
+      {
+        "title": "How to Do the Leg Press the Right Way",
+        "author": "BRETT WILLIAMS, NASM",
+        "date": "NOV 3, 2025",
+        "category": "",
+        "summary": "Build up your lower body using big-time weight. Just make sure you know how to use it the right way."
+      },
+      {
+        "title": "Save Big on Flybird's Adjustable Dumbbell Today",
+        "author": "KELSEY MULVEY",
+        "date": "OCT 6, 2021",
+        "category": "",
+        "summary": "Finally complete your home gym setup and get ready to blast those biceps."
+      },
+      {
+        "title": "Do You Really Need a Rest Day?",
+        "author": "JOCELYN SOLIS-MOREIRA",
+        "date": "FEB 11, 2026",
+        "category": "",
+        "summary": "If you have a rise-and-grind, no days off mindset, this is for you."
+      }
+    ]
+  }
+]

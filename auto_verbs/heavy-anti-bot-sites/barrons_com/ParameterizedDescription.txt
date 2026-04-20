@@ -1,0 +1,8 @@
+Search Barron's for financial articles by keyword.
+
+Parameters:
+- query: str — Search query (e.g., "technology stocks")
+- max_results: int — Maximum articles to return (default: 5)
+
+Returns:
+- A list of articles, each with: headline, author, publish_date, summary

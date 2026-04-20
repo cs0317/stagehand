@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://cooking.nytimes.com/
+
+* Concrete task
+- Search NYT Cooking for "chicken soup" recipes.
+- Extract the top 5 recipes: recipe name, author, rating, number of ratings, and prep time.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.hobbylobby.com
+
+* Concrete task
+- Search Hobby Lobby for "acrylic paint" art supplies.
+- Extract the top 5 products: product name, brand, price, and availability.
+- Print the results.

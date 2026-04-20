@@ -1,0 +1,8 @@
+Search Chowhound for food articles by keyword.
+
+Parameters:
+- query: str — Search query (e.g., "best pizza in Chicago")
+- max_results: int — Maximum articles to return (default: 5)
+
+Returns:
+- A list of articles, each with: title, author, publish_date, summary

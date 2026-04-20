@@ -1,0 +1,8 @@
+Search AbeBooks for book listings matching a search query.
+
+Parameters:
+- search_query: str — Search query for books (e.g., "To Kill a Mockingbird first edition")
+- max_results: int — Maximum number of listings to return (default: 5)
+
+Returns:
+- A list of book listings, each with: title, author, edition, condition, seller, price

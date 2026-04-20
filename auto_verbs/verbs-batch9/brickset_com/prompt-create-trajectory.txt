@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://brickset.com
+
+* Concrete task
+- Search Brickset for LEGO sets in the "Star Wars" theme.
+- Extract the top 5 sets: set name, set number, piece count, price, year released, and rating.
+- Print the results.

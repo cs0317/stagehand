@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.uniqlo.com/us/en/
+
+* Concrete task
+- Search UNIQLO for "Ultra Light Down" jackets.
+- Extract the top 5 products: product name, price, colors, sizes, and rating.
+- Print the results.

@@ -1,0 +1,20 @@
+@dataclass
+class MiniMarketRequest:
+    category: str
+    max_results: int
+
+@dataclass
+class GameItem:
+    name: str
+    publisher: str
+    price: str
+    player_count: str
+    play_time: str
+
+@dataclass
+class MiniMarketResult:
+    games: List[GameItem]
+
+# Searches Miniature Market for strategy board games and extracts
+# name, publisher, price, player count, and play time.
+def search_minimarket(page: Page, request: MiniMarketRequest) -> MiniMarketResult

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.menshealth.com
+
+* Concrete task
+- Search Men's Health for fitness articles about "strength training for beginners".
+- Extract the top 5 articles: title, author, publish date, category, and summary.
+- Print the results.

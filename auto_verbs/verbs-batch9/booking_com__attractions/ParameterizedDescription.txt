@@ -1,0 +1,8 @@
+Search Booking.com for attractions and activities by location.
+
+Parameters:
+- location: str — City and country (e.g., "Paris, France")
+- max_results: int — Maximum attractions to return (default: 5)
+
+Returns:
+- A list of attractions, each with: name, category, price, rating, num_reviews, duration

@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 143,
+    "type": "goto",
+    "url": "https://phys.org/search/?search=CRISPR%20gene%20editing",
+    "description": "Navigate to https://phys.org/search/?search=CRISPR%20gene%20editing"
+  },
+  {
+    "timestamp": 14130,
+    "type": "extract",
+    "results": []
+  }
+]

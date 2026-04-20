@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.agweb.com
+
+* Concrete task
+- Search AgWeb for news articles about "corn prices".
+- Extract the top 5 articles: headline, author, publish date, and summary.
+- Print the results.

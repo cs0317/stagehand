@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.flexjobs.com
+
+* Concrete task
+- Search FlexJobs for remote "UX designer" positions.
+- Extract the top 5 listings: job title, company, job type (full-time/part-time), flexibility type (remote/hybrid), and location.
+- Print the results.

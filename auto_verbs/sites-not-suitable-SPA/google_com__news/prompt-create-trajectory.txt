@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://news.google.com
+
+* Concrete task
+- Search Google News for "artificial intelligence".
+- Extract the top 5 news articles: headline, source, publish time, and snippet.
+- Print the list.

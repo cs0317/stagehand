@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.chegg.com
+
+* Concrete task
+- Search Chegg for textbook solutions in "calculus".
+- Extract the top 5 textbooks: textbook title, author, edition, number of solutions available, and price for access.
+- Print the results.

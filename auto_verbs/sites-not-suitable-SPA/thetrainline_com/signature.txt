@@ -1,0 +1,21 @@
+@dataclass
+class TrainlineRequest:
+    origin: str
+    destination: str
+    max_results: int
+
+@dataclass
+class TrainItem:
+    operator: str
+    departure: str
+    arrival: str
+    duration: str
+    price: str
+
+@dataclass
+class TrainlineResult:
+    trains: List[TrainItem]
+
+# Searches Trainline for train tickets and extracts operator,
+# departure time, arrival time, duration, and price.
+def search_trainline(page: Page, request: TrainlineRequest) -> TrainlineResult

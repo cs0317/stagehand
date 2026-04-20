@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://hackernoon.com
+
+* Concrete task
+- Search HackerNoon for articles about "blockchain development".
+- Extract the top 5 articles: title, author, publish date, read time, and number of reactions.
+- Print the results.

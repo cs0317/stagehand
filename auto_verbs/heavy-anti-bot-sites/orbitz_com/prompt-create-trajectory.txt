@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.orbitz.com
+
+* Concrete task
+- Search Orbitz for vacation packages to "Cancun, Mexico".
+- Extract the top 5 packages: hotel name, flight included (yes/no), total price, duration, and rating.
+- Print the results.

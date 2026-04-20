@@ -1,0 +1,20 @@
+@dataclass
+class TractorSupplyRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class ProductItem:
+    name: str
+    brand: str
+    price: str
+    rating: str
+    reviews: str
+
+@dataclass
+class TractorSupplyResult:
+    products: List[ProductItem]
+
+# Searches Tractor Supply for products and extracts name,
+# brand, price, rating, and number of reviews.
+def search_tractorsupply(page: Page, request: TractorSupplyRequest) -> TractorSupplyResult

@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": 2884,
+    "type": "goto",
+    "url": "https://www.livescience.com/search?searchTerm=black%20holes",
+    "description": "Navigate to https://www.livescience.com/search?searchTerm=black%20holes"
+  },
+  {
+    "timestamp": 22380,
+    "type": "extract",
+    "results": [
+      {
+        "title": "Scientists may have finally solved the problem of the universe’s 'missing' black holes",
+        "author": "Ben Turner",
+        "date": "May 30, 2024",
+        "summary": "Primordial black holes are one of the strongest candidates for the universe's missing dark matter. But a new theory suggests that not enough of the miniature black holes formed for this to be the case."
+      },
+      {
+        "title": "Stephen Hawking's black hole radiation paradox could finally be solved — if black holes aren't what they seem",
+        "author": "Andrey Feldman",
+        "date": "September 20, 2024",
+        "summary": "New research suggests that black holes may actually be \"frozen stars,\" bizarre quantum objects that lack a singularity and an event horizon, potentially solving some of the biggest paradoxes in black hole physics."
+      },
+      {
+        "title": "Astronomers find hundreds of 'hidden' black holes — and there may be billions or even trillions more",
+        "author": "Joanna Thompson",
+        "date": "January 19, 2025",
+        "summary": "Black holes that have been obscured by clouds of dust still emit infrared light, enabling astronomers to spot them for the very first time."
+      },
+      {
+        "title": "The rarest black holes in the universe may be 'wandering' our galaxy — but scientists don't know how to detect them",
+        "author": "Paul Sutter",
+        "date": "May 22, 2025",
+        "summary": "Dozens of 'wandering' black holes could be tumbling through our galaxy right now, new simulations hint. Their existence could help solve a longstanding cosmic puzzle."
+      },
+      {
+        "title": "Scientists discover bizarre region around black holes that proves Einstein right yet again",
+        "author": "Ben Turner",
+        "date": "May 17, 2024",
+        "summary": "Einstein's general theory of relativity predicted that so-called 'plunging regions' around black holes would accelerate matter into them at the speed of light. Now, X-ray observations of a remote black hole have proved him right."
+      }
+    ]
+  }
+]

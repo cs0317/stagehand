@@ -1,0 +1,19 @@
+@dataclass
+class NotionRequest:
+    category: str
+    max_results: int
+
+@dataclass
+class TemplateItem:
+    name: str
+    creator: str
+    category: str
+    description: str
+
+@dataclass
+class NotionResult:
+    templates: List[TemplateItem]
+
+# Browses Notion templates and extracts template name,
+# creator, category, and description.
+def get_notion_templates(page: Page, request: NotionRequest) -> NotionResult

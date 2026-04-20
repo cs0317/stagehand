@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.wikihow.com
+
+* Concrete task
+- Search wikiHow for "how to start a garden".
+- Extract: article title, number of parts/sections, number of steps, expert co-author (if any), views, and a summary of the first 3 steps.
+- Print the information.

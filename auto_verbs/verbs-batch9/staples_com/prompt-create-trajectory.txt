@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.staples.com
+
+* Concrete task
+- Search Staples for "ergonomic office chairs".
+- Extract the top 5 products: product name, brand, price, rating, number of reviews, and key features.
+- Print the results.

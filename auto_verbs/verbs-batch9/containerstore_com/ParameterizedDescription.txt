@@ -1,0 +1,8 @@
+Search The Container Store for products by keyword.
+
+Parameters:
+- query: str — Search query (e.g., "closet organization")
+- max_results: int — Maximum products to return (default: 5)
+
+Returns:
+- A list of products, each with: name, price, dimensions, material, rating

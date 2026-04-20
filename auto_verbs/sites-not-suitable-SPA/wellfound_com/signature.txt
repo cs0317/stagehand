@@ -1,0 +1,20 @@
+@dataclass
+class WellfoundRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class JobItem:
+    title: str
+    company: str
+    salary: str
+    equity: str
+    stage: str
+
+@dataclass
+class WellfoundResult:
+    jobs: List[JobItem]
+
+# Searches Wellfound for startup jobs and extracts job title,
+# company name, salary range, equity range, and company stage.
+def search_wellfound(page: Page, request: WellfoundRequest) -> WellfoundResult

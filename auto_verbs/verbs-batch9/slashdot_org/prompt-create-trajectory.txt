@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://slashdot.org
+
+* Concrete task
+- Browse the latest stories on Slashdot.
+- Extract the top 5 stories: headline, department tag, author, comment count, and post date.
+- Print the results.

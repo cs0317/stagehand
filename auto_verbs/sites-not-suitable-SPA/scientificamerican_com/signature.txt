@@ -1,0 +1,19 @@
+@dataclass
+class SciAmRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class ArticleItem:
+    title: str
+    author: str
+    publish_date: str
+    summary: str
+
+@dataclass
+class SciAmResult:
+    articles: List[ArticleItem]
+
+# Searches Scientific American for articles and extracts title,
+# author, publish date, and summary.
+def search_sciam(page: Page, request: SciAmRequest) -> SciAmResult

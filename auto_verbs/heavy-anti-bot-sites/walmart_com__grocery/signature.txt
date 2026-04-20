@@ -1,0 +1,20 @@
+@dataclass
+class WalmartGroceryRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class ProductItem:
+    name: str
+    price: str
+    price_per_unit: str
+    rating: str
+    availability: str
+
+@dataclass
+class WalmartGroceryResult:
+    products: List[ProductItem]
+
+# Searches Walmart grocery for products and extracts name,
+# price, price per unit, rating, and availability.
+def search_walmart_grocery(page: Page, request: WalmartGroceryRequest) -> WalmartGroceryResult

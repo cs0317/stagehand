@@ -1,0 +1,22 @@
+@dataclass
+class LowesRequest:
+    search_query: str
+    max_results: int
+
+@dataclass
+class ProductItem:
+    name: str
+    brand: str
+    price: str
+    voltage: str
+    rating: str
+    reviews: str
+
+@dataclass
+class LowesResult:
+    query: str
+    products: List[ProductItem]
+
+# Searches Lowe's for products matching the query and returns
+# up to max_results products with name, brand, price, voltage, rating, reviews.
+def search_lowes_products(page: Page, request: LowesRequest) -> LowesResult

@@ -1,0 +1,11 @@
+Search AutoTrader for used car listings.
+
+Parameters:
+- make_model: str — Make and model (e.g., "Honda Civic")
+- max_price: int — Maximum price filter (default: 25000)
+- zip_code: str — ZIP code for location (default: "60601")
+- radius: int — Search radius in miles (default: 50)
+- max_results: int — Maximum listings to return (default: 5)
+
+Returns:
+- A list of car listings, each with: year, make_model, trim, mileage, price, dealer_name, location

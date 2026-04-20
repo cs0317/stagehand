@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://lifehacker.com
+
+* Concrete task
+- Search Lifehacker for articles about "productivity tips".
+- Extract the top 5 articles: title, author, publish date, and summary.
+- Print the results.

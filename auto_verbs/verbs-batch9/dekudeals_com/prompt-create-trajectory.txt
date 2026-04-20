@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.dekudeals.com
+
+* Concrete task
+- Browse Deku Deals for current Nintendo Switch game deals.
+- Extract the top 5 deals: game title, current price, regular price, discount percentage, and sale end date.
+- Print the results.

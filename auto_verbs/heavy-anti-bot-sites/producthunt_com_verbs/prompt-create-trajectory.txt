@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.producthunt.com
+
+* Concrete task
+- Browse today's top product launches on Product Hunt.
+- Extract the top 5 products: product name, tagline, upvote count, comment count, and maker name.
+- Print the results.

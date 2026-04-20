@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.espn.com/fantasy/football/
+
+* Concrete task
+- Browse ESPN Fantasy Football player rankings.
+- Extract the top 10 ranked players: rank, name, team, position, and projected points.
+- Print the rankings.

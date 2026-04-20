@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 2706,
+    "type": "goto",
+    "url": "https://www.guitarcenter.com/search?typeAheadSuggestion=false&fromRecentHistory=false&Ntt=acoustic%20guitars",
+    "description": "Navigate to https://www.guitarcenter.com/search?typeAheadSuggestion=false&fromRecentHistory=false&Ntt=acoustic%20guitars"
+  },
+  {
+    "timestamp": 7721,
+    "type": "extract",
+    "results": []
+  }
+]

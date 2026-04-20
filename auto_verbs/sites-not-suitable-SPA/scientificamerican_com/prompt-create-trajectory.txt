@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.scientificamerican.com
+
+* Concrete task
+- Search Scientific American for articles about "climate change".
+- Extract the top 5 articles: title, author, publish date, and summary.
+- Print the results.

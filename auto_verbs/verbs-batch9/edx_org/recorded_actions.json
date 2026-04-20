@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 868,
+    "type": "goto",
+    "url": "https://www.edx.org/search?q=data%20science",
+    "description": "Navigate to https://www.edx.org/search?q=data%20science"
+  },
+  {
+    "timestamp": 5879,
+    "type": "extract",
+    "results": []
+  }
+]

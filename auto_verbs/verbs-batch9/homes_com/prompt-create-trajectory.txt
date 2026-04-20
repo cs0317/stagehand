@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.homes.com
+
+* Concrete task
+- Search Homes.com for homes for sale in "Portland, OR".
+- Extract the top 5 listings: address, price, bedrooms, bathrooms, square footage, and year built.
+- Print the results.

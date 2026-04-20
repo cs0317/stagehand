@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 334,
+    "type": "goto",
+    "url": "https://www.kiplinger.com/retirement/retirement-planning",
+    "description": "Navigate to https://www.kiplinger.com/retirement/retirement-planning"
+  },
+  {
+    "timestamp": 16448,
+    "type": "extract",
+    "results": [
+      {
+        "title": "We're Retired and Wealthy. I Want to Splurge but My Wife Says 'No.'",
+        "author": "",
+        "publish_date": "",
+        "category": "Retirement Planning",
+        "summary": "We're 67 with $5.8 million after years of scrimping. I want to spend $300K on much-needed home renovations and a new car. How do I get my wife to say \"yes\"?"
+      },
+      {
+        "title": "When Managing Your Wealth Feels Like a Pain, Simplify",
+        "author": "FRANK J. LEGAN",
+        "publish_date": "",
+        "category": "Retirement Planning",
+        "summary": "Multiple accounts, inherited assets and life transitions can make finances harder to manage when you retire. Simplifying what you have is a smart move."
+      },
+      {
+        "title": "The Retirement Spending Mistake Even Careful Savers Make (and How to Fix It)",
+        "author": "PATRICK PAYNE, PH.D., CFP®",
+        "publish_date": "",
+        "category": "Retirement Planning",
+        "summary": "Playing it too safe could mean trips not taken, educations not funded, life not enjoyed. Don't abandon caution — just build contingency plans for your portfolio."
+      },
+      {
+        "title": "Are Your Retirement Savings on Track at Ages 55 to 60? Take Our Quiz",
+        "author": "DONNA FUSCALDO",
+        "publish_date": "",
+        "category": "Retirement Planning",
+        "summary": "Find out if your retirement savings are on track with our quick quiz."
+      },
+      {
+        "title": "The 5 Trusts You Need to Understand",
+        "author": "DONNA LEVALLEY",
+        "publish_date": "",
+        "category": "Retirement Planning",
+        "summary": "You can use these trusts to cement your legacy, organize your estate and limit your exposure to estate and gift taxes."
+      }
+    ]
+  }
+]

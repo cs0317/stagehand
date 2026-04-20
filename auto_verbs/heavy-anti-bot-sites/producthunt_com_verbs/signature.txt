@@ -1,0 +1,19 @@
+@dataclass
+class ProductHuntRequest:
+    max_results: int
+
+@dataclass
+class ProductItem:
+    name: str
+    tagline: str
+    upvotes: str
+    comments: str
+    maker: str
+
+@dataclass
+class ProductHuntResult:
+    products: List[ProductItem]
+
+# Browses today's Product Hunt launches and extracts product name,
+# tagline, upvote count, comment count, and maker name.
+def get_producthunt_today(page: Page, request: ProductHuntRequest) -> ProductHuntResult

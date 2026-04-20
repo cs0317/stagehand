@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.zillow.com/mortgage-rates/
+
+* Concrete task
+- Look up current mortgage rates on Zillow.
+- Extract rates for 30-year fixed, 15-year fixed, and 5/1 ARM: rate, APR, and monthly payment for a $400,000 loan.
+- Print the comparison.

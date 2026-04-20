@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.realtor.com
+
+* Concrete task
+- Search Realtor.com for homes for sale in "Austin, TX" priced between $300,000 and $500,000.
+- Extract the top 5 listings: address, price, bedrooms, bathrooms, square footage, and listing status.
+- Print the results.

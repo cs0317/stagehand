@@ -1,0 +1,20 @@
+@dataclass
+class QuoraRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class QuestionItem:
+    question: str
+    num_answers: str
+    followers: str
+    top_answer_author: str
+    top_answer_upvotes: str
+
+@dataclass
+class QuoraResult:
+    questions: List[QuestionItem]
+
+# Searches Quora for questions and extracts question text,
+# number of answers, followers, top answer author and upvotes.
+def search_quora(page: Page, request: QuoraRequest) -> QuoraResult

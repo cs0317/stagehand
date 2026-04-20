@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://mastodon.social/explore
+
+* Concrete task
+- Browse trending posts on Mastodon.
+- Extract the top 5 trending posts: author, content (first 200 chars), boost count, and favorite count.
+- Print the results.

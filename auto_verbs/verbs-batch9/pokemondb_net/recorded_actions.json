@@ -1,0 +1,25 @@
+[
+  {
+    "timestamp": 609,
+    "type": "goto",
+    "url": "https://pokemondb.net/pokedex/pikachu",
+    "description": "Navigate to https://pokemondb.net/pokedex/pikachu"
+  },
+  {
+    "timestamp": 9861,
+    "type": "extract",
+    "results": {
+      "name": "Pikachu",
+      "pokedex_number": "#25",
+      "types": "Electric",
+      "abilities": "Static, Lightning Rod",
+      "hp": "HP: 35",
+      "attack": "Attack: 55",
+      "defense": "Defense: 40",
+      "sp_atk": "Sp. Atk: 50",
+      "sp_def": "Sp. Def: 50",
+      "speed": "Speed: 90",
+      "evolution_chain": "Pichu (Friendship) → Pikachu (Thunder Stone) → Raichu / Alolan Raichu (Thunder Stone)"
+    }
+  }
+]

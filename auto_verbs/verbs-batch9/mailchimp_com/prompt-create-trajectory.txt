@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://mailchimp.com/resources/
+
+* Concrete task
+- Search Mailchimp resources for articles about "audience segmentation".
+- Extract the top 5 resources: title, type (guide, article, tutorial), and summary.
+- Print the results.

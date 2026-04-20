@@ -1,0 +1,8 @@
+Browse Chess.com leaderboard by game category.
+
+Parameters:
+- category: str — Game category (e.g., "blitz", "rapid", "bullet")
+- max_results: int — Maximum players to return (default: 10)
+
+Returns:
+- A list of players, each with: rank, username, rating, country, record, title

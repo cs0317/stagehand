@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.gamestop.com
+
+* Concrete task
+- Search GameStop for "PlayStation 5" games.
+- Extract the top 5 games: title, platform, price, condition (new/pre-owned), and rating.
+- Print the results.

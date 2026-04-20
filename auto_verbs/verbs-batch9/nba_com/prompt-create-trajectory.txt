@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.nba.com
+
+* Concrete task
+- Browse NBA standings for the current season.
+- Extract all teams from the Eastern Conference: team name, wins, losses, win percentage, games behind, and streak.
+- Print the standings.

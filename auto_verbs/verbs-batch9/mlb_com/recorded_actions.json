@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 627,
+    "type": "goto",
+    "url": "https://www.mlb.com/standings/american-league",
+    "description": "Navigate to https://www.mlb.com/standings/american-league"
+  },
+  {
+    "timestamp": 19709,
+    "type": "extract",
+    "results": []
+  }
+]

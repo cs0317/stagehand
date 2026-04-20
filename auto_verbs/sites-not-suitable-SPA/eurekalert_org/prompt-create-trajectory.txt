@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.eurekalert.org
+
+* Concrete task
+- Search EurekAlert! for recent press releases about "Alzheimer's research".
+- Extract the top 5 releases: headline, institution, publish date, and summary.
+- Print the results.

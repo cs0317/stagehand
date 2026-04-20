@@ -1,0 +1,21 @@
+@dataclass
+class RentalCarsRequest:
+    location: str
+    days: int
+    max_results: int
+
+@dataclass
+class CarOption:
+    car_type: str
+    company: str
+    price_per_day: str
+    total_price: str
+    features: str
+
+@dataclass
+class RentalCarsResult:
+    options: List[CarOption]
+
+# Searches RentalCars.com for car rentals and extracts car type,
+# company, price per day, total price, and features.
+def search_rentalcars(page: Page, request: RentalCarsRequest) -> RentalCarsResult

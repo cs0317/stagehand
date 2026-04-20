@@ -1,0 +1,8 @@
+Browse Amazon Subscribe & Save deals by category.
+
+Parameters:
+- category: str — Product category (e.g., "baby")
+- max_results: int — Maximum number of items to return (default: 5)
+
+Returns:
+- A list of S&S items, each with: product_name, regular_price, subscribe_price, discount_pct

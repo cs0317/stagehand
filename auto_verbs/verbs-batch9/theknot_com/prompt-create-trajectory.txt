@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.theknot.com
+
+* Concrete task
+- Search The Knot for wedding venues in "Austin, Texas".
+- Extract the top 5 venues: venue name, capacity, price range, rating, and number of reviews.
+- Print the results.

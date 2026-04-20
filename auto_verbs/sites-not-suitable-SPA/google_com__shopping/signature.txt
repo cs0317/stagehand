@@ -1,0 +1,21 @@
+@dataclass(frozen=True)
+class GoogleShoppingRequest:
+    search_query: str
+    max_results: int
+
+@dataclass
+class ProductItem:
+    name: str
+    price: str
+    store: str
+    rating: str
+    reviews: str
+
+@dataclass
+class GoogleShoppingResult:
+    query: str
+    items: List[ProductItem]
+
+# Searches Google Shopping for products matching the query and returns
+# up to max_results products with name, price, store, rating, and review count.
+def search_google_shopping(page: Page, request: GoogleShoppingRequest) -> GoogleShoppingResult:

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://pluto.tv
+
+* Concrete task
+- Browse Pluto TV's free streaming channels in the "News" category.
+- Extract the top 5 channels: channel name, description, and current program airing.
+- Print the results.

@@ -1,0 +1,8 @@
+Search Byrdie for skincare articles by keyword.
+
+Parameters:
+- query: str — Search query (e.g., "retinol")
+- max_results: int — Maximum articles to return (default: 5)
+
+Returns:
+- A list of articles, each with: title, author, publish_date, key_takeaways

@@ -1,0 +1,7 @@
+Browse Criterion Channel curated film collections.
+
+Parameters:
+- max_results: int — Maximum collections to return (default: 5)
+
+Returns:
+- A list of collections, each with: name, num_films, curator, description

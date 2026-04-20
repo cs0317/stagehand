@@ -35,25 +35,23 @@ def thrillist_search(page, request: ThrillistSearchRequest) -> ThrillistSearchRe
     try:
         url = f"https://www.thrillist.com/eat/nation"
         page.goto(url, wait_until="domcontentloaded", timeout=30000)
-        page.wait_for_timeout(3000)
+        page.wait_for_timeout(5000)
 
         checkpoint("Search results loaded")
 
         articles_data = page.evaluate("""(max) => {
-            const links = document.querySelectorAll('a[href]');
-            const items = [];
+            const results = [];
             const seen = new Set();
-            for (const a of links) {
-                if (items.length >= max) break;
-                const href = a.getAttribute('href') || '';
-                if (!href.match(/thrillist\\.com\\/(eat|drink|travel|entertainment|news|lifestyle)\\//)) continue;
-                const text = a.textContent.trim();
-                if (!text || text.length < 15 || text.length > 200) continue;
-                if (seen.has(href)) continue;
-                seen.add(href);
-                items.push({title: text, author: '', publish_date: '', category: '', summary: ''});
+            const headings = document.querySelectorAll('h2, h3');
+            for (const h of headings) {
+                if (results.length >= max) break;
+                const title = h.innerText.trim();
+                if (!title || title.length < 10 || seen.has(title)) continue;
+                if (title.match(/^(Subscribe|Newsletter|Sign|Menu|Search|Privacy|Cookie|Follow|About|Navigation|Page Not|Latest In|More In|Explore)/i)) continue;
+                seen.add(title);
+                results.push({title, author: '', publish_date: '', category: '', summary: ''});
             }
-            return items;
+            return results;
         }""", request.max_results)
 
         for item in articles_data:

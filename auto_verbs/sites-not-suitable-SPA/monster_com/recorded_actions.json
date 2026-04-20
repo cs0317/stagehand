@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 562,
+    "type": "goto",
+    "url": "https://www.monster.com/jobs/search?q=software%20engineer&where=Seattle%2C%20WA",
+    "description": "Navigate to https://www.monster.com/jobs/search?q=software%20engineer&where=Seattle%2C%20WA"
+  },
+  {
+    "timestamp": 20138,
+    "type": "extract",
+    "results": [
+      {
+        "title": "Sr. Software Dev Engineer, Kiro Autonomous Agent",
+        "company": "Amazon Web Services, Inc.",
+        "location": "Seattle, WA",
+        "salary": "",
+        "date": "2 days ago"
+      },
+      {
+        "title": "Sr. Software Development Engineer, Amazon Game Studios",
+        "company": "Amazon.com Services LLC",
+        "location": "Seattle, WA",
+        "salary": "",
+        "date": "2 days ago"
+      },
+      {
+        "title": "Senior Software Engineer",
+        "company": "Microsoft",
+        "location": "Redmond, WA",
+        "salary": "$119,800–$234,700 / Year",
+        "date": "17 days ago"
+      },
+      {
+        "title": "Software Engineer II - CTJ - Top Secret",
+        "company": "Microsoft",
+        "location": "Redmond, WA",
+        "salary": "$100,600–$199,000 / Year",
+        "date": "17 days ago"
+      },
+      {
+        "title": "Principal Software Engineer, Digital Agent (AI-Assisted Development)",
+        "company": "Infoblox",
+        "location": "Tacoma, WA",
+        "salary": "$195,000–$300,000 / Year",
+        "date": "17 days ago"
+      }
+    ]
+  }
+]

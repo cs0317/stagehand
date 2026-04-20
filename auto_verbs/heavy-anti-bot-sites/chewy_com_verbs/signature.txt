@@ -1,0 +1,24 @@
+@dataclass(frozen=True)
+class ChewySearchRequest:
+    query: str = "dog food grain-free"
+    max_results: int = 5
+
+
+@dataclass
+class ProductItem:
+    name: str = ""
+    brand: str = ""
+    price: str = ""
+    size: str = ""
+    rating: str = ""
+    num_reviews: str = ""
+
+
+@dataclass
+class ChewySearchResult:
+    query: str = ""
+    items: List[ProductItem] = field(default_factory=list)
+
+
+# Search Chewy for pet products.
+def search_chewy(page: Page, request: ChewySearchRequest) -> ChewySearchResult:

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://99designs.com
+
+* Concrete task
+- Browse 99designs for "website design" contest entries.
+- Extract the top 5 designer names.
+- Print the results.

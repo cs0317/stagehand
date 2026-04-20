@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.rent.com
+
+* Concrete task
+- Search Rent.com for apartments in "Denver, CO" with 2 bedrooms.
+- Extract the top 5 listings: property name, rent range, bedrooms, bathrooms, square footage, and amenities.
+- Print the results.

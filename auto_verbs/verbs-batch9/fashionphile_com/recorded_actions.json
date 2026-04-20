@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 2006,
+    "type": "goto",
+    "url": "https://www.fashionphile.com/shop?search=Louis%20Vuitton",
+    "description": "Navigate to https://www.fashionphile.com/shop?search=Louis%20Vuitton"
+  },
+  {
+    "timestamp": 7386,
+    "type": "extract",
+    "results": [
+      {
+        "name": "Louis VuittonMonogram 2023 Christmas Animation Alpine Mini Pochette Accessories Pink",
+        "condition": "Excellent",
+        "price": "$695",
+        "retail_price": "",
+        "savings": ""
+      },
+      {
+        "name": "Louis VuittonDamier Ebene Speedy Bandouliere 20",
+        "condition": "Excellent",
+        "price": "$2,195Est. Retail $2,2603% below retail",
+        "retail_price": "Est. Retail $2,2603% below retail",
+        "savings": ""
+      },
+      {
+        "name": "Louis VuittonEpi Alma BB Black",
+        "condition": "Excellent",
+        "price": "$1,850Est. Retail $2,15014% below retail",
+        "retail_price": "Est. Retail $2,15014% below retail",
+        "savings": ""
+      },
+      {
+        "name": "Louis VuittonEmpreinte Monogram Giant Onthego PM Tourterelle Creme",
+        "condition": "Excellent",
+        "price": "$2,795Est. Retail $3,45019% below retail",
+        "retail_price": "Est. Retail $3,45019% below retail",
+        "savings": ""
+      },
+      {
+        "name": "Louis VuittonMonogram Macassar Christopher Bumbag",
+        "condition": "Excellent",
+        "price": "$1,495Est. Retail $1,92022% below retail",
+        "retail_price": "Est. Retail $1,92022% below retail",
+        "savings": ""
+      }
+    ]
+  }
+]

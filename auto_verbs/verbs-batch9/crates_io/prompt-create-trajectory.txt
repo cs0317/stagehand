@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://crates.io
+
+* Concrete task
+- Search crates.io for Rust crates related to "async runtime".
+- Extract the top 5 crates: crate name, version, downloads, description, and last updated.
+- Print the results.

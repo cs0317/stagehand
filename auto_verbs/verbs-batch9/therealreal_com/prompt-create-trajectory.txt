@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.therealreal.com
+
+* Concrete task
+- Search The RealReal for consignment "Gucci" items.
+- Extract the top 5 items: item name, designer, condition, estimated retail price, and sale price.
+- Print the results.

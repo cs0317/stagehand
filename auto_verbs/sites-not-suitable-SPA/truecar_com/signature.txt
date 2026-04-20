@@ -1,0 +1,21 @@
+@dataclass
+class TrueCarRequest:
+    make: str
+    model: str
+    max_results: int
+
+@dataclass
+class TrimItem:
+    trim: str
+    msrp: str
+    avg_price: str
+    savings: str
+    inventory: str
+
+@dataclass
+class TrueCarResult:
+    trims: List[TrimItem]
+
+# Gets TrueCar pricing for a vehicle and extracts trim name,
+# MSRP, average price paid, savings, and inventory count.
+def get_truecar_pricing(page: Page, request: TrueCarRequest) -> TrueCarResult

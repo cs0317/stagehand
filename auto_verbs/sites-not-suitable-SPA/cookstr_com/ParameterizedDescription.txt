@@ -1,0 +1,8 @@
+Search Cookstr for recipes from famous cookbooks.
+
+Parameters:
+- query: str — Recipe search query (e.g., "pasta")
+- max_results: int — Maximum recipes to return (default: 5)
+
+Returns:
+- A list of recipes, each with: name, cookbook_title, author, cuisine_type

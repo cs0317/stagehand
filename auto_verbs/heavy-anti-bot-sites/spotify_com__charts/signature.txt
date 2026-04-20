@@ -1,0 +1,20 @@
+@dataclass
+class SpotifyChartsRequest:
+    country: str
+    max_results: int
+
+@dataclass
+class SongItem:
+    rank: str
+    title: str
+    artist: str
+    peak: str
+    weeks: str
+
+@dataclass
+class SpotifyChartsResult:
+    songs: List[SongItem]
+
+# Browses Spotify Charts for top songs and extracts rank,
+# title, artist, peak position, and weeks on chart.
+def get_spotify_charts(page: Page, request: SpotifyChartsRequest) -> SpotifyChartsResult

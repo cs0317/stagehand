@@ -1,0 +1,22 @@
+@dataclass(frozen=True)
+class BarronsSearchRequest:
+    query: str = "technology stocks"
+    max_results: int = 5
+
+
+@dataclass
+class ArticleItem:
+    headline: str = ""
+    author: str = ""
+    publish_date: str = ""
+    summary: str = ""
+
+
+@dataclass
+class BarronsSearchResult:
+    query: str = ""
+    items: List[ArticleItem] = field(default_factory=list)
+
+
+# Search Barron's for articles.
+def search_barrons(page: Page, request: BarronsSearchRequest) -> BarronsSearchResult:

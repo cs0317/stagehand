@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.infoq.com
+
+* Concrete task
+- Search InfoQ for articles about "microservices architecture".
+- Extract the top 5 articles: title, author, publish date, topic, and summary.
+- Print the results.

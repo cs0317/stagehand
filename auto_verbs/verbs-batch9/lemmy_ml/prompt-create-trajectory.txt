@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://lemmy.ml
+
+* Concrete task
+- Browse the top communities on Lemmy.
+- Extract the top 5 communities: community name, description, subscriber count, and number of posts.
+- Print the results.

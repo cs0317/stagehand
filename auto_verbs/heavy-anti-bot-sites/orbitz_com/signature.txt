@@ -1,0 +1,20 @@
+@dataclass
+class OrbitzRequest:
+    destination: str
+    max_results: int
+
+@dataclass
+class PackageItem:
+    hotel_name: str
+    flight_included: str
+    total_price: str
+    duration: str
+    rating: str
+
+@dataclass
+class OrbitzResult:
+    packages: List[PackageItem]
+
+# Searches Orbitz for vacation packages and extracts hotel name,
+# flight included, total price, duration, and rating.
+def search_orbitz(page: Page, request: OrbitzRequest) -> OrbitzResult

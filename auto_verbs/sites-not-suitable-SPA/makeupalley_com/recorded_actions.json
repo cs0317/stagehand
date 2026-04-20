@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": 89,
+    "type": "goto",
+    "url": "https://www.makeupalley.com",
+    "description": "Navigate to https://www.makeupalley.com"
+  },
+  {
+    "timestamp": 7644,
+    "type": "extract",
+    "results": []
+  }
+]

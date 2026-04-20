@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://lichess.org
+
+* Concrete task
+- Browse Lichess daily puzzles or the puzzle database.
+- Extract 5 puzzles: puzzle ID, rating, theme/motif, number of plays, and success rate.
+- Print the puzzles.

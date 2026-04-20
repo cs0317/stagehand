@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.iherb.com
+
+* Concrete task
+- Search iHerb for "vitamin D supplements".
+- Extract the top 5 products: product name, brand, price, dosage, serving count, and rating.
+- Print the results.

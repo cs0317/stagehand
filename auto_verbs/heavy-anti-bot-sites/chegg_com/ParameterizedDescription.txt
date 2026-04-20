@@ -1,0 +1,8 @@
+Search Chegg for textbook solutions by keyword.
+
+Parameters:
+- query: str — Subject or keyword (e.g., "calculus")
+- max_results: int — Maximum textbooks to return (default: 5)
+
+Returns:
+- A list of textbooks, each with: title, author, edition, num_solutions, price

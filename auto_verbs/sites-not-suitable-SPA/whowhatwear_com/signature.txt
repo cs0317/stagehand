@@ -1,0 +1,19 @@
+@dataclass
+class WhoWhatWearRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class ArticleItem:
+    title: str
+    author: str
+    date: str
+    summary: str
+
+@dataclass
+class WhoWhatWearResult:
+    articles: List[ArticleItem]
+
+# Searches Who What Wear for fashion trend articles and extracts
+# title, author, publish date, and summary.
+def search_whowhatwear(page: Page, request: WhoWhatWearRequest) -> WhoWhatWearResult

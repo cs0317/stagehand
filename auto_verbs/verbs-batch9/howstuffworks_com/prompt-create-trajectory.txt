@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.howstuffworks.com
+
+* Concrete task
+- Search HowStuffWorks for articles about "how solar panels work".
+- Extract the top 5 articles: title and summary.
+- Print the results.

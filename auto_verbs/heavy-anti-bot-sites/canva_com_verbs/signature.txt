@@ -1,0 +1,22 @@
+@dataclass(frozen=True)
+class CanvaTemplatesRequest:
+    query: str = "Instagram posts"
+    max_results: int = 5
+
+
+@dataclass
+class TemplateItem:
+    name: str = ""
+    category: str = ""
+    dimensions: str = ""
+    is_free: str = ""
+
+
+@dataclass
+class CanvaTemplatesResult:
+    query: str = ""
+    items: List[TemplateItem] = field(default_factory=list)
+
+
+# Browse Canva templates by query.
+def browse_canva_templates(page: Page, request: CanvaTemplatesRequest) -> CanvaTemplatesResult:

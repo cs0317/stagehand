@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": 2353,
+    "type": "goto",
+    "url": "https://www.minted.com/wedding-invitations?search=modern%20minimalist%20wedding%20invitations",
+    "description": "Navigate to https://www.minted.com/wedding-invitations?search=modern%20minimalist%20wedding%20invitations"
+  },
+  {
+    "timestamp": 12146,
+    "type": "extract",
+    "results": [
+      {
+        "name": "Museo",
+        "artist": "Ellen Schlegelmilch",
+        "price": "",
+        "color_options": ""
+      },
+      {
+        "name": "Patterned Florals",
+        "artist": "Creo Study",
+        "price": "",
+        "color_options": "Custom color"
+      },
+      {
+        "name": "Dancing In The Garden",
+        "artist": "Grae",
+        "price": "",
+        "color_options": "Custom color"
+      },
+      {
+        "name": "Maximalist Poppies",
+        "artist": "Morgan Kendall",
+        "price": "",
+        "color_options": ""
+      },
+      {
+        "name": "Calia",
+        "artist": "Ani Somi",
+        "price": "",
+        "color_options": "Custom color"
+      }
+    ]
+  }
+]

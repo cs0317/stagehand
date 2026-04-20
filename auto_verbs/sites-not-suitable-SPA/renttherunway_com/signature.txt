@@ -1,0 +1,21 @@
+@dataclass
+class RTRRequest:
+    event: str
+    max_results: int
+
+@dataclass
+class DressItem:
+    designer: str
+    name: str
+    rental_price: str
+    retail_price: str
+    sizes: str
+    rating: str
+
+@dataclass
+class RTRResult:
+    dresses: List[DressItem]
+
+# Browses Rent the Runway for dresses and extracts designer,
+# name, rental/retail price, sizes, and rating.
+def search_rtr(page: Page, request: RTRRequest) -> RTRResult

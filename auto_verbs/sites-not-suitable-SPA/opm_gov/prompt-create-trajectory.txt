@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.opm.gov
+
+* Concrete task
+- Search OPM for information about federal employee "GS pay scale".
+- Extract the 2024 GS pay scale: grade levels GS-1 through GS-15 with Step 1 and Step 10 annual salaries.
+- Print the pay table.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.masterclass.com
+
+* Concrete task
+- Browse MasterClass classes in the "Cooking" category.
+- Extract the top 5 classes: instructor name, class title, number of lessons, total runtime, and description.
+- Print the results.

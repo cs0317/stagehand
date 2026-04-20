@@ -1,0 +1,20 @@
+@dataclass
+class TripAdvisorForumsRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class ForumPost:
+    title: str
+    forum: str
+    author: str
+    replies: str
+    last_reply: str
+
+@dataclass
+class TripAdvisorForumsResult:
+    posts: List[ForumPost]
+
+# Searches TripAdvisor forums and extracts title, forum name,
+# author, reply count, and last reply date.
+def search_tripadvisor_forums(page: Page, request: TripAdvisorForumsRequest) -> TripAdvisorForumsResult

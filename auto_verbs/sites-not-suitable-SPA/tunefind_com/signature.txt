@@ -1,0 +1,19 @@
+@dataclass
+class TunefindRequest:
+    show: str
+    max_results: int
+
+@dataclass
+class SongItem:
+    title: str
+    artist: str
+    episode: str
+    scene: str
+
+@dataclass
+class TunefindResult:
+    songs: List[SongItem]
+
+# Searches Tunefind for music in a TV show and extracts song title,
+# artist, episode, and scene description.
+def search_tunefind(page: Page, request: TunefindRequest) -> TunefindResult

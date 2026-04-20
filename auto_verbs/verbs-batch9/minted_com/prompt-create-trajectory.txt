@@ -1,0 +1,10 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.minted.com
+
+* Concrete task
+- Search Minted for wedding invitation designs.
+- Filter by style "modern minimalist".
+- Extract the top 5 designs: design name, artist, price, and number of color options.
+- Print the results.

@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.monster.com
+
+* Concrete task
+- Search Monster for "software engineer" jobs in "Seattle, WA".
+- Extract the top 5 job listings: job title, company, location, salary range (if shown), and post date.
+- Print the results.

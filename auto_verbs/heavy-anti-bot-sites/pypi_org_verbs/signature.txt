@@ -1,0 +1,20 @@
+@dataclass
+class PyPIRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class PackageItem:
+    name: str
+    version: str
+    description: str
+    author: str
+    last_release: str
+
+@dataclass
+class PyPIResult:
+    packages: List[PackageItem]
+
+# Searches PyPI for packages and extracts package name, version,
+# description, author, and last release date.
+def search_pypi(page: Page, request: PyPIRequest) -> PyPIResult

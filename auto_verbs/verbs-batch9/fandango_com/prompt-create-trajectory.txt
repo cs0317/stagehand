@@ -1,0 +1,9 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.fandango.com
+
+* Concrete task
+- Search Fandango for movies playing near "90210" (Beverly Hills zip code).
+- Extract the top 5 movies: movie title, genre, runtime, Fandango score, and next available showtime.
+- Print the results.

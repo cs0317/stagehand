@@ -1,0 +1,8 @@
+Search Allure for beauty and lifestyle articles.
+
+Parameters:
+- search_query: str — Search query (e.g., "best sunscreens")
+- max_results: int — Maximum number of articles to return (default: 5)
+
+Returns:
+- A list of articles, each with: title, author, publish_date, summary

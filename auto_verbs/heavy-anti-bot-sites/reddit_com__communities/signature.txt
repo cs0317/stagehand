@@ -1,0 +1,19 @@
+@dataclass
+class RedditRequest:
+    query: str
+    max_results: int
+
+@dataclass
+class SubredditItem:
+    name: str
+    members: str
+    description: str
+    online: str
+
+@dataclass
+class RedditResult:
+    subreddits: List[SubredditItem]
+
+# Searches Reddit for communities and extracts name,
+# member count, description, and online count.
+def search_reddit_communities(page: Page, request: RedditRequest) -> RedditResult

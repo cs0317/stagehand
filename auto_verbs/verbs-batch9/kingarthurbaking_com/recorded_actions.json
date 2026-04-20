@@ -1,0 +1,22 @@
+[
+  {
+    "timestamp": 2685,
+    "type": "goto",
+    "url": "https://www.kingarthurbaking.com/recipes?query=sourdough%20bread",
+    "description": "Navigate to https://www.kingarthurbaking.com/recipes?query=sourdough%20bread"
+  },
+  {
+    "timestamp": 7697,
+    "type": "extract",
+    "results": [
+      {
+        "title": "Fresh from the Test Kitchen",
+        "rating": "5.0 out of 5 stars",
+        "reviews": "5",
+        "prep_time": "",
+        "bake_time": "",
+        "difficulty": "Easy"
+      }
+    ]
+  }
+]

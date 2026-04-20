@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": 1911,
+    "type": "goto",
+    "url": "https://www.expedia.com/Cars",
+    "description": "Navigate to https://www.expedia.com/Cars"
+  },
+  {
+    "timestamp": 6963,
+    "type": "extract",
+    "results": [
+      {
+        "car_type": "Discount code",
+        "company": "",
+        "price_per_day": "",
+        "total_price": "",
+        "features": ""
+      },
+      {
+        "car_type": "SUV Rentals",
+        "company": "SUV Rental",
+        "price_per_day": "",
+        "total_price": "",
+        "features": ""
+      },
+      {
+        "car_type": "Passenger Van Rentals",
+        "company": "Van Rental",
+        "price_per_day": "",
+        "total_price": "",
+        "features": ""
+      },
+      {
+        "car_type": "Premium Car Rentals",
+        "company": "Premium Car Rentals",
+        "price_per_day": "",
+        "total_price": "",
+        "features": ""
+      },
+      {
+        "car_type": "Convertible / Luxury Car Rentals",
+        "company": "Convertible / Luxury Car Renta",
+        "price_per_day": "",
+        "total_price": "",
+        "features": ""
+      }
+    ]
+  }
+]
