@@ -1,0 +1,12 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.overleaf.com/
+
+* Concrete task
+- Assume that the user has signed into overleaf (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Use the Templates tab to search for "ieee conference" templates.
+- Click into the first match.
+- Click the "Open as Template" button.
+- You are now in the latex edit UI. The project name is a dropdown list. Open it to select "rename". Rename the project to "My Paper 1".
+- Return whether the task is successful. If so, please also return the project URL.

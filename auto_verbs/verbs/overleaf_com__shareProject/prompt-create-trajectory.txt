@@ -1,0 +1,12 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.overleaf.com/
+
+* Concrete task
+- Assume that the user has signed into overleaf (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Visit the project with the project ID 69e6b0a3d05bcdbdf251587c (i.e., https://www.overleaf.com/project/69e6b0a3d05bcdbdf251587c) 
+- Click the share button.
+- Click the "Open as Template" button.
+- invite an coauthor as "Editor" using email address "shuochen@live.com"  (note that the invitation can be set "Editor/Viewer/Reviewer" using the dropdown list)
+- Return whether the task is successful. 

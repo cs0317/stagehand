@@ -1,0 +1,33 @@
+[
+  {
+    "timestamp": 1523,
+    "type": "goto",
+    "url": "https://www.overleaf.com/user/settings",
+    "description": "Navigate to https://www.overleaf.com/user/settings"
+  },
+  {
+    "timestamp": 6928,
+    "type": "wait",
+    "ms": 5000,
+    "description": "Wait for settings page to load"
+  },
+  {
+    "timestamp": 12971,
+    "type": "click",
+    "selector": "button:has-text(\"Add another token\")",
+    "description": "Click add-another"
+  },
+  {
+    "timestamp": 15989,
+    "type": "extract_text",
+    "selector": "span[aria-label=\"Git authentication token\"] code",
+    "variableName": "token",
+    "description": "Extract generated token"
+  },
+  {
+    "timestamp": 16000,
+    "type": "click",
+    "selector": ".modal-footer button:has-text(\"Close\")",
+    "description": "Click Close"
+  }
+]

@@ -1,0 +1,14 @@
+Create a new Overleaf project from a template.
+
+Parameters:
+- template_query (str): The search query for templates (e.g., "ieee conference")
+- project_name (str): The name to give the newly created project (e.g., "My Paper 1")
+
+Steps:
+1. Navigate to https://www.overleaf.com/latex/templates
+2. Search for {template_query} in the templates search box
+3. Click the first matching template result
+4. Click the "Open as Template" button to create a new project
+5. In the LaTeX editor, open the project name dropdown and select "Rename"
+6. Rename the project to {project_name}
+7. Return whether the task succeeded and the project URL

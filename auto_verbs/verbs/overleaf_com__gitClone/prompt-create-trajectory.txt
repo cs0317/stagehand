@@ -1,0 +1,17 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.overleaf.com/
+
+* Concrete task
+- NOTE: This verb does NOT use browser automation. It uses command-line git operations. The Playwright browser is only used to look up the project ID from the Overleaf dashboard.
+- Assume that the user has signed into overleaf (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- On https://www.overleaf.com/project, search "My Paper 1"
+- Click into the first match. Extract the project ID from the URL (the last path segment of https://www.overleaf.com/project/<PROJECT_ID>).
+- Close the browser.
+- Using subprocess, run the following git commands:
+  1. git clone https://git.overleaf.com/<PROJECT_ID> into a local directory (e.g., "./my-paper-1"). The user's Overleaf credentials (email + password or token) will be needed for authentication.
+  2. cd into the cloned directory.
+  3. git remote add github https://github.com/<GITHUB_USER>/<REPO_NAME>.git
+  4. git push github main (or master, depending on the default branch).
+- Return whether the task is successful. If so, return the local clone path and the GitHub remote URL.

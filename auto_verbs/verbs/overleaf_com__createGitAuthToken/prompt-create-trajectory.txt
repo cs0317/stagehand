@@ -1,0 +1,11 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.overleaf.com/
+
+* Concrete task
+- Assume that the user has signed into overleaf (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- On https://www.overleaf.com/user/settings, locate the section about "Git authentication tokens"
+- If there is no existing token, you will see a "generate token" button. Otherwise you will see an "add another token" link.
+- Click on the button or the link, which opens a popup showing the token. Retrieve the token, and click the "Close" button.
+- Return whether the task is successful. If so, please also return the token. 

@@ -1,13 +1,23 @@
-thrillist_search(search_query: str = "best bars", max_results: int = 5) -> list[dict]
+thrillist_search(page, request)
 
-Search for food and travel articles on Thrillist.
+Searches Thrillist for articles matching a query string,
+extracts up to max_results articles with title, category, and summary.
 
 Parameters:
-  search_query (str): The search query to look up on Thrillist. Default: "best pizza Brooklyn"
-  max_results (int): Maximum number of results to return. Default: 5
+  page: Page (Playwright Page object)
+  request: ThrillistSearchRequest
+    - search_query (str): The search query to look up on Thrillist (required)
+    - max_results (int): Maximum number of results to return (required)
 
-Returns:
-  list[dict]: A list of dictionaries, each containing:
+Returns: ThrillistSearchResult
+  - articles (List[ThrillistArticleItem]): List of extracted articles
     - title (str): The article title
     - category (str): The article category (EAT, DRINK, TRAVEL, EVENTS, etc.)
     - summary (str): A brief summary of the article
+  - error (str): Error message if failed
+
+Example:
+  request = ThrillistSearchRequest(search_query="best pizza Brooklyn", max_results=5)
+  result = thrillist_search(page, request)
+  # result.articles[0].title = "The Best Pizza in Brooklyn"
+  # result.articles[0].category = "EAT"

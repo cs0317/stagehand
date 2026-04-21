@@ -1,0 +1,39 @@
+[
+  {
+    "timestamp": 1561,
+    "type": "goto",
+    "url": "https://www.overleaf.com/project/69e6b0a3d05bcdbdf251587c",
+    "description": "Navigate to https://www.overleaf.com/project/69e6b0a3d05bcdbdf251587c"
+  },
+  {
+    "timestamp": 1857,
+    "type": "wait",
+    "ms": 5000,
+    "description": "Wait for project to load"
+  },
+  {
+    "timestamp": 6867,
+    "type": "click",
+    "selector": "button.btn-primary:has-text(\"Share\")",
+    "description": "Click Share button"
+  },
+  {
+    "timestamp": 11940,
+    "type": "click",
+    "selector": "[data-testid=\"collaborator-email-input\"]",
+    "description": "Click email input"
+  },
+  {
+    "timestamp": 11941,
+    "type": "fill",
+    "selector": "[data-testid=\"collaborator-email-input\"]",
+    "value": "shuochen@live.com",
+    "description": "Type email: shuochen@live.com"
+  },
+  {
+    "timestamp": 12952,
+    "type": "click",
+    "selector": "[role=\"dialog\"] button:has-text(\"Invite\")",
+    "description": "Click Invite"
+  }
+]

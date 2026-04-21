@@ -1,25 +1,34 @@
+"""
+Playwright script (Python) — Thrillist Article Search
+
+Searches Thrillist for food, drink, and travel articles matching a query,
+and extracts article titles, categories, and summaries.
+
+Uses the user's Chrome profile for persistent login state.
+"""
+
 import os
-import sys
-import shutil
 from dataclasses import dataclass, field
 from typing import List
+from playwright.sync_api import sync_playwright, Page
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from cdp_utils import get_free_port, get_temp_profile_dir, launch_chrome, wait_for_cdp_ws
+import sys as _sys
+import os as _os
+_sys.path.insert(0, _os.path.join(_os.path.dirname(__file__), ".."))
 from playwright_debugger import checkpoint
 
 
 @dataclass(frozen=True)
 class ThrillistSearchRequest:
-    search_query: str = "best pizza Brooklyn"
-    max_results: int = 5
+    search_query: str
+    max_results: int
 
 
-@dataclass
+@dataclass(frozen=True)
 class ThrillistArticleItem:
-    title: str = ""
-    category: str = ""
-    summary: str = ""
+    title: str
+    category: str
+    summary: str
 
 
 @dataclass
@@ -28,15 +37,19 @@ class ThrillistSearchResult:
     error: str = ""
 
 
-def thrillist_search(page, request: ThrillistSearchRequest) -> ThrillistSearchResult:
+# Searches Thrillist for articles matching a query string,
+# extracts up to max_results articles with title, category, and summary
+# by parsing the search results page text content.
+def thrillist_search(page: Page, request: ThrillistSearchRequest) -> ThrillistSearchResult:
     result = ThrillistSearchResult()
     try:
         from urllib.parse import quote_plus
         url = f"https://www.thrillist.com/search?q={quote_plus(request.search_query)}"
+        checkpoint(f"Navigate to {url}")
         page.goto(url, wait_until="domcontentloaded", timeout=30000)
         page.wait_for_timeout(5000)
 
-        checkpoint("Page loaded")
+        checkpoint("Page loaded — extracting articles")
 
         articles_data = page.evaluate("""(max) => {
             const results = [];
@@ -67,36 +80,48 @@ def thrillist_search(page, request: ThrillistSearchRequest) -> ThrillistSearchRe
     return result
 
 
-def test_func():
-    port = get_free_port()
-    profile_dir = get_temp_profile_dir()
-    chrome_proc = launch_chrome(profile_dir, port)
-    ws_url = wait_for_cdp_ws(port)
+def test_thrillist_search() -> None:
+    request = ThrillistSearchRequest(
+        search_query="best pizza Brooklyn",
+        max_results=5,
+    )
 
-    from playwright.sync_api import sync_playwright
-    pw = sync_playwright().start()
-    browser = pw.chromium.connect_over_cdp(ws_url)
-    context = browser.contexts[0]
-    page = context.pages[0] if context.pages else context.new_page()
+    print("=" * 60)
+    print("  Thrillist – Article Search")
+    print(f"  Query: {request.search_query}")
+    print(f"  Max results: {request.max_results}")
+    print("=" * 60)
 
-    try:
-        request = ThrillistSearchRequest()
-        result = thrillist_search(page, request)
-        print(f"\nFound {len(result.articles)} articles:")
-        for i, a in enumerate(result.articles):
-            print(f"  {i+1}. [{a.category}] {a.title} - {a.summary[:60]}")
-        if result.error:
-            print(f"Error: {result.error}")
-    finally:
-        browser.close()
-        pw.stop()
-        chrome_proc.terminate()
-        shutil.rmtree(profile_dir, ignore_errors=True)
-
-
-def run_with_debugger():
-    test_func()
+    user_data_dir = os.path.join(
+        os.environ["USERPROFILE"],
+        "AppData", "Local", "Google", "Chrome", "User Data", "Default",
+    )
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir,
+            channel="chrome",
+            headless=False,
+            viewport=None,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-extensions",
+                "--start-maximized",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            result = thrillist_search(page, request)
+            print(f"\nFound {len(result.articles)} articles:")
+            for i, a in enumerate(result.articles, 1):
+                print(f"  {i}. [{a.category}] {a.title}")
+                print(f"     {a.summary[:80]}")
+            if result.error:
+                print(f"Error: {result.error}")
+        finally:
+            context.close()
 
 
 if __name__ == "__main__":
-    run_with_debugger()
+    from playwright_debugger import run_with_debugger
+    run_with_debugger(test_thrillist_search)

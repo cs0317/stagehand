@@ -1,0 +1,21 @@
+Task: Create a Git Authentication Token on Overleaf
+
+Precondition: The user is already signed into Overleaf (the browser uses the user's persistent Chrome profile).
+
+Steps:
+1. Navigate to the Overleaf account settings page at https://www.overleaf.com/user/settings
+2. Locate the "Git authentication tokens" section on the settings page.
+3. Determine whether any tokens already exist:
+   - If no tokens exist, there will be a "Generate token" button.
+   - If tokens already exist, there will be an "Add another token" link.
+4. Click the "Generate token" button or "Add another token" link.
+5. A popup/dialog appears showing the newly generated token. Extract the token text.
+6. Click the "Close" button to dismiss the dialog.
+7. Return the result indicating success and the generated token string.
+
+Parameters: (none — this verb takes no input parameters beyond the page)
+
+Returns:
+  - success (bool): Whether the token was successfully created
+  - token (str): The generated Git authentication token string
+  - error (str): Error message if not successful

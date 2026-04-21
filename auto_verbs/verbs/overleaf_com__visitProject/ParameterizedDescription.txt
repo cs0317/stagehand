@@ -1,0 +1,15 @@
+Visit an Overleaf project by searching for it on the project dashboard.
+
+Parameters:
+  - search_query (str): The text to search for in the project list (e.g., "My paper")
+
+Steps:
+  1. Navigate to https://www.overleaf.com/project (the project dashboard).
+  2. Search for the project using the search_query parameter.
+  3. Click into the first matching project result.
+  4. The browser should now be on the project's LaTeX editor page.
+
+Returns:
+  - success (bool): Whether the task completed successfully.
+  - project_url (str): The URL of the visited project (e.g., "https://www.overleaf.com/project/...").
+  - error (str): Error message if the task failed.

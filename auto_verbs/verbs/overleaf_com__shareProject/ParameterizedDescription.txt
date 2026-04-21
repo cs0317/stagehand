@@ -1,0 +1,14 @@
+Share an Overleaf project with a collaborator.
+
+Parameters:
+- project_id (str): The Overleaf project ID (e.g., "69e6b0a3d05bcdbdf251587c")
+- collaborator_email (str): Email address of the collaborator to invite (e.g., "shuochen@live.com")
+- role (str): The role to assign — one of "Editor", "Viewer", "Reviewer" (default: "Editor")
+
+Steps:
+1. Navigate to https://www.overleaf.com/project/{project_id}
+2. Click the "Share" button in the toolbar
+3. In the share dialog, select the role from the dropdown (Editor/Viewer/Reviewer)
+4. Enter the collaborator's email address
+5. Click the invite/share button
+6. Return whether the invitation was successful
