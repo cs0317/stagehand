@@ -1,0 +1,27 @@
+[
+  {
+    "timestamp": 1589,
+    "type": "goto",
+    "url": "https://www.overleaf.com/project/69e6b0a3d05bcdbdf251587c",
+    "description": "Navigate to https://www.overleaf.com/project/69e6b0a3d05bcdbdf251587c"
+  },
+  {
+    "timestamp": 10073,
+    "type": "click",
+    "selector": "button[aria-label=\"New Folder\"]",
+    "description": "Click New Folder"
+  },
+  {
+    "timestamp": 12089,
+    "type": "fill",
+    "selector": "input[placeholder=\"Folder Name\"]",
+    "value": "test_folder",
+    "description": "Type folder name"
+  },
+  {
+    "timestamp": 12606,
+    "type": "click",
+    "selector": "button:has-text(\"Create\")",
+    "description": "Click Create"
+  }
+]

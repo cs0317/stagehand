@@ -1,0 +1,39 @@
+[
+  {
+    "timestamp": 1498,
+    "type": "goto",
+    "url": "https://www.overleaf.com/project",
+    "description": "Navigate to https://www.overleaf.com/project"
+  },
+  {
+    "timestamp": 2480,
+    "type": "wait",
+    "ms": 5000,
+    "description": "Wait for dashboard to load"
+  },
+  {
+    "timestamp": 7509,
+    "type": "fill",
+    "selector": "input[placeholder=\"Search in all projects…\"]",
+    "value": "My Paper 1",
+    "description": "Type search query"
+  },
+  {
+    "timestamp": 9532,
+    "type": "click",
+    "selector": "td input[type=\"checkbox\"]",
+    "description": "Click project checkbox"
+  },
+  {
+    "timestamp": 11562,
+    "type": "click",
+    "selector": "button:has-text(\"delete\")",
+    "description": "Click trash button"
+  },
+  {
+    "timestamp": 13572,
+    "type": "click",
+    "selector": "button:has-text(\"Confirm\")",
+    "description": "Click Confirm"
+  }
+]

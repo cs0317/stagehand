@@ -1,4 +1,3 @@
-"""
 """Playwright + Git CLI script (Python) — Overleaf Git Clone
 
 Looks up an Overleaf project ID from the dashboard and clones it

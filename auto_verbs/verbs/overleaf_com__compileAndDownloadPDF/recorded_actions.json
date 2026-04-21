@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": 1812,
+    "type": "goto",
+    "url": "https://www.overleaf.com/project/69e6b0a3d05bcdbdf251587c",
+    "description": "Navigate to https://www.overleaf.com/project/69e6b0a3d05bcdbdf251587c"
+  },
+  {
+    "timestamp": 10374,
+    "type": "click",
+    "selector": "button:has-text(\"Recompile\")",
+    "description": "Click Recompile"
+  },
+  {
+    "timestamp": 25387,
+    "type": "click",
+    "selector": "button[aria-label=\"Toggle output files menu\"]",
+    "description": "Toggle dropdown"
+  },
+  {
+    "timestamp": 26403,
+    "type": "click",
+    "selector": "a:has-text(\"Download PDF\")",
+    "description": "Click Download PDF"
+  }
+]

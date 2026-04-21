@@ -1,0 +1,12 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.overleaf.com/
+
+* Concrete task
+- Assume that the user has signed into overleaf (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- On https://www.overleaf.com/project, search for a project by name (e.g. "My Paper 1").
+- Select the first matching project by clicking its checkbox.
+- Click the trash (delete) button in the toolbar that appears.
+- Confirm the deletion in the confirmation dialog.
+- Return whether the task is successful.

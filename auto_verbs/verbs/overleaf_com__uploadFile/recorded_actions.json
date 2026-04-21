@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": 1575,
+    "type": "goto",
+    "url": "https://www.overleaf.com/project/69e6b0a3d05bcdbdf251587c",
+    "description": "Navigate to https://www.overleaf.com/project/69e6b0a3d05bcdbdf251587c"
+  },
+  {
+    "timestamp": 10003,
+    "type": "click",
+    "selector": "button[aria-label=\"Upload\"]",
+    "description": "Click Upload"
+  },
+  {
+    "timestamp": 12017,
+    "type": "click",
+    "selector": "fileChooser.setFiles",
+    "description": "Upload file: C:\\Users\\shuochen\\Downloads\\test_upload.txt"
+  }
+]

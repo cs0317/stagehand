@@ -1,0 +1,12 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.overleaf.com/
+
+* Concrete task
+- Assume that the user has signed into overleaf (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Visit a project by ID (e.g. https://www.overleaf.com/project/69e6b0a3d05bcdbdf251587c).
+- In the file tree sidebar, click the "Upload" button (the button with text "Upload").
+- A file upload dialog appears. Use Playwright's file chooser API to upload a local file (e.g. "test_upload.txt").
+- Wait for the upload to complete.
+- Return whether the task is successful. If so, return the uploaded file name as it appears in the file tree.

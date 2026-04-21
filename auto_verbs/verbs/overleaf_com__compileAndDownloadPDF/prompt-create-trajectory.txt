@@ -1,0 +1,14 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.overleaf.com/
+
+* Concrete task
+- Assume that the user has signed into overleaf (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Visit a project by ID (e.g. https://www.overleaf.com/project/69e6b0a3d05bcdbdf251587c).
+- Wait for the editor to load.
+- Click the "Recompile" button (or the green compile button) to compile the LaTeX project.
+- Wait for compilation to finish.
+- Click the "Download PDF" button in the PDF preview panel (the link with text "Download as PDF").
+- Wait for the download to complete (intercept the download event from Playwright).
+- Return whether the task is successful. If so, return the downloaded PDF file path.

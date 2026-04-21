@@ -1,0 +1,10 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.overleaf.com/
+
+* Concrete task
+- Assume that the user has signed into overleaf (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- On https://www.overleaf.com/project, click the "New tag" button in the sidebar.
+- Enter a tag name (e.g. "research-papers") and confirm.
+- Return whether the tag was successfully created.

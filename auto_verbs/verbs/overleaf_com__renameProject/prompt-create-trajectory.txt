@@ -1,0 +1,13 @@
+Please read auto_verbs\verbs\SystemPrompt1.txt
+
+* The target website
+https://www.overleaf.com/
+
+* Concrete task
+- Assume that the user has signed into overleaf (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- On https://www.overleaf.com/project, search for a project by name (e.g. "My Paper 1").
+- Click the first matching project to open it in the editor.
+- In the editor toolbar, click the project title dropdown (the button with the project name and a keyboard_arrow_down icon).
+- Select "Rename" from the dropdown menu.
+- Type the new name (e.g. "My Renamed Paper") and confirm.
+- Return whether the task is successful. If so, return the new project name and URL.
