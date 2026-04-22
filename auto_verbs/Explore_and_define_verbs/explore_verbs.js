@@ -2,199 +2,221 @@ const fs = require("fs");
 const path = require("path");
 
 /**
- * Google Docs – Explore & Propose 10 New Verbs
+ * Google Drive – Explore & Propose 10 New Verbs
  *
- * Generates prompt-create-trajectory.txt files for 10 Google Docs verbs
- * in the verbs-GoogleDocs-batch output folder.
+ * Generates prompt-create-trajectory.txt files for 10 Google Drive verbs
+ * in the verbs-GoogleDrive-batch output folder.
  *
  * Key UI observations (from live exploration):
- * - Homepage: https://docs.google.com/ shows template gallery + recent docs
- * - New doc: https://docs.google.com/document/create redirects to editor
- * - Title input: input[aria-label="Rename"] with the document title
- * - Share button: div[aria-label*="Share"]
- * - File menu: File > New, Open, Make a copy, Download, Rename, Move to trash, etc.
- * - Insert menu: Image, Table, Drawing, Chart, Link, Comment, Footnote, etc.
- * - Format menu: Text, Paragraph styles, Align, Line spacing, Columns, etc.
- * - Tools menu: Spelling, Word count, Translate, Voice typing, etc.
+ * - Homepage: https://drive.google.com/ shows "My Drive" with files/folders
+ * - New button: top-left "+ New" button opens a menu with upload/create options
+ * - Right-click context menu: rename, share, move, download, trash, etc.
+ * - Search bar: input at the top for searching files
+ * - File/folder items: selectable rows in the main content area
+ * - Details panel: right side panel with file info
+ * - Breadcrumb navigation: shows current folder path
  */
 
 // ── Verb definitions ─────────────────────────────────────────────────────────
 const VERBS = [
   {
-    folder: "docs_google_com__createDocument",
+    folder: "drive_google_com__uploadFile",
     prompt: `Please read auto_verbs\\common\\SystemPrompt1.txt
 
 * The target website
-https://docs.google.com/
+https://drive.google.com/
 
 * Concrete task
 - Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\\common\\open_browser.py to learn how to do it.)
-- Navigate to https://docs.google.com/document/create to create a new blank document.
-- Wait for the editor to load.
-- Rename the document by clicking the title input (input[aria-label="Rename"]) at the top, clearing it, and typing the new name (e.g. "Test Document 1").
-- Type some sample text into the document body (e.g. "Hello, this is a test document.").
-- Return whether the task is successful. If so, return the document URL and the document title.
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Click the "+ New" button in the top-left area.
+- Click "File upload" from the dropdown menu.
+- Use Playwright's file chooser API to upload a test file (create a small temp .txt file for the test).
+- Wait for the upload to complete (watch for the upload progress bar to disappear or a success notification).
+- Return whether the task is successful. If so, return the uploaded file name.
 `,
   },
   {
-    folder: "docs_google_com__createDocumentFromTemplate",
+    folder: "drive_google_com__createFolder",
     prompt: `Please read auto_verbs\\common\\SystemPrompt1.txt
 
 * The target website
-https://docs.google.com/
+https://drive.google.com/
 
 * Concrete task
 - Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\\common\\open_browser.py to learn how to do it.)
-- Navigate to https://docs.google.com/ to see the homepage with template gallery.
-- Click "Template gallery" to expand the full list of templates.
-- Find and click a template by name (e.g. "Resume Serif" or "Letter Spearmint").
-- Wait for the new document editor to load.
-- Rename the document to a given name (e.g. "My Resume") by clicking the title input (input[aria-label="Rename"]).
-- Return whether the task is successful. If so, return the document URL and the document title.
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Click the "+ New" button in the top-left area.
+- Click "New folder" from the dropdown menu.
+- In the dialog that appears, clear the default name and type a new folder name (e.g. "Test Folder 1").
+- Click "Create" to confirm.
+- Wait for the folder to appear in the file list.
+- Return whether the task is successful. If so, return the folder name.
 `,
   },
   {
-    folder: "docs_google_com__renameDocument",
+    folder: "drive_google_com__renameFile",
     prompt: `Please read auto_verbs\\common\\SystemPrompt1.txt
 
 * The target website
-https://docs.google.com/
+https://drive.google.com/
 
 * Concrete task
 - Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\\common\\open_browser.py to learn how to do it.)
-- Open a document by its URL (e.g. https://docs.google.com/document/d/<doc_id>/edit).
-- Wait for the editor to load.
-- Click the document title input (input[aria-label="Rename"]) at the top of the page.
-- Clear the existing name (Ctrl+A) and type the new name (e.g. "Renamed Document").
-- Press Enter or click outside to confirm.
-- Return whether the task is successful. If so, return the new document title.
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Find and right-click on a file by its current name (e.g. "Test File").
+- In the context menu, click "Rename".
+- In the rename input that appears, clear the existing name (Ctrl+A) and type the new name (e.g. "Renamed File").
+- Press Enter to confirm the rename.
+- Return whether the task is successful. If so, return the new file name.
 `,
   },
   {
-    folder: "docs_google_com__shareDocument",
+    folder: "drive_google_com__deleteFile",
     prompt: `Please read auto_verbs\\common\\SystemPrompt1.txt
 
 * The target website
-https://docs.google.com/
+https://drive.google.com/
 
 * Concrete task
 - Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\\common\\open_browser.py to learn how to do it.)
-- Open a document by its URL (e.g. https://docs.google.com/document/d/<doc_id>/edit).
-- Wait for the editor to load.
-- Click the Share button (div[aria-label*="Share"]) in the top-right area.
-- In the sharing dialog, enter an email address (e.g. "collaborator@example.com") in the "Add people" input field.
-- Set the permission to "Editor" (or "Viewer" depending on the parameter).
-- Click "Send" or "Share" to confirm.
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Find and right-click on a file or folder by its name (e.g. "Test File").
+- In the context menu, click "Move to trash".
+- Wait for the confirmation snackbar/toast to appear (e.g. "1 item moved to trash").
 - Return whether the task is successful.
 `,
   },
   {
-    folder: "docs_google_com__downloadDocument",
+    folder: "drive_google_com__shareFile",
     prompt: `Please read auto_verbs\\common\\SystemPrompt1.txt
 
 * The target website
-https://docs.google.com/
+https://drive.google.com/
 
 * Concrete task
 - Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\\common\\open_browser.py to learn how to do it.)
-- Open a document by its URL (e.g. https://docs.google.com/document/d/<doc_id>/edit).
-- Wait for the editor to load.
-- Open the File menu by clicking "File" in the menu bar.
-- Hover over "Download" to open the sub-menu.
-- Click the desired format (e.g. "PDF Document (.pdf)" or "Microsoft Word (.docx)").
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Find and right-click on a file by its name (e.g. "Test File").
+- In the context menu, click "Share" > "Share".
+- In the sharing dialog (which is inside an iframe at drivesharing), enter an email address (e.g. "collaborator@example.com") in the "Add people" input field.
+- Set the permission level (e.g. "Editor").
+- Click "Send" to share.
+- Return whether the task is successful.
+`,
+  },
+  {
+    folder: "drive_google_com__downloadFile",
+    prompt: `Please read auto_verbs\\common\\SystemPrompt1.txt
+
+* The target website
+https://drive.google.com/
+
+* Concrete task
+- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\\common\\open_browser.py to learn how to do it.)
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Find and right-click on a file by its name (e.g. "Test File").
+- In the context menu, click "Download".
 - Wait for the download to complete (intercept the download event from Playwright).
 - Return whether the task is successful. If so, return the downloaded file path.
 `,
   },
   {
-    folder: "docs_google_com__deleteDocument",
+    folder: "drive_google_com__moveFile",
     prompt: `Please read auto_verbs\\common\\SystemPrompt1.txt
 
 * The target website
-https://docs.google.com/
+https://drive.google.com/
 
 * Concrete task
 - Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\\common\\open_browser.py to learn how to do it.)
-- Open a document by its URL (e.g. https://docs.google.com/document/d/<doc_id>/edit).
-- Wait for the editor to load.
-- Open the File menu by clicking "File" in the menu bar.
-- Click "Move to trash" from the File menu.
-- Wait for the confirmation or the page to update.
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Find and right-click on a file by its name (e.g. "Test File").
+- In the context menu, click "Organise" (or "Move to").
+- In the dialog that appears, select a destination folder (e.g. "Test Folder 1").
+- Click "Move" to confirm.
+- Return whether the task is successful. If so, return the destination folder name.
+`,
+  },
+  {
+    folder: "drive_google_com__searchFiles",
+    prompt: `Please read auto_verbs\\common\\SystemPrompt1.txt
+
+* The target website
+https://drive.google.com/
+
+* Concrete task
+- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\\common\\open_browser.py to learn how to do it.)
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Click the search bar at the top of the page.
+- Type a search query (e.g. "Test").
+- Press Enter to execute the search.
+- Wait for search results to load.
+- Extract the names of the files/folders shown in the search results (up to 10).
+- Return whether the task is successful. If so, return the list of matching file/folder names.
+`,
+  },
+  {
+    folder: "drive_google_com__starFile",
+    prompt: `Please read auto_verbs\\common\\SystemPrompt1.txt
+
+* The target website
+https://drive.google.com/
+
+* Concrete task
+- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\\common\\open_browser.py to learn how to do it.)
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Find and right-click on a file by its name (e.g. "Test File").
+- In the context menu, click "Add to Starred" (or the star icon).
+- Wait for the confirmation (star icon becomes filled).
+- Navigate to https://drive.google.com/drive/starred to verify the file appears there.
 - Return whether the task is successful.
 `,
   },
   {
-    folder: "docs_google_com__makeACopy",
+    folder: "drive_google_com__copyFile",
     prompt: `Please read auto_verbs\\common\\SystemPrompt1.txt
 
 * The target website
-https://docs.google.com/
+https://drive.google.com/
 
 * Concrete task
 - Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\\common\\open_browser.py to learn how to do it.)
-- Open a document by its URL (e.g. https://docs.google.com/document/d/<doc_id>/edit).
-- Wait for the editor to load.
-- Open the File menu by clicking "File" in the menu bar.
-- Click "Make a copy" from the File menu.
-- A dialog appears. Optionally change the copy name (e.g. "Copy of Test Document 1") and click "Make a copy" to confirm.
-- Wait for the new document to open in a new tab. Switch to that tab.
-- Return whether the task is successful. If so, return the new document URL and title.
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Find and right-click on a file by its name (e.g. "Test File").
+- In the context menu, click "Make a copy".
+- Wait for the copy to appear in the file list (usually named "Copy of <filename>").
+- Return whether the task is successful. If so, return the name of the copied file.
 `,
   },
   {
-    folder: "docs_google_com__insertTable",
+    folder: "drive_google_com__openFile",
     prompt: `Please read auto_verbs\\common\\SystemPrompt1.txt
 
 * The target website
-https://docs.google.com/
+https://drive.google.com/
 
 * Concrete task
 - Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\\common\\open_browser.py to learn how to do it.)
-- Open a document by its URL (e.g. https://docs.google.com/document/d/<doc_id>/edit).
-- Wait for the editor to load.
-- Click at the end of the document body to place the cursor.
-- Open the Insert menu by clicking "Insert" in the menu bar.
-- Hover over "Table" to see the table size grid.
-- Select a table size (e.g. 3 columns x 2 rows) by clicking on the appropriate cell in the grid.
-- Return whether the task is successful.
-`,
-  },
-  {
-    folder: "docs_google_com__findAndReplace",
-    prompt: `Please read auto_verbs\\common\\SystemPrompt1.txt
-
-* The target website
-https://docs.google.com/
-
-* Concrete task
-- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\\common\\open_browser.py to learn how to do it.)
-- Open a document by its URL (e.g. https://docs.google.com/document/d/<doc_id>/edit).
-- Wait for the editor to load.
-- Open Find and Replace by pressing Ctrl+H (or via Edit menu > "Find and replace").
-- In the "Find" input, type the search text (e.g. "hello").
-- In the "Replace with" input, type the replacement text (e.g. "world").
-- Click "Replace all" to replace all occurrences.
-- Note the number of replacements made (if displayed).
-- Close the Find and Replace dialog.
-- Return whether the task is successful. If so, return the number of replacements.
-`,
-  },
-  {
-    folder: "docs_google_com__addComment",
-    prompt: `Please read auto_verbs\\common\\SystemPrompt1.txt
-
-* The target website
-https://docs.google.com/
-
-* Concrete task
-- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\\common\\open_browser.py to learn how to do it.)
-- Open a document by its URL (e.g. https://docs.google.com/document/d/<doc_id>/edit).
-- Wait for the editor to load.
-- Select some text in the document body (e.g. triple-click to select a paragraph, or use Ctrl+A to select all).
-- Press Ctrl+Alt+M to open the comment dialog (or click Insert > Comment).
-- Type a comment (e.g. "Please review this section.").
-- Click the "Comment" button to submit.
-- Return whether the task is successful.
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Click the search bar at the top of the page.
+- Type a search query (e.g. "Test").
+- Press Enter to execute the search.
+- Wait for search results to load.
+- Double-click the first matching file/folder in the search results to open it.
+- Wait for the file to open (e.g. a Google Doc, Sheet, or Slide editor, or a folder view).
+- Return whether the task is successful. If so, return the opened file/folder name and its URL.
 `,
   },
 ];
@@ -202,10 +224,10 @@ https://docs.google.com/
 // ── Main ─────────────────────────────────────────────────────────────────────
 async function main() {
   console.log("═══════════════════════════════════════════════════════════════");
-  console.log("  Google Docs – Explore & Propose 10 New Verbs");
+  console.log("  Google Drive – Explore & Propose 10 New Verbs");
   console.log("═══════════════════════════════════════════════════════════════\n");
 
-  const batchDir = path.join(__dirname, "..", "verbs-GoogleDocs-batch");
+  const batchDir = path.join(__dirname, "..", "verbs-GoogleDrive-batch");
 
   for (const verb of VERBS) {
     const dir = path.join(batchDir, verb.folder);

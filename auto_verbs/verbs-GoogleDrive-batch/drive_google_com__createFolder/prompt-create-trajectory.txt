@@ -1,0 +1,15 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://drive.google.com/
+
+* Concrete task
+- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Click the "+ New" button in the top-left area.
+- Click "New folder" from the dropdown menu.
+- In the dialog that appears, clear the default name and type a new folder name (e.g. "Test Folder 1").
+- Click "Create" to confirm.
+- Wait for the folder to appear in the file list.
+- Return whether the task is successful. If so, return the folder name.

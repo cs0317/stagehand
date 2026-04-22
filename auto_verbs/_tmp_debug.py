@@ -9,47 +9,46 @@ with sync_playwright() as pw:
         args=['--disable-blink-features=AutomationControlled', '--disable-infobars', '--disable-extensions', '--start-maximized'],
     )
     page = ctx.pages[0] if ctx.pages else ctx.new_page()
-    # Create and name a doc
-    page.goto('https://docs.google.com/document/create', wait_until='domcontentloaded', timeout=30000)
-    page.wait_for_timeout(8000)
-    title = page.locator('input[aria-label="Rename"]').first
-    title.click()
-    page.wait_for_timeout(500)
-    title.press('Control+a')
-    title.type('Test Share Debug2', delay=30)
-    title.press('Enter')
-    page.wait_for_timeout(3000)
+    page.goto('https://drive.google.com/drive/my-drive', wait_until='domcontentloaded', timeout=30000)
+    page.wait_for_timeout(5000)
 
-    # Click share
-    share_btn = page.locator('div[aria-label*="Share"]').first
-    share_btn.click()
-    page.wait_for_timeout(4000)
+    # Right-click a file
+    file_item = page.locator('div[data-tooltip="Test File For Download Google Docs"]').first
+    file_item.click(button='right')
+    page.wait_for_timeout(2000)
 
-    # Check for iframes
-    iframes = page.frames
-    print(f'Total frames: {len(iframes)}')
-    for i, f in enumerate(iframes):
-        print(f'  Frame {i}: name={f.name} url={f.url[:100]}')
-
-    # Check if share dialog opened as a new page/popup
-    print(f'Total pages: {len(ctx.pages)}')
-    for i, p in enumerate(ctx.pages):
-        print(f'  Page {i}: {p.url[:100]}')
-
-    # Look for the share dialog content in each frame
-    for i, f in enumerate(iframes):
+    # Find and hover the Organize submenu
+    menu_items = page.locator('[role="menuitem"]')
+    for i in range(menu_items.count()):
+        item = menu_items.nth(i)
+        if not item.is_visible():
+            continue
+        text = ''
         try:
-            r = f.evaluate('''() => {
-                const inputs = document.querySelectorAll('input');
-                const btns = document.querySelectorAll('button, [role="button"]');
-                const vis_btns = Array.from(btns).filter(b => b.offsetParent !== null);
-                return 'inputs=' + inputs.length + ' buttons=' + vis_btns.length + 
-                    ' inputAriaLabels=[' + Array.from(inputs).map(i => i.getAttribute('aria-label')||'').join(', ') + ']' +
-                    ' buttonTexts=[' + vis_btns.slice(0,10).map(b => b.textContent.trim().substring(0,30)).join(', ') + ']';
-            }''')
-            print(f'  Frame {i} content: {r}')
-        except Exception as e:
-            print(f'  Frame {i} error: {str(e)[:80]}')
+            text = item.inner_text(timeout=500).strip()
+        except:
+            pass
+        if 'Organize' in text or 'Organise' in text:
+            print(f'Found Organize at [{i}], hovering...')
+            item.hover()
+            page.wait_for_timeout(1500)
+            break
+
+    # Now dump ALL visible menu items (including submenu)
+    cnt = menu_items.count()
+    print(f'\n=== {cnt} menu items after hovering Organize ===')
+    for i in range(cnt):
+        item = menu_items.nth(i)
+        if not item.is_visible():
+            continue
+        label = item.get_attribute('aria-label') or ''
+        text = ''
+        try:
+            text = item.inner_text(timeout=500).strip().replace('\n', ' ')[:60]
+        except:
+            pass
+        popup = item.get_attribute('aria-haspopup') or ''
+        print(f'  [{i:2d}] label="{label}" text="{text}" popup={popup}')
 
     ctx.close()
 import sys, os

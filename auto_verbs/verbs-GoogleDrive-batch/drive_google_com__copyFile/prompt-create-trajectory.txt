@@ -1,0 +1,13 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://drive.google.com/
+
+* Concrete task
+- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Find and right-click on a file by its name (e.g. "Test File").
+- In the context menu, click "Make a copy".
+- Wait for the copy to appear in the file list (usually named "Copy of <filename>").
+- Return whether the task is successful. If so, return the name of the copied file.

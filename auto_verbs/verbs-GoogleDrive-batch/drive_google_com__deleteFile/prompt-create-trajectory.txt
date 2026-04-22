@@ -1,0 +1,13 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://drive.google.com/
+
+* Concrete task
+- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Find and right-click on a file or folder by its name (e.g. "Test File").
+- In the context menu, click "Move to trash".
+- Wait for the confirmation snackbar/toast to appear (e.g. "1 item moved to trash").
+- Return whether the task is successful.

@@ -1,0 +1,15 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://drive.google.com/
+
+* Concrete task
+- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Click the search bar at the top of the page.
+- Type a search query (e.g. "Test").
+- Press Enter to execute the search.
+- Wait for search results to load.
+- Extract the names of the files/folders shown in the search results (up to 10).
+- Return whether the task is successful. If so, return the list of matching file/folder names and google URLs.

@@ -1,0 +1,14 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://drive.google.com/
+
+* Concrete task
+- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Find and right-click on a file by its current name (e.g. "Test File").
+- In the context menu, click "Rename".
+- In the rename input that appears, clear the existing name (Ctrl+A) and type the new name (e.g. "Renamed File").
+- Press Enter to confirm the rename.
+- Return whether the task is successful. If so, return the new file name.

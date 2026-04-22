@@ -1,0 +1,16 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://drive.google.com/
+
+* Concrete task
+- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Navigate to https://drive.google.com/drive/my-drive.
+- Wait for the Drive UI to load.
+- Click the search bar at the top of the page.
+- Type a search query (e.g. "Test").
+- Press Enter to execute the search.
+- Wait for search results to load.
+- Double-click the first matching file/folder in the search results to open it.
+- Wait for the file to open (e.g. a Google Doc, Sheet, or Slide editor, or a folder view).
+- Return whether the task is successful. If so, return the opened file/folder name and its URL.
