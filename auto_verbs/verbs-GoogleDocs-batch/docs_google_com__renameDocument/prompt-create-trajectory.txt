@@ -1,0 +1,13 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://docs.google.com/
+
+* Concrete task
+- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Open a document by its URL (e.g. https://docs.google.com/document/d/<doc_id>/edit).
+- Wait for the editor to load.
+- Click the document title input (input[aria-label="Rename"]) at the top of the page.
+- Clear the existing name (Ctrl+A) and type the new name (e.g. "Renamed Document").
+- Press Enter or click outside to confirm.
+- Return whether the task is successful. If so, return the new document title.

@@ -1,2 +1,0 @@
-please read prompt-create-trajectory.txt in every sibling folder.
-I want you to generate a js file similar to auto_verbs\verbs\overleaf_com__shareProject\overleaf_share_project.js to explore https://www.overleaf.com/ (which has already signed in) to define 10 more verbs, expressed as a file similar to prompt-create-trajectory.txt.

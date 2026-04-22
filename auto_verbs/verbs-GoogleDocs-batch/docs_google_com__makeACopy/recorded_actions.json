@@ -1,0 +1,33 @@
+[
+  {
+    "timestamp": 1558,
+    "type": "goto",
+    "url": "https://docs.google.com/document/d/13D4-u5NJ-I-fOA5J6STj273HprIEgyo-xhJoDuA16a4/edit",
+    "description": "Navigate to https://docs.google.com/document/d/13D4-u5NJ-I-fOA5J6STj273HprIEgyo-xhJoDuA16a4/edit"
+  },
+  {
+    "timestamp": 10142,
+    "type": "click",
+    "selector": "#docs-file-menu",
+    "description": "Click File menu"
+  },
+  {
+    "timestamp": 11660,
+    "type": "click",
+    "selector": "span:has-text(\"Make a copy\")",
+    "description": "Click Make a copy"
+  },
+  {
+    "timestamp": 13681,
+    "type": "fill",
+    "selector": "input[type=\"text\"]",
+    "value": "Copy of Test Document 1",
+    "description": "Type copy name"
+  },
+  {
+    "timestamp": 14193,
+    "type": "click",
+    "selector": "button:has-text(\"Make a copy\")",
+    "description": "Click Make a copy confirm"
+  }
+]

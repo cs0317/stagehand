@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": 1632,
+    "type": "goto",
+    "url": "https://docs.google.com/document/d/13D4-u5NJ-I-fOA5J6STj273HprIEgyo-xhJoDuA16a4/edit",
+    "description": "Navigate to https://docs.google.com/document/d/13D4-u5NJ-I-fOA5J6STj273HprIEgyo-xhJoDuA16a4/edit"
+  },
+  {
+    "timestamp": 10202,
+    "type": "click",
+    "selector": "#docs-file-menu",
+    "description": "Click File menu"
+  },
+  {
+    "timestamp": 11720,
+    "type": "click",
+    "selector": "span:has-text(\"Move to trash\")",
+    "description": "Click Move to trash"
+  }
+]

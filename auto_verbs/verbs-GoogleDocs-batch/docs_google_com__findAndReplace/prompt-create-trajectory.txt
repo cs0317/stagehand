@@ -1,0 +1,16 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://docs.google.com/
+
+* Concrete task
+- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Open a document by its URL (e.g. https://docs.google.com/document/d/<doc_id>/edit).
+- Wait for the editor to load.
+- Open Find and Replace by pressing Ctrl+H (or via Edit menu > "Find and replace").
+- In the "Find" input, type the search text (e.g. "hello").
+- In the "Replace with" input, type the replacement text (e.g. "world").
+- Click "Replace all" to replace all occurrences.
+- Note the number of replacements made (if displayed).
+- Close the Find and Replace dialog.
+- Return whether the task is successful. If so, return the number of replacements.

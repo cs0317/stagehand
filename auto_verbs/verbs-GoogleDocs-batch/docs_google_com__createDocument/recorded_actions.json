@@ -1,0 +1,22 @@
+[
+  {
+    "timestamp": 1567,
+    "type": "goto",
+    "url": "https://docs.google.com/document/create",
+    "description": "Navigate to https://docs.google.com/document/create"
+  },
+  {
+    "timestamp": 10329,
+    "type": "fill",
+    "selector": "input[aria-label=\"Rename\"]",
+    "value": "Test Document 1",
+    "description": "Rename document"
+  },
+  {
+    "timestamp": 38236,
+    "type": "fill",
+    "selector": ".kix-appview-editor",
+    "value": "Hello, this is a test document.",
+    "description": "Type sample text"
+  }
+]

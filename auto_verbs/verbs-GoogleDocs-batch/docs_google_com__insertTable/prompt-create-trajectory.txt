@@ -1,0 +1,14 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://docs.google.com/
+
+* Concrete task
+- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Open a document by its URL (e.g. https://docs.google.com/document/d/<doc_id>/edit).
+- Wait for the editor to load.
+- Click at the end of the document body to place the cursor.
+- Open the Insert menu by clicking "Insert" in the menu bar.
+- Hover over "Table" to see the table size grid.
+- Select a table size (e.g. 3 columns x 2 rows) by clicking on the appropriate cell in the grid.
+- Return whether the task is successful.

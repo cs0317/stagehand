@@ -1,0 +1,15 @@
+[
+  {
+    "timestamp": 1581,
+    "type": "goto",
+    "url": "https://docs.google.com/document/d/13D4-u5NJ-I-fOA5J6STj273HprIEgyo-xhJoDuA16a4/edit",
+    "description": "Navigate to https://docs.google.com/document/d/13D4-u5NJ-I-fOA5J6STj273HprIEgyo-xhJoDuA16a4/edit"
+  },
+  {
+    "timestamp": 10138,
+    "type": "fill",
+    "selector": "input[aria-label=\"Rename\"]",
+    "value": "Renamed Document",
+    "description": "Rename document"
+  }
+]

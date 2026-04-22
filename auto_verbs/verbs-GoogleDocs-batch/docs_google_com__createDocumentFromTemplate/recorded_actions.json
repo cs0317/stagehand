@@ -1,0 +1,27 @@
+[
+  {
+    "timestamp": 1617,
+    "type": "goto",
+    "url": "https://docs.google.com/",
+    "description": "Navigate to https://docs.google.com/"
+  },
+  {
+    "timestamp": 10888,
+    "type": "click",
+    "selector": "button:has-text(\"Template gallery\")",
+    "description": "Click Template gallery"
+  },
+  {
+    "timestamp": 12908,
+    "type": "click",
+    "selector": "[aria-label*=\"Letter\"]",
+    "description": "Click template"
+  },
+  {
+    "timestamp": 20926,
+    "type": "fill",
+    "selector": "input[aria-label=\"Rename\"]",
+    "value": "My Letter",
+    "description": "Rename document"
+  }
+]

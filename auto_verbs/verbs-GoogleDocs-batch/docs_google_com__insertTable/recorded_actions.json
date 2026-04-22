@@ -1,0 +1,32 @@
+[
+  {
+    "timestamp": 1614,
+    "type": "goto",
+    "url": "https://docs.google.com/document/d/13D4-u5NJ-I-fOA5J6STj273HprIEgyo-xhJoDuA16a4/edit",
+    "description": "Navigate to https://docs.google.com/document/d/13D4-u5NJ-I-fOA5J6STj273HprIEgyo-xhJoDuA16a4/edit"
+  },
+  {
+    "timestamp": 10151,
+    "type": "click",
+    "selector": ".kix-appview-editor",
+    "description": "Click document body"
+  },
+  {
+    "timestamp": 10658,
+    "type": "click",
+    "selector": "#docs-insert-menu",
+    "description": "Click Insert menu"
+  },
+  {
+    "timestamp": 12178,
+    "type": "click",
+    "selector": "span:has-text(\"Table\")",
+    "description": "Hover Table"
+  },
+  {
+    "timestamp": 13694,
+    "type": "click",
+    "selector": "[aria-label=\"3 x 2\"]",
+    "description": "Click table grid cell"
+  }
+]

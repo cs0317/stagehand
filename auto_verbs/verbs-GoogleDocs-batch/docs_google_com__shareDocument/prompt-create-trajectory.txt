@@ -1,0 +1,14 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://docs.google.com/
+
+* Concrete task
+- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Open a document by its URL (e.g. https://docs.google.com/document/d/<doc_id>/edit).
+- Wait for the editor to load.
+- Click the Share button (div[aria-label*="Share"]) in the top-right area.
+- In the sharing dialog, enter an email address (e.g. "collaborator@example.com") in the "Add people" input field.
+- Set the permission to "Editor" (or "Viewer" depending on the parameter).
+- Click "Send" or "Share" to confirm.
+- Return whether the task is successful.

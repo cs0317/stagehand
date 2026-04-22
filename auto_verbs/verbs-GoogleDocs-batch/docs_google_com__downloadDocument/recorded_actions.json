@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": 1643,
+    "type": "goto",
+    "url": "https://docs.google.com/document/d/13D4-u5NJ-I-fOA5J6STj273HprIEgyo-xhJoDuA16a4/edit",
+    "description": "Navigate to https://docs.google.com/document/d/13D4-u5NJ-I-fOA5J6STj273HprIEgyo-xhJoDuA16a4/edit"
+  },
+  {
+    "timestamp": 10220,
+    "type": "click",
+    "selector": "#docs-file-menu",
+    "description": "Click File menu"
+  },
+  {
+    "timestamp": 11737,
+    "type": "click",
+    "selector": "span:has-text(\"Download\")",
+    "description": "Hover Download"
+  },
+  {
+    "timestamp": 13255,
+    "type": "click",
+    "selector": "span:has-text(\"PDF Document (.pdf)\")",
+    "description": "Click format"
+  }
+]

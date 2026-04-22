@@ -1,0 +1,27 @@
+[
+  {
+    "timestamp": 1606,
+    "type": "goto",
+    "url": "https://docs.google.com/document/d/13D4-u5NJ-I-fOA5J6STj273HprIEgyo-xhJoDuA16a4/edit",
+    "description": "Navigate to https://docs.google.com/document/d/13D4-u5NJ-I-fOA5J6STj273HprIEgyo-xhJoDuA16a4/edit"
+  },
+  {
+    "timestamp": 10218,
+    "type": "click",
+    "selector": "div[aria-label*=\"Share\"]",
+    "description": "Click Share"
+  },
+  {
+    "timestamp": 13244,
+    "type": "fill",
+    "selector": "input[aria-label=\"Add people\"]",
+    "value": "collaborator@example.com",
+    "description": "Type email"
+  },
+  {
+    "timestamp": 15253,
+    "type": "click",
+    "selector": "button:has-text(\"Send\")",
+    "description": "Click Send"
+  }
+]

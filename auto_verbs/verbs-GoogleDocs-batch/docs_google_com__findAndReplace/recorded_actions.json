@@ -1,0 +1,40 @@
+[
+  {
+    "timestamp": 1648,
+    "type": "goto",
+    "url": "https://docs.google.com/document/d/13D4-u5NJ-I-fOA5J6STj273HprIEgyo-xhJoDuA16a4/edit",
+    "description": "Navigate to https://docs.google.com/document/d/13D4-u5NJ-I-fOA5J6STj273HprIEgyo-xhJoDuA16a4/edit"
+  },
+  {
+    "timestamp": 10284,
+    "type": "click",
+    "selector": "keyboard",
+    "description": "Press Ctrl+H"
+  },
+  {
+    "timestamp": 15319,
+    "type": "fill",
+    "selector": "input[aria-label=\"Find\"]",
+    "value": "hello",
+    "description": "Type find text"
+  },
+  {
+    "timestamp": 16332,
+    "type": "fill",
+    "selector": "input[aria-label=\"Replace with\"]",
+    "value": "world",
+    "description": "Type replace text"
+  },
+  {
+    "timestamp": 17349,
+    "type": "click",
+    "selector": "button:has-text(\"Replace all\")",
+    "description": "Click Replace All"
+  },
+  {
+    "timestamp": 19354,
+    "type": "click",
+    "selector": "keyboard",
+    "description": "Press Escape"
+  }
+]

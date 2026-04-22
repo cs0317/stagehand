@@ -1,0 +1,14 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://docs.google.com/
+
+* Concrete task
+- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Open a document by its URL (e.g. https://docs.google.com/document/d/<doc_id>/edit).
+- Wait for the editor to load.
+- Open the File menu by clicking "File" in the menu bar.
+- Hover over "Download" to open the sub-menu.
+- Click the desired format (e.g. "PDF Document (.pdf)" or "Microsoft Word (.docx)").
+- Wait for the download to complete (intercept the download event from Playwright).
+- Return whether the task is successful. If so, return the downloaded file path.
