@@ -1,0 +1,16 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://portal.azure.com/
+
+* Concrete task
+- Assume that the user has signed into Azure Portal (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Navigate to https://portal.azure.com/.
+- The browser may redirect through a Microsoft login page ("Pick an account"). If this happens, click the first account tile to proceed. See auto_verbs\verbs-AzurePortal-batch\portal_azure_com__openService\azure_portal_open_service.py for how to detect and handle this (look for login.microsoftonline.com in the URL, then click [data-test-id="list-item-0"]).
+- Wait for the Azure Portal home page to fully load (URL contains portal.azure.com and does not contain "login" or "oauth").
+- Use the top search bar to search for "Cost Management".
+- Click the "Cost Management" service result.
+- In the Cost Management blade, click "Cost analysis" in the left menu.
+- Wait for the cost analysis chart/data to load.
+- Extract the current billing period's total cost (or accumulated cost) shown on the page.
+- Return whether the task is successful. If so, return the cost amount and currency.

@@ -1,0 +1,18 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://portal.azure.com/
+
+* Concrete task
+- Assume that the user has signed into Azure Portal (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Navigate to https://portal.azure.com/.
+- The browser may redirect through a Microsoft login page ("Pick an account"). If this happens, click the first account tile to proceed. See auto_verbs\verbs-AzurePortal-batch\portal_azure_com__openService\azure_portal_open_service.py for how to detect and handle this (look for login.microsoftonline.com in the URL, then click [data-test-id="list-item-0"]).
+- Wait for the Azure Portal home page to fully load (URL contains portal.azure.com and does not contain "login" or "oauth").
+- Click the Cloud Shell icon (terminal icon) in the top navigation bar (it looks like a ">_" icon, usually near the notification bell).
+- If prompted to select Bash or PowerShell, select "Bash".
+- If prompted about storage ("You have no storage mounted"), click "Create storage" or select a subscription and create.
+- Wait for the Cloud Shell terminal to load (a terminal pane appears at the bottom of the page).
+- Type a command in the Cloud Shell terminal (e.g. "az account show") and press Enter.
+- Wait for the command output.
+- Extract the command output text.
+- Return whether the task is successful. If so, return the command output.

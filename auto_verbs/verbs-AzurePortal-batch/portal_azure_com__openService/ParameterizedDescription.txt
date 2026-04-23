@@ -1,0 +1,15 @@
+Azure Portal – Open Service
+
+Navigate to https://portal.azure.com/ using the user's persistent browser profile
+(the user is already signed in). Use the top search bar to search for a specified
+Azure service by name (e.g. "Azure OpenAI"), click the matching service result,
+and return whether the navigation was successful along with the final URL.
+
+Parameters:
+  service_name : str   — The Azure service to navigate to (e.g. "Azure OpenAI")
+
+Returns:
+  success      : bool  — Whether the service page was reached
+  service_name : str   — The name of the service that was opened
+  page_url     : str   — The URL of the service page
+  error        : str   — Error message if unsuccessful

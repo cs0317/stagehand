@@ -1,0 +1,10 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://portal.azure.com/
+
+* Concrete task
+- Assume that the user has signed into Google (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Navigate to https://portal.azure.com/
+- Click into "Azure OpenAI"
+- Return whether the task is successful.

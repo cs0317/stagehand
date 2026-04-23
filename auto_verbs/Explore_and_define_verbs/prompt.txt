@@ -1,2 +1,2 @@
 please read prompt-create-trajectory.txt in auto_verbs\verbs-Overleaf-batch.
-I want you to revise auto_verbs\Explore_and_define_verbs\explore_verbs.js to explore https://drive.google.com/ (which has already signed in) to define 10 verbs, expressed as a file similar to prompt-create-trajectory.txt. Please create the output folder: auto_verbs\verbs-GoogleDrive-batch
+I want you to revise auto_verbs\Explore_and_define_verbs\explore_verbs.js to explore https://portal.azure.com/ (which has already signed in) to define 10 verbs, expressed as a file similar to prompt-create-trajectory.txt. The output folder is auto_verbs\verbs-AzurePortal-batch

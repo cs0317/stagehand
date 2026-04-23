@@ -1,0 +1,23 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://portal.azure.com/
+
+* Concrete task
+- Assume that the user has signed into Azure Portal (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Navigate to https://portal.azure.com/.
+- The browser may redirect through a Microsoft login page ("Pick an account"). If this happens, click the first account tile to proceed. See auto_verbs\verbs-AzurePortal-batch\portal_azure_com__openService\azure_portal_open_service.py for how to detect and handle this (look for login.microsoftonline.com in the URL, then click [data-test-id="list-item-0"]).
+- Wait for the Azure Portal home page to fully load (URL contains portal.azure.com and does not contain "login" or "oauth").
+- Use the top search bar to search for "Storage accounts".
+- Click the "Storage accounts" service result.
+- Click the "+ Create" button.
+- In the "Create a storage account" form:
+  - Select a subscription from the dropdown (use the first available one).
+  - Select or create a resource group (e.g. "test-rg-001").
+  - Enter a storage account name (e.g. "teststorage" followed by a random 5-digit number to ensure uniqueness). Storage account names must be 3-24 characters, lowercase letters and numbers only.
+  - Select a region (e.g. "East US").
+  - Leave other settings as defaults.
+- Click "Review + create" (it may be at the bottom of the page, scroll down if needed).
+- On the validation page, click "Create".
+- Wait for the deployment to complete (may take 30-60 seconds; watch for "Your deployment is complete").
+- Return whether the task is successful. If so, return the storage account name.

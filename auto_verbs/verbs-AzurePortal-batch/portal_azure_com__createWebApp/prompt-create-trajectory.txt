@@ -1,0 +1,24 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://portal.azure.com/
+
+* Concrete task
+- Assume that the user has signed into Azure Portal (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Navigate to https://portal.azure.com/.
+- The browser may redirect through a Microsoft login page ("Pick an account"). If this happens, click the first account tile to proceed. See auto_verbs\verbs-AzurePortal-batch\portal_azure_com__openService\azure_portal_open_service.py for how to detect and handle this (look for login.microsoftonline.com in the URL, then click [data-test-id="list-item-0"]).
+- Wait for the Azure Portal home page to fully load (URL contains portal.azure.com and does not contain "login" or "oauth").
+- Use the top search bar to search for "App Services".
+- Click the "App Services" service result.
+- Click the "+ Create" button, then select "Web App" if a sub-menu appears.
+- In the "Create Web App" form:
+  - Select a subscription (use the first available one).
+  - Select or create a resource group (e.g. "test-rg-001").
+  - Enter a web app name (e.g. "test-webapp-" followed by a random 5-digit number). The name must be globally unique.
+  - For Runtime stack, select "Node 20 LTS" (or another available option).
+  - Select a region (e.g. "East US").
+  - For the App Service Plan, use an existing one or create a new Free tier plan.
+- Click "Review + create".
+- On the validation page, click "Create".
+- Wait for the deployment to complete.
+- Return whether the task is successful. If so, return the web app name and URL.

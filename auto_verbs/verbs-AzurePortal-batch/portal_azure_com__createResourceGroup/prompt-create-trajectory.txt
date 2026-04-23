@@ -1,0 +1,21 @@
+Please read auto_verbs\common\SystemPrompt1.txt
+
+* The target website
+https://portal.azure.com/
+
+* Concrete task
+- Assume that the user has signed into Azure Portal (the test code should open the browser using the user's persistent profile. see auto_verbs\common\open_browser.py to learn how to do it.)
+- Navigate to https://portal.azure.com/.
+- The browser may redirect through a Microsoft login page ("Pick an account"). If this happens, click the first account tile to proceed. See auto_verbs\verbs-AzurePortal-batch\portal_azure_com__openService\azure_portal_open_service.py for how to detect and handle this (look for login.microsoftonline.com in the URL, then click [data-test-id="list-item-0"]).
+- Wait for the Azure Portal home page to fully load (URL contains portal.azure.com and does not contain "login" or "oauth").
+- Use the top search bar to search for "Resource groups".
+- Click the "Resource groups" service result.
+- Click the "+ Create" button.
+- In the "Create a resource group" form:
+  - Select a subscription from the dropdown (use the first available one).
+  - Enter a resource group name (e.g. "test-rg-001").
+  - Select a region (e.g. "East US").
+- Click "Review + create".
+- On the validation page, click "Create".
+- Wait for the deployment to complete.
+- Return whether the task is successful. If so, return the resource group name.
