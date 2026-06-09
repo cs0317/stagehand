@@ -1,0 +1,3 @@
+I need your help to accomplish the following steps:
++ Please use playwright MCP to open https://client.joinforma.com/claims;
++ Show the info about the most recent 3 claims.
