@@ -1,3 +1,3 @@
 I need your help to accomplish the following steps:
-+ Please use browser to open https://www.google.com/maps;
++ Please use browser to open https://www.google.com/maps
 + Open the "Saved" icon in the left pane to open my saved lists.
